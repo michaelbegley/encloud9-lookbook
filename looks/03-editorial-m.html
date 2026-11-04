@@ -1,0 +1,161 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Direction 3: Editorial Founder (mobile)</title><link rel="stylesheet" href="../assets/fonts/fonts.css"><style>
+*{box-sizing:border-box}
+html,body{margin:0;background:#FFFFFF}
+body{overflow-x:hidden}
+.e{font-family:'Instrument Sans',Arial,sans-serif;color:#1F1E1C;-webkit-text-size-adjust:100%}
+.e .d{font-family:Jost,Futura,Arial,sans-serif;font-weight:300}
+.e .m{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0;color:#355DA6}
+.e a{color:inherit;text-decoration:none}
+.e img{display:block}
+.g{padding-left:clamp(20px,6vw,40px);padding-right:clamp(20px,6vw,40px)}
+.credit{position:absolute;right:10px;bottom:8px;font-size:10px;color:rgba(255,255,255,.85);font-family:Arial,sans-serif}
+
+/* hero */
+.hero{position:relative;min-height:min(92svh,760px);display:flex;flex-direction:column;justify-content:flex-end;color:#FFF;overflow:hidden}
+.hero-ph{position:absolute;inset:0;background:#E9EDF2;overflow:hidden}
+.hero-ph img{width:100%;height:100%;object-fit:cover;object-position:58% 62%}
+.hero-sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,16,24,.5) 0%,rgba(12,16,24,0) 22%,rgba(12,16,24,.2) 40%,rgba(12,16,24,.86) 100%)}
+.hero-hd{position:absolute;top:0;left:0;right:0;height:72px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:3}
+.logo{display:flex;align-items:center;gap:8px;min-height:44px}
+.logo .mk{width:26px;height:22px}.logo .wm{width:84px;height:28px}
+.acts{display:flex;align-items:center;gap:8px}
+.call,.menu summary{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;padding:0 14px;font-size:15px;border:1px solid rgba(255,255,255,.7);color:#FFF;background:rgba(12,16,24,.25);cursor:pointer}
+.e .call{background:#FFF;color:#1F1E1C;border-color:#FFF}
+.menu{position:relative}
+.menu summary{list-style:none}
+.menu summary::-webkit-details-marker{display:none}
+.menu[open] summary{background:#FFF;color:#1F1E1C}
+.menu nav{position:absolute;right:0;top:52px;width:min(78vw,300px);background:#FFFFFF;color:#1F1E1C;padding:8px 20px;box-shadow:0 18px 40px rgba(12,16,24,.28);display:flex;flex-direction:column}
+.menu nav a{min-height:48px;display:flex;align-items:center;font-size:17px;border-top:1px solid #DDD9D2}
+.menu nav a:first-child{border-top:0}
+.e .menu nav a.cv{text-decoration:underline;text-underline-offset:4px;color:#355DA6}
+.hero-c{position:relative;z-index:2;padding-top:120px;padding-bottom:44px;display:flex;flex-direction:column;gap:20px}
+.hero-h{margin:0;font-size:clamp(40px,11.4vw,76px);line-height:1;letter-spacing:-0.015em}
+.hero-p{margin:0;font-size:17px;line-height:1.6;color:rgba(255,255,255,.9);max-width:520px}
+
+/* running heads: the left margin becomes a head above each section */
+.rh{display:flex;align-items:center;gap:12px;margin:0 0 24px}
+.rh::after{content:"";flex:1;height:1px;background:#C9D3E6}
+
+.why{padding-top:72px;padding-bottom:64px}
+.why blockquote{margin:0;display:flex;flex-direction:column;gap:18px}
+.why p{margin:0;font-size:clamp(26px,7.4vw,40px);line-height:1.24;letter-spacing:-0.005em}
+.who{font-size:15px;color:#6E6A64}
+
+.svcs{padding-bottom:72px}
+.list{display:flex;flex-direction:column}
+.svc{display:flex;flex-direction:column;gap:6px;padding:20px 0;border-top:1px solid #DDD9D2;min-height:44px}
+.svc .t{align-self:flex-start;font-size:clamp(26px,7vw,32px);letter-spacing:-0.015em;font-weight:400;background:linear-gradient(#355DA6,#355DA6) 0 100%/0 1px no-repeat}
+.svc .s{font-size:15px;line-height:1.5;color:#6E6A64}
+.list .end{border-top:1px solid #DDD9D2}
+.ph2{position:relative;overflow:hidden;background:#E9EDF2;aspect-ratio:4/3;margin-top:32px}
+.ph2 img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+.proof{background:#F3F1EC;padding-top:64px;padding-bottom:64px}
+.proof .q{display:flex;flex-direction:column;gap:16px}
+.proof .q p{margin:0;font-size:clamp(26px,7vw,36px);line-height:1.2;letter-spacing:-0.02em}
+.side{margin-top:36px;display:flex;flex-direction:column;gap:14px;font-size:15px;line-height:1.6;color:#4B4842;border-top:1px solid #D9D5CE;padding-top:16px}
+.side .cn{font-size:22px;color:#1F1E1C}
+.side .aw{border-top:1px solid #D9D5CE;padding-top:14px}
+.side a{color:#355DA6;text-decoration:underline;text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center}
+
+.contact{padding-top:72px;padding-bottom:32px}
+.cta{display:block;font-size:clamp(48px,14vw,96px);line-height:1;letter-spacing:-0.045em;padding-bottom:20px}
+.cta .u{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:10px}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:24px 20px;margin-top:28px;font-size:15px;line-height:1.7;color:#4B5263}
+.info .ph{grid-column:1/-1}
+.foot{display:flex;flex-direction:column;align-items:flex-start;gap:14px;border-top:1px solid #DDD9D2;padding-top:20px;margin-top:40px}
+.foot .lg{display:flex;align-items:center;gap:8px}
+.foot .m{color:#6E6A64;line-height:1.6}
+
+@media (min-width:640px){
+  .info{grid-template-columns:repeat(3,1fr)}
+  .info .ph{grid-column:auto}
+}
+
+@media (prefers-reduced-motion:no-preference){
+@keyframes e-clip{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes e-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes e-fade{from{opacity:0}to{opacity:1}}
+.hero-ph{animation:e-clip 900ms cubic-bezier(.2,.7,.2,1) both}
+.hero-sh,.hero-hd{animation:e-fade 700ms cubic-bezier(.2,.7,.2,1) 300ms both}
+.hero-h{animation:e-up 800ms cubic-bezier(.2,.7,.2,1) 550ms both}
+.hero-p{animation:e-up 700ms cubic-bezier(.2,.7,.2,1) 750ms both}
+html.js .rh{opacity:0;transform:translateX(-24px);transition:opacity 600ms cubic-bezier(.2,.7,.2,1),transform 600ms cubic-bezier(.2,.7,.2,1)}
+html.js .rh::after{transform:scaleX(0);transform-origin:0 50%;transition:transform 800ms cubic-bezier(.2,.7,.2,1) 200ms}
+html.js .in .rh{opacity:1;transform:none}
+html.js .in .rh::after{transform:none}
+html.js .rq{opacity:0;transition:opacity 900ms cubic-bezier(.2,.7,.2,1) 150ms}
+html.js .in .rq{opacity:1}
+html.js .svc{opacity:0;transform:translateY(10px);transition:opacity 600ms cubic-bezier(.2,.7,.2,1),transform 600ms cubic-bezier(.2,.7,.2,1)}
+html.js .in .svc{opacity:1;transform:none}
+html.js .in .svc:nth-child(2){transition-delay:80ms}html.js .in .svc:nth-child(3){transition-delay:160ms}html.js .in .svc:nth-child(4){transition-delay:240ms}
+html.js .ph2{clip-path:inset(0 0 100% 0);transition:clip-path 900ms cubic-bezier(.2,.7,.2,1) 150ms}
+html.js .ph2.in{clip-path:inset(-1px)}
+html.js .cta{opacity:0;transform:translateY(16px);transition:opacity 800ms cubic-bezier(.2,.7,.2,1) 120ms,transform 800ms cubic-bezier(.2,.7,.2,1) 120ms}
+html.js .in .cta{opacity:1;transform:none}
+.svc .t{transition:transform 300ms cubic-bezier(.2,.7,.2,1),background-size 400ms cubic-bezier(.2,.7,.2,1)}
+.svc:hover .t,.svc:active .t,.svc:focus-visible .t{transform:translateX(8px);background-size:100% 1px}
+.cta .u{display:inline-block;transition:transform 400ms cubic-bezier(.2,.7,.2,1)}
+.cta:hover .u,.cta:active .u{transform:translateX(10px)}
+.menu nav{transform-origin:100% 0;animation:e-up 300ms cubic-bezier(.2,.7,.2,1) both}
+}
+</style><script>(function(){var q=new URLSearchParams(location.search);function pref(v){try{return sessionStorage.getItem('lbview')===v}catch(e){return false}}function setp(v){try{sessionStorage.setItem('lbview',v)}catch(e){}}if(q.get('view')==='mobile')setp('mobile');if(q.get('view')!=='mobile'&&!pref('mobile')&&innerWidth>=1024){location.replace('03-editorial.html'+location.hash)};addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea,select'))return;if(e.key==='ArrowRight')location.href='04-local-m.html';if(e.key==='ArrowLeft')location.href='02-systems-map-m.html'})})()</script></head><body>
+<style id="lbcss">#lbbar{position:sticky;top:0;z-index:999;background:#0A0B0D;color:#fff;font:13px/1 Arial,sans-serif;display:flex;align-items:center;gap:6px;padding:0 10px;height:40px;box-sizing:border-box;white-space:nowrap}
+#lbbar a{color:#fff;text-decoration:none;padding:8px 8px;border-radius:4px}
+#lbbar a:hover,#lbbar a:focus-visible{background:#2A2F38}
+#lbbar .t{opacity:.75;padding:0 6px;overflow:hidden;text-overflow:ellipsis}
+#lbbar .sp{flex:1}
+#lbbar .on{background:#355DA6}
+@media (max-width:560px){#lbbar .hide-s{display:none}}</style><nav id="lbbar" aria-label="Look switcher"><a href="../index.html">All looks</a><a href="02-systems-map-m.html" rel="prev" aria-label="Previous look">&#8592;</a><span class="t">Look 3 of 9: Editorial</span><a href="04-local-m.html" rel="next" aria-label="Next look">&#8594;</a><span class="sp"></span><a href="03-editorial.html?view=desktop" class="hide-s">Desktop</a><a class="on hide-s" href="03-editorial-m.html">Mobile</a><a href="../kits/03-kit.html" class="hide-s">Brand kit</a></nav>
+<div class="e">
+  <section class="hero">
+    <div class="hero-ph"><img src="../assets/photos/tim-umphreys-rtk3UhhCJEE.jpg" alt="Omaha skyline at dusk, wide"><span class="credit">Stand-in photo: Tim Umphreys, Unsplash</span></div>
+    <div class="hero-sh"></div>
+    <header class="hero-hd g">
+      <a href="#" class="logo"><img class="mk" src="../assets/brand/enCloud9-cloud-mark-white.svg" alt=""><img class="wm" src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9 home"></a>
+      <div class="acts">
+        <a class="call" href="tel:18442640729" aria-label="Call 1-844-264-0729">Call</a>
+        <details class="menu"><summary>Menu</summary>
+          <nav aria-label="Main"><a href="#">Dynamics 365</a><a href="#">Copilot</a><a href="#">Work</a><a href="#">About Brian</a><a href="#">Writing</a><a href="#" class="cv">Start a conversation</a></nav>
+        </details>
+      </div>
+    </header>
+    <div class="hero-c g">
+      <h1 class="d hero-h">A Dynamics 365 partner with a founder’s name on the door</h1>
+      <p class="hero-p">Dynamics 365, Copilot and Power Platform, from Bellevue, Nebraska. Founded by a CPA, built for companies that count.</p>
+    </div>
+  </section>
+
+  <section class="why g" data-r>
+    <span class="m rh">Why we exist</span>
+    <blockquote class="rq"><p class="d">“[Brian, in his own words: why a CPA started a Dynamics 365 firm, and what he does differently. Two or three sentences.]”</p><span class="who">Brian Begley, CPA, founder</span></blockquote>
+  </section>
+
+  <section class="svcs g" data-r>
+    <span class="m rh">Services</span>
+    <div class="list">
+      <a href="#" class="svc"><span class="d t">Dynamics 365</span><span class="s">Sales, Customer Service, Business Central</span></a>
+      <a href="#" class="svc"><span class="d t">Power Platform</span><span class="s">Power Apps, Power Automate and Power BI for work still done by hand</span></a>
+      <a href="#" class="svc"><span class="d t">Copilot and agents</span><span class="s">Copilot and agents for named jobs, on your own data</span></a>
+      <a href="#" class="svc"><span class="d t">Support</span><span class="s">A team that knows your system</span></a>
+      <div class="end"></div>
+    </div>
+    <div class="ph2" data-r><img src="../assets/photos/dylan-gillis-KdeqA3aTnBY.jpg" alt="A client working session"><span class="credit">Stand-in photo: Dylan Gillis, Unsplash</span></div>
+  </section>
+
+  <section class="proof g" data-r>
+    <span class="m rh">Proof</span>
+    <div class="q rq"><p class="d">“[A real client quote, used with their okay.]”</p><span class="m">[Name, title, company]</span></div>
+    <div class="side"><span class="cn">[Client name]</span><span>[One result from their published Success Story]</span><span class="aw">Best Dynamics 365 Partners, CRM Software Blog, 2026</span><a href="#">Read all 23 Success Stories</a></div>
+  </section>
+
+  <section class="contact g" data-r>
+    <span class="m rh">Contact</span>
+    <a href="#" class="d cta"><span class="u">Start a conversation</span></a>
+    <div class="info"><span class="ph"><span class="m">Phone</span><br>1-844-264-0729</span><span><span class="m">Office</span><br>Bellevue, Nebraska</span><span><span class="m">Elsewhere</span><br>LinkedIn</span></div>
+    <div class="foot"><span class="lg"><img src="../assets/brand/enCloud9-cloud-mark-blue.svg" alt="" style="width:22px;height:18px"><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9" style="width:78px;height:26px"></span><span class="m">Microsoft and Dynamics 365 are trademarks of the Microsoft group of companies.</span></div>
+  </section>
+</div>
+<script>(function(){if(!('IntersectionObserver' in window)||!matchMedia('(prefers-reduced-motion:no-preference)').matches)return;document.documentElement.classList.add('js');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});document.querySelectorAll('[data-r]').forEach(function(el){io.observe(el)})})();</script>
+</body></html>

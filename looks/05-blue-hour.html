@@ -2,39 +2,73 @@
 body{margin:0}
 .b{font-family:Manrope,Arial,sans-serif}
 .b a{color:inherit;text-decoration:none}
-</style></head><body><div style="position:sticky;top:0;z-index:9;background:#0A0B0D;color:#fff;font:13px Arial;padding:8px 16px;display:flex;gap:16px"><a href="../index.html" style="color:#fff">All looks</a><span style="opacity:.6">Direction 5: Blue Hour</span></div>
+@media (prefers-reduced-motion:no-preference){
+@keyframes bhRise{from{transform:translateY(105%)}to{transform:none}}
+@keyframes bhFade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes bhWipe{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+.bh-photo{animation:bhWipe 900ms cubic-bezier(.2,.7,.2,1) both}
+.bh-h1 .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.bh-h1 .ln>span{display:block;animation:bhRise 850ms cubic-bezier(.2,.7,.2,1) both}
+.bh-h1 .ln:nth-child(2)>span{animation-delay:90ms}.bh-h1 .ln:nth-child(3)>span{animation-delay:180ms}
+.bh-lede{animation:bhFade 700ms 380ms cubic-bezier(.2,.7,.2,1) both}
+.bh-word{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.bh-word>span{display:inline-block;transition:transform 850ms cubic-bezier(.2,.7,.2,1)}
+.bh-desc{transition:opacity 700ms 250ms cubic-bezier(.2,.7,.2,1)}
+.js .bh-row .bh-word>span{transform:translateY(110%)}
+.js .bh-row .bh-desc{opacity:0}
+.js .bh-row.in .bh-word>span{transform:none}
+.js .bh-row.in .bh-desc{opacity:1}
+.bh-row:hover .bh-word>span,.bh-row:focus-visible .bh-word>span{transform:translateX(14px);transition-duration:400ms}
+.bh-quote{transition:clip-path 900ms cubic-bezier(.2,.7,.2,1)}
+.js .bh-quote{clip-path:inset(0 100% 0 0)}
+.js .bh-quote.in{clip-path:inset(0 0 0 0)}
+.bh-cta{transition:opacity 800ms cubic-bezier(.2,.7,.2,1),transform 800ms cubic-bezier(.2,.7,.2,1)}
+.js .bh-cta{opacity:0;transform:translateY(24px)}
+.js .bh-cta.in{opacity:1;transform:none}
+.bh-pill{transition:transform 250ms cubic-bezier(.2,.7,.2,1)}
+.bh-pill:hover{transform:translateY(-2px)}
+}
+</style><script>(function(){var q=new URLSearchParams(location.search);function pref(v){try{return sessionStorage.getItem('lbview')===v}catch(e){return false}}function setp(v){try{sessionStorage.setItem('lbview',v)}catch(e){}}if(q.get('view')==='desktop')setp('desktop');if(q.get('view')!=='desktop'&&!pref('desktop')&&(innerWidth<820||(matchMedia('(pointer:coarse)').matches&&screen.width<820))){location.replace('05-blue-hour-m.html'+location.hash)}else{var fit=function(){var r=document.getElementById('lbbar');var el=r&&r.nextElementSibling;while(el&&el.tagName!=='DIV')el=el.nextElementSibling;if(!el)return;var w=innerWidth;el.style.zoom=(w<1440&&w>=820)?(w/1440):'';el.style.marginLeft=el.style.marginRight=w>1440?'auto':'';document.documentElement.style.background=getComputedStyle(el).backgroundColor};addEventListener('DOMContentLoaded',fit);addEventListener('resize',fit)};addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea,select'))return;if(e.key==='ArrowRight')location.href='06-annual-report.html';if(e.key==='ArrowLeft')location.href='04-local.html'})})()</script></head><body>
+<style id="lbcss">#lbbar{position:sticky;top:0;z-index:999;background:#0A0B0D;color:#fff;font:13px/1 Arial,sans-serif;display:flex;align-items:center;gap:6px;padding:0 10px;height:40px;box-sizing:border-box;white-space:nowrap}
+#lbbar a{color:#fff;text-decoration:none;padding:8px 8px;border-radius:4px}
+#lbbar a:hover,#lbbar a:focus-visible{background:#2A2F38}
+#lbbar .t{opacity:.75;padding:0 6px;overflow:hidden;text-overflow:ellipsis}
+#lbbar .sp{flex:1}
+#lbbar .on{background:#355DA6}
+@media (max-width:560px){#lbbar .hide-s{display:none}}</style><nav id="lbbar" aria-label="Look switcher"><a href="../index.html">All looks</a><a href="04-local.html" rel="prev" aria-label="Previous look">&#8592;</a><span class="t">Look 5 of 9: Blue Hour</span><a href="06-annual-report.html" rel="next" aria-label="Next look">&#8594;</a><span class="sp"></span><a class="on" href="05-blue-hour.html">Desktop</a><a href="05-blue-hour-m.html?view=mobile">Mobile</a><a href="../kits/05-kit.html" class="hide-s">Brand kit</a></nav>
 <div class="b" style="width:1440px;height:2840px;background:#355DA6;color:#FFFFFF;display:flex;flex-direction:column">
   <section style="position:relative;height:960px;overflow:hidden;flex-shrink:0">
-    <div style="position:absolute;top:88px;bottom:0;right:0;width:600px"><img src="../assets/photos/john-matychuk-SjEzXg3VNzc.jpg" alt="Downtown Omaha at night" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;"></div>
+    <div class="bh-photo" style="position:absolute;top:88px;bottom:0;right:0;width:600px"><img src="../assets/photos/john-matychuk-SjEzXg3VNzc.jpg" alt="Downtown Omaha at night" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;"></div>
         <header style="position:relative;height:88px;padding:0 64px;display:flex;align-items:center;justify-content:space-between">
       <a href="#" style="display:flex;align-items:center;gap:10px"><img src="../assets/brand/enCloud9-cloud-mark-white.svg" alt="" style="width:31px;height:26px"><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9 home" style="width:102px;height:34px"></a>
       <nav style="display:flex;gap:36px;font-size:15px;font-weight:400"><a href="#">Services</a><a href="#">Stories</a><a href="#">About</a><a href="#">Resources</a></nav>
       <a href="#" style="background:#FFFFFF;color:#2C4F91;font-size:16px;font-weight:500;padding:12px 24px;border-radius:999px">Book a call</a>
     </header>
     <div style="position:relative;padding:176px 64px 0;max-width:760px;display:flex;flex-direction:column;gap:36px">
-      <h1 style="margin:0;font-size:112px;line-height:0.95;font-weight:300;letter-spacing:-0.03em">Dynamics 365<br>and Copilot,<br>done properly</h1>
-      <p style="margin:0;font-size:19px;line-height:1.55;color:rgba(255,255,255,.88);max-width:460px">Copilot on your own Dynamics 365 data, set up and supported by a Microsoft partner founded by a CPA</p>
-      <div style="display:flex;gap:12px"><a href="#" style="background:#FFFFFF;color:#2C4F91;font-weight:400;font-size:16px;padding:12px 24px;border-radius:999px">Book a call</a><a href="#" style="border:1px solid rgba(255,255,255,.6);font-weight:500;font-size:16px;padding:11px 23px;border-radius:999px">Free health check</a></div>
+      <h1 style="margin:0;font-size:112px;line-height:0.95;font-weight:300;letter-spacing:-0.03em" class="bh-h1"><span class="ln"><span>Dynamics 365</span></span><span class="ln"><span>and Copilot,</span></span><span class="ln"><span>done properly</span></span></h1>
+      <p class="bh-lede" style="margin:0;font-size:19px;line-height:1.55;color:rgba(255,255,255,.88);max-width:460px">Copilot on your own Dynamics 365 data, set up and supported by a Microsoft partner founded by a CPA</p>
+      <div class="bh-lede" style="display:flex;gap:12px"><a href="#" class="bh-pill" style="background:#FFFFFF;color:#2C4F91;font-weight:400;font-size:16px;padding:12px 24px;border-radius:999px">Book a call</a><a href="#" style="border:1px solid rgba(255,255,255,.6);font-weight:500;font-size:16px;padding:11px 23px;border-radius:999px">Free health check</a></div>
     </div>
   </section>
 
   <section style="padding:120px 64px 128px;background:#355DA6">
     <div style="display:grid;grid-template-columns:repeat(12,1fr);margin-bottom:56px"><span style="grid-column:1 / span 3;font-size:15px;color:rgba(255,255,255,.85)">What we do</span><p style="grid-column:5 / span 7;margin:0;font-size:34px;line-height:1.3;font-weight:300;letter-spacing:-0.02em">Four services, each set up around how your business makes money</p></div>
-    <a href="#" style="display:grid;grid-template-columns:repeat(12,1fr);align-items:end;padding:30px 0;border-top:1px solid rgba(255,255,255,.22);"><span style="grid-column:1 / span 7;font-size:84px;font-weight:300;letter-spacing:-0.03em;line-height:1">Dynamics 365</span><span style="grid-column:9 / span 4;text-wrap:pretty;padding-bottom:8px;font-size:18px;color:rgba(255,255,255,.8)">Sales, service and finance in one system that matches your books</span></a><a href="#" style="display:grid;grid-template-columns:repeat(12,1fr);align-items:end;padding:30px 0;border-top:1px solid rgba(255,255,255,.22);"><span style="grid-column:1 / span 7;font-size:84px;font-weight:300;letter-spacing:-0.03em;line-height:1">Power Platform</span><span style="grid-column:9 / span 4;text-wrap:pretty;padding-bottom:8px;font-size:18px;color:rgba(255,255,255,.8)">Power Apps, Power Automate and Power BI for the work Dynamics doesn’t cover: approvals, quote sheets, field forms and the monthly report you rebuild by hand</span></a><a href="#" style="display:grid;grid-template-columns:repeat(12,1fr);align-items:end;padding:30px 0;border-top:1px solid rgba(255,255,255,.22);"><span style="grid-column:1 / span 7;font-size:84px;font-weight:300;letter-spacing:-0.03em;line-height:1">Copilot</span><span style="grid-column:9 / span 4;text-wrap:pretty;padding-bottom:8px;font-size:18px;color:rgba(255,255,255,.8)">Copilot and Copilot Studio agents for named jobs, on your own data, with the right permissions</span></a><a href="#" style="display:grid;grid-template-columns:repeat(12,1fr);align-items:end;padding:30px 0;border-top:1px solid rgba(255,255,255,.22);border-bottom:1px solid rgba(255,255,255,.22);"><span style="grid-column:1 / span 7;font-size:84px;font-weight:300;letter-spacing:-0.03em;line-height:1">Support</span><span style="grid-column:9 / span 4;text-wrap:pretty;padding-bottom:8px;font-size:18px;color:rgba(255,255,255,.8)">The same team, after go-live, who knows how your system was built</span></a>
+    <a href="#" class="bh-row" style="display:grid;grid-template-columns:repeat(12,1fr);align-items:end;padding:30px 0;border-top:1px solid rgba(255,255,255,.22);"><span style="grid-column:1 / span 7;font-size:84px;font-weight:300;letter-spacing:-0.03em;line-height:1" class="bh-word"><span>Dynamics 365</span></span><span class="bh-desc" style="grid-column:9 / span 4;text-wrap:pretty;padding-bottom:8px;font-size:18px;color:rgba(255,255,255,.8)">Sales, service and finance in one system that matches your books</span></a><a href="#" class="bh-row" style="display:grid;grid-template-columns:repeat(12,1fr);align-items:end;padding:30px 0;border-top:1px solid rgba(255,255,255,.22);"><span style="grid-column:1 / span 7;font-size:84px;font-weight:300;letter-spacing:-0.03em;line-height:1" class="bh-word"><span>Power Platform</span></span><span class="bh-desc" style="grid-column:9 / span 4;text-wrap:pretty;padding-bottom:8px;font-size:18px;color:rgba(255,255,255,.8)">Power Apps, Power Automate and Power BI for the work Dynamics doesn’t cover: approvals, quote sheets, field forms and the monthly report you rebuild by hand</span></a><a href="#" class="bh-row" style="display:grid;grid-template-columns:repeat(12,1fr);align-items:end;padding:30px 0;border-top:1px solid rgba(255,255,255,.22);"><span style="grid-column:1 / span 7;font-size:84px;font-weight:300;letter-spacing:-0.03em;line-height:1" class="bh-word"><span>Copilot</span></span><span class="bh-desc" style="grid-column:9 / span 4;text-wrap:pretty;padding-bottom:8px;font-size:18px;color:rgba(255,255,255,.8)">Copilot and Copilot Studio agents for named jobs, on your own data, with the right permissions</span></a><a href="#" class="bh-row" style="display:grid;grid-template-columns:repeat(12,1fr);align-items:end;padding:30px 0;border-top:1px solid rgba(255,255,255,.22);border-bottom:1px solid rgba(255,255,255,.22);"><span style="grid-column:1 / span 7;font-size:84px;font-weight:300;letter-spacing:-0.03em;line-height:1" class="bh-word"><span>Support</span></span><span class="bh-desc" style="grid-column:9 / span 4;text-wrap:pretty;padding-bottom:8px;font-size:18px;color:rgba(255,255,255,.8)">The same team, after go-live, who knows how your system was built</span></a>
   </section>
 
 
   <section style="background:#13224F;color:#FFFFFF;padding:120px 64px;display:grid;grid-template-columns:repeat(12,1fr);gap:0">
     <div style="grid-column:1 / span 12;border-top:1px solid rgba(255,255,255,.18);padding-top:56px;display:grid;grid-template-columns:repeat(12,1fr)">
       <span style="grid-column:1 / span 3;font-size:15px;color:rgba(255,255,255,.7)">From the founder</span>
-      <p style="grid-column:5 / span 8;margin:0;font-size:44px;line-height:1.2;font-weight:300;letter-spacing:-0.03em">&ldquo;[Brian, in his own words: one line on why a CPA runs a Dynamics 365 firm.]&rdquo;</p>
+      <p class="bh-quote" style="grid-column:5 / span 8;margin:0;font-size:44px;line-height:1.2;font-weight:300;letter-spacing:-0.03em">&ldquo;[Brian, in his own words: one line on why a CPA runs a Dynamics 365 firm.]&rdquo;</p>
       <p style="grid-column:5 / span 8;margin:24px 0 0;font-size:17px;color:rgba(255,255,255,.7)">Brian Begley, CPA, founder</p>
     </div>
   </section>
 
   <section style="flex-grow:1;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:120px 64px 48px">
-    <div style="position:relative;display:grid;grid-template-columns:repeat(12,1fr);margin-bottom:96px"><h2 style="grid-column:1 / span 9;margin:0;font-size:96px;line-height:0.98;font-weight:300;letter-spacing:-0.03em">Let's talk about your Dynamics 365</h2><div style="grid-column:10 / span 3;align-self:end;display:flex;flex-direction:column;gap:12px;align-items:flex-end"><a href="#" style="background:#FFFFFF;color:#2C4F91;font-weight:500;font-size:16px;padding:12px 24px;border-radius:999px">Book a call</a><span style="font-size:16px">1-844-264-0729</span></div></div>
+    <div class="bh-cta" style="position:relative;display:grid;grid-template-columns:repeat(12,1fr);margin-bottom:96px"><h2 style="grid-column:1 / span 9;margin:0;font-size:96px;line-height:0.98;font-weight:300;letter-spacing:-0.03em">Let's talk about your Dynamics 365</h2><div style="grid-column:10 / span 3;align-self:end;display:flex;flex-direction:column;gap:12px;align-items:flex-end"><a href="#" style="background:#FFFFFF;color:#2C4F91;font-weight:500;font-size:16px;padding:12px 24px;border-radius:999px">Book a call</a><span style="font-size:16px">1-844-264-0729</span></div></div>
     <div style="position:relative;display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.8);border-top:1px solid rgba(255,255,255,.22);padding-top:24px"><span>enCloud9 · Bellevue, Nebraska</span><span>Microsoft and Dynamics 365 are trademarks of the Microsoft group of companies.</span><span>Photos: Unsplash stand-ins</span></div>
   </section>
 </div>
+<script>(function(){if(!('IntersectionObserver' in window))return;document.documentElement.classList.add('js');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});document.querySelectorAll('.bh-row,.bh-quote,.bh-cta').forEach(function(el){io.observe(el)})})();</script>
 </body></html>

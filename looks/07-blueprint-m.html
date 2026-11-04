@@ -1,0 +1,229 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Direction 7: Blueprint (mobile)</title><link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+:root{--navy:#1D3B70;--ink:#14213D;--mute:#5C6B85;--rule:#D5DCE8;--accent:#355DA6;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#FFFFFF;color:var(--ink);font-family:'IBM Plex Sans',Arial,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'IBM Plex Mono',monospace}
+.disp{font-family:Archivo,Arial,sans-serif;font-stretch:75%;font-weight:400;margin:0}
+.grid-bg{background-color:var(--navy);background-image:linear-gradient(rgba(255,255,255,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.10) 1px,transparent 1px);background-size:24px 24px;background-position:-1px -1px}
+.wrap{padding-left:clamp(20px,5.5vw,24px);padding-right:clamp(20px,5.5vw,24px)}
+
+/* header */
+.hero{color:#FFFFFF;position:relative}
+.top{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;border-bottom:1px solid rgba(255,255,255,.25)}
+.logo{display:flex;align-items:center;gap:8px;min-height:44px}
+.logo img:first-child{width:26px;height:22px}
+.logo img:last-child{width:84px;height:28px}
+.top-r{display:flex;align-items:center;gap:8px}
+.btn{display:inline-flex;flex:none;white-space:nowrap;align-items:center;justify-content:center;min-height:44px;padding:0 18px;font-size:15px;line-height:1.2}
+.btn-line{border:1px solid #FFFFFF}
+.btn-ghost{border:1px solid rgba(255,255,255,.6)}
+.btn-solid{background:#FFFFFF;color:var(--navy);font-weight:500}
+.top .btn{padding:0 14px;font-size:14px}
+.menu{position:static}
+.menu summary{list-style:none;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid rgba(255,255,255,.6);cursor:pointer}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary span{position:relative;display:block;width:18px;height:1px;background:#FFFFFF}
+.menu summary span::before,.menu summary span::after{content:"";position:absolute;left:0;width:18px;height:1px;background:#FFFFFF}
+.menu summary span::before{top:-6px}.menu summary span::after{top:6px}
+.menu nav{position:absolute;left:0;right:0;top:100%;z-index:5;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.25);padding:8px clamp(20px,5.5vw,24px) 16px;display:flex;flex-direction:column}
+.menu nav a{display:flex;align-items:center;min-height:48px;font-size:17px;border-bottom:1px solid rgba(255,255,255,.15)}
+.menu nav a:last-child{border-bottom:0}
+
+/* hero */
+.hero-copy{padding-top:48px;display:flex;flex-direction:column;gap:22px}
+.label{font-size:12px;color:rgba(255,255,255,.7)}
+.hero h1{font-size:clamp(52px,15vw,96px);line-height:.95;letter-spacing:-0.01em}
+.lede{margin:0;font-size:17px;line-height:1.6;color:rgba(255,255,255,.85);text-wrap:pretty;max-width:34em}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.plan-wrap{padding-top:40px;padding-bottom:40px}
+.plan-frame{border:1px solid rgba(255,255,255,.25);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.4) transparent}
+.plan-frame:focus-visible{outline:2px solid #FFFFFF;outline-offset:2px}
+.plan{display:block;width:660px;height:auto;max-width:none}
+.hint{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;font-size:11px;color:rgba(255,255,255,.75)}
+.hint svg{flex:none}
+
+/* spec */
+.spec{padding-top:72px;padding-bottom:64px}
+.sec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.spec h2,.rev h2{font-size:clamp(44px,12vw,56px);line-height:1}
+.sheet{font-size:12px;color:var(--mute)}
+.spec-list{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--rule)}
+.spec-list li{display:grid;grid-template-columns:36px 1fr;column-gap:8px;row-gap:6px;padding:16px 0;border-top:1px solid var(--rule)}
+.spec-list .n{font-size:13px;color:var(--mute);padding-top:4px}
+.spec-list .t{font-size:20px;line-height:1.3}
+.spec-list .d{grid-column:2;font-size:15px;line-height:1.5;color:var(--mute)}
+.spec-list .note{grid-column:2;font-size:12px;color:var(--accent)}
+
+/* revisions */
+.rev{padding-bottom:72px;display:flex;flex-direction:column;gap:40px}
+.fig{margin:0;position:relative}
+.photo{position:relative;aspect-ratio:640/440;overflow:hidden;border:1px solid var(--rule)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.anno{position:absolute;inset:0;pointer-events:none}
+.anno svg{position:absolute;inset:0;width:100%;height:100%}
+.tag{position:absolute;left:58%;top:8%;background:#FFFFFF;border:1px solid var(--accent);color:var(--accent);font-size:11px;padding:5px 8px;white-space:nowrap}
+.fig figcaption{font-size:11px;color:var(--mute);margin-top:8px;line-height:1.5}
+.rev-body{display:flex;flex-direction:column;gap:18px}
+.rev-body p{margin:0;font-size:17px;line-height:1.6;color:var(--mute)}
+.rev-list{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--rule)}
+.rev-list li{display:grid;grid-template-columns:40px 1fr;column-gap:8px;row-gap:4px;padding:14px 0;border-top:1px solid var(--rule)}
+.rev-list .l{font-size:13px;text-align:center;padding-top:3px}
+.rev-list .t{font-size:17px}
+.rev-list .d{grid-column:2;font-size:15px;line-height:1.5;color:var(--mute)}
+
+/* CTA + title block */
+.end{color:#FFFFFF;padding-top:72px;padding-bottom:36px;display:flex;flex-direction:column;gap:48px}
+.end-head{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.end h2{font-size:clamp(48px,13.5vw,80px);line-height:.95}
+.tb-wrap{display:flex;flex-direction:column;gap:14px}
+.tb{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(255,255,255,.35)}
+.tb>div{padding:10px 14px;border-top:1px solid rgba(255,255,255,.35)}
+.tb>div:nth-child(1),.tb>div:nth-child(2){grid-column:1/-1}
+.tb>div:nth-child(1){border-top:0}
+.tb>div:nth-child(4){border-left:1px solid rgba(255,255,255,.35)}
+.tb .k{font-size:10px;color:rgba(255,255,255,.7)}
+.tb .v{font-size:15px;margin-top:4px}
+.tm{font-size:11px;line-height:1.6;color:rgba(255,255,255,.75)}
+
+@media (min-width:600px){
+  .spec-list li{grid-template-columns:48px 1fr auto}
+  .spec-list .note{grid-column:3;grid-row:1;text-align:right;padding-top:6px}
+  .tb{grid-template-columns:2fr 1fr 1fr 1fr}
+  .tb>div:nth-child(n){grid-column:auto;border-top:0;border-left:1px solid rgba(255,255,255,.35)}
+  .tb>div:first-child{border-left:0}
+  .end-head{flex-direction:row;align-items:flex-end;justify-content:space-between}
+}
+
+/* motion */
+@media (prefers-reduced-motion:no-preference){
+  .btn,.menu summary,.menu nav a{transition:transform .3s var(--ease),background-size .45s var(--ease)}
+  .btn-line,.btn-ghost,.menu summary{background-image:linear-gradient(rgba(255,255,255,.16),rgba(255,255,255,.16));background-repeat:no-repeat;background-position:left;background-size:0% 100%}
+  .btn-line:hover,.btn-ghost:hover,.menu summary:hover,.menu[open] summary{background-size:100% 100%}
+  .btn-solid:hover{transform:translateY(-2px)}
+  .btn:active{transform:translateY(1px)}
+  .menu[open] nav{animation:drop .35s var(--ease)}
+  @keyframes drop{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+
+  /* one entrance: hero copy rises, the plan plots in, the Copilot room is inked last */
+  .js .hero-copy>*{opacity:0;transform:translateY(14px);animation:rise .8s var(--ease) forwards}
+  .js .hero-copy>:nth-child(2){animation-delay:.08s}
+  .js .hero-copy>:nth-child(3){animation-delay:.18s}
+  .js .hero-copy>:nth-child(4){animation-delay:.28s}
+  .js .plan .pl{clip-path:inset(0 100% 0 0);animation:plot .9s var(--ease) forwards}
+  .js .plan .p1{animation-delay:.35s}.js .plan .p2{animation-delay:.6s}.js .plan .p3{animation-delay:.85s}.js .plan .p4{animation-delay:1.1s}
+  .js .plan .cop{opacity:0;animation:ink .8s var(--ease) 1.6s forwards}
+  .js .hint{opacity:0;animation:ink .6s var(--ease) 1.9s forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @keyframes plot{to{clip-path:inset(0 0 0 0)}}
+  @keyframes ink{to{opacity:1}}
+
+  /* scroll reveals, each section in its own way */
+  .js .rv-rows>*{opacity:0;transform:translateX(-10px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+  .js .rv-rows.in>*{opacity:1;transform:none}
+  .js .rv-rows.in>:nth-child(2){transition-delay:.06s}.js .rv-rows.in>:nth-child(3){transition-delay:.12s}.js .rv-rows.in>:nth-child(4){transition-delay:.18s}.js .rv-rows.in>:nth-child(5){transition-delay:.24s}.js .rv-rows.in>:nth-child(6){transition-delay:.3s}
+  .js .rv-photo .photo{clip-path:inset(0 0 100% 0);transition:clip-path .9s var(--ease)}
+  .js .rv-photo.in .photo{clip-path:inset(0 0 0 0)}
+  .js .rv-photo .anno{opacity:0;transform:scale(.96);transform-origin:33% 34%;transition:opacity .5s var(--ease) .7s,transform .5s var(--ease) .7s}
+  .js .rv-photo.in .anno{opacity:1;transform:none}
+  .js .rv-draw{clip-path:inset(0 0 100% 0);transition:clip-path .9s var(--ease)}
+  .js .rv-draw.in{clip-path:inset(0 0 0 0)}
+  .js .rv-head h2{clip-path:inset(0 0 100% 0);transform:translateY(18px);transition:clip-path .8s var(--ease),transform .8s var(--ease)}
+  .js .rv-head.in h2{clip-path:inset(0 0 -10% 0);transform:none}
+  .js .rv-tb .tb>div{clip-path:inset(0 100% 0 0);transition:clip-path .6s var(--ease)}
+  .js .rv-tb.in .tb>div{clip-path:inset(0 0 0 0)}
+  .js .rv-tb.in .tb>div:nth-child(2){transition-delay:.12s}.js .rv-tb.in .tb>div:nth-child(3){transition-delay:.24s}.js .rv-tb.in .tb>div:nth-child(4){transition-delay:.36s}
+}
+</style><script>(function(){var q=new URLSearchParams(location.search);function pref(v){try{return sessionStorage.getItem('lbview')===v}catch(e){return false}}function setp(v){try{sessionStorage.setItem('lbview',v)}catch(e){}}if(q.get('view')==='mobile')setp('mobile');if(q.get('view')!=='mobile'&&!pref('mobile')&&innerWidth>=1024){location.replace('07-blueprint.html'+location.hash)};addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea,select'))return;if(e.key==='ArrowRight')location.href='08-the-tool-m.html';if(e.key==='ArrowLeft')location.href='06-annual-report-m.html'})})()</script></head><body>
+<style id="lbcss">#lbbar{position:sticky;top:0;z-index:999;background:#0A0B0D;color:#fff;font:13px/1 Arial,sans-serif;display:flex;align-items:center;gap:6px;padding:0 10px;height:40px;box-sizing:border-box;white-space:nowrap}
+#lbbar a{color:#fff;text-decoration:none;padding:8px 8px;border-radius:4px}
+#lbbar a:hover,#lbbar a:focus-visible{background:#2A2F38}
+#lbbar .t{opacity:.75;padding:0 6px;overflow:hidden;text-overflow:ellipsis}
+#lbbar .sp{flex:1}
+#lbbar .on{background:#355DA6}
+@media (max-width:560px){#lbbar .hide-s{display:none}}</style><nav id="lbbar" aria-label="Look switcher"><a href="../index.html">All looks</a><a href="06-annual-report-m.html" rel="prev" aria-label="Previous look">&#8592;</a><span class="t">Look 7 of 9: Blueprint</span><a href="08-the-tool-m.html" rel="next" aria-label="Next look">&#8594;</a><span class="sp"></span><a href="07-blueprint.html?view=desktop" class="hide-s">Desktop</a><a class="on hide-s" href="07-blueprint-m.html">Mobile</a><a href="../kits/07-kit.html" class="hide-s">Brand kit</a></nav>
+<div class="hero grid-bg">
+  <header class="top wrap">
+    <a href="#" class="logo"><img src="../assets/brand/enCloud9-cloud-mark-white.svg" alt=""><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9 home"></a>
+    <div class="top-r">
+      <a href="#" class="btn btn-line">Book a call</a>
+      <details class="menu"><summary aria-label="Menu"><span></span></summary>
+        <nav aria-label="Main"><a href="#">Dynamics 365</a><a href="#">Copilot</a><a href="#">Power Platform</a><a href="#">Stories</a><a href="#">About</a></nav>
+      </details>
+    </div>
+  </header>
+  <div class="hero-copy wrap">
+    <span class="label mono">Sheet 1, the plan</span>
+    <h1 class="disp">Dynamics 365, drawn up before it’s built</h1>
+    <p class="lede">For growing companies that sell, serve and bill, every system starts as a plan you can read: what goes where, who uses it, and where Copilot fits. Then we build it to the drawing.</p>
+    <div class="ctas"><a href="#" class="btn btn-solid">Book a call</a><a href="#" class="btn btn-ghost">See a sample plan</a></div>
+  </div>
+  <div class="plan-wrap wrap">
+    <div class="plan-frame" tabindex="0" role="region" aria-label="Plan view of a Dynamics 365 environment, scrolls sideways">
+<svg class="plan" viewBox="40 30 650 480" width="660" height="487" aria-hidden="true">
+<g class="pl p1"><rect x="60" y="70" width="520" height="380" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+<text x="60" y="58" font-family="IBM Plex Mono" font-size="12" fill="#FFFFFF">DYNAMICS 365 ENVIRONMENT, PLAN VIEW</text></g>
+<rect class="cop" x="240" y="370" width="340" height="80" fill="rgba(46,155,214,.35)"/>
+<g class="pl p2"><rect x="60" y="70" width="260" height="190" fill="none" stroke="rgba(255,255,255,.78)" stroke-width="1"/><text x="74" y="96" font-family="IBM Plex Mono" font-size="13" fill="#FFFFFF">Sales</text><text x="74" y="114" font-family="IBM Plex Mono" font-size="11" fill="rgba(255,255,255,.6)">Leads, pipeline, quotes</text><rect x="320" y="70" width="260" height="190" fill="none" stroke="rgba(255,255,255,.78)" stroke-width="1"/><text x="334" y="96" font-family="IBM Plex Mono" font-size="13" fill="#FFFFFF">Customer Service</text><text x="334" y="114" font-family="IBM Plex Mono" font-size="11" fill="rgba(255,255,255,.6)">Cases, SLAs, knowledge</text>
+<rect x="60" y="260" width="180" height="190" fill="none" stroke="rgba(255,255,255,.78)" stroke-width="1"/><text x="74" y="286" font-family="IBM Plex Mono" font-size="13" fill="#FFFFFF">Business Central</text><text x="74" y="304" font-family="IBM Plex Mono" font-size="11" fill="rgba(255,255,255,.6)">Invoices, inventory</text><rect x="240" y="260" width="340" height="110" fill="none" stroke="rgba(255,255,255,.78)" stroke-width="1"/><text x="254" y="286" font-family="IBM Plex Mono" font-size="13" fill="#FFFFFF">Dataverse</text><text x="254" y="304" font-family="IBM Plex Mono" font-size="11" fill="rgba(255,255,255,.6)">One set of records</text></g>
+<g class="pl p3"><rect x="240" y="370" width="340" height="80" fill="none" stroke="#FFFFFF" stroke-width="2"/><text x="254" y="396" font-family="IBM Plex Mono" font-size="13" fill="#FFFFFF">Copilot and agents</text><text x="254" y="414" font-family="IBM Plex Mono" font-size="11" fill="rgba(255,255,255,.6)">Rev C: switched on once permissions pass</text>
+<line x1="60" y1="490" x2="320" y2="490" stroke="rgba(255,255,255,.5)"/><path d="M60 485V495M320 485V495" stroke="rgba(255,255,255,.5)"/><text x="190.0" y="484" font-family="IBM Plex Mono" font-size="11" fill="rgba(255,255,255,.6)" text-anchor="middle">Front office</text><line x1="320" y1="490" x2="580" y2="490" stroke="rgba(255,255,255,.5)"/><path d="M320 485V495M580 485V495" stroke="rgba(255,255,255,.5)"/><text x="450.0" y="484" font-family="IBM Plex Mono" font-size="11" fill="rgba(255,255,255,.6)" text-anchor="middle">Service</text></g>
+<g class="pl p4"><line x1="580" y1="150" x2="612" y2="120" stroke="rgba(255,255,255,.55)"/><circle cx="612" cy="120" r="11" fill="#1D3B70" stroke="#FFFFFF"/><text x="612" y="124" font-family="IBM Plex Mono" font-size="11" fill="#FFFFFF" text-anchor="middle">1</text><text x="630" y="124" font-family="IBM Plex Mono" font-size="11" fill="rgba(255,255,255,.75)">Outlook</text><line x1="580" y1="300" x2="612" y2="300" stroke="rgba(255,255,255,.55)"/><circle cx="612" cy="300" r="11" fill="#1D3B70" stroke="#FFFFFF"/><text x="612" y="304" font-family="IBM Plex Mono" font-size="11" fill="#FFFFFF" text-anchor="middle">2</text><text x="630" y="304" font-family="IBM Plex Mono" font-size="11" fill="rgba(255,255,255,.75)">Teams</text><line x1="580" y1="420" x2="612" y2="470" stroke="rgba(255,255,255,.55)"/><circle cx="612" cy="470" r="11" fill="#1D3B70" stroke="#FFFFFF"/><text x="612" y="474" font-family="IBM Plex Mono" font-size="11" fill="#FFFFFF" text-anchor="middle">3</text><text x="630" y="474" font-family="IBM Plex Mono" font-size="11" fill="rgba(255,255,255,.75)">Power BI</text></g>
+</svg>
+    </div>
+    <div class="hint mono"><span>Swipe to see the whole plan</span><svg width="28" height="10" viewBox="0 0 28 10" aria-hidden="true"><path d="M0 5H26M21 1L26 5L21 9" fill="none" stroke="rgba(255,255,255,.75)"/></svg></div>
+  </div>
+</div>
+
+<section class="spec wrap">
+  <div class="sec-head"><h2 class="disp">Specification</h2><span class="sheet mono">Sheet 2, what's on the plan</span></div>
+  <ul class="spec-list rv-rows">
+    <li><span class="n mono">01</span><span class="t">Dynamics 365 Sales</span><span class="d">Leads, opportunities, quotes and forecasts</span><span class="note mono">Licensed per user through Microsoft</span></li>
+    <li><span class="n mono">02</span><span class="t">Customer Service</span><span class="d">Cases, queues, SLAs and a knowledge base</span></li>
+    <li><span class="n mono">03</span><span class="t">Business Central</span><span class="d">Finance, invoicing and inventory, tied to the CRM</span><span class="note mono">Where the CPA side shows</span></li>
+    <li><span class="n mono">04</span><span class="t">Copilot and agents</span><span class="d">Copilot in Sales and Service, plus Copilot Studio agents on your data</span><span class="note mono">Permissions reviewed first</span></li>
+    <li><span class="n mono">05</span><span class="t">Power Platform</span><span class="d">Power Apps for field and approval forms, Power Automate for hand-offs, Power BI on Dynamics and Business Central data</span></li>
+    <li><span class="n mono">06</span><span class="t">Support</span><span class="d">Health checks, fixes and updates after go-live</span><span class="note mono">Bellevue, Nebraska team</span></li>
+  </ul>
+</section>
+
+<section class="rev wrap">
+  <figure class="fig rv-photo">
+    <div class="photo"><img src="../assets/photos/campaign-creators-gMsnXqILjp4.jpg" alt="A planning meeting"></div>
+    <div class="anno" aria-hidden="true"><svg viewBox="0 0 640 440"><circle cx="210" cy="150" r="46" fill="none" stroke="#355DA6" stroke-width="3.5"/><line x1="250" y1="130" x2="420" y2="70" stroke="#355DA6" stroke-width="2.5"/></svg><span class="tag mono">Discovery, rev A</span></div>
+    <figcaption class="mono">Site photo. Stand-in from Unsplash until our own shoot.</figcaption>
+  </figure>
+  <div class="rev-body">
+    <h2 class="disp">Revisions</h2>
+    <p>A project moves through four revisions. Each one is logged, so you always know which version of your system you’re on.</p>
+    <ul class="rev-list rv-draw">
+      <li><span class="l mono">A</span><span class="t">Discovery</span><span class="d">We learn how you sell, serve and bill, and draw the plan</span></li>
+      <li><span class="l mono">B</span><span class="t">Build</span><span class="d">Dynamics 365 set up to the plan, data moved and checked</span></li>
+      <li><span class="l mono">C</span><span class="t">Go-live</span><span class="d">Training, cut-over day, and Copilot switched on where it's ready</span></li>
+      <li><span class="l mono">D</span><span class="t">Support</span><span class="d">Health checks and updates, logged as new revisions</span></li>
+    </ul>
+  </div>
+</section>
+
+<footer class="end grid-bg wrap">
+  <div class="end-head rv-head"><h2 class="disp">Let’s draw up your system</h2><a href="#" class="btn btn-solid">Book a call</a></div>
+  <div class="tb-wrap rv-tb">
+    <div class="tb">
+      <div><div class="k mono">Drawing</div><div class="v">enCloud9 home page</div></div>
+      <div><div class="k mono">Drawn by</div><div class="v">enCloud9, Bellevue, NE</div></div>
+      <div><div class="k mono">Phone</div><div class="v">1-844-264-0729</div></div>
+      <div><div class="k mono">Sheet</div><div class="v">1 of 1</div></div>
+    </div>
+    <span class="tm mono">Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies.</span>
+  </div>
+</footer>
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');
+var els=document.querySelectorAll('.rv-rows,.rv-photo,.rv-draw,.rv-head,.rv-tb');
+if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});
+els.forEach(function(e){io.observe(e)})})();
+</script>
+</body></html>

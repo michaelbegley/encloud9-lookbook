@@ -1,0 +1,207 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Direction 2: Tie-Out (mobile)</title><link rel="stylesheet" href="../assets/fonts/fonts.css"><style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#FFFFFF;color:#1F2329;font-family:'Schibsted Grotesk',Arial,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6A717C}
+.wrap{padding-left:20px;padding-right:20px}
+@media (min-width:600px){.wrap{padding-left:32px;padding-right:32px}}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:8px;font-weight:500;font-size:15px}
+.btn.solid{background:#FFF;color:#1F2329}
+.btn.ghost{border:1px solid rgba(255,255,255,.32);color:#FFF}
+/* hero */
+.band{background:#22314B;color:#FFF}
+header.band{position:relative;z-index:5}
+.top{display:flex;align-items:center;gap:10px;height:64px}
+.logo{display:flex;align-items:center;gap:8px;margin-right:auto;min-height:44px}
+.logo .cm{width:24px;height:20px}.logo .wm{width:80px;height:27px}
+.top .call{min-height:44px;padding:0 14px;font-size:14px}
+.menu{position:static}
+.menu summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid rgba(255,255,255,.32);border-radius:8px}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary span{display:block;width:16px;height:9px;border-top:1px solid #FFF;border-bottom:1px solid #FFF;position:relative}
+.menu summary span::after{content:"";position:absolute;left:0;right:0;top:3px;border-top:1px solid #FFF}
+.menu nav{position:absolute;left:0;right:0;top:64px;z-index:5;background:#22314B;border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(31,35,41,.35);padding:4px 20px 12px}
+.menu nav a{display:flex;align-items:center;min-height:48px;font-size:17px;border-bottom:1px solid rgba(255,255,255,.1)}
+.menu nav a:last-child{border-bottom:0}
+.hero{position:relative}
+.h-in{padding-top:28px;padding-bottom:28px}
+h1{margin:0;font-size:clamp(38px,10.4vw,60px);line-height:1.04;font-weight:400;letter-spacing:-0.03em}
+.lead{margin:14px 0 0;font-size:17px;line-height:1.5;color:rgba(255,255,255,.92);max-width:520px}
+.ctas{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px}
+.coord{display:block;text-align:right;padding-bottom:8px;color:#8C9AB0;font-size:11px}
+.mapwrap{border-top:1px solid rgba(31,35,41,.35);background-image:linear-gradient(to right,rgba(31,35,41,.09) 1px,transparent 1px),linear-gradient(to bottom,rgba(31,35,41,.09) 1px,transparent 1px);background-size:48px 48px;background-position:-3px -1px}
+.map{display:block;width:100%;max-width:390px;height:auto}
+@media (min-width:600px){.map{margin-left:12px}.mapwrap{background-position:9px -1px}}
+@media (max-width:389px){.mapwrap{background-size:calc(100vw*48/390) calc(100vw*48/390);background-position:calc(-3px*100vw/390) -1px}}
+/* rules with survey marks */
+.rule{position:relative;height:1px;background:#E4E7EC}
+.rule svg{position:absolute;top:-4px;width:9px;height:9px}
+.rule svg:first-child{left:16px}.rule svg:last-child{right:16px}
+@media (min-width:600px){.rule svg:first-child{left:28px}.rule svg:last-child{right:28px}}
+/* stories */
+.stories{padding-top:20px;padding-bottom:8px}
+.story{display:flex;flex-direction:column;justify-content:center;gap:4px;min-height:72px;padding:12px 0;border-top:1px solid #E4E7EC}
+.stories .mono:first-child{display:block;padding-bottom:12px}
+.story .n{font-size:17px}
+/* move */
+.movesec{padding-top:64px;padding-bottom:64px}
+h2{margin:0;font-size:clamp(32px,8.6vw,48px);line-height:1.06;font-weight:400;letter-spacing:-0.03em}
+.intro{margin:16px 0 0;font-size:17px;line-height:1.6;color:#6A717C}
+.move{margin-top:32px;border:1px solid #E4E7EC;border-radius:12px;padding:20px 16px 4px}
+.cols,.row{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr);column-gap:10px}
+.cols{padding-bottom:4px}.cols span:last-child{grid-column:3}
+.row{align-items:center;padding:14px 0;border-bottom:1px solid #E4E7EC;font-size:15px;line-height:1.3}
+.row:last-child{border-bottom:0}
+.row .src{overflow-wrap:break-word}
+.wire{position:relative;height:7px}
+.wire i{position:absolute;left:3px;right:3px;top:3px;border-top:1.5px solid #355DA6}
+.wire::before,.wire::after{content:"";position:absolute;top:1px;width:6px;height:6px;border-radius:50%;background:#355DA6}
+.wire::before{left:0}.wire::after{right:0}
+.wire.rev i{border-top-style:dashed;border-color:#975A16}
+.wire.rev::before,.wire.rev::after{background:#975A16}
+.dst{display:flex;flex-direction:column;gap:3px}
+.st{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#355DA6}
+.st.rev{color:#975A16}
+.note{display:block;margin-top:20px}
+/* compare */
+.cmp{padding-top:56px;padding-bottom:56px;display:flex;flex-direction:column}
+.cmp>div{display:flex;flex-direction:column;gap:12px}
+.cmp p{margin:0;font-size:clamp(24px,6.4vw,30px);line-height:1.3;letter-spacing:-0.015em}
+.usual p{color:#858C96}
+.ours{margin-top:32px;padding-top:32px;border-top:1px solid #E4E7EC}
+.ours .mono{color:#355DA6}
+/* services */
+.svc{padding-top:16px;padding-bottom:56px}
+.svc>div{display:flex;flex-direction:column;gap:10px;padding:32px 0;border-bottom:1px solid #E4E7EC}
+.svc>div:last-child{border-bottom:0}
+.svc .t{font-size:24px;letter-spacing:-0.015em}
+.svc .d{font-size:16px;line-height:1.6;color:#6A717C}
+.sl{display:inline-flex;align-items:center;align-self:flex-start;min-height:44px;font-size:15px;color:#355DA6;text-decoration:underline;text-underline-offset:4px}
+/* cta */
+.cta{background:#16191E;color:#EEF0F3;padding-top:72px;padding-bottom:32px}
+.cta h2{font-size:clamp(36px,10vw,56px);line-height:1.04}
+.cta .ctas{margin-top:28px;flex-direction:column;align-items:stretch}
+.cta .btn.solid{color:#16191E}
+.cta .btn.line{border:1px solid #3A3F47;color:#EEF0F3}
+@media (min-width:600px){.cta .ctas{flex-direction:row}}
+.foot{margin-top:64px;border-top:1px solid #2A2E35;padding-top:24px;display:flex;flex-direction:column;gap:12px;font-size:13px;line-height:1.5;color:#8C929C}
+.foot .fl{display:flex;align-items:center;gap:8px}
+.story .nm{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat}
+.story:hover .nm,.story:focus-visible .nm{background-size:100% 1px}
+@media (prefers-reduced-motion:no-preference){
+:root{--e:cubic-bezier(.2,.7,.2,1)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes drawY{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes drawX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes plot{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
+@keyframes survey{from{opacity:0;transform:rotate(45deg)}to{opacity:1;transform:none}}
+.mk,.cv,.ch,.node,.wire{transform-box:fill-box}
+.mk,.node{transform-origin:center}
+.cv{transform-origin:top}.ch{transform-origin:left}.ch.r{transform-origin:right}
+.wire{transform-origin:left}
+.js .h-in>*{animation:rise .8s var(--e) both}
+.js .h-in>:nth-child(2){animation-delay:.12s}
+.js .h-in>:nth-child(3){animation-delay:.24s}
+.js .hero .mk{animation:survey .7s var(--e) both;animation-delay:var(--d,0s)}
+.js .hub{animation:fade .5s var(--e) .4s both}
+.js .node{animation:plot .4s var(--e) both;animation-delay:calc(var(--d) - .15s)}
+.js .lbl{animation:fade .5s var(--e) both;animation-delay:var(--d)}
+.js .cv{animation:drawY .6s var(--e) both;animation-delay:var(--d)}
+.js .ch{animation:drawX .5s var(--e) both;animation-delay:calc(var(--d) + .5s)}
+.js .rule .mk{transition:transform .7s var(--e),opacity .7s var(--e)}
+.js .rule:not(.in) .mk{opacity:0;transform:rotate(45deg)}
+.js .stories{transition:opacity .7s var(--e)}
+.js .stories:not(.in){opacity:0}
+.js .wire{transition:transform .8s var(--e);transition-delay:var(--d)}
+.js .move:not(.in) .wire{transform:scaleX(0)}
+.js .st{transition:opacity .4s var(--e);transition-delay:calc(var(--d) + .6s)}
+.js .move:not(.in) .st{opacity:0}
+.js .ours{transition:clip-path .9s var(--e) .1s}
+.js .cmp:not(.in) .ours{clip-path:inset(0 100% 0 0)}
+.js .svc>*{transition:opacity .6s var(--e),transform .6s var(--e)}
+.js .svc>:nth-child(2){transition-delay:.1s}.js .svc>:nth-child(3){transition-delay:.2s}
+.js .svc:not(.in)>*{opacity:0;transform:translateY(12px)}
+.js .cta h2{transition:clip-path .9s var(--e)}
+.js .cta:not(.in) h2{clip-path:inset(0 0 100% 0)}
+.story .nm{transition:background-size .35s var(--e)}
+.btn{transition:transform .25s var(--e)}
+.btn:hover{transform:translateY(-1px)}
+.sl{transition:transform .3s var(--e)}
+.sl:hover{transform:translateX(3px)}
+}
+
+@media (prefers-reduced-motion:no-preference){
+.js .wire i{transform-origin:left;transition:transform .8s var(--e);transition-delay:var(--d)}
+.js .move:not(.in) .wire i{transform:scaleX(0)}
+.js .move:not(.in) .wire{transform:none}
+.js .wire::after{transition:opacity .4s var(--e);transition-delay:calc(var(--d) + .6s)}
+.js .move:not(.in) .wire::after{opacity:0}
+.js .cmp:not(.in) .ours{clip-path:inset(0 100% 0 0)}
+.menu nav{transform-origin:top}
+.menu[open] nav{animation:fade .25s var(--e)}
+}
+</style><script>(function(){var q=new URLSearchParams(location.search);function pref(v){try{return sessionStorage.getItem('lbview')===v}catch(e){return false}}function setp(v){try{sessionStorage.setItem('lbview',v)}catch(e){}}if(q.get('view')==='mobile')setp('mobile');if(q.get('view')!=='mobile'&&!pref('mobile')&&innerWidth>=1024){location.replace('02-systems-map.html'+location.hash)};addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea,select'))return;if(e.key==='ArrowRight')location.href='03-editorial-m.html';if(e.key==='ArrowLeft')location.href='01-ledger-m.html'})})()</script></head><body>
+<style id="lbcss">#lbbar{position:sticky;top:0;z-index:999;background:#0A0B0D;color:#fff;font:13px/1 Arial,sans-serif;display:flex;align-items:center;gap:6px;padding:0 10px;height:40px;box-sizing:border-box;white-space:nowrap}
+#lbbar a{color:#fff;text-decoration:none;padding:8px 8px;border-radius:4px}
+#lbbar a:hover,#lbbar a:focus-visible{background:#2A2F38}
+#lbbar .t{opacity:.75;padding:0 6px;overflow:hidden;text-overflow:ellipsis}
+#lbbar .sp{flex:1}
+#lbbar .on{background:#355DA6}
+@media (max-width:560px){#lbbar .hide-s{display:none}}</style><nav id="lbbar" aria-label="Look switcher"><a href="../index.html">All looks</a><a href="01-ledger-m.html" rel="prev" aria-label="Previous look">&#8592;</a><span class="t">Look 2 of 9: Systems Map</span><a href="03-editorial-m.html" rel="next" aria-label="Next look">&#8594;</a><span class="sp"></span><a href="02-systems-map.html?view=desktop" class="hide-s">Desktop</a><a class="on hide-s" href="02-systems-map-m.html">Mobile</a><a href="../kits/02-kit.html" class="hide-s">Brand kit</a></nav>
+<header class="band">
+  <div class="top wrap">
+    <a class="logo" href="#"><img class="cm" src="../assets/brand/enCloud9-cloud-mark-white.svg" alt=""><img class="wm" src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9 home"></a>
+    <a class="btn solid call" href="#">Book a call</a>
+    <details class="menu"><summary aria-label="Menu"><span></span></summary>
+      <nav><a href="#">Dynamics 365</a><a href="#">Copilot</a><a href="#">Power Platform</a><a href="#">Stories</a><a href="#">About</a></nav>
+    </details>
+  </div>
+</header>
+<section class="hero">
+  <div class="band">
+    <div class="h-in wrap">
+      <h1>One Dynamics 365 for sales, service and finance</h1>
+      <p class="lead">For growing companies that sell, serve and bill. Copilot built in, set up by a Microsoft partner founded by a CPA</p>
+      <div class="ctas"><a class="btn solid" href="#">Book a call</a><a class="btn ghost" href="#">See how a move works</a></div>
+    </div>
+    <span class="coord mono wrap">Bellevue, NE 41.14 N, 95.89 W</span>
+  </div>
+  <div class="mapwrap"><svg class="map" viewBox="0 0 390 300" aria-hidden="true"><path class="mk" style="--d:0.28s" d="M41 48H49M45 44V52" stroke="#9AA6B5" stroke-width="1"/><path class="mk" style="--d:0.28s" d="M41 144H49M45 140V148" stroke="#9AA6B5" stroke-width="1"/><path class="mk" style="--d:0.28s" d="M41 240H49M45 236V244" stroke="#9AA6B5" stroke-width="1"/><path class="mk" style="--d:0.54s" d="M185 240H193M189 236V244" stroke="#9AA6B5" stroke-width="1"/><path class="mk" style="--d:0.71s" d="M281 48H289M285 44V52" stroke="#9AA6B5" stroke-width="1"/><path class="mk" style="--d:0.71s" d="M281 144H289M285 140V148" stroke="#9AA6B5" stroke-width="1"/><path class="mk" style="--d:0.71s" d="M281 240H289M285 236V244" stroke="#9AA6B5" stroke-width="1"/><path class="mk" style="--d:0.80s" d="M329 96H337M333 92V100" stroke="#9AA6B5" stroke-width="1"/><path class="mk" style="--d:0.80s" d="M329 192H337M333 188V196" stroke="#9AA6B5" stroke-width="1"/><g style="--d:0.7s"><path class="ch r" d="M93 48H141" stroke="#355DA6" stroke-width="1" fill="none"/><path class="cv" d="M93 48V258" stroke="#355DA6" stroke-width="1" fill="none"/><circle class="node" cx="141" cy="48" r="3.5" fill="#FFF" stroke="#355DA6" stroke-width="1.5"/><text class="lbl" x="151" y="40" font-family="IBM Plex Mono" font-size="12" fill="#1F2329">Sales</text></g><g style="--d:0.85s"><path class="ch r" d="M93 96H189" stroke="#355DA6" stroke-width="1" fill="none"/><path class="cv" d="M93 96V258" stroke="#355DA6" stroke-width="1" fill="none"/><circle class="node" cx="189" cy="96" r="3.5" fill="#FFF" stroke="#355DA6" stroke-width="1.5"/><text class="lbl" x="199" y="88" font-family="IBM Plex Mono" font-size="12" fill="#1F2329">Customer Service</text></g><g style="--d:1.0s"><path class="ch r" d="M93 144H141" stroke="#355DA6" stroke-width="1" fill="none"/><path class="cv" d="M93 144V258" stroke="#355DA6" stroke-width="1" fill="none"/><circle class="node" cx="141" cy="144" r="3.5" fill="#FFF" stroke="#355DA6" stroke-width="1.5"/><text class="lbl" x="151" y="136" font-family="IBM Plex Mono" font-size="12" fill="#1F2329">Business Central</text></g><g style="--d:1.15s"><path class="ch r" d="M93 192H237" stroke="#355DA6" stroke-width="1" fill="none"/><path class="cv" d="M93 192V258" stroke="#355DA6" stroke-width="1" fill="none"/><circle class="node" cx="237" cy="192" r="3.5" fill="#FFF" stroke="#355DA6" stroke-width="1.5"/><text class="lbl" x="247" y="184" font-family="IBM Plex Mono" font-size="12" fill="#1F2329">Copilot</text></g><g class="hub"><rect x="23" y="258" width="140" height="28" fill="#FFF" stroke="#355DA6"/><text x="93" y="276" font-family="IBM Plex Mono" font-size="12" fill="#355DA6" text-anchor="middle">Dynamics 365</text></g></svg></div>
+</section>
+<div class="rule rv" aria-hidden="true"><svg viewBox="0 0 9 9" aria-hidden="true"><path class="mk" d="M0 4.5H9M4.5 0V9" stroke="#9AA6B5" stroke-width="1"/></svg><svg viewBox="0 0 9 9" aria-hidden="true"><path class="mk" d="M0 4.5H9M4.5 0V9" stroke="#9AA6B5" stroke-width="1"/></svg></div>
+<section class="stories rv wrap">
+  <span class="mono">Recent success stories</span>
+  <a class="story" href="#"><span class="n"><span class="nm">[Client name]</span></span><span class="mono">Distribution · Business Central</span></a>
+  <a class="story" href="#"><span class="n"><span class="nm">[Client name]</span></span><span class="mono">Medical pricing · Dynamics 365 Sales</span></a>
+  <a class="story" href="#"><span class="n"><span class="nm">[Client name]</span></span><span class="mono">Manufacturing · Power Platform</span></a>
+</section>
+<div class="rule rv" aria-hidden="true"><svg viewBox="0 0 9 9" aria-hidden="true"><path class="mk" d="M0 4.5H9M4.5 0V9" stroke="#9AA6B5" stroke-width="1"/></svg><svg viewBox="0 0 9 9" aria-hidden="true"><path class="mk" d="M0 4.5H9M4.5 0V9" stroke="#9AA6B5" stroke-width="1"/></svg></div>
+<section class="movesec wrap">
+  <h2>Everything in one place, checked before go-live</h2>
+  <p class="intro">We move the quotes, invoices and contacts scattered across your tools into Dynamics 365, then check each record before go-live.</p>
+  <div class="move rv">
+    <div class="cols mono"><span>Where the data lives today</span><span>Dynamics 365</span></div>
+    <div class="row" style="--d:0.00s"><span class="src">Excel quote sheet</span><span class="wire"><i></i></span><span class="dst"><span>Quotes</span><span class="st">Moved</span></span></div><div class="row" style="--d:0.12s"><span class="src">QuickBooks invoices</span><span class="wire"><i></i></span><span class="dst"><span>Invoices</span><span class="st">Moved</span></span></div><div class="row" style="--d:0.24s"><span class="src">Outlook contacts</span><span class="wire"><i></i></span><span class="dst"><span>Contacts</span><span class="st">Moved</span></span></div><div class="row" style="--d:0.36s"><span class="src">Spreadsheet_<wbr>v7.xlsx</span><span class="wire rev"><i></i></span><span class="dst"><span>Opportunities</span><span class="st rev">In review</span></span></div><div class="row" style="--d:0.48s"><span class="src">Shared inbox</span><span class="wire"><i></i></span><span class="dst"><span>Cases</span><span class="st">Moved</span></span></div>
+  </div>
+  <span class="mono note">Illustration of a data move. Your list will be longer.</span>
+</section>
+<div class="rule rv" aria-hidden="true"><svg viewBox="0 0 9 9" aria-hidden="true"><path class="mk" d="M0 4.5H9M4.5 0V9" stroke="#9AA6B5" stroke-width="1"/></svg><svg viewBox="0 0 9 9" aria-hidden="true"><path class="mk" d="M0 4.5H9M4.5 0V9" stroke="#9AA6B5" stroke-width="1"/></svg></div>
+<section class="cmp rv wrap">
+  <div class="usual"><span class="mono">The usual way</span><p>Install the software, train the team, hope the numbers line up later</p></div>
+  <div class="ours"><span class="mono">Our way</span><p>Start from how you make money, then set up Dynamics 365 and Copilot to match it</p></div>
+</section>
+<div class="rule rv" aria-hidden="true"><svg viewBox="0 0 9 9" aria-hidden="true"><path class="mk" d="M0 4.5H9M4.5 0V9" stroke="#9AA6B5" stroke-width="1"/></svg><svg viewBox="0 0 9 9" aria-hidden="true"><path class="mk" d="M0 4.5H9M4.5 0V9" stroke="#9AA6B5" stroke-width="1"/></svg></div>
+<section class="svc rv wrap">
+  <div><span class="t">Dynamics 365</span><span class="d">Sales, Customer Service and Business Central, set up around how you sell, serve and bill</span><a class="sl" href="#">Dynamics 365 services</a></div>
+  <div><span class="t">Copilot</span><span class="d">Copilot and agents on your own Dynamics data, with permissions checked before anyone switches it on</span><a class="sl" href="#">Copilot services</a></div>
+  <div><span class="t">Power Platform</span><span class="d">Power Apps, Power Automate and Power BI for the quote sheets, approvals and reports still done by hand</span><a class="sl" href="#">Power Platform services</a></div>
+</section>
+<footer class="cta rv wrap">
+  <h2>See what a move to Dynamics 365 looks like</h2>
+  <div class="ctas"><a class="btn solid" href="#">Free CRM Health Check</a><a class="btn line" href="#">1-844-264-0729</a></div>
+  <div class="foot"><span class="fl"><img src="../assets/brand/enCloud9-cloud-mark-white.svg" alt="" style="width:20px;height:17px"><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" style="width:72px;height:24px"></span><span>Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies.</span><span>Bellevue, Nebraska</span></div>
+</footer>
+<script>(function(){var d=document.documentElement;d.classList.add('js');var els=document.querySelectorAll('.rv');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});els.forEach(function(e){io.observe(e)})})();</script>
+</body></html>

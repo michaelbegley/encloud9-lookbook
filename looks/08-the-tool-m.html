@@ -1,0 +1,199 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Direction 8: The Tool (mobile)</title><link rel="stylesheet" href="../assets/fonts/fonts.css"><style>
+:root{--ink:#15181D;--mute:#646B76;--hd:#6B7380;--line:#E3E6EB;--wash:#F7F8FA;--blue:#355DA6;--off:#C9CED6;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box}
+html,body{margin:0;background:#FFF}
+body{font-family:'Hanken Grotesk',Arial,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'JetBrains Mono',monospace}
+.wrap{padding:0 20px}
+
+/* header */
+.hdr{display:flex;align-items:center;gap:8px;height:64px;padding:0 20px;border-bottom:1px solid var(--line);position:relative}
+.logo{display:flex;align-items:center;gap:8px;min-height:44px;margin-right:auto}
+.logo img:first-child{width:26px;height:22px}.logo img:last-child{width:90px;height:30px}
+.call{display:inline-flex;align-items:center;height:44px;padding:0 14px;border-radius:6px;background:var(--blue);color:#FFF;font-size:14px;font-weight:500}
+.menu summary{list-style:none;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 12px;border:1px solid var(--line);border-radius:6px;font-size:14px;cursor:pointer}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary i{display:block;width:14px;height:2px;background:var(--ink);box-shadow:0 -5px 0 var(--ink),0 5px 0 var(--ink)}
+.menu[open] summary{outline:2px solid var(--blue);outline-offset:-1px}
+.menu nav{position:absolute;left:0;right:0;top:64px;z-index:5;background:#FFF;border-bottom:1px solid var(--line);box-shadow:0 12px 32px -18px rgba(21,24,29,.3);padding:8px 20px 20px}
+.menu nav a{display:flex;align-items:center;min-height:48px;border-bottom:1px solid var(--line);font-size:17px}
+.menu nav .tel{color:var(--mute);font-size:15px;border-bottom:0}
+
+/* hero spreadsheet */
+.hero{position:relative;border-bottom:1px solid var(--line);background:#FFF}
+.cols{display:flex;height:28px;align-items:center;font-size:11px;color:var(--hd);background:var(--wash);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap}
+.cols span{flex:0 0 72px;text-align:center;border-left:1px solid var(--line)}
+.cols span:first-child{flex-basis:20px;border-left:0}
+.sheet{padding:40px 20px 48px;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:72px 40px;background-position:19px -1px}
+.intro{background:#FFF;padding:20px 16px;margin:0 -16px;display:flex;flex-direction:column;gap:20px}
+h1{margin:0;font-size:clamp(38px,11vw,64px);line-height:1.02;font-weight:500;letter-spacing:-0.02em}
+.lede{margin:0;font-size:17px;line-height:1.6;color:var(--mute)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 20px;border-radius:6px;font-size:15px;font-weight:500;border:1px solid var(--line);background:#FFF}
+.btn.p{background:var(--blue);border-color:var(--blue);color:#FFF}
+.btns .btn{flex:1 1 140px}
+.cred{font-size:14px;line-height:1.5}
+
+.card{position:relative;margin-top:40px;background:#FFF;outline:2px solid var(--blue);box-shadow:0 12px 32px -18px rgba(21,24,29,.3)}
+.fx{display:flex;align-items:center;gap:10px;height:32px;padding:0 12px;border-bottom:1px solid var(--line);font-size:12px;color:var(--mute);white-space:nowrap;overflow:hidden}
+.fx b{font-weight:400;color:var(--ink)}
+.ct{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:48px;padding:8px 16px;background:var(--wash)}
+.ct strong{font-weight:500}.ct small{font-size:12px;color:var(--mute)}
+.qs{list-style:none;margin:0;padding:0}
+.q{position:relative;display:grid;grid-template-columns:1fr 44px;gap:12px;align-items:center;min-height:56px;padding:10px 16px;border-top:1px solid var(--line);font-size:15px;line-height:1.4}
+.q::after{content:"";position:absolute;inset:-1px 0 0;border:2px solid var(--blue);opacity:0;pointer-events:none}
+.tg{justify-self:end;width:36px;height:20px;border-radius:999px;background:var(--off);position:relative;display:inline-block}
+.tg.on{background:var(--blue)}
+.tg::before{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--off);opacity:0}
+.kn{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#FFF}
+.on .kn{left:auto;right:2px}
+.tot{border-top:2px solid var(--ink);padding:20px 16px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.big{font-size:clamp(36px,10vw,48px);font-weight:500;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.num{display:inline-grid}.d{grid-area:1/1}.d0,.d1,.d2{opacity:0}
+.tot p{margin:0;font-size:14px;line-height:1.5;color:var(--mute)}
+.tot p a{color:var(--blue);text-decoration:underline;display:inline-block;padding:4px 0}
+.handle{position:absolute;right:-6px;bottom:-6px;width:10px;height:10px;background:var(--blue);border:2px solid #FFF}
+
+/* sections */
+.sec{padding:64px 20px 0;display:flex;flex-direction:column;gap:20px}
+h2{margin:0;font-size:clamp(28px,7.6vw,40px);line-height:1.12;font-weight:500;letter-spacing:-0.02em}
+.svc{display:grid;border:1px solid var(--line)}
+.cell{position:relative;padding:24px 20px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.cell:first-child{border-top:0;background:var(--wash)}
+.cell .n{font-size:22px;font-weight:500}.cell:first-child .n{font-size:28px;letter-spacing:-0.01em}
+.cell .s{font-size:16px;line-height:1.6;color:var(--mute)}
+.cell .l{font-size:15px;color:var(--blue);margin-top:4px}
+.cell::after{content:"";position:absolute;inset:-1px;border:2px solid var(--blue);opacity:0;pointer-events:none}
+.cell::before{content:"";position:absolute;right:-6px;bottom:-6px;width:10px;height:10px;background:var(--blue);border:2px solid #FFF;opacity:0;z-index:1}
+.cell:hover::after,.cell:hover::before,.cell:focus-visible::after,.cell:focus-visible::before{opacity:1}
+
+.tools{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--line)}
+.tool{display:grid;gap:6px;padding:18px 0;border-top:1px solid var(--line);font-size:16px;line-height:1.5}
+.tool b{font-weight:500}.tool span{color:var(--mute)}
+.tool em{font-style:normal;color:var(--blue);display:inline-flex;align-items:center;min-height:32px}
+
+.end{padding:64px 20px 32px;display:flex;flex-direction:column;gap:48px}
+.cta{position:relative;border:2px solid var(--blue);padding:28px 20px;display:flex;flex-direction:column;gap:24px}
+.cta .btns{flex-direction:column}.cta .btns .btn{flex:none;width:100%}
+.foot{display:flex;flex-direction:column;gap:8px;font-size:12px;line-height:1.5;color:var(--mute);border-top:1px solid var(--line);padding-top:16px}
+
+@media (min-width:600px){
+  .svc{grid-template-columns:1fr 1fr}.cell:first-child{grid-column:1/-1}.cell:nth-child(3){border-left:1px solid var(--line)}
+  .tool{grid-template-columns:1fr 2fr auto;align-items:center;gap:16px}
+  .cta .btns{flex-direction:row}.cta .btns .btn{width:auto}
+}
+
+/* motion */
+@media (prefers-reduced-motion:no-preference){
+  .cell::after,.cell::before{transition:opacity .25s var(--ease)}
+  .btn,.tool em{transition:transform .3s var(--ease)}
+  .btn:hover{transform:translateY(-1px)}
+  .tool:hover em{transform:translateX(4px)}
+  .js .intro{animation:up .7s var(--ease) .1s both}
+  .js .card{animation:open .8s var(--ease) .25s backwards}
+  .js .fx span{display:inline-block;animation:type .7s steps(20,end) .8s backwards}
+  .js .q::after{animation:flash .32s var(--ease) both}
+  .js .q:nth-child(1)::after{animation-delay:1.45s}
+  .js .q:nth-child(2)::after{animation-delay:1.62s}
+  .js .q:nth-child(3)::after{animation-delay:1.79s}
+  .js .q:nth-child(4)::after{animation-delay:1.96s}
+  .js .q:nth-child(5)::after{animation-delay:2.13s}
+  .js .on::before{animation:off .24s var(--ease) both}
+  .js .on .kn{animation:knob .24s var(--ease) both}
+  .js .q:nth-child(1) .on::before,.js .q:nth-child(1) .on .kn{animation-delay:1.51s}
+  .js .q:nth-child(2) .on::before,.js .q:nth-child(2) .on .kn{animation-delay:1.68s}
+  .js .q:nth-child(4) .on::before,.js .q:nth-child(4) .on .kn{animation-delay:2.02s}
+  .js .d{animation:.9s var(--ease) 1.45s both}
+  .js .d0{animation-name:d0}.js .d1{animation-name:d1}.js .d2{animation-name:d2}.js .d3{animation-name:d3}
+  .js .svc .cell{clip-path:inset(0 100% 0 0)}
+  .js .svc.in .cell{clip-path:inset(-10px);transition:clip-path .7s var(--ease)}
+  .js .svc.in .cell:nth-child(2){transition-delay:.12s}.js .svc.in .cell:nth-child(3){transition-delay:.24s}
+  .js .tools .tool{opacity:0;transform:translateX(-12px)}
+  .js .tools.in .tool{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+  .js .tools.in .tool:nth-child(2){transition-delay:.1s}.js .tools.in .tool:nth-child(3){transition-delay:.2s}
+  .js .cta{clip-path:inset(0 100% 100% 0)}
+  .js .cta .handle{transform:scale(0)}
+  .js .cta.in{clip-path:inset(-12px);transition:clip-path .8s var(--ease)}
+  .js .cta.in .handle{transform:none;transition:transform .3s var(--ease) .75s}
+}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes open{from{clip-path:inset(-20px -20px 100% -20px)}to{clip-path:inset(-20px -20px -40px -20px)}}
+@keyframes type{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes flash{0%{opacity:0}15%,70%{opacity:1}100%{opacity:0}}
+@keyframes off{from{opacity:1}to{opacity:0}}
+@keyframes knob{from{transform:translateX(-16px)}to{transform:none}}
+@keyframes d0{0%,8%{opacity:1}12%,100%{opacity:0}}
+@keyframes d1{0%,8%{opacity:0;transform:translateY(.15em)}12%,27%{opacity:1;transform:none}31%,100%{opacity:0}}
+@keyframes d2{0%,27%{opacity:0;transform:translateY(.15em)}31%,65%{opacity:1;transform:none}69%,100%{opacity:0}}
+@keyframes d3{0%,65%{opacity:0;transform:translateY(.15em)}69%,100%{opacity:1;transform:none}}
+</style><script>(function(){var q=new URLSearchParams(location.search);function pref(v){try{return sessionStorage.getItem('lbview')===v}catch(e){return false}}function setp(v){try{sessionStorage.setItem('lbview',v)}catch(e){}}if(q.get('view')==='mobile')setp('mobile');if(q.get('view')!=='mobile'&&!pref('mobile')&&innerWidth>=1024){location.replace('08-the-tool.html'+location.hash)};addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea,select'))return;if(e.key==='ArrowRight')location.href='09-nine-m.html';if(e.key==='ArrowLeft')location.href='07-blueprint-m.html'})})()</script></head><body>
+<style id="lbcss">#lbbar{position:sticky;top:0;z-index:999;background:#0A0B0D;color:#fff;font:13px/1 Arial,sans-serif;display:flex;align-items:center;gap:6px;padding:0 10px;height:40px;box-sizing:border-box;white-space:nowrap}
+#lbbar a{color:#fff;text-decoration:none;padding:8px 8px;border-radius:4px}
+#lbbar a:hover,#lbbar a:focus-visible{background:#2A2F38}
+#lbbar .t{opacity:.75;padding:0 6px;overflow:hidden;text-overflow:ellipsis}
+#lbbar .sp{flex:1}
+#lbbar .on{background:#355DA6}
+@media (max-width:560px){#lbbar .hide-s{display:none}}</style><nav id="lbbar" aria-label="Look switcher"><a href="../index.html">All looks</a><a href="07-blueprint-m.html" rel="prev" aria-label="Previous look">&#8592;</a><span class="t">Look 8 of 9: The Tool</span><a href="09-nine-m.html" rel="next" aria-label="Next look">&#8594;</a><span class="sp"></span><a href="08-the-tool.html?view=desktop" class="hide-s">Desktop</a><a class="on hide-s" href="08-the-tool-m.html">Mobile</a><a href="../kits/08-kit.html" class="hide-s">Brand kit</a></nav>
+<header class="hdr">
+  <a href="#" class="logo"><img src="../assets/brand/enCloud9-cloud-mark-blue.svg" alt=""><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9 home"></a>
+  <a href="tel:+18442640729" class="call" aria-label="Call 1-844-264-0729">Call</a>
+  <details class="menu"><summary><i></i>Menu</summary>
+    <nav><a href="#">Dynamics 365</a><a href="#">Copilot</a><a href="#">Free tools</a><a href="#">Stories</a><a href="#">About</a><a href="#">Book a call</a><a href="tel:+18442640729" class="tel">1-844-264-0729</a></nav>
+  </details>
+</header>
+<main>
+<section class="hero">
+  <div class="cols mono" aria-hidden="true"><span></span><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>I</span><span>J</span><span>K</span></div>
+  <div class="sheet">
+    <div class="intro">
+      <h1>Is your Dynamics 365 ready for Copilot?</h1>
+      <p class="lede">Copilot in Dynamics 365 is only as good as the data and permissions behind it. Five questions show where you stand.</p>
+      <div class="btns"><a href="#" class="btn p">Take the check</a><a href="#" class="btn">Book a call</a></div>
+      <span class="cred">Founded by Brian Begley, CPA. Microsoft Solutions Partner in Bellevue, Nebraska.</span>
+    </div>
+    <div class="card">
+      <div class="fx mono"><b>fx</b><span>=COUNTIF(M3:M7,TRUE)</span></div>
+      <div class="ct"><strong>Copilot readiness check</strong><small>Example answers</small></div>
+      <ol class="qs">
+        <li class="q">Your Dynamics 365 data has one owner per record<span class="tg on"><span class="kn"></span></span></li>
+        <li class="q">Security roles match job duties<span class="tg on"><span class="kn"></span></span></li>
+        <li class="q">SharePoint and Teams permissions are reviewed<span class="tg"><span class="kn"></span></span></li>
+        <li class="q">Duplicate accounts are under control<span class="tg on"><span class="kn"></span></span></li>
+        <li class="q">You know which team should get Copilot first<span class="tg"><span class="kn"></span></span></li>
+      </ol>
+      <div class="tot"><span class="big"><span class="num"><span class="d d0" aria-hidden="true">0</span><span class="d d1" aria-hidden="true">1</span><span class="d d2" aria-hidden="true">2</span><span class="d d3">3</span></span> of 5</span><p>Ready in three areas. Next: review permissions and pick the first team. <a href="#">Get the written report</a></p></div>
+      <span class="handle" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <h2>Dynamics 365, set up and supported</h2>
+  <div class="svc rv">
+    <a href="#" class="cell"><span class="n">Dynamics 365</span><span class="s">Sales, Customer Service and Business Central, set up around how you sell, serve and bill. Data moved over and checked against your books.</span><span class="l">Dynamics 365 services</span></a>
+    <a href="#" class="cell"><span class="n">Copilot and agents</span><span class="s">Copilot on your own data, with permissions reviewed first</span><span class="l">Copilot services</span></a>
+    <a href="#" class="cell"><span class="n">Power Platform</span><span class="s">Power Apps, Power Automate and Power BI for the steps still done by hand, plus the same team after go-live</span><span class="l">All services</span></a>
+  </div>
+</section>
+
+<section class="sec">
+  <h2>Free tools</h2>
+  <ul class="tools rv">
+    <li><a href="#" class="tool"><b>Copilot readiness check</b><span>Five questions on data and permissions, with a written next-step report</span><em>Take the check</em></a></li>
+    <li><a href="#" class="tool"><b>Free Dataverse Storage Analysis</b><span>What's filling your storage, and what more capacity would cost</span><em>Book</em></a></li>
+    <li><a href="#" class="tool"><b>CRM Health Check</b><span>A free review of your Dynamics 365 setup, findings ranked by what they're worth</span><em>Book</em></a></li>
+  </ul>
+</section>
+
+<section class="end">
+  <div class="cta rv"><span class="handle" aria-hidden="true"></span><h2>Talk it through with a person</h2><div class="btns"><a href="#" class="btn p">Book a call</a><a href="tel:+18442640729" class="btn">1-844-264-0729</a></div></div>
+</section>
+</main>
+<footer class="wrap" style="padding-bottom:32px"><div class="foot"><span>enCloud9, Bellevue, Nebraska</span><span>Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies.</span></div></footer>
+<script>
+document.documentElement.classList.add('js');
+(function(){var els=document.querySelectorAll('.rv');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.querySelectorAll('.rv').forEach(function(r){r.classList.add('in')});io.unobserve(e.target)}})},{threshold:.15});els.forEach(function(e){io.observe(e.parentNode)})})();
+</script>
+</body></html>

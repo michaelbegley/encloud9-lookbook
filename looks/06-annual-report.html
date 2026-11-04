@@ -3,9 +3,45 @@ body{margin:0}
 .a{font-family:'Public Sans',Arial,sans-serif}
 .a .s{font-family:Newsreader,Georgia,serif;font-weight:300}
 .a a{color:inherit;text-decoration:none}
-</style></head><body><div style="position:sticky;top:0;z-index:9;background:#0A0B0D;color:#fff;font:13px Arial;padding:8px 16px;display:flex;gap:16px"><a href="../index.html" style="color:#fff">All looks</a><span style="opacity:.6">Direction 6: Annual Report</span></div>
+
+.m-notes li{margin:0 -8px;padding:0 8px;background-image:linear-gradient(#E3EAF5,#E3EAF5);background-repeat:no-repeat;background-size:0% 100%}
+.m-notes li.hl,.m-notes li:target{background-size:100% 100%}
+@media (prefers-reduced-motion:no-preference){
+.js .m-h1{animation:mSet .9s cubic-bezier(.2,.7,.2,1) both}
+.js .m-fade{animation:mFade .7s cubic-bezier(.2,.7,.2,1) .3s both}
+.js .m-ph{animation:mWipe .9s cubic-bezier(.2,.7,.2,1) .15s both}
+.js .m-tone{animation:mInk .9s cubic-bezier(.2,.7,.2,1) .55s both}
+.js .m-hd{border-bottom-color:transparent!important}
+.js .m-hd::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#151515;transform-origin:left;animation:mRule .8s cubic-bezier(.2,.7,.2,1) both}
+.js .m-row,.js .m-ed{border-top-color:transparent!important}
+.js .m-row::before,.js .m-ed::before{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;background:#D6D3CC;transform:scaleX(0);transform-origin:left;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .m-ed::before{top:-2px;height:2px;background:#151515}
+.js .m-end{transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.2,.7,.2,1) .4s}
+.js .m-rv.in .m-row::before,.js .m-rv.in .m-ed::before,.js .m-rv.in .m-end{transform:scaleX(1)}
+.js .m-rv.in .m-row:nth-child(2)::before{transition-delay:.08s}
+.js .m-rv.in .m-row:nth-child(3)::before{transition-delay:.16s}
+.js .m-rv.in .m-row:nth-child(4)::before{transition-delay:.24s}
+.js .m-n{display:inline-block;clip-path:inset(100% -10% -20% -10%);transition:clip-path .9s cubic-bezier(.2,.7,.2,1)}
+.js .m-sup{opacity:0;transition:opacity .5s cubic-bezier(.2,.7,.2,1) .7s}
+.js .m-rv.in .m-n{clip-path:inset(-30% -10% -20% -10%)}
+.js .m-rv.in .m-sup{opacity:1}
+.m-notes li{transition:background-size .45s cubic-bezier(.2,.7,.2,1)}
+}
+@keyframes mSet{from{clip-path:inset(0 -5% 100% -5%);transform:translateY(18px)}to{clip-path:inset(-20% -5% -20% -5%);transform:none}}
+@keyframes mFade{from{opacity:0}to{opacity:1}}
+@keyframes mWipe{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes mInk{from{opacity:0}to{opacity:.9}}
+@keyframes mRule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+</style><script>(function(){var q=new URLSearchParams(location.search);function pref(v){try{return sessionStorage.getItem('lbview')===v}catch(e){return false}}function setp(v){try{sessionStorage.setItem('lbview',v)}catch(e){}}if(q.get('view')==='desktop')setp('desktop');if(q.get('view')!=='desktop'&&!pref('desktop')&&(innerWidth<820||(matchMedia('(pointer:coarse)').matches&&screen.width<820))){location.replace('06-annual-report-m.html'+location.hash)}else{var fit=function(){var r=document.getElementById('lbbar');var el=r&&r.nextElementSibling;while(el&&el.tagName!=='DIV')el=el.nextElementSibling;if(!el)return;var w=innerWidth;el.style.zoom=(w<1440&&w>=820)?(w/1440):'';el.style.marginLeft=el.style.marginRight=w>1440?'auto':'';document.documentElement.style.background=getComputedStyle(el).backgroundColor};addEventListener('DOMContentLoaded',fit);addEventListener('resize',fit)};addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea,select'))return;if(e.key==='ArrowRight')location.href='07-blueprint.html';if(e.key==='ArrowLeft')location.href='05-blue-hour.html'})})()</script></head><body>
+<style id="lbcss">#lbbar{position:sticky;top:0;z-index:999;background:#0A0B0D;color:#fff;font:13px/1 Arial,sans-serif;display:flex;align-items:center;gap:6px;padding:0 10px;height:40px;box-sizing:border-box;white-space:nowrap}
+#lbbar a{color:#fff;text-decoration:none;padding:8px 8px;border-radius:4px}
+#lbbar a:hover,#lbbar a:focus-visible{background:#2A2F38}
+#lbbar .t{opacity:.75;padding:0 6px;overflow:hidden;text-overflow:ellipsis}
+#lbbar .sp{flex:1}
+#lbbar .on{background:#355DA6}
+@media (max-width:560px){#lbbar .hide-s{display:none}}</style><nav id="lbbar" aria-label="Look switcher"><a href="../index.html">All looks</a><a href="05-blue-hour.html" rel="prev" aria-label="Previous look">&#8592;</a><span class="t">Look 6 of 9: Annual Report</span><a href="07-blueprint.html" rel="next" aria-label="Next look">&#8594;</a><span class="sp"></span><a class="on" href="06-annual-report.html">Desktop</a><a href="06-annual-report-m.html?view=mobile">Mobile</a><a href="../kits/06-kit.html" class="hide-s">Brand kit</a></nav>
 <div class="a" style="width:1440px;height:2620px;background:#FFFFFF;color:#151515;display:flex;flex-direction:column;padding:0 96px;box-sizing:border-box">
-  <header style="height:88px;flex-shrink:0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;border-bottom:2px solid #151515">
+  <header class="m-hd" style="position:relative;height:88px;flex-shrink:0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;border-bottom:2px solid #151515">
     <span style="font-size:13px;color:#5E5E5E">Dynamics 365 and Copilot: our report to clients, 2026</span>
     <a href="#" style="display:flex;align-items:center;gap:9px"><img src="../assets/brand/enCloud9-cloud-mark-blue.svg" alt="" style="width:29px;height:24px"><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9 home" style="width:96px;height:32px"></a>
     <nav style="display:flex;gap:28px;justify-content:flex-end;font-size:14px"><a href="#">Services</a><a href="#">Stories</a><a href="#">About</a><a href="#" style="color:#355DA6;text-decoration:underline;text-underline-offset:4px">Book a call</a></nav>
@@ -14,12 +50,12 @@ body{margin:0}
 
   <section style="display:grid;grid-template-columns:1fr 520px;gap:64px;padding:72px 0 80px;border-bottom:1px solid #151515">
     <div style="display:flex;flex-direction:column;justify-content:center;gap:36px">
-      <h1 class="s" style="margin:0;font-size:104px;line-height:0.98;letter-spacing:-0.025em;font-weight:300">The year your systems finally balance</h1>
-      <p style="margin:0;text-wrap:pretty;font-size:19px;line-height:1.6;color:#2E2E2E;max-width:560px">enCloud9 is a Microsoft partner founded by a CPA. We set up, fix and support Dynamics 365 and Copilot for growing businesses, starting from the numbers your business already trusts.</p>
-      <div style="display:flex;gap:24px;align-items:center"><a href="#" style="background:#151515;color:#FFF;font-size:16px;padding:16px 28px">Book a call</a><a href="#" style="color:#355DA6;text-decoration:underline;text-underline-offset:4px;font-size:16px">Read the founder's letter</a></div>
+      <h1 class="s m-h1" style="margin:0;font-size:104px;line-height:0.98;letter-spacing:-0.025em;font-weight:300">The year your systems finally balance</h1>
+      <p class="m-fade" style="margin:0;text-wrap:pretty;font-size:19px;line-height:1.6;color:#2E2E2E;max-width:560px">enCloud9 is a Microsoft partner founded by a CPA. We set up, fix and support Dynamics 365 and Copilot for growing businesses, starting from the numbers your business already trusts.</p>
+      <div class="m-fade" style="display:flex;gap:24px;align-items:center"><a href="#" style="background:#151515;color:#FFF;font-size:16px;padding:16px 28px">Book a call</a><a href="#" style="color:#355DA6;text-decoration:underline;text-underline-offset:4px;font-size:16px">Read the founder's letter</a></div>
     </div>
     <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
-      <div style="position:relative;height:640px;overflow:hidden;background:#C9D6EA"><img src="../assets/photos/tim-umphreys-rtk3UhhCJEE.jpg" alt="Cover photograph" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.2) brightness(1.15)"><span style="position:absolute;inset:0;background:#355DA6;mix-blend-mode:multiply;opacity:.9"></span></div>
+      <div class="m-ph" style="position:relative;height:640px;overflow:hidden;background:#C9D6EA"><img src="../assets/photos/tim-umphreys-rtk3UhhCJEE.jpg" alt="Cover photograph" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.2) brightness(1.15)"><span style="position:absolute;inset:0;background:#355DA6;mix-blend-mode:multiply;opacity:.9" class="m-tone"></span></div>
       <figcaption style="font-size:12px;color:#5E5E5E;display:flex;justify-content:space-between"><span>Cover: Omaha at dusk</span><span>Photo: Unsplash stand-in</span></figcaption>
     </figure>
   </section>
@@ -34,21 +70,21 @@ body{margin:0}
 
   <section style="display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:baseline;padding:72px 0;border-bottom:1px solid #D6D3CC">
     <span style="font-size:13px;color:#5E5E5E">Statement of services</span>
-    <div><div style="display:grid;grid-template-columns:300px 1fr 60px;gap:24px;padding:24px 0;border-top:1px solid #D6D3CC;align-items:baseline"><span class="s" style="font-size:28px">Dynamics 365</span><span style="font-size:16px;line-height:1.6;color:#5E5E5E">Sales, Customer Service and Business Central, configured around how you sell, serve and bill</span><a href="#note-1" style="text-align:right;font-size:13px;color:#355DA6;text-decoration:underline;text-underline-offset:4px">Note 1</a></div><div style="display:grid;grid-template-columns:300px 1fr 60px;gap:24px;padding:24px 0;border-top:1px solid #D6D3CC;align-items:baseline"><span class="s" style="font-size:28px">Copilot and agents</span><span style="font-size:16px;line-height:1.6;color:#5E5E5E">Copilot on your own Dynamics data. We review who can see what before it's switched on, the way an auditor would</span><a href="#note-2" style="text-align:right;font-size:13px;color:#355DA6;text-decoration:underline;text-underline-offset:4px">Note 2</a></div><div style="display:grid;grid-template-columns:300px 1fr 60px;gap:24px;padding:24px 0;border-top:1px solid #D6D3CC;align-items:baseline"><span class="s" style="font-size:28px">Power Platform</span><span style="font-size:16px;line-height:1.6;color:#5E5E5E">If your team retypes it, emails it for approval or rebuilds it in Excel, we turn it into an app, a flow or a Power BI report</span><a href="#note-3" style="text-align:right;font-size:13px;color:#355DA6;text-decoration:underline;text-underline-offset:4px">Note 3</a></div><div style="display:grid;grid-template-columns:300px 1fr 60px;gap:24px;padding:24px 0;border-top:1px solid #D6D3CC;align-items:baseline"><span class="s" style="font-size:28px">Support</span><span style="font-size:16px;line-height:1.6;color:#5E5E5E">The team that built your system, after go-live</span><a href="#note-4" style="text-align:right;font-size:13px;color:#355DA6;text-decoration:underline;text-underline-offset:4px">Note 4</a></div><div style="border-top:2px solid #151515;height:4px;border-bottom:1px solid #151515"></div></div>
+    <div class="m-rv"><div class="m-row" style="position:relative;display:grid;grid-template-columns:300px 1fr 60px;gap:24px;padding:24px 0;border-top:1px solid #D6D3CC;align-items:baseline"><span class="s" style="font-size:28px">Dynamics 365</span><span style="font-size:16px;line-height:1.6;color:#5E5E5E">Sales, Customer Service and Business Central, configured around how you sell, serve and bill</span><a href="#note-1" data-fn="note-1" style="text-align:right;font-size:13px;color:#355DA6;text-decoration:underline;text-underline-offset:4px">Note 1</a></div><div class="m-row" style="position:relative;display:grid;grid-template-columns:300px 1fr 60px;gap:24px;padding:24px 0;border-top:1px solid #D6D3CC;align-items:baseline"><span class="s" style="font-size:28px">Copilot and agents</span><span style="font-size:16px;line-height:1.6;color:#5E5E5E">Copilot on your own Dynamics data. We review who can see what before it's switched on, the way an auditor would</span><a href="#note-2" data-fn="note-2" style="text-align:right;font-size:13px;color:#355DA6;text-decoration:underline;text-underline-offset:4px">Note 2</a></div><div class="m-row" style="position:relative;display:grid;grid-template-columns:300px 1fr 60px;gap:24px;padding:24px 0;border-top:1px solid #D6D3CC;align-items:baseline"><span class="s" style="font-size:28px">Power Platform</span><span style="font-size:16px;line-height:1.6;color:#5E5E5E">If your team retypes it, emails it for approval or rebuilds it in Excel, we turn it into an app, a flow or a Power BI report</span><a href="#note-3" data-fn="note-3" style="text-align:right;font-size:13px;color:#355DA6;text-decoration:underline;text-underline-offset:4px">Note 3</a></div><div class="m-row" style="position:relative;display:grid;grid-template-columns:300px 1fr 60px;gap:24px;padding:24px 0;border-top:1px solid #D6D3CC;align-items:baseline"><span class="s" style="font-size:28px">Support</span><span style="font-size:16px;line-height:1.6;color:#5E5E5E">The team that built your system, after go-live</span><a href="#note-4" data-fn="note-4" style="text-align:right;font-size:13px;color:#355DA6;text-decoration:underline;text-underline-offset:4px">Note 4</a></div><div class="m-end" style="border-top:2px solid #151515;height:4px;border-bottom:1px solid #151515"></div></div>
   </section>
 
   <section style="display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:baseline;padding:72px 0;border-bottom:1px solid #D6D3CC">
     <span style="font-size:13px;color:#5E5E5E">Selected figures</span>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end"><div><div class="s" style="font-size:180px;line-height:0.85;letter-spacing:-0.03em">23<sup style="font-size:32px;color:#355DA6;font-family:Public Sans;font-weight:500;vertical-align:top;position:relative;top:12px;margin-left:4px">a</sup></div><div style="font-size:16px;color:#5E5E5E;margin-top:16px">Published success stories</div></div><div style="border-top:2px solid #151515;padding-top:20px;display:flex;flex-direction:column;gap:12px"><span style="font-size:13px;color:#5E5E5E">In this edition</span><span class="s" style="font-size:30px;line-height:1.25">Copilot readiness: what to check before you switch it on<sup style="font-size:0.45em;color:#355DA6;font-family:'Public Sans';font-weight:500;margin-left:2px">2</sup></span><a href="#" style="color:#355DA6;text-decoration:underline;text-underline-offset:4px;font-size:15px">Read the note</a></div></div>
+    <div class="m-rv" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end"><div><div class="s" style="font-size:180px;line-height:0.85;letter-spacing:-0.03em"><span class="m-n">23</span><sup class="m-sup" style="font-size:32px;color:#355DA6;font-family:Public Sans;font-weight:500;vertical-align:top;position:relative;top:12px;margin-left:4px"><a href="#note-a" data-fn="note-a" aria-label="Note a">a</a></sup></div><div style="font-size:16px;color:#5E5E5E;margin-top:16px">Published success stories</div></div><div class="m-ed" style="position:relative;border-top:2px solid #151515;padding-top:20px;display:flex;flex-direction:column;gap:12px"><span style="font-size:13px;color:#5E5E5E">In this edition</span><span class="s" style="font-size:30px;line-height:1.25">Copilot readiness: what to check before you switch it on<sup style="font-size:0.45em;color:#355DA6;font-family:'Public Sans';font-weight:500;margin-left:2px"><a href="#note-2" data-fn="note-2" aria-label="Note 2">2</a></sup></span><a href="#" style="color:#355DA6;text-decoration:underline;text-underline-offset:4px;font-size:15px">Read the note</a></div></div>
   </section>
 
   <section style="display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:baseline;padding:72px 0 56px">
     <span style="font-size:13px;color:#5E5E5E">Notes</span>
-    <ol style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:column;grid-template-rows:repeat(3,auto);gap:16px 48px;font-size:14px;line-height:1.6;color:#5E5E5E"><li><span style="color:#355DA6">1</span> Dynamics 365 Sales, Customer Service and Business Central. Licensing through Microsoft.</li>
-      <li><span style="color:#355DA6">2</span> Microsoft 365 Copilot, Copilot in Dynamics 365 and Copilot Studio agents.</li>
-      <li><span style="color:#355DA6">3</span> Power Apps, Power Automate and Power BI, for the work still done by hand.</li>
-      <li><span style="color:#355DA6">4</span> Support plans and health checks. Ask about a free CRM Health Check.</li>
-      <li><span style="color:#355DA6">a</span> Counted on encloud9.com/success-stories, November 2026.</li></ol>
+    <ol class="m-notes" style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:column;grid-template-rows:repeat(3,auto);gap:16px 48px;font-size:14px;line-height:1.6;color:#5E5E5E"><li id="note-1"><span style="color:#355DA6">1</span> Dynamics 365 Sales, Customer Service and Business Central. Licensing through Microsoft.</li>
+      <li id="note-2"><span style="color:#355DA6">2</span> Microsoft 365 Copilot, Copilot in Dynamics 365 and Copilot Studio agents.</li>
+      <li id="note-3"><span style="color:#355DA6">3</span> Power Apps, Power Automate and Power BI, for the work still done by hand.</li>
+      <li id="note-4"><span style="color:#355DA6">4</span> Support plans and health checks. Ask about a free CRM Health Check.</li>
+      <li id="note-a"><span style="color:#355DA6">a</span> Counted on encloud9.com/success-stories, November 2026.</li></ol>
   </section>
 
   <section style="flex-grow:1;border-top:2px solid #151515;display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px;padding:72px 0">
@@ -57,4 +93,12 @@ body{margin:0}
   </section>
   <footer style="flex-shrink:0;height:64px;border-top:1px solid #151515;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#5E5E5E"><span>enCloud9, Bellevue, Nebraska</span><span>Microsoft and Dynamics 365 are trademarks of the Microsoft group of companies.</span><span>Page 1</span></footer>
 </div>
+<script>
+(function(){var d=document.documentElement;if(!('IntersectionObserver' in window))return;d.classList.add('js');
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});
+document.querySelectorAll('.m-rv').forEach(function(el){io.observe(el)});
+document.querySelectorAll('[data-fn]').forEach(function(a){var n=document.getElementById(a.getAttribute('data-fn'));if(!n)return;
+['mouseenter','focus'].forEach(function(t){a.addEventListener(t,function(){n.classList.add('hl')})});
+['mouseleave','blur'].forEach(function(t){a.addEventListener(t,function(){n.classList.remove('hl')})});});})();
+</script>
 </body></html>

@@ -1,0 +1,199 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Direction 1: Ledger (mobile)</title><link rel="stylesheet" href="../assets/fonts/fonts.css"><style>
+:root{--ink:#0A0B0D;--mute:#5B616E;--rule:#DEE1E6;--blue:#355DA6;--red:#C0202D;--amber:#8A5A00;--green:#047A4A;--tint:#F5F7FA;--g:clamp(20px,5.5vw,24px);--e:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box}
+html,body{margin:0;background:#FFF}
+body{font-family:'Instrument Sans',Arial,sans-serif;color:var(--ink);font-variant-numeric:tabular-nums;-webkit-text-size-adjust:100%;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{padding:0 var(--g)}
+/* header */
+.hd{position:sticky;top:0;z-index:5;background:#FFF;border-bottom:1px solid var(--rule)}
+.hd .bar{height:64px;display:flex;align-items:center;gap:8px;padding:0 var(--g)}
+.logo{display:flex;align-items:center;gap:7px;margin-right:auto;min-height:44px}
+.logo img:first-child{width:26px;height:22px}.logo img:last-child{width:84px;height:28px}
+.call{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:8px;background:var(--blue);color:#FFF;font-size:15px;font-weight:500}
+.menu{position:static}
+.menu summary{list-style:none;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--rule);border-radius:8px;cursor:pointer}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary span{display:block;width:18px;height:10px;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+.menu[open] summary span{height:0;border-bottom:0}
+.menu nav{position:absolute;left:0;right:0;top:64px;background:#FFF;border-bottom:1px solid var(--rule);padding:4px var(--g) 20px;display:flex;flex-direction:column}
+.menu nav a{display:flex;align-items:center;min-height:48px;border-top:1px solid var(--rule);font-size:17px}
+.menu nav a:first-child{border-top:0}
+.menu nav a.tel{color:var(--mute);font-size:15px}
+/* hero */
+.hero{padding:44px var(--g) 48px;display:flex;flex-direction:column;gap:20px}
+h1{margin:0;font-size:clamp(38px,10.4vw,66px);line-height:1.03;font-weight:500;letter-spacing:-0.035em}
+.lede{margin:0;font-size:clamp(17px,4.4vw,19px);line-height:1.6;color:var(--mute)}
+.btns{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.btn{display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:8px;font-weight:500;font-size:16px;padding:0 20px}
+.btn.p{background:var(--blue);color:#FFF}.btn.s{border:1px solid var(--rule)}
+@media (min-width:560px){.btns{flex-direction:row}.btn{flex:0 0 auto}}
+/* reconciliation card */
+.card{border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:#FFF}
+.card .ch{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:16px 18px;border-bottom:1px solid var(--rule)}
+.card .ch b{font-size:15px;font-weight:500}.card .ch small{font-size:13px;color:var(--mute);white-space:nowrap}
+.rec{margin-top:12px}
+.rec table{width:100%;border-collapse:collapse;font-size:15px}
+.rec .tb{padding:0 18px}
+.rec tr{display:grid;grid-template-columns:repeat(3,1fr);column-gap:8px}
+.rec td{text-align:right;padding:0 0 12px}
+.rec td:first-child{grid-column:1/-1;text-align:left;padding:13px 0 4px;font-weight:500}
+.rec tr+tr{border-top:1px solid var(--rule)}
+.rec tr.hdr{color:var(--mute);font-size:13px}
+.rec tr.hdr td{padding-bottom:10px}.rec tr.hdr td:first-child{padding:12px 0 2px;font-weight:400}
+.rec .neg{color:var(--red)}.rec .z{color:var(--mute)}
+.rec .tot{display:flex;justify-content:space-between;padding:15px 18px;margin-top:4px;border-top:1px solid var(--ink);font-size:15px;font-weight:500}
+.vm{display:inline-block}
+/* proof strip */
+.proof{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:0 var(--g)}
+.proof div{padding:18px 14px 18px 0;font-size:14px;line-height:1.5;color:var(--mute)}
+.proof div:nth-child(2n){padding-left:14px;padding-right:0;border-left:1px solid var(--rule)}
+.proof div:nth-child(n+3){border-top:1px solid var(--rule)}
+.proof span{color:var(--ink)}
+.proof a{color:var(--blue);font-weight:500;display:inline-flex;align-items:center;min-height:44px;margin:-10px 0}
+@media (max-width:379px){.proof{grid-template-columns:1fr}.proof div,.proof div:nth-child(2n){padding:16px 0;border-left:0}.proof div+div{border-top:1px solid var(--rule)}}
+/* sections */
+.sec{padding:56px var(--g);display:flex;flex-direction:column;gap:24px}
+h2{margin:0;font-size:clamp(30px,8vw,40px);line-height:1.08;font-weight:500;letter-spacing:-0.025em}
+h2.big{font-size:clamp(34px,9.4vw,52px);line-height:1.05;letter-spacing:-0.035em;text-wrap:balance}
+.row{display:grid;grid-template-columns:1fr 24px;column-gap:16px;row-gap:6px;padding:20px 0;border-top:1px solid var(--rule);align-items:baseline}
+.list .row:last-child{border-bottom:1px solid var(--rule)}
+.tt{font-size:20px;font-weight:500;letter-spacing:-0.01em;justify-self:start;background-image:linear-gradient(currentColor,currentColor);background-repeat:no-repeat;background-position:0 100%;background-size:0 1px}
+.row:hover .tt,.row:focus-visible .tt{background-size:100% 1px}
+.ar{color:var(--blue);font-size:20px;line-height:1;justify-self:end;display:inline-block}
+.row .d{grid-column:1/2;font-size:15px;line-height:1.55;color:var(--mute)}
+.audit{background:var(--tint)}
+.audit p.lead{margin:0;font-size:17px;line-height:1.6;color:var(--mute)}
+.hc .f{display:grid;grid-template-columns:8px 1fr auto;column-gap:12px;row-gap:4px;align-items:baseline;padding:14px 18px;border-top:1px solid var(--rule)}
+.hc .ch{border-bottom:0}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;align-self:center}
+.dot.r{background:var(--red)}.dot.a{background:var(--amber)}.dot.g{background:var(--green)}
+.hc .f b{font-size:16px;font-weight:500}
+.hc .f .st{font-size:14px;color:var(--mute);text-align:right}
+.hc .f .ds{grid-column:2/-1;font-size:15px;line-height:1.5;color:var(--mute)}
+.lnk{display:inline-flex;align-items:center;min-height:44px;font-weight:500;color:var(--blue);font-size:16px}
+.sh{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.sh .lnk{font-size:15px;white-space:nowrap}
+.row .meta{grid-column:1/2;font-size:15px;line-height:1.5;color:var(--mute)}
+/* CTA */
+.cta{border-top:1px solid var(--rule)}
+.cta .txt{padding:56px var(--g) 40px;display:flex;flex-direction:column;gap:24px}
+.ph{position:relative;overflow:hidden;background:#DCE6F6;aspect-ratio:4/3.4}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% center}
+.ph .cr{position:absolute;right:10px;bottom:10px;font-size:11px;color:#FFF;text-shadow:0 1px 2px rgba(0,0,0,.7)}
+footer{border-top:1px solid var(--rule);padding:24px var(--g) 32px;display:flex;flex-direction:column;gap:12px;font-size:13px;line-height:1.5;color:var(--mute)}
+footer .fl{display:flex;align-items:center;gap:8px}
+footer .fl img:first-child{width:22px;height:18px}footer .fl img:last-child{width:78px;height:26px}
+/* motion */
+@media (prefers-reduced-motion:no-preference){
+html.js .hx{animation:l-rise .8s var(--e) both;animation-delay:var(--d,0ms)}
+html.js .rec{animation:l-fade .6s var(--e) 250ms both}
+html.js .rr td{animation:l-settle .6s var(--e) both;animation-delay:calc(400ms + var(--i)*90ms)}
+html.js .rr .vm{animation:l-tick .45s var(--e) both;animation-delay:calc(950ms + var(--i)*110ms)}
+html.js .vm.vt{animation:l-tick .55s var(--e) 1500ms both}
+@keyframes l-rise{from{opacity:0;transform:translateY(14px)}}
+@keyframes l-fade{from{opacity:0}}
+@keyframes l-settle{from{opacity:0;transform:translateY(-8px)}}
+@keyframes l-tick{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0 0 0 0)}}
+html.js .hc .dot{transform:scale(0);transition:transform .45s var(--e);transition-delay:calc(200ms + var(--i)*80ms)}
+html.js .hc.in .dot{transform:none}
+html.js .svc .row{clip-path:inset(0 100% 0 0);transition:clip-path .8s var(--e)}
+html.js .svc .row:nth-child(2){transition-delay:90ms}html.js .svc .row:nth-child(3){transition-delay:180ms}html.js .svc .row:nth-child(4){transition-delay:270ms}
+html.js .svc.in .row{clip-path:inset(0 0 0 0)}
+html.js .ph img{clip-path:inset(100% 0 0 0);transition:clip-path .9s var(--e)}
+html.js .ph.in img{clip-path:inset(0 0 0 0)}
+.tt{transition:background-size .35s var(--e)}
+.ar{transition:transform .3s var(--e)}
+.row:hover .ar,.row:focus-visible .ar{transform:translateX(4px)}
+}
+</style><script>(function(){var q=new URLSearchParams(location.search);function pref(v){try{return sessionStorage.getItem('lbview')===v}catch(e){return false}}function setp(v){try{sessionStorage.setItem('lbview',v)}catch(e){}}if(q.get('view')==='mobile')setp('mobile');if(q.get('view')!=='mobile'&&!pref('mobile')&&innerWidth>=1024){location.replace('01-ledger.html'+location.hash)};addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea,select'))return;if(e.key==='ArrowRight')location.href='02-systems-map-m.html';if(e.key==='ArrowLeft')location.href='09-nine-m.html'})})()</script></head><body>
+<style id="lbcss">#lbbar{position:sticky;top:0;z-index:999;background:#0A0B0D;color:#fff;font:13px/1 Arial,sans-serif;display:flex;align-items:center;gap:6px;padding:0 10px;height:40px;box-sizing:border-box;white-space:nowrap}
+#lbbar a{color:#fff;text-decoration:none;padding:8px 8px;border-radius:4px}
+#lbbar a:hover,#lbbar a:focus-visible{background:#2A2F38}
+#lbbar .t{opacity:.75;padding:0 6px;overflow:hidden;text-overflow:ellipsis}
+#lbbar .sp{flex:1}
+#lbbar .on{background:#355DA6}
+@media (max-width:560px){#lbbar .hide-s{display:none}}</style><nav id="lbbar" aria-label="Look switcher"><a href="../index.html">All looks</a><a href="09-nine-m.html" rel="prev" aria-label="Previous look">&#8592;</a><span class="t">Look 1 of 9: Ledger</span><a href="02-systems-map-m.html" rel="next" aria-label="Next look">&#8594;</a><span class="sp"></span><a href="01-ledger.html?view=desktop" class="hide-s">Desktop</a><a class="on hide-s" href="01-ledger-m.html">Mobile</a><a href="../kits/01-kit.html" class="hide-s">Brand kit</a></nav>
+<header class="hd"><div class="bar">
+  <a class="logo" href="#"><img src="../assets/brand/enCloud9-cloud-mark-blue.svg" alt=""><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9 home"></a>
+  <a class="call" href="#" aria-label="Call 1-844-264-0729">Call</a>
+  <details class="menu"><summary aria-label="Menu"><span></span></summary>
+    <nav><a href="#">Dynamics 365</a><a href="#">Power Platform</a><a href="#">Copilot</a><a href="#">Support</a><a href="#">Success Stories</a><a class="tel" href="#">1-844-264-0729</a></nav>
+  </details>
+</div></header>
+
+<main>
+<section class="hero">
+  <h1 class="hx" style="--d:0ms">Dynamics 365, set up by people who read a balance sheet</h1>
+  <p class="lede hx" style="--d:120ms">A Microsoft Solutions Partner founded by a CPA. We set up, fix and support Dynamics 365 and Copilot so the numbers in your CRM match the numbers in your books.</p>
+  <div class="btns hx" style="--d:220ms"><a class="btn p" href="#">Book a call</a><a class="btn s" href="#">Free CRM Health Check</a></div>
+  <div class="card rec">
+    <div class="ch"><b>Closed-won vs invoiced, Q3</b><small>Illustration</small></div>
+    <div class="tb"><table>
+      <tr class="hdr"><td>Account</td><td>In CRM</td><td>In the books</td><td>Variance</td></tr>
+      <tr class="rr" style="--i:1"><td>Platte Valley Supply</td><td>$48,200</td><td>$48,200</td><td class="z"><span class="vm">0</span></td></tr>
+      <tr class="rr" style="--i:2"><td>Elkhorn Dental Group</td><td>$12,900</td><td>$11,400</td><td class="neg"><span class="vm">-$1,500</span></td></tr>
+      <tr class="rr" style="--i:3"><td>Missouri River Logistics</td><td>$96,500</td><td>$96,500</td><td class="z"><span class="vm">0</span></td></tr>
+      <tr class="rr" style="--i:4"><td>Sandhill Clinics</td><td>$31,000</td><td>$0</td><td class="neg"><span class="vm">-$31,000</span></td></tr>
+    </table></div>
+    <div class="tot"><span>Unreconciled</span><span class="vm vt" style="color:#C0202D">-$32,500</span></div>
+  </div>
+</section>
+
+<section class="proof" aria-label="Credentials">
+  <div><span>Microsoft Solutions Partner</span><br>Dynamics 365 and Power Platform</div>
+  <div><span>23 published Success Stories</span><br><a href="#">Read them all &#8594;</a></div>
+  <div><span>Best Dynamics 365 Partners</span><br>CRM Software Blog, 2026</div>
+  <div><span>Brian Begley, CPA, founder</span><br>Bellevue, Nebraska</div>
+</section>
+
+<section class="sec">
+  <h2>Services</h2>
+  <div class="list svc" data-reveal>
+    <a class="row" href="#"><span class="tt">Dynamics 365 setup</span><span class="ar">&#8594;</span><span class="d">Sales, Customer Service and Business Central, configured around how you sell, serve and bill.</span></a>
+    <a class="row" href="#"><span class="tt">Power Platform</span><span class="ar">&#8594;</span><span class="d">If your team retypes it, emails it for approval or rebuilds it in Excel, we turn it into an app, a flow or a Power BI report.</span></a>
+    <a class="row" href="#"><span class="tt">Copilot and agents</span><span class="ar">&#8594;</span><span class="d">Copilot and Copilot Studio agents that summarize cases and draft follow-ups, switched on after a permissions check.</span></a>
+    <a class="row" href="#"><span class="tt">Support and health checks</span><span class="ar">&#8594;</span><span class="d">A team that knows your system, fixing problems before they cost you.</span></a>
+  </div>
+</section>
+
+<section class="sec audit">
+  <h2 class="big">We audit a CRM the way an accountant audits books</h2>
+  <p class="lead">A free Health Check looks at what's set up, what's used and what's costing you, then ranks the fixes by what they're worth.</p>
+  <div class="card hc" data-reveal>
+    <div class="ch"><b>CRM Health Check: findings, ranked</b><small>Example report</small></div>
+    <div class="f"><span class="dot r" style="--i:1"></span><b>Duplicate accounts</b><span class="st">Fix now</span><span class="ds">Near-matching account records. Reports double-count revenue.</span></div>
+    <div class="f"><span class="dot r" style="--i:2"></span><b>Storage over limit</b><span class="st">Fix now</span><span class="ds">Old email attachments filling Dataverse file storage.</span></div>
+    <div class="f"><span class="dot a" style="--i:3"></span><b>Unused licenses</b><span class="st">Plan</span><span class="ds">Seats assigned to people who haven't signed in this quarter.</span></div>
+    <div class="f"><span class="dot a" style="--i:4"></span><b>Manual quote steps</b><span class="st">Plan</span><span class="ds">Quotes rebuilt in Excel, then retyped into Dynamics.</span></div>
+    <div class="f"><span class="dot g" style="--i:5"></span><b>Security roles</b><span class="st">Fine</span><span class="ds">Roles match job duties. No changes needed.</span></div>
+    <div class="f"><span class="dot a" style="--i:6"></span><b>Copilot readiness</b><span class="st">Plan</span><span class="ds">Shared folders are open to everyone. Fix before Copilot can read them.</span></div>
+  </div>
+  <a class="lnk" href="#">Book a free Health Check &#8594;</a>
+</section>
+
+<section class="sec">
+  <div class="sh"><h2>Success Stories</h2><a class="lnk" href="#">All 23 stories &#8594;</a></div>
+  <div class="list">
+    <a class="row" href="#"><span class="tt">[Client name]</span><span class="ar">&#8594;</span><span class="meta">Medical pricing<br>Dynamics 365 Sales and Customer Insights</span></a>
+    <a class="row" href="#"><span class="tt">[Client name]</span><span class="ar">&#8594;</span><span class="meta">Distribution<br>Business Central and Power BI</span></a>
+    <a class="row" href="#"><span class="tt">[Client name]</span><span class="ar">&#8594;</span><span class="meta">Manufacturing<br>Field Service and Power Apps</span></a>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="txt">
+    <h2 class="big">Let's reconcile your system with your business</h2>
+    <div class="btns"><a class="btn p" href="#">Book a call</a><a class="btn s" href="#">1-844-264-0729</a></div>
+  </div>
+  <div class="ph" data-reveal><img src="../assets/photos/omar-lopez-4HhmpfsI5yk.jpg" alt="A business owner working at her laptop"><span class="cr">Photo: Unsplash</span></div>
+</section>
+</main>
+
+<footer>
+  <span class="fl"><img src="../assets/brand/enCloud9-cloud-mark-blue.svg" alt=""><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9"></span>
+  <span>Microsoft and Dynamics 365 are trademarks of the Microsoft group of companies.</span>
+  <span>[Office address]</span>
+</footer>
+<script>(function(){var d=document.documentElement;d.classList.add('js');var els=document.querySelectorAll('[data-reveal]');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}})},{threshold:.2});els.forEach(function(e){o.observe(e)})})();</script>
+</body></html>

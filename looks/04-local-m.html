@@ -1,0 +1,144 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Direction 4: Sky Grid (mobile)</title><link rel="stylesheet" href="../assets/fonts/fonts.css"><style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#EEF5FA;font-family:'Plus Jakarta Sans',Arial,sans-serif;color:#1E2430;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{padding-left:clamp(20px,5.5vw,24px);padding-right:clamp(20px,5.5vw,24px)}
+h1,h2,p{margin:0}
+
+/* header */
+.top{position:sticky;top:0;z-index:5;background:#FFF;border-bottom:1px solid #D9E6F0}
+.top .row{height:64px;display:flex;align-items:center;gap:8px}
+.logo{display:flex;align-items:center;gap:7px;margin-right:auto;min-height:44px}
+.logo .mk{width:24px;height:20px}.logo .wm{width:80px;height:27px}
+.call{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:10px;background:#355DA6;color:#FFF;font-size:15px;font-weight:500}
+.menu{position:static}
+.menu summary{list-style:none;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;border:1px solid #D9E6F0;cursor:pointer}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary .bars{position:relative;width:18px;height:2px;background:#1E2430;border-radius:2px}
+.menu summary .bars::before,.menu summary .bars::after{content:"";position:absolute;left:0;width:18px;height:2px;background:#1E2430;border-radius:2px}
+.menu summary .bars::before{top:-6px}.menu summary .bars::after{top:6px}
+.menu[open] summary{background:#EEF5FA}
+.menu nav{position:absolute;left:0;right:0;top:64px;background:#FFF;border-bottom:1px solid #D9E6F0;padding:8px clamp(20px,5.5vw,24px) 20px;display:flex;flex-direction:column}
+.menu nav a{display:flex;align-items:center;min-height:48px;font-size:17px;font-weight:500;border-bottom:1px solid #EEF5FA}
+.menu nav a.tel{color:#6B7584;font-weight:400;border-bottom:0}
+
+/* hero */
+.hero{padding-top:36px;display:flex;flex-direction:column;gap:20px}
+.hero h1{font-size:clamp(38px,10.5vw,60px);line-height:1.04;font-weight:500;letter-spacing:-0.025em}
+.hero p{font-size:clamp(17px,4.6vw,20px);line-height:1.5;color:#5A6474}
+.ctas{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.b{display:flex;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border-radius:10px;font-size:16px;font-weight:500;text-align:center}
+.b.pri{background:#355DA6;color:#FFF}
+.b.sec{background:#FFF;border:1px solid #D9E6F0}
+.heroph{position:relative;overflow:hidden;background:#E9EDF2;border-radius:24px;aspect-ratio:4/5;max-height:560px;margin-top:8px}
+.heroph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% center}
+.credit{position:absolute;right:10px;bottom:8px;font-size:11px;color:rgba(255,255,255,.9);font-family:Arial,sans-serif;text-shadow:0 1px 2px rgba(0,0,0,.5)}
+
+/* pair */
+.pair{padding-top:16px;padding-bottom:64px;display:flex;flex-direction:column;gap:16px}
+.cpa{position:relative;overflow:hidden;border-radius:24px;min-height:320px;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;color:#FFF;background:#2A2F38}
+.cpa img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%}
+.cpa .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 25%,rgba(16,24,40,.78) 100%)}
+.cpa .t{position:relative;font-size:clamp(24px,6.6vw,30px);font-weight:500;letter-spacing:-0.02em;line-height:1.2}
+.cpa .s{position:relative;font-size:12px;opacity:.9;margin-top:10px}
+.cop{background:#FFF;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:24px}
+.cop .k{font-size:15px;color:#6B7584}
+.cop .h{font-size:clamp(28px,7.6vw,36px);font-weight:500;letter-spacing:-0.03em;line-height:1.12}
+.dbl{border-bottom:3px double #1E2430;width:100%;margin-top:20px}
+.cop .d{display:block;font-size:16px;line-height:1.5;color:#5A6474;margin-top:12px}
+.more{display:inline-flex;align-items:center;min-height:44px;font-weight:500;color:#355DA6}
+
+/* band */
+.band{background:#1E2430;color:#FFF;padding-top:56px;padding-bottom:56px;display:flex;flex-direction:column;gap:20px}
+.band h2{font-size:clamp(32px,8.6vw,44px);font-weight:500;letter-spacing:-0.025em;line-height:1.1}
+.band p{font-size:17px;line-height:1.6;color:#C9D2DE}
+.band p a{color:#FFF;text-decoration:underline;text-underline-offset:4px;display:inline-block;padding:10px 0}
+
+/* industries */
+.ind{background:#FFF;padding-top:64px;padding-bottom:64px}
+.ind .head{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.ind h2{font-size:clamp(32px,8.6vw,48px);line-height:1.06;font-weight:500;letter-spacing:-0.025em}
+.cards{display:flex;flex-direction:column;gap:16px}
+.card{position:relative;display:flex;align-items:flex-end;aspect-ratio:4/5;max-height:520px;border-radius:24px;overflow:hidden;color:#FFF;padding:24px}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.62) 100%)}
+.card .txt{position:relative}
+.card .n{display:block;font-size:26px;font-weight:500;letter-spacing:-0.02em}
+.card .l{display:block;font-size:15px;opacity:.95;margin-top:4px}
+@media (min-width:640px){.ctas,.foot .act{flex-direction:row;align-items:center}.ctas .b,.foot .b{flex:0 0 auto}.cards{flex-direction:row}.card{flex:1}.pair{display:grid;grid-template-columns:5fr 7fr}}
+
+/* footer */
+.foot{background:#1E2430;color:#C9D2DE;padding-top:56px;padding-bottom:32px}
+.foot .big{display:block;font-size:clamp(28px,7.6vw,40px);font-weight:500;letter-spacing:-0.03em;color:#FFF;line-height:1.15}
+.foot .act{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.foot .b{background:#FFF;color:#1E2430}
+.foot .tel{display:flex;align-items:center;justify-content:center;min-height:44px}
+.foot .fine{display:flex;flex-direction:column;gap:10px;font-size:13px;line-height:1.5;border-top:1px solid #2F3747;padding-top:20px;margin-top:40px}
+
+@media (prefers-reduced-motion:no-preference){
+.js .in1,.js .in2,.js .in3{opacity:0;transform:translateY(12px);animation:up .8s cubic-bezier(.2,.7,.2,1) forwards}
+.js .in2{animation-delay:.12s}.js .in3{animation-delay:.24s}
+.js .heroph{clip-path:inset(0 0 100% 0 round 24px);animation:wipe .9s cubic-bezier(.2,.7,.2,1) .3s forwards}
+.js .heroph img{transform:scale(1.06);animation:settle .9s cubic-bezier(.2,.7,.2,1) .3s forwards}
+@keyframes up{to{opacity:1;transform:none}}
+@keyframes wipe{to{clip-path:inset(0 0 0 0 round 24px)}}
+@keyframes settle{to{transform:scale(1)}}
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .rv.on{opacity:1;transform:none}
+.js .dbl{transform:scaleX(0);transform-origin:left center;transition:transform .9s cubic-bezier(.2,.7,.2,1) .25s}
+.js .dbl.on{transform:scaleX(1)}
+.lift img{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.lift:active img{transform:scale(1.03)}
+.b,.call{transition:transform .2s cubic-bezier(.2,.7,.2,1)}
+.b:active,.call:active{transform:scale(.98)}
+.menu nav{animation:up .3s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover){.js .rv.on.lift{transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .35s cubic-bezier(.2,.7,.2,1)}.lift:hover,.js .rv.on.lift:hover{transform:translateY(-6px)}.lift:hover img{transform:scale(1.04)}}
+}
+</style><script>(function(){var q=new URLSearchParams(location.search);function pref(v){try{return sessionStorage.getItem('lbview')===v}catch(e){return false}}function setp(v){try{sessionStorage.setItem('lbview',v)}catch(e){}}if(q.get('view')==='mobile')setp('mobile');if(q.get('view')!=='mobile'&&!pref('mobile')&&innerWidth>=1024){location.replace('04-local.html'+location.hash)};addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea,select'))return;if(e.key==='ArrowRight')location.href='05-blue-hour-m.html';if(e.key==='ArrowLeft')location.href='03-editorial-m.html'})})()</script></head><body>
+<style id="lbcss">#lbbar{position:sticky;top:0;z-index:999;background:#0A0B0D;color:#fff;font:13px/1 Arial,sans-serif;display:flex;align-items:center;gap:6px;padding:0 10px;height:40px;box-sizing:border-box;white-space:nowrap}
+#lbbar a{color:#fff;text-decoration:none;padding:8px 8px;border-radius:4px}
+#lbbar a:hover,#lbbar a:focus-visible{background:#2A2F38}
+#lbbar .t{opacity:.75;padding:0 6px;overflow:hidden;text-overflow:ellipsis}
+#lbbar .sp{flex:1}
+#lbbar .on{background:#355DA6}
+@media (max-width:560px){#lbbar .hide-s{display:none}}</style><nav id="lbbar" aria-label="Look switcher"><a href="../index.html">All looks</a><a href="03-editorial-m.html" rel="prev" aria-label="Previous look">&#8592;</a><span class="t">Look 4 of 9: Local</span><a href="05-blue-hour-m.html" rel="next" aria-label="Next look">&#8594;</a><span class="sp"></span><a href="04-local.html?view=desktop" class="hide-s">Desktop</a><a class="on hide-s" href="04-local-m.html">Mobile</a><a href="../kits/04-kit.html" class="hide-s">Brand kit</a></nav>
+<header class="top"><div class="row wrap">
+  <a href="#" class="logo"><img class="mk" src="../assets/brand/enCloud9-cloud-mark-blue.svg" alt=""><img class="wm" src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9 home"></a>
+  <a href="#" class="call">Book a call</a>
+  <details class="menu"><summary aria-label="Menu"><span class="bars"></span></summary>
+    <nav><a href="#">Dynamics 365</a><a href="#">Copilot</a><a href="#">Industries</a><a href="#">Success Stories</a><a href="#">About</a><a href="#" class="tel">1-844-264-0729</a></nav>
+  </details>
+</div></header>
+<main>
+<section class="hero wrap">
+  <h1 class="in1">Dynamics 365 help that feels local</h1>
+  <p class="in2">Dynamics 365, Copilot and Power Platform setup, fixes and support from a Microsoft partner that thinks like your accountant, founded by a CPA in Bellevue, Nebraska</p>
+  <div class="ctas in3"><a href="#" class="b pri">Book a call</a><a href="#" class="b sec">Free CRM Health Check</a></div>
+  <div class="heroph"><img src="../assets/photos/vitaly-gariev-kk4J92iaSBk.jpg" alt="small business owner at a laptop in her shop"><span class="credit">Stand-in photo: Vitaly Gariev, Unsplash</span></div>
+</section>
+<section class="pair wrap">
+  <div class="cpa rv lift"><img src="../assets/photos/vitaly-gariev-ordRm3twjOg.jpg" alt="A team meeting seen from above" loading="lazy"><span class="shade"></span><span class="t">Founded by a CPA. Based in Bellevue, Nebraska.</span><span class="s">Photo: Unsplash stand-in</span></div>
+  <div class="cop rv">
+    <span class="k">Copilot readiness</span>
+    <div><div class="h">Copilot is only as good as the data it can see</div><div class="dbl"></div><span class="d">We check your data and permissions, then start Copilot with one team and one job</span></div>
+    <a href="#" class="more">Book a Copilot readiness review &#8594;</a>
+  </div>
+</section>
+<section class="band wrap"><h2 class="rv">Still in spreadsheets?</h2><p class="rv">Power Apps, Power Automate and Power BI for the work Dynamics doesn’t cover: approvals, quote sheets, field forms and the monthly report you rebuild by hand. <a href="#">Power Platform services</a></p></section>
+<section class="ind wrap">
+  <div class="head"><h2>Built for businesses that make, move and bill things</h2><a href="#" class="more">All industries &#8594;</a></div>
+  <div class="cards">
+    <a href="#" class="card rv lift"><img src="../assets/photos/mauricio-gutierrez-SoiVEdJKzhY.jpg" alt="Warehouse aisle" loading="lazy" style="object-position:center 60%"><span class="shade"></span><span class="txt"><span class="n">Distribution</span><span class="l">Inventory, orders and invoices in one place</span></span></a>
+    <a href="#" class="card rv lift"><img src="../assets/photos/dylan-gillis-KdeqA3aTnBY.jpg" alt="People at a meeting table" loading="lazy"><span class="shade"></span><span class="txt"><span class="n">Professional services</span><span class="l">Clients, projects and billing that line up</span></span></a>
+  </div>
+</section>
+</main>
+<footer class="foot wrap">
+  <span class="big">Talk to a person who knows Dynamics 365</span>
+  <div class="act"><a href="#" class="b">Book a call</a><a href="#" class="tel">1-844-264-0729</a></div>
+  <div class="fine"><span>enCloud9 · Bellevue, Nebraska</span><span>Microsoft and Dynamics 365 are trademarks of the Microsoft group of companies.</span><span>Photos: Unsplash</span></div>
+</footer>
+<script>(function(){var d=document.documentElement;if(!('IntersectionObserver' in window))return;d.classList.add('js');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.15});document.querySelectorAll('.rv,.dbl').forEach(function(el){io.observe(el)})})();</script>
+</body></html>

@@ -4,44 +4,78 @@ body{margin:0}
 .e .d{font-family:Jost,Futura,Arial,sans-serif;font-weight:300}
 .e .m{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0;color:#355DA6}
 .e a{color:inherit;text-decoration:none}
-</style></head><body><div style="position:sticky;top:0;z-index:9;background:#0A0B0D;color:#fff;font:13px Arial;padding:8px 16px;display:flex;gap:16px"><a href="../index.html" style="color:#fff">All looks</a><span style="opacity:.6">Direction 3: Editorial Founder</span></div>
+.e .svc .t{background:linear-gradient(#355DA6,#355DA6) 0 100%/0 1px no-repeat}
+@media (prefers-reduced-motion:no-preference){
+@keyframes e-clip{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes e-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes e-fade{from{opacity:0}to{opacity:1}}
+.e .hero-ph{animation:e-clip 900ms cubic-bezier(.2,.7,.2,1) both}
+.e .hero-ph img{transition:none}
+.e .hero-sh,.e .hero-hd{animation:e-fade 700ms cubic-bezier(.2,.7,.2,1) 300ms both}
+.e .hero-h{animation:e-up 800ms cubic-bezier(.2,.7,.2,1) 550ms both}
+.e .hero-p{animation:e-up 700ms cubic-bezier(.2,.7,.2,1) 750ms both}
+html.js .e .rh{opacity:0;transform:translateX(-24px);transition:opacity 600ms cubic-bezier(.2,.7,.2,1),transform 600ms cubic-bezier(.2,.7,.2,1)}
+html.js .e .in .rh{opacity:1;transform:none}
+html.js .e .rq{opacity:0;transition:opacity 900ms cubic-bezier(.2,.7,.2,1) 150ms}
+html.js .e .in .rq{opacity:1}
+html.js .e .svc{opacity:0;transform:translateY(10px);transition:opacity 600ms cubic-bezier(.2,.7,.2,1),transform 600ms cubic-bezier(.2,.7,.2,1)}
+html.js .e .in .svc{opacity:1;transform:none}
+html.js .e .in .svc:nth-child(2){transition-delay:80ms}html.js .e .in .svc:nth-child(3){transition-delay:160ms}html.js .e .in .svc:nth-child(4){transition-delay:240ms}
+html.js .e .ph2{clip-path:inset(0 0 100% 0);transition:clip-path 900ms cubic-bezier(.2,.7,.2,1) 200ms}
+html.js .e .in .ph2{clip-path:inset(-1px)}
+html.js .e .cta{opacity:0;transform:translateY(16px);transition:opacity 800ms cubic-bezier(.2,.7,.2,1) 120ms,transform 800ms cubic-bezier(.2,.7,.2,1) 120ms}
+html.js .e .in .cta{opacity:1;transform:none}
+.e .svc .t{transition:transform 300ms cubic-bezier(.2,.7,.2,1),background-size 400ms cubic-bezier(.2,.7,.2,1)}
+.e .svc:hover .t,.e .svc:focus-visible .t{transform:translateX(8px);background-size:100% 1px}
+.e .cta .u{display:inline-block;transition:transform 400ms cubic-bezier(.2,.7,.2,1)}
+.e .cta:hover .u{transform:translateX(12px)}
+}
+</style><script>(function(){var q=new URLSearchParams(location.search);function pref(v){try{return sessionStorage.getItem('lbview')===v}catch(e){return false}}function setp(v){try{sessionStorage.setItem('lbview',v)}catch(e){}}if(q.get('view')==='desktop')setp('desktop');if(q.get('view')!=='desktop'&&!pref('desktop')&&(innerWidth<820||(matchMedia('(pointer:coarse)').matches&&screen.width<820))){location.replace('03-editorial-m.html'+location.hash)}else{var fit=function(){var r=document.getElementById('lbbar');var el=r&&r.nextElementSibling;while(el&&el.tagName!=='DIV')el=el.nextElementSibling;if(!el)return;var w=innerWidth;el.style.zoom=(w<1440&&w>=820)?(w/1440):'';el.style.marginLeft=el.style.marginRight=w>1440?'auto':'';document.documentElement.style.background=getComputedStyle(el).backgroundColor};addEventListener('DOMContentLoaded',fit);addEventListener('resize',fit)};addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea,select'))return;if(e.key==='ArrowRight')location.href='04-local.html';if(e.key==='ArrowLeft')location.href='02-systems-map.html'})})()</script></head><body>
+<style id="lbcss">#lbbar{position:sticky;top:0;z-index:999;background:#0A0B0D;color:#fff;font:13px/1 Arial,sans-serif;display:flex;align-items:center;gap:6px;padding:0 10px;height:40px;box-sizing:border-box;white-space:nowrap}
+#lbbar a{color:#fff;text-decoration:none;padding:8px 8px;border-radius:4px}
+#lbbar a:hover,#lbbar a:focus-visible{background:#2A2F38}
+#lbbar .t{opacity:.75;padding:0 6px;overflow:hidden;text-overflow:ellipsis}
+#lbbar .sp{flex:1}
+#lbbar .on{background:#355DA6}
+@media (max-width:560px){#lbbar .hide-s{display:none}}</style><nav id="lbbar" aria-label="Look switcher"><a href="../index.html">All looks</a><a href="02-systems-map.html" rel="prev" aria-label="Previous look">&#8592;</a><span class="t">Look 3 of 9: Editorial</span><a href="04-local.html" rel="next" aria-label="Next look">&#8594;</a><span class="sp"></span><a class="on" href="03-editorial.html">Desktop</a><a href="03-editorial-m.html?view=mobile">Mobile</a><a href="../kits/03-kit.html" class="hide-s">Brand kit</a></nav>
 <div class="e" style="width:1440px;height:2720px;background:#FFFFFF;display:flex;flex-direction:column">
   <section style="position:relative;height:860px;overflow:hidden">
-    <div style="position:relative;overflow:hidden;background:#E9EDF2;position:absolute;inset:0;height:860px;width:1440px"><img src="../assets/photos/tim-umphreys-rtk3UhhCJEE.jpg" alt="Omaha skyline at dusk, wide" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%"><span style="position:absolute;right:10px;bottom:8px;font-size:10px;color:rgba(255,255,255,.8);font-family:Arial,sans-serif">Stand-in photo: Tim Umphreys, Unsplash</span></div>
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,16,24,.35) 0%,rgba(12,16,24,0) 30%,rgba(12,16,24,.15) 40%,rgba(12,16,24,.82) 100%)"></div>
-    <header style="position:absolute;top:0;left:0;right:0;height:88px;padding:0 64px;display:flex;align-items:center;justify-content:space-between;color:#FFF">
+    <div class="hero-ph" style="position:relative;overflow:hidden;background:#E9EDF2;position:absolute;inset:0;height:860px;width:1440px"><img src="../assets/photos/tim-umphreys-rtk3UhhCJEE.jpg" alt="Omaha skyline at dusk, wide" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%"><span style="position:absolute;right:10px;bottom:8px;font-size:10px;color:rgba(255,255,255,.8);font-family:Arial,sans-serif">Stand-in photo: Tim Umphreys, Unsplash</span></div>
+    <div class="hero-sh" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,16,24,.35) 0%,rgba(12,16,24,0) 30%,rgba(12,16,24,.15) 40%,rgba(12,16,24,.82) 100%)"></div>
+    <header class="hero-hd" style="position:absolute;top:0;left:0;right:0;height:88px;padding:0 64px;display:flex;align-items:center;justify-content:space-between;color:#FFF">
       <a href="#" style="display:flex;align-items:center;gap:9px"><img src="../assets/brand/enCloud9-cloud-mark-white.svg" alt="" style="width:29px;height:24px"><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9 home" style="width:96px;height:32px"></a>
       <nav style="display:flex;gap:32px;font-size:15px"><a href="#">Dynamics 365</a><a href="#">Copilot</a><a href="#">Work</a><a href="#">About Brian</a><a href="#">Writing</a><a href="#" style="text-decoration:underline;text-underline-offset:4px">Start a conversation</a></nav>
     </header>
     <div style="position:absolute;left:64px;bottom:64px;right:64px;color:#FFF;display:flex;flex-direction:column;gap:28px">
-      <h1 class="d" style="margin:0;font-size:100px;line-height:0.98;letter-spacing:-0.015em">A Dynamics 365 partner<br>with a founder’s name<br>on the door</h1>
-      <p style="margin:0;font-size:18px;line-height:1.6;color:rgba(255,255,255,.88);max-width:520px">Dynamics 365, Copilot and Power Platform, from Bellevue, Nebraska. Founded by a CPA, built for companies that count.</p>
+      <h1 class="d hero-h" style="margin:0;font-size:100px;line-height:0.98;letter-spacing:-0.015em">A Dynamics 365 partner<br>with a founder’s name<br>on the door</h1>
+      <p class="hero-p" style="margin:0;font-size:18px;line-height:1.6;color:rgba(255,255,255,.88);max-width:520px">Dynamics 365, Copilot and Power Platform, from Bellevue, Nebraska. Founded by a CPA, built for companies that count.</p>
     </div>
   </section>
-  <section style="padding:120px 64px 104px;display:grid;grid-template-columns:200px 1fr;gap:64px">
-    <span class="m">Why we exist</span>
-    <div style="display:flex;flex-direction:column;gap:22px;max-width:1000px"><p class="d" style="margin:0;font-size:46px;line-height:1.22;letter-spacing:-0.005em">“[Brian, in his own words: why a CPA started a Dynamics 365 firm, and what he does differently. Two or three sentences.]”</p><span style="font-size:15px;color:#6E6A64">Brian Begley, CPA, founder</span></div>
+  <section data-r style="padding:120px 64px 104px;display:grid;grid-template-columns:200px 1fr;gap:64px">
+    <span class="m rh">Why we exist</span>
+    <div class="rq" style="display:flex;flex-direction:column;gap:22px;max-width:1000px"><p class="d" style="margin:0;font-size:46px;line-height:1.22;letter-spacing:-0.005em">“[Brian, in his own words: why a CPA started a Dynamics 365 firm, and what he does differently. Two or three sentences.]”</p><span style="font-size:15px;color:#6E6A64">Brian Begley, CPA, founder</span></div>
   </section>
-  <section style="padding:0 64px 120px;display:grid;grid-template-columns:200px 1fr 1fr;gap:64px">
-    <span class="m">Services</span>
+  <section data-r style="padding:0 64px 120px;display:grid;grid-template-columns:200px 1fr 1fr;gap:64px">
+    <span class="m rh">Services</span>
     <div style="display:flex;flex-direction:column">
-      <a href="#" style="display:flex;flex-direction:column;gap:6px;padding:24px 0;border-top:1px solid #DDD9D2"><span class="d" style="font-size:32px;letter-spacing:-0.015em;font-weight:400">Dynamics 365</span><span style="font-size:15px;color:#6E6A64">Sales, Customer Service, Business Central</span></a><a href="#" style="display:flex;flex-direction:column;gap:6px;padding:24px 0;border-top:1px solid #DDD9D2"><span class="d" style="font-size:32px;letter-spacing:-0.015em;font-weight:400">Power Platform</span><span style="font-size:15px;color:#6E6A64">Power Apps, Power Automate and Power BI for work still done by hand</span></a><a href="#" style="display:flex;flex-direction:column;gap:6px;padding:24px 0;border-top:1px solid #DDD9D2"><span class="d" style="font-size:32px;letter-spacing:-0.015em;font-weight:400">Copilot and agents</span><span style="font-size:15px;color:#6E6A64">Copilot and agents for named jobs, on your own data</span></a><a href="#" style="display:flex;flex-direction:column;gap:6px;padding:24px 0;border-top:1px solid #DDD9D2"><span class="d" style="font-size:32px;letter-spacing:-0.015em;font-weight:400">Support</span><span style="font-size:15px;color:#6E6A64">A team that knows your system</span></a>
+      <a href="#" class="svc" style="display:flex;flex-direction:column;gap:6px;padding:24px 0;border-top:1px solid #DDD9D2"><span class="d t" style="align-self:flex-start;font-size:32px;letter-spacing:-0.015em;font-weight:400">Dynamics 365</span><span style="font-size:15px;color:#6E6A64">Sales, Customer Service, Business Central</span></a><a href="#" class="svc" style="display:flex;flex-direction:column;gap:6px;padding:24px 0;border-top:1px solid #DDD9D2"><span class="d t" style="align-self:flex-start;font-size:32px;letter-spacing:-0.015em;font-weight:400">Power Platform</span><span style="font-size:15px;color:#6E6A64">Power Apps, Power Automate and Power BI for work still done by hand</span></a><a href="#" class="svc" style="display:flex;flex-direction:column;gap:6px;padding:24px 0;border-top:1px solid #DDD9D2"><span class="d t" style="align-self:flex-start;font-size:32px;letter-spacing:-0.015em;font-weight:400">Copilot and agents</span><span style="font-size:15px;color:#6E6A64">Copilot and agents for named jobs, on your own data</span></a><a href="#" class="svc" style="display:flex;flex-direction:column;gap:6px;padding:24px 0;border-top:1px solid #DDD9D2"><span class="d t" style="align-self:flex-start;font-size:32px;letter-spacing:-0.015em;font-weight:400">Support</span><span style="font-size:15px;color:#6E6A64">A team that knows your system</span></a>
       <div style="border-top:1px solid #DDD9D2"></div>
     </div>
-    <div style="position:relative;overflow:hidden;background:#E9EDF2;align-self:stretch;min-height:440px"><img src="../assets/photos/dylan-gillis-KdeqA3aTnBY.jpg" alt="A client working session" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"><span style="position:absolute;right:10px;bottom:8px;font-size:10px;color:rgba(255,255,255,.8);font-family:Arial,sans-serif">Stand-in photo: Dylan Gillis, Unsplash</span></div>
+    <div class="ph2" style="position:relative;overflow:hidden;background:#E9EDF2;align-self:stretch;min-height:440px"><img src="../assets/photos/dylan-gillis-KdeqA3aTnBY.jpg" alt="A client working session" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"><span style="position:absolute;right:10px;bottom:8px;font-size:10px;color:rgba(255,255,255,.8);font-family:Arial,sans-serif">Stand-in photo: Dylan Gillis, Unsplash</span></div>
   </section>
-  <section style="background:#F3F1EC;padding:96px 64px;display:grid;grid-template-columns:200px 1fr 360px;gap:64px">
-    <span class="m">Proof</span>
-    <div style="display:flex;flex-direction:column;gap:20px"><p class="d" style="margin:0;font-size:40px;line-height:1.2;letter-spacing:-0.02em">“[A real client quote, used with their okay.]”</p><span class="m">[Name, title, company]</span></div>
+  <section data-r style="background:#F3F1EC;padding:96px 64px;display:grid;grid-template-columns:200px 1fr 360px;gap:64px">
+    <span class="m rh">Proof</span>
+    <div class="rq" style="display:flex;flex-direction:column;gap:20px"><p class="d" style="margin:0;font-size:40px;line-height:1.2;letter-spacing:-0.02em">“[A real client quote, used with their okay.]”</p><span class="m">[Name, title, company]</span></div>
     <div style="display:flex;flex-direction:column;gap:14px;font-size:15px;line-height:1.6;color:#4B4842;border-top:1px solid #D9D5CE;padding-top:16px;text-wrap:pretty"><span style="font-size:22px;color:#1F1E1C">[Client name]</span><span>[One result from their published Success Story]</span><span style="border-top:1px solid #D9D5CE;padding-top:14px">Best Dynamics 365 Partners, CRM Software Blog, 2026</span><a href="#" style="color:#355DA6;text-decoration:underline;text-underline-offset:4px">Read all 23 Success Stories</a></div>
   </section>
-  <section style="padding:120px 64px 48px;display:grid;grid-template-columns:200px 1fr;gap:64px;background:#FFFFFF">
-    <span class="m">Contact</span>
+  <section data-r style="padding:120px 64px 48px;display:grid;grid-template-columns:200px 1fr;gap:64px;background:#FFFFFF">
+    <span class="m rh">Contact</span>
     <div style="display:flex;flex-direction:column;gap:40px">
-      <a href="#" class="d" style="font-size:120px;line-height:0.95;letter-spacing:-0.045em;padding-bottom:28px;display:block"><span style="text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:14px">Start a conversation</span></a>
+      <a href="#" class="d cta" style="font-size:120px;line-height:0.95;letter-spacing:-0.045em;padding-bottom:28px;display:block"><span class="u" style="text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:14px">Start a conversation</span></a>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;font-size:15px;line-height:1.7;color:#4B5263"><span><span class="m">Phone</span><br>1-844-264-0729</span><span><span class="m">Office</span><br>Bellevue, Nebraska</span><span><span class="m">Elsewhere</span><br>LinkedIn</span></div>
       <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #DDD9D2;padding-top:22px"><span style="display:flex;align-items:center;gap:8px"><img src="../assets/brand/enCloud9-cloud-mark-blue.svg" alt="" style="width:22px;height:18px"><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9" style="width:78px;height:26px"></span><span class="m" style="color:#6E6A64">Microsoft and Dynamics 365 are trademarks of the Microsoft group of companies.</span></div>
     </div>
   </section>
 </div>
+<script>(function(){if(!('IntersectionObserver' in window)||!matchMedia('(prefers-reduced-motion:no-preference)').matches)return;document.documentElement.classList.add('js');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});document.querySelectorAll('[data-r]').forEach(function(el){io.observe(el)})})();</script>
 </body></html>
