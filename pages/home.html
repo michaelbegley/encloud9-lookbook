@@ -8,7 +8,7 @@
 <meta name="description" content="We set up Dynamics 365 Sales and Customer Service for growing businesses across the US, then switch on Copilot and agents where they pay off. Standard packages, one four-stage process, and support plans with published prices, starting at $500 a month.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&amp;family=JetBrains+Mono:wght@400&amp;display=swap">
 <style>
-:root{--ink:#15181D;--mute:#646B76;--hd:#6B7380;--line:#E3E6EB;--grid:#EDEFF2;--wash:#F7F8FA;--blue:#355DA6;--off:#C9CED6;--paper:#FFFFFF;--ease:cubic-bezier(.2,.7,.2,1);--gut:20px;--secpad:72px}
+:root{--ink:#15181D;--mute:#646B76;--hd:#6B7380;--line:#E3E6EB;--grid:#EDEFF2;--wash:#F7F8FA;--blue:#355DA6;--deep:#2C4F91;--sky:#2E9BD6;--tint:#E6EDF8;--off:#8A919C;--paper:#FFFFFF;--ease:cubic-bezier(.2,.7,.2,1);--gut:20px;--secpad:72px;--max:1280px}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:16px}
 html,body{margin:0;background:var(--paper)}
@@ -20,16 +20,18 @@ a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .skip{position:absolute;left:12px;top:-60px;z-index:50;background:var(--blue);color:#FFF;padding:12px 16px;border-radius:6px;font-weight:500}
 .skip:focus{top:12px}
-.wrap{max-width:1440px;margin:0 auto}
+.wrap{max-width:calc(var(--max) + 2 * var(--gut));margin:0 auto}
 h1{margin:0;font-size:clamp(38px,10.5vw,64px);line-height:1.02;font-weight:500;letter-spacing:-0.02em}
 h2{margin:0;font-size:clamp(28px,7.4vw,40px);line-height:1.12;font-weight:500;letter-spacing:-0.02em}
 h3{margin:0;font-weight:500}
 p{margin:0}
 .link{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
-/* buttons */
+/* buttons (no movement on hover: motion lives only in the selection system) */
 .btns{display:flex;gap:10px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:6px;font-size:15px;font-weight:500;border:1px solid var(--line);background:var(--paper);color:var(--ink);text-align:center;line-height:1.25;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--blue)}
 .btn.p{background:var(--blue);border-color:var(--blue);color:#FFF}
+.btn.p:hover{background:var(--deep);border-color:var(--deep)}
 .btns .btn{flex:1 1 auto;max-width:100%}
 /* header */
 .hdr{border-bottom:1px solid var(--line);position:relative;z-index:10;background:var(--paper)}
@@ -46,14 +48,19 @@ p{margin:0}
 .menu nav a{display:flex;align-items:center;min-height:48px;border-bottom:1px solid var(--line);font-size:17px}
 .menu nav a.tel{color:var(--mute);font-size:15px;border-bottom:0}
 .nav-d a[aria-current],.menu nav a[aria-current]{color:var(--blue)}
-/* hero spreadsheet */
+/* hero spreadsheet. Column letters, row numbers and the fx text are CSS generated content, so the H1 is the first text after the nav */
 .hero{position:relative;overflow:hidden}
-.cols{display:flex;height:28px;align-items:center;font-size:11px;color:var(--hd);background:var(--wash);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap}
+.cols{display:flex;height:28px;align-items:center;font-size:11px;color:var(--hd);background:var(--wash);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;counter-reset:col}
 .cols span{flex:0 0 72px;text-align:center;border-left:1px solid var(--line)}
 .cols span:first-child{flex-basis:20px;border-left:0}
-.rows{display:none}
+.cols span+span{counter-increment:col}
+.cols span+span::after{content:counter(col,upper-alpha)}
+.rows{display:none;counter-reset:row}
+.rows span{counter-increment:row}
+.rows span::after{content:counter(row)}
 .sheet{position:relative;padding:32px var(--gut) 48px}
 .sheet::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:72px 40px;background-position:19px -1px;-webkit-mask-image:linear-gradient(180deg,#000 50%,transparent);mask-image:linear-gradient(180deg,#000 50%,transparent);pointer-events:none}
+.sin{position:relative}
 .intro{position:relative;background:var(--paper);padding:20px 16px;margin:0 -16px;display:flex;flex-direction:column;gap:20px}
 .lede{font-size:17px;line-height:1.6;color:var(--mute)}
 .small{font-size:15px;color:var(--mute)}
@@ -61,7 +68,8 @@ p{margin:0}
 /* home readiness card */
 .card{position:relative;margin-top:32px;background:var(--paper);outline:2px solid var(--blue);box-shadow:0 12px 32px -18px rgba(21,24,29,.3);scroll-margin-top:24px}
 .fx{display:flex;align-items:center;gap:10px;height:32px;padding:0 12px;border-bottom:1px solid var(--line);font-size:12px;color:var(--mute);white-space:nowrap;overflow:hidden}
-.fx b{font-weight:400;color:var(--ink)}
+.fx::before{content:"fx";color:var(--ink)}
+.fx::after{content:"=COUNTIF(M3:M7,TRUE)"}
 .ct{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:48px;padding:8px 16px;background:var(--wash)}
 .ct strong{font-weight:500}.ct small{font-size:12px;color:var(--mute)}
 .qs{list-style:none;margin:0;padding:0}
@@ -77,8 +85,8 @@ p{margin:0}
 .num{display:inline-grid}.d{grid-area:1/1}.d0,.d1,.d2{opacity:0}
 .tot p{font-size:14px;line-height:1.5;color:var(--mute)}
 .tot p a{color:var(--blue);text-decoration:underline;display:inline-block;padding:4px 0}
-.handle{position:absolute;right:-6px;bottom:-6px;width:10px;height:10px;background:var(--blue);border:2px solid #FFF}
-/* sales hero: breadcrumb + formula bar */
+.handle{position:absolute;right:-6px;bottom:-6px;width:10px;height:10px;background:var(--blue);border:2px solid var(--paper)}
+/* sales hero: breadcrumb, formula bar, price card */
 .crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 0;font-size:14px;color:var(--mute)}
 .crumb li+li::before{content:"/";padding:0 8px;color:var(--hd)}
 .crumb a{text-decoration:underline;text-underline-offset:2px;display:inline-block;padding:4px 0}
@@ -86,29 +94,42 @@ p{margin:0}
 .fbar{position:relative;display:grid;grid-template-columns:1fr;background:var(--paper);outline:2px solid var(--blue);box-shadow:0 12px 32px -18px rgba(21,24,29,.3)}
 .fbar .cl{display:flex;align-items:center;min-height:32px;padding:0 12px;font-size:12px;color:var(--ink);background:var(--wash);border-bottom:1px solid var(--line)}
 .fbar p{padding:16px;font-size:17px;line-height:1.6}
-/* proof strip */
-.proof{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pcard{position:relative;margin-top:32px;background:var(--paper);border:1px solid var(--line);box-shadow:0 12px 32px -18px rgba(21,24,29,.3)}
+.pcard .ct{border-bottom:1px solid var(--line)}
+.pt{width:100%;border-collapse:collapse}
+.pt caption{text-align:left}
+.pt th,.pt td{padding:14px 16px;text-align:left;vertical-align:middle}
+.pt tr+tr th,.pt tr+tr td{border-top:1px solid var(--line)}
+.pt th{font-weight:500;font-size:16px;line-height:1.3}
+.pt td{position:relative;text-align:right;border-left:1px solid var(--line)}
+.pv{display:block;font-size:30px;font-weight:500;letter-spacing:-0.01em;line-height:1.1;font-variant-numeric:tabular-nums}
+.pt small{display:block;font-size:12px;line-height:1.4;color:var(--mute);margin-top:4px}
+.pt td::after{content:"";position:absolute;inset:-1px;border:2px solid var(--blue);opacity:0;pointer-events:none;z-index:1}
+.pf{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 16px;padding:10px 16px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
+.pf a{color:var(--blue);text-decoration:underline;text-underline-offset:2px;display:inline-block;padding:4px 0;font-size:14px}
+/* proof strip: full-bleed rules, content capped */
+.proofb{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proof{list-style:none;margin:0 auto;padding:0;display:grid;max-width:calc(var(--max) + 2 * var(--gut))}
 .proof li+li{border-top:1px solid var(--line)}
-.proof a{display:flex;flex-direction:column;gap:6px;padding:16px var(--gut);height:100%;justify-content:space-between}
+.proof a,.proof .pi{display:flex;flex-direction:column;gap:6px;padding:16px var(--gut);height:100%;justify-content:space-between}
 .proof b{font-weight:500;font-size:16px;line-height:1.4}
 .proof span{font-size:14px;color:var(--blue)}
 /* sections */
-.sec{padding:var(--secpad) var(--gut) 0;display:flex;flex-direction:column;gap:20px;scroll-margin-top:8px}
+.sec{width:100%;max-width:calc(var(--max) + 2 * var(--gut));margin:0 auto;padding:var(--secpad) var(--gut) 0;display:flex;flex-direction:column;gap:20px;scroll-margin-top:8px}
 .shead{display:flex;flex-direction:column;gap:16px}
 .shead .k{display:flex;flex-direction:column;gap:12px}
 .sub{font-size:17px;line-height:1.6;color:var(--mute);max-width:640px}
+.sub.w{max-width:820px}
 .note{font-size:16px;line-height:1.55}
 .notes{display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.6;color:var(--mute);max-width:880px}
 .notes a,.fine a{color:var(--blue);text-decoration:underline}
-.svc{display:grid;border:1px solid var(--line)}
-.cell{position:relative;padding:24px 20px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.h3t{font-size:24px;line-height:1.2;margin-top:12px;scroll-margin-top:16px}
+.svc{display:grid;border:1px solid var(--line);counter-reset:col}
+.cell{position:relative;padding:24px 20px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line);counter-increment:col}
 .svc>.cell:first-child{border-top:0}
 .cell h3{font-size:22px;line-height:1.2}
 .cell .s{font-size:16px;line-height:1.6;color:var(--mute)}
 .cell .l{font-size:15px;color:var(--blue);margin-top:auto;padding-top:4px}
-.cell::after{content:"";position:absolute;inset:-1px;border:2px solid var(--blue);opacity:0;pointer-events:none}
-.cell::before{content:"";position:absolute;right:-6px;bottom:-6px;width:10px;height:10px;background:var(--blue);border:2px solid #FFF;opacity:0;z-index:1}
-a.cell:hover::after,a.cell:hover::before,a.cell:focus-visible::after,a.cell:focus-visible::before,.cell:focus-within::after,.cell:focus-within::before{opacity:1}
 a.cell:focus-visible{outline:none}
 .spec{margin:6px 0 0;display:grid;grid-template-columns:52px 1fr}
 .spec dt,.spec dd{margin:0;padding:10px 0;border-top:1px solid var(--line)}
@@ -116,24 +137,39 @@ a.cell:focus-visible{outline:none}
 .spec dd{font-size:15px}
 .job{font-size:19px;line-height:1.35;font-weight:500}
 .row-end{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
-/* stage strip */
+.kf span{white-space:nowrap}
+.lab.kf{color:var(--ink)}
+/* the selected cell: one recurring interaction (package, story, power, stage cells and free-check rows) */
+.pick{position:relative}
+.pick::after{content:"";position:absolute;inset:-1px;border:2px solid var(--blue);opacity:0;pointer-events:none;z-index:2}
+.pick::before{content:"";position:absolute;right:-5px;bottom:-5px;width:10px;height:10px;background:var(--blue);border:2px solid var(--paper);opacity:0;transform:scale(.3);pointer-events:none;z-index:3}
+.pick:hover::after,.pick:focus-within::after,.pick.on::after{opacity:1}
+.pick:hover::before,.pick:focus-within::before,.pick.on::before{opacity:1;transform:none}
+.ch,.rn{display:none}
+.ch::before,.rn::before{content:"";position:absolute;inset:0;background:var(--tint);opacity:0}
+.ch::after,.rn::after{position:relative}
+.pick:hover .ch,.pick:focus-within .ch,.pick:hover .rn,.pick:focus-within .rn{color:var(--blue)}
+.pick:hover .ch::before,.pick:focus-within .ch::before,.pick:hover .rn::before,.pick:focus-within .rn::before{opacity:1}
+/* stage strip A to D */
 .stages{position:relative;display:grid;border:1px solid var(--line);list-style:none;margin:0;padding:0}
 .stage{position:relative;padding:20px 20px 24px 52px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
 .stage:first-child{border-top:0}
 .stage .col{position:absolute;left:0;top:0;bottom:0;width:32px;display:flex;align-items:flex-start;justify-content:center;padding-top:22px;background:var(--wash);border-right:1px solid var(--line);font-size:11px;color:var(--hd)}
+.stage .col::before{content:"";position:absolute;inset:0;background:var(--tint);opacity:0}
+.stage .col::after{content:attr(data-c);position:relative}
+.stage:hover .col,.stage.on .col{color:var(--blue)}
+.stage:hover .col::before,.stage.on .col::before{opacity:1}
+.stages:hover .stage.on:not(:hover) .col{color:var(--hd)}
+.stages:hover .stage.on:not(:hover) .col::before,.stages:hover .stage.on:not(:hover)::after,.stages:hover .stage.on:not(:hover)::before{opacity:0}
 .stage h3{font-size:24px;line-height:1.15;letter-spacing:-0.01em}
 .stage p{font-size:16px;line-height:1.6;color:var(--mute)}
-.stage::after{content:"";position:absolute;inset:-1px;border:2px solid var(--blue);opacity:0;pointer-events:none;z-index:1}
-.stage:first-child::after{opacity:1}
-.stage .handle{display:none;z-index:2}
-.stage:first-child .handle{display:block}
 /* grid tables (look 8 plan table) */
 .tbl{border-collapse:collapse;border:1px solid var(--line);width:100%;font-size:16px;line-height:1.5}
 .tbl caption{text-align:left}
 .tbl thead th{font-family:'JetBrains Mono',monospace;text-align:left;font-weight:400;font-size:12px;color:var(--mute);padding:10px 16px;background:var(--wash);border-bottom:1px solid var(--line)}
 .tbl tbody th,.tbl td{padding:16px;border-top:1px solid var(--line);vertical-align:baseline;text-align:left}
 .tbl tbody th{font-weight:500;font-size:17px}
-.tbl td{color:var(--ink)}
+.tbl td{color:var(--ink);position:relative;z-index:0}
 .tbl .mu{color:var(--mute)}
 .pr{font-size:26px;font-weight:500;letter-spacing:-0.01em;font-variant-numeric:tabular-nums;white-space:nowrap}
 .pr small{font-size:15px;font-weight:400;color:var(--mute);letter-spacing:0}
@@ -141,6 +177,7 @@ a.cell:focus-visible{outline:none}
 .tbl tr.minp th,.tbl tr.minp td{background:var(--wash)}
 .fine{font-size:14px;line-height:1.6;color:var(--mute)}
 .tblwrap{display:flex;flex-direction:column;gap:16px}
+.stt::after{content:"";position:absolute;inset:0;background:var(--sky);opacity:0;z-index:-1;pointer-events:none}
 @media (max-width:759px){
 .tbl.rf,.tbl.rf tbody,.tbl.rf tr,.tbl.rf th,.tbl.rf td{display:block;width:100%}
 .tbl.rf thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
@@ -153,20 +190,26 @@ a.cell:focus-visible{outline:none}
 .tbl.rf .pr{white-space:normal}.tbl.rf .pr small{white-space:nowrap}
 .tbl.rf.stack td{display:block}
 .tbl.rf.stack td::before{display:block;margin-bottom:2px}
-.tbl.rf td.go::before{display:none}
+.tbl.rf.cmp tbody tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:12px;padding:0 16px 14px}
+.tbl.rf.cmp tbody th{grid-column:1/-1;padding:14px 0 8px}
+.tbl.rf.cmp td{display:block;padding:0;font-size:15px;line-height:1.4}
+.tbl.rf.cmp td::before{content:attr(data-short);display:block;margin-bottom:2px;font-size:11px}
 }
-/* checks list (home) */
-.tools{border:0;border-collapse:collapse;width:100%;border-bottom:1px solid var(--line)}
-.tools th{width:320px;padding-right:24px!important}.tools td.mu{padding-right:24px!important}.tools td.go{text-align:right;width:180px}
+/* free checks list (home) */
+.tools{border:0;border-collapse:collapse;width:100%;border-bottom:1px solid var(--line);counter-reset:row}
+.tools tr{counter-increment:row}
+.tools th{width:340px;padding-right:24px!important}.tools td.mu{padding-right:24px!important}.tools td.go{text-align:right;width:180px;padding-right:16px!important}
 .tools th,.tools td{border-top:1px solid var(--line);padding:18px 0;vertical-align:baseline;text-align:left}
-.tools th{font-weight:500;font-size:17px}
+.tools th{font-weight:500;font-size:17px;position:relative;padding-left:48px!important}
+.tools .rn{display:flex;position:absolute;left:0;top:0;bottom:0;width:32px;align-items:center;justify-content:center;background:var(--wash);border-right:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:400;color:var(--hd)}
+.tools .rn::after{content:counter(row)}
 .tools td.mu{color:var(--mute)}
 .tools td.go a{color:var(--blue);display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:2px}
-.x-go{display:inline-block}
 @media (max-width:759px){
 .tools,.tools tbody,.tools tr,.tools th,.tools td{display:block}
-.tools tr{border-top:1px solid var(--line);padding:16px 0 8px}
-.tools th,.tools td{border-top:0;padding:2px 0;width:auto!important;text-align:left!important}
+.tools tr{border-top:1px solid var(--line);padding:16px 0 8px 48px}
+.tools th,.tools td{border-top:0;padding:2px 0!important;width:auto!important;text-align:left!important;position:static}
+.tools .rn{top:0;bottom:0}
 }
 /* fit checklist */
 .fit{display:grid;border:1px solid var(--line)}
@@ -202,24 +245,30 @@ a.cell:focus-visible{outline:none}
 .opts label:has(input:focus-visible){outline:2px solid var(--blue);outline-offset:-4px;box-shadow:inset 0 0 0 4px #FFF}
 .res{border-top:2px solid var(--ink);padding:20px 16px;display:flex;flex-direction:column;gap:16px}
 .res p{font-size:15px;line-height:1.55}
+.res .sent{font-weight:500;color:var(--blue)}
+.res .sent:empty{display:none}
 .frm{display:grid;gap:12px}
 .frm label{min-width:0;display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:500}
 .frm input{width:100%;min-width:0;font:inherit;font-weight:400;font-size:16px;min-height:44px;padding:0 12px;border:1px solid #8A919C;border-radius:6px;background:var(--paper);color:var(--ink)}
 .side{border:1px solid var(--line);align-self:start}
-/* FAQ */
-.faq{border-top:1px solid var(--line)}
-.faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr 24px;gap:16px;align-items:center;padding:18px 0;min-height:56px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary h3{font-size:19px;line-height:1.35}
-.faq summary .pm{position:relative;width:16px;height:16px;justify-self:end}
-.faq summary .pm::before,.faq summary .pm::after{content:"";position:absolute;left:0;right:0;top:7px;height:2px;background:var(--blue)}
-.faq summary .pm::after{transform:rotate(90deg)}
-.faq details[open] summary .pm::after{transform:rotate(0)}
-.faq .ans{padding:0 0 22px;font-size:16px;line-height:1.65;color:var(--mute);max-width:820px}
-.faq .ans a{color:var(--blue);text-decoration:underline}
+/* FAQ: plain list of h3 plus p, every answer in the source */
+.faq{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.faq li{border-bottom:1px solid var(--line);padding:20px 0 22px;display:flex;flex-direction:column;gap:8px}
+.faq h3{font-size:19px;line-height:1.35}
+.faq p{font-size:16px;line-height:1.65;color:var(--mute);max-width:820px}
+.faq p a{color:var(--blue);text-decoration:underline}
+/* the one dark band per page */
+.band{position:relative;overflow:hidden;margin-top:var(--secpad);padding-bottom:var(--secpad);background:var(--deep);color:#FFF;scroll-margin-top:0;
+--ink:#FFFFFF;--mute:#D6DFF0;--hd:#C9D6EE;--line:rgba(255,255,255,.22);--wash:rgba(255,255,255,.07);--blue:#FFFFFF;--paper:#2C4F91}
+.band::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:72px 40px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);mask-image:linear-gradient(180deg,#000,transparent 70%);pointer-events:none}
+.band::after{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--sky)}
+.band .sec{position:relative}
+.band .svc,.band .tbl{background:var(--deep)}
+.band .svc .lab::before{content:"";display:inline-block;width:6px;height:6px;margin-right:8px;background:var(--sky);vertical-align:2px}
+.band .btn{background:#FFF;border-color:#FFF;color:#15181D}
+.band .btn:hover{background:var(--tint)}
 /* end */
-.end{padding:var(--secpad) var(--gut) 32px}
+.end{max-width:calc(var(--max) + 2 * var(--gut));margin:0 auto;padding:var(--secpad) var(--gut) 32px}
 .cta{position:relative;border:2px solid var(--blue);padding:28px 20px;display:flex;flex-direction:column;gap:20px}
 .cta .k{display:flex;flex-direction:column;gap:12px}
 .cta .btns{flex-direction:column}.cta .btns .btn{flex:none;width:100%}
@@ -247,7 +296,7 @@ a.cell:focus-visible{outline:none}
 .stage{padding:56px 20px 32px;border-top:0}
 .stage+.stage{border-left:1px solid var(--line)}
 .stage .col{left:0;right:0;width:auto;bottom:auto;height:28px;align-items:center;padding-top:0;border-right:0;border-bottom:1px solid var(--line)}
-.stage::after{top:27px}
+.stage.pick::after{top:27px}
 .stage h3{font-size:26px}
 .shead.split{display:grid;grid-template-columns:1fr 1fr;gap:16px 56px;align-items:end}
 .row-end{flex-direction:row;justify-content:space-between;align-items:center}
@@ -260,13 +309,18 @@ a.cell:focus-visible{outline:none}
 .svc.three{grid-template-columns:repeat(3,1fr)}.svc.three>.cell{border-top:0}.svc.three>.cell+.cell{border-left:1px solid var(--line)}
 .svc.four{grid-template-columns:repeat(4,1fr)}.svc.four>.cell{border-top:0!important}.svc.four>.cell+.cell{border-left:1px solid var(--line)}
 .proof.p4{grid-template-columns:repeat(4,1fr);padding:0 calc(var(--gut) - 20px)}.proof.p4 li{border-top:0!important}.proof.p4 li+li{border-left:1px solid var(--line)}
-.proof.p4 a{padding:22px 20px}
+.proof.p4 a,.proof.p4 .pi{padding:22px 20px}
 .chk{grid-template-columns:8fr 4fr;align-items:start}
 .plans-split{display:grid;grid-template-columns:4fr 8fr;gap:72px;align-items:start}
 .tbl tbody th,.tbl td{padding:20px}
 .tbl thead th{padding:10px 20px}
 .tbl.cmp td{font-size:15px}
 .cell{padding:28px 24px}
+/* column letter header above each selectable cell; it lights up with the selection */
+.ch{display:flex;position:absolute;left:0;right:0;top:0;height:24px;align-items:center;justify-content:center;background:var(--wash);border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--hd)}
+.ch::after{content:counter(col,upper-alpha)}
+.cell.hc{padding-top:52px}
+.pick.hc::after{top:23px}
 }
 @media (min-width:1180px){
 :root{--gut:72px}
@@ -284,68 +338,59 @@ a.cell:focus-visible{outline:none}
 .rows span{height:48px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line)}
 .sheet{margin-left:48px;padding:0}
 .sheet::before{background-size:104px 48px;background-position:-1px -1px;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
-.home .sheet{display:grid;grid-template-columns:minmax(0,712px) minmax(0,624px);column-gap:16px;padding:0 0 48px}
-.home .intro{margin:0;padding:24px;min-height:528px;justify-content:center;gap:24px}
-.home .lede{font-size:18px}
+/* content capped at 1280px and centred; the grid chrome still runs full width */
+.sin{--edge:max(72px,calc((100% + 48px - var(--max)) / 2));padding-left:calc(var(--edge) - 72px);padding-right:var(--edge)}
+.intro{margin:0;padding:24px;gap:24px}
+.lede{font-size:18px}
+.home .sin{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,6fr);column-gap:40px;padding-bottom:48px}
+.home .intro{min-height:528px;justify-content:center}
 .home .card{margin-top:48px;align-self:start}
-.sales .sheet{padding:48px 24px 96px}
-.sales .intro{margin:0;padding:24px;max-width:1040px;gap:24px}
-.sales .lede{font-size:18px}
+.sales .sin{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4.6fr);column-gap:40px;align-items:center;padding-top:48px;padding-bottom:96px}
+.sales .pcard{margin-top:0}
 .fbar p{font-size:18px;padding:18px 20px}
-.proof.p4{padding:0 52px}
 .end{padding-bottom:40px}
 .cta{padding:48px;display:grid;grid-template-columns:1fr auto;gap:24px 40px;align-items:center}
 .cta .small{grid-column:1/-1;margin-top:0}
+.band::before{background-size:104px 48px}
 }
-/* motion: transform and opacity only, one pass, off under reduced motion */
+/* motion: transform and opacity only, each element under 700ms, runs once, nothing loops, all of it off under reduced motion.
+Lives only in: the hero widget, the selected-cell interaction, the stage strip pass, the Sales price card and the agent status pass. */
 @media (prefers-reduced-motion:no-preference){
-.cell::after,.cell::before{transition:opacity .25s var(--ease)}
-.btn,.x-go,.book-d{transition:transform .3s var(--ease)}
-.btn:hover,.book-d:hover{transform:translateY(-1px)}
-.tools tr:hover .x-go{transform:translateX(4px)}
-.faq summary .pm::after{transition:transform .25s var(--ease)}
-.js .intro{animation:x-up .7s var(--ease) .1s both}
-.js .card,.js .fbar{animation:x-open .8s var(--ease) .25s backwards}
-.js .fx span{display:inline-block;animation:x-fade .6s var(--ease) .8s backwards}
+.pick::after,.ch::before,.rn::before,.stage .col::before{transition:opacity .15s var(--ease)}
+.pick::before{transition:opacity .15s var(--ease),transform .15s var(--ease)}
 .js .q::after{animation:x-flash .32s var(--ease) both}
-.js .q:nth-child(1)::after{animation-delay:1.45s}
-.js .q:nth-child(2)::after{animation-delay:1.62s}
-.js .q:nth-child(3)::after{animation-delay:1.79s}
-.js .q:nth-child(4)::after{animation-delay:1.96s}
-.js .q:nth-child(5)::after{animation-delay:2.13s}
+.js .q:nth-child(1)::after{animation-delay:.30s}
+.js .q:nth-child(2)::after{animation-delay:.47s}
+.js .q:nth-child(3)::after{animation-delay:.64s}
+.js .q:nth-child(4)::after{animation-delay:.81s}
+.js .q:nth-child(5)::after{animation-delay:.98s}
 .js .tg.on::before{animation:x-off .24s var(--ease) both}
 .js .tg.on .kn{animation:x-knob .24s var(--ease) both}
-.js .q:nth-child(1) .on::before,.js .q:nth-child(1) .on .kn{animation-delay:1.51s}
-.js .q:nth-child(2) .on::before,.js .q:nth-child(2) .on .kn{animation-delay:1.68s}
-.js .q:nth-child(4) .on::before,.js .q:nth-child(4) .on .kn{animation-delay:2.02s}
-.js .d{animation:.9s var(--ease) 1.45s both}
-.js .d0{animation-name:x-d0}.js .d1{animation-name:x-d1}.js .d2{animation-name:x-d2}.js .d3{animation-name:x-d3}
-.js .rv.svc>*,.js .rv.proof>*,.js .rv.fit>*{opacity:0;transform:translateX(-12px)}
-.js .rv.in>*{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
-.js .rv.tbl tbody tr,.js .rv.tools tr{opacity:0;transform:translateX(-12px)}
-.js .rv.tbl.in tbody tr,.js .rv.tools.in tr{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
-.js .rv.in>:nth-child(2),.js .rv.in tbody tr:nth-child(2){transition-delay:.08s}
-.js .rv.in>:nth-child(3),.js .rv.in tbody tr:nth-child(3){transition-delay:.16s}
-.js .rv.in>:nth-child(4),.js .rv.in tbody tr:nth-child(4){transition-delay:.24s}
-.js .rv.in>:nth-child(n+5),.js .rv.in tbody tr:nth-child(n+5){transition-delay:.32s}
-.js .stages.in .stage:nth-child(2)::after{animation:x-flash 1s var(--ease) .5s both}
-.js .stages.in .stage:nth-child(3)::after{animation:x-flash 1s var(--ease) 1.3s both}
-.js .stages.in .stage:nth-child(4)::after{animation:x-flash 1s var(--ease) 2.1s both}
-.js .rv.cta{opacity:0;transform:translateY(12px)}
-.js .rv.cta .handle{transform:scale(0)}
-.js .rv.cta.in{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.js .rv.cta.in .handle{transform:none;transition:transform .3s var(--ease) .75s}
+.js .q:nth-child(1) .on::before,.js .q:nth-child(1) .on .kn{animation-delay:.36s}
+.js .q:nth-child(2) .on::before,.js .q:nth-child(2) .on .kn{animation-delay:.53s}
+.js .q:nth-child(4) .on::before,.js .q:nth-child(4) .on .kn{animation-delay:.87s}
+.js .d0{animation:x-d0 .42s linear both}
+.js .d1{animation:x-d1 .18s var(--ease) .36s both}
+.js .d2{animation:x-d2 .36s var(--ease) .53s both}
+.js .d3{animation:x-d3 .2s var(--ease) .87s both}
+.js .pcard.in td::after{animation:x-flash .3s var(--ease) both}
+.js .pcard.in tr:nth-child(2) td::after{animation-delay:.24s}
+.js .pcard.in tr:nth-child(3) td::after{animation-delay:.48s}
+.js .agt.in .stt::after{animation:x-hi .5s var(--ease) both}
+.js .agt.in tr:nth-child(2) .stt::after{animation-delay:.09s}
+.js .agt.in tr:nth-child(3) .stt::after{animation-delay:.18s}
+.js .agt.in tr:nth-child(4) .stt::after{animation-delay:.27s}
+.js .agt.in tr:nth-child(5) .stt::after{animation-delay:.36s}
+.js .agt.in tr:nth-child(6) .stt::after{animation-delay:.45s}
 }
-@keyframes x-up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@keyframes x-open{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
-@keyframes x-fade{from{opacity:0}to{opacity:1}}
-@keyframes x-flash{0%{opacity:0}15%,70%{opacity:1}100%{opacity:0}}
+@keyframes x-flash{0%{opacity:0}20%,70%{opacity:1}100%{opacity:0}}
+@keyframes x-hi{0%{opacity:0}30%{opacity:.45}100%{opacity:0}}
 @keyframes x-off{from{opacity:1}to{opacity:0}}
 @keyframes x-knob{from{transform:translateX(-16px)}to{transform:none}}
-@keyframes x-d0{0%,8%{opacity:1}12%,100%{opacity:0}}
-@keyframes x-d1{0%,8%{opacity:0;transform:translateY(.15em)}12%,27%{opacity:1;transform:none}31%,100%{opacity:0}}
-@keyframes x-d2{0%,27%{opacity:0;transform:translateY(.15em)}31%,65%{opacity:1;transform:none}69%,100%{opacity:0}}
-@keyframes x-d3{0%,65%{opacity:0;transform:translateY(.15em)}69%,100%{opacity:1;transform:none}}
+@keyframes x-d0{0%,85%{opacity:1}100%{opacity:0}}
+@keyframes x-d1{0%{opacity:0;transform:translateY(.15em)}30%,75%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes x-d2{0%{opacity:0;transform:translateY(.15em)}15%,85%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes x-d3{from{opacity:0;transform:translateY(.15em)}to{opacity:1;transform:none}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">{
@@ -365,18 +410,18 @@ a.cell:focus-visible{outline:none}
 <a class="skip" href="#main">Skip to main content</a>
 <header class="hdr"><div class="hdr-in wrap">
   <a href="home.html" class="logo" aria-label="enCloud9 home"><svg class="lg-m" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="90 120 332 272"> <g fill="#255DA6"> <rect x="98" y="300" width="312" height="84" rx="42"/> <circle cx="162" cy="296" r="64"/> <circle cx="210" cy="232" r="58"/> <circle cx="274" cy="216" r="88"/> <circle cx="342" cy="288" r="72"/> <circle cx="286" cy="288" r="70"/> </g> </svg><svg class="lg-w" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2592 864" > <g fill="#255DA6"> <path d="M133.772,535.665c0.918,18.208,5.699,32.277,14.346,42.209c8.643,9.932,20.781,14.897,36.416,14.897c22.07,0,38.438-10.94,49.106-32.829l92.695,17.104c-11.035,27.036-28.924,48.003-53.658,62.9c-24.739,14.897-53.753,22.346-87.04,22.346c-46.718,0-84.19-13.242-112.421-39.727C44.982,596.082,30.87,560.955,30.87,517.181c0-43.955,14.251-80.095,42.761-108.42c28.506-28.321,64.922-42.485,109.248-42.485c45.796,0,82.302,14.531,109.524,43.589c27.217,29.062,40.83,67.961,40.83,116.697v9.104H133.772z M217.64,447.384c-8.095-9.38-19.312-14.07-33.657-14.07s-25.89,4.828-34.623,14.484c-8.737,9.655-13.565,22.578-14.483,38.761h95.454C229.959,469.824,225.73,456.764,217.64,447.384z"/> <path d="M367.994,378.138h103.455l-2.207,43.313c22.07-33.472,51.589-50.21,88.557-50.21c30.161,0,53.702,9.014,70.625,27.036c16.919,18.027,25.381,44.417,25.381,79.177v174.632H549.246V507.525c0-32.735-11.863-49.106-35.588-49.106c-13.242,0-23.312,4.276-30.209,12.828c-6.896,8.553-10.345,20.829-10.345,36.83v144.009h-105.11V378.138z"/> <path d="M998.929,375.931c-25.566-23.355-54.348-35.037-86.35-35.037c-29.98,0-55.176,10.393-75.591,31.174c-20.415,20.786-30.623,46.533-30.623,77.246c0,30.532,10.389,56.327,31.174,77.385c20.781,21.062,46.348,31.588,76.694,31.588c30.161,0,58.392-10.94,84.695-32.83v116.422L982.1,645.74c-21.704,6.803-36.877,10.988-45.52,12.553c-8.647,1.561-20.049,2.346-34.209,2.346c-28.877,0-56.279-5.475-82.212-16.415s-48.188-25.7-66.763-44.278c-18.579-18.575-33.338-40.831-44.279-66.764c-10.944-25.933-16.415-53.335-16.415-82.212c0-23.355,3.492-45.886,10.483-67.59c6.987-21.7,17.01-41.287,30.071-58.762c13.057-17.471,28.277-32.735,45.658-45.796c17.38-13.057,36.968-23.126,58.762-30.208c21.795-7.078,44.46-10.622,68.004-10.622c13.242,0,25.838,1.151,37.795,3.449c11.953,2.302,29.519,6.944,52.693,13.932l2.759,0.552V375.931z"/> <path d="M1034.517,201.851h105.11v450.235h-105.11V201.851z"/> <path d="M1177.422,515.25c0-42.852,14.85-78.212,44.554-106.076c29.7-27.864,67.177-41.796,112.422-41.796c46.348,0,84.51,13.841,114.488,41.52c29.977,27.683,44.969,62.949,44.969,105.8c0,42.304-14.945,77.384-44.83,105.248c-29.889,27.863-67.637,41.796-113.248,41.796c-45.796,0-83.639-13.885-113.524-41.658C1192.363,592.315,1177.422,557.369,1177.422,515.25z M1335.777,455.936c-16.186,0-29.656,5.612-40.417,16.829c-10.759,11.221-16.139,25.199-16.139,41.934c0,16.738,5.38,30.717,16.139,41.934c10.76,11.221,24.231,16.828,40.417,16.828c15.816,0,28.967-5.607,39.451-16.828c10.482-11.217,15.725-25.195,15.725-41.934c0-16.919-5.242-30.941-15.725-42.071C1364.744,461.501,1351.594,455.936,1335.777,455.936z"/> <path d="M1817.462,530.699c0,27.588-3.957,49.382-11.863,65.383c-9.564,19.131-26.346,34.485-50.348,46.072c-24.001,11.587-50.899,17.381-80.694,17.381c-20.415,0-39.037-2.44-55.865-7.312c-16.829-4.871-31.864-12.276-45.106-22.208s-23.545-23.354-30.898-40.278c-7.358-16.919-11.035-36.598-11.035-59.038V378.138h105.109v148.423c0,30.532,12.596,45.796,37.796,45.796c25.195,0,37.796-15.264,37.796-45.796V378.138h105.109V530.699z"/> <path d="M2066.028,201.851h104.559v450.235h-100.695v-43.037c-9.381,16.001-22.07,28.325-38.072,36.968c-16,8.643-34.118,12.966-54.348,12.966c-34.761,0-63.823-13.793-87.178-41.381c-23.359-27.589-35.037-61.703-35.037-102.352c0-41.382,11.954-75.91,35.865-103.593c23.906-27.678,53.425-41.52,88.557-41.52c18.022,0,34.575,3.772,49.658,11.311c15.078,7.543,27.312,18.118,36.691,31.726V201.851z M2015.267,454.28c-15.634,0-28.786,5.751-39.45,17.243c-10.669,11.496-16.001,25.704-16.001,42.623c0,17.104,5.242,31.269,15.725,42.485c10.484,11.221,23.727,16.828,39.727,16.828c16.002,0,29.196-5.655,39.589-16.966c10.389-11.312,15.587-25.609,15.587-42.899c0-17.286-5.15-31.493-15.449-42.623C2044.691,459.846,2031.449,454.28,2015.267,454.28z"/> <path d="M2392.67,509.181c-20.049,9.75-40.003,14.621-59.866,14.621c-35.132,0-64.375-12.69-87.729-38.071c-23.359-25.381-35.037-57.288-35.037-95.73c0-44.874,15.863-81.613,47.59-110.214c31.726-28.596,72.418-42.899,122.076-42.899c52.417,0,94.902,14.716,127.456,44.141c32.554,29.429,48.831,67.961,48.831,115.593c0,23.726-4.647,46.809-13.933,69.246c-9.289,22.441-24.049,46.072-44.278,70.901l-93.799,115.317h-140.698L2392.67,509.181z M2382.462,325.997c-18.027,0-33.291,6.345-45.796,19.036c-12.51,12.69-18.76,28.049-18.76,46.072c0,17.842,6.069,32.739,18.208,44.693c12.139,11.957,27.217,17.932,45.244,17.932c18.389,0,33.609-6.112,45.658-18.346c12.044-12.229,18.069-27.541,18.069-45.934c0-18.022-5.979-33.105-17.932-45.244C2415.196,332.066,2400.299,325.997,2382.462,325.997z"/> </g> </svg></a>
-  <nav class="nav-d" aria-label="Main"><a href="dynamics-365-sales.html">Dynamics 365 Sales</a><a href="home.html#packages">Packages</a><a href="home.html#ai">Copilot and agents</a><a href="home.html#plans">Support plans</a><a href="home.html#stories">Stories</a><a href="home.html#checks">Free checks</a></nav>
+  <nav class="nav-d" aria-label="Main"><a href="dynamics-365-sales.html">Dynamics 365 Sales</a><a href="#packages">Packages</a><a href="#ai">Copilot and agents</a><a href="#plans">Support plans</a><a href="#stories">Stories</a><a href="#checks">Free checks</a></nav>
   <a class="tel-d" href="tel:+18442640729">1-844-264-0729</a>
   <a class="book-d" href="#" data-todo="Booking form URL not set (Michael). Today https://www.encloud9.com/lp/schedule-a-meeting/ exists">Book a call</a>
   <a href="tel:+18442640729" class="call" aria-label="Call 1-844-264-0729">Call</a>
   <details class="menu"><summary><i aria-hidden="true"></i>Menu</summary>
-    <nav aria-label="Main menu"><a href="dynamics-365-sales.html">Dynamics 365 Sales</a><a href="home.html#packages">Packages</a><a href="home.html#ai">Copilot and agents</a><a href="home.html#plans">Support plans</a><a href="home.html#stories">Stories</a><a href="home.html#checks">Free checks</a><a href="#" data-todo="Booking form URL not set (Michael). Today https://www.encloud9.com/lp/schedule-a-meeting/ exists">Book a call</a><a href="tel:+18442640729" class="tel">1-844-264-0729</a></nav>
+    <nav aria-label="Main menu"><a href="dynamics-365-sales.html">Dynamics 365 Sales</a><a href="#packages">Packages</a><a href="#ai">Copilot and agents</a><a href="#plans">Support plans</a><a href="#stories">Stories</a><a href="#checks">Free checks</a><a href="#" data-todo="Booking form URL not set (Michael). Today https://www.encloud9.com/lp/schedule-a-meeting/ exists">Book a call</a><a href="tel:+18442640729" class="tel">1-844-264-0729</a></nav>
   </details>
 </div></header>
 <main id="main" tabindex="-1">
 <section class="hero" aria-labelledby="h1">
-  <div class="cols mono" aria-hidden="true"><span></span><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>I</span><span>J</span><span>K</span><span>L</span><span>M</span><span>N</span></div><div class="rows mono" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span></div>
-  <div class="sheet">
+  <div class="cols mono" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="rows mono" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="sheet"><div class="sin">
     <div class="intro">
       <h1 id="h1">Dynamics 365 and Copilot, set up and supported</h1>
       <p class="lede">We set up Dynamics 365 Sales and Customer Service for growing businesses across the US, then switch on Copilot and agents where they pay off. Standard packages, one four-stage process, and support plans with published prices, starting at $500 a month.</p>
@@ -384,57 +429,57 @@ a.cell:focus-visible{outline:none}
       <p class="small">Prefer the phone? Call <a href="tel:+18442640729">1-844-264-0729</a>.</p>
     </div>
     <div class="card" id="check">
-      <div class="fx mono" aria-hidden="true"><b>fx</b><span>=COUNTIF(M3:M7,TRUE)</span></div>
+      <div class="fx mono" aria-hidden="true"></div>
       <div class="ct"><strong>Free Copilot readiness check</strong><small>Example answers</small></div>
-      <ol class="qs"><li class="q">Your Dynamics 365 data has one owner per record<span class="tg on"><span class="kn" aria-hidden="true"></span><span class="sr">: yes</span></span></li><li class="q">Security roles match job duties<span class="tg on"><span class="kn" aria-hidden="true"></span><span class="sr">: yes</span></span></li><li class="q">SharePoint and Teams permissions are reviewed<span class="tg"><span class="kn" aria-hidden="true"></span><span class="sr">: no</span></span></li><li class="q">Duplicate accounts are under control<span class="tg on"><span class="kn" aria-hidden="true"></span><span class="sr">: yes</span></span></li><li class="q">You know which team should get Copilot first<span class="tg"><span class="kn" aria-hidden="true"></span><span class="sr">: no</span></span></li></ol>
-      <div class="tot"><span class="big"><span class="num"><span class="d d0" aria-hidden="true">0</span><span class="d d1" aria-hidden="true">1</span><span class="d d2" aria-hidden="true">2</span><span class="d d3">3</span></span> of 5</span><p>Ready in three areas. Next: review permissions and pick the first team. <a href="#checks">Take the check</a></p></div>
+      <ol class="qs"><li class="q">You know which plan each user has<span class="tg on"><span class="kn" aria-hidden="true"></span><span class="sr">: yes</span></span></li><li class="q">Dataverse search is turned on<span class="tg on"><span class="kn" aria-hidden="true"></span><span class="sr">: yes</span></span></li><li class="q">Security roles limit who sees which records<span class="tg"><span class="kn" aria-hidden="true"></span><span class="sr">: no</span></span></li><li class="q">Email syncs with Exchange, server-side<span class="tg on"><span class="kn" aria-hidden="true"></span><span class="sr">: yes</span></span></li><li class="q">Leads have a current email and owner<span class="tg"><span class="kn" aria-hidden="true"></span><span class="sr">: no</span></span></li></ol>
+      <div class="tot"><span class="big"><span class="num"><span class="d d0" aria-hidden="true">0</span><span class="d d1" aria-hidden="true">1</span><span class="d d2" aria-hidden="true">2</span><span class="d d3">3</span></span> of 5</span><p>Ready in three areas. Next: tighten security roles and give every lead a current email and owner. <a href="dynamics-365-sales.html#checks">Take the check</a></p></div>
       <span class="handle" aria-hidden="true"></span>
     </div>
-  </div>
+  </div></div>
 </section>
-<section aria-label="Facts"><ul class="proof p4 rv"><li><a href="#" data-todo="How we count page not set; [30+] needs Brian OK"><b>Clients in [30+] US states</b><span>How we count</span></a></li><li><a href="#stories"><b>23 client stories, written up</b><span>Read the stories</span></a></li><li><a href="#" data-todo="How we count page not set; [two thirds] needs Brian OK"><b>[Two thirds] of our projects come from returning clients</b><span>How we count</span></a></li><li><a href="#plans"><b>Support from $500 a month</b><span>See plans and prices</span></a></li></ul></section>
+<section class="proofb" aria-label="Facts"><ul class="proof p4"><li><a href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><b>A new Dynamics 365 Sales system in one month for The Schiff Group</b><span>Read the story</span></a></li><li><a href="#stories"><b>23 client stories, written up</b><span>Read the stories</span></a></li><li><div class="pi"><b>Clients in [30+] US states</b></div></li><li><a href="#plans"><b>Support from $500 a month</b><span>See plans and prices</span></a></li></ul></section>
 <section class="sec" id="packages" aria-labelledby="h-pk">
   <div class="shead split"><h2 id="h-pk">Dynamics 365, in packages you can read before you buy</h2><p class="sub">Pick the package that fits where you are. Each one lists what is included, what is not, how long it takes and what it costs.</p></div>
-  <div class="svc two four rv"><a href="https://www.encloud9.com/dynamics-365-sales-accelerator/" class="cell"><h3>Sales Accelerator</h3><p class="s">Dynamics 365 Sales with licences, users and your pipeline set up.</p><dl class="spec"><dt>Price</dt><dd>[Price from $X]</dd><dt>Time</dt><dd>[N] weeks</dd><dt>Users</dt><dd>Up to [N]</dd></dl></a><a href="#" data-todo="Service Accelerator page URL not named in the copy files" class="cell"><h3>Service Accelerator</h3><p class="s">Dynamics 365 Customer Service with cases, queues and service levels.</p><dl class="spec"><dt>Price</dt><dd>[Price from $X]</dd><dt>Time</dt><dd>[N] weeks</dd><dt>Users</dt><dd>Up to [N]</dd></dl></a><a href="https://www.encloud9.com/microsoft-dynamics-365-implementation/" class="cell"><h3>Full implementation</h3><p class="s">Sales, Customer Service or both, with data moved, integrations and training.</p><dl class="spec"><dt>Price</dt><dd>[Range $X to $Y]</dd><dt>Time</dt><dd>Typically [N to N] months</dd></dl></a><a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/" class="cell"><h3>Rescue and Repair</h3><p class="s">We take over a Dynamics system that is over-customized, stalled or out of date, and get it working.</p><dl class="spec"><dt>Price</dt><dd>[Range]</dd><dt>Time</dt><dd>Typically [N] months</dd></dl></a></div>
+  <div class="svc two four"><a href="https://www.encloud9.com/dynamics-365-sales-accelerator/" class="cell pick hc"><span class="ch" aria-hidden="true"></span><h3>Sales Accelerator</h3><p class="s">Dynamics 365 Sales with your users, pipeline and records set up.</p><dl class="spec"><dt>Price</dt><dd>[Price from $X]</dd><dt>Time</dt><dd>[N] weeks</dd><dt>Users</dt><dd>Up to [N]</dd></dl></a><a href="#" data-todo="Service Accelerator page URL not named in the copy files" class="cell pick hc"><span class="ch" aria-hidden="true"></span><h3>Service Accelerator</h3><p class="s">Dynamics 365 Customer Service with cases, queues and service levels.</p><dl class="spec"><dt>Price</dt><dd>[Price from $X]</dd><dt>Time</dt><dd>[N] weeks</dd><dt>Users</dt><dd>Up to [N]</dd></dl></a><a href="https://www.encloud9.com/microsoft-dynamics-365-implementation/" class="cell pick hc"><span class="ch" aria-hidden="true"></span><h3>Full implementation</h3><p class="s">Sales, Customer Service or both, with data moved, integrations and training.</p><dl class="spec"><dt>Price</dt><dd>[Range $X to $Y]</dd><dt>Time</dt><dd>Typically [N to N] months</dd></dl></a><a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/" class="cell pick hc"><span class="ch" aria-hidden="true"></span><h3>Rescue and Repair</h3><p class="s">We take over a Dynamics system that is over-customized, stalled or out of date, and get it working.</p><dl class="spec"><dt>Price</dt><dd>[Range]</dd><dt>Time</dt><dd>Typically [N] months</dd></dl></a></div>
   <p class="note">Anything outside the package is a written change order you approve before work starts.</p>
 </section>
-<section class="sec" id="ai" aria-labelledby="h-ai">
+<section class="band" id="ai" aria-labelledby="h-ai"><div class="sec">
   <div class="shead split"><h2 id="h-ai">Copilot and agents, working on your Dynamics 365 data</h2><p class="sub">AI in Dynamics 365 comes in three forms. We set up each one after a data and permissions review, and tell you what it costs to run before it is switched on.</p></div>
-  <div class="svc three rv"><div class="cell"><span class="lab" aria-hidden="true">1</span><h3>Copilot in the apps</h3><p class="s">Copilot inside Dynamics 365 Sales and Customer Service: summaries, email drafts and answers from your own records.</p></div><div class="cell"><span class="lab" aria-hidden="true">2</span><h3>Agents Microsoft includes</h3><p class="s">Dynamics 365 now ships with agents for jobs such as [named agents, checked on Microsoft Learn the week the page publishes]. We switch on the ones that fit and set their limits. <a class="link" href="dynamics-365-sales.html#agents">See the agents in Dynamics 365 Sales</a></p></div><div class="cell"><span class="lab" aria-hidden="true">3</span><h3>Agents you build</h3><p class="s">Copilot Studio agents for a job only your business has, built on Dataverse and your own data.</p></div></div>
+  <div class="svc three"><div class="cell"><span class="lab" aria-hidden="true">1</span><h3>Copilot in the apps</h3><p class="s">Copilot inside Dynamics 365 Sales and Customer Service: summaries, email drafts and answers from your own records.</p></div><div class="cell"><span class="lab" aria-hidden="true">2</span><h3>Agents Microsoft includes</h3><p class="s">Dynamics 365 Sales includes agents that work on their own: researching leads, watching deals for risk and keeping records up to date. We switch on the ones that fit and set their limits. <a class="link" href="dynamics-365-sales.html#agents">See the agents in Dynamics 365 Sales</a></p></div><div class="cell"><span class="lab" aria-hidden="true">3</span><h3>Agents you build</h3><p class="s">Copilot Studio agents for a job only your business has, built on Dataverse and your own data.</p></div></div>
   <div class="row-end"><a href="https://www.encloud9.com/blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/" class="link">See how Compana Pet Brands is testing Copilot Studio on Dynamics 365</a><a href="#checks" class="btn">Check if your data is ready</a></div>
-</section>
+</div></section>
 <section class="sec" aria-labelledby="h-pp">
   <h2 id="h-pp">The work still done by hand, automated</h2>
-  <div class="svc two four rv"><a href="#" data-todo="Power Apps page URL not named in the copy files" class="cell"><span class="job">Replace the spreadsheet that runs a whole process</span><span class="lab">Power Apps</span></a><a href="#" data-todo="Power Automate page URL not named in the copy files" class="cell"><span class="job">Approvals and hand-offs that happen on their own</span><span class="lab">Power Automate</span></a><a href="#" data-todo="Power BI page URL not named in the copy files" class="cell"><span class="job">One set of numbers from sales to finance</span><span class="lab">Power BI</span></a><a href="#" data-todo="Power Pages page URL not named in the copy files" class="cell"><span class="job">A secure portal for your customers or partners</span><span class="lab">Power Pages</span></a></div>
+  <div class="svc two four"><a href="#" data-todo="Power Apps page URL not named in the copy files" class="cell pick hc"><span class="ch" aria-hidden="true"></span><span class="job">Replace the spreadsheet that runs a whole process</span><span class="lab">Power Apps</span></a><a href="#" data-todo="Power Automate page URL not named in the copy files" class="cell pick hc"><span class="ch" aria-hidden="true"></span><span class="job">Approvals and hand-offs that happen on their own</span><span class="lab">Power Automate</span></a><a href="#" data-todo="Power BI page URL not named in the copy files" class="cell pick hc"><span class="ch" aria-hidden="true"></span><span class="job">One set of numbers from sales to finance</span><span class="lab">Power BI</span></a><a href="#" data-todo="Power Pages page URL not named in the copy files" class="cell pick hc"><span class="ch" aria-hidden="true"></span><span class="job">A secure portal for your customers or partners</span><span class="lab">Power Pages</span></a></div>
   <p class="note">Built on the same Dynamics 365 data, by the same team.</p>
 </section>
 <section class="sec" aria-labelledby="h-st">
   <div class="shead split"><div class="k"><span class="lab">[The enCloud9 Delivery Standard]</span><h2 id="h-st">Every project, the same four stages</h2></div><p class="sub">You see the plan before we build, and every change after that is written down.</p></div>
-  <ol class="stages rv"><li class="stage"><span class="col mono" aria-hidden="true">A</span><span class="lab">Stage A</span><h3>Plan</h3><p>We learn how you sell, serve and bill, using a written discovery questionnaire, and give you the plan: apps, users, data, and where Copilot fits.</p><span class="handle" aria-hidden="true"></span></li><li class="stage"><span class="col mono" aria-hidden="true">B</span><span class="lab">Stage B</span><h3>Build</h3><p>We set up Dynamics 365 to the plan and move your data. You check the imported records against your old system before sign-off.</p><span class="handle" aria-hidden="true"></span></li><li class="stage"><span class="col mono" aria-hidden="true">C</span><span class="lab">Stage C</span><h3>Go live</h3><p>Training, cut-over day, and Copilot and agents switched on where your data and permissions are ready.</p><span class="handle" aria-hidden="true"></span></li><li class="stage"><span class="col mono" aria-hidden="true">D</span><span class="lab">Stage D</span><h3>Run</h3><p>Your support plan starts. Health checks and updates are logged, so you always know what changed.</p><span class="handle" aria-hidden="true"></span></li></ol>
+  <ol class="stages"><li class="stage pick on"><span class="col mono" aria-hidden="true" data-c="A"></span><span class="lab">Stage A</span><h3>Plan</h3><p>We learn how you sell and serve, using a written discovery questionnaire, and give you the plan: apps, users, data, and where Copilot fits.</p></li><li class="stage pick"><span class="col mono" aria-hidden="true" data-c="B"></span><span class="lab">Stage B</span><h3>Build</h3><p>We set up Dynamics 365 to the plan and move your data. You check the imported records against your old system before sign-off.</p></li><li class="stage pick"><span class="col mono" aria-hidden="true" data-c="C"></span><span class="lab">Stage C</span><h3>Go live</h3><p>Training, cut-over day, and Copilot and agents switched on where your data and permissions are ready.</p></li><li class="stage pick"><span class="col mono" aria-hidden="true" data-c="D"></span><span class="lab">Stage D</span><h3>Run</h3><p>Your support plan starts. Health checks and updates are logged, so you always know what changed.</p></li></ol>
 </section>
 <section class="sec" id="plans" aria-labelledby="h-pl">
   <div class="plans-split">
     <div class="shead"><h2 id="h-pl">Support plans with the price on the page</h2><p class="sub">After go-live, the people who built your system keep it running. Monthly plans include a 1-hour response during business hours, and every plan includes escalation to Microsoft when it is needed.</p></div>
     <div class="tblwrap">
-      <table class="tbl rf rv"><caption class="sr">Support plans, prices and hours</caption><thead><tr><th scope="col">Plan</th><th scope="col">Price</th><th scope="col">Hours</th><th scope="col">Fit</th></tr></thead><tbody><tr class=""><th scope="row">On-Demand</th><td data-label="Price"><span class="pr">$200 <small>an hour</small></span></td><td data-label="Hours">As needed, no retainer</td><td data-label="Fit" class="mu">[For current clients: Brian to confirm]</td></tr><tr class="minp"><th scope="row">Stability<span class="tag">Starting plan for new clients</span></th><td data-label="Price"><span class="pr">$500 <small>a month</small></span></td><td data-label="Hours">4 hours</td><td data-label="Fit" class="mu">Small teams</td></tr><tr class=""><th scope="row">Optimization</th><td data-label="Price"><span class="pr">$1,500 <small>a month</small></span></td><td data-label="Hours">20 hours</td><td data-label="Fit" class="mu">Up to 50 users</td></tr><tr class=""><th scope="row">Partnership</th><td data-label="Price"><span class="pr">$2,000 <small>a month</small></span></td><td data-label="Hours">35 hours</td><td data-label="Fit" class="mu">50 users and up</td></tr></tbody></table>
+      <table class="tbl rf" role="table"><caption class="sr">Support plans, prices and hours</caption><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Plan</th><th scope="col" role="columnheader">Price</th><th scope="col" role="columnheader">Hours</th><th scope="col" role="columnheader">Fit</th></tr></thead><tbody role="rowgroup"><tr role="row" class=""><th scope="row" role="rowheader">On-Demand</th><td role="cell" data-label="Price"><span class="pr">$200 <small>an hour</small></span></td><td role="cell" data-label="Hours">As needed, no retainer</td><td role="cell" data-label="Fit" class="mu">[For current clients: Brian to confirm]</td></tr><tr role="row" class="minp"><th scope="row" role="rowheader">Stability<span class="tag">Minimum plan</span></th><td role="cell" data-label="Price"><span class="pr">$500 <small>a month</small></span></td><td role="cell" data-label="Hours">4 hours</td><td role="cell" data-label="Fit" class="mu">Small teams</td></tr><tr role="row" class=""><th scope="row" role="rowheader">Optimization</th><td role="cell" data-label="Price"><span class="pr">$1,500 <small>a month</small></span></td><td role="cell" data-label="Hours">20 hours</td><td role="cell" data-label="Fit" class="mu">Up to 50 users</td></tr><tr role="row" class=""><th scope="row" role="rowheader">Partnership</th><td role="cell" data-label="Price"><span class="pr">$2,000 <small>a month</small></span></td><td role="cell" data-label="Hours">35 hours</td><td role="cell" data-label="Fit" class="mu">50 users and up</td></tr></tbody></table>
       <p class="fine">12-month agreement. Onboarding fee up to one month's charge. Hours 7:00am to 5:00pm Central. A 1-hour response means a person has picked up your request, not that it is solved. Prices as published on <a href="https://dynamics365support.com/">dynamics365support.com</a>.</p>
     </div>
   </div>
 </section>
 <section class="sec" id="stories" aria-labelledby="h-so">
   <div class="row-end"><h2 id="h-so">23 client stories, written up</h2><a href="https://www.encloud9.com/about-encloud9/microsoft-dynamics-365-success/" class="btn">All 23 stories</a></div>
-  <div class="svc three rv"><a href="https://www.encloud9.com/blog/success_stories/hogans-crm-rescue-story-a-fresh-start-with-dynamics-365/" class="cell"><span class="lab">Tulsa</span><h3>Hogan Assessments</h3><p class="s">An over-customized Dynamics system taken back to standard within three months, on time and under budget.</p><span class="l">Read the story</span></a><a href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/" class="cell"><span class="lab">Maryland</span><h3>The Schiff Group</h3><p class="s">A new Dynamics 365 Sales system in one month.</p><span class="l">Read the story</span></a><a href="https://www.encloud9.com/blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/" class="cell"><span class="lab">Copilot Studio</span><h3>Compana Pet Brands</h3><p class="s">Customer engagement expanded with Dynamics 365, with Copilot Studio agents in early testing.</p><span class="l">Read the story</span></a></div>
+  <div class="svc three"><a href="https://www.encloud9.com/blog/success_stories/hogans-crm-rescue-story-a-fresh-start-with-dynamics-365/" class="cell pick hc"><span class="ch" aria-hidden="true"></span><span class="lab">Tulsa</span><h3>Hogan Assessments</h3><p class="s">An over-customized Dynamics system taken back to standard within three months, on time and under budget.</p><span class="l">Read the story</span></a><a href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/" class="cell pick hc"><span class="ch" aria-hidden="true"></span><span class="lab">Maryland</span><h3>The Schiff Group</h3><p class="s">A new Dynamics 365 Sales system in one month.</p><span class="l">Read the story</span></a><a href="https://www.encloud9.com/blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/" class="cell pick hc"><span class="ch" aria-hidden="true"></span><span class="lab">[Location: Brian to confirm]</span><h3>Compana Pet Brands</h3><p class="s">[Story line: confirm from the Compana story]</p><span class="l">Read the story</span></a></div>
 </section>
 <section class="sec" id="checks" aria-labelledby="h-fc">
   <h2 id="h-fc">Free checks before you spend anything</h2>
-  <table class="tools rv"><caption class="sr">Free checks</caption><tbody><tr><th scope="row">Dataverse Storage Analysis</th><td class="mu">What is filling your storage, which type is over, and a written plan to stay under the limit. One hour.</td><td class="go"><a href="#" data-todo="Storage Analysis booking URL not set" aria-label="Book: Dataverse Storage Analysis"><span class="x-go">Book</span></a></td></tr><tr><th scope="row">CRM Health Check</th><td class="mu">A review of your Dynamics 365 setup, with findings ranked by what each fix is worth.</td><td class="go"><a href="#" data-todo="CRM Health Check has no live page (4 Nov 2026)" aria-label="Book: CRM Health Check"><span class="x-go">Book</span></a></td></tr><tr><th scope="row">Copilot readiness check</th><td class="mu">Five questions on data and permissions, with a written next step.</td><td class="go"><a href="dynamics-365-sales.html#checks" aria-label="Take the check: Copilot readiness check"><span class="x-go">Take the check</span></a></td></tr></tbody></table>
+  <table class="tools" role="table"><caption class="sr">Free checks</caption><tbody role="rowgroup"><tr class="pick" role="row"><th scope="row" role="rowheader"><span class="rn" aria-hidden="true"></span>Dataverse Storage Analysis</th><td role="cell" class="mu">What is filling your storage, which type is over, and a written plan to stay under the limit. One hour.</td><td role="cell" class="go"><a href="#" data-todo="Storage Analysis booking URL not set (Michael supplies)" aria-label="Book: Dataverse Storage Analysis">Book</a></td></tr><tr class="pick" role="row"><th scope="row" role="rowheader"><span class="rn" aria-hidden="true"></span>CRM Health Check</th><td role="cell" class="mu">A review of your Dynamics 365 setup, with findings ranked by what each fix is worth.</td><td role="cell" class="go"><a href="#" data-todo="CRM Health Check has no live page (4 Nov 2026); Brian to confirm it still runs" aria-label="Book: CRM Health Check">Book</a></td></tr><tr class="pick" role="row"><th scope="row" role="rowheader"><span class="rn" aria-hidden="true"></span>Copilot readiness check</th><td role="cell" class="mu">Five questions on data and permissions, with a written next step.</td><td role="cell" class="go"><a href="dynamics-365-sales.html#checks" aria-label="Take the check: Copilot readiness check">Take the check</a></td></tr></tbody></table>
 </section>
 <section class="sec" id="faq" aria-labelledby="h-fq">
   <h2 id="h-fq">Questions we get asked</h2>
-  <div class="faq"><details open><summary><h3>How much does Dynamics 365 cost?</h3><span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Microsoft list prices start at $50 to $65 per user per month and go to $150 to $195 for premium plans, paid yearly. Setup is a fixed package price, and support starts at $500 a month. See our <a href="https://www.encloud9.com/blog/dynamics-365-pricing-licensing-2025-guide/">2026 pricing guide</a>.</p></div></details><details open><summary><h3>How long does a Dynamics 365 setup take?</h3><span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Our accelerators take [N] weeks. A full implementation typically takes [N to N] months. You get the plan, with dates, before we build.</p></div></details><details open><summary><h3>Can you take over a system another partner built?</h3><span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Yes. <a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a> is for Dynamics 365 systems that are over-customized, stalled or out of date. We review it first and tell you what to keep.</p></div></details><details open><summary><h3>Is Copilot included with Dynamics 365?</h3><span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Copilot is built into Dynamics 365 Sales Enterprise and Premium. Agents run on Copilot Credits, which most plans buy separately. We tell you what it costs to run before anything is switched on.</p></div></details></div>
+  <ul class="faq"><li><h3>How much does Dynamics 365 cost?</h3><p>Microsoft list prices start at $50 to $65 per user per month and go to $150 to $195 for premium plans, paid yearly. Setup is a fixed package price, and support starts at $500 a month. See our <a href="https://www.encloud9.com/blog/dynamics-365-pricing-licensing-2025-guide/">2026 pricing guide</a>.</p></li><li><h3>How long does a Dynamics 365 setup take?</h3><p>Our accelerators take [N] weeks. A full implementation typically takes [N to N] months. You get the plan, with dates, before we build.</p></li><li><h3>Can you take over a system another partner built?</h3><p>Yes. <a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a> is for Dynamics 365 systems that are over-customized, stalled or out of date. We review it first and tell you what to keep.</p></li><li><h3>Is Copilot included with Dynamics 365?</h3><p>Copilot is built into Dynamics 365 Sales Enterprise and Premium. Agents run on Copilot Credits, which most plans buy separately. We tell you what it costs to run before anything is switched on.</p></li></ul>
 </section>
 <section class="end" aria-labelledby="h-end">
-  <div class="cta rv"><span class="handle" aria-hidden="true"></span><div class="k"><h2 id="h-end">Start with a call or a free check</h2><p class="sub">Tell us where your system is today. You get a plan, a package and a price, whether or not you work with us.</p></div><div class="btns"><a href="#" data-todo="Booking form URL not set (Michael). Today https://www.encloud9.com/lp/schedule-a-meeting/ exists" class="btn p">Book a call</a><a href="#checks" class="btn">Get a free check</a></div><p class="small">Or call <a href="tel:+18442640729">1-844-264-0729</a>.</p></div>
+  <div class="cta"><span class="handle" aria-hidden="true"></span><div class="k"><h2 id="h-end">Start with a call or a free check</h2><p class="sub">Tell us where your system is today. You get a plan, a package and a price, whether or not you work with us.</p></div><div class="btns"><a href="#" data-todo="Booking form URL not set (Michael). Today https://www.encloud9.com/lp/schedule-a-meeting/ exists" class="btn p">Book a call</a><a href="#checks" class="btn">Get a free check</a></div><p class="small">Or call <a href="tel:+18442640729">1-844-264-0729</a>.</p></div>
 </section>
 </main>
 <footer class="ftr wrap"><div class="foot">
@@ -443,10 +488,17 @@ a.cell:focus-visible{outline:none}
   <p class="tm">Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies.</p>
 </div></footer>
 <script>
-(function(){var els=document.querySelectorAll('.rv');function show(e){e.classList.add('in')}
-if(!('IntersectionObserver' in window)){els.forEach(show);return}
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target)}})},{threshold:0,rootMargin:'0px 0px -10% 0px'});
-els.forEach(function(e){io.observe(e)});addEventListener('beforeprint',function(){els.forEach(show)})})();
+(function(){
+var m=document.querySelector('details.menu');
+if(m){m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('nav a'))m.open=false});
+document.addEventListener('keydown',function(e){if((e.key==='Escape'||e.key==='Esc')&&m.open){m.open=false;m.querySelector('summary').focus()}})}
+var ok=window.matchMedia&&matchMedia('(prefers-reduced-motion: no-preference)').matches;
+if(!ok||!('IntersectionObserver' in window))return;
+document.querySelectorAll('[data-pass]').forEach(function(el){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){el.classList.add('in');io.disconnect()}},{threshold:.35});io.observe(el)});
+var st=document.querySelector('.stages');
+if(st){var li=st.querySelectorAll('.stage');var io2=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;io2.disconnect();
+[1,2,3,0].forEach(function(k,i){setTimeout(function(){li.forEach(function(x,j){x.classList.toggle('on',j===k)})},350*(i+1))})},{threshold:.5});io2.observe(st)}
+})();
 </script>
 </body>
 </html>
