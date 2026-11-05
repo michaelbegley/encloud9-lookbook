@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Copilot and AI Agents for Dynamics 365 | enCloud9</title>
+<meta name="description" content="Copilot in the Dynamics 365 apps, the agents Microsoft includes, agents built for you in Copilot Studio, and generative pages, switched on after a data and permissions review.">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="nine.css">
+<script defer src="nine.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.encloud9.com/"},{"@type":"ListItem","position":2,"name":"Copilot and AI","item":"https://www.encloud9.com/microsoft-copilot-for-business/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is Copilot included in Dynamics 365 Sales?","acceptedAnswer":{"@type":"Answer","text":"Copilot in Dynamics 365 Sales, Outlook and Teams is included in Sales Enterprise and Sales Premium, not in Sales Professional. The Sales agents are available on all three plans but run on Copilot Credits. Only Sales Premium includes credits; on other plans you buy them separately."}},
+{"@type":"Question","name":"Is Copilot included in Dynamics 365 Customer Service?","acceptedAnswer":{"@type":"Answer","text":"Copilot in Customer Service is included in Customer Service Enterprise and Premium, not in Customer Service Professional. The Case Management, Customer Intent, Customer Knowledge Management and Quality Evaluation agents run on Copilot Credits. Premium includes base Copilot Credit capacity for them; on other plans you buy credits separately. Some agents, including the Case Management and Customer Intent agents, also need a pay-as-you-go plan on an Azure subscription."}},
+{"@type":"Question","name":"What do the Sales agents cost to run?","acceptedAnswer":{"@type":"Answer","text":"Agents use Copilot Credits for each answer and action. Microsoft sells credits in packs of 25,000 for $200 a month, or pay-as-you-go through an Azure subscription. We estimate your monthly use with Microsoft's estimator and set a spending limit before an agent goes live."}},
+{"@type":"Question","name":"What are generative pages in Dynamics 365?","acceptedAnswer":{"@type":"Answer","text":"They are pages in model-driven apps that Microsoft's app agent builds from a plain-language description. The agent writes React code that reads and updates your Dataverse data."}},
+{"@type":"Question","name":"Are generative pages generally available?","acceptedAnswer":{"@type":"Answer","text":"Yes. Generative pages in model-driven apps are generally available. Using Power Platform connectors and Dataverse custom APIs with them is still in preview."}},
+{"@type":"Question","name":"Does building generative pages cost extra?","acceptedAnswer":{"@type":"Answer","text":"Microsoft says the maker experience doesn't require any additional AI or message credits. Users still need a licence for the app the page sits in."}},
+{"@type":"Question","name":"Do generative pages replace Power BI or Copilot?","acceptedAnswer":{"@type":"Answer","text":"No. Use Power BI for heavy analytics, Copilot for questions about your data, and generative pages for focused working screens."}},
+{"@type":"Question","name":"When is a generative page not the right fit?","acceptedAnswer":{"@type":"Answer","text":"Simple data entry, big reporting over lots of data, or a chat-style need. We will say so in Plan and point you to the better tool."}}]}</script>
+<style>
+/* page: Copilot and AI (signature: the cubes light up around Copilot; a generative page builds itself) */
+body.p-copilot .cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;aspect-ratio:1/1}
+body.p-copilot .cc{position:relative;display:flex;flex-direction:column;padding:16px;overflow:hidden;background:var(--c);color:var(--white);border:1px solid transparent;transition:background .6s var(--ease),color .5s,border-color .5s,transform .45s var(--bounce)}
+body.p-copilot .cc.lt{color:var(--ink)}
+body.p-copilot .cc .lab{font-family:var(--mono);font-size:12px;opacity:.85}
+body.p-copilot .cc .nm{margin-top:auto;font-family:var(--head);font-size:clamp(17px,1.7vw,22px);line-height:1.1;font-weight:600;letter-spacing:-.02em}
+body.p-copilot .cc .st{display:flex;gap:6px;align-items:center;margin-top:10px;font-family:var(--mono);font-size:11px;opacity:.9}
+body.p-copilot .cc .st::before{content:"";width:7px;height:7px;background:currentColor}
+body.p-copilot a.cc:hover{transform:translateY(-4px)}
+body.p-copilot .cc.core .nm{font-size:clamp(26px,2.8vw,38px)}
+body.p-copilot .cc.core::after{content:"";position:absolute;inset:8px;border:1.5px solid rgba(255,255,255,.85);pointer-events:none}
+body.p-copilot .cgrid.seq .cc:not(.on){background:var(--white);color:var(--muted);border-color:var(--line)}
+body.p-copilot .cgrid.seq .cc:not(.on) .st{opacity:.4}
+body.p-copilot .cgrid.seq .cc.core:not(.on)::after{border-color:var(--line)}
+@media (max-width:560px){body.p-copilot .cc{padding:10px}body.p-copilot .cc .lab{font-size:10px}body.p-copilot .cc .nm{font-size:14px}body.p-copilot .cc.core .nm{font-size:20px}body.p-copilot .cc .st{display:none}}
+body.p-copilot .three .d+.d{padding-top:12px;border-top:1px solid rgba(255,255,255,.14)}
+body.p-copilot .three .d b{color:var(--white);font-weight:600}
+body.p-copilot .tbl tbody th .lnk{font:inherit;padding-bottom:0}
+body.p-copilot .tbl td.sx{font-family:var(--mono);font-size:13px;color:var(--ink)}
+body.p-copilot .tbl tr.grp th{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--b5);padding-top:28px;letter-spacing:0}
+/* generative page builder */
+.gx{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:24px;align-items:start;margin-top:clamp(32px,4vw,48px)}
+.gx-pick{display:flex;flex-direction:column;gap:8px}
+.gx-pick .mono{margin-bottom:6px}
+.gx-pick button{text-align:left;background:var(--white);border:1px solid var(--line);padding:18px 20px;display:grid;grid-template-columns:auto 1fr;gap:2px 14px;cursor:pointer;font:inherit;color:var(--ink);transition:background .25s,border-color .25s,color .25s,transform .3s var(--bounce)}
+.gx-pick button:hover{border-color:var(--b6);transform:translateX(3px)}
+.gx-pick button .k{font-family:var(--mono);font-size:12px;color:var(--b5);grid-row:span 2;padding-top:4px}
+.gx-pick button .t{font-family:var(--head);font-size:21px;font-weight:600;letter-spacing:-.015em;line-height:1.2}
+.gx-pick button .d{font-size:14px;color:var(--muted);line-height:1.45}
+.gx-pick button[aria-pressed="true"]{background:var(--b2);border-color:var(--b2);color:var(--white)}
+.gx-pick button[aria-pressed="true"] .d{color:var(--b8)}.gx-pick button[aria-pressed="true"] .k{color:var(--b7)}
+.gx-win{background:var(--white);border:1px solid var(--line);box-shadow:0 40px 80px -50px rgba(14,26,58,.55);min-width:0}
+.gx-ask{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.gx-ask .gq{font-size:16px;line-height:1.5;color:var(--ink);min-height:3em}
+.gx-ask .caret{display:inline-block;width:2px;height:1em;background:var(--b5);vertical-align:-2px;margin-left:2px}
+.gx-meta{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding:10px 18px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+.gx-meta .stp{display:inline-flex;gap:6px;align-items:center}
+.gx-meta .stp::before{content:"";width:8px;height:8px;background:var(--line);transition:background .3s}
+.gx-meta .stp.done::before{background:var(--b5)}
+.gx-meta .tb{margin-left:auto}
+.gx-canvas{background:var(--bg);padding:16px;min-height:430px}
+.gx-sc{display:none;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.gx-sc.cur{display:grid}
+.gx-sc .hd{grid-column:1/-1;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.gx-sc .hd b{font-family:var(--head);font-size:20px;letter-spacing:-.015em}
+.gx-sc .hd span{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.pt{background:var(--white);border:1px solid var(--line);padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0;transition:opacity .5s var(--ease),transform .55s var(--bounce)}
+.pt .l{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.pt .v{font-family:var(--head);font-size:26px;font-weight:600;letter-spacing:-.025em;line-height:1;color:var(--b3)}
+.pt .s{font-size:13px;color:var(--muted);line-height:1.4}
+.s2{grid-column:span 2}.s3{grid-column:span 3}.s4{grid-column:span 4}.s6{grid-column:1/-1}
+.gl{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:5px 0;border-bottom:1px solid var(--tint)}
+.gl:last-child{border-bottom:0}
+.gl .r{color:#8A1C12}
+.gp-low .fit{display:block}
+.bars{display:flex;align-items:flex-end;gap:10px;height:96px;padding-top:6px}
+.bars span{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%;font-family:var(--mono);font-size:10px;color:var(--muted)}
+.bars i{display:block;width:100%;background:var(--b6);height:var(--h);transform-origin:bottom;transition:transform .7s var(--bounce)}
+.bars span:nth-child(4) i{background:var(--b4)}
+.ring{display:flex;gap:14px;align-items:center}
+.ring svg{width:84px;height:84px;flex-shrink:0;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:10}
+.ring .bg{stroke:var(--tint)}.ring .fg{stroke:var(--b5);stroke-dasharray:226.2;stroke-dashoffset:90.5;transition:stroke-dashoffset 1s var(--ease)}
+.pills{display:flex;gap:4px;flex-wrap:wrap}
+.pills i{font-style:normal;font-family:var(--mono);font-size:11px;padding:3px 7px;background:var(--tint);color:var(--ink2)}
+.pills i.on{background:var(--b5);color:var(--white)}
+.apv{display:flex;align-items:center;gap:12px;font-size:14px;padding:10px 0;border-bottom:1px solid var(--tint);cursor:pointer}
+.apv:last-of-type{border-bottom:0}
+.apv input{width:18px;height:18px;accent-color:var(--b5);flex-shrink:0}
+.apv .nm2{flex:1;min-width:0}
+.apv .amt{font-family:var(--head);font-weight:600}
+.apbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.apbar button{min-height:40px;padding:0 18px;font-size:14px}
+.apbar button[disabled]{opacity:.45;cursor:default;transform:none}
+.gx-note{padding:12px 18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.gx.building .pt{opacity:0;transform:translateY(12px) scale(.97)}
+.gx.building .pt.in{opacity:1;transform:none}
+.gx.building .bars i{transform:scaleY(0)}.gx.building .pt.in .bars i{transform:none}
+.gx.building .ring .fg{stroke-dashoffset:226.2}.gx.building .pt.in .ring .fg{stroke-dashoffset:90.5}
+.gp-low{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);margin-top:clamp(48px,6vw,72px)}
+.gp-low h3{margin-bottom:12px}
+@media (max-width:1080px){.gx{grid-template-columns:1fr}.gx-pick{display:grid;grid-template-columns:repeat(3,1fr)}.gx-pick .mono{grid-column:1/-1}.gx-pick button{grid-template-columns:1fr}.gx-pick button .k{grid-row:auto;padding:0}}
+@media (max-width:860px){.gp-low{grid-template-columns:1fr}}
+@media (max-width:640px){.gx-pick{gap:6px}.gx-pick button{padding:12px 10px}.gx-pick button .t{font-size:15px}.gx-pick button .d{display:none}.gx-sc{grid-template-columns:repeat(2,minmax(0,1fr))}.s2,.s3{grid-column:span 1}.s4,.s6,.gx-sc .w2{grid-column:1/-1}.gx-canvas{padding:10px;min-height:0}.gx-meta .tb{margin-left:0}.pt .v{font-size:22px}.apv{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:4px 12px}.apv .badge{grid-column:2;justify-self:start}}
+@media (prefers-reduced-motion:reduce){body.p-copilot .cc,.pt,.bars i,.ring .fg{transition:none}}
+</style>
+</head>
+<body class="p-copilot">
+<nav id="lbbar" aria-label="Lookbook">
+  <a href="../index.html">All looks</a><span class="t hide-s">Look 9, Nine, built pages: Copilot and AI</span>
+  <a href="nine-home.html">Home</a><a href="nine-dynamics-365-sales.html">Sales page</a><a href="../looks/09-nine.html" class="hide-s">Original look</a>
+  <span class="sp"></span><span class="t">Font</span>
+  <button type="button" data-setfont="hanken" aria-pressed="true">Hanken</button><button type="button" data-setfont="jakarta" aria-pressed="false">Jakarta</button><button type="button" data-setfont="public" aria-pressed="false">Public Sans</button><button type="button" data-setfont="bricolage" aria-pressed="false">Bricolage</button>
+</nav>
+<header class="top">
+  <a class="skip" href="#main">Skip to main content</a>
+  <div class="wrap">
+    <a class="logo" href="nine-home.html" aria-label="enCloud9 home"><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9" width="104" height="34"></a>
+    <nav class="nav" aria-label="Main"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html" class="cur">Copilot and AI<span class="sr-only"> (current section)</span></a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="https://www.encloud9.com/blog/">Blog</a><a href="nine-about.html">About</a></nav>
+    <a class="tel" href="tel:+18442640729">1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+    <a class="btn btn-p call-m" href="tel:+18442640729">Call</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="https://www.encloud9.com/blog/">Blog</a><a href="nine-about.html">About</a><a href="tel:+18442640729">Call 1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+  </nav>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="nine-home.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Copilot and AI</span></nav>
+  <section class="hero" aria-labelledby="h1">
+    <div class="copy">
+      <span class="mono rise" style="--d:0">Copilot and AI for Dynamics 365</span>
+      <h1 class="h1" id="h1" style="font-size:clamp(40px,5.6vw,78px)"><span class="ln"><span style="--d:1">Copilot and agents,</span></span><span class="ln"><span style="--d:2">working on your</span></span><span class="ln"><span style="--d:3">Dynamics 365 data</span></span></h1>
+      <p class="lead rise" style="--d:4">AI in Dynamics 365 comes in three forms: Copilot inside the app, agents Microsoft includes, and agents built for your business in Copilot Studio. We set up each one after a data and permissions review, and tell you what it costs to run before it is switched on.</p>
+      <div class="acts rise" style="--d:5">
+        <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+        <a class="lnk" href="nine-dynamics-365-sales.html#check">Free checkups, no obligation <span>&rarr;</span></a>
+      </div>
+      <p class="phone-note rise" style="--d:6">Prefer the phone? Call <a href="tel:+18442640729">1-844-264-0729</a>.</p>
+    </div>
+    <div class="cgrid" role="list" aria-label="Copilot at the centre of your Dynamics 365 apps and agents">
+      <a role="listitem" class="cc" style="--c:var(--b1)" href="nine-dynamics-365-sales.html"><span class="lab">App</span><span class="nm">Dynamics 365 Sales</span><span class="st">Copilot on</span></a>
+      <a role="listitem" class="cc" style="--c:var(--b2)" href="#agents"><span class="lab">Agent, Sales</span><span class="nm">Sales Qualification Agent</span><span class="st">Switched on</span></a>
+      <a role="listitem" class="cc" style="--c:var(--b3)" href="#agents"><span class="lab">Agent, Sales</span><span class="nm">Sales Opportunity Agent</span><span class="st">Switched on</span></a>
+      <a role="listitem" class="cc" style="--c:var(--b4)" href="#built"><span class="lab">Built for you</span><span class="nm">Copilot Studio agents</span><span class="st">Your own job</span></a>
+      <a role="listitem" class="cc core" style="--c:var(--b5)" href="#forms"><span class="lab">At the centre</span><span class="nm">Copilot</span><span class="st">Your data, your permissions</span></a>
+      <a role="listitem" class="cc" style="--c:var(--b6)" href="#genpages"><span class="lab">Pages</span><span class="nm">Generative pages</span><span class="st">Built from a request</span></a>
+      <a role="listitem" class="cc lt" style="--c:var(--b7)" href="nine-customer-service.html"><span class="lab">App</span><span class="nm">Customer Service</span><span class="st">Copilot on</span></a>
+      <a role="listitem" class="cc lt" style="--c:var(--b8)" href="#agents"><span class="lab">Agent, Service</span><span class="nm">Case Management Agent</span><span class="st">Switched on</span></a>
+      <a role="listitem" class="cc lt" style="--c:var(--b9)" href="#agents"><span class="lab">Agent, Service</span><span class="nm">Customer Intent Agent</span><span class="st">Switched on</span></a>
+    </div>
+  </section>
+
+  <section class="sec" aria-label="Facts" style="padding-top:clamp(56px,6vw,88px)">
+    <div class="proof rev">
+      <a class="pf" href="https://www.encloud9.com/blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/">Compana Pet Brands is testing Copilot Studio on Dynamics 365<small>Read the story &rarr;</small></a>
+      <div class="pf">Copilot is included in the Enterprise and Premium plans of Sales and Customer Service</div>
+      <a class="pf" href="#genpages">Generative pages are generally available<small>Watch one build &rarr;</small></a>
+      <a class="pf" href="nine-dynamics-365-sales.html#check">Five questions on data and permissions, with a written next step<small>Take the check &rarr;</small></a>
+    </div>
+  </section>
+</div>
+
+<section class="band" id="forms" aria-labelledby="ai-h" style="margin-top:clamp(80px,9vw,136px)">
+  <div class="wrap">
+    <div class="ai-top">
+    <div class="rev">
+      <span class="mono">Three forms of AI</span>
+      <h2 class="h2" id="ai-h" style="margin-top:16px">What are the three forms of AI in Dynamics 365?</h2>
+      <p class="lead" style="margin-top:20px">Copilot inside the app, agents Microsoft includes with Dynamics 365, and agents built for your business in Copilot Studio. Copilot is included in the Enterprise and Premium plans, while agents run on Copilot Credits, so we check your data and permissions and estimate the monthly cost before anything is switched on.</p>
+    </div>
+    <div class="aigrid" aria-hidden="true"><i class="aic on" style="--d:0"></i><i class="aic" style="--d:1"></i><i class="aic" style="--d:2"></i><i class="aic" style="--d:3"></i><i class="aic on" style="--d:4"></i><i class="aic" style="--d:5"></i><i class="aic" style="--d:6"></i><i class="aic" style="--d:7"></i><i class="aic on" style="--d:8"></i></div>
+    </div>
+    <div class="three rev">
+      <div><span class="mono">01</span><span class="t">Copilot in the app</span>
+        <span class="d"><b>Sales.</b> Copilot in Dynamics 365 Sales summarizes leads, opportunities and accounts, shows what changed on your records, prepares you for meetings, drafts and summarizes emails, answers questions from your SharePoint documents, and brings you news about your accounts. It only sees records the signed-in person can already open.</span>
+        <span class="d"><b>Customer Service.</b> Copilot in Dynamics 365 Customer Service answers your service reps' questions from your own knowledge sources, summarizes cases and conversations, drafts emails and chat replies, and writes resolution notes. Your reps review every draft before it goes to a customer.</span></div>
+      <div><span class="mono">02</span><span class="t">Agents Microsoft includes</span>
+        <span class="d"><b>Sales.</b> Dynamics 365 Sales includes agents that work on their own: researching leads, watching deals for risk and keeping records up to date.</span>
+        <span class="d"><b>Customer Service.</b> Dynamics 365 Customer Service includes agents that work on their own: creating and updating cases, finding the most common reasons customers get in touch, turning closed cases into knowledge articles, and scoring the quality of cases.</span>
+        <span class="d">We switch on the ones that fit, test them on a small group first, and set a monthly limit on what they can spend.</span></div>
+      <div><span class="mono">03</span><span class="t">Agents built for you</span>
+        <span class="d">For a job only your business has, we build an agent in <a class="lnk" href="https://www.encloud9.com/microsoft-copilot-studio/">Copilot Studio</a> that works on your Dynamics 365 data in Dataverse and can be published to Teams or your website. It is quoted on its own, with its running cost written down.</span></div>
+    </div>
+    <div class="band-foot">
+      <a class="lnk" href="#agents">See every agent and its status <span>&rarr;</span></a>
+      <a class="btn btn-w" href="nine-dynamics-365-sales.html#check">Check if your data is ready</a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="sec" id="agents" aria-labelledby="ag-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="ag-h">Which agents come with Dynamics 365 Sales and Customer Service?</h2>
+      <p class="lead">Microsoft includes agents with both apps. Each one runs on Copilot Credits, and some are still in preview, so we tell you which is which before you decide.</p>
+    </div>
+    <div class="tbl-wrap rev">
+      <table class="tbl">
+        <caption class="mono" style="text-align:left;padding-bottom:10px">Agents in Dynamics 365 Sales and Customer Service, checked [publish date]</caption>
+        <thead><tr><th scope="col">Agent</th><th scope="col">What it does</th><th scope="col">Status</th></tr></thead>
+        <tbody>
+          <tr class="grp"><th scope="colgroup" colspan="3">Dynamics 365 Sales</th></tr>
+          <tr><th scope="row"><a class="lnk" href="https://www.encloud9.com/blog/dynamics-365-sales-qualification-agent/">Sales Qualification Agent</a></th><td>Researches assigned leads, checks them against your target customer profile and drafts outreach. In its "research and engage" mode it also emails leads, follows up and hands promising ones to your sellers.</td><td class="sx">Generally available</td></tr>
+          <tr><th scope="row">Sales Opportunity Agent</th><td>Pulls CRM data, email, meetings and web research into one deal view, flags risks and shows which deals to focus on.</td><td class="sx">Generally available</td></tr>
+          <tr><th scope="row">Sales Research Agent</th><td>Answers business questions about your pipeline in plain language and builds a research report with charts.</td><td class="sx">[Generally available or preview: confirm the week of publishing]</td></tr>
+          <tr><th scope="row">Recommended Actions Agent</th><td>Ranks the next actions from your other agents into one list for each seller.</td><td class="sx">[Confirm status the week of publishing]</td></tr>
+          <tr><th scope="row">AI-powered Data Enrichment</th><td>Reads recent customer emails and Teams meetings and suggests updates to opportunities.</td><td class="sx">Generally available</td></tr>
+          <tr><th scope="row">Sales Development agent</th><td>Handles outreach and prospect follow-up from Microsoft Teams. Needs Microsoft 365 Copilot and Microsoft's Agent 365 preview.</td><td class="sx">Preview</td></tr>
+          <tr class="grp"><th scope="colgroup" colspan="3">Dynamics 365 Customer Service</th></tr>
+          <tr><th scope="row">Case Management Agent</th><td>Creates, updates, resolves, follows up and closes cases. Fully autonomous case resolution needs an application user and a shared mailbox.</td><td class="sx">Generally available</td></tr>
+          <tr><th scope="row">Customer Intent Agent</th><td>Finds the most common reasons customers get in touch from past and current cases and conversations, and suggests new ones.</td><td class="sx">Generally available</td></tr>
+          <tr><th scope="row">Customer Knowledge Management Agent</th><td>Reads closed cases and drafts or updates knowledge articles to fill gaps.</td><td class="sx">Generally available</td></tr>
+          <tr><th scope="row">Quality Evaluation Agent</th><td>Scores cases against a framework your supervisors set.</td><td class="sx">Generally available</td></tr>
+          <tr><th scope="row">Service Agent</th><td>Lets reps find, summarize and update case information from Microsoft 365 Copilot or Copilot Service workspace.</td><td class="sx">Generally available</td></tr>
+        </tbody>
+      </table>
+      <p class="fine">Agents run on Copilot Credits. Sales Premium includes 1,000 credits per user per month; other plans buy credits separately. If prepaid credits run out and no pay-as-you-go plan is set, the agents stop until more are added.</p>
+      <p class="fine" style="margin-top:10px">Customer Service Premium includes base credit capacity for the four service agents; other plans buy credits separately. Some agents, including the Case Management and Customer Intent agents, also need a pay-as-you-go plan on an Azure subscription.</p>
+      <p class="fine" style="margin-top:10px">Preview features are not meant for production use. We tell you which is which before you decide.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="genpages" aria-labelledby="gp-h">
+    <div class="sec-head rev">
+      <div>
+        <span class="mono">Generative pages</span>
+        <h2 class="h2" id="gp-h" style="margin-top:16px">Describe the screen. Watch the page build.</h2>
+      </div>
+      <p class="lead">Generative pages let you describe a screen in plain English and get a working page inside a Dynamics 365 app. Microsoft's app agent writes the code and connects it to your Dataverse tables, and you refine it by chatting. This is AI used as a tool to build the report, and we rate it the best use of AI we have seen in a CRM.</p>
+    </div>
+
+    <div class="gx rev" data-gx>
+      <div class="gx-pick" role="group" aria-label="Pick an example request">
+        <span class="mono">Pick a request</span>
+        <button type="button" data-pick="a" aria-pressed="true"><span class="k">01</span><span class="t">Account 360</span><span class="d">A tab on the account form, before a call.</span></button>
+        <button type="button" data-pick="b" aria-pressed="false"><span class="k">02</span><span class="t">Opportunity command center</span><span class="d">The first tab on a deal.</span></button>
+        <button type="button" data-pick="c" aria-pressed="false"><span class="k">03</span><span class="t">Approvals</span><span class="d">Quotes waiting for a manager.</span></button>
+      </div>
+      <figure style="margin:0;min-width:0">
+        <div class="gx-win">
+          <div class="mock-bar"><i></i><i></i><i></i><span style="margin-left:8px;color:var(--ink)">Dynamics 365 app &middot; Add page &middot; Generative page</span></div>
+          <div class="gx-ask">
+            <span class="mono">Describe a page</span>
+            <p class="gq"><span data-q>Add a tab to the account form with relationship health and the reason for it, win rate, open pipeline by month, contacts and open cases</span><span class="caret" aria-hidden="true"></span></p>
+          </div>
+          <div class="gx-meta" aria-live="polite">
+            <span class="stp done" data-s="0">Plan</span><span class="stp done" data-s="1">Write code</span><span class="stp done" data-s="2">Render</span>
+            <span class="tb" data-tb>Tables: Account, Opportunity, Case, Activity, Contact</span>
+          </div>
+          <div class="gx-canvas">
+            <!-- A: Account 360 -->
+            <div class="gx-sc cur" data-sc="a">
+              <div class="hd"><b>Contoso Freight</b><span>Account form &middot; Account 360 tab</span></div>
+              <div class="pt s2"><span class="l">Relationship health</span><span class="v" style="color:#1D5B33">Good</span><span class="s">Reason: 3 meetings and 9 emails in the last 30 days</span></div>
+              <div class="pt s2"><span class="l">Win rate, last 12 months</span><span class="v">48%</span><span class="s">12 won of 25 closed</span></div>
+              <div class="pt s2 w2"><span class="l">Open cases</span><span class="v">2</span><span class="s">1 high priority</span></div>
+              <div class="pt s4 w2"><span class="l">Open pipeline by month</span>
+                <div class="bars" aria-hidden="true"><span><i style="--h:42%"></i>Dec</span><span><i style="--h:70%"></i>Jan</span><span><i style="--h:28%"></i>Feb</span><span><i style="--h:94%"></i>Mar</span><span><i style="--h:55%"></i>Apr</span></div>
+                <span class="s">$212K open across 6 opportunities</span></div>
+              <div class="pt s2 w2"><span class="l">Contacts</span>
+                <div class="gl"><span>Operations director</span><span class="badge">Primary</span></div>
+                <div class="gl"><span>IT manager</span><span class="badge">Met in Nov</span></div>
+                <div class="gl"><span>Finance lead</span><span class="badge">Quotes</span></div></div>
+              <div class="pt s6"><span class="l">Open cases</span>
+                <div class="gl"><span>Late delivery report, Dallas site</span><span class="badge r">High</span></div>
+                <div class="gl"><span>Portal login for new user</span><span class="badge">Normal</span></div></div>
+            </div>
+            <!-- B: Opportunity command center -->
+            <div class="gx-sc" data-sc="b">
+              <div class="hd"><b>Fabrikam Foods, expansion</b><span>Opportunity form &middot; first tab</span></div>
+              <div class="pt s2"><span class="l">Est. revenue</span><span class="v">$84,000</span><span class="s">Close in 6 weeks</span></div>
+              <div class="pt s2"><span class="l">Probability</span>
+                <div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="bg" cx="50" cy="50" r="36"/><circle class="fg" cx="50" cy="50" r="36"/></svg><span class="v">60%</span></div></div>
+              <div class="pt s2 w2"><span class="l">Stage</span><div class="pills"><i>Qualify</i><i class="on">Develop</i><i>Propose</i><i>Close</i></div><span class="s">In Develop for 11 days</span></div>
+              <div class="pt s3 w2"><span class="l">Activity timeline</span>
+                <div class="gl"><span>Send revised quote</span><span class="r">Overdue 4 days</span></div>
+                <div class="gl"><span>Follow-up call with buyer</span><span class="r">Overdue 1 day</span></div>
+                <div class="gl"><span>Site walk-through</span><span>Fri</span></div>
+                <div class="gl"><span>Discovery meeting</span><span>Done</span></div></div>
+              <div class="pt s3 w2"><span class="l">Products</span>
+                <div class="gl"><span>Warehouse licences, 20</span><span>$48,000</span></div>
+                <div class="gl"><span>Setup and training</span><span>$30,000</span></div>
+                <div class="gl"><span>Support, first year</span><span>$6,000</span></div></div>
+              <div class="pt s6"><span class="l">Quote</span>
+                <div class="gl"><span>Q-1042, draft, $84,000</span><span class="badge">Waiting for approval</span></div></div>
+            </div>
+            <!-- C: Approvals -->
+            <div class="gx-sc" data-sc="c">
+              <div class="hd"><b>Quotes waiting for you</b><span>Sales manager &middot; app navigation</span></div>
+              <div class="pt s6" data-ap>
+                <div class="apbar"><span class="l" data-apn>0 selected</span><button type="button" class="btn btn-p" data-apgo disabled>Approve selected</button></div>
+                <label class="apv"><input type="checkbox"><span class="nm2">Northwind Supply, renewal</span><span class="amt">$36,500</span><span class="badge" data-st>Waiting 2 days</span></label>
+                <label class="apv"><input type="checkbox"><span class="nm2">Contoso Freight, new site</span><span class="amt">$58,200</span><span class="badge" data-st>Waiting 1 day</span></label>
+                <label class="apv"><input type="checkbox"><span class="nm2">Litware Labs, pilot</span><span class="amt">$9,800</span><span class="badge" data-st>Waiting 5 days</span></label>
+                <label class="apv"><input type="checkbox"><span class="nm2">Fabrikam Foods, expansion</span><span class="amt">$84,000</span><span class="badge" data-st>Waiting today</span></label>
+              </div>
+              <div class="pt s3"><span class="l">Waiting</span><span class="v" data-apw>4</span><span class="s">quotes need a manager</span></div>
+              <div class="pt s3"><span class="l">Value waiting</span><span class="v" data-apv>$188,500</span><span class="s">still to approve</span></div>
+            </div>
+          </div>
+          <div class="gx-note" data-note>The finished page is an ordinary screen on your data.</div>
+        </div>
+        <figcaption class="mock-cap">Example data, Microsoft sample company names.</figcaption>
+      </figure>
+    </div>
+
+    <div class="gp-low">
+      <div class="rev">
+        <h3 class="h3">Where do generative pages show up?</h3>
+        <div class="fit"><div class="yes"><ul>
+          <li>In the app navigation, as its own page.</li>
+          <li>Inside a form, in a section or tab. The page gets the current record automatically, so you keep the standard form for data entry and add a richer view beside it.</li>
+          <li>Opened from another page or button, with the record passed in.</li>
+        </ul></div></div>
+        <p class="fine">The AI does its work while the page is being built. The finished page is an ordinary screen that reads and updates your Dynamics 365 records, and we test it with your users' real security roles before anyone relies on it.</p>
+      </div>
+      <div class="rev">
+        <h3 class="h3">When not to use a generative page</h3>
+        <div class="fit"><div class="no"><ul>
+          <li>The job is simple data entry. A standard form is more consistent and easier to support.</li>
+          <li>You need heavy reporting over a lot of data. Use Power BI.</li>
+          <li>People need to ask questions, not open a screen. Copilot in Dynamics 365 answers questions about your data in a side pane.</li>
+          <li>The need is a conversation or an automated process. Build an agent or workflow in Copilot Studio.</li>
+          <li>You need one control reused across many forms. A PCF code component fits better.</li>
+          <li>Several makers must edit the same page at once. Generative pages do not support co-authoring yet.</li>
+        </ul></div></div>
+        <p class="fine">Also expect to iterate. A new prompt can change parts of the page you were happy with, so test after each change.</p>
+      </div>
+    </div>
+    <div class="acts rev" style="margin-top:36px"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">See it on a call</a><span class="fine" style="margin:0">Microsoft says the maker experience doesn't require any additional AI or message credits.</span></div>
+  </section>
+
+  <section class="sec" id="safe" aria-labelledby="sf-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="sf-h">How do we switch AI on safely?</h2>
+      <p class="lead">Nothing is switched on until your data and permissions are ready and the running cost is written down. Every agent goes through the same four steps.</p>
+    </div>
+    <div class="stages">
+      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Step 1</span><span class="t">Data and permissions review</span><span class="d">Copilot only sees records the signed-in person can already open, so we check your security roles, Dataverse search and the quality of your records first.</span></div>
+      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Step 2</span><span class="t">A small group first</span><span class="d">We switch on the agents that fit and test them on a small group before the whole team uses them.</span></div>
+      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i class="on" style="--k:4"></i><i class="m" style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Step 3</span><span class="t">A monthly spend limit</span><span class="d">We set a monthly limit on what the agents can spend. If prepaid credits run out and no pay-as-you-go plan is set, the agents stop until more are added.</span></div>
+      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i class="on" style="--k:4"></i><i class="m" style="--k:5"></i><i class="m" style="--k:6"></i><i class="m" style="--k:7"></i><i class="m" style="--k:8"></i></span><span class="mono">Step 4</span><span class="t">Cost estimated before switch-on</span><span class="d">We estimate your monthly use with Microsoft's estimator before an agent goes live, and write the running cost down.</span></div>
+    </div>
+    <div class="acts rev" style="margin-top:36px"><a class="btn btn-p" href="nine-dynamics-365-sales.html#check">Check if your data is ready</a><a class="lnk" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call <span>&rarr;</span></a></div>
+  </section>
+
+  <section class="sec" id="built" aria-labelledby="bt-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="bt-h">What does an agent built for your business look like?</h2>
+      <p class="lead">For a job only your business has, we build an agent in Copilot Studio that works on your Dynamics 365 data in Dataverse and can be published to Teams or your website. It is quoted on its own, with its running cost written down.</p>
+    </div>
+    <div class="stories two rev">
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/"><span class="mono">St. Louis &middot; Products: Dynamics 365 Sales, Customer Service, Copilot Studio</span><span class="t">Compana Pet Brands</span><span class="d">Ongoing support for Dynamics 365 Sales and Customer Service, plus Copilot Studio work on a Shopify integration in early testing.</span><span class="go">Read the Compana Pet Brands story &rarr;</span></a>
+      <a class="story" href="https://www.encloud9.com/microsoft-copilot-studio/"><span class="mono">Copilot Studio</span><span class="t">Agents built on Dataverse</span><span class="d">Published to Teams or your website, working on the same Dynamics 365 records your team already uses.</span><span class="go">About Copilot Studio &rarr;</span></a>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" aria-labelledby="fq-h">
+    <div class="sec-head rev"><h2 class="h2" id="fq-h">Copilot and AI questions we get asked</h2></div>
+    <div class="faq rev">
+      <details><summary>Is Copilot included in Dynamics 365 Sales?</summary><p>Copilot in Dynamics 365 Sales, Outlook and Teams is included in Sales Enterprise and Sales Premium, not in Sales Professional. The Sales agents are available on all three plans but run on Copilot Credits. Only Sales Premium includes credits; on other plans you buy them separately.</p></details>
+      <details><summary>Is Copilot included in Dynamics 365 Customer Service?</summary><p>Copilot in Customer Service is included in Customer Service Enterprise and Premium, not in Customer Service Professional. The Case Management, Customer Intent, Customer Knowledge Management and Quality Evaluation agents run on Copilot Credits. Premium includes base Copilot Credit capacity for them; on other plans you buy credits separately. Some agents, including the Case Management and Customer Intent agents, also need a pay-as-you-go plan on an Azure subscription.</p></details>
+      <details><summary>What do the Sales agents cost to run?</summary><p>Agents use Copilot Credits for each answer and action. Microsoft sells credits in packs of 25,000 for $200 a month, or pay-as-you-go through an Azure subscription. We estimate your monthly use with Microsoft's estimator and set a spending limit before an agent goes live.</p></details>
+      <details><summary>What are generative pages in Dynamics 365?</summary><p>They are pages in model-driven apps that Microsoft's app agent builds from a plain-language description. The agent writes React code that reads and updates your Dataverse data.</p></details>
+      <details><summary>Are generative pages generally available?</summary><p>Yes. Generative pages in model-driven apps are generally available. Using Power Platform connectors and Dataverse custom APIs with them is still in preview.</p></details>
+      <details><summary>Does building generative pages cost extra?</summary><p>Microsoft says the maker experience doesn't require any additional AI or message credits. Users still need a licence for the app the page sits in.</p></details>
+      <details><summary>Do generative pages replace Power BI or Copilot?</summary><p>No. Use Power BI for heavy analytics, Copilot for questions about your data, and generative pages for focused working screens.</p></details>
+      <details><summary>When is a generative page not the right fit?</summary><p>Simple data entry, big reporting over lots of data, or a chat-style need. We will say so in Plan and point you to the better tool.</p></details>
+    </div>
+  </section>
+</div>
+
+<section class="final" aria-labelledby="fc-h">
+  <div class="wrap">
+    <div class="inner">
+      <div class="rev">
+        <h2 class="h2" id="fc-h">Start with a call or a free checkup</h2>
+        <p class="lead">Tell us which screen your team wishes it had, or which agent you are curious about. We tell you whether your data is ready and what it costs to run.</p>
+      </div>
+      <div class="side rev">
+        <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+        <a class="lnk" href="nine-dynamics-365-sales.html#check">Free checkups, no obligation <span>&rarr;</span></a>
+        <span class="mono">or call <a href="tel:+18442640729">1-844-264-0729</a>, 7:00am to 5:00pm Central</span>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="fcols">
+        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft partner since [2008], specializing in Dynamics 365. Click Gold Partner [confirm current tier].</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
+        <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-marketing.html">Marketing automation</a><a href="https://www.encloud9.com/dynamics-365-pricing/">Dynamics 365 pricing</a></nav>
+        <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="https://www.encloud9.com/microsoft-copilot-studio/">Copilot Studio</a><a href="https://www.encloud9.com/dynamics-365-power-apps/">Power Apps</a><a href="https://www.encloud9.com/microsoft-power-bi/">Power BI</a></nav>
+        <nav aria-label="Packages and support"><b>Packages and support</b><a href="nine-packages.html">All packages</a><a href="https://www.encloud9.com/dynamics-365-sales-accelerator/">Sales Accelerator</a><a href="https://www.encloud9.com/dynamics-365-service-accelerator/">Service Accelerator</a><a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>
+        <nav aria-label="Company"><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-stories.html">Client stories</a><a href="https://www.encloud9.com/blog/">Blog</a><a href="https://www.encloud9.com/contact-us/">Contact us</a><a href="https://www.encloud9.com/microsoft-dynamics-365-partner-omaha/">Omaha and Nebraska</a></nav>
+      </div>
+      <div class="tm">enCloud9 LLC, [address Brian confirms]. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. Click is a trademark of its owner.</div>
+    </footer>
+  </div>
+  <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>
+</section>
+</main>
+<script>
+(function(){
+  var calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* hero: Copilot lights first, then the eight around it, once */
+  var g=document.querySelector('.cgrid');
+  if(g&&!calm){
+    var cells=g.querySelectorAll('.cc'),order=[4,0,1,2,5,8,7,6,3];
+    g.classList.add('seq');
+    order.forEach(function(ix,k){setTimeout(function(){cells[ix].classList.add('on')},700+k*230)});
+  }
+  /* generative page builder */
+  var gx=document.querySelector('[data-gx]');if(!gx)return;
+  var Q={a:'Add a tab to the account form with relationship health and the reason for it, win rate, open pipeline by month, contacts and open cases',
+         b:'Make the first tab on a deal: revenue, a probability ring, stage, products, the activity timeline with overdue follow-ups in red, and the quote',
+         c:'List the quotes waiting for a manager, so I can tick the ones I am happy with and approve them together'};
+  var T={a:'Tables: Account, Opportunity, Case, Activity, Contact',b:'Tables: Opportunity, Product, Activity, Quote',c:'Tables: Quote, Opportunity, Account'};
+  var N={a:'The page sits on the account form and gets the current record automatically. The finished page is an ordinary screen on your data.',b:'The first tab on a deal, with overdue follow-ups in red. The finished page is an ordinary screen on your data.',c:'Tick quotes and select Approve: the page updates each quote you tick. Try it.'};
+  var note=gx.querySelector('[data-note]'),out=gx.querySelector('[data-q]'),tb=gx.querySelector('[data-tb]'),steps=gx.querySelectorAll('.stp'),btns=gx.querySelectorAll('[data-pick]'),run=0,timers=[];
+  function later(f,ms){timers.push(setTimeout(f,ms))}
+  function show(k,animate){
+    run++;var me=run;timers.forEach(clearTimeout);timers=[];
+    btns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-pick')===k?'true':'false')});
+    gx.querySelectorAll('.gx-sc').forEach(function(s){s.classList.toggle('cur',s.getAttribute('data-sc')===k)});
+    var sc=gx.querySelector('[data-sc="'+k+'"]'),parts=sc.querySelectorAll('.pt');
+    tb.textContent=T[k];note.textContent=N[k];
+    if(!animate){out.textContent=Q[k];steps.forEach(function(s){s.classList.add('done')});gx.classList.remove('building');return}
+    gx.classList.add('building');parts.forEach(function(p){p.classList.remove('in')});
+    steps.forEach(function(s){s.classList.remove('done')});
+    var text=Q[k],i=0;out.textContent='';
+    (function type(){if(me!==run)return;out.textContent=text.slice(0,++i);if(i<text.length){later(type,16)}else{
+      steps.forEach(function(s,n){later(function(){s.classList.add('done')},250+n*380)});
+      parts.forEach(function(p,n){later(function(){p.classList.add('in')},1350+n*120)});
+    }})();
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.getAttribute('data-pick'),!calm)})});
+  if(!calm&&'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;io.disconnect();show('a',true)},{threshold:.35});
+    io.observe(gx.querySelector('.gx-win'));
+  }
+  /* approvals: tick quotes, approve them together */
+  var ap=gx.querySelector('[data-ap]'),go=ap.querySelector('[data-apgo]'),n=ap.querySelector('[data-apn]'),w=gx.querySelector('[data-apw]');
+  function count(){var c=ap.querySelectorAll('input:checked:not([disabled])').length;n.textContent=c+' selected';go.disabled=c===0}
+  ap.addEventListener('change',count);
+  go.addEventListener('click',function(){
+    ap.querySelectorAll('input:checked:not([disabled])').forEach(function(x){x.disabled=true;var st=x.parentNode.querySelector('[data-st]');st.textContent='Approved';st.className='badge g'});
+    var left=ap.querySelectorAll('input:not([disabled])'),sum=0;left.forEach(function(x){sum+=+x.parentNode.querySelector('.amt').textContent.replace(/[^0-9]/g,'')});
+    w.textContent=left.length;gx.querySelector('[data-apv]').textContent='$'+sum.toLocaleString('en-US');count();
+  });
+})();
+</script>
+</body>
+</html>
