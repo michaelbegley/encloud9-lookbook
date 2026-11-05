@@ -17,7 +17,7 @@
 {"@type":"Question","name":"Do we need Sales Professional, Enterprise or Premium?","acceptedAnswer":{"@type":"Answer","text":"Most B2B sales teams start with Sales Enterprise, because it adds Copilot, forecasting and territory management to the core CRM. Professional suits small teams that need core pipeline tracking without Copilot. Premium suits teams that plan to run agents at volume, since it includes 1,000 Copilot Credits per user per month."}},
 {"@type":"Question","name":"Is Copilot included in Dynamics 365 Sales?","acceptedAnswer":{"@type":"Answer","text":"Copilot in Dynamics 365 Sales, Outlook and Teams is included in Sales Enterprise and Sales Premium, not in Sales Professional. The Sales agents are available on all three plans but run on Copilot Credits. Only Sales Premium includes credits; on other plans you buy them separately."}},
 {"@type":"Question","name":"What do the Sales agents cost to run?","acceptedAnswer":{"@type":"Answer","text":"Agents use Copilot Credits for each answer and action. Microsoft sells credits in packs of 25,000 for $200 a month, or pay-as-you-go through an Azure subscription. We estimate your monthly use with Microsoft's estimator and set a spending limit before an agent goes live."}},
-{"@type":"Question","name":"Can you fix a Dynamics 365 Sales system another partner set up?","acceptedAnswer":{"@type":"Answer","text":"Yes. Our Rescue and Repair package takes over systems that are over-customized, stalled or out of date, and takes them back to standard where it can. Hogan Assessments' over-customized system was back to standard within three months, on time and under budget."}},
+{"@type":"Question","name":"Can you fix a Dynamics 365 Sales system another partner set up?","acceptedAnswer":{"@type":"Answer","text":"Yes. Our Rescue and Repair package takes over systems that are over-customized, stalled or out of date, and takes them back to standard where it can. Tension Envelope's stalled project from a prior partner was back on track within three months."}},
 {"@type":"Question","name":"Do we need a support plan after go-live?","acceptedAnswer":{"@type":"Answer","text":"Yes. New clients start on at least the Stability plan, $500 a month for 4 hours, on a 12-month agreement. Monthly plans include a 1-hour response during business hours, from 7:00am to 5:00pm Central."}},
 {"@type":"Question","name":"Can you move our data from Salesforce, HubSpot or spreadsheets?","acceptedAnswer":{"@type":"Answer","text":"Yes. Moving data from your old CRM or spreadsheets is part of a full implementation, and the Sales Accelerator includes an import of up to [Brian sets] records. Integrations with other systems are quoted separately."}}]}</script>
 <style>
@@ -29,14 +29,15 @@ body.p-sales .lic a.cell:focus-visible{outline:3px solid var(--b6);outline-offse
 @media (hover:hover) and (prefers-reduced-motion:no-preference){
   body.p-sales .lic{perspective:900px}
   body.p-sales .lic .cell{transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
-  body.p-sales .lic:hover .cell{filter:saturate(.85) brightness(.92);transform:perspective(900px) scale(.97)}
-  body.p-sales .lic:hover .cell:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(80px) translateY(-10px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.1);box-shadow:0 34px 60px -26px rgba(14,26,58,.7),0 10px 20px -12px rgba(14,26,58,.45)}
+  body.p-sales .lic:hover .cell{filter:saturate(.92) brightness(.96);transform:perspective(900px) scale(.98)}
+  body.p-sales .lic:hover .cell:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(40px) translateY(-6px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.05);box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 10px 20px -12px rgba(14,26,58,.45)}
 }
 /* fit: sticky side, lists stacked */
 body.p-sales .fitsplit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(32px,5vw,72px);align-items:start}
 body.p-sales .fitsplit .side{position:sticky;top:110px;display:flex;flex-direction:column;gap:20px}
 body.p-sales .fitsplit .fit{grid-template-columns:1fr;gap:44px}
 body.p-sales .fit h3{display:flex;align-items:center;gap:12px}
+body.p-sales .notsure-l{font-weight:600;font-size:18px;margin:0}
 body.p-sales .fit h3 .g{grid-template-columns:repeat(3,7px)}body.p-sales .fit h3 .g i{width:7px;height:7px}
 @media (max-width:860px){body.p-sales .fitsplit{grid-template-columns:1fr}body.p-sales .fitsplit .side{position:static}}
 /* plan table: Enterprise column marked */
@@ -81,7 +82,7 @@ body.p-sales .rc .q button{width:80px;min-height:48px;padding:0 6px;font:600 14p
 body.p-sales .rc .q button[data-v="n"][aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
 body.p-sales .rc .q button[data-v="u"][aria-pressed="true"]{background:var(--b7);border-color:var(--b7);color:var(--ink)}
 body.p-sales .rc .q button:focus-visible{outline:3px solid var(--b6);outline-offset:2px}
-@media (hover:hover) and (prefers-reduced-motion:no-preference){body.p-sales .rc .q button:hover{transform:translateY(-3px) scale(1.06);border-color:var(--b6);box-shadow:0 14px 22px -14px rgba(14,26,58,.55)}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){body.p-sales .rc .q button:hover{transform:translateY(-3px) scale(1.04);border-color:var(--b6);box-shadow:0 14px 22px -14px rgba(14,26,58,.55)}}
 body.p-sales .rres{background:var(--b2);color:var(--white);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:20px}
 body.p-sales .rres .mono{color:var(--b8)}
 body.p-sales .meter{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
@@ -123,13 +124,13 @@ body.p-sales .rc-more{margin-top:32px}
   <a class="skip" href="#main">Skip to main content</a>
   <div class="wrap">
     <a class="logo" href="nine-home.html" aria-label="enCloud9 home"><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9" width="104" height="34"></a>
-    <nav class="nav" aria-label="Main"><a href="nine-dynamics-365.html" class="cur">Dynamics 365<span class="sr-only"> (current section)</span></a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="https://www.encloud9.com/blog/">Blog</a><a href="nine-about.html">About</a></nav>
+    <nav class="nav" aria-label="Main"><a href="nine-dynamics-365.html" class="cur">Dynamics 365<span class="sr-only"> (current section)</span></a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="nine-blog.html">Blog</a><a href="nine-about.html">About</a></nav>
     <a class="tel" href="tel:+18442640729">1-844-264-0729</a>
     <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
     <a class="btn btn-p call-m" href="tel:+18442640729">Call</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
   </div>
-  <nav class="mnav" id="mnav" aria-label="Mobile"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="https://www.encloud9.com/blog/">Blog</a><a href="nine-about.html">About</a><a href="tel:+18442640729">Call 1-844-264-0729</a>
+  <nav class="mnav" id="mnav" aria-label="Mobile"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="nine-blog.html">Blog</a><a href="nine-about.html">About</a><a href="tel:+18442640729">Call 1-844-264-0729</a>
     <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
   </nav>
 </header>
@@ -173,7 +174,7 @@ body.p-sales .rc-more{margin-top:32px}
     <div class="proof big rev">
       <a class="pf" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><b class="num">1 month</b><span>A new Dynamics 365 Sales system for The Schiff Group</span><small>Read the story &rarr;</small></a>
       <a class="pf" href="https://www.encloud9.com/about-encloud9/microsoft-dynamics-365-success/"><b class="num">23</b><span>client stories, new builds to rescues</span><small>See the stories &rarr;</small></a>
-      <div class="pf"><b class="num">[2008]</b><span>The year we became a Microsoft partner. We specialize in Dynamics 365.</span></div>
+      <div class="pf"><b class="num">[2008]</b><span>The year we became a Microsoft Partner. We specialize in Dynamics 365.</span></div>
       <a class="pf" href="#support"><b class="num">$500</b><span>a month, where support plans start</span><small>See support plans &rarr;</small></a>
     </div>
   </section>
@@ -182,8 +183,9 @@ body.p-sales .rc-more{margin-top:32px}
     <div class="fitsplit">
     <div class="side rev">
       <h2 class="h2" id="fit-h">Is Dynamics 365 Sales right for your business?</h2>
-      <p class="lead">Dynamics 365 Sales fits a business that sells to other businesses, runs on Microsoft 365, and has outgrown spreadsheets or an old CRM. It is a weaker fit for a very small team that only needs a contact list, or for a business whose main need is accounting and inventory.</p>
-      <p class="fine" style="margin-top:0">Not sure? <a class="lnk" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call and we will tell you <span>&rarr;</span></a></p>
+      <p class="lead">Dynamics 365 Sales fits a business that sells to other businesses, runs on Microsoft 365, and has outgrown spreadsheets or an old CRM.</p>
+      <p class="notsure-l">Not sure? Book a call and we will tell you which package fits.</p>
+      <div class="acts" style="margin-top:0"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a></div>
     </div>
     <div class="fit rev">
       <div class="yes"><h3 class="h3"><span class="g" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="d"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>A good fit if</h3><ul>
@@ -193,12 +195,38 @@ body.p-sales .rc-more{margin-top:32px}
         <li>You sell through a sales process with stages, quotes or products.</li>
         <li>You have a Dynamics 365 Sales system that is over-customized or stalled, and want it back to standard.</li>
       </ul></div>
-      <div class="no"><h3 class="h3"><span class="g" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="m"></i><i></i><i></i><i></i><i></i></span>Probably not yet if</h3><ul>
-        <li>You have one or two people who only need a shared address book.</li>
-        <li>You want every screen custom-built from scratch. We set up standard features first, because over-customized systems are the ones we most often get called in to rescue.</li>
-        <li>Your main need is accounting, orders and inventory rather than selling. Talk to us and we will tell you honestly where to start.</li>
-      </ul></div>
     </div>
+    </div>
+  </section>
+
+  <section class="sec" id="check" aria-labelledby="ck-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="ck-h">Is your Dynamics 365 Sales data ready for Copilot and agents?</h2>
+      <p class="lead">Answer five questions and get a written next step. It takes about two minutes and needs no access to your system.</p>
+    </div>
+    <div class="rc rev" id="checkups">
+      <div class="qbox">
+        <div class="qlist" role="group" aria-labelledby="ck-h">
+          <div class="qhead"><span class="mono">Copilot readiness check</span><span class="mono" data-count aria-live="polite">0 of 5 answered</span></div>
+          <div class="q"><span class="qn" aria-hidden="true">01</span><span class="qt">Do you know which Dynamics 365 Sales plan each of your users has?</span><span class="opts"><button type="button" data-v="y" aria-pressed="false">Yes</button><button type="button" data-v="n" aria-pressed="false">No</button><button type="button" data-v="u" aria-pressed="false">Not sure</button></span></div>
+          <div class="q"><span class="qn" aria-hidden="true">02</span><span class="qt">Is Dataverse search turned on in your environment?</span><span class="opts"><button type="button" data-v="y" aria-pressed="false">Yes</button><button type="button" data-v="n" aria-pressed="false">No</button><button type="button" data-v="u" aria-pressed="false">Not sure</button></span></div>
+          <div class="q"><span class="qn" aria-hidden="true">03</span><span class="qt">Do your security roles limit each person to the records they should see?</span><span class="opts"><button type="button" data-v="y" aria-pressed="false">Yes</button><button type="button" data-v="n" aria-pressed="false">No</button><button type="button" data-v="u" aria-pressed="false">Not sure</button></span></div>
+          <div class="q"><span class="qn" aria-hidden="true">04</span><span class="qt">Is your Dynamics 365 email connected to Exchange with server-side synchronization?</span><span class="opts"><button type="button" data-v="y" aria-pressed="false">Yes</button><button type="button" data-v="n" aria-pressed="false">No</button><button type="button" data-v="u" aria-pressed="false">Not sure</button></span></div>
+          <div class="q"><span class="qn" aria-hidden="true">05</span><span class="qt">Do most of your leads and contacts have a current email address and owner?</span><span class="opts"><button type="button" data-v="y" aria-pressed="false">Yes</button><button type="button" data-v="n" aria-pressed="false">No</button><button type="button" data-v="u" aria-pressed="false">Not sure</button></span></div>
+        </div>
+        <div class="rres">
+          <span class="mono">Free checkups, no obligation</span>
+          <div class="meter" aria-hidden="true"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i></div>
+          <div class="key" aria-hidden="true"><span style="--k:var(--b6)">Yes</span><span style="--k:repeating-linear-gradient(135deg,rgba(255,255,255,.5) 0 2px,transparent 2px 4px)">Not sure</span><span style="--k:transparent">No</span><span style="--k:rgba(255,255,255,.05);--bs:dashed">Not answered</span></div>
+          <div class="score"><b data-score>0 of 5</b><span class="mono">ready</span></div>
+          <p data-note aria-live="polite">Answer all five to see your next step.</p>
+          <p class="sm">We send a short written next step: what to fix first, and whether an agent pilot makes sense yet.</p>
+          <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Get my next step</a>
+        </div>
+      </div>
+    </div>
+    <div class="rows rc-more rev">
+      <a class="row" href="https://www.encloud9.com/lp/schedule-a-meeting/"><span class="g" aria-hidden="true"><i class="d"></i><i></i><i class="d"></i><i></i><i class="on"></i><i></i><i class="d"></i><i></i><i class="d"></i></span><span class="nm">CRM Health Check</span><span class="ds">A review of your Dynamics 365 Sales setup, with findings ranked by what each fix is worth.</span><span class="go">Request it free &rarr;</span></a>
     </div>
   </section>
 
@@ -326,13 +354,13 @@ body.p-sales .rc-more{margin-top:32px}
   <section class="sec" id="support" aria-labelledby="sp-h">
     <div class="sec-head rev">
       <h2 class="h2" id="sp-h">What does Dynamics 365 Sales support cost after go-live?</h2>
-      <p class="lead">Support starts at $500 a month for 4 hours on the Stability plan, which is the minimum plan for new clients. Larger teams choose Optimization at $1,500 a month for 20 hours or Partnership at $2,000 a month for 35 hours.</p>
+      <p class="lead">Support starts at $500 a month for 4 hours on the Stability plan, which is the minimum plan for new clients. Larger teams choose Optimization at $1,500 a month for 20 hours or Partnership from $2,000 a month for 35 hours.</p>
     </div>
     <div class="ptiles plans rev" role="list" aria-label="Support plans, prices and hours">
       <a role="listitem" class="ptile" style="--c:var(--b4)" href="https://www.dynamics365support.com/#plans"><span class="pt-top"><span class="mono">Hourly</span><span class="g big" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">On-Demand</span><span class="price">$200<small>an hour</small></span><span class="ds">As needed, no retainer. Fit: [Brian to confirm: who can still use it, for example during a project]</span><span class="pt-foot"><span class="go">Compare support plans &rarr;</span></span></a>
       <a role="listitem" class="ptile" style="--c:var(--b1)" href="https://www.dynamics365support.com/#plans"><span class="pt-top"><span class="min">Minimum plan</span><span class="g big" aria-hidden="true"><i class="d"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Stability</span><span class="price">$500<small>a month</small></span><span class="ds"><b>4 hours a month.</b> Small teams.</span><span class="pt-foot"><span class="go">Compare support plans &rarr;</span></span></a>
       <a role="listitem" class="ptile" style="--c:var(--b2)" href="https://www.dynamics365support.com/#plans"><span class="pt-top"><span class="mono">Monthly plan</span><span class="g big" aria-hidden="true"><i class="d"></i><i class="d"></i><i></i><i class="m"></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Optimization</span><span class="price">$1,500<small>a month</small></span><span class="ds"><b>20 hours a month.</b> Up to 50 users.</span><span class="pt-foot"><span class="go">Compare support plans &rarr;</span></span></a>
-      <a role="listitem" class="ptile" style="--c:var(--b3)" href="https://www.dynamics365support.com/#plans"><span class="pt-top"><span class="mono">Monthly plan</span><span class="g big" aria-hidden="true"><i class="d"></i><i class="d"></i><i class="d"></i><i class="m"></i><i class="on"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i></span></span><span class="nm">Partnership</span><span class="price">$2,000<small>a month</small></span><span class="ds"><b>35 hours a month.</b> 50 users and up.</span><span class="pt-foot"><span class="go">Compare support plans &rarr;</span></span></a>
+      <a role="listitem" class="ptile" style="--c:var(--b3)" href="https://www.dynamics365support.com/#plans"><span class="pt-top"><span class="mono">Monthly plan</span><span class="g big" aria-hidden="true"><i class="d"></i><i class="d"></i><i class="d"></i><i class="m"></i><i class="on"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i></span></span><span class="nm">Partnership</span><span class="price">$2,000+<small>a month</small></span><span class="ds"><b>35 hours a month.</b> 50 users and up.</span><span class="pt-foot"><span class="go">Compare support plans &rarr;</span></span></a>
     </div>
     <div class="sp-foot rev">
       <p class="fine">12-month agreement. Onboarding fee up to one month's charge. Hours 7:00am to 5:00pm Central, Monday to Friday, excluding US federal holidays. Monthly plans include a 1-hour response during business hours, which means a person has picked up your request, not that it is solved. Every plan includes Microsoft escalation management when it is needed.</p>
@@ -343,42 +371,11 @@ body.p-sales .rc-more{margin-top:32px}
   <section class="sec" id="stories" aria-labelledby="cs-h">
     <div class="sec-head rev">
       <h2 class="h2" id="cs-h">Which businesses have we set up Dynamics 365 Sales for?</h2>
-      <p class="lead">Here are two of our 23 client stories: one new Dynamics 365 Sales system and one rescue of an over-customized system. <a class="lnk" href="https://www.encloud9.com/about-encloud9/microsoft-dynamics-365-success/">All 23 client stories <span>&rarr;</span></a></p>
+      <p class="lead">Here are two of our 23 client stories: one new Dynamics 365 Sales system and one rescue of a stalled project from a prior partner. <a class="lnk" href="https://www.encloud9.com/about-encloud9/microsoft-dynamics-365-success/">All 23 client stories <span>&rarr;</span></a></p>
     </div>
     <div class="stories two rev">
       <a class="story" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><span class="mono">Maryland &middot; Product: Dynamics 365 Sales &middot; Timeline: 1 month</span><span class="big">1 month</span><span class="t">The Schiff Group</span><span class="d">A new Dynamics 365 Sales system in one month.</span><span class="go">Read The Schiff Group story &rarr;</span></a>
-      <a class="story" href="https://www.encloud9.com/blog/success_stories/hogans-crm-rescue-story-a-fresh-start-with-dynamics-365/"><span class="mono">Tulsa &middot; Work: rescue and clean-up &middot; Timeline: within three months</span><span class="big">3 months</span><span class="t">Hogan Assessments</span><span class="d">An over-customized Dynamics system taken back to standard within three months, on time and under budget.</span><span class="go">Read the Hogan Assessments story &rarr;</span></a>
-    </div>
-  </section>
-
-  <section class="sec" id="check" aria-labelledby="ck-h">
-    <div class="sec-head rev">
-      <h2 class="h2" id="ck-h">Is your Dynamics 365 Sales data ready for Copilot and agents?</h2>
-      <p class="lead">Answer five questions and get a written next step. It takes about two minutes and needs no access to your system.</p>
-    </div>
-    <div class="rc rev" id="checkups">
-      <div class="qbox">
-        <div class="qlist" role="group" aria-labelledby="ck-h">
-          <div class="qhead"><span class="mono">Copilot readiness check</span><span class="mono" data-count aria-live="polite">0 of 5 answered</span></div>
-          <div class="q"><span class="qn" aria-hidden="true">01</span><span class="qt">Do you know which Dynamics 365 Sales plan each of your users has?</span><span class="opts"><button type="button" data-v="y" aria-pressed="false">Yes</button><button type="button" data-v="n" aria-pressed="false">No</button><button type="button" data-v="u" aria-pressed="false">Not sure</button></span></div>
-          <div class="q"><span class="qn" aria-hidden="true">02</span><span class="qt">Is Dataverse search turned on in your environment?</span><span class="opts"><button type="button" data-v="y" aria-pressed="false">Yes</button><button type="button" data-v="n" aria-pressed="false">No</button><button type="button" data-v="u" aria-pressed="false">Not sure</button></span></div>
-          <div class="q"><span class="qn" aria-hidden="true">03</span><span class="qt">Do your security roles limit each person to the records they should see?</span><span class="opts"><button type="button" data-v="y" aria-pressed="false">Yes</button><button type="button" data-v="n" aria-pressed="false">No</button><button type="button" data-v="u" aria-pressed="false">Not sure</button></span></div>
-          <div class="q"><span class="qn" aria-hidden="true">04</span><span class="qt">Is your Dynamics 365 email connected to Exchange with server-side synchronization?</span><span class="opts"><button type="button" data-v="y" aria-pressed="false">Yes</button><button type="button" data-v="n" aria-pressed="false">No</button><button type="button" data-v="u" aria-pressed="false">Not sure</button></span></div>
-          <div class="q"><span class="qn" aria-hidden="true">05</span><span class="qt">Do most of your leads and contacts have a current email address and owner?</span><span class="opts"><button type="button" data-v="y" aria-pressed="false">Yes</button><button type="button" data-v="n" aria-pressed="false">No</button><button type="button" data-v="u" aria-pressed="false">Not sure</button></span></div>
-        </div>
-        <div class="rres">
-          <span class="mono">Free checkups, no obligation</span>
-          <div class="meter" aria-hidden="true"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i></div>
-          <div class="key" aria-hidden="true"><span style="--k:var(--b6)">Yes</span><span style="--k:repeating-linear-gradient(135deg,rgba(255,255,255,.5) 0 2px,transparent 2px 4px)">Not sure</span><span style="--k:transparent">No</span><span style="--k:rgba(255,255,255,.05);--bs:dashed">Not answered</span></div>
-          <div class="score"><b data-score>0 of 5</b><span class="mono">ready</span></div>
-          <p data-note aria-live="polite">Answer all five to see your next step.</p>
-          <p class="sm">We send a short written next step: what to fix first, and whether an agent pilot makes sense yet.</p>
-          <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Get my next step</a>
-        </div>
-      </div>
-    </div>
-    <div class="rows rc-more rev">
-      <a class="row" href="https://www.encloud9.com/lp/schedule-a-meeting/"><span class="g" aria-hidden="true"><i class="d"></i><i></i><i class="d"></i><i></i><i class="on"></i><i></i><i class="d"></i><i></i><i class="d"></i></span><span class="nm">CRM Health Check</span><span class="ds">A review of your Dynamics 365 Sales setup, with findings ranked by what each fix is worth.</span><span class="go">Request it free &rarr;</span></a>
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/tension-ss/"><span class="mono">Kansas City, MO &middot; Product: Dynamics 365 Sales Enterprise &middot; Timeline: within three months</span><span class="big">3 months</span><span class="t">Tension Envelope</span><span class="d">A stalled project from a prior partner, rescued within a mere three-month timeframe.</span><span class="go">Read the Tension Envelope story &rarr;</span></a>
     </div>
   </section>
 
@@ -396,7 +393,7 @@ body.p-sales .rc-more{margin-top:32px}
       <details><summary>Do we need Sales Professional, Enterprise or Premium?</summary><p>Most B2B sales teams start with Sales Enterprise, because it adds Copilot, forecasting and territory management to the core CRM. Professional suits small teams that need core pipeline tracking without Copilot. Premium suits teams that plan to run agents at volume, since it includes 1,000 Copilot Credits per user per month.</p></details>
       <details><summary>Is Copilot included in Dynamics 365 Sales?</summary><p>Copilot in Dynamics 365 Sales, Outlook and Teams is included in Sales Enterprise and Sales Premium, not in Sales Professional. The Sales agents are available on all three plans but run on Copilot Credits. Only Sales Premium includes credits; on other plans you buy them separately.</p></details>
       <details><summary>What do the Sales agents cost to run?</summary><p>Agents use Copilot Credits for each answer and action. Microsoft sells credits in packs of 25,000 for $200 a month, or pay-as-you-go through an Azure subscription. We estimate your monthly use with Microsoft's estimator and set a spending limit before an agent goes live.</p></details>
-      <details><summary>Can you fix a Dynamics 365 Sales system another partner set up?</summary><p>Yes. Our <a class="lnk" href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a> package takes over systems that are over-customized, stalled or out of date, and takes them back to standard where it can. Hogan Assessments' over-customized system was back to standard within three months, on time and under budget.</p></details>
+      <details><summary>Can you fix a Dynamics 365 Sales system another partner set up?</summary><p>Yes. Our <a class="lnk" href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a> package takes over systems that are over-customized, stalled or out of date, and takes them back to standard where it can. Tension Envelope's stalled project from a prior partner was back on track within three months.</p></details>
       <details><summary>Do we need a support plan after go-live?</summary><p>Yes. New clients start on at least the Stability plan, $500 a month for 4 hours, on a 12-month agreement. Monthly plans include a 1-hour response during business hours, from 7:00am to 5:00pm Central.</p></details>
       <details><summary>Can you move our data from Salesforce, HubSpot or spreadsheets?</summary><p>Yes. Moving data from your old CRM or spreadsheets is part of a full implementation, and the Sales Accelerator includes an import of up to [Brian sets] records. Integrations with other systems are quoted separately.</p></details>
     </div>
@@ -421,13 +418,13 @@ body.p-sales .rc-more{margin-top:32px}
     </div>
     <footer class="foot">
       <div class="fcols">
-        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft partner since [2008], specializing in Dynamics 365. Click (formerly ClickDimensions) Gold Partner [confirm current tier].</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
+        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft Partner since [2008], specializing in Dynamics 365.</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
         <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-marketing.html">Marketing automation</a><a href="https://www.encloud9.com/dynamics-365-pricing/">Dynamics 365 pricing</a></nav>
         <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="https://www.encloud9.com/microsoft-copilot-studio/">Copilot Studio</a><a href="https://www.encloud9.com/dynamics-365-power-apps/">Power Apps</a><a href="https://www.encloud9.com/microsoft-power-bi/">Power BI</a></nav>
         <nav aria-label="Packages and support"><b>Packages and support</b><a href="nine-packages.html">All packages</a><a href="https://www.encloud9.com/dynamics-365-sales-accelerator/">Sales Accelerator</a><a href="https://www.encloud9.com/dynamics-365-service-accelerator/">Service Accelerator</a><a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>
-        <nav aria-label="Company"><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-stories.html">Client stories</a><a href="https://www.encloud9.com/blog/">Blog</a><a href="https://www.encloud9.com/contact-us/">Contact us</a><a href="https://www.encloud9.com/microsoft-dynamics-365-partner-omaha/">Omaha and Nebraska</a></nav>
+        <nav aria-label="Company"><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-stories.html">Client stories</a><a href="nine-blog.html">Blog</a><a href="https://www.encloud9.com/contact-us/">Contact us</a><a href="https://www.encloud9.com/microsoft-dynamics-365-partner-omaha/">Omaha and Nebraska</a></nav>
       </div>
-      <div class="tm">enCloud9 LLC, [address Brian confirms]. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. Click is a trademark of its owner.</div>
+      <div class="tm">enCloud9 LLC, [address Brian confirms]. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies.</div>
     </footer>
   </div>
   <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>
