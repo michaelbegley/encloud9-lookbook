@@ -330,3 +330,46 @@ a.row:hover{background:var(--tint)}
 .final .h2{background:linear-gradient(90deg,var(--white),var(--b7));-webkit-background-clip:text;background-clip:text;color:transparent}
 @media (prefers-reduced-motion:reduce){.cell,.cell:hover{transform:none}}
 .badge{white-space:nowrap}
+
+/* site chrome v2: 7-item nav and doormat footer (full concept) */
+.nav{gap:22px}
+.nav a.cur{background-size:100% 2px;background-image:linear-gradient(var(--b5),var(--b5))}
+@media (max-width:1400px){.top .tel{display:none}}
+@media (max-width:1240px){
+  .nav,.top .tel{display:none}
+  .menu-btn{display:inline-flex;align-items:center}
+  .top .btn-p:not(.call-m){display:none}
+  .top .call-m{display:inline-flex;margin-left:auto;min-height:40px;padding:0 16px}
+  .top .call-m + .menu-btn{margin-left:8px}
+  .mnav.open{display:flex;flex-direction:column;gap:4px;padding:8px var(--gut) 20px;border-top:1px solid var(--line);background:var(--bg)}
+  .mnav a{padding:12px 0;font-size:18px;border-bottom:1px solid var(--line)}
+  .mnav .btn{margin-top:12px}
+}
+.foot{display:block}
+.fcols{display:grid;grid-template-columns:1.3fr repeat(4,1fr);gap:32px}
+.fcols>div{display:flex;flex-direction:column;gap:14px;font-size:14px;line-height:1.5}
+.fcols nav{display:flex;flex-direction:column;gap:10px;font-size:14px}
+.fcols nav b{color:var(--white);font-family:var(--mono);font-weight:400;font-size:12px;margin-bottom:4px}
+.fcols a{min-height:24px}
+.fcols a:hover{color:var(--white)}
+.foot .tm{max-width:none;text-align:left;margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);font-size:12px}
+@media (max-width:1080px){.fcols{grid-template-columns:1fr 1fr}.fcols>div{grid-column:1/-1}}
+@media (max-width:480px){.fcols{grid-template-columns:1fr}}
+.crumb .sep{opacity:.5}
+
+/* home: marketing split with a four-step flow */
+.vsplit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;counter-reset:f}
+.flow li{counter-increment:f;background:var(--c);color:var(--white);aspect-ratio:3/4;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;position:relative;transition:transform .45s var(--bounce)}
+.flow li::before{content:"0" counter(f);position:absolute;top:14px;left:16px;font-family:var(--mono);font-size:12px;opacity:.8}
+.flow li.lt{color:var(--ink)}
+.flow li b{font-family:var(--head);font-size:clamp(18px,1.7vw,22px);letter-spacing:-.02em}
+.flow li span{font-size:13px;line-height:1.35;opacity:.9}
+.flow li:hover{transform:translateY(-6px)}
+@media (max-width:860px){.vsplit{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.flow li{aspect-ratio:auto;min-height:130px}}
+.three.two{grid-template-columns:repeat(2,1fr)}
+.three>a{display:flex;flex-direction:column;gap:12px;padding-top:24px;border-top:2px solid var(--b5);transition:transform .35s var(--bounce)}
+.three>a:hover{transform:translateY(-4px)}
+.three>a .t{font-family:var(--head);font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1.15}
+.three>a .d{font-size:16px;line-height:1.6;color:var(--b8)}
+@media (max-width:860px){.three.two{grid-template-columns:1fr}}
