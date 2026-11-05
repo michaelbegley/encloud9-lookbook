@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Enabling and Utilizing Sales Usage Reports in Dynamics 365</title>
+<meta name="description" content="How to enable Sales Usage Reports in Dynamics 365 Sales, what they show, and the five benefits for sales managers. Original June 2024 post with a November 2026 update.">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="nine.css">
+<script defer src="nine.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.encloud9.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.encloud9.com/blog/"},{"@type":"ListItem","position":3,"name":"Enabling and Utilizing Sales Usage Reports in Dynamics 365"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Enabling and Utilizing Sales Usage Reports in Dynamics 365","description":"How to enable Sales Usage Reports in Dynamics 365 Sales, what they show, and the five benefits for sales managers.","datePublished":"2024-06-12","dateModified":"2026-11-05","author":{"@type":"Person","name":"Brian Begley","jobTitle":"CEO"},"image":"https://www.encloud9.com/wp-content/uploads/2024/08/Enabling-and-Utilizing-Sales-Usage-Reports-1200-x-628-px.png.webp","mainEntityOfPage":"https://www.encloud9.com/blog/optimizing-sales-strategies-with-dynamics-365-enabling-and-utilizing-sales-usage-reports/","inLanguage":"en-US","publisher":{"@type":"Organization","name":"enCloud9","url":"https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Are sales usage reports still available in Dynamics 365 Sales?","acceptedAnswer":{"@type":"Answer","text":"Microsoft deprecated sales usage reports effective December 1, 2025. As an alternative, Microsoft offers a sample Power BI report for sales usage reporting, which you can customize and maintain yourself."}},
+{"@type":"Question","name":"Where do you turn on sales usage reports?","acceptedAnswer":{"@type":"Answer","text":"In the Sales app, go to App Settings in the lower left corner of the page, then turn on the Sales usage reports toggle and select Save."}},
+{"@type":"Question","name":"Where do you view sales usage reports?","acceptedAnswer":{"@type":"Answer","text":"Select Sales Analytics in the left side navigation of the Sales app."}},
+{"@type":"Question","name":"What do sales usage reports show?","acceptedAnswer":{"@type":"Answer","text":"Sales performance, activity tracking, customer insights and sales team performance, including which user has created or updated the most contacts, leads, opportunities or accounts."}}]}</script>
+<style>
+/* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
+body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
+body.p-post .progress i{display:block;height:100%;background:var(--b5);transform-origin:left;transform:scaleX(0)}
+body.p-post .crumb{flex-wrap:wrap;row-gap:0}
+body.p-post .crumb [aria-current]{min-height:28px;display:inline-flex;align-items:center}
+body.p-post .phead{padding-top:clamp(24px,3vw,40px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:clamp(32px,5vw,80px);align-items:start}
+body.p-post .pmain{display:flex;flex-direction:column;gap:22px;min-width:0}
+body.p-post .pmain .draft{order:-2}body.p-post .pmain .cat{order:-1}
+/* at a glance: four cubes, light to dark (Brian, 4 Nov: "I like light to dark") */
+body.p-post .glance{margin:0}
+body.p-post .glance .mono{display:block;margin-bottom:10px}
+body.p-post .gl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+body.p-post .gl li{background:var(--c);color:var(--white);aspect-ratio:1/1;padding:16px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;transition:transform .45s var(--bounce),box-shadow .35s var(--ease)}
+body.p-post .gl li.lt{color:var(--ink)}
+body.p-post .gl .k{font-family:var(--mono);font-size:12px;line-height:1.3}
+body.p-post .gl b{font-family:var(--head);font-size:clamp(18px,1.6vw,22px);line-height:1.15;font-weight:600;letter-spacing:-.015em}
+body.p-post .byline .av{width:22px;height:22px;background:var(--b5);display:inline-block;vertical-align:middle}
+body.p-post .draft{align-self:flex-start;display:inline-flex;gap:10px;align-items:center;font-family:var(--mono);font-size:13px;background:var(--ink);color:var(--white);padding:8px 12px}
+body.p-post .draft i{width:10px;height:10px;background:var(--b6);display:block}
+body.p-post .phead .h1{font-size:clamp(34px,4.2vw,62px);line-height:1.04}
+body.p-post .byline{display:flex;gap:10px 24px;flex-wrap:wrap;font-family:var(--mono);font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+body.p-post .byline b{color:var(--ink);font-weight:400}
+
+body.p-post .pgrid{display:grid;grid-template-columns:240px minmax(0,68ch);gap:clamp(40px,6vw,96px);margin-top:clamp(28px,3vw,44px);align-items:start}
+body.p-post .toc{position:sticky;top:140px;border-top:2px solid var(--ink);padding-top:14px}
+body.p-post .toc summary{font-family:var(--mono);font-size:12px;color:var(--muted);list-style:none;cursor:pointer;padding:4px 0 10px}
+body.p-post .toc summary::-webkit-details-marker{display:none}
+body.p-post .toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;counter-reset:t}
+body.p-post .toc li{counter-increment:t}
+body.p-post .toc a{display:grid;grid-template-columns:28px 1fr;gap:6px;padding:8px 0 8px 10px;font-size:14px;line-height:1.35;color:var(--muted);border-left:2px solid var(--line);transition:color .25s,border-color .25s,background .25s}
+body.p-post .toc a::before{content:counter(t,decimal-leading-zero);font-family:var(--mono);font-size:11px;padding-top:2px}
+body.p-post .toc a:hover{color:var(--ink);background:var(--tint)}
+body.p-post .toc a.on{color:var(--ink);font-weight:600;border-left-color:var(--b5)}
+body.p-post .toc a.on::before{color:var(--b5)}
+
+body.p-post .art{font-size:18px;line-height:1.7;color:var(--ink2);min-width:0}
+/* screenshot slot: a framed placeholder until real screenshots are taken in the demo environment */
+body.p-post .shot{margin:32px 0 0}
+body.p-post .shot .frame{border:1.5px solid var(--ink);background:var(--bg)}
+body.p-post .shot .bar{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+body.p-post .shot .bar i{width:10px;height:10px;background:var(--b8);display:block}
+body.p-post .shot .ph{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:var(--mono);font-size:13px;line-height:1.5;color:var(--muted);background:repeating-linear-gradient(135deg,var(--bg) 0 14px,var(--tint) 14px 15px)}
+body.p-post .shot figcaption{font-size:14px;color:var(--muted);margin-top:10px;line-height:1.5}
+/* author box */
+body.p-post .abox{display:grid;grid-template-columns:72px minmax(0,1fr);gap:20px;align-items:start;border-top:2px solid var(--ink);padding-top:24px;margin-top:clamp(56px,6vw,80px)}
+body.p-post .abox .pic{width:72px;height:72px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+body.p-post .abox .pic i{background:var(--c)}
+body.p-post .abox .nm{margin-top:0;font-family:var(--head);font-size:21px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+body.p-post .abox p{font-size:16px;line-height:1.6;margin-top:6px}
+body.p-post .art>*+*{margin-top:22px}
+body.p-post .art h2:not(.nm){font-family:var(--head);font-size:clamp(28px,3vw,38px);line-height:1.12;font-weight:600;letter-spacing:-.025em;color:var(--ink);margin-top:clamp(56px,6vw,80px);scroll-margin-top:140px}
+body.p-post .art h3{font-family:var(--head);font-size:21px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+body.p-post .art strong{color:var(--ink)}
+body.p-post .art a:not(.btn){color:var(--b4);font-weight:600;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat}
+body.p-post .art a:not(.btn):hover{color:var(--b5)}
+body.p-post .art ul{margin:22px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+body.p-post .art ul li{position:relative;padding-left:26px}
+body.p-post .art ul li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;background:var(--b5)}
+body.p-post .art ul.not li::before{content:"\00D7";background:none;width:auto;height:auto;top:0;color:var(--b5);font-weight:700;font-size:20px;line-height:1.5}
+body.p-post .answer{position:relative;background:var(--b9);border-left:6px solid var(--b5);padding:26px 28px 28px;font-size:clamp(19px,1.6vw,21px);line-height:1.6}
+body.p-post .answer .mono{display:block;color:var(--b4);margin-bottom:10px}
+body.p-post .answer strong{font-weight:600}
+body.p-post .ways{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+body.p-post .ways>div{background:var(--white);border:1px solid var(--line);border-top:6px solid var(--c);padding:22px}
+body.p-post .ways .mono{display:block;margin-bottom:10px}
+
+/* 12 uses as numbered cubes, 3 by 4 */
+body.p-post .uses{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+body.p-post .use{background:var(--c);color:var(--white);padding:18px 18px 20px;min-height:236px;display:flex;flex-direction:column;gap:8px;position:relative;transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+body.p-post .use.lt{color:var(--ink)}
+body.p-post .use .hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+body.p-post .use .n{font-family:var(--head);font-size:40px;font-weight:600;letter-spacing:-.04em;line-height:1}
+body.p-post .use .grp{font-family:var(--mono);font-size:11px;opacity:.82;text-align:right}
+body.p-post .use b{font-family:var(--head);font-size:18px;line-height:1.2;font-weight:600;letter-spacing:-.01em;margin-top:auto;color:inherit}
+body.p-post .use span.x{font-size:14px;line-height:1.45;opacity:.9}
+body.p-post .use.lt span.x{opacity:1;color:var(--ink)}
+body.p-post .use.lt .grp{opacity:1}
+body.p-post .groups{font-size:15px;color:var(--muted)}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-post .uses{perspective:900px}
+  body.p-post .uses:hover .use{filter:saturate(.92) brightness(.96);transform:scale(.98)}
+  body.p-post .uses:hover .use:hover{filter:none;z-index:3;transform:translateY(-6px) scale(1.03);box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 10px 20px -12px rgba(14,26,58,.45)}
+}
+@media (prefers-reduced-motion:no-preference){
+  body.p-post .use{transition:opacity .6s var(--ease),transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+  .js .p-post .gl li{animation:pop .7s var(--ease) backwards;animation-delay:calc(var(--k,0)*80ms + 300ms)}
+}
+
+body.p-post .faq{max-width:none;margin-top:24px}
+body.p-post .faq details p{font-size:17px}
+body.p-post .ctabox{background:var(--b2);color:var(--white);padding:clamp(28px,4vw,44px);margin-top:clamp(56px,6vw,80px)}
+body.p-post .art .ctabox h2{color:var(--white);margin-top:0}
+body.p-post .ctabox p{color:var(--b8);margin-top:16px}
+body.p-post .ctabox .btn{margin-top:24px}
+body.p-post .src{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+
+/* next step tiles and related posts */
+body.p-post .nx{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+body.p-post .nx .ptile{aspect-ratio:auto;min-height:260px}
+body.p-post .nx .ptile.lt{color:var(--ink)}
+body.p-post .nx .ptile.lt .mono,body.p-post .nx .ptile.lt .ds{color:var(--ink2)}
+body.p-post .nx .ptile.lt .g.big i{background:rgba(14,26,58,.15)}body.p-post .nx .ptile.lt .g.big i.on{background:var(--b1)}
+body.p-post .nx .ptile.lt .pt-foot{border-top-color:rgba(14,26,58,.2)}
+body.p-post .rel{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;border-top:2px solid var(--ink);padding-top:28px}
+body.p-post .pc{position:relative;background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;gap:14px;padding:26px 26px 22px;min-height:250px;transition:transform .5s var(--bounce),box-shadow .4s var(--ease),border-color .3s}
+body.p-post .pc::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:8px;background:var(--c)}
+body.p-post .pc .mono{padding-top:6px}
+body.p-post .pc .t{font-family:var(--head);font-size:clamp(21px,1.8vw,24px);line-height:1.2;font-weight:600;letter-spacing:-.015em}
+body.p-post .pc .d{font-size:15px;color:var(--muted)}
+body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:15px;color:var(--b5);font-weight:600}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-post .nx:hover .ptile,body.p-post .rel:hover .pc{transform:scale(.98);filter:saturate(.92) brightness(.96)}
+  body.p-post .nx .ptile,body.p-post .rel .pc{transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+  body.p-post .nx:hover .ptile:hover,body.p-post .rel:hover .pc:hover{transform:translateY(-6px) scale(1.03);filter:none;z-index:3;box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 8px 16px -12px rgba(14,26,58,.4)}
+}
+
+@media (max-width:1080px){
+  body.p-post .phead{grid-template-columns:1fr;align-items:start}
+  body.p-post .glance{display:none} /* phones and tablets: every glance fact is in the answer and the body, so the answer stays on the first screen */
+  body.p-post .pgrid{grid-template-columns:minmax(0,68ch);justify-content:start}
+  body.p-post .toc{position:static}
+  body.p-post .toc summary{font-size:13px;color:var(--ink)}
+  body.p-post .toc summary::after{content:" +";color:var(--b5)}
+  body.p-post .toc details[open] summary::after{content:" \2212"}
+  body.p-post .nx,body.p-post .rel{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){body.p-post .uses{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){
+  body.p-post .pmain{gap:12px}
+  body.p-post .draft{display:none} /* review marker only; live posts carry no draft tag */
+  body.p-post .phead .h1{font-size:30px;line-height:1.08}
+  body.p-post .byline{gap:4px 16px;padding-top:12px;font-size:12px}
+  body.p-post .art{font-size:17px}
+  body.p-post .ways{grid-template-columns:1fr}
+  body.p-post .uses{grid-template-columns:1fr}
+  body.p-post .use{min-height:0}
+  body.p-post .use b{margin-top:6px}
+  body.p-post .nx,body.p-post .rel{grid-template-columns:1fr}
+  body.p-post .nx .ptile{min-height:0}
+  body.p-post .answer{padding:20px 20px 22px}
+  body.p-post .gl li{aspect-ratio:auto;min-height:120px}
+  body.p-post .abox{grid-template-columns:56px minmax(0,1fr)}
+  body.p-post .abox .pic{width:56px;height:56px}
+}
+/* 2024 post in the new style (5 Nov 2026): update note, five benefit cubes, three step cubes, real screenshots */
+body.p-post .upd{background:var(--white);border:1.5px solid var(--ink);border-top:8px solid var(--b5);padding:22px 24px 24px;font-size:17px;line-height:1.6}
+body.p-post .upd .mono{display:block;color:var(--b4);margin-bottom:8px}
+body.p-post .upd p+p{margin-top:12px}
+body.p-post .uses.five{grid-template-columns:repeat(6,1fr)}
+body.p-post .uses.five .use{grid-column:span 2;min-height:250px}
+body.p-post .uses.five .use:nth-child(n+4){grid-column:span 3;min-height:200px}
+body.p-post .steps3{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;counter-reset:s}
+body.p-post .steps3 li{counter-increment:s;background:var(--white);border:1px solid var(--line);border-top:6px solid var(--c);padding:20px 20px 22px;font-size:16px;line-height:1.55;display:flex;flex-direction:column;gap:10px;transition:transform .5s var(--bounce),box-shadow .4s var(--ease)}
+body.p-post .steps3 li::before{content:counter(s);font-family:var(--head);font-size:40px;font-weight:600;letter-spacing:-.04em;line-height:1;color:var(--c2,var(--b5))}
+body.p-post .steps3 b{font-family:var(--head);font-size:18px;line-height:1.2;color:var(--ink)}
+body.p-post .mgroups{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:28px}
+body.p-post .mgroups>div{background:var(--c);color:var(--white);padding:22px 22px 24px}
+body.p-post .mgroups>div.lt{color:var(--ink)}
+body.p-post .mgroups h3{color:inherit!important;font-size:19px}
+body.p-post .mgroups>div.lt h3{color:var(--ink)!important}
+body.p-post .art .mgroups ul{margin-top:12px;gap:10px}
+body.p-post .art .mgroups li{font-size:15px;line-height:1.5}
+body.p-post .art .mgroups li::before{background:currentColor;opacity:.7}
+body.p-post .art .mgroups strong{color:inherit}
+body.p-post .shot img{display:block;width:100%;height:auto}
+body.p-post blockquote.sum{margin:22px 0 0;border-left:6px solid var(--b6);padding:4px 0 4px 24px}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-post .steps3:hover li{transform:scale(.98);filter:saturate(.92) brightness(.96)}
+  body.p-post .steps3:hover li:hover{transform:translateY(-6px) scale(1.03);filter:none;z-index:3;box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 8px 16px -12px rgba(14,26,58,.4)}
+}
+@media (max-width:760px){body.p-post .uses.five{grid-template-columns:1fr 1fr}body.p-post .uses.five .use,body.p-post .uses.five .use:nth-child(n+4){grid-column:span 1;min-height:200px}body.p-post .uses.five .use:last-child{grid-column:span 2}body.p-post .steps3{grid-template-columns:1fr}}
+@media (max-width:640px){body.p-post .uses.five{grid-template-columns:1fr}body.p-post .uses.five .use:last-child{grid-column:span 1}body.p-post .uses.five .use{min-height:0!important}body.p-post .mgroups{grid-template-columns:1fr}body.p-post .upd{padding:18px 18px 20px}}
+</style>
+</head>
+<body class="p-post">
+<div class="progress" aria-hidden="true"><i></i></div>
+<nav id="lbbar" aria-label="Lookbook">
+  <a href="../index.html">All looks</a><span class="t hide-s">Look 9, Nine, built pages: 2024 blog post</span>
+  <a href="nine-home.html">Home</a><a href="nine-dynamics-365-sales.html">Sales page</a><a href="nine-marketing.html" class="hide-s">Marketing</a>
+  <span class="sp"></span><span class="t">Font</span>
+  <button type="button" data-setfont="hanken" aria-pressed="true">Hanken</button><button type="button" data-setfont="jakarta" aria-pressed="false">Jakarta</button><button type="button" data-setfont="public" aria-pressed="false">Public Sans</button><button type="button" data-setfont="bricolage" aria-pressed="false">Bricolage</button>
+</nav>
+<header class="top">
+  <a class="skip" href="#main">Skip to main content</a>
+  <div class="wrap">
+    <a class="logo" href="nine-home.html" aria-label="enCloud9 home"><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9" width="104" height="34"></a>
+    <nav class="nav" aria-label="Main"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="nine-blog.html" class="cur">Blog<span class="sr-only"> (current section)</span></a><a href="nine-about.html">About</a></nav>
+    <a class="tel" href="tel:+18442640729">1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+    <a class="btn btn-p call-m" href="tel:+18442640729">Call</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="nine-blog.html">Blog</a><a href="nine-about.html">About</a><a href="tel:+18442640729">Call 1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+  </nav>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="nine-home.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="nine-blog.html">Blog</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Sales usage reports</span></nav>
+
+  <article aria-labelledby="h1">
+    <header class="phead">
+      <div class="pmain">
+        <h1 class="h1 rise" id="h1" style="--d:2">Enabling and Utilizing Sales Usage Reports in Dynamics 365</h1>
+        <span class="draft rise" style="--d:0"><i aria-hidden="true"></i>June 2024 post, shown in the new style</span>
+        <span class="mono cat rise" style="--d:1">Dynamics 365 Sales &middot; Admin and how-to</span>
+        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <b>Brian Begley</b></span><span><b>June 12, 2024</b></span><span>5 min read</span><span>Update note added 5 Nov 2026</span></p>
+      </div>
+      <aside class="glance" aria-labelledby="gl-h">
+        <p class="mono" id="gl-h">At a glance</p>
+        <ul class="gl">
+          <li class="lt" style="--c:var(--b9);--k:0"><span class="k">Status, November 2026</span><b>Deprecated December 1, 2025</b></li>
+          <li class="lt" style="--c:var(--b8);--k:1"><span class="k">Turn them on</span><b>Three steps in App Settings</b></li>
+          <li class="lt" style="--c:var(--b6);--k:2"><span class="k">Find them</span><b>Sales Analytics, left navigation</b></li>
+          <li style="--c:var(--b4);--k:3"><span class="k">What they show</span><b>Four groups of metrics</b></li>
+        </ul>
+      </aside>
+    </header>
+
+    <div class="pgrid">
+      <nav class="toc" aria-label="On this page">
+        <details open id="tocd">
+          <summary>On this page</summary>
+          <ol>
+            <li><a href="#update">What changed since 2024?</a></li>
+            <li><a href="#why">Why enable sales usage reports?</a></li>
+            <li><a href="#enable">How do you enable sales usage reports?</a></li>
+            <li><a href="#what">What do sales usage reports show?</a></li>
+            <li><a href="#sum">Conclusion</a></li>
+            <li><a href="#faq">Frequently asked questions</a></li>
+            <li><a href="#see">Want help with sales reporting?</a></li>
+          </ol>
+        </details>
+      </nav>
+
+      <div class="art" id="art">
+        <p class="answer"><span class="mono">The short answer</span><strong>Sales Usage Reports in Dynamics 365 Sales show sales managers how their team performs and how the system is used. An admin turns them on in App Settings with one toggle, and managers read them under Sales Analytics to make data-driven decisions.</strong></p>
+
+        <section class="upd" aria-labelledby="update">
+          <span class="mono">Update, November 2026</span>
+          <h2 id="update" class="sr-only">What changed since 2024?</h2>
+          <p><strong>Microsoft deprecated sales usage reports effective December 1, 2025.</strong> As an alternative, Microsoft offers a <a href="https://github.com/microsoft/Dynamics365-Apps-Samples/blob/master/sales/SalesUsageReporting/Sales%20Usage%20Reporting%20Sample.pbit">sample Power BI report for sales usage reporting</a>. Microsoft says you customize and maintain it yourself, and it does not support the sample. Details are on <a href="https://learn.microsoft.com/en-us/dynamics365/sales/deprecations-sales#sales-usage-reports">Microsoft Learn</a>.</p>
+          <p>The original 2024 post follows, as Brian wrote it.</p>
+        </section>
+
+        <p>Dynamics 365 Sales is a powerful platform offering extensive tools to enhance sales processes. Among these tools, Sales Usage Reports are particularly valuable for providing insights into sales performance and operational efficiency. Enabling these reports can help sales managers and teams understand their performance, identify areas for improvement, and make data-driven decisions.</p>
+
+        <h2 id="why">Why enable sales usage reports?</h2>
+        <p>Five benefits for sales managers and their teams.</p>
+        <ol class="uses five rev">
+          <li class="use lt" style="--c:var(--b9);--k:0"><span class="hd"><span class="n">1</span><span class="grp">Decisions</span></span><b>Data-driven decision making.</b><span class="x">With access to detailed sales usage reports, sales managers can make informed decisions based on concrete data rather than intuition. This leads to more effective strategies and better resource allocation.</span></li>
+          <li class="use lt" style="--c:var(--b8);--k:1"><span class="hd"><span class="n">2</span><span class="grp">Planning</span></span><b>Enhanced sales forecasting.</b><span class="x">Accurate forecasting is essential for planning and resource management. Sales usage reports provide historical data that can improve the accuracy of sales forecasts.</span></li>
+          <li class="use lt" style="--c:var(--b6);--k:2"><span class="hd"><span class="n">3</span><span class="grp">Process</span></span><b>Improved sales efficiency.</b><span class="x">By analyzing activity logs and conversion rates, sales teams can identify inefficient practices and streamline their processes. This leads to higher productivity and better use of time and resources.</span></li>
+          <li class="use" style="--c:var(--b4);--k:3"><span class="hd"><span class="n">4</span><span class="grp">Customers</span></span><b>Better customer relationships.</b><span class="x">Understanding customer behavior and satisfaction helps in building stronger relationships. Sales usage reports provide insights that can be used to personalize interactions and improve customer service.</span></li>
+          <li class="use" style="--c:var(--b2);--k:4"><span class="hd"><span class="n">5</span><span class="grp">Team</span></span><b>Performance tracking and motivation.</b><span class="x">Regularly reviewing individual and team performance metrics helps in setting clear goals and expectations. Recognizing top performers and addressing areas for improvement can motivate the sales team to achieve better results.</span></li>
+        </ol>
+
+        <h2 id="enable">How do you enable sales usage reports?</h2>
+        <p>Three steps, done once by someone with admin rights.</p>
+        <ol class="steps3 rev">
+          <li style="--c:var(--b8);--c2:var(--b6)"><b>Log in to Dynamics 365 Sales.</b><span>Start by logging into your Dynamics 365 Sales account. Ensure you have the necessary permissions to access the settings required for enabling sales usage reports.</span></li>
+          <li style="--c:var(--b5);--c2:var(--b5)"><b>Navigate to Settings.</b><span>Once logged in, navigate to the bottom left corner of the interface. Select "App Settings" from the "Sales" menu. This section contains various configuration options for your sales app.</span></li>
+          <li style="--c:var(--b2);--c2:var(--b2)"><b>Enable Sales Usage Reports.</b><span>Within App Settings, locate the toggle switch for "Sales usage reports." Turn on this toggle to enable the feature. After enabling, select "Save" to apply the changes.</span></li>
+        </ol>
+
+        <h2 id="what">What do sales usage reports show?</h2>
+        <p>Sales Usage Reports in Dynamics 365 provide a comprehensive view of sales activities and outcomes, operational metrics, and key performance indicators (KPIs), allowing sales managers to analyze opportunities and leads to enhance team performance. The reports offer valuable information for both sales managers and salespeople.</p>
+        <p>To access Sales Usage Reports, navigate to <strong>Sales Analytics</strong> on the left side navigation. These reports include several key metrics and insights:</p>
+        <div class="mgroups rev">
+          <div class="lt" style="--c:var(--b9)"><h3>1. Sales performance metrics</h3><ul><li><strong>Revenue analysis:</strong> track revenue generated over specific periods, allowing for trend analysis and performance tracking.</li><li><strong>Sales pipeline:</strong> monitor the flow of deals through different stages, from initial contact to closing.</li><li><strong>Conversion rates:</strong> analyze conversion rates at each stage of the sales process to identify bottlenecks and opportunities for improvement.</li></ul></div>
+          <div class="lt" style="--c:var(--b7)"><h3>2. Activity tracking</h3><ul><li><strong>Call and email logs:</strong> review logs of sales calls and emails to understand engagement levels with prospects and customers.</li><li><strong>Meeting insights:</strong> track the frequency and outcomes of meetings, providing a clear picture of sales team activities.</li></ul></div>
+          <div style="--c:var(--b4)"><h3>3. Customer insights</h3><ul><li><strong>Customer segmentation:</strong> segment customers by criteria such as industry, size and buying behavior to tailor sales strategies.</li><li><strong>Customer satisfaction:</strong> measure satisfaction through feedback and surveys, enabling proactive improvements.</li></ul></div>
+          <div style="--c:var(--b2)"><h3>4. Sales team performance</h3><ul><li><strong>Individual performance:</strong> evaluate individual sales representatives, identifying top performers and those needing additional support or training.</li><li><strong>Team collaboration:</strong> assess how well the team collaborates and shares information, which is crucial for closing complex deals.</li></ul></div>
+        </div>
+        <p>Learn more about how to <a href="https://learn.microsoft.com/en-us/dynamics365/sales/view-understand-sales-usage-reports">view operational metrics and KPIs in usage reports</a> on Microsoft Learn.</p>
+        <figure class="shot">
+          <div class="frame"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="https://www.encloud9.com/wp-content/uploads/2024/06/sales-usage-reports-2.png.webp" alt="Sales Usage Reports in Dynamics 365 Sales" loading="lazy"></div>
+          <figcaption>Sales Usage Reports in Dynamics 365 Sales, from the original 2024 post.</figcaption>
+        </figure>
+        <p>As you can see from the illustration below, the report gives you valuable information about contacts, leads, opportunities and accounts. Sales managers, you can easily see from the Sales Usage Report which user has created or updated the most contacts, leads, opportunities or accounts.</p>
+        <figure class="shot">
+          <div class="frame"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="https://www.encloud9.com/wp-content/uploads/2024/06/sales-usage-reports.png.webp" alt="Sales Usage Report showing records created and updated by user" loading="lazy"></div>
+          <figcaption>Which users created and updated the most records.</figcaption>
+        </figure>
+
+        <h2 id="sum">Conclusion</h2>
+        <blockquote class="sum"><p>Enabling Sales Usage Reports in Dynamics 365 Sales is a straightforward process that offers significant benefits. By following the steps outlined above, sales managers can unlock valuable insights that drive performance improvements and strategic decision-making. The detailed metrics and analyses provided by these reports empower sales teams to operate more efficiently, understand their customers better, and ultimately achieve greater success.</p></blockquote>
+        <p>For more detailed instructions on <a href="https://learn.microsoft.com/en-us/dynamics365/sales/enable-sales-usage-reports#enable-the-reports">enabling sales usage reports for your organization</a>, visit Microsoft Learn.</p>
+
+        <h2 id="faq">Frequently asked questions</h2>
+        <div class="faq">
+          <details><summary>Are sales usage reports still available in Dynamics 365 Sales?</summary><p>Microsoft deprecated sales usage reports effective December 1, 2025. As an alternative, Microsoft offers a sample Power BI report for sales usage reporting, which you customize and maintain yourself.</p></details>
+          <details><summary>Where do you turn on sales usage reports?</summary><p>In the Sales app, go to App Settings in the lower left corner of the page, then turn on the Sales usage reports toggle and select Save.</p></details>
+          <details><summary>Where do you view sales usage reports?</summary><p>Select Sales Analytics in the left side navigation of the Sales app.</p></details>
+          <details><summary>What do sales usage reports show?</summary><p>Sales performance, activity tracking, customer insights and sales team performance, including which user has created or updated the most contacts, leads, opportunities or accounts.</p></details>
+        </div>
+
+        <section class="abox" aria-labelledby="ab-h">
+          <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
+          <div><h2 class="nm" id="ab-h">About the author: Brian Begley</h2><p>CEO, Microsoft Dynamics 365 Consultant and CRM Strategist. Brian Begley is a CRM expert and CEO of enCloud9, helping businesses grow with Dynamics 365, Power Platform, and AI-powered digital solutions.</p></div>
+        </section>
+
+        <div class="ctabox">
+          <h2 id="see">Want help with sales reporting?</h2>
+          <p>Unlock your team's full potential with better sales reporting. enCloud9 helps businesses set up reporting in Dynamics 365 Sales, including the move from usage reports to Power BI, so managers get the numbers they need.</p>
+          <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call with enCloud9</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <section class="sec" aria-labelledby="nx-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="nx-h">Next step</h2>
+      <p class="lead">See Dynamics 365 Sales, start with a free checkup, or talk to us.</p>
+    </div>
+    <div class="nx rev">
+      <a class="ptile lt" style="--c:var(--b8)" href="nine-dynamics-365-sales.html"><span class="pt-top"><span class="mono">Dynamics 365</span><span class="g big" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Dynamics 365 Sales</span><span class="ds">How we set up Sales for small and mid-sized teams.</span><span class="pt-foot"><span class="go">See Dynamics 365 Sales &rarr;</span></span></a>
+      <a class="ptile" style="--c:var(--b4)" href="nine-home.html#checkups"><span class="pt-top"><span class="mono">Free</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="m"></i><i class="m"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Free checkups, no obligation</span><span class="ds">Find out where your system stands before you spend anything.</span><span class="pt-foot"><span class="go">See the checkups &rarr;</span></span></a>
+      <a class="ptile" style="--c:var(--b2)" href="https://www.encloud9.com/lp/schedule-a-meeting/"><span class="pt-top"><span class="mono">Talk to us</span><span class="g big" aria-hidden="true"><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i></span></span><span class="nm">Book a call</span><span class="ds">Tell us what your sales managers need to see.</span><span class="pt-foot"><span class="go">Book a call &rarr;</span></span></a>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="rl-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="rl-h">Related posts</h2>
+      <p class="lead">More on Dynamics 365 Sales. <a class="lnk" href="nine-blog.html">All posts <span>&rarr;</span></a></p>
+    </div>
+    <div class="rel rev">
+      <a class="pc" style="--c:var(--b7)" href="https://www.encloud9.com/blog/dynamics-365-sales-qualification-agent/"><span class="mono">Copilot and AI &middot; August 18, 2025</span><span class="t">Smarter Selling with the Dynamics 365 Sales Qualification Agent</span><span class="d">About one of the agents in Dynamics 365 Sales.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b5)" href="https://www.encloud9.com/blog/which-dynamics-365-customizations-are-worth-it-and-which-ones-we-usually-advise-against/"><span class="mono">Admin and how-to &middot; October 7, 2026</span><span class="t">Which Dynamics 365 Customizations Are Worth It (And Which Ones We Usually Advise Against)</span><span class="d">Our advice on Dynamics 365 customizations.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b3)" href="nine-blog-post.html"><span class="mono">Copilot and AI &middot; Draft</span><span class="t">Generative pages in Dynamics 365: what they are and 12 ways to use them</span><span class="d">The December draft, in the same layout.</span><span class="go">Read the post &rarr;</span></a>
+    </div>
+  </section>
+</div>
+
+<section class="final" aria-labelledby="fc-h">
+  <div class="wrap">
+    <div class="inner">
+      <div class="rev">
+        <h2 class="h2" id="fc-h">Start with a call or a free checkup</h2>
+        <p class="lead">Tell us where your system is today. You get a plan, a package and a price, whether or not you work with us.</p>
+      </div>
+      <div class="side rev">
+        <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+        <a class="lnk" href="nine-home.html#checkups">Free checkups, no obligation <span>&rarr;</span></a>
+        <span class="mono">or call <a href="tel:+18442640729">1-844-264-0729</a>, 7:00am to 5:00pm Central</span>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="fcols">
+        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft Partner since [2008], specializing in Dynamics 365.</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
+        <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-marketing.html">Marketing automation</a><a href="https://www.encloud9.com/dynamics-365-pricing/">Dynamics 365 pricing</a></nav>
+        <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="https://www.encloud9.com/microsoft-copilot-studio/">Copilot Studio</a><a href="https://www.encloud9.com/dynamics-365-power-apps/">Power Apps</a><a href="https://www.encloud9.com/microsoft-power-bi/">Power BI</a></nav>
+        <nav aria-label="Packages and support"><b>Packages and support</b><a href="nine-packages.html">All packages</a><a href="https://www.encloud9.com/dynamics-365-sales-accelerator/">Sales Accelerator</a><a href="https://www.encloud9.com/dynamics-365-service-accelerator/">Service Accelerator</a><a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>
+        <nav aria-label="Company"><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-stories.html">Client stories</a><a href="nine-blog.html">Blog</a><a href="https://www.encloud9.com/contact-us/">Contact us</a><a href="https://www.encloud9.com/microsoft-dynamics-365-partner-omaha/">Omaha and Nebraska</a></nav>
+      </div>
+      <div class="tm">enCloud9 LLC, [address Brian confirms]. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies.</div>
+    </footer>
+  </div>
+  <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>
+</section>
+</main>
+<script>
+/* post: reading progress and the current section in the contents */
+(function(){
+  var d=document,bar=d.querySelector('.progress i'),art=d.getElementById('art'),
+      links=[].slice.call(d.querySelectorAll('.toc a')),heads=links.map(function(a){return d.getElementById(a.getAttribute('href').slice(1))}),
+      tocd=d.getElementById('tocd'),ticking=false;
+  if(window.matchMedia('(max-width:1080px)').matches&&tocd)tocd.removeAttribute('open');
+  function upd(){
+    ticking=false;
+    var r=art.getBoundingClientRect(),h=window.innerHeight,tot=r.height-h*.6,p=tot>0?Math.min(1,Math.max(0,(-r.top+h*.25)/tot)):0;
+    bar.style.transform='scaleX('+p.toFixed(4)+')';
+    var cur=-1;heads.forEach(function(el,i){if(el&&el.getBoundingClientRect().top<170)cur=i});
+    links.forEach(function(a,i){var on=i===cur;a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd)}},{passive:true});
+  window.addEventListener('resize',upd);upd();
+})();
+</script>
+</body>
+</html>

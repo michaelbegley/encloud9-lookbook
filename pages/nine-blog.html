@@ -65,6 +65,7 @@ body.p-blog .pc .go small{font-family:var(--mono);font-size:12px;color:var(--mut
 body.p-blog .pc[hidden]{display:none}
 body.p-blog .pgrid{grid-auto-flow:dense}
 body.p-blog .pc.wide{grid-column:span 2}
+body.p-blog .pc.full{grid-column:1/-1}
 body.p-blog .pc.wide .t{font-size:clamp(24px,2.3vw,32px);max-width:24ch}
 body.p-blog .empty{padding:40px 0;border-bottom:1px solid var(--line);display:flex;gap:16px;align-items:center;flex-wrap:wrap}
 body.p-blog .empty[hidden]{display:none}
@@ -147,10 +148,10 @@ body.p-blog .nl .mockform button:hover{transform:none;background:var(--b5)}
           <input id="q" type="search" placeholder="Search posts, for example Copilot" autocomplete="off" aria-controls="posts">
         </div>
         <div class="chips" role="group" aria-label="Filter by category">
-          <button type="button" class="chip" data-cat="all" aria-pressed="true">All <span class="n">10</span></button>
+          <button type="button" class="chip" data-cat="all" aria-pressed="true">All <span class="n">11</span></button>
           <button type="button" class="chip" data-cat="copilot" aria-pressed="false">Copilot and AI <span class="n">2</span></button>
           <button type="button" class="chip" data-cat="licensing" aria-pressed="false">Licensing and pricing <span class="n">1</span></button>
-          <button type="button" class="chip" data-cat="admin" aria-pressed="false">Admin and how-to <span class="n">4</span></button>
+          <button type="button" class="chip" data-cat="admin" aria-pressed="false">Admin and how-to <span class="n">5</span></button>
           <button type="button" class="chip" data-cat="switching" aria-pressed="false">Switching to Dynamics 365 <span class="n">1</span></button>
           <button type="button" class="chip" data-cat="marketing" aria-pressed="false">Marketing automation <span class="n">1</span></button>
           <button type="button" class="chip" data-cat="news" aria-pressed="false">News <span class="n">1</span></button>
@@ -177,7 +178,7 @@ body.p-blog .nl .mockform button:hover{transform:none;background:var(--b5)}
   <section class="sec sec-all" id="all" aria-labelledby="all-h">
     <div class="ptools">
       <h2 class="h2" id="all-h">All posts</h2>
-      <p class="count" id="count" aria-live="polite">Showing 10 of 10 posts</p>
+      <p class="count" id="count" aria-live="polite">Showing 11 of 11 posts</p>
     </div>
     <div class="pgrid" id="posts">
       <a class="pc wide" data-cat="admin" style="--c:var(--b8)" href="https://www.encloud9.com/blog/microsoft-dataverse-storage-notifications/"><span class="hd"><span class="g" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="m"></i><i class="m"></i><i></i><i></i><i></i><i></i></span><span class="mono">Admin and how-to</span></span><span class="t">The Microsoft Dataverse Storage Warning You Shouldn't Ignore</span><span class="d">What the storage emails mean and what to do about them.</span><span class="go">Read the post <small>November 3, 2026 &middot; Brian Begley</small></span></a>
@@ -190,6 +191,7 @@ body.p-blog .nl .mockform button:hover{transform:none;background:var(--b5)}
       <a class="pc" data-cat="marketing" style="--c:var(--b4)" href="https://www.encloud9.com/blog/clickdimensions-dashboards-2025-update/"><span class="hd"><span class="g" aria-hidden="true"><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="mono">Marketing automation</span></span><span class="t">ClickDimensions Dashboards: What's Changed and Why It Matters</span><span class="d">A dashboard update in Click (formerly ClickDimensions).</span><span class="go">Read the post <small>July 1, 2025 &middot; Kristin Caniglia</small></span></a>
       <a class="pc wide" data-cat="licensing" style="--c:var(--b3)" href="https://www.encloud9.com/blog/dynamics-365-pricing-licensing-2025-guide/"><span class="hd"><span class="g" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="m"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="mono">Licensing and pricing</span></span><span class="t">A Practical Guide to 2025 Dynamics 365 Pricing and Licensing</span><span class="d">A guide to Dynamics 365 plans and licensing.</span><span class="go">Read the post <small>June 18, 2025 &middot; Brian Begley</small></span></a>
       <a class="pc" data-cat="admin" style="--c:var(--b2)" href="https://www.encloud9.com/blog/how-to-track-the-last-activity-date-in-microsoft-dynamics-365-sales/"><span class="hd"><span class="g" aria-hidden="true"><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="m"></i><i class="on"></i><i class="m"></i><i class="m"></i></span><span class="mono">Admin and how-to</span></span><span class="t">How To Track the Last Activity Date in Microsoft Dynamics 365 Sales</span><span class="d">A how-to for Dynamics 365 Sales users.</span><span class="go">Read the post <small>February 13, 2025 &middot; Brian Begley</small></span></a>
+      <a class="pc wide full" data-cat="admin" style="--c:var(--b1)" href="nine-blog-2024.html"><span class="hd"><span class="g" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="m"></i><i></i><i class="m"></i><i class="m"></i><i class="m"></i></span><span class="mono">Admin and how-to &middot; 2024 post in the new style</span></span><span class="t">Enabling and Utilizing Sales Usage Reports in Dynamics 365</span><span class="d">Our June 2024 how-to, rebuilt in this layout, with a note that Microsoft deprecated the reports on December 1, 2025.</span><span class="go">Read the post <small>June 12, 2024 &middot; Brian Begley</small></span></a>
     </div>
     <div class="empty" id="empty" hidden><p class="lead">No posts match that search.</p><button type="button" class="btn btn-o" id="clear">Show all posts</button></div>
     <div class="askus rev"><p class="lead">Have a question we have not written about yet?</p><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a></div>
