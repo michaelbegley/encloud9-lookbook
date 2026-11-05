@@ -49,8 +49,8 @@
 @media (hover:hover) and (prefers-reduced-motion:no-preference){
   .jgrid{perspective:900px}
   .jc{transition:background .5s var(--ease),color .5s,transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
-  .jgrid:hover .jc{filter:saturate(.85) brightness(.92);transform:perspective(900px) scale(.97)}
-  .jgrid:hover .jc:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(80px) translateY(-10px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.1);box-shadow:0 34px 60px -26px rgba(14,26,58,.7),0 10px 20px -12px rgba(14,26,58,.45)}
+  .jgrid:hover .jc{filter:saturate(.92) brightness(.96);transform:perspective(900px) scale(.98)}
+  .jgrid:hover .jc:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(40px) translateY(-6px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.05);box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 10px 20px -12px rgba(14,26,58,.45)}
 }
 .jplay button{min-height:44px;transition:background .25s,color .25s}
 .jplay button .gl{display:inline-grid;grid-template-columns:repeat(3,4px);gap:1px;margin-right:10px;vertical-align:1px}
@@ -70,8 +70,8 @@
 @media (hover:hover) and (prefers-reduced-motion:no-preference){
   .mk-set{perspective:900px}
   .mt{transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
-  .mk-set:hover .mt{filter:saturate(.85) brightness(.92);transform:perspective(900px) scale(.97)}
-  .mk-set:hover .mt:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(60px) translateY(-8px) scale(1.06);box-shadow:0 34px 60px -26px rgba(14,26,58,.7),0 10px 20px -12px rgba(14,26,58,.45)}
+  .mk-set:hover .mt{filter:saturate(.92) brightness(.96);transform:perspective(900px) scale(.98)}
+  .mk-set:hover .mt:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(60px) translateY(-8px) scale(1.04);box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 10px 20px -12px rgba(14,26,58,.45)}
 }
 @media (max-width:1080px){.mk-split{grid-template-columns:1fr}.mk-split .copyc{order:-1}}
 @media (max-width:560px){.mk-set{grid-template-columns:1fr}.mt{aspect-ratio:auto;min-height:190px}}
@@ -86,8 +86,8 @@
 @media (hover:hover) and (prefers-reduced-motion:no-preference){
   .mk-cg{perspective:900px}
   .js body.p-marketing .mk-cg .aic{transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease),background .3s}
-  .js body.p-marketing .mk-cg.in:hover .aic{filter:brightness(.85);transform:perspective(900px) scale(.97)}
-  .js body.p-marketing .mk-cg.in:hover .aic.cl:hover{filter:none;z-index:3;background:var(--b5);transform:perspective(900px) translateZ(80px) translateY(-10px) scale(1.1);box-shadow:0 34px 60px -26px rgba(0,0,0,.7)}
+  .js body.p-marketing .mk-cg.in:hover .aic{filter:brightness(.85);transform:perspective(900px) scale(.98)}
+  .js body.p-marketing .mk-cg.in:hover .aic.cl:hover{filter:none;z-index:3;background:var(--b5);transform:perspective(900px) translateZ(40px) translateY(-6px) scale(1.05);box-shadow:0 34px 60px -26px rgba(0,0,0,.7)}
 }
 @media (max-width:860px){.mk-cg{width:min(340px,100%)}.mk-cg .aic.cl{font-size:13px}.mk-cg .aic{font-size:10px;padding:8px}.mk-cg .aic.on{font-size:20px}}
 /* support: table left, words right, so it does not mirror the band above */
@@ -142,15 +142,15 @@
     </div>
     <div>
       <div class="jgrid" id="journey" role="list" aria-label="How a lead moves from marketing to sales">
-        <a role="listitem" class="jc" style="--c:var(--b1)" href="#click"><span class="n">01 &middot; Email</span><b>Campaign sent</b><small>From Click or Customer Insights</small><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="jc" style="--c:var(--b2)" href="#click"><span class="n">02 &middot; Click</span><b>Link opened</b><small>The visit is tied to the person</small><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="jc" style="--c:var(--b3)" href="#click"><span class="n">03 &middot; Web</span><b>Pages read</b><small>Web tracking on your site</small><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="jc" style="--c:var(--b4)" href="#setup"><span class="n">04 &middot; Form</span><b>Form filled</b><small>A form or landing page</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc lt" style="--c:var(--b9)" href="#click"><span class="n">01 &middot; Email</span><b>Campaign sent</b><small>From Click or Customer Insights</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc lt" style="--c:var(--b8)" href="#click"><span class="n">02 &middot; Click</span><b>Link opened</b><small>The visit is tied to the person</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc lt" style="--c:var(--b7)" href="#click"><span class="n">03 &middot; Web</span><b>Pages read</b><small>Web tracking on your site</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc" style="--c:var(--b6)" href="#setup"><span class="n">04 &middot; Form</span><b>Form filled</b><small>A form or landing page</small><span class="ar" aria-hidden="true">&#8599;</span></a>
         <a role="listitem" class="jc core" style="--c:var(--b5)" href="#setup"><span class="n">05 &middot; Dynamics 365</span><b>On the record</b><small>Lead or contact, with its history</small><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="jc" style="--c:var(--b6)" href="#setup"><span class="n">06 &middot; Score</span><b>Lead scored</b><small>Points for what they did</small><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="jc lt" style="--c:var(--b7)" href="#setup"><span class="n">07 &middot; Alert</span><b>Seller told</b><small>A named owner follows up</small><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="jc lt" style="--c:var(--b8)" href="#stories"><span class="n">08 &middot; Sales</span><b>Opportunity</b><small>In the same pipeline</small><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="jc lt" style="--c:var(--b9)" href="#setup"><span class="n">09 &middot; Report</span><b>What worked</b><small>Campaigns measured by results</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc" style="--c:var(--b4)" href="#setup"><span class="n">06 &middot; Score</span><b>Lead scored</b><small>Points for what they did</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc" style="--c:var(--b3)" href="#setup"><span class="n">07 &middot; Alert</span><b>Seller told</b><small>A named owner follows up</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc" style="--c:var(--b2)" href="#stories"><span class="n">08 &middot; Sales</span><b>Opportunity</b><small>In the same pipeline</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc" style="--c:var(--b1)" href="#setup"><span class="n">09 &middot; Report</span><b>What worked</b><small>Campaigns measured by results</small><span class="ar" aria-hidden="true">&#8599;</span></a>
       </div>
       <div class="jplay"><button type="button" id="jbtn"><span class="gl" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Play the journey</button><span class="fine" style="margin:0">One lead, from first email to a sales opportunity.</span></div>
     </div>
@@ -269,7 +269,7 @@
     <div class="plans-grid flip">
       <div class="rev">
         <h2 class="h2" id="sp-h">What does support cost after go-live?</h2>
-        <p class="lead" style="margin-top:20px">Support starts at $500 a month for 4 hours on the Stability plan, which is the minimum plan for new clients. Larger teams choose Optimization at $1,500 a month for 20 hours or Partnership at $2,000 a month for 35 hours.</p>
+        <p class="lead" style="margin-top:20px">Support starts at $500 a month for 4 hours on the Stability plan, which is the minimum plan for new clients. Larger teams choose Optimization at $1,500 a month for 20 hours or Partnership from $2,000 a month for 35 hours.</p>
         <div class="acts" style="margin-top:28px"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="https://www.dynamics365support.com/#plans">Compare support plans <span>&rarr;</span></a></div>
       </div>
       <div class="tbl-wrap rev">
@@ -279,7 +279,7 @@
             <tr><th scope="row">On-Demand</th><td class="pr">$200 an hour</td><td>As needed, no retainer</td><td>[Brian to confirm]</td></tr>
             <tr><th scope="row">Stability<span class="min">Minimum plan</span></th><td class="pr">$500 a month</td><td>4 hours a month</td><td></td></tr>
             <tr><th scope="row">Optimization</th><td class="pr">$1,500 a month</td><td>20 hours a month</td><td>Up to 50 users</td></tr>
-            <tr><th scope="row">Partnership</th><td class="pr">$2,000 a month</td><td>35 hours a month</td><td>50 users and up</td></tr>
+            <tr><th scope="row">Partnership</th><td class="pr">$2,000+ a month</td><td>35 hours a month</td><td>50 users and up</td></tr>
           </tbody>
         </table>
         <p class="fine">Monthly plans run on a 12-month agreement. New clients pay an onboarding fee of up to one month's charge. Hours 7:00am to 5:00pm Central, Monday to Friday, excluding US federal holidays. Monthly plans include a 1-hour response during business hours, which means a person has picked up your request, not that it is solved.</p>
@@ -334,13 +334,13 @@
     </div>
     <footer class="foot">
       <div class="fcols">
-        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft partner since [2008], specializing in Dynamics 365. Click (formerly ClickDimensions) Gold Partner [confirm current tier].</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
+        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft Partner since [2008], specializing in Dynamics 365.</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
         <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-marketing.html">Marketing automation</a><a href="https://www.encloud9.com/dynamics-365-pricing/">Dynamics 365 pricing</a></nav>
         <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="https://www.encloud9.com/microsoft-copilot-studio/">Copilot Studio</a><a href="https://www.encloud9.com/dynamics-365-power-apps/">Power Apps</a><a href="https://www.encloud9.com/microsoft-power-bi/">Power BI</a></nav>
         <nav aria-label="Packages and support"><b>Packages and support</b><a href="nine-packages.html">All packages</a><a href="https://www.encloud9.com/dynamics-365-sales-accelerator/">Sales Accelerator</a><a href="https://www.encloud9.com/dynamics-365-service-accelerator/">Service Accelerator</a><a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>
         <nav aria-label="Company"><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-stories.html">Client stories</a><a href="https://www.encloud9.com/blog/">Blog</a><a href="https://www.encloud9.com/contact-us/">Contact us</a><a href="https://www.encloud9.com/microsoft-dynamics-365-partner-omaha/">Omaha and Nebraska</a></nav>
       </div>
-      <div class="tm">enCloud9 LLC, [address Brian confirms]. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. Click is a trademark of its owner.</div>
+      <div class="tm">enCloud9 LLC, [address Brian confirms]. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies.</div>
     </footer>
   </div>
   <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>

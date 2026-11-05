@@ -421,8 +421,8 @@ a.row:hover{background:var(--tint)}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){
   .grid9{perspective:900px}
   .grid9 .cell{transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
-  .grid9:hover .cell{filter:saturate(.85) brightness(.92);transform:perspective(900px) scale(.97)}
-  .grid9:hover .cell:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(80px) translateY(-10px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.1);box-shadow:0 34px 60px -26px rgba(14,26,58,.7),0 10px 20px -12px rgba(14,26,58,.45)}
+  .grid9:hover .cell{filter:saturate(.92) brightness(.96);transform:perspective(900px) scale(.98)}
+  .grid9:hover .cell:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(40px) translateY(-6px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.05);box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 8px 16px -12px rgba(14,26,58,.4)}
 }
 /* row highlight: bleed past the text on both sides so it never stops at the arrow */
 a.row{margin-inline:-18px;padding-inline:18px;transition:background .3s}
