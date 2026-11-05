@@ -53,12 +53,41 @@ body.p-cs .more a::before{box-shadow:inset 0 0 0 1px rgba(14,26,58,.25)}
   .js body.p-cs .csm.wait .csm-next,.js body.p-cs .csm.typing .csm-next{opacity:0;transform:translateY(10px)}
   body.p-cs .csm .caret{display:inline-block;width:2px;height:1em;background:var(--b5);vertical-align:-2px;margin-left:2px}
 }
+/* polish round (4 Nov): price cubes come toward you, packages with cube heads, fit split */
+body.p-cs .lic .cell{color:var(--white)}
+body.p-cs .lic a.cell:focus-visible{outline:3px solid var(--b6);outline-offset:3px;z-index:4}
+@media (prefers-reduced-motion:no-preference){.js body.p-cs .lic .cell{animation-fill-mode:backwards}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-cs .lic{perspective:900px}
+  body.p-cs .lic .cell{transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+  body.p-cs .lic:hover .cell{filter:saturate(.85) brightness(.92);transform:perspective(900px) scale(.97)}
+  body.p-cs .lic:hover .cell:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(80px) translateY(-10px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.1);box-shadow:0 34px 60px -26px rgba(14,26,58,.7),0 10px 20px -12px rgba(14,26,58,.45)}
+}
+body.p-cs .fitsplit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(32px,5vw,72px);align-items:start}
+body.p-cs .fitsplit .side{position:sticky;top:110px;display:flex;flex-direction:column;gap:20px}
+body.p-cs .fitsplit .fit{grid-template-columns:1fr;gap:44px}
+body.p-cs .fit h3{display:flex;align-items:center;gap:12px}
+body.p-cs .fit h3 .g{grid-template-columns:repeat(3,7px)}body.p-cs .fit h3 .g i{width:7px;height:7px}
+@media (max-width:860px){body.p-cs .fitsplit{grid-template-columns:1fr}body.p-cs .fitsplit .side{position:static}}
+body.p-cs .cards.ch .card{padding:0;gap:0;transition:transform .45s var(--bounce),box-shadow .3s}
+body.p-cs .cards.ch .card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -36px rgba(14,26,58,.55)}
+body.p-cs .ch-head{background:var(--c);color:var(--white);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:16px;min-height:300px}
+body.p-cs .ch-head .cht{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+body.p-cs .ch-head .mono{color:rgba(255,255,255,.78)}
+body.p-cs .ch-head h3{font-size:clamp(30px,3vw,42px);letter-spacing:-.03em;line-height:1.05;margin-top:auto}
+body.p-cs .ch-head p{color:rgba(255,255,255,.86);font-size:16px;line-height:1.5}
+body.p-cs .ch-head .facts{border-color:rgba(255,255,255,.24)}
+body.p-cs .ch-head .facts div+div{border-left-color:rgba(255,255,255,.24)}
+body.p-cs .ch-head .facts .mono{font-size:12px}
+body.p-cs .ch-body{padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:16px;flex:1}
+body.p-cs .ch-body .proofline{font-size:15px;padding:14px 16px;background:var(--tint);border-left:3px solid var(--b5)}
+@media (max-width:560px){body.p-cs .ch-head{min-height:0}body.p-cs .ch-head .facts{grid-template-columns:1fr}body.p-cs .ch-head .facts div+div{padding-left:0;border-left:0;border-top:1px solid rgba(255,255,255,.24)}}
 </style>
 </head>
 <body class="p-cs">
 <nav id="lbbar" aria-label="Lookbook">
   <a href="../index.html">All looks</a><span class="t hide-s">Look 9, Nine, built pages: Customer Service</span>
-  <a href="nine-home.html">Home</a><a href="nine-dynamics-365-sales.html">Sales page</a><a href="../looks/09-nine.html" class="hide-s">Original look</a>
+  <a href="nine-home.html">Home</a><a href="nine-dynamics-365-sales.html">Sales page</a><a href="nine-marketing.html" class="hide-s">Marketing</a>
   <span class="sp"></span><span class="t">Font</span>
   <button type="button" data-setfont="hanken" aria-pressed="true">Hanken</button><button type="button" data-setfont="jakarta" aria-pressed="false">Jakarta</button><button type="button" data-setfont="public" aria-pressed="false">Public Sans</button><button type="button" data-setfont="bricolage" aria-pressed="false">Bricolage</button>
 </nav>
@@ -79,7 +108,7 @@ body.p-cs .more a::before{box-shadow:inset 0 0 0 1px rgba(14,26,58,.25)}
 
 <main id="main">
 <div class="wrap">
-  <nav class="crumb" aria-label="Breadcrumb"><a href="nine-home.html">Home</a><span aria-hidden="true">/</span><a href="nine-dynamics-365.html">Dynamics 365</a><span aria-hidden="true">/</span><span aria-current="page">Customer Service</span></nav>
+  <nav class="crumb" aria-label="Breadcrumb"><a href="nine-home.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="nine-dynamics-365.html">Dynamics 365</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Customer Service</span></nav>
   <section class="hero" aria-labelledby="h1">
     <div class="copy">
       <span class="mono rise" style="--d:0">Dynamics 365 Customer Service</span>
@@ -94,9 +123,9 @@ body.p-cs .more a::before{box-shadow:inset 0 0 0 1px rgba(14,26,58,.25)}
     </div>
     <div>
       <div class="lic" role="list" aria-label="Dynamics 365 Customer Service, Microsoft list price">
-        <div role="listitem" class="cell" style="background:var(--b2);--d:0"><span class="lab">Customer Service Professional</span><span class="pr">$50</span><span class="per">per user per month, paid yearly</span></div>
-        <div role="listitem" class="cell core" style="background:var(--b4);--d:1"><span class="lab">Customer Service Enterprise</span><span class="pr">$105</span><span class="per">per user per month, paid yearly</span></div>
-        <div role="listitem" class="cell" style="background:var(--b5);--d:2"><span class="lab">Customer Service Premium</span><span class="pr">$195</span><span class="per">per user per month, paid yearly</span></div>
+        <a role="listitem" class="cell" href="#plans" style="background:var(--b2);--d:0"><span class="lab">Customer Service Professional</span><span class="pr">$50</span><span class="per">per user per month, paid yearly</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell core" href="#plans" style="background:var(--b4);--d:1"><span class="lab">Customer Service Enterprise</span><span class="pr">$105</span><span class="per">per user per month, paid yearly</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" href="#plans" style="background:var(--b5);--d:2"><span class="lab">Customer Service Premium</span><span class="pr">$195</span><span class="per">per user per month, paid yearly</span><span class="ar" aria-hidden="true">&#8600;</span></a>
       </div>
       <p class="fine" style="margin-top:14px">Microsoft list prices, checked [publish date]. <a class="lnk" href="#plans">Compare plans <span>&rarr;</span></a></p>
       <figure class="rise" style="--d:6;margin:28px 0 0">
@@ -115,34 +144,36 @@ body.p-cs .more a::before{box-shadow:inset 0 0 0 1px rgba(14,26,58,.25)}
   </section>
 
   <section class="sec" aria-label="Facts" style="padding-top:clamp(56px,6vw,88px)">
-    <div class="proof rev">
-      <a class="pf" href="https://www.encloud9.com/blog/success_stories/how-price-mds-transformed-healthcare-operations-with-dynamics-365/">PriceMDs moved off Monday CRM to Dynamics 365 Sales and Customer Service<small>Read the story &rarr;</small></a>
-      <a class="pf" href="https://www.encloud9.com/about-encloud9/microsoft-dynamics-365-success/">23 client stories<small>See the stories &rarr;</small></a>
-      <div class="pf">Clients in [30+] US states</div>
-      <a class="pf" href="https://www.dynamics365support.com/#plans">Support from $500 a month<small>See support plans &rarr;</small></a>
+    <div class="proof big rev">
+      <a class="pf" href="https://www.encloud9.com/blog/success_stories/how-price-mds-transformed-healthcare-operations-with-dynamics-365/"><b class="num">PriceMDs</b><span>moved off Monday CRM to Dynamics 365 Sales and Customer Service</span><small>Read the story &rarr;</small></a>
+      <a class="pf" href="https://www.encloud9.com/about-encloud9/microsoft-dynamics-365-success/"><b class="num">23</b><span>client stories, new builds to rescues</span><small>See the stories &rarr;</small></a>
+      <div class="pf"><b class="num">[30+]</b><span>US states with enCloud9 clients</span></div>
+      <a class="pf" href="https://www.dynamics365support.com/#plans"><b class="num">$500</b><span>a month, where support plans start</span><small>See support plans &rarr;</small></a>
     </div>
   </section>
 
   <section class="sec" id="fit" aria-labelledby="fit-h">
-    <div class="sec-head rev">
+    <div class="fitsplit">
+    <div class="side rev">
       <h2 class="h2" id="fit-h">Is Dynamics 365 Customer Service right for your business?</h2>
       <p class="lead">Dynamics 365 Customer Service fits a business that answers customer requests by email, phone or a portal, runs on Microsoft 365, and has outgrown a shared inbox, spreadsheets or an old help desk tool. It is a weaker fit for a team of one or two that only needs a shared inbox, or for a contact center whose main need is phone and chat routing at scale.</p>
+      <p class="fine" style="margin-top:0">Not sure? <a class="lnk" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call and we will tell you which package fits <span>&rarr;</span></a></p>
     </div>
     <div class="fit rev">
-      <div class="yes"><h3 class="h3">A good fit if</h3><ul>
+      <div class="yes"><h3 class="h3"><span class="g" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="d"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>A good fit if</h3><ul>
         <li>Your team already works in Outlook and Teams every day.</li>
         <li>Customer requests live in a shared inbox, spreadsheets or a help desk tool nobody trusts.</li>
         <li>You want every request tracked as a case, with an owner and a response target.</li>
         <li>Your customers have support contracts or response times you have to keep.</li>
         <li>You already use Dynamics 365 Sales and want service on the same customer records.</li>
       </ul></div>
-      <div class="no"><h3 class="h3">Probably not a fit if</h3><ul>
+      <div class="no"><h3 class="h3"><span class="g" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="m"></i><i></i><i></i><i></i><i></i></span>Probably not a fit if</h3><ul>
         <li>You have one or two people who only need a shared inbox.</li>
         <li>You want every screen custom-built from scratch. We set up standard features first, because over-customized systems are the ones we most often get called in to rescue.</li>
         <li>You need phone and chat routing for a contact center on day one. <a class="lnk" href="https://www.encloud9.com/dynamics-365-contact-center/">Dynamics 365 Contact Center</a> is built for that.</li>
       </ul></div>
     </div>
-    <p class="fine">Not sure? <a class="lnk" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call and we will tell you which package fits <span>&rarr;</span></a></p>
+    </div>
   </section>
 
   <section class="sec" id="plans" aria-labelledby="inc-h">
@@ -177,29 +208,37 @@ body.p-cs .more a::before{box-shadow:inset 0 0 0 1px rgba(14,26,58,.25)}
       <h2 class="h2" id="pk-h">What does enCloud9 set up in Dynamics 365 Customer Service?</h2>
       <p class="lead">We set up Dynamics 365 Customer Service in one of two ways: the Service Accelerator, a fixed-scope package for a standard first setup, or a full implementation for bigger projects with data moves and integrations. Each package says what is included, what is not and how long it takes.</p>
     </div>
-    <div class="cards rev">
+    <div class="cards ch rev">
       <article class="card">
-        <span class="g" aria-hidden="true"><i></i><i class="d"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span>
-        <h3 class="h3">Service Accelerator</h3>
-        <p style="color:var(--muted)">The Service Accelerator is our fixed-scope package for a first Dynamics 365 Customer Service setup.</p>
-        <div class="facts"><div><span class="mono">Time</span><b>[Brian sets] weeks</b></div><div><span class="mono">Size</span><b>Up to [Brian sets] users</b></div><div><span class="mono">Price</span><b>Quoted in writing</b></div></div>
+        <div class="ch-head" style="--c:var(--b2)">
+          <span class="cht"><span class="mono">Package 01 &middot; Fixed scope</span><span class="g big" aria-hidden="true"><i></i><i class="d"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span>
+          <h3 class="h3">Service Accelerator</h3>
+          <p>The Service Accelerator is our fixed-scope package for a first Dynamics 365 Customer Service setup.</p>
+          <div class="facts"><div><span class="mono">Time</span><b>[Brian sets] weeks</b></div><div><span class="mono">Size</span><b>Up to [Brian sets] users</b></div><div><span class="mono">Price</span><b>Quoted in writing</b></div></div>
+        </div>
+        <div class="ch-body">
         <h4>Included</h4>
         <ul><li>Users and security roles set up</li><li>Your Microsoft licences assigned to each user</li><li>Cases, queues and service levels set up</li><li>Up to [Brian sets] records imported</li><li>[Brian sets] training sessions</li><li>[Brian sets] days of help after go-live</li></ul>
         <h4>Not included</h4>
         <ul><li>Integrations with other systems, quoted separately</li><li>Customer Service agents and Copilot Studio agents, set up as a separate pilot</li><li>Voice, live chat and messaging channels, quoted separately</li><li>Microsoft licences and Copilot Credits</li></ul>
         <div class="acts" style="margin-top:auto"><a class="btn btn-p" href="https://www.encloud9.com/dynamics-365-service-accelerator/">Ask about the Service Accelerator</a></div>
+        </div>
       </article>
       <article class="card">
-        <span class="g" aria-hidden="true"><i class="d"></i><i class="d"></i><i class="d"></i><i class="m"></i><i class="on"></i><i class="m"></i><i></i><i></i><i></i></span>
-        <h3 class="h3">Full implementation</h3>
-        <p style="color:var(--muted)">Dynamics 365 Customer Service, with Sales if you need it, plus data moved from your old system, the integrations you name, and training.</p>
-        <div class="facts"><div><span class="mono">Time</span><b>Typically [Brian sets] to [Brian sets] months</b></div><div><span class="mono">Size</span><b>Set in your written scope</b></div><div><span class="mono">Price</span><b>Fixed per phase</b></div></div>
+        <div class="ch-head" style="--c:var(--b4)">
+          <span class="cht"><span class="mono">Package 02 &middot; Bigger projects</span><span class="g big" aria-hidden="true"><i class="d"></i><i class="d"></i><i class="d"></i><i class="m"></i><i class="on"></i><i class="m"></i><i></i><i></i><i></i></span></span>
+          <h3 class="h3">Full implementation</h3>
+          <p>Dynamics 365 Customer Service, with Sales if you need it, plus data moved from your old system, the integrations you name, and training.</p>
+          <div class="facts"><div><span class="mono">Time</span><b>Typically [Brian sets] to [Brian sets] months</b></div><div><span class="mono">Size</span><b>Set in your written scope</b></div><div><span class="mono">Price</span><b>Fixed per phase</b></div></div>
+        </div>
+        <div class="ch-body">
         <h4>Included</h4>
         <ul><li>A written scope from a paid Fit Check, with assumptions and exclusions</li><li>Configuration of Customer Service, and Sales if in scope</li><li>Data migration from your current CRM or spreadsheets</li><li>Integrations named in the scope</li><li>Training, go-live and handover to a support plan</li></ul>
         <h4>Not included</h4>
         <ul><li>Anything not named in the signed scope</li><li>Agents and Copilot Studio work, scoped separately</li><li>Microsoft licences and Copilot Credits</li></ul>
-        <p style="font-size:15px">On our 9 published projects with a delivery time, go-live took 1 to 6 months, and 7 of the 9 took three months or less.</p>
+        <p class="proofline">On our 9 published projects with a delivery time, go-live took 1 to 6 months, and 7 of the 9 took three months or less.</p>
         <div class="acts" style="margin-top:auto"><a class="btn btn-p" href="https://www.encloud9.com/microsoft-dynamics-365-implementation/">Book a call to scope it</a></div>
+        </div>
       </article>
     </div>
     <div class="rows rev" style="margin-top:32px">
@@ -217,9 +256,7 @@ body.p-cs .more a::before{box-shadow:inset 0 0 0 1px rgba(14,26,58,.25)}
         <h2 class="h2" id="ai-h" style="margin-top:16px">How do Copilot and AI agents work in Dynamics 365 Customer Service?</h2>
         <p class="lead" style="margin-top:20px;max-width:640px">AI in Dynamics 365 Customer Service comes in three forms: Copilot inside the app, agents Microsoft includes with Customer Service, and agents built for your business in Copilot Studio. Copilot is included in Customer Service Enterprise and Premium, while agents run on Copilot Credits, so we check your data and permissions and estimate the monthly cost before anything is switched on.</p>
       </div>
-      <div class="aigrid" aria-hidden="true">
-        <i class="aic" style="--d:0"></i><i class="aic" style="--d:1"></i><i class="aic" style="--d:2"></i><i class="aic" style="--d:3"></i><i class="aic on" style="--d:4"></i><i class="aic" style="--d:5"></i><i class="aic" style="--d:6"></i><i class="aic" style="--d:7"></i><i class="aic" style="--d:8"></i>
-      </div>
+      <div class="aigrid labelled" role="img" aria-label="Copilot at the centre of the Customer Service agents and Copilot Studio agents"><span class="aic" style="--d:0"><span>Case Management Agent</span></span><span class="aic" style="--d:1"><span>Customer Intent Agent</span></span><span class="aic" style="--d:2"><span>Customer Knowledge Management Agent</span></span><span class="aic" style="--d:3"><span>Copilot Studio agents</span></span><span class="aic on" style="--d:4"><span>Copilot</span></span><span class="aic" style="--d:5"><span>Quality Evaluation Agent</span></span><span class="aic" style="--d:6"><span>Case summaries</span></span><span class="aic" style="--d:7"><span>Email and chat reply drafts</span></span><span class="aic" style="--d:8"><span>Service Agent</span></span></div>
     </div>
     <div class="three rev">
       <div><span class="mono">01</span><span class="t">Copilot in the app</span><span class="d">Copilot in Dynamics 365 Customer Service answers your service reps' questions from your own knowledge sources, summarizes cases and conversations, drafts emails and chat replies, and writes resolution notes. Your reps review every draft before it goes to a customer.</span></div>
@@ -254,7 +291,7 @@ body.p-cs .more a::before{box-shadow:inset 0 0 0 1px rgba(14,26,58,.25)}
       <h2 class="h2" id="st-h">How does a Dynamics 365 Customer Service project run?</h2>
       <p class="lead">Every project runs through the same four stages: Plan, Build, Go live and Run. You see the written plan before we build, and every change after that is written down and approved.</p>
     </div>
-    <div class="stages">
+    <div class="stages flowbar">
       <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage A</span><span class="t">Plan</span><span class="d">We learn how you serve your customers, using a written discovery questionnaire, and give you the plan: users, queues, service levels, data to move, integrations, and where Copilot and agents fit.</span></div>
       <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage B</span><span class="t">Build</span><span class="d">We set up Dynamics 365 Customer Service to the plan, using standard features first, and move your data. You check the imported records against your old system before sign-off.</span></div>
       <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i class="on" style="--k:4"></i><i class="m" style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage C</span><span class="t">Go live</span><span class="d">Training, cut-over day, and Copilot switched on. Agents are switched on only where your data, permissions and credit budget are ready.</span></div>
@@ -292,8 +329,8 @@ body.p-cs .more a::before{box-shadow:inset 0 0 0 1px rgba(14,26,58,.25)}
       <p class="lead">Here are two of our 23 client stories with Dynamics 365 Customer Service in the products: a move off Monday CRM, and ongoing support with Copilot Studio work under way. <a class="lnk" href="https://www.encloud9.com/about-encloud9/microsoft-dynamics-365-success/">All 23 client stories <span>&rarr;</span></a></p>
     </div>
     <div class="stories two rev">
-      <a class="story" href="https://www.encloud9.com/blog/success_stories/how-price-mds-transformed-healthcare-operations-with-dynamics-365/"><span class="mono">Clearwater, Florida &middot; Products: Dynamics 365 Sales, Customer Service, Power Pages</span><span class="t">PriceMDs</span><span class="d">A move off Monday CRM to Dynamics 365 Sales and Customer Service, with a pharmacist portal on Power Pages and ongoing support.</span><span class="go">Read the PriceMDs story &rarr;</span></a>
-      <a class="story" href="https://www.encloud9.com/blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/"><span class="mono">St. Louis &middot; Products: Dynamics 365 Sales, Customer Service, Copilot Studio</span><span class="t">Compana Pet Brands</span><span class="d">Ongoing support for Dynamics 365 Sales and Customer Service, plus Copilot Studio work on a Shopify integration in early testing.</span><span class="go">Read the Compana Pet Brands story &rarr;</span></a>
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/how-price-mds-transformed-healthcare-operations-with-dynamics-365/"><span class="mono">Clearwater, Florida &middot; Products: Dynamics 365 Sales, Customer Service, Power Pages</span><span class="big">Sales + Service</span><span class="t">PriceMDs</span><span class="d">A move off Monday CRM to Dynamics 365 Sales and Customer Service, with a pharmacist portal on Power Pages and ongoing support.</span><span class="go">Read the PriceMDs story &rarr;</span></a>
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/"><span class="mono">St. Louis &middot; Products: Dynamics 365 Sales, Customer Service, Copilot Studio</span><span class="big">Copilot Studio</span><span class="t">Compana Pet Brands</span><span class="d">Ongoing support for Dynamics 365 Sales and Customer Service, plus Copilot Studio work on a Shopify integration in early testing.</span><span class="go">Read the Compana Pet Brands story &rarr;</span></a>
     </div>
   </section>
 
@@ -310,7 +347,12 @@ body.p-cs .more a::before{box-shadow:inset 0 0 0 1px rgba(14,26,58,.25)}
   </section>
 
   <section class="sec" id="faq" aria-labelledby="fq-h">
-    <div class="sec-head rev"><h2 class="h2" id="fq-h">Dynamics 365 Customer Service questions we get asked</h2></div>
+    <div class="faqsplit">
+    <div class="faqside rev">
+      <h2 class="h2" id="fq-h">Dynamics 365 Customer Service questions we get asked</h2>
+      <p class="lead" style="margin-top:18px">Something else on your mind? Ask us on a call. You get a straight answer, whether or not you work with us.</p>
+      <div class="acts" style="margin-top:24px"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="tel:+18442640729">1-844-264-0729 <span>&rarr;</span></a></div>
+    </div>
     <div class="faq rev">
       <details><summary>How much does Dynamics 365 Customer Service cost?</summary><p>Microsoft's list price is $50, $105 or $195 per user per month, paid yearly, for Customer Service Professional, Enterprise or Premium. Setup is a separate project, quoted in writing after a short call, and support plans start at $500 a month. Agents can add Copilot Credit costs, which we estimate before you switch them on.</p></details>
       <details><summary>How long does a Dynamics 365 Customer Service implementation take?</summary><p>The Service Accelerator takes [Brian sets] weeks. On our 9 published projects with a delivery time, go-live took 1 to 6 months, and 7 of the 9 took three months or less.</p></details>
@@ -321,6 +363,7 @@ body.p-cs .more a::before{box-shadow:inset 0 0 0 1px rgba(14,26,58,.25)}
       <details><summary>Can you fix a Dynamics 365 Customer Service system another partner set up?</summary><p>Yes. Our <a class="lnk" href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a> package takes over systems that are over-customized, stalled or out of date, and takes them back to standard where it can.</p></details>
       <details><summary>Do we need a support plan after go-live?</summary><p>Yes. New clients start on at least the Stability plan, $500 a month for 4 hours, on a 12-month agreement. Monthly plans include a 1-hour response during business hours, 7:00am to 5:00pm Central, Monday to Friday.</p></details>
       <details><summary>Can you move our cases and contacts from another help desk or spreadsheets?</summary><p>Yes. The Service Accelerator includes an import of up to [Brian sets] records. Moving data from several systems is part of a full implementation. Integrations with other systems are quoted separately.</p></details>
+    </div>
     </div>
   </section>
 
@@ -353,7 +396,7 @@ body.p-cs .more a::before{box-shadow:inset 0 0 0 1px rgba(14,26,58,.25)}
     </div>
     <footer class="foot">
       <div class="fcols">
-        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft partner since [2008], specializing in Dynamics 365. Click Gold Partner [confirm current tier].</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
+        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft partner since [2008], specializing in Dynamics 365. Click (formerly ClickDimensions) Gold Partner [confirm current tier].</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
         <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-marketing.html">Marketing automation</a><a href="https://www.encloud9.com/dynamics-365-pricing/">Dynamics 365 pricing</a></nav>
         <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="https://www.encloud9.com/microsoft-copilot-studio/">Copilot Studio</a><a href="https://www.encloud9.com/dynamics-365-power-apps/">Power Apps</a><a href="https://www.encloud9.com/microsoft-power-bi/">Power BI</a></nav>
         <nav aria-label="Packages and support"><b>Packages and support</b><a href="nine-packages.html">All packages</a><a href="https://www.encloud9.com/dynamics-365-sales-accelerator/">Sales Accelerator</a><a href="https://www.encloud9.com/dynamics-365-service-accelerator/">Service Accelerator</a><a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>
@@ -385,6 +428,14 @@ body.p-cs .more a::before{box-shadow:inset 0 0 0 1px rgba(14,26,58,.25)}
     },500);
   },{threshold:.5});
   io.observe(m);
+})();
+/* price cubes tilt under the cursor (fine pointers, motion allowed) */
+(function(){
+  var lic=document.querySelector('.p-cs .lic');
+  if(!lic||!window.matchMedia('(pointer:fine)').matches||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  lic.addEventListener('pointermove',function(e){var c=e.target.closest('.cell');if(!c)return;var r=c.getBoundingClientRect();
+    c.style.setProperty('--ry',(((e.clientX-r.left)/r.width-.5)*10).toFixed(2)+'deg');c.style.setProperty('--rx',(-((e.clientY-r.top)/r.height-.5)*10).toFixed(2)+'deg')});
+  lic.addEventListener('pointerout',function(e){var c=e.target.closest('.cell');if(c&&!c.contains(e.relatedTarget)){c.style.removeProperty('--rx');c.style.removeProperty('--ry')}});
 })();
 </script>
 </body>

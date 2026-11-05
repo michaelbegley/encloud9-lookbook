@@ -288,11 +288,11 @@ a.row:hover{background:var(--tint)}
   @keyframes fill{from{transform:scaleY(0)}to{transform:none}}
   .js .rise{animation:rise .8s var(--ease) both;animation-delay:calc(var(--d,0)*90ms + 150ms)}
   .js .h1 .ln>span{animation:line .9s var(--ease) both;animation-delay:calc(var(--d,0)*90ms)}
-  .js .grid9 .cell,.js .lic .cell{animation:pop .75s var(--ease) both;animation-delay:calc(var(--d,0)*70ms + 350ms)}
+  .js .grid9 .cell,.js .lic .cell{animation:pop .75s var(--ease) backwards;animation-delay:calc(var(--d,0)*70ms + 350ms)}
   .js .rev{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
   .js .rev.in{opacity:1;transform:none}
   .js .aigrid .aic{opacity:0;transform:scale(.86)}
-  .js .aigrid.in .aic{animation:pop .7s var(--ease) both;animation-delay:calc(var(--d,0)*80ms)}
+  .js .aigrid.in .aic{opacity:1;transform:none;animation:pop .7s var(--ease) backwards;animation-delay:calc(var(--d,0)*80ms)}
   .js .stg .g i{transform:scale(0);transition:transform .45s var(--bounce);transition-delay:calc(var(--k,0)*40ms)}
   .js .stages.in .stg .g i{transform:none}
   .js .scale i{transform-origin:bottom;transform:scaleY(0);transition:transform .6s var(--ease);transition-delay:calc(var(--i,0)*60ms)}
@@ -444,3 +444,6 @@ a.row .go{white-space:nowrap}
   .faq details[open] p{animation:faqin .45s var(--ease) both}
   @keyframes faqin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 }
+/* breadcrumb tap targets (24px minimum) */
+.crumb{align-items:center}
+.crumb a{display:inline-flex;align-items:center;min-height:28px}

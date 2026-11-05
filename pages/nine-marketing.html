@@ -40,6 +40,68 @@
 .vs ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:16px}
 .vs .h3 small{display:block;font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:0;margin-top:6px;opacity:.85}
 @media (max-width:860px){.vs{grid-template-columns:1fr}}
+/* ===== polish round (4 Nov): consistent with the home page ===== */
+/* journey cubes are links now; the hovered one comes toward you, the rest step back (home hero values) */
+.jc .ar{position:absolute;right:14px;top:12px;opacity:0;transform:translate(-4px,4px);transition:opacity .3s,transform .35s var(--ease)}
+.jc:hover .ar,.jc:focus-visible .ar{opacity:1;transform:none}
+.jc:focus-visible{outline-offset:-4px;outline-color:var(--white)}
+.jc.lt:focus-visible,.jc:not(.lit):focus-visible{outline-color:var(--b5)}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .jgrid{perspective:900px}
+  .jc{transition:background .5s var(--ease),color .5s,transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+  .jgrid:hover .jc{filter:saturate(.85) brightness(.92);transform:perspective(900px) scale(.97)}
+  .jgrid:hover .jc:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(80px) translateY(-10px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.1);box-shadow:0 34px 60px -26px rgba(14,26,58,.7),0 10px 20px -12px rgba(14,26,58,.45)}
+}
+.jplay button{min-height:44px;transition:background .25s,color .25s}
+.jplay button .gl{display:inline-grid;grid-template-columns:repeat(3,4px);gap:1px;margin-right:10px;vertical-align:1px}
+.jplay button .gl i{width:4px;height:4px;background:currentColor;opacity:.35}
+.jplay button .gl i:nth-child(-n+4){opacity:1}
+/* what we set up: four coloured cubes on the left, words on the right */
+.mk-split{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.mk-split .copyc{display:flex;flex-direction:column;gap:20px}
+.mk-set{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.mt{position:relative;background:var(--c);color:var(--white);aspect-ratio:1/.86;padding:clamp(18px,2vw,26px);display:flex;flex-direction:column;gap:10px}
+.mt.lt{color:var(--ink)}
+.mt .pt-top{display:flex;justify-content:space-between;align-items:flex-start}
+.mt .mono{color:rgba(255,255,255,.78)}.mt.lt .mono{color:var(--ink2)}
+.mt b{font-family:var(--head);font-size:clamp(22px,2vw,28px);font-weight:600;letter-spacing:-.025em;line-height:1.08;margin-top:auto}
+.mt span.d{font-size:15px;line-height:1.45;opacity:.86}
+.mt.lt .g.big i{background:rgba(14,26,58,.16)}.mt.lt .g.big i.on{background:var(--ink)}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .mk-set{perspective:900px}
+  .mt{transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+  .mk-set:hover .mt{filter:saturate(.85) brightness(.92);transform:perspective(900px) scale(.97)}
+  .mk-set:hover .mt:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(60px) translateY(-8px) scale(1.06);box-shadow:0 34px 60px -26px rgba(14,26,58,.7),0 10px 20px -12px rgba(14,26,58,.45)}
+}
+@media (max-width:1080px){.mk-split{grid-template-columns:1fr}.mk-split .copyc{order:-1}}
+@media (max-width:560px){.mk-set{grid-template-columns:1fr}.mt{aspect-ratio:auto;min-height:190px}}
+/* client grid in the band: every cube carries a label, the four Click clients are links */
+.mk-cg{width:min(380px,100%)}
+.mk-cg .aic{display:flex;align-items:flex-end;padding:10px;font-family:var(--mono);font-size:11px;line-height:1.3;color:var(--b8);position:relative}
+.mk-cg .aic.cl{background:var(--b4);border-color:transparent;color:var(--white);font-family:var(--head);font-size:15px;font-weight:600;letter-spacing:-.01em;line-height:1.15}
+.mk-cg .aic.cl::before{content:"";position:absolute;top:10px;left:10px;width:8px;height:8px;background:var(--b8)}
+.mk-cg .aic.on{align-items:center;justify-content:center;font-family:var(--head);font-size:26px;font-weight:600;letter-spacing:-.02em;color:var(--white)}
+.mk-cg .aic.cl:focus-visible{outline-color:var(--white)}
+.js body.p-marketing .mk-cg.in .aic{opacity:1;transform:none;animation-fill-mode:backwards}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .mk-cg{perspective:900px}
+  .js body.p-marketing .mk-cg .aic{transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease),background .3s}
+  .js body.p-marketing .mk-cg.in:hover .aic{filter:brightness(.85);transform:perspective(900px) scale(.97)}
+  .js body.p-marketing .mk-cg.in:hover .aic.cl:hover{filter:none;z-index:3;background:var(--b5);transform:perspective(900px) translateZ(80px) translateY(-10px) scale(1.1);box-shadow:0 34px 60px -26px rgba(0,0,0,.7)}
+}
+@media (max-width:860px){.mk-cg{width:min(340px,100%)}.mk-cg .aic.cl{font-size:13px}.mk-cg .aic{font-size:10px;padding:8px}.mk-cg .aic.on{font-size:20px}}
+/* support: table left, words right, so it does not mirror the band above */
+/* support table: stacked rows on phones instead of a clipped four-column table */
+@media (max-width:640px){
+  body.p-marketing .plans-grid .tbl{min-width:0}
+  body.p-marketing .plans-grid .tbl thead{display:none}
+  body.p-marketing .plans-grid .tbl tbody tr{display:grid;grid-template-columns:1fr auto;column-gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+  body.p-marketing .plans-grid .tbl tbody th,body.p-marketing .plans-grid .tbl tbody td{display:block;border:0;padding:0}
+  body.p-marketing .plans-grid .tbl tbody td.pr{text-align:right}
+  body.p-marketing .plans-grid .tbl tbody td:nth-child(n+3){grid-column:1/-1;font-size:15px;color:var(--muted);margin-top:4px}
+  body.p-marketing .plans-grid .tbl tbody td:empty{display:none}
+}
+@media (min-width:1081px){body.p-marketing .plans-grid.flip{grid-template-columns:minmax(0,1fr) minmax(0,440px)}body.p-marketing .plans-grid.flip>.tbl-wrap{order:-1}}
 </style>
 </head>
 <body class="p-marketing">
@@ -80,26 +142,26 @@
     </div>
     <div>
       <div class="jgrid" id="journey" role="list" aria-label="How a lead moves from marketing to sales">
-        <div role="listitem" class="jc" style="--c:var(--b1)"><span class="n">01 &middot; Email</span><b>Campaign sent</b><small>From Click or Customer Insights</small></div>
-        <div role="listitem" class="jc" style="--c:var(--b2)"><span class="n">02 &middot; Click</span><b>Link opened</b><small>The visit is tied to the person</small></div>
-        <div role="listitem" class="jc" style="--c:var(--b3)"><span class="n">03 &middot; Web</span><b>Pages read</b><small>Web tracking on your site</small></div>
-        <div role="listitem" class="jc" style="--c:var(--b4)"><span class="n">04 &middot; Form</span><b>Form filled</b><small>A form or landing page</small></div>
-        <div role="listitem" class="jc core" style="--c:var(--b5)"><span class="n">05 &middot; Dynamics 365</span><b>On the record</b><small>Lead or contact, with its history</small></div>
-        <div role="listitem" class="jc" style="--c:var(--b6)"><span class="n">06 &middot; Score</span><b>Lead scored</b><small>Points for what they did</small></div>
-        <div role="listitem" class="jc lt" style="--c:var(--b7)"><span class="n">07 &middot; Alert</span><b>Seller told</b><small>A named owner follows up</small></div>
-        <div role="listitem" class="jc lt" style="--c:var(--b8)"><span class="n">08 &middot; Sales</span><b>Opportunity</b><small>In the same pipeline</small></div>
-        <div role="listitem" class="jc lt" style="--c:var(--b9)"><span class="n">09 &middot; Report</span><b>What worked</b><small>Campaigns measured by results</small></div>
+        <a role="listitem" class="jc" style="--c:var(--b1)" href="#click"><span class="n">01 &middot; Email</span><b>Campaign sent</b><small>From Click or Customer Insights</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc" style="--c:var(--b2)" href="#click"><span class="n">02 &middot; Click</span><b>Link opened</b><small>The visit is tied to the person</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc" style="--c:var(--b3)" href="#click"><span class="n">03 &middot; Web</span><b>Pages read</b><small>Web tracking on your site</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc" style="--c:var(--b4)" href="#setup"><span class="n">04 &middot; Form</span><b>Form filled</b><small>A form or landing page</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc core" style="--c:var(--b5)" href="#setup"><span class="n">05 &middot; Dynamics 365</span><b>On the record</b><small>Lead or contact, with its history</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc" style="--c:var(--b6)" href="#setup"><span class="n">06 &middot; Score</span><b>Lead scored</b><small>Points for what they did</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc lt" style="--c:var(--b7)" href="#setup"><span class="n">07 &middot; Alert</span><b>Seller told</b><small>A named owner follows up</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc lt" style="--c:var(--b8)" href="#stories"><span class="n">08 &middot; Sales</span><b>Opportunity</b><small>In the same pipeline</small><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="jc lt" style="--c:var(--b9)" href="#setup"><span class="n">09 &middot; Report</span><b>What worked</b><small>Campaigns measured by results</small><span class="ar" aria-hidden="true">&#8599;</span></a>
       </div>
-      <div class="jplay"><button type="button" id="jbtn">Play the journey</button><span class="fine" style="margin:0">One lead, from first email to a sales opportunity.</span></div>
+      <div class="jplay"><button type="button" id="jbtn"><span class="gl" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Play the journey</button><span class="fine" style="margin:0">One lead, from first email to a sales opportunity.</span></div>
     </div>
   </section>
 
   <section class="sec" aria-label="Facts" style="padding-top:clamp(56px,6vw,88px)">
-    <div class="proof rev">
-      <div class="pf">Click Gold Partner [confirm current tier]</div>
-      <a class="pf" href="nine-stories.html">23 client stories<small>See the stories &rarr;</small></a>
-      <div class="pf">Microsoft partner since [2008], specializing in Dynamics 365</div>
-      <a class="pf" href="#support">Support from $500 a month<small>See support plans &rarr;</small></a>
+    <div class="proof big rev">
+      <div class="pf"><b class="num">Gold</b><span>Click partner tier [confirm current tier]</span></div>
+      <a class="pf" href="#stories"><b class="num">23</b><span>client stories, four of them name Click</span><small>See the four &rarr;</small></a>
+      <div class="pf"><b class="num">[2008]</b><span>The year we became a Microsoft partner. We specialize in Dynamics 365.</span></div>
+      <a class="pf" href="#support"><b class="num">$500</b><span>a month, where support plans start</span><small>See support plans &rarr;</small></a>
     </div>
   </section>
 
@@ -151,18 +213,21 @@
     <p class="fine">Microsoft list prices, paid yearly, checked [publish date]; they include 100,000 unified people and 10,000 interacted people. Prices are Microsoft's, can change, and do not include setup or support.</p>
   </section>
 
-  <section class="sec" aria-labelledby="set-h">
-    <div class="sec-head rev">
-      <h2 class="h2" id="set-h">What does enCloud9 set up?</h2>
-      <p class="lead">A marketing setup is only useful if every form and email lands on the right record. That is the part we build carefully.</p>
+  <section class="sec" id="setup" aria-labelledby="set-h">
+    <div class="mk-split">
+      <div class="mk-set rev" role="list" aria-label="What we set up">
+        <div role="listitem" class="mt" style="--c:var(--b1)"><span class="pt-top"><span class="mono">Email</span><span class="g big" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></span><b>Sending you can trust</b><span class="d">Your sending domain authenticated (SPF, DKIM and DMARC) and Click's email sending domain set up, so campaigns reach inboxes.</span></div>
+        <div role="listitem" class="mt" style="--c:var(--b3)"><span class="pt-top"><span class="mono">Forms</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></span><b>Forms that reach Dynamics 365</b><span class="d">Every form on your site tested end to end, with source and campaign on the lead, and one alert per lead.</span></div>
+        <div role="listitem" class="mt" style="--c:var(--b5)"><span class="pt-top"><span class="mono">Leads</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><b>Scoring and handoff</b><span class="d">A written rule for when a lead goes to sales, a named owner, and a Teams alert when it does.</span></div>
+        <div role="listitem" class="mt lt" style="--c:var(--b8)"><span class="pt-top"><span class="mono">Reporting</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></span><b>Reports on results</b><span class="d">Campaigns judged by clicks, replies and meetings booked, not opens.</span></div>
+      </div>
+      <div class="copyc rev">
+        <h2 class="h2" id="set-h">What does enCloud9 set up?</h2>
+        <p class="lead">A marketing setup is only useful if every form and email lands on the right record. That is the part we build carefully.</p>
+        <p class="fine" style="margin:0">Anything outside the agreed scope is a written change order you approve before work starts.</p>
+        <div class="acts"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="#checkups">Free checkups, no obligation <span>&rarr;</span></a></div>
+      </div>
     </div>
-    <div class="rows rev">
-      <div class="row"><span class="g" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="nm">Sending you can trust</span><span class="ds">Your sending domain authenticated (SPF, DKIM and DMARC) and Click's email sending domain set up, so campaigns reach inboxes.</span><span class="go">Email</span></div>
-      <div class="row"><span class="g" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="nm">Forms that reach Dynamics 365</span><span class="ds">Every form on your site tested end to end, with source and campaign on the lead, and one alert per lead.</span><span class="go">Forms</span></div>
-      <div class="row"><span class="g" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span><span class="nm">Scoring and handoff</span><span class="ds">A written rule for when a lead goes to sales, a named owner, and a Teams alert when it does.</span><span class="go">Leads</span></div>
-      <div class="row"><span class="g" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="nm">Reports on results</span><span class="ds">Campaigns judged by clicks, replies and meetings booked, not opens.</span><span class="go">Reporting</span></div>
-    </div>
-    <p class="fine">Anything outside the agreed scope is a written change order you approve before work starts.</p>
   </section>
 </div>
 
@@ -174,7 +239,17 @@
         <h2 class="h2" id="st-h" style="margin-top:16px">Which clients run Click on Dynamics 365 with us?</h2>
         <p class="lead" style="margin-top:20px;max-width:620px">Four of our 23 client stories name Click (formerly ClickDimensions) in their products.</p>
       </div>
-      <div class="aigrid" aria-hidden="true"><i class="aic" style="--d:0"></i><i class="aic on" style="--d:1"></i><i class="aic" style="--d:2"></i><i class="aic on" style="--d:3"></i><i class="aic" style="--d:4"></i><i class="aic on" style="--d:5"></i><i class="aic" style="--d:6"></i><i class="aic on" style="--d:7"></i><i class="aic" style="--d:8"></i></div>
+      <div class="aigrid mk-cg" role="list" aria-label="What Click does, and the four clients whose stories name Click">
+        <span role="listitem" class="aic" style="--d:0">Email</span>
+        <a role="listitem" class="aic cl" style="--d:1" href="https://www.encloud9.com/blog/success_stories/bg-landholdings-strengthens-data-quality-and-email-deliverability-with-encloud9-email-verifier/">B&amp;G Landholdings</a>
+        <span role="listitem" class="aic" style="--d:2">Forms</span>
+        <a role="listitem" class="aic cl" style="--d:3" href="https://www.encloud9.com/blog/success_stories/how-milestone-leasing-optimized-dynamics-365-to-support-sales-and-lease-renewals/">Milestone Leasing</a>
+        <span role="listitem" class="aic on" style="--d:4">Click</span>
+        <a role="listitem" class="aic cl" style="--d:5" href="https://www.encloud9.com/blog/success_stories/elmwood-reclaimed-timber-migrating-a-20-year-old-crm-to-the-cloud/">Elmwood Reclaimed Timber</a>
+        <span role="listitem" class="aic" style="--d:6">Web tracking</span>
+        <a role="listitem" class="aic cl" style="--d:7" href="https://www.encloud9.com/blog/success_stories/manufacturer-integrates-website-with-crm-to-automate-lead-assignment/">JWC Environmental</a>
+        <span role="listitem" class="aic" style="--d:8">Lead scoring</span>
+      </div>
     </div>
     <div class="three two rev">
       <a href="https://www.encloud9.com/blog/success_stories/bg-landholdings-strengthens-data-quality-and-email-deliverability-with-encloud9-email-verifier/"><span class="mono">Florida &middot; Add-on</span><span class="t">B&amp;G Landholdings</span><span class="d">Dynamics 365 Sales with Click marketing automation and the enCloud9 Email Verifier, for cleaner data and better email deliverability.</span></a>
@@ -191,7 +266,7 @@
 
 <div class="wrap">
   <section class="sec" id="support" aria-labelledby="sp-h">
-    <div class="plans-grid">
+    <div class="plans-grid flip">
       <div class="rev">
         <h2 class="h2" id="sp-h">What does support cost after go-live?</h2>
         <p class="lead" style="margin-top:20px">Support starts at $500 a month for 4 hours on the Stability plan, which is the minimum plan for new clients. Larger teams choose Optimization at $1,500 a month for 20 hours or Partnership at $2,000 a month for 35 hours.</p>
@@ -224,7 +299,13 @@
   </section>
 
   <section class="sec" id="faq" aria-labelledby="fq-h">
-    <div class="sec-head rev"><h2 class="h2" id="fq-h">Marketing automation questions we get asked</h2></div>
+    <div class="faqsplit">
+      <div class="faqside rev">
+        <h2 class="h2" id="fq-h">Marketing automation questions we get asked</h2>
+        <p class="lead" style="margin-top:18px">Something else on your mind? Ask us on a call. You get a straight answer, whether or not you work with us.</p>
+        <div class="acts" style="margin-top:24px"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="tel:+18442640729">1-844-264-0729 <span>&rarr;</span></a></div>
+      </div>
+      <div>
     <div class="faq rev">
       <details><summary>Is Click the same as ClickDimensions?</summary><p>Yes. ClickDimensions now goes by Click. Its website describes it as marketing automation for Microsoft CRM, built to integrate natively with Dynamics 365, and its address is still clickdimensions.com.</p></details>
       <details><summary>Should we use Click or Dynamics 365 Customer Insights?</summary><p>Both run marketing on your Dynamics 365 data. Customer Insights is Microsoft's own app, priced per tenant at $1,700 a month paid yearly, or $1,000 with attach for organizations with 10 or more users of a qualifying Dynamics 365 app. Click is a separate product built for Dynamics 365. We compare both against your list size, channels and budget on a call and tell you which fits.</p></details>
@@ -233,6 +314,8 @@
       <details><summary>Do we need a support plan after go-live?</summary><p>Yes. New clients start on at least the Stability plan, $500 a month for 4 hours, on a 12-month agreement. Monthly plans include a 1-hour response during business hours, 7:00am to 5:00pm Central, Monday to Friday.</p></details>
     </div>
     <p class="fine">More reading: <a class="lnk" href="https://www.encloud9.com/blog/clickdimensions-dashboards-2025-update/">New ClickDimensions dashboards</a> &middot; <a class="lnk" href="https://www.encloud9.com/email-verifier/">enCloud9 Email Verifier</a></p>
+      </div>
+    </div>
   </section>
 </div>
 
@@ -251,7 +334,7 @@
     </div>
     <footer class="foot">
       <div class="fcols">
-        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft partner since [2008], specializing in Dynamics 365. Click Gold Partner [confirm current tier].</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
+        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft partner since [2008], specializing in Dynamics 365. Click (formerly ClickDimensions) Gold Partner [confirm current tier].</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
         <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-marketing.html">Marketing automation</a><a href="https://www.encloud9.com/dynamics-365-pricing/">Dynamics 365 pricing</a></nav>
         <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="https://www.encloud9.com/microsoft-copilot-studio/">Copilot Studio</a><a href="https://www.encloud9.com/dynamics-365-power-apps/">Power Apps</a><a href="https://www.encloud9.com/microsoft-power-bi/">Power BI</a></nav>
         <nav aria-label="Packages and support"><b>Packages and support</b><a href="nine-packages.html">All packages</a><a href="https://www.encloud9.com/dynamics-365-sales-accelerator/">Sales Accelerator</a><a href="https://www.encloud9.com/dynamics-365-service-accelerator/">Service Accelerator</a><a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>
@@ -278,6 +361,12 @@
   var g=document.getElementById('journey');
   if(calm||!('IntersectionObserver' in window)){all();return}
   var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();play()}},{threshold:.4});io.observe(g);
+  /* tilt the hovered cube toward the cursor (fine pointers only) */
+  if(window.matchMedia('(pointer:fine)').matches){
+    g.addEventListener('pointermove',function(e){var c=e.target.closest('.jc');if(!c)return;var r=c.getBoundingClientRect();
+      c.style.setProperty('--ry',(((e.clientX-r.left)/r.width-.5)*10).toFixed(2)+'deg');c.style.setProperty('--rx',(-((e.clientY-r.top)/r.height-.5)*10).toFixed(2)+'deg')});
+    g.addEventListener('pointerout',function(e){var c=e.target.closest('.jc');if(c&&!c.contains(e.relatedTarget)){c.style.removeProperty('--rx');c.style.removeProperty('--ry')}});
+  }
 })();
 </script>
 </body>

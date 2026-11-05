@@ -82,7 +82,7 @@
   var ai=d.querySelector('.aigrid.labelled');
   if(ai){
     var a=ai.querySelectorAll('.aic'),order=[0,1,2,5,8,7,6,3];
-    function light(){order.forEach(function(k,i){setTimeout(function(){a[k].classList.add('lit')},calm?0:600+i*160)})}
+    function light(){setTimeout(function(){order.forEach(function(k){a[k].classList.add('lit')})},calm?0:500)}
     if(calm||!('IntersectionObserver' in window)){light()}
     else{var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();light()}},{threshold:.5});io.observe(ai)}
   }

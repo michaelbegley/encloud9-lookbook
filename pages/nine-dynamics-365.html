@@ -63,13 +63,32 @@ body.p-hub .row .pr9{font-family:var(--head);font-weight:600;color:var(--ink)}
   @keyframes pdin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
   .js body.p-hub .lstack>i{opacity:0;transform:scale(.86)}
   .js body.p-hub .lstack.in>i{animation:pop .7s var(--ease) both;animation-delay:calc(var(--d,0)*90ms)}
+  /* the pop-in must not hold the cubes still, or the hover grow cannot run */
+  .js body.p-hub .pk .cell{animation-fill-mode:backwards}
 }
+/* polish round: app tiles, labelled licence cubes */
+body.p-hub .ptiles.apps{grid-template-columns:repeat(3,1fr)}
+body.p-hub .ptiles.apps .ptile{aspect-ratio:auto;min-height:300px}
+body.p-hub .ptiles.apps .ptile.lt{color:var(--ink)}
+body.p-hub .ptiles.apps .ptile.lt .mono,body.p-hub .ptiles.apps .ptile.lt .ds{color:var(--ink2)}
+body.p-hub .ptiles.apps .ptile.lt .pt-foot{border-top-color:rgba(14,26,58,.2)}
+body.p-hub .ptiles.apps .ptile.lt .g.big i{background:rgba(14,26,58,.14)}body.p-hub .ptiles.apps .ptile.lt .g.big i.on{background:var(--b1)}body.p-hub .ptiles.apps .ptile.lt .g.big i.d{background:var(--b3)}
+body.p-hub .ptile .from{font-family:var(--head);font-size:clamp(30px,2.6vw,38px);font-weight:600;letter-spacing:-.03em;line-height:1}
+body.p-hub .ptile .from small{font-size:14px;font-weight:500;letter-spacing:0;margin-left:6px;opacity:.85}body.p-hub .ptile .from small.pre{margin:0 6px 0 0}
+body.p-hub .guides{margin-top:32px}
+@media (max-width:1080px){body.p-hub .ptiles.apps{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){body.p-hub .ptiles.apps{grid-template-columns:1fr}body.p-hub .ptiles.apps .ptile{min-height:0}body.p-hub .ptiles.apps .ptile .nm{margin-top:24px}}
+body.p-hub .lstack>i span{font-size:11px;opacity:.85}
+body.p-hub .lstack .nt{background:transparent;border:1px solid rgba(255,255,255,.3)}
+body.p-hub .lstack .nt b{font-size:15px;line-height:1.25;letter-spacing:-.01em}
+body.p-hub .lstack .tm b{font-size:19px;line-height:1.1}
+@media (max-width:860px){body.p-hub .lstack{width:min(300px,100%)}body.p-hub .lstack>i span{display:none}body.p-hub .lstack .nt b{font-size:12px}body.p-hub .lstack .tm b{font-size:14px}}
 </style>
 </head>
 <body class="p-hub">
 <nav id="lbbar" aria-label="Lookbook">
   <a href="../index.html">All looks</a><span class="t hide-s">Look 9, Nine, built pages: Dynamics 365</span>
-  <a href="nine-home.html">Home</a><a href="nine-dynamics-365-sales.html">Sales page</a><a href="../looks/09-nine.html" class="hide-s">Original look</a>
+  <a href="nine-home.html">Home</a><a href="nine-dynamics-365-sales.html">Sales page</a><a href="nine-marketing.html" class="hide-s">Marketing</a>
   <span class="sp"></span><span class="t">Font</span>
   <button type="button" data-setfont="hanken" aria-pressed="true">Hanken</button><button type="button" data-setfont="jakarta" aria-pressed="false">Jakarta</button><button type="button" data-setfont="public" aria-pressed="false">Public Sans</button><button type="button" data-setfont="bricolage" aria-pressed="false">Bricolage</button>
 </nav>
@@ -90,7 +109,7 @@ body.p-hub .row .pr9{font-family:var(--head);font-weight:600;color:var(--ink)}
 
 <main id="main">
 <div class="wrap">
-  <nav class="crumb" aria-label="Breadcrumb"><a href="nine-home.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Dynamics 365</span></nav>
+  <nav class="crumb" aria-label="Breadcrumb"><a href="nine-home.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Dynamics 365</span></nav>
   <section class="hero" aria-labelledby="h1">
     <div class="copy">
       <span class="mono rise" style="--d:0">Dynamics 365</span>
@@ -131,11 +150,11 @@ body.p-hub .row .pr9{font-family:var(--head);font-weight:600;color:var(--ink)}
   </section>
 
   <section class="sec" aria-label="Facts" style="padding-top:clamp(56px,6vw,88px)">
-    <div class="proof rev">
-      <a class="pf" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/">A new Dynamics 365 Sales system in one month for The Schiff Group<small>Read the story &rarr;</small></a>
-      <a class="pf" href="https://www.encloud9.com/about-encloud9/microsoft-dynamics-365-success/">23 client stories<small>See the stories &rarr;</small></a>
-      <div class="pf">Clients in [30+] US states</div>
-      <a class="pf" href="https://www.dynamics365support.com/#plans">Support from $500 a month<small>See support plans &rarr;</small></a>
+    <div class="proof big rev">
+      <a class="pf" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><b class="num">1 month</b><span>A new Dynamics 365 Sales system for The Schiff Group</span><small>Read the story &rarr;</small></a>
+      <a class="pf" href="https://www.encloud9.com/about-encloud9/microsoft-dynamics-365-success/"><b class="num">23</b><span>client stories, new builds to rescues</span><small>See the stories &rarr;</small></a>
+      <div class="pf"><b class="num">[30+]</b><span>US states with enCloud9 clients</span></div>
+      <a class="pf" href="https://www.dynamics365support.com/#plans"><b class="num">$500</b><span>a month, where support plans start</span><small>See support plans &rarr;</small></a>
     </div>
   </section>
 
@@ -144,13 +163,15 @@ body.p-hub .row .pr9{font-family:var(--head);font-weight:600;color:var(--ink)}
       <h2 class="h2" id="ap-h">Which Dynamics 365 apps can we set up for you?</h2>
       <p class="lead">We set up six Dynamics 365 apps. Each one runs a different part of your business, and they all share the same customer data.</p>
     </div>
-    <div class="rows rev">
-      <a class="row" href="nine-dynamics-365-sales.html"><span class="g" aria-hidden="true"><i class="d"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span><span class="nm">Dynamics 365 Sales</span><span class="ds">Leads, opportunities, quotes and forecasts in one pipeline your managers can trust. <span class="pr9">From $65 per user per month.</span></span><span class="go">See Sales &rarr;</span></a>
-      <a class="row" href="nine-customer-service.html"><span class="g" aria-hidden="true"><i></i><i class="d"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span><span class="nm">Customer Service</span><span class="ds">Cases, queues, a knowledge base and service levels, so no request gets lost. <span class="pr9">From $50 per user per month.</span></span><span class="go">See Customer Service &rarr;</span></a>
-      <a class="row" href="https://www.encloud9.com/dynamics-365-contact-center/"><span class="g" aria-hidden="true"><i></i><i></i><i class="d"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span><span class="nm">Contact Center</span><span class="ds">Phone, chat and text in one place, with routing and Copilot for your service reps. <span class="pr9">From $95 per user per month.</span></span><span class="go">See Contact Center &rarr;</span></a>
-      <a class="row" href="https://www.encloud9.com/dynamics-365-field-service/"><span class="g" aria-hidden="true"><i></i><i></i><i></i><i class="d"></i><i class="on"></i><i></i><i></i><i></i><i></i></span><span class="nm">Field Service</span><span class="ds">Work orders, scheduling and a mobile app for technicians on site. <span class="pr9">From $105 per user per month.</span></span><span class="go">See Field Service &rarr;</span></a>
-      <a class="row" href="nine-marketing.html"><span class="g" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i class="d"></i><i></i><i></i><i></i></span><span class="nm">Customer Insights</span><span class="ds">One view of each customer, and email, text and push journeys built on it. <span class="pr9">From $1,700 per tenant per month.</span></span><span class="go">See Customer Insights &rarr;</span></a>
-      <a class="row" href="https://www.encloud9.com/dynamics-365-project-operations/"><span class="g" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="d"></i><i></i><i></i></span><span class="nm">Project Operations</span><span class="ds">Quotes, staffing, project plans, time and billing for project-based businesses. <span class="pr9">From $135 per user per month.</span></span><span class="go">See Project Operations &rarr;</span></a>
+    <div class="ptiles apps rev" role="list" aria-label="Dynamics 365 apps we set up">
+      <a role="listitem" class="ptile" style="--c:var(--b1)" href="nine-dynamics-365-sales.html"><span class="pt-top"><span class="mono">App 01</span><span class="g big" aria-hidden="true"><i class="d"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Sales</span><span class="ds">Leads, opportunities, quotes and forecasts in one pipeline your managers can trust.</span><span class="from"><small class="pre">From</small>$65<small>per user per month</small></span><span class="pt-foot"><span class="go">See Sales &rarr;</span></span></a>
+      <a role="listitem" class="ptile" style="--c:var(--b2)" href="nine-customer-service.html"><span class="pt-top"><span class="mono">App 02</span><span class="g big" aria-hidden="true"><i></i><i class="d"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Customer Service</span><span class="ds">Cases, queues, a knowledge base and service levels, so no request gets lost.</span><span class="from"><small class="pre">From</small>$50<small>per user per month</small></span><span class="pt-foot"><span class="go">See Customer Service &rarr;</span></span></a>
+      <a role="listitem" class="ptile" style="--c:var(--b3)" href="https://www.encloud9.com/dynamics-365-contact-center/"><span class="pt-top"><span class="mono">App 03</span><span class="g big" aria-hidden="true"><i></i><i></i><i class="d"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Contact Center</span><span class="ds">Phone, chat and text in one place, with routing and Copilot for your service reps.</span><span class="from"><small class="pre">From</small>$95<small>per user per month</small></span><span class="pt-foot"><span class="go">See Contact Center &rarr;</span></span></a>
+      <a role="listitem" class="ptile" style="--c:var(--b4)" href="https://www.encloud9.com/dynamics-365-field-service/"><span class="pt-top"><span class="mono">App 04</span><span class="g big" aria-hidden="true"><i></i><i></i><i></i><i class="d"></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Field Service</span><span class="ds">Work orders, scheduling and a mobile app for technicians on site.</span><span class="from"><small class="pre">From</small>$105<small>per user per month</small></span><span class="pt-foot"><span class="go">See Field Service &rarr;</span></span></a>
+      <a role="listitem" class="ptile lt" style="--c:var(--b6)" href="nine-marketing.html"><span class="pt-top"><span class="mono">App 05</span><span class="g big" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i class="d"></i><i></i><i></i><i></i></span></span><span class="nm">Customer Insights</span><span class="ds">One view of each customer, and email, text and push journeys built on it.</span><span class="from"><small class="pre">From</small>$1,700<small>per tenant per month</small></span><span class="pt-foot"><span class="go">See Customer Insights &rarr;</span></span></a>
+      <a role="listitem" class="ptile lt" style="--c:var(--b7)" href="https://www.encloud9.com/dynamics-365-project-operations/"><span class="pt-top"><span class="mono">App 06</span><span class="g big" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="d"></i><i></i><i></i></span></span><span class="nm">Project Operations</span><span class="ds">Quotes, staffing, project plans, time and billing for project-based businesses.</span><span class="from"><small class="pre">From</small>$135<small>per user per month</small></span><span class="pt-foot"><span class="go">See Project Operations &rarr;</span></span></a>
+    </div>
+    <div class="rows guides rev">
       <a class="row" href="https://www.encloud9.com/dynamics-365-pricing/"><span class="g" aria-hidden="true"><i class="m"></i><i class="m"></i><i class="m"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span><span class="nm">Dynamics 365 pricing</span><span class="ds">Every Dynamics 365 plan and list price, and how to buy through enCloud9.</span><span class="go">See pricing &rarr;</span></a>
       <a class="row" href="https://www.encloud9.com/dynamics-365-licensing/"><span class="g" aria-hidden="true"><i class="m"></i><i></i><i></i><i class="m"></i><i class="on"></i><i></i><i class="m"></i><i></i><i></i></span><span class="nm">Dynamics 365 licensing</span><span class="ds">How base, attach and Team Members licenses work, so you do not pay twice.</span><span class="go">See licensing &rarr;</span></a>
     </div>
@@ -190,13 +211,12 @@ body.p-hub .row .pr9{font-family:var(--head);font-weight:600;color:var(--ink)}
         <h2 class="h2" id="li-h" style="margin-top:16px">How does Dynamics 365 licensing work?</h2>
         <p class="lead" style="margin-top:20px;max-width:640px">Each full user gets one base license for the highest-priced app they need, plus a lower-priced attach license for each extra app. People who only read records or enter time can use the lower-cost Team Members license instead.</p>
       </div>
-      <div class="lstack rev" aria-hidden="true">
-        <i class="ba" style="--d:0"><span>1</span><b>Base</b></i>
-        <i style="--d:1"></i><i style="--d:2"></i>
-        <i class="at" style="--d:3;grid-column:2;grid-row:2"><span>2</span><b>Attach</b></i>
-        <i style="--d:4;grid-column:3;grid-row:2"></i>
-        <i class="at" style="--d:5;grid-column:2;grid-row:3"><span>2</span><b>Attach</b></i>
-        <i class="tm" style="--d:6;grid-column:3;grid-row:3"><span>3</span><b>Team Members</b></i>
+      <div class="lstack rev" role="img" aria-label="One full user: a base license for the highest-priced app, attach licenses for a second and third app. Light users: Team Members.">
+        <i class="ba" style="--d:0"><span>1 &middot; one per full user</span><b>Base</b></i>
+        <i class="at" style="--d:1;grid-column:2;grid-row:1"><span>2 &middot; second app</span><b>Attach</b></i>
+        <i class="at" style="--d:2;grid-column:2;grid-row:2"><span>2 &middot; third app</span><b>Attach</b></i>
+        <i class="nt" style="--d:3;grid-column:2;grid-row:3"><b>No second full license</b></i>
+        <i class="tm" style="--d:4;grid-column:3;grid-row:1/4"><span>3 &middot; view records, enter time</span><b>Team Members</b></i>
       </div>
     </div>
     <div class="three lic3 rev">
@@ -218,8 +238,8 @@ body.p-hub .row .pr9{font-family:var(--head);font-weight:600;color:var(--ink)}
       <p class="lead">Here are two of our 23 client stories: one new Dynamics 365 Sales system, and one client running Sales and Customer Service with Copilot Studio work under way. <a class="lnk" href="https://www.encloud9.com/about-encloud9/microsoft-dynamics-365-success/">All 23 client stories <span>&rarr;</span></a></p>
     </div>
     <div class="stories two rev">
-      <a class="story" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><span class="mono">Maryland &middot; Product: Dynamics 365 Sales &middot; Timeline: 1 month</span><span class="t">The Schiff Group</span><span class="d">A new Dynamics 365 Sales system in one month.</span><span class="go">Read The Schiff Group story &rarr;</span></a>
-      <a class="story" href="https://www.encloud9.com/blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/"><span class="mono">St. Louis &middot; Products: Dynamics 365 Sales, Customer Service, Copilot Studio</span><span class="t">Compana Pet Brands</span><span class="d">Ongoing support for Dynamics 365 Sales and Customer Service, plus Copilot Studio work on a Shopify integration in early testing.</span><span class="go">Read the Compana Pet Brands story &rarr;</span></a>
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><span class="mono">Maryland &middot; Product: Dynamics 365 Sales &middot; Timeline: 1 month</span><span class="big">1 month</span><span class="t">The Schiff Group</span><span class="d">A new Dynamics 365 Sales system in one month.</span><span class="go">Read The Schiff Group story &rarr;</span></a>
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/"><span class="mono">St. Louis &middot; Products: Dynamics 365 Sales, Customer Service, Copilot Studio</span><span class="big">Copilot Studio</span><span class="t">Compana Pet Brands</span><span class="d">Ongoing support for Dynamics 365 Sales and Customer Service, plus Copilot Studio work on a Shopify integration in early testing.</span><span class="go">Read the Compana Pet Brands story &rarr;</span></a>
     </div>
   </section>
 
@@ -236,7 +256,12 @@ body.p-hub .row .pr9{font-family:var(--head);font-weight:600;color:var(--ink)}
   </section>
 
   <section class="sec" id="faq" aria-labelledby="fq-h">
-    <div class="sec-head rev"><h2 class="h2" id="fq-h">Dynamics 365 questions we get asked</h2></div>
+    <div class="faqsplit">
+    <div class="faqside rev">
+      <h2 class="h2" id="fq-h">Dynamics 365 questions we get asked</h2>
+      <p class="lead" style="margin-top:18px">Something else on your mind? Ask us on a call. You get a straight answer, whether or not you work with us.</p>
+      <div class="acts" style="margin-top:24px"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="tel:+18442640729">1-844-264-0729 <span>&rarr;</span></a></div>
+    </div>
     <div class="faq rev">
       <details><summary>Which Dynamics 365 app do I need?</summary><p>Pick the app that matches the work you want to fix first: selling, service, phone and chat, field visits, marketing or projects. Most growing businesses start with Dynamics 365 Sales, Customer Service or both, and add the others when the work calls for them.</p></details>
       <details><summary>How much does Dynamics 365 cost?</summary><p>Microsoft list prices start at $50 to $65 per user per month and go to $150 to $195 for premium plans, paid yearly. Setup is quoted in writing after a short call, and support starts at $500 a month. See our <a class="lnk" href="https://www.encloud9.com/blog/dynamics-365-pricing-licensing-2025-guide/">Dynamics 365 pricing guide</a>.</p></details>
@@ -244,6 +269,7 @@ body.p-hub .row .pr9{font-family:var(--head);font-weight:600;color:var(--ink)}
       <details><summary>Can one person use two Dynamics 365 apps?</summary><p>Yes. Each full user gets one base license for the highest-priced app they need, plus a lower-priced attach license for each extra app. People who only read records or enter time can use the lower-cost Team Members license.</p></details>
       <details><summary>Can you take over a system another partner built?</summary><p>Yes. <a class="lnk" href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a> is for Dynamics 365 systems that are over-customized, stalled or out of date. We review it first and tell you what to keep.</p></details>
       <details><summary>Do we need a support plan after go-live?</summary><p>Yes. New clients start on at least the Stability plan, $500 a month for 4 hours, on a 12-month agreement. Monthly plans include a 1-hour response during business hours, 7:00am to 5:00pm Central, Monday to Friday.</p></details>
+    </div>
     </div>
   </section>
 </div>
@@ -263,7 +289,7 @@ body.p-hub .row .pr9{font-family:var(--head);font-weight:600;color:var(--ink)}
     </div>
     <footer class="foot">
       <div class="fcols">
-        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft partner since [2008], specializing in Dynamics 365. Click Gold Partner [confirm current tier].</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
+        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft partner since [2008], specializing in Dynamics 365. Click (formerly ClickDimensions) Gold Partner [confirm current tier].</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
         <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-marketing.html">Marketing automation</a><a href="https://www.encloud9.com/dynamics-365-pricing/">Dynamics 365 pricing</a></nav>
         <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="https://www.encloud9.com/microsoft-copilot-studio/">Copilot Studio</a><a href="https://www.encloud9.com/dynamics-365-power-apps/">Power Apps</a><a href="https://www.encloud9.com/microsoft-power-bi/">Power BI</a></nav>
         <nav aria-label="Packages and support"><b>Packages and support</b><a href="nine-packages.html">All packages</a><a href="https://www.encloud9.com/dynamics-365-sales-accelerator/">Sales Accelerator</a><a href="https://www.encloud9.com/dynamics-365-service-accelerator/">Service Accelerator</a><a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>

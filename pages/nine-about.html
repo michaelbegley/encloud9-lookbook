@@ -13,7 +13,16 @@
 <style>
 /* page: About (signature: nine beliefs, revealed one by one as you scroll) */
 body.p-about .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;aspect-ratio:1/1}
-body.p-about .fc{display:flex;flex-direction:column;padding:18px;background:var(--c);color:var(--white);overflow:hidden;position:relative}
+body.p-about .fc{display:flex;flex-direction:column;padding:18px;background:var(--c);color:var(--white);overflow:hidden;position:relative;transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+body.p-about .fc .ar{position:absolute;right:16px;top:14px;opacity:0;transform:translate(-4px,4px);transition:opacity .3s,transform .35s var(--ease)}
+body.p-about .fc:hover .ar,body.p-about .fc:focus-visible .ar{opacity:1;transform:none}
+body.p-about .fc:focus-visible{outline:3px solid var(--b6);outline-offset:3px;z-index:3}
+/* hero fact cubes: the hovered cube comes toward you, the rest step back (same values as the home hero) */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-about .fgrid{perspective:900px}
+  body.p-about .fgrid:hover .fc{filter:saturate(.85) brightness(.92);transform:perspective(900px) scale(.97)}
+  body.p-about .fgrid:hover .fc:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(80px) translateY(-10px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.1);box-shadow:0 34px 60px -26px rgba(14,26,58,.7),0 10px 20px -12px rgba(14,26,58,.45)}
+}
 body.p-about .fc.lt{color:var(--ink)}
 body.p-about .fc .lab{font-family:var(--mono);font-size:12px;opacity:.85}
 body.p-about .fc .fv{margin-top:auto;display:block;overflow:hidden;font-family:var(--head);font-size:clamp(30px,3.6vw,52px);font-weight:600;letter-spacing:-.035em;line-height:1.02;padding-bottom:.06em}
@@ -22,6 +31,33 @@ body.p-about .fc .fd{font-size:13px;line-height:1.35;margin-top:6px;opacity:.9}
 body.p-about .fc.core::after{content:"";position:absolute;inset:8px;border:1.5px solid rgba(255,255,255,.85);pointer-events:none}
 body.p-about .fc.core .fv{font-size:clamp(24px,2.6vw,36px)}
 @media (max-width:560px){body.p-about .fc{padding:10px}body.p-about .fc .lab{font-size:10px}body.p-about .fc .fv{font-size:24px}body.p-about .fc.core .fv{font-size:17px}body.p-about .fc .fd{font-size:11px}}
+/* timeline proof row */
+body.p-about .proof.tl .pf .mono{color:var(--b5)}
+body.p-about .proof.tl .pf>span:not(.mono){max-width:260px}
+/* band: what you get at each stage, every cube labelled, grows toward you on hover */
+body.p-about .dgx{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;width:min(430px,100%);aspect-ratio:1/1;align-self:center}
+body.p-about .dgx a{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:6px;padding:12px;font-family:var(--head);font-size:clamp(13px,1.1vw,15px);font-weight:600;line-height:1.2;letter-spacing:-.01em;color:var(--white);border:1px solid rgba(255,255,255,.16);transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease),background .3s}
+body.p-about .dgx a small{font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:0;color:var(--b8)}
+body.p-about .dgx .sa{background:rgba(255,255,255,.05)}body.p-about .dgx .sb{background:rgba(255,255,255,.1)}body.p-about .dgx .sc{background:rgba(111,143,203,.28)}body.p-about .dgx .sd{background:rgba(157,179,220,.4)}
+body.p-about .dgx .hd{background:var(--b5);border-color:var(--b5);font-size:clamp(16px,1.4vw,19px)}
+body.p-about .dgx .hd::after{content:"";position:absolute;inset:6px;border:1.5px solid rgba(255,255,255,.85);pointer-events:none}
+body.p-about .dgx a:focus-visible{outline:3px solid var(--b7);outline-offset:2px;z-index:3}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-about .dgx:hover a{filter:brightness(.85);transform:perspective(900px) scale(.97)}
+  body.p-about .dgx:hover a:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(80px) translateY(-10px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.1);box-shadow:0 34px 60px -26px rgba(0,0,0,.7),0 10px 20px -12px rgba(0,0,0,.45)}
+}
+@media (max-width:860px){body.p-about .dgx{width:min(360px,100%)}}
+@media (max-width:420px){body.p-about .dgx a{padding:8px;font-size:12px}body.p-about .dgx a small{font-size:9px}body.p-about .dgx .hd{font-size:14px}body.p-about .dgx .hd small{white-space:nowrap;overflow:hidden;text-overflow:clip}}
+@media (max-width:480px){body.p-about .ph span{font-size:10px}}
+/* team: the centre cube comes toward you on hover */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-about .ph{perspective:700px}
+  body.p-about .tm-c:hover .ph i{transform:scale(.94)}
+  body.p-about .tm-c:hover .ph i:nth-child(5){transform:perspective(700px) translateZ(60px) translateY(-6px) scale(1.12);box-shadow:0 26px 40px -22px rgba(14,26,58,.7)}
+}
+body.p-about .ph i:nth-child(5){position:relative;z-index:1}
+body.p-about .ph span{z-index:2;pointer-events:none}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){body.p-about .ph span{transition:transform .5s var(--bounce)}body.p-about .tm-c:hover .ph span{transform:translateY(-6px) scale(1.08)}}
 /* who we are */
 .who{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
 .who .big{font-family:var(--head);font-size:clamp(24px,2.4vw,32px);line-height:1.3;letter-spacing:-.02em;font-weight:500}
@@ -53,7 +89,7 @@ body.p-about .fc.core .fv{font-size:clamp(24px,2.6vw,36px)}
 .ph i{display:block;background:var(--tint);transition:background .4s,transform .45s var(--bounce)}
 .ph i:nth-child(5){background:var(--c,var(--b5))}
 .ph i:nth-child(2),.ph i:nth-child(4),.ph i:nth-child(6),.ph i:nth-child(8){background:var(--b8)}
-.tm-c:hover .ph i:not(:nth-child(5)){background:var(--b8)}.tm-c:hover .ph i:nth-child(5){transform:scale(1.06)}
+.tm-c:hover .ph i:not(:nth-child(5)){background:var(--b8)}
 .ph span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;color:var(--white)}
 body.p-about .tbl .pr{white-space:nowrap}
 .tm-c .n{font-family:var(--head);font-size:24px;font-weight:600;letter-spacing:-.015em;line-height:1.15}
@@ -65,16 +101,16 @@ body.p-about .tbl .pr{white-space:nowrap}
 @media (max-width:1080px){.team{grid-template-columns:1fr 1fr}}
 @media (max-width:480px){.team{grid-template-columns:1fr 1fr;gap:16px}.tm-c .n{font-size:19px}.tm-c .r{font-size:14px}}
 @media (prefers-reduced-motion:no-preference){
-  .js body.p-about .fc{animation:pop .75s var(--ease) both;animation-delay:calc(var(--d,0)*70ms + 300ms)}
+  .js body.p-about .fc{animation:pop .75s var(--ease) backwards;animation-delay:calc(var(--d,0)*70ms + 300ms)}
   .js body.p-about .fc .fv>span{animation:line .9s var(--ease) both;animation-delay:calc(var(--d,0)*70ms + 650ms)}
 }
-@media (prefers-reduced-motion:reduce){.bc,.bc .t,.bc .d,.ph i,.bel-n .bar i{transition:none}}
+@media (prefers-reduced-motion:reduce){.bc,.bc .t,.bc .d,.ph i,.bel-n .bar i,body.p-about .fc,body.p-about .dgx a{transition:none}}
 </style>
 </head>
 <body class="p-about">
 <nav id="lbbar" aria-label="Lookbook">
   <a href="../index.html">All looks</a><span class="t hide-s">Look 9, Nine, built pages: About</span>
-  <a href="nine-home.html">Home</a><a href="nine-dynamics-365-sales.html">Sales page</a><a href="../looks/09-nine.html" class="hide-s">Original look</a>
+  <a href="nine-home.html">Home</a><a href="nine-dynamics-365-sales.html">Sales page</a><a href="nine-marketing.html" class="hide-s">Marketing</a>
   <span class="sp"></span><span class="t">Font</span>
   <button type="button" data-setfont="hanken" aria-pressed="true">Hanken</button><button type="button" data-setfont="jakarta" aria-pressed="false">Jakarta</button><button type="button" data-setfont="public" aria-pressed="false">Public Sans</button><button type="button" data-setfont="bricolage" aria-pressed="false">Bricolage</button>
 </nav>
@@ -108,24 +144,24 @@ body.p-about .tbl .pr{white-space:nowrap}
       <p class="phone-note rise" style="--d:6">Prefer the phone? Call <a href="tel:+18442640729">1-844-264-0729</a>.</p>
     </div>
     <div class="fgrid" role="list" aria-label="enCloud9 in nine facts">
-      <div role="listitem" class="fc" style="--c:var(--b1);--d:0"><span class="lab">Microsoft partner since</span><span class="fv"><span>[2008]</span></span><span class="fd">Dynamics 365 specialists</span></div>
-      <div role="listitem" class="fc" style="--c:var(--b2);--d:1"><span class="lab">Client stories</span><span class="fv"><span>23</span></span><span class="fd">Published, with client names</span></div>
-      <div role="listitem" class="fc" style="--c:var(--b3);--d:2"><span class="lab">States in our stories</span><span class="fv"><span>12</span></span><span class="fd">Clients across the US</span></div>
-      <div role="listitem" class="fc" style="--c:var(--b4);--d:3"><span class="lab">Go-live, published projects</span><span class="fv"><span>1 to 6</span></span><span class="fd">months</span></div>
-      <div role="listitem" class="fc core" style="--c:var(--b5);--d:4"><span class="lab">Specializing in</span><span class="fv"><span>Dynamics 365</span></span><span class="fd">Sales, Customer Service, Copilot</span></div>
-      <div role="listitem" class="fc" style="--c:var(--b6);--d:5"><span class="lab">Three months or less</span><span class="fv"><span>7 of 9</span></span><span class="fd">published delivery times</span></div>
-      <div role="listitem" class="fc lt" style="--c:var(--b7);--d:6"><span class="lab">Process</span><span class="fv"><span>4</span></span><span class="fd">stages: Plan, Build, Go live, Run</span></div>
-      <div role="listitem" class="fc lt" style="--c:var(--b8);--d:7"><span class="lab">Support plans</span><span class="fv"><span>4</span></span><span class="fd">with prices on the page</span></div>
-      <div role="listitem" class="fc lt" style="--c:var(--b9);--d:8"><span class="lab">Support from</span><span class="fv"><span>$500</span></span><span class="fd">a month, 4 hours</span></div>
+      <a role="listitem" href="#who" class="fc" style="--c:var(--b1);--d:0"><span class="lab">Microsoft partner since</span><span class="fv"><span>[2008]</span></span><span class="fd">Dynamics 365 specialists</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      <a role="listitem" href="nine-stories.html" class="fc" style="--c:var(--b2);--d:1"><span class="lab">Client stories</span><span class="fv"><span>23</span></span><span class="fd">Published, with client names</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      <a role="listitem" href="#stories" class="fc" style="--c:var(--b3);--d:2"><span class="lab">States in our stories</span><span class="fv"><span>12</span></span><span class="fd">Clients across the US</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      <a role="listitem" href="#how-we-work" class="fc" style="--c:var(--b4);--d:3"><span class="lab">Go-live, published projects</span><span class="fv"><span>1 to 6</span></span><span class="fd">months</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      <a role="listitem" href="nine-dynamics-365.html" class="fc core" style="--c:var(--b5);--d:4"><span class="lab">Specializing in</span><span class="fv"><span>Dynamics 365</span></span><span class="fd">Sales, Customer Service, Copilot</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      <a role="listitem" href="nine-stories.html" class="fc" style="--c:var(--b6);--d:5"><span class="lab">Three months or less</span><span class="fv"><span>7 of 9</span></span><span class="fd">published delivery times</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      <a role="listitem" href="#how-we-work" class="fc lt" style="--c:var(--b7);--d:6"><span class="lab">Process</span><span class="fv"><span>4</span></span><span class="fd">stages: Plan, Build, Go live, Run</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      <a role="listitem" href="#support" class="fc lt" style="--c:var(--b8);--d:7"><span class="lab">Support plans</span><span class="fv"><span>4</span></span><span class="fd">with prices on the page</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      <a role="listitem" href="#support" class="fc lt" style="--c:var(--b9);--d:8"><span class="lab">Support from</span><span class="fv"><span>$500</span></span><span class="fd">a month, 4 hours</span><span class="ar" aria-hidden="true">&#8599;</span></a>
     </div>
   </section>
 
   <section class="sec" aria-label="Facts" style="padding-top:clamp(56px,6vw,88px)">
-    <div class="proof rev">
-      <div class="pf">Microsoft partner since [2008], specializing in Dynamics 365</div>
-      <a class="pf" href="https://www.encloud9.com/about-encloud9/microsoft-dynamics-365-success/">23 client stories in 12 states<small>Read them &rarr;</small></a>
-      <div class="pf">Go-live in 1 to 6 months on our 9 published projects, 7 of the 9 in three months or less</div>
-      <a class="pf" href="#support">Support from $500 a month<small>See the plans &rarr;</small></a>
+    <div class="proof big tl rev">
+      <a class="pf" href="#who"><span class="mono">Founded</span><b class="num">[2008]</b><span>Brian Begley founds enCloud9. Microsoft partner since [2008], specializing in Dynamics 365.</span><small>Who is behind it &rarr;</small></a>
+      <a class="pf" href="#team"><span class="mono">Joined</span><b class="num">2014</b><span>Kristin Caniglia joins enCloud9.</span><small>Meet the team &rarr;</small></a>
+      <a class="pf" href="#team"><span class="mono">Joined</span><b class="num">2016</b><span>Jodie Henry joins enCloud9.</span><small>Meet the team &rarr;</small></a>
+      <a class="pf" href="nine-stories.html"><span class="mono">Today</span><b class="num">23</b><span>client stories in 12 states, new builds to rescues.</span><small>Read them &rarr;</small></a>
     </div>
   </section>
 
@@ -174,15 +210,17 @@ body.p-about .tbl .pr{white-space:nowrap}
         <h2 class="h2" id="hw-h" style="margin-top:16px">How does an enCloud9 project run?</h2>
         <p class="lead" style="margin-top:20px;max-width:640px">Every project runs through the same four stages: Plan, Build, Go live and Run. You see the written plan before we build, and every change after that is written down and approved.</p>
       </div>
-      <div class="aigrid" aria-hidden="true">
-        <i class="aic on" style="--d:0"></i><i class="aic on" style="--d:1"></i><i class="aic on" style="--d:2"></i><i class="aic" style="--d:3"></i><i class="aic on" style="--d:4"></i><i class="aic" style="--d:5"></i><i class="aic" style="--d:6"></i><i class="aic" style="--d:7"></i><i class="aic" style="--d:8"></i>
-      </div>
+      <nav class="dgx rev" aria-label="What you get at each stage">
+        <a href="#st-a" class="sa"><small>A &middot; Plan</small>Written discovery questionnaire</a><a href="#st-a" class="sa"><small>A &middot; Plan</small>The plan: apps, users, data, Copilot</a><a href="#st-b" class="sb"><small>B &middot; Build</small>Set up to the plan</a>
+        <a href="#st-b" class="sb"><small>B &middot; Build</small>Data moved, you check it</a><a href="#st-a" class="hd"><small>Every project</small>Plan, Build, Go live, Run</a><a href="#st-c" class="sc"><small>C &middot; Go live</small>Training</a>
+        <a href="#st-c" class="sc"><small>C &middot; Go live</small>Cut-over day, Copilot where ready</a><a href="#support" class="sd"><small>D &middot; Run</small>Your support plan starts</a><a href="#support" class="sd"><small>D &middot; Run</small>Health checks logged</a>
+      </nav>
     </div>
     <div class="three four rev">
-      <div><span class="mono">Stage A</span><span class="t">Plan</span><span class="d">We learn how you sell and serve, using a written discovery questionnaire, and give you the plan: apps, users, data, and where Copilot fits.</span></div>
-      <div><span class="mono">Stage B</span><span class="t">Build</span><span class="d">We set up Dynamics 365 to the plan and move your data, then you check it before sign-off.</span></div>
-      <div><span class="mono">Stage C</span><span class="t">Go live</span><span class="d">Training, cut-over day, and Copilot and agents switched on where your data and permissions are ready.</span></div>
-      <div><span class="mono">Stage D</span><span class="t">Run</span><span class="d">Your support plan starts. Health checks and updates are logged, so you always know what changed.</span></div>
+      <div id="st-a"><span class="mono">Stage A</span><span class="t">Plan</span><span class="d">We learn how you sell and serve, using a written discovery questionnaire, and give you the plan: apps, users, data, and where Copilot fits.</span></div>
+      <div id="st-b"><span class="mono">Stage B</span><span class="t">Build</span><span class="d">We set up Dynamics 365 to the plan and move your data, then you check it before sign-off.</span></div>
+      <div id="st-c"><span class="mono">Stage C</span><span class="t">Go live</span><span class="d">Training, cut-over day, and Copilot and agents switched on where your data and permissions are ready.</span></div>
+      <div id="st-d"><span class="mono">Stage D</span><span class="t">Run</span><span class="d">Your support plan starts. Health checks and updates are logged, so you always know what changed.</span></div>
     </div>
     <div class="band-foot">
       <span class="mono">Name of the process: [Brian names and approves; proposed: the enCloud9 Delivery Standard]</span>
@@ -201,7 +239,7 @@ body.p-about .tbl .pr{white-space:nowrap}
       <div class="tm-c" style="--c:var(--b2)"><div class="ph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span>[photo]</span></div><span class="n">Brian Begley</span><span class="r">Founder</span><span class="mono">Founded enCloud9 in [2008]</span></div>
       <div class="tm-c" style="--c:var(--b4)"><div class="ph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span>[photo]</span></div><span class="n">Kristin Caniglia</span><span class="r">Content and social [role Brian confirms]</span><span class="mono">With enCloud9 since 2014</span></div>
       <div class="tm-c" style="--c:var(--b5)"><div class="ph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span>[photo]</span></div><span class="n">Jodie Henry</span><span class="r">Consultant [role Brian confirms]</span><span class="mono">With enCloud9 since 2016</span></div>
-      <div class="tm-c" style="--c:var(--b3)"><div class="ph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span>[photo]</span></div><span class="n">Deb Burgesser</span><span class="r">Consultant [role Brian confirms]</span></div>
+      <div class="tm-c" style="--c:var(--b3)"><div class="ph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span>[photo]</span></div><span class="n">Deb Burgesser</span><span class="r">Consultant [role Brian confirms]</span><span class="mono">[With enCloud9 since: Brian confirms]</span></div>
     </div>
   </section>
 
@@ -234,9 +272,9 @@ body.p-about .tbl .pr{white-space:nowrap}
       <p class="lead">23 client stories in 12 states: new systems, rescues and Copilot projects. <a class="lnk" href="nine-stories.html">All 23 client stories <span>&rarr;</span></a></p>
     </div>
     <div class="stories rev">
-      <a class="story" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><span class="mono">Maryland &middot; Dynamics 365 Sales</span><span class="t">The Schiff Group</span><span class="d">A new Dynamics 365 Sales system in one month.</span><span class="go">Read the story &rarr;</span></a>
-      <a class="story" href="https://www.encloud9.com/blog/success_stories/hogans-crm-rescue-story-a-fresh-start-with-dynamics-365/"><span class="mono">Tulsa &middot; Rescue and Repair</span><span class="t">Hogan Assessments</span><span class="d">An over-customized Dynamics system taken back to standard within three months, on time and under budget.</span><span class="go">Read the story &rarr;</span></a>
-      <a class="story" href="https://www.encloud9.com/blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/"><span class="mono">St. Louis &middot; Copilot Studio</span><span class="t">Compana Pet Brands</span><span class="d">Ongoing support for Dynamics 365 Sales and Customer Service, plus Copilot Studio work on a Shopify integration in early testing.</span><span class="go">Read the story &rarr;</span></a>
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><span class="mono">Maryland &middot; Dynamics 365 Sales</span><span class="big">1 month</span><span class="t">The Schiff Group</span><span class="d">A new Dynamics 365 Sales system in one month.</span><span class="go">Read the story &rarr;</span></a>
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/hogans-crm-rescue-story-a-fresh-start-with-dynamics-365/"><span class="mono">Tulsa &middot; Rescue and Repair</span><span class="big">3 months</span><span class="t">Hogan Assessments</span><span class="d">An over-customized Dynamics system taken back to standard within three months, on time and under budget.</span><span class="go">Read the story &rarr;</span></a>
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/"><span class="mono">St. Louis &middot; Copilot Studio</span><span class="big">Copilot Studio</span><span class="t">Compana Pet Brands</span><span class="d">Ongoing support for Dynamics 365 Sales and Customer Service, plus Copilot Studio work on a Shopify integration in early testing.</span><span class="go">Read the story &rarr;</span></a>
     </div>
   </section>
 </div>
@@ -256,7 +294,7 @@ body.p-about .tbl .pr{white-space:nowrap}
     </div>
     <footer class="foot">
       <div class="fcols">
-        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft partner since [2008], specializing in Dynamics 365. Click Gold Partner [confirm current tier].</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
+        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft partner since [2008], specializing in Dynamics 365. Click (formerly ClickDimensions) Gold Partner [confirm current tier].</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
         <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-marketing.html">Marketing automation</a><a href="https://www.encloud9.com/dynamics-365-pricing/">Dynamics 365 pricing</a></nav>
         <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="https://www.encloud9.com/microsoft-copilot-studio/">Copilot Studio</a><a href="https://www.encloud9.com/dynamics-365-power-apps/">Power Apps</a><a href="https://www.encloud9.com/microsoft-power-bi/">Power BI</a></nav>
         <nav aria-label="Packages and support"><b>Packages and support</b><a href="nine-packages.html">All packages</a><a href="https://www.encloud9.com/dynamics-365-sales-accelerator/">Sales Accelerator</a><a href="https://www.encloud9.com/dynamics-365-service-accelerator/">Service Accelerator</a><a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>
@@ -269,6 +307,16 @@ body.p-about .tbl .pr{white-space:nowrap}
 </section>
 </main>
 <script>
+(function(){
+  /* hero fact cubes and stage cubes: tilt the hovered cube toward the cursor (fine pointers, motion allowed) */
+  var calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches,fine=window.matchMedia('(pointer:fine)').matches;
+  if(!fine||calm)return;
+  document.querySelectorAll('.fgrid,.dgx').forEach(function(g){
+    g.addEventListener('pointermove',function(e){var c=e.target.closest('a');if(!c)return;var r=c.getBoundingClientRect();
+      c.style.setProperty('--ry',(((e.clientX-r.left)/r.width-.5)*10).toFixed(2)+'deg');c.style.setProperty('--rx',(-((e.clientY-r.top)/r.height-.5)*10).toFixed(2)+'deg')});
+    g.addEventListener('pointerout',function(e){var c=e.target.closest('a');if(c&&!c.contains(e.relatedTarget)){c.style.removeProperty('--rx');c.style.removeProperty('--ry')}});
+  });
+})();
 (function(){
   /* nine beliefs: each one lights as you scroll down to it, once, never hides again */
   var calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
