@@ -415,3 +415,32 @@ a.row:hover{background:var(--tint)}
 @media (max-width:860px){.faqsplit{grid-template-columns:1fr}.faqside{position:static}}
 .ptile .pt-foot{flex-direction:column;align-items:flex-start;gap:6px}
 .ptile .pt-foot .mono{font-size:12px}
+
+/* ===== Michael's notes, 4 Nov 22:10 ===== */
+/* hero cubes: hovered cube comes toward you, the rest step back */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .grid9{perspective:900px}
+  .grid9 .cell{transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+  .grid9:hover .cell{filter:saturate(.85) brightness(.92);transform:perspective(900px) scale(.97)}
+  .grid9:hover .cell:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(80px) translateY(-10px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.1);box-shadow:0 34px 60px -26px rgba(14,26,58,.7),0 10px 20px -12px rgba(14,26,58,.45)}
+}
+/* row highlight: bleed past the text on both sides so it never stops at the arrow */
+a.row{margin-inline:-18px;padding-inline:18px;transition:background .3s}
+a.row:hover{background:var(--tint)}
+a.row .go{white-space:nowrap}
+@media (max-width:860px){a.row{margin-inline:-12px;padding-inline:12px}}
+/* marketing section: graphic left, text right, so it does not mirror generative pages */
+.vsplit.flip>div{order:2}
+.vsplit.flip>.flow{order:1}
+@media (max-width:860px){.vsplit.flip>div{order:1}.vsplit.flip>.flow{order:2}}
+/* FAQ: the answer opens with a slide and fade */
+.faq summary{transition:color .25s}
+.faq summary:hover{color:var(--b4)}
+.faq details[open] summary{color:var(--b3)}
+@media (prefers-reduced-motion:no-preference){
+  .faq details::details-content{block-size:0;overflow:clip;transition:block-size .45s var(--ease),content-visibility .45s allow-discrete}
+  .faq details[open]::details-content{block-size:auto}
+  :root{interpolate-size:allow-keywords}
+  .faq details[open] p{animation:faqin .45s var(--ease) both}
+  @keyframes faqin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+}
