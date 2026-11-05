@@ -18,8 +18,11 @@
     var b=e.target.closest('[data-setfont]');
     if(b){setFont(b.getAttribute('data-setfont'));return}
     var m=e.target.closest('.menu-btn');
-    if(m){var n=d.getElementById('mnav'),open=n.classList.toggle('open');m.setAttribute('aria-expanded',open?'true':'false');m.textContent=open?'Close':'Menu'}
+    if(m){var n=d.getElementById('mnav'),open=n.classList.toggle('open');m.setAttribute('aria-expanded',open?'true':'false');m.textContent=open?'Close':'Menu';return}
+    if(e.target.closest('#mnav a'))closeMenu(false);
   });
+  function closeMenu(focus){var n=d.getElementById('mnav'),m=d.querySelector('.menu-btn');if(!n||!n.classList.contains('open'))return;n.classList.remove('open');if(m){m.setAttribute('aria-expanded','false');m.textContent='Menu';if(focus)m.focus()}}
+  d.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu(true)});
 
   /* header border once scrolled */
   var top=d.querySelector('.top');

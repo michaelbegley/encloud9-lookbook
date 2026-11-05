@@ -16,22 +16,33 @@
 {"@type":"Question","name":"Are generative pages generally available?","acceptedAnswer":{"@type":"Answer","text":"Yes. Generative pages in model-driven apps are generally available. Using Power Platform connectors and Dataverse custom APIs with them is still in preview."}},
 {"@type":"Question","name":"Does building generative pages cost extra?","acceptedAnswer":{"@type":"Answer","text":"Microsoft says the maker experience doesn't require any additional AI or message credits. Users still need a licence for the app the page sits in."}},
 {"@type":"Question","name":"What data can a generative page use?","acceptedAnswer":{"@type":"Answer","text":"Up to six Dataverse tables per page. Power Platform connectors and Dataverse custom APIs are available in preview."}},
-{"@type":"Question","name":"Can I edit the code?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can keep chatting with the agent or edit the code directly. Each save becomes a new version you can compare."}},
+{"@type":"Question","name":"Can I edit the code?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can keep chatting with the agent or edit the code directly. Each save becomes a new iteration, and you can compare iterations within the same editing session."}},
 {"@type":"Question","name":"Do generative pages replace Power BI or Copilot?","acceptedAnswer":{"@type":"Answer","text":"No. Use Power BI for heavy analytics, Copilot for questions about your data, and generative pages for focused working screens."}}]}</script>
 <style>
-/* blog post template (Agent 7, 4 Nov): reading column, sticky contents, progress bar, 12 use cubes */
+/* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
 body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
 body.p-post .progress i{display:block;height:100%;background:var(--b5);transform-origin:left;transform:scaleX(0)}
 body.p-post .crumb{flex-wrap:wrap;row-gap:0}
 body.p-post .crumb [aria-current]{min-height:28px;display:inline-flex;align-items:center}
-body.p-post .phead{padding-top:clamp(32px,5vw,56px);display:flex;flex-direction:column;gap:22px;max-width:1040px}
+body.p-post .phead{padding-top:clamp(24px,3vw,40px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:clamp(32px,5vw,80px);align-items:start}
+body.p-post .pmain{display:flex;flex-direction:column;gap:22px;min-width:0}
+body.p-post .pmain .draft{order:-2}body.p-post .pmain .cat{order:-1}
+/* at a glance: four cubes, light to dark (Brian, 4 Nov: "I like light to dark") */
+body.p-post .glance{margin:0}
+body.p-post .glance .mono{display:block;margin-bottom:10px}
+body.p-post .gl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+body.p-post .gl li{background:var(--c);color:var(--white);aspect-ratio:1/1;padding:16px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;transition:transform .45s var(--bounce),box-shadow .35s var(--ease)}
+body.p-post .gl li.lt{color:var(--ink)}
+body.p-post .gl .k{font-family:var(--mono);font-size:12px;line-height:1.3}
+body.p-post .gl b{font-family:var(--head);font-size:clamp(18px,1.6vw,22px);line-height:1.15;font-weight:600;letter-spacing:-.015em}
+body.p-post .byline .av{width:22px;height:22px;background:var(--b5);display:inline-block;vertical-align:middle}
 body.p-post .draft{align-self:flex-start;display:inline-flex;gap:10px;align-items:center;font-family:var(--mono);font-size:13px;background:var(--ink);color:var(--white);padding:8px 12px}
 body.p-post .draft i{width:10px;height:10px;background:var(--b6);display:block}
-body.p-post .phead .h1{font-size:clamp(38px,5.4vw,76px);line-height:1.02}
+body.p-post .phead .h1{font-size:clamp(34px,4.2vw,62px);line-height:1.04}
 body.p-post .byline{display:flex;gap:10px 24px;flex-wrap:wrap;font-family:var(--mono);font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
 body.p-post .byline b{color:var(--ink);font-weight:400}
 
-body.p-post .pgrid{display:grid;grid-template-columns:240px minmax(0,720px);gap:clamp(40px,6vw,96px);margin-top:clamp(40px,5vw,64px);align-items:start}
+body.p-post .pgrid{display:grid;grid-template-columns:240px minmax(0,68ch);gap:clamp(40px,6vw,96px);margin-top:clamp(28px,3vw,44px);align-items:start}
 body.p-post .toc{position:sticky;top:140px;border-top:2px solid var(--ink);padding-top:14px}
 body.p-post .toc summary{font-family:var(--mono);font-size:12px;color:var(--muted);list-style:none;cursor:pointer;padding:4px 0 10px}
 body.p-post .toc summary::-webkit-details-marker{display:none}
@@ -44,8 +55,21 @@ body.p-post .toc a.on{color:var(--ink);font-weight:600;border-left-color:var(--b
 body.p-post .toc a.on::before{color:var(--b5)}
 
 body.p-post .art{font-size:18px;line-height:1.7;color:var(--ink2);min-width:0}
+/* screenshot slot: a framed placeholder until real screenshots are taken in the demo environment */
+body.p-post .shot{margin:32px 0 0}
+body.p-post .shot .frame{border:1.5px solid var(--ink);background:var(--bg)}
+body.p-post .shot .bar{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+body.p-post .shot .bar i{width:10px;height:10px;background:var(--b8);display:block}
+body.p-post .shot .ph{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:var(--mono);font-size:13px;line-height:1.5;color:var(--muted);background:repeating-linear-gradient(135deg,var(--bg) 0 14px,var(--tint) 14px 15px)}
+body.p-post .shot figcaption{font-size:14px;color:var(--muted);margin-top:10px;line-height:1.5}
+/* author box */
+body.p-post .abox{display:grid;grid-template-columns:72px minmax(0,1fr);gap:20px;align-items:start;border-top:2px solid var(--ink);padding-top:24px;margin-top:clamp(56px,6vw,80px)}
+body.p-post .abox .pic{width:72px;height:72px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+body.p-post .abox .pic i{background:var(--c)}
+body.p-post .abox .nm{margin-top:0;font-family:var(--head);font-size:21px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+body.p-post .abox p{font-size:16px;line-height:1.6;margin-top:6px}
 body.p-post .art>*+*{margin-top:22px}
-body.p-post .art h2{font-family:var(--head);font-size:clamp(28px,3vw,38px);line-height:1.12;font-weight:600;letter-spacing:-.025em;color:var(--ink);margin-top:clamp(56px,6vw,80px);scroll-margin-top:140px}
+body.p-post .art h2:not(.nm){font-family:var(--head);font-size:clamp(28px,3vw,38px);line-height:1.12;font-weight:600;letter-spacing:-.025em;color:var(--ink);margin-top:clamp(56px,6vw,80px);scroll-margin-top:140px}
 body.p-post .art h3{font-family:var(--head);font-size:21px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
 body.p-post .art strong{color:var(--ink)}
 body.p-post .art a:not(.btn){color:var(--b4);font-weight:600;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat}
@@ -70,24 +94,23 @@ body.p-post .use .n{font-family:var(--head);font-size:40px;font-weight:600;lette
 body.p-post .use .grp{font-family:var(--mono);font-size:11px;opacity:.82;text-align:right}
 body.p-post .use b{font-family:var(--head);font-size:18px;line-height:1.2;font-weight:600;letter-spacing:-.01em;margin-top:auto;color:inherit}
 body.p-post .use span.x{font-size:14px;line-height:1.45;opacity:.9}
-body.p-post .use.lt span.x{opacity:1;color:var(--ink2)}
+body.p-post .use.lt span.x{opacity:1;color:var(--ink)}
+body.p-post .use.lt .grp{opacity:1}
 body.p-post .groups{font-size:15px;color:var(--muted)}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){
   body.p-post .uses{perspective:900px}
-  body.p-post .uses:hover .use{filter:saturate(.85) brightness(.94);transform:scale(.98)}
-  body.p-post .uses:hover .use:hover{filter:none;z-index:3;transform:translateY(-10px) scale(1.04);box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 10px 20px -12px rgba(14,26,58,.45)}
+  body.p-post .uses:hover .use{filter:saturate(.92) brightness(.96);transform:scale(.98)}
+  body.p-post .uses:hover .use:hover{filter:none;z-index:3;transform:translateY(-6px) scale(1.03);box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 10px 20px -12px rgba(14,26,58,.45)}
 }
 @media (prefers-reduced-motion:no-preference){
   body.p-post .use{transition:opacity .6s var(--ease),transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
-  .js .p-post .uses:not(.in) .use{opacity:0;transform:translateY(14px) scale(.96)}
-  .js .p-post .uses.in:not(.done) .use{transition-delay:calc(var(--k,0)*45ms)}
+  .js .p-post .gl li{animation:pop .7s var(--ease) backwards;animation-delay:calc(var(--k,0)*80ms + 300ms)}
 }
 
 body.p-post .faq{max-width:none;margin-top:24px}
-body.p-post .faq summary h3{display:inline;font:inherit;letter-spacing:inherit;color:inherit}
 body.p-post .faq details p{font-size:17px}
 body.p-post .ctabox{background:var(--b2);color:var(--white);padding:clamp(28px,4vw,44px);margin-top:clamp(56px,6vw,80px)}
-body.p-post .ctabox h2{color:var(--white);margin-top:0}
+body.p-post .art .ctabox h2{color:var(--white);margin-top:0}
 body.p-post .ctabox p{color:var(--b8);margin-top:16px}
 body.p-post .ctabox .btn{margin-top:24px}
 body.p-post .src{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
@@ -107,13 +130,15 @@ body.p-post .pc .t{font-family:var(--head);font-size:clamp(21px,1.8vw,24px);line
 body.p-post .pc .d{font-size:15px;color:var(--muted)}
 body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:15px;color:var(--b5);font-weight:600}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){
-  body.p-post .nx:hover .ptile,body.p-post .rel:hover .pc{transform:scale(.98);filter:saturate(.85)}
+  body.p-post .nx:hover .ptile,body.p-post .rel:hover .pc{transform:scale(.98);filter:saturate(.92) brightness(.96)}
   body.p-post .nx .ptile,body.p-post .rel .pc{transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
-  body.p-post .nx:hover .ptile:hover,body.p-post .rel:hover .pc:hover{transform:translateY(-10px) scale(1.04);filter:none;z-index:3;box-shadow:0 34px 60px -26px rgba(14,26,58,.6)}
+  body.p-post .nx:hover .ptile:hover,body.p-post .rel:hover .pc:hover{transform:translateY(-6px) scale(1.03);filter:none;z-index:3;box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 8px 16px -12px rgba(14,26,58,.4)}
 }
 
 @media (max-width:1080px){
-  body.p-post .pgrid{grid-template-columns:minmax(0,720px);justify-content:start}
+  body.p-post .phead{grid-template-columns:1fr;align-items:start}
+  body.p-post .glance{display:none} /* phones and tablets: every glance fact is in the answer and the body, so the answer stays on the first screen */
+  body.p-post .pgrid{grid-template-columns:minmax(0,68ch);justify-content:start}
   body.p-post .toc{position:static}
   body.p-post .toc summary{font-size:13px;color:var(--ink)}
   body.p-post .toc summary::after{content:" +";color:var(--b5)}
@@ -122,6 +147,10 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
 }
 @media (max-width:760px){body.p-post .uses{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){
+  body.p-post .pmain{gap:12px}
+  body.p-post .draft{display:none} /* review marker only; live posts carry no draft tag */
+  body.p-post .phead .h1{font-size:30px;line-height:1.08}
+  body.p-post .byline{gap:4px 16px;padding-top:12px;font-size:12px}
   body.p-post .art{font-size:17px}
   body.p-post .ways{grid-template-columns:1fr}
   body.p-post .uses{grid-template-columns:1fr}
@@ -130,6 +159,9 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
   body.p-post .nx,body.p-post .rel{grid-template-columns:1fr}
   body.p-post .nx .ptile{min-height:0}
   body.p-post .answer{padding:20px 20px 22px}
+  body.p-post .gl li{aspect-ratio:auto;min-height:120px}
+  body.p-post .abox{grid-template-columns:56px minmax(0,1fr)}
+  body.p-post .abox .pic{width:56px;height:56px}
 }
 </style>
 </head>
@@ -158,14 +190,25 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
 
 <main id="main">
 <div class="wrap">
-  <nav class="crumb" aria-label="Breadcrumb"><a href="nine-home.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="nine-blog.html">Blog</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Generative pages in Dynamics 365: what they are and 12 ways to use them</span></nav>
+  <nav class="crumb" aria-label="Breadcrumb"><a href="nine-home.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="nine-blog.html">Blog</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Generative pages</span></nav>
 
   <article aria-labelledby="h1">
     <header class="phead">
-      <span class="draft rise" style="--d:0"><i aria-hidden="true"></i>Draft for the December theme</span>
-      <span class="mono rise" style="--d:1">Copilot and AI &middot; Generative pages</span>
-      <h1 class="h1 rise" id="h1" style="--d:2">Generative pages in Dynamics 365: what they are and 12 ways to use them</h1>
-      <p class="byline rise" style="--d:3"><span>By <b>[Author]</b></span><span><b>[Publish date]</b></span></p>
+      <div class="pmain">
+        <h1 class="h1 rise" id="h1" style="--d:2">Generative pages in Dynamics 365: what they are and 12 ways to use them</h1>
+        <span class="draft rise" style="--d:0"><i aria-hidden="true"></i>Draft for the December theme</span>
+        <span class="mono cat rise" style="--d:1">Copilot and AI &middot; Generative pages</span>
+        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <b>[Author]</b></span><span><b>[Publish date]</b></span><span>5 min read</span><span>Facts checked on Microsoft Learn, 5 Nov 2026</span></p>
+      </div>
+      <aside class="glance" aria-labelledby="gl-h">
+        <p class="mono" id="gl-h">At a glance</p>
+        <ul class="gl">
+          <li class="lt" style="--c:var(--b9);--k:0"><span class="k">Status, November 2026</span><b>Generally available</b></li>
+          <li class="lt" style="--c:var(--b8);--k:1"><span class="k">Data per page</span><b>Up to six Dataverse tables</b></li>
+          <li class="lt" style="--c:var(--b6);--k:2"><span class="k">Cost to build</span><b>No extra AI or message credits</b></li>
+          <li style="--c:var(--b4);--k:3"><span class="k">Ways to build</span><b>In the browser or with an AI coding tool</b></li>
+        </ul>
+      </aside>
     </header>
 
     <div class="pgrid">
@@ -197,46 +240,50 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
         <h2 id="build">How do you build one?</h2>
         <p>There are two ways.</p>
         <div class="ways">
-          <div style="--c:var(--b3)"><span class="mono">Way 1</span><p><strong>In the browser.</strong> In Power Apps, open your model-driven app in the app designer. Choose Add page, then Generative page, then Describe a page. Type what you want, add up to six Dataverse tables, and select Generate page. You watch the agent outline its plan, write the code and render the result. Then you save and publish.</p></div>
-          <div style="--c:var(--b6)"><span class="mono">Way 2</span><p><strong>With an AI coding tool.</strong> Microsoft now recommends building generative pages with AI code generation tools such as GitHub Copilot CLI or Claude Code. A planner agent proposes the pages, tables and solution first. You approve the plan, and it builds and deploys. This route can create several pages and their supporting tables in one run.</p></div>
+          <div style="--c:var(--b6)"><span class="mono">Way 1</span><p><strong>In the browser.</strong> In Power Apps, open your model-driven app in the app designer. Choose Add page, then Generative page, then Describe a page. Type what you want, add up to six Dataverse tables, and select Generate page. You watch the agent outline its plan, write the code and render the result. Then you save and publish.</p></div>
+          <div style="--c:var(--b3)"><span class="mono">Way 2</span><p><strong>With an AI coding tool.</strong> Microsoft now recommends building generative pages with AI code generation tools such as GitHub Copilot CLI or Claude Code. A planner agent proposes the pages, tables and solution first. You approve the plan, and it builds and deploys. This route can create several pages and their supporting tables in one run.</p></div>
         </div>
         <p>Either way, a person still checks the result. Microsoft is clear that the maker is responsible for validating the code before users rely on it.</p>
+        <figure class="shot">
+          <div class="frame"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><div class="ph">[Screenshot: Power Apps app designer, Add page, Generative page, Describe a page, with a prompt typed in. Take it in the demo environment.]</div></div>
+          <figcaption>Where the screenshots go. Real screenshots only, taken in the demo environment on made-up data, with user names and the environment address blurred.</figcaption>
+        </figure>
 
         <h2 id="where">Where do generative pages show up?</h2>
         <p>A generative page can live in three places:</p>
         <ul>
           <li><strong>In the app navigation</strong>, as its own page.</li>
-          <li><strong>Inside a form</strong>, in a section or tab. The page gets the current record automatically. So you can keep the standard form for data entry and add a richer view beside it.</li>
-          <li><strong>Opened from another page or button</strong>, with the record passed in.</li>
+          <li><strong>Inside a form</strong>, in a section or tab. Once the page is set up to accept a record ID, the form passes in the current record automatically. So you can keep the standard form for data entry and add a richer view beside it.</li>
+          <li><strong>Opened from another page or from script</strong>, with the record or other inputs passed in.</li>
         </ul>
-        <p>To see three of these built, with the limits stated plainly, read three screens we built on demo data.</p>
+        <p>To see three of these built, with the limits stated plainly, read <a href="#" data-todo="Examples post URL: goes live with this post (slug generative-pages-dynamics-365-examples)">three screens we built on demo data</a>.</p>
 
         <h2 id="uses">What are 12 ways to use generative pages?</h2>
         <p>Here are twelve uses for small and mid-sized teams on Dynamics 365. Some come from Microsoft's own examples, three are the screens in our demo, and the rest are common requests.</p>
-        <ol class="uses" id="usegrid">
-          <li class="use" style="--c:var(--b1);--k:0"><span class="hd"><span class="n">1</span><span class="grp">Sales</span></span><b>Top accounts board.</b><span class="x">A ranked gallery of key accounts with revenue and last activity. Microsoft's own examples include an account card gallery and a top accounts dashboard.</span></li>
-          <li class="use" style="--c:var(--b2);--k:1"><span class="hd"><span class="n">2</span><span class="grp">Sales</span></span><b>Pipeline board.</b><span class="x">Opportunities as cards by stage, so reps see the whole pipeline on one screen.</span></li>
-          <li class="use" style="--c:var(--b3);--k:2"><span class="hd"><span class="n">3</span><span class="grp">Sales</span></span><b>Account 360 on the account form.</b><span class="x">Relationship health with its reason, win rate, open pipeline by month, contacts and open cases, on one tab before a call.</span></li>
-          <li class="use" style="--c:var(--b2);--k:3"><span class="hd"><span class="n">4</span><span class="grp">Sales</span></span><b>Opportunity command center.</b><span class="x">The first tab on a deal: revenue, probability, stage, products, overdue follow-ups in red, and the quote.</span></li>
-          <li class="use" style="--c:var(--b3);--k:4"><span class="hd"><span class="n">5</span><span class="grp">Sales</span></span><b>Quote approvals.</b><span class="x">A list of pending quotes. Tick the ones you are happy with and approve them together. Microsoft shows the same pattern with an order review page.</span></li>
-          <li class="use" style="--c:var(--b4);--k:5"><span class="hd"><span class="n">6</span><span class="grp">Service</span></span><b>Active cases command center.</b><span class="x">Case list, status and trend charts, filters and SLA flags on one page.</span></li>
-          <li class="use" style="--c:var(--b3);--k:6"><span class="hd"><span class="n">7</span><span class="grp">Service</span></span><b>Customer history on the case.</b><span class="x">Past cases and recent activity for the same customer, shown inside the case form.</span></li>
+        <ol class="uses rev" id="usegrid">
+          <li class="use lt" style="--c:var(--b9);--k:0"><span class="hd"><span class="n">1</span><span class="grp">Sales</span></span><b>Top accounts board.</b><span class="x">A ranked gallery of key accounts with revenue and last activity. Microsoft's own examples include an account card gallery and a top accounts dashboard.</span></li>
+          <li class="use lt" style="--c:var(--b9);--k:1"><span class="hd"><span class="n">2</span><span class="grp">Sales</span></span><b>Pipeline board.</b><span class="x">Opportunities as cards by stage, so reps see the whole pipeline on one screen.</span></li>
+          <li class="use lt" style="--c:var(--b8);--k:2"><span class="hd"><span class="n">3</span><span class="grp">Sales</span></span><b>Account 360 on the account form.</b><span class="x">Relationship health with its reason, win rate, open pipeline by month, contacts and open cases, on one tab before a call.</span></li>
+          <li class="use lt" style="--c:var(--b8);--k:3"><span class="hd"><span class="n">4</span><span class="grp">Sales</span></span><b>Opportunity command center.</b><span class="x">The first tab on a deal: revenue, probability, stage, products, overdue follow-ups in red, and the quote.</span></li>
+          <li class="use lt" style="--c:var(--b7);--k:4"><span class="hd"><span class="n">5</span><span class="grp">Sales</span></span><b>Quote approvals.</b><span class="x">A list of pending quotes. Tick the ones you are happy with and approve them together. Microsoft shows the same pattern with an order review page that calls a custom API, which is still in preview.</span></li>
+          <li class="use lt" style="--c:var(--b6);--k:5"><span class="hd"><span class="n">6</span><span class="grp">Service</span></span><b>Active cases command center.</b><span class="x">Case list, status and trend charts, filters and SLA flags on one page.</span></li>
+          <li class="use" style="--c:var(--b5);--k:6"><span class="hd"><span class="n">7</span><span class="grp">Service</span></span><b>Customer history on the case.</b><span class="x">Past cases and recent activity for the same customer, shown inside the case form.</span></li>
           <li class="use" style="--c:var(--b4);--k:7"><span class="hd"><span class="n">8</span><span class="grp">Service</span></span><b>Documents beside the case.</b><span class="x">Files from a SharePoint list shown next to the record. Connector support is still in preview.</span></li>
-          <li class="use" style="--c:var(--b5);--k:8"><span class="hd"><span class="n">9</span><span class="grp">Operations and field</span></span><b>Jobs on a map.</b><span class="x">Open work orders or incidents on a map for dispatchers. Microsoft lists "incident reports on a map" as an example prompt.</span></li>
-          <li class="use lt" style="--c:var(--b7);--k:9"><span class="hd"><span class="n">10</span><span class="grp">Operations and field</span></span><b>Equipment gallery with photos.</b><span class="x">Customer assets or products as picture cards, so people find the right one by sight, not by ID.</span></li>
-          <li class="use lt" style="--c:var(--b8);--k:10"><span class="hd"><span class="n">11</span><span class="grp">Leadership and finance</span></span><b>Role-based home pages.</b><span class="x">One start page per role, showing that person's open work.</span></li>
-          <li class="use lt" style="--c:var(--b9);--k:11"><span class="hd"><span class="n">12</span><span class="grp">Leadership and finance</span></span><b>Unbilled time review.</b><span class="x">Time entries waiting for approval or billing, by project.</span></li>
+          <li class="use" style="--c:var(--b3);--k:8"><span class="hd"><span class="n">9</span><span class="grp">Operations and field</span></span><b>Jobs on a map.</b><span class="x">Open work orders or incidents on a map for dispatchers. Microsoft lists "incident reports on a map" as an example prompt.</span></li>
+          <li class="use" style="--c:var(--b3);--k:9"><span class="hd"><span class="n">10</span><span class="grp">Operations and field</span></span><b>Equipment gallery with photos.</b><span class="x">Customer assets or products as picture cards, so people find the right one by sight, not by ID.</span></li>
+          <li class="use" style="--c:var(--b2);--k:10"><span class="hd"><span class="n">11</span><span class="grp">Leadership and finance</span></span><b>Role-based home pages.</b><span class="x">One start page per role, showing that person's open work.</span></li>
+          <li class="use" style="--c:var(--b1);--k:11"><span class="hd"><span class="n">12</span><span class="grp">Leadership and finance</span></span><b>Unbilled time review.</b><span class="x">Time entries waiting for approval or billing, by project.</span></li>
         </ol>
 
         <h2 id="not">When should you not use a generative page?</h2>
         <p>Generative pages are not the answer to everything. Pick something else when:</p>
         <ul class="not">
           <li><strong>The job is simple data entry.</strong> A standard form is more consistent and easier to support.</li>
-          <li><strong>You need heavy reporting over a lot of data.</strong> Use Power BI. Community testers have noted that generated pages can load data into the browser, which does not suit large volumes.</li>
+          <li><strong>You need heavy reporting over a lot of data.</strong> Use Power BI. A community tester has noted that generated pages can load data into the browser, which does not suit large volumes.</li>
           <li><strong>People need to ask questions, not open a screen.</strong> Copilot in Dynamics 365 answers questions about your data in a side pane.</li>
           <li><strong>The need is a conversation or an automated process.</strong> Build an agent or workflow in Copilot Studio.</li>
           <li><strong>You need one control reused across many forms.</strong> A PCF code component fits better.</li>
-          <li><strong>Several makers must edit the same page at once.</strong> Generative pages do not support co-authoring yet.</li>
+          <li><strong>Several makers must edit the same page at once.</strong> Generative pages do not support co-authoring.</li>
         </ul>
         <p>Also expect to iterate. A new prompt can change parts of the page you were happy with, so test after each change.</p>
 
@@ -249,13 +296,18 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
 
         <h2 id="faq">Frequently asked questions</h2>
         <div class="faq">
-          <details><summary><h3>What are generative pages in Dynamics 365?</h3></summary><p>They are pages in model-driven apps that Microsoft's app agent builds from a plain-language description. The agent writes React code that reads and updates your Dataverse data.</p></details>
-          <details><summary><h3>Are generative pages generally available?</h3></summary><p>Yes. Generative pages in model-driven apps are generally available. Using Power Platform connectors and Dataverse custom APIs with them is still in preview.</p></details>
-          <details><summary><h3>Does building generative pages cost extra?</h3></summary><p>Microsoft says the maker experience doesn't require any additional AI or message credits. Users still need a licence for the app the page sits in.</p></details>
-          <details><summary><h3>What data can a generative page use?</h3></summary><p>Up to six Dataverse tables per page. Power Platform connectors and Dataverse custom APIs are available in preview.</p></details>
-          <details><summary><h3>Can I edit the code?</h3></summary><p>Yes. You can keep chatting with the agent or edit the code directly. Each save becomes a new version you can compare.</p></details>
-          <details><summary><h3>Do generative pages replace Power BI or Copilot?</h3></summary><p>No. Use Power BI for heavy analytics, Copilot for questions about your data, and generative pages for focused working screens.</p></details>
+          <details><summary>What are generative pages in Dynamics 365?</summary><p>They are pages in model-driven apps that Microsoft's app agent builds from a plain-language description. The agent writes React code that reads and updates your Dataverse data.</p></details>
+          <details><summary>Are generative pages generally available?</summary><p>Yes. Generative pages in model-driven apps are generally available. Using Power Platform connectors and Dataverse custom APIs with them is still in preview.</p></details>
+          <details><summary>Does building generative pages cost extra?</summary><p>Microsoft says the maker experience doesn't require any additional AI or message credits. Users still need a licence for the app the page sits in.</p></details>
+          <details><summary>What data can a generative page use?</summary><p>Up to six Dataverse tables per page. Power Platform connectors and Dataverse custom APIs are available in preview.</p></details>
+          <details><summary>Can I edit the code?</summary><p>Yes. You can keep chatting with the agent or edit the code directly. Each save becomes a new iteration, and you can compare iterations within the same editing session.</p></details>
+          <details><summary>Do generative pages replace Power BI or Copilot?</summary><p>No. Use Power BI for heavy analytics, Copilot for questions about your data, and generative pages for focused working screens.</p></details>
         </div>
+
+        <section class="abox" aria-labelledby="ab-h">
+          <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
+          <div><h2 class="nm" id="ab-h">About the author: [Author]</h2><p>[Author's role at enCloud9, and one line on the Dynamics 365 work they do.] enCloud9 checks every Microsoft fact in this post on Microsoft Learn before it goes live.</p></div>
+        </section>
 
         <div class="ctabox">
           <h2 id="see">Want to see what one could do for your team?</h2>
@@ -272,9 +324,9 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
       <p class="lead">See generative pages on the Copilot page, start with a free checkup, or talk to us.</p>
     </div>
     <div class="nx rev">
-      <a class="ptile" style="--c:var(--b2)" href="nine-copilot.html#genpages"><span class="pt-top"><span class="mono">Copilot and AI</span><span class="g big" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Generative pages</span><span class="ds">How generative pages fit with Copilot and agents in Dynamics 365.</span><span class="pt-foot"><span class="go">See generative pages &rarr;</span></span></a>
+      <a class="ptile lt" style="--c:var(--b8)" href="nine-copilot.html#genpages"><span class="pt-top"><span class="mono">Copilot and AI</span><span class="g big" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Generative pages</span><span class="ds">How generative pages fit with Copilot and agents in Dynamics 365.</span><span class="pt-foot"><span class="go">See generative pages &rarr;</span></span></a>
       <a class="ptile" style="--c:var(--b4)" href="nine-home.html#checkups"><span class="pt-top"><span class="mono">Free</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="m"></i><i class="m"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Free checkups, no obligation</span><span class="ds">Find out where your system stands before you spend anything.</span><span class="pt-foot"><span class="go">See the checkups &rarr;</span></span></a>
-      <a class="ptile lt" style="--c:var(--b8)" href="https://www.encloud9.com/lp/schedule-a-meeting/"><span class="pt-top"><span class="mono">Talk to us</span><span class="g big" aria-hidden="true"><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i></span></span><span class="nm">Book a call</span><span class="ds">Tell us about the screen your team wishes it had.</span><span class="pt-foot"><span class="go">Book a call &rarr;</span></span></a>
+      <a class="ptile" style="--c:var(--b2)" href="https://www.encloud9.com/lp/schedule-a-meeting/"><span class="pt-top"><span class="mono">Talk to us</span><span class="g big" aria-hidden="true"><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i></span></span><span class="nm">Book a call</span><span class="ds">Tell us about the screen your team wishes it had.</span><span class="pt-foot"><span class="go">Book a call &rarr;</span></span></a>
     </div>
   </section>
 
@@ -284,9 +336,9 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
       <p class="lead">More on Copilot and Dynamics 365. <a class="lnk" href="nine-blog.html">All posts <span>&rarr;</span></a></p>
     </div>
     <div class="rel rev">
-      <a class="pc" style="--c:var(--b5)" href="https://www.encloud9.com/blog/microsoft-dynamics-365-crm-skills-copilot/"><span class="mono">Copilot and AI</span><span class="t">Microsoft Introduces 30 New Dynamics 365 CRM Skills for Copilot</span><span class="d">Copilot news for Dynamics 365 CRM users.</span><span class="go">Read the post &#8599;</span></a>
-      <a class="pc" style="--c:var(--b5)" href="https://www.encloud9.com/blog/dynamics-365-sales-qualification-agent/"><span class="mono">Copilot and AI</span><span class="t">The Dynamics 365 Sales Qualification Agent</span><span class="d">About one of the agents in Dynamics 365 Sales.</span><span class="go">Read the post &#8599;</span></a>
-      <a class="pc" style="--c:var(--b2)" href="https://www.encloud9.com/blog/which-dynamics-365-customizations-are-worth-it-and-which-ones-we-usually-advise-against/"><span class="mono">Admin and how-to</span><span class="t">Which Dynamics 365 Customizations Are Worth It (And Which Ones We Usually Advise Against)</span><span class="d">Our advice on Dynamics 365 customizations.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b7)" href="https://www.encloud9.com/blog/microsoft-dynamics-365-crm-skills-copilot/"><span class="mono">Copilot and AI &middot; October 14, 2026</span><span class="t">Microsoft Introduces 30 New Dynamics 365 CRM Skills for Copilot</span><span class="d">Copilot news for Dynamics 365 CRM users.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b5)" href="https://www.encloud9.com/blog/which-dynamics-365-customizations-are-worth-it-and-which-ones-we-usually-advise-against/"><span class="mono">Admin and how-to &middot; October 7, 2026</span><span class="t">Which Dynamics 365 Customizations Are Worth It (And Which Ones We Usually Advise Against)</span><span class="d">Our advice on Dynamics 365 customizations.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b3)" href="https://www.encloud9.com/blog/dynamics-365-sales-qualification-agent/"><span class="mono">Copilot and AI &middot; August 18, 2025</span><span class="t">Smarter Selling with the Dynamics 365 Sales Qualification Agent</span><span class="d">About one of the agents in Dynamics 365 Sales.</span><span class="go">Read the post &#8599;</span></a>
     </div>
   </section>
 </div>
@@ -319,7 +371,7 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
 </section>
 </main>
 <script>
-/* post: reading progress, current section in the contents, use cubes reveal once */
+/* post: reading progress and the current section in the contents */
 (function(){
   var d=document,bar=d.querySelector('.progress i'),art=d.getElementById('art'),
       links=[].slice.call(d.querySelectorAll('.toc a')),heads=links.map(function(a){return d.getElementById(a.getAttribute('href').slice(1))}),
@@ -334,8 +386,6 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
   }
   window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd)}},{passive:true});
   window.addEventListener('resize',upd);upd();
-  var g=d.getElementById('usegrid');
-  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){g.classList.add('in');io.disconnect();setTimeout(function(){g.classList.add('done')},1400)}},{rootMargin:'0px 0px -10% 0px'});io.observe(g)}else{g.classList.add('in')}
 })();
 </script>
 </body>
