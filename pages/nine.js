@@ -75,3 +75,22 @@
     }
   }
 })();
+
+/* home polish: hero ring sweep and labelled AI grid (runs once; replays on hover of the core) */
+(function(){
+  var d=document,calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var g=d.querySelector('.p-home .grid9');
+  if(g&&!calm){
+    var cells=g.querySelectorAll('.cell'),ring=[0,1,2,5,8,7,6,3],busy=false;
+    function sweep(){if(busy)return;busy=true;ring.forEach(function(k,i){setTimeout(function(){var c=cells[k];c.classList.remove('glow');void c.offsetWidth;c.classList.add('glow')},i*110)});setTimeout(function(){busy=false},ring.length*110+900)}
+    setTimeout(sweep,1500);
+    var core=g.querySelector('.cell.core');if(core){core.addEventListener('mouseenter',sweep);core.addEventListener('focus',sweep)}
+  }
+  var ai=d.querySelector('.aigrid.labelled');
+  if(ai){
+    var a=ai.querySelectorAll('.aic'),order=[0,1,2,5,8,7,6,3];
+    function light(){order.forEach(function(k,i){setTimeout(function(){a[k].classList.add('lit')},calm?0:600+i*160)})}
+    if(calm||!('IntersectionObserver' in window)){light()}
+    else{var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();light()}},{threshold:.5});io.observe(ai)}
+  }
+})();
