@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Dynamics 365 Partner for Sales and Service Apps | enCloud9</title>
+<meta name="description" content="Which Dynamics 365 apps fit your business: Sales, Customer Service, Field Service and more, with list prices, setup and support from $500 a month.">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="nine.css">
+<script defer src="nine.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.encloud9.com/"},{"@type":"ListItem","position":2,"name":"Dynamics 365","item":"https://www.encloud9.com/power-platform-dynamics-365/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Which Dynamics 365 app do I need?","acceptedAnswer":{"@type":"Answer","text":"Pick the app that matches the work you want to fix first: selling, service, phone and chat, field visits, marketing or projects. Most growing businesses start with Dynamics 365 Sales, Customer Service or both, and add the others when the work calls for them."}},
+{"@type":"Question","name":"How much does Dynamics 365 cost?","acceptedAnswer":{"@type":"Answer","text":"Microsoft list prices start at $50 to $65 per user per month and go to $150 to $195 for premium plans, paid yearly. Setup is quoted in writing after a short call, and support starts at $500 a month. See our Dynamics 365 pricing guide."}},
+{"@type":"Question","name":"Is Copilot included with Dynamics 365?","acceptedAnswer":{"@type":"Answer","text":"Copilot is built into Dynamics 365 Sales Enterprise and Premium, and into Customer Service Enterprise and Premium. Agents run on Copilot Credits, which most plans buy separately. We tell you what it costs to run before anything is switched on."}},
+{"@type":"Question","name":"Can one person use two Dynamics 365 apps?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each full user gets one base license for the highest-priced app they need, plus a lower-priced attach license for each extra app. People who only read records or enter time can use the lower-cost Team Members license."}},
+{"@type":"Question","name":"Can you take over a system another partner built?","acceptedAnswer":{"@type":"Answer","text":"Yes. Rescue and Repair is for Dynamics 365 systems that are over-customized, stalled or out of date. We review it first and tell you what to keep."}},
+{"@type":"Question","name":"Do we need a support plan after go-live?","acceptedAnswer":{"@type":"Answer","text":"Yes. New clients start on at least the Stability plan, $500 a month for 4 hours, on a 12-month agreement. Monthly plans include a 1-hour response during business hours, 7:00am to 5:00pm Central, Monday to Friday."}}]}</script>
+<style>
+/* hub only: the app picker, the licence stack */
+body.p-hub .pk .cell{border:0;font:inherit;text-align:left;cursor:pointer;width:100%;height:100%}
+body.p-hub .pk .cell .ds{font-family:var(--mono);font-size:12px}
+body.p-hub .pk .cell:focus-visible .ds,body.p-hub .pk .cell[aria-pressed="true"] .ds{max-height:90px;opacity:1;margin-top:8px}
+body.p-hub .pk .cell[aria-pressed="true"]{box-shadow:inset 0 0 0 3px var(--white);z-index:1}
+body.p-hub .pk .cell.lt[aria-pressed="true"]{box-shadow:inset 0 0 0 3px var(--b5)}
+body.p-hub .pk .cell.core[aria-pressed="true"]{box-shadow:none}
+body.p-hub .pk .cell.core[aria-pressed="true"]::after{border-width:3px}
+body.p-hub .pk .cell:focus-visible{outline:3px solid var(--b6);outline-offset:2px;z-index:3}
+body.p-hub .pick-d{margin-top:6px;background:var(--white);border:1px solid var(--line);border-top:3px solid var(--b5)}
+body.p-hub .pd{padding:22px 24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 28px;align-items:end}
+body.p-hub .pd+.pd{border-top:1px solid var(--line)}
+body.p-hub .pd .pd-nm{grid-column:1;font-family:var(--head);font-size:clamp(24px,2.4vw,30px);font-weight:600;letter-spacing:-.02em;line-height:1.1;display:flex;flex-direction:column;gap:6px}
+body.p-hub .pd .pd-ln{grid-column:1;color:var(--muted);font-size:16px;line-height:1.5}
+body.p-hub .pd .pd-pr{grid-column:2;grid-row:1/3;display:flex;flex-direction:column;align-items:flex-end;text-align:right;gap:2px;align-self:start}
+body.p-hub .pd .pd-pr b{font-family:var(--head);font-size:clamp(34px,3.4vw,44px);letter-spacing:-.03em;line-height:1;color:var(--b3)}
+body.p-hub .pd .pd-pr small{font-size:13px;color:var(--muted);max-width:150px}
+body.p-hub .pd .lnk{grid-column:1/-1;margin-top:8px;justify-self:start;color:var(--b5)}
+.js body.p-hub .pick-d{display:grid}
+.js body.p-hub .pd{grid-area:1/1;visibility:hidden;opacity:0;border-top:0}
+.js body.p-hub .pd.on{visibility:visible;opacity:1}
+@media (max-width:560px){body.p-hub .pd{grid-template-columns:1fr;padding:18px}body.p-hub .pd .pd-pr{grid-column:1;grid-row:auto;align-items:flex-start;text-align:left}body.p-hub .pd .pd-pr small{max-width:none}}
+body.p-hub .lstack{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:6px;width:min(360px,100%);aspect-ratio:1/1}
+body.p-hub .lstack>i{display:flex;flex-direction:column;justify-content:flex-end;padding:12px;font-style:normal;font-family:var(--mono);font-size:12px;line-height:1.3;color:var(--white);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14)}
+body.p-hub .lstack>i b{font-family:var(--head);font-size:22px;font-weight:600;letter-spacing:-.02em}
+body.p-hub .lstack .ba{grid-column:1;grid-row:1/4;background:var(--b5);border:0;position:relative;padding:20px}
+body.p-hub .lstack .ba::after{content:"";position:absolute;inset:8px;border:1.5px solid rgba(255,255,255,.85)}
+body.p-hub .lstack .at{background:var(--b6);border:0;color:var(--ink)}
+body.p-hub .lstack .tm{background:transparent;border:1.5px dashed rgba(255,255,255,.75)}
+@media (max-width:860px){body.p-hub .lstack{width:260px}body.p-hub .lstack>i{padding:8px;font-size:10px}body.p-hub .lstack>i b{font-size:17px}}
+body.p-hub .three.lic3 .t{font-size:24px}
+body.p-hub .fits .tbl{min-width:880px}
+body.p-hub .fits .tbl tbody th{font-size:19px}
+body.p-hub .fits .tbl tbody th a{color:var(--ink);background:linear-gradient(var(--b5),var(--b5)) 0 100%/0 2px no-repeat;transition:background-size .3s}
+body.p-hub .fits .tbl tbody th a:hover{background-size:100% 2px}
+body.p-hub .fits .tbl td.pr{font-size:16px;line-height:1.4}
+body.p-hub .notsure{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:32px;padding:24px 28px;background:var(--tint)}
+body.p-hub .notsure p{font-family:var(--head);font-size:clamp(20px,2vw,24px);font-weight:600;letter-spacing:-.015em}
+@media (min-width:861px){body.p-hub #apps .row{grid-template-columns:44px minmax(0,1fr) minmax(0,1.5fr) 220px}}
+body.p-hub .row .pr9{font-family:var(--head);font-weight:600;color:var(--ink)}
+@media (prefers-reduced-motion:no-preference){
+  .js body.p-hub .pd.on{animation:pdin .4s var(--ease) both}
+  @keyframes pdin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .js body.p-hub .lstack>i{opacity:0;transform:scale(.86)}
+  .js body.p-hub .lstack.in>i{animation:pop .7s var(--ease) both;animation-delay:calc(var(--d,0)*90ms)}
+}
+</style>
+</head>
+<body class="p-hub">
+<nav id="lbbar" aria-label="Lookbook">
+  <a href="../index.html">All looks</a><span class="t hide-s">Look 9, Nine, built pages: Dynamics 365</span>
+  <a href="nine-home.html">Home</a><a href="nine-dynamics-365-sales.html">Sales page</a><a href="../looks/09-nine.html" class="hide-s">Original look</a>
+  <span class="sp"></span><span class="t">Font</span>
+  <button type="button" data-setfont="hanken" aria-pressed="true">Hanken</button><button type="button" data-setfont="jakarta" aria-pressed="false">Jakarta</button><button type="button" data-setfont="public" aria-pressed="false">Public Sans</button><button type="button" data-setfont="bricolage" aria-pressed="false">Bricolage</button>
+</nav>
+<header class="top">
+  <a class="skip" href="#main">Skip to main content</a>
+  <div class="wrap">
+    <a class="logo" href="nine-home.html" aria-label="enCloud9 home"><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9" width="104" height="34"></a>
+    <nav class="nav" aria-label="Main"><a href="nine-dynamics-365.html" class="cur">Dynamics 365<span class="sr-only"> (current section)</span></a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="https://www.encloud9.com/blog/">Blog</a><a href="nine-about.html">About</a></nav>
+    <a class="tel" href="tel:+18442640729">1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+    <a class="btn btn-p call-m" href="tel:+18442640729">Call</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="https://www.encloud9.com/blog/">Blog</a><a href="nine-about.html">About</a><a href="tel:+18442640729">Call 1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+  </nav>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="nine-home.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Dynamics 365</span></nav>
+  <section class="hero" aria-labelledby="h1">
+    <div class="copy">
+      <span class="mono rise" style="--d:0">Dynamics 365</span>
+      <h1 class="h1" id="h1" style="font-size:clamp(38px,4.9vw,68px)"><span class="ln"><span style="--d:1">Dynamics 365 apps,</span></span><span class="ln"><span style="--d:2">chosen and set up</span></span><span class="ln"><span style="--d:3">for your team</span></span></h1>
+      <p class="lead rise" style="--d:3">Dynamics 365 is Microsoft's family of business apps for sales, customer service, field work, marketing and projects, all sharing one set of customer data. enCloud9 helps growing US businesses pick the apps they need, sets them up with Copilot and agents where they fit, and supports them from $500 a month.</p>
+      <p class="phone-note rise" style="--d:4;color:var(--ink2)">Most teams start with Dynamics 365 Sales, Customer Service or both, then add apps as the work grows.</p>
+      <div class="acts rise" style="--d:4">
+        <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+        <a class="lnk" href="#checkups">Free checkups, no obligation <span>&rarr;</span></a>
+      </div>
+      <p class="phone-note rise" style="--d:5">Prefer the phone? Call <a href="tel:+18442640729">1-844-264-0729</a>.</p>
+    </div>
+    <div class="pick">
+      <div class="grid9 pk" role="group" aria-label="Dynamics 365 apps. Choose one to see what it runs and its Microsoft list price.">
+        <button type="button" class="cell" data-k="sales" aria-controls="pick-d" style="background:var(--b1);--d:0"><span class="lab">Dynamics 365</span><span class="nm">Sales</span><span class="ds">From $65 per user</span></button>
+        <button type="button" class="cell" data-k="cs" aria-controls="pick-d" style="background:var(--b2);--d:1"><span class="lab">Dynamics 365</span><span class="nm">Customer Service</span><span class="ds">From $50 per user</span></button>
+        <button type="button" class="cell" data-k="cc" aria-controls="pick-d" style="background:var(--b3);--d:2"><span class="lab">Dynamics 365</span><span class="nm">Contact Center</span><span class="ds">From $95 per user</span></button>
+        <button type="button" class="cell" data-k="fs" aria-controls="pick-d" style="background:var(--b4);--d:3"><span class="lab">Dynamics 365</span><span class="nm">Field Service</span><span class="ds">From $105 per user</span></button>
+        <button type="button" class="cell core" data-k="cop" aria-controls="pick-d" style="background:var(--b5);--d:4"><span class="lab">Across the apps</span><span class="nm">Copilot</span><span class="ds">Copilot and agents</span></button>
+        <button type="button" class="cell" data-k="ci" aria-controls="pick-d" style="background:var(--b6);--d:5"><span class="lab">Dynamics 365</span><span class="nm">Customer Insights</span><span class="ds">From $1,700 per tenant</span></button>
+        <button type="button" class="cell lt" data-k="po" aria-controls="pick-d" style="background:var(--b7);--d:6"><span class="lab">Dynamics 365</span><span class="nm">Project Operations</span><span class="ds">From $135 per user</span></button>
+        <button type="button" class="cell lt" data-k="pr" aria-controls="pick-d" style="background:var(--b8);--d:7"><span class="lab">Guide</span><span class="nm">Pricing</span><span class="ds">Every plan and price</span></button>
+        <button type="button" class="cell lt" data-k="li" aria-controls="pick-d" style="background:var(--b9);--d:8"><span class="lab">Guide</span><span class="nm">Licensing</span><span class="ds">Base, attach, Team Members</span></button>
+      </div>
+      <div class="pick-d" id="pick-d" aria-live="polite">
+        <article class="pd on" data-k="sales"><span class="pd-nm"><span class="mono">Dynamics 365</span>Sales</span><p class="pd-ln">Leads, opportunities, quotes and forecasts in one pipeline your managers can trust.</p><span class="pd-pr"><span class="mono">From</span><b>$65</b><small>per user per month</small></span><a class="lnk" href="nine-dynamics-365-sales.html">See Dynamics 365 Sales <span>&rarr;</span></a></article>
+        <article class="pd" data-k="cs"><span class="pd-nm"><span class="mono">Dynamics 365</span>Customer Service</span><p class="pd-ln">Cases, queues, a knowledge base and service levels, so no request gets lost.</p><span class="pd-pr"><span class="mono">From</span><b>$50</b><small>per user per month</small></span><a class="lnk" href="nine-customer-service.html">See Customer Service <span>&rarr;</span></a></article>
+        <article class="pd" data-k="cc"><span class="pd-nm"><span class="mono">Dynamics 365</span>Contact Center</span><p class="pd-ln">Phone, chat and text in one place, with routing and Copilot for your service reps.</p><span class="pd-pr"><span class="mono">From</span><b>$95</b><small>per user per month</small></span><a class="lnk" href="https://www.encloud9.com/dynamics-365-contact-center/">See Contact Center <span>&rarr;</span></a></article>
+        <article class="pd" data-k="fs"><span class="pd-nm"><span class="mono">Dynamics 365</span>Field Service</span><p class="pd-ln">Work orders, scheduling and a mobile app for technicians on site.</p><span class="pd-pr"><span class="mono">From</span><b>$105</b><small>per user per month</small></span><a class="lnk" href="https://www.encloud9.com/dynamics-365-field-service/">See Field Service <span>&rarr;</span></a></article>
+        <article class="pd" data-k="cop"><span class="pd-nm"><span class="mono">Across the apps</span>Copilot and agents</span><p class="pd-ln">Copilot is built into Dynamics 365 Sales Enterprise and Premium, and into Customer Service Enterprise and Premium. Agents run on Copilot Credits, which most plans buy separately.</p><a class="lnk" href="nine-copilot.html">See Copilot and agents <span>&rarr;</span></a></article>
+        <article class="pd" data-k="ci"><span class="pd-nm"><span class="mono">Dynamics 365</span>Customer Insights</span><p class="pd-ln">One view of each customer, and email, text and push journeys built on it.</p><span class="pd-pr"><span class="mono">From</span><b>$1,700</b><small>per tenant per month</small></span><a class="lnk" href="nine-marketing.html">See Customer Insights <span>&rarr;</span></a></article>
+        <article class="pd" data-k="po"><span class="pd-nm"><span class="mono">Dynamics 365</span>Project Operations</span><p class="pd-ln">Quotes, staffing, project plans, time and billing for project-based businesses.</p><span class="pd-pr"><span class="mono">From</span><b>$135</b><small>per user per month</small></span><a class="lnk" href="https://www.encloud9.com/dynamics-365-project-operations/">See Project Operations <span>&rarr;</span></a></article>
+        <article class="pd" data-k="pr"><span class="pd-nm"><span class="mono">Guide</span>Dynamics 365 pricing</span><p class="pd-ln">Every Dynamics 365 plan and list price, and how to buy through enCloud9.</p><a class="lnk" href="https://www.encloud9.com/dynamics-365-pricing/">See Dynamics 365 pricing <span>&rarr;</span></a></article>
+        <article class="pd" data-k="li"><span class="pd-nm"><span class="mono">Guide</span>Dynamics 365 licensing</span><p class="pd-ln">How base, attach and Team Members licenses work, so you do not pay twice.</p><a class="lnk" href="https://www.encloud9.com/dynamics-365-licensing/">See Dynamics 365 licensing <span>&rarr;</span></a></article>
+      </div>
+      <p class="fine" style="margin-top:14px">Microsoft list prices, paid yearly, checked [publish date]. Prices are Microsoft's, can change, and do not include setup or support.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-label="Facts" style="padding-top:clamp(56px,6vw,88px)">
+    <div class="proof rev">
+      <a class="pf" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/">A new Dynamics 365 Sales system in one month for The Schiff Group<small>Read the story &rarr;</small></a>
+      <a class="pf" href="https://www.encloud9.com/about-encloud9/microsoft-dynamics-365-success/">23 client stories<small>See the stories &rarr;</small></a>
+      <div class="pf">Clients in [30+] US states</div>
+      <a class="pf" href="https://www.dynamics365support.com/#plans">Support from $500 a month<small>See support plans &rarr;</small></a>
+    </div>
+  </section>
+
+  <section class="sec" id="apps" aria-labelledby="ap-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="ap-h">Which Dynamics 365 apps can we set up for you?</h2>
+      <p class="lead">We set up six Dynamics 365 apps. Each one runs a different part of your business, and they all share the same customer data.</p>
+    </div>
+    <div class="rows rev">
+      <a class="row" href="nine-dynamics-365-sales.html"><span class="g" aria-hidden="true"><i class="d"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span><span class="nm">Dynamics 365 Sales</span><span class="ds">Leads, opportunities, quotes and forecasts in one pipeline your managers can trust. <span class="pr9">From $65 per user per month.</span></span><span class="go">See Sales &rarr;</span></a>
+      <a class="row" href="nine-customer-service.html"><span class="g" aria-hidden="true"><i></i><i class="d"></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span><span class="nm">Customer Service</span><span class="ds">Cases, queues, a knowledge base and service levels, so no request gets lost. <span class="pr9">From $50 per user per month.</span></span><span class="go">See Customer Service &rarr;</span></a>
+      <a class="row" href="https://www.encloud9.com/dynamics-365-contact-center/"><span class="g" aria-hidden="true"><i></i><i></i><i class="d"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span><span class="nm">Contact Center</span><span class="ds">Phone, chat and text in one place, with routing and Copilot for your service reps. <span class="pr9">From $95 per user per month.</span></span><span class="go">See Contact Center &rarr;</span></a>
+      <a class="row" href="https://www.encloud9.com/dynamics-365-field-service/"><span class="g" aria-hidden="true"><i></i><i></i><i></i><i class="d"></i><i class="on"></i><i></i><i></i><i></i><i></i></span><span class="nm">Field Service</span><span class="ds">Work orders, scheduling and a mobile app for technicians on site. <span class="pr9">From $105 per user per month.</span></span><span class="go">See Field Service &rarr;</span></a>
+      <a class="row" href="nine-marketing.html"><span class="g" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i class="d"></i><i></i><i></i><i></i></span><span class="nm">Customer Insights</span><span class="ds">One view of each customer, and email, text and push journeys built on it. <span class="pr9">From $1,700 per tenant per month.</span></span><span class="go">See Customer Insights &rarr;</span></a>
+      <a class="row" href="https://www.encloud9.com/dynamics-365-project-operations/"><span class="g" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i class="d"></i><i></i><i></i></span><span class="nm">Project Operations</span><span class="ds">Quotes, staffing, project plans, time and billing for project-based businesses. <span class="pr9">From $135 per user per month.</span></span><span class="go">See Project Operations &rarr;</span></a>
+      <a class="row" href="https://www.encloud9.com/dynamics-365-pricing/"><span class="g" aria-hidden="true"><i class="m"></i><i class="m"></i><i class="m"></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span><span class="nm">Dynamics 365 pricing</span><span class="ds">Every Dynamics 365 plan and list price, and how to buy through enCloud9.</span><span class="go">See pricing &rarr;</span></a>
+      <a class="row" href="https://www.encloud9.com/dynamics-365-licensing/"><span class="g" aria-hidden="true"><i class="m"></i><i></i><i></i><i class="m"></i><i class="on"></i><i></i><i class="m"></i><i></i><i></i></span><span class="nm">Dynamics 365 licensing</span><span class="ds">How base, attach and Team Members licenses work, so you do not pay twice.</span><span class="go">See licensing &rarr;</span></a>
+    </div>
+    <p class="fine">Microsoft list prices, paid yearly, checked [publish date]. Prices are Microsoft's, can change, and do not include setup or support.</p>
+  </section>
+
+  <section class="sec fits" id="fit" aria-labelledby="fit-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="fit-h">Which Dynamics 365 app does my business need?</h2>
+      <p class="lead">Pick the app that matches the work you want to fix first: selling, service, phone and chat, field visits, marketing or projects. Most growing businesses start with Dynamics 365 Sales, Customer Service or both, and add the others when the work calls for them.</p>
+    </div>
+    <div class="tbl-wrap rev">
+      <table class="tbl">
+        <caption class="mono" style="text-align:left;padding-bottom:10px">Dynamics 365 apps compared</caption>
+        <thead><tr><th scope="col">App</th><th scope="col">Runs</th><th scope="col">Used by</th><th scope="col">Microsoft list price</th><th scope="col">Copilot and agents</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a></th><td>Leads, opportunities, quotes, forecasts</td><td>Sellers and sales managers</td><td class="pr">$65, $105 or $150 per user per month</td><td>Copilot in Enterprise and Premium; Sales agents run on Copilot Credits, and Premium includes 1,000 per user per month</td></tr>
+          <tr><th scope="row"><a href="nine-customer-service.html">Customer Service</a></th><td>Cases, queues, knowledge, service levels</td><td>Service reps and supervisors</td><td class="pr">$50, $105 or $195 per user per month</td><td>Copilot in Enterprise and Premium; four service agents run on Copilot Credits, and Premium includes base capacity</td></tr>
+          <tr><th scope="row"><a href="https://www.encloud9.com/dynamics-365-contact-center/">Contact Center</a></th><td>Voice, chat and text with routing</td><td>Contact center reps and supervisors</td><td class="pr">$95 (Digital or Voice) or $110 per user per month</td><td>Copilot summaries, reply drafts and knowledge answers; AI self-service agents</td></tr>
+          <tr><th scope="row"><a href="https://www.encloud9.com/dynamics-365-field-service/">Field Service</a></th><td>Work orders, scheduling, technician mobile app</td><td>Dispatchers and field technicians</td><td class="pr">$105 per user per month; Contractor $50</td><td>Copilot helps create and update work orders, schedule, and summarize</td></tr>
+          <tr><th scope="row"><a href="nine-marketing.html">Customer Insights</a></th><td>Unified customer data and marketing journeys</td><td>Marketers and data analysts</td><td class="pr">$1,700 per tenant per month; $1,000 with attach</td><td>Copilot helps build segments, journeys and content</td></tr>
+          <tr><th scope="row"><a href="https://www.encloud9.com/dynamics-365-project-operations/">Project Operations</a></th><td>Project quotes, staffing, plans, time, billing</td><td>Project and practice managers</td><td class="pr">$135 per user per month</td><td>Copilot task plans, risk assessments and status reports</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fine">Prices are Microsoft list prices, paid yearly, checked [publish date]. Paying monthly on an annual plan costs 5% more. Setup and support are separate.</p>
+    <p class="fine" style="margin-top:8px">Setup is a fixed-scope package or a full implementation. Anything outside the package is a written change order you approve before work starts. <a class="lnk" href="nine-packages.html">See our packages <span>&rarr;</span></a></p>
+    <div class="notsure rev"><p>Not sure which app fits? Book a call and we will tell you.</p><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a></div>
+  </section>
+</div>
+
+<section class="band" id="licensing" aria-labelledby="li-h" style="margin-top:clamp(80px,9vw,136px)">
+  <div class="wrap">
+    <div class="ai-top">
+      <div class="rev">
+        <span class="mono">Licensing in one minute</span>
+        <h2 class="h2" id="li-h" style="margin-top:16px">How does Dynamics 365 licensing work?</h2>
+        <p class="lead" style="margin-top:20px;max-width:640px">Each full user gets one base license for the highest-priced app they need, plus a lower-priced attach license for each extra app. People who only read records or enter time can use the lower-cost Team Members license instead.</p>
+      </div>
+      <div class="lstack rev" aria-hidden="true">
+        <i class="ba" style="--d:0"><span>1</span><b>Base</b></i>
+        <i style="--d:1"></i><i style="--d:2"></i>
+        <i class="at" style="--d:3;grid-column:2;grid-row:2"><span>2</span><b>Attach</b></i>
+        <i style="--d:4;grid-column:3;grid-row:2"></i>
+        <i class="at" style="--d:5;grid-column:2;grid-row:3"><span>2</span><b>Attach</b></i>
+        <i class="tm" style="--d:6;grid-column:3;grid-row:3"><span>3</span><b>Team Members</b></i>
+      </div>
+    </div>
+    <div class="three lic3 rev">
+      <div><span class="mono">01</span><span class="t">Base license</span><span class="d">One per full user, for the highest-priced app that person needs.</span></div>
+      <div><span class="mono">02</span><span class="t">Attach license</span><span class="d">A lower price for a second or third app on the same user, instead of a second full license.</span></div>
+      <div><span class="mono">03</span><span class="t">Team Members</span><span class="d">A lower-cost license for people who view records, enter time or update their own items through set apps.</span></div>
+    </div>
+    <div class="band-foot">
+      <a class="lnk" href="https://www.encloud9.com/dynamics-365-licensing/">See how we keep your license count right: Dynamics 365 licensing <span>&rarr;</span></a>
+      <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="sec" id="stories" aria-labelledby="cs-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="cs-h">Which businesses run on Dynamics 365 with us?</h2>
+      <p class="lead">Here are two of our 23 client stories: one new Dynamics 365 Sales system, and one client running Sales and Customer Service with Copilot Studio work under way. <a class="lnk" href="https://www.encloud9.com/about-encloud9/microsoft-dynamics-365-success/">All 23 client stories <span>&rarr;</span></a></p>
+    </div>
+    <div class="stories two rev">
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><span class="mono">Maryland &middot; Product: Dynamics 365 Sales &middot; Timeline: 1 month</span><span class="t">The Schiff Group</span><span class="d">A new Dynamics 365 Sales system in one month.</span><span class="go">Read The Schiff Group story &rarr;</span></a>
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/"><span class="mono">St. Louis &middot; Products: Dynamics 365 Sales, Customer Service, Copilot Studio</span><span class="t">Compana Pet Brands</span><span class="d">Ongoing support for Dynamics 365 Sales and Customer Service, plus Copilot Studio work on a Shopify integration in early testing.</span><span class="go">Read the Compana Pet Brands story &rarr;</span></a>
+    </div>
+  </section>
+
+  <section class="sec" id="checkups" aria-labelledby="ck-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="ck-h">Free checkups, no obligation</h2>
+      <p class="lead">Find out where your system stands before you spend anything.</p>
+    </div>
+    <div class="rows rev">
+      <a class="row" href="https://www.encloud9.com/lp/dataverse-storage-analysis/"><span class="g" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="m"></i><i class="m"></i><i></i><i></i><i></i><i></i></span><span class="nm">Dataverse Storage Analysis</span><span class="ds">What is filling your storage, which type is over, and a written plan to stay under the limit. One hour.</span><span class="go">Book &rarr;</span></a>
+      <a class="row" href="https://www.encloud9.com/lp/schedule-a-meeting/"><span class="g" aria-hidden="true"><i class="d"></i><i></i><i class="d"></i><i></i><i class="on"></i><i></i><i class="d"></i><i></i><i class="d"></i></span><span class="nm">CRM Health Check</span><span class="ds">A review of your Dynamics 365 setup, with findings ranked by what each fix is worth.</span><span class="go">Book &rarr;</span></a>
+      <a class="row" href="nine-dynamics-365-sales.html#check"><span class="g" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span><span class="nm">Copilot readiness check</span><span class="ds">Five questions on data and permissions, with a written next step.</span><span class="go">Take the check &rarr;</span></a>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" aria-labelledby="fq-h">
+    <div class="sec-head rev"><h2 class="h2" id="fq-h">Dynamics 365 questions we get asked</h2></div>
+    <div class="faq rev">
+      <details><summary>Which Dynamics 365 app do I need?</summary><p>Pick the app that matches the work you want to fix first: selling, service, phone and chat, field visits, marketing or projects. Most growing businesses start with Dynamics 365 Sales, Customer Service or both, and add the others when the work calls for them.</p></details>
+      <details><summary>How much does Dynamics 365 cost?</summary><p>Microsoft list prices start at $50 to $65 per user per month and go to $150 to $195 for premium plans, paid yearly. Setup is quoted in writing after a short call, and support starts at $500 a month. See our <a class="lnk" href="https://www.encloud9.com/blog/dynamics-365-pricing-licensing-2025-guide/">Dynamics 365 pricing guide</a>.</p></details>
+      <details><summary>Is Copilot included with Dynamics 365?</summary><p>Copilot is built into Dynamics 365 Sales Enterprise and Premium, and into Customer Service Enterprise and Premium. Agents run on Copilot Credits, which most plans buy separately. We tell you what it costs to run before anything is switched on.</p></details>
+      <details><summary>Can one person use two Dynamics 365 apps?</summary><p>Yes. Each full user gets one base license for the highest-priced app they need, plus a lower-priced attach license for each extra app. People who only read records or enter time can use the lower-cost Team Members license.</p></details>
+      <details><summary>Can you take over a system another partner built?</summary><p>Yes. <a class="lnk" href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a> is for Dynamics 365 systems that are over-customized, stalled or out of date. We review it first and tell you what to keep.</p></details>
+      <details><summary>Do we need a support plan after go-live?</summary><p>Yes. New clients start on at least the Stability plan, $500 a month for 4 hours, on a 12-month agreement. Monthly plans include a 1-hour response during business hours, 7:00am to 5:00pm Central, Monday to Friday.</p></details>
+    </div>
+  </section>
+</div>
+
+<section class="final" aria-labelledby="fc-h">
+  <div class="wrap">
+    <div class="inner">
+      <div class="rev">
+        <h2 class="h2" id="fc-h">Start with a call or a free checkup</h2>
+        <p class="lead">Tell us where your system is today. You get a plan, a package and a price, whether or not you work with us.</p>
+      </div>
+      <div class="side rev">
+        <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+        <a class="lnk" href="#checkups">Free checkups, no obligation <span>&rarr;</span></a>
+        <span class="mono">or call <a href="tel:+18442640729">1-844-264-0729</a>, 7:00am to 5:00pm Central,<br>Monday to Friday</span>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="fcols">
+        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft partner since [2008], specializing in Dynamics 365. Click Gold Partner [confirm current tier].</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
+        <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-marketing.html">Marketing automation</a><a href="https://www.encloud9.com/dynamics-365-pricing/">Dynamics 365 pricing</a></nav>
+        <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="https://www.encloud9.com/microsoft-copilot-studio/">Copilot Studio</a><a href="https://www.encloud9.com/dynamics-365-power-apps/">Power Apps</a><a href="https://www.encloud9.com/microsoft-power-bi/">Power BI</a></nav>
+        <nav aria-label="Packages and support"><b>Packages and support</b><a href="nine-packages.html">All packages</a><a href="https://www.encloud9.com/dynamics-365-sales-accelerator/">Sales Accelerator</a><a href="https://www.encloud9.com/dynamics-365-service-accelerator/">Service Accelerator</a><a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>
+        <nav aria-label="Company"><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-stories.html">Client stories</a><a href="https://www.encloud9.com/blog/">Blog</a><a href="https://www.encloud9.com/contact-us/">Contact us</a><a href="https://www.encloud9.com/microsoft-dynamics-365-partner-omaha/">Omaha and Nebraska</a></nav>
+      </div>
+      <div class="tm">enCloud9 LLC, [address Brian confirms]. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. Click is a trademark of its owner.</div>
+    </footer>
+  </div>
+  <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>
+</section>
+</main>
+<script>
+/* signature: the app picker. Hover, focus or press a cube to see that app's line and Microsoft "from" price. Arrow keys move around the grid. */
+(function(){
+  var g=document.querySelector('.pk');if(!g)return;
+  var cells=[].slice.call(g.querySelectorAll('button')),pds=[].slice.call(document.querySelectorAll('#pick-d .pd'));
+  var fine=window.matchMedia('(pointer:fine)').matches;
+  function sel(k){
+    cells.forEach(function(c){c.setAttribute('aria-pressed',c.getAttribute('data-k')===k?'true':'false')});
+    pds.forEach(function(p){var on=p.getAttribute('data-k')===k;if(on&&p.classList.contains('on'))return;p.classList.toggle('on',on);p.setAttribute('aria-hidden',on?'false':'true');p.querySelectorAll('a').forEach(function(a){a.tabIndex=on?0:-1})});
+  }
+  sel('sales');
+  cells.forEach(function(c,i){
+    var k=c.getAttribute('data-k');
+    c.addEventListener('click',function(){sel(k)});
+    c.addEventListener('focus',function(){sel(k)});
+    if(fine)c.addEventListener('pointerenter',function(){sel(k)});
+    c.addEventListener('keydown',function(e){
+      var m={ArrowRight:1,ArrowLeft:-1,ArrowDown:3,ArrowUp:-3}[e.key];if(!m)return;
+      var j=i+m;if(j<0||j>8)return;e.preventDefault();cells[j].focus();
+    });
+  });
+})();
+</script>
+</body>
+</html>
