@@ -66,7 +66,7 @@ p{margin:0}
 /* hero */
 .hero{padding-top:clamp(32px,5vw,56px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,600px);gap:clamp(40px,5vw,72px);align-items:start}
 .hero .copy{display:flex;flex-direction:column;gap:28px;padding-top:12px}
-.h1 .ln{display:block;overflow:hidden;padding-bottom:.07em}
+.h1 .ln{display:block;overflow:hidden;padding-bottom:.18em;margin-bottom:-.11em}
 .h1 .ln>span{display:inline-block}
 .hero .lead{max-width:540px}
 .phone-note{font-size:15px;color:var(--muted)}
@@ -327,7 +327,7 @@ a.row:hover{background:var(--tint)}
 .mock-ask .spark i{background:var(--b7)}.mock-ask .spark i:nth-child(5){background:var(--b5)}
 
 /* big closing type */
-.final .h2{background:linear-gradient(90deg,var(--white),var(--b7));-webkit-background-clip:text;background-clip:text;color:transparent}
+.final .h2{background:linear-gradient(90deg,var(--white),var(--b7));-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.16em;margin-bottom:-.16em}
 @media (prefers-reduced-motion:reduce){.cell,.cell:hover{transform:none}}
 .badge{white-space:nowrap}
 
