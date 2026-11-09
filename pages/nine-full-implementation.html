@@ -42,6 +42,8 @@ body.p-full .lnav a:focus-visible{outline:3px solid var(--b6);outline-offset:3px
 body.p-full .grid9 .cell.core .nm{font-size:clamp(15px,1.75vw,24px);hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
 body.p-full #fitcheck .three .d{color:var(--muted)}
 body.p-full .grid9 .cell.lt .lab{color:var(--ink)}
+body.p-full .proof .num{white-space:nowrap}
+@media (max-width:420px){body.p-full .proof .num{font-size:clamp(28px,9vw,40px)}body.p-full .proof .pf{min-width:0}}
 body.p-full #others{padding-top:clamp(48px,6vw,80px)}
 body.p-full .lnav a.lt{color:var(--ink)}body.p-full .lnav a.lt .mono{color:var(--ink2)}
 @media (max-width:1100px){body.p-full .lnav{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -94,7 +96,7 @@ body.p-full .lnav a.lt{color:var(--ink)}body.p-full .lnav a.lt .mono{color:var(-
         <a role="listitem" class="cell core" style="background:var(--b5);--d:4" href="#fitcheck"><span class="lab">Package 01</span><span class="nm">Full implementation</span><span class="ds">Fixed price per phase, after a paid Fit Check</span></a>
         <a role="listitem" class="cell lt" style="background:var(--b6);--d:5" href="#included"><span class="lab">Assigned</span><span class="nm">Licenses</span><span class="ds">Each user gets a license and security roles</span><span class="ar" aria-hidden="true">&#8600;</span></a>
         <a role="listitem" class="cell lt" style="background:var(--b7);--d:6" href="#process"><span class="lab">Stage C</span><span class="nm">Training</span><span class="ds">Training and cut-over day</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b8);--d:7" href="#process"><span class="lab">Stage C</span><span class="nm">Go live</span><span class="ds">Copilot switched on; agents only where your data is ready</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b8);--d:7" href="#process"><span class="lab">Stage C</span><span class="nm">Go live</span><span class="ds">Training, cut-over day and Copilot where your plan includes it</span><span class="ar" aria-hidden="true">&#8600;</span></a>
         <a role="listitem" class="cell lt" style="background:var(--b9);--d:8" href="#support"><span class="lab">Stage D</span><span class="nm">Support plan</span><span class="ds">From $500 a month after go-live</span><span class="ar" aria-hidden="true">&#8600;</span></a>
       </div>
       <dl class="spec rise" style="--d:6">
@@ -186,7 +188,7 @@ body.p-full .lnav a.lt{color:var(--ink)}body.p-full .lnav a.lt .mono{color:var(-
     <div class="stages flowbar">
       <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage A</span><span class="t">Plan</span><span class="d">We learn how you sell, serve and bill, using a written discovery questionnaire, and give you the plan: apps, users, data, and where Copilot fits.</span></div>
       <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage B</span><span class="t">Build</span><span class="d">We build Dynamics 365 to the plan, using standard features first, and move your data. You check the imported records against your old system before sign-off.</span></div>
-      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i class="on" style="--k:4"></i><i class="m" style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage C</span><span class="t">Go live</span><span class="d">Training, cut-over day, and Copilot switched on. Agents are switched on only where your data, permissions and credit budget are ready.</span></div>
+      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i class="on" style="--k:4"></i><i class="m" style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage C</span><span class="t">Go live</span><span class="d">Training and cut-over day. Copilot is switched on if your plan includes it; agents are scoped separately.</span></div>
       <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i class="on" style="--k:4"></i><i class="m" style="--k:5"></i><i class="m" style="--k:6"></i><i class="m" style="--k:7"></i><i class="m" style="--k:8"></i></span><span class="mono">Stage D</span><span class="t">Run</span><span class="d">Your support plan starts. Health checks and updates are logged, so you always know what changed.</span></div>
     </div>
     <div class="tbl-wrap rev" style="margin-top:48px">
@@ -260,9 +262,9 @@ body.p-full .lnav a.lt{color:var(--ink)}body.p-full .lnav a.lt .mono{color:var(-
   <section class="sec" id="others" aria-labelledby="op-h" >
     <h2 class="mono" id="op-h" style="font-weight:400;margin:0 0 16px">Other packages</h2>
     <nav class="lnav rev" aria-labelledby="op-h">
+      <a class="lt" href="nine-rescue-repair.html" style="--c:var(--b6)"><span class="mono">Package</span>Rescue and Repair</a>
       <a href="nine-sales-accelerator.html" style="--c:var(--b5)"><span class="mono">Package</span>Sales Accelerator</a>
-      <a class="lt" href="nine-service-accelerator.html" style="--c:var(--b7)"><span class="mono">Package</span>Service Accelerator</a>
-      <a href="nine-rescue-repair.html" style="--c:var(--b4)"><span class="mono">Package</span>Rescue and Repair</a>
+      <a href="nine-service-accelerator.html" style="--c:var(--b4)"><span class="mono">Package</span>Service Accelerator</a>
       <a href="https://www.encloud9.com/microsoft-dynamics-365-salesforce-crm-migration/" style="--c:var(--b3)"><span class="mono">Move</span>Move from Salesforce</a>
       <a href="https://www.encloud9.com/lp/microsoft-dynamics-365-hubspot-crm-migration/" style="--c:var(--b2)"><span class="mono">Move</span>Move from HubSpot</a>
       <a href="https://www.dynamics365support.com/#plans" style="--c:var(--b1)"><span class="mono">After go-live</span>Support plans</a>

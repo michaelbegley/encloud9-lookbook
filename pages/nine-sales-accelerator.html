@@ -42,6 +42,8 @@ body.p-pkg .lnav a:focus-visible{outline:3px solid var(--b6);outline-offset:3px}
 body.p-pkg .grid9 .cell.core .nm{font-size:clamp(15px,1.75vw,24px);hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
 body.p-pkg #fitcheck .three .d{color:var(--muted)}
 body.p-pkg .grid9 .cell.lt .lab{color:var(--ink)}
+body.p-pkg .proof .num{white-space:nowrap}
+@media (max-width:420px){body.p-pkg .proof .num{font-size:clamp(28px,9vw,40px)}body.p-pkg .proof .pf{min-width:0}}
 body.p-pkg #others{padding-top:clamp(48px,6vw,80px)}
 body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--ink2)}
 @media (max-width:1100px){body.p-pkg .lnav{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -86,7 +88,7 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
       <p class="phone-note rise" style="--d:5">Prefer the phone? Call <a href="tel:+18442640729">1-844-264-0729</a>.</p>
     </div>
     <div>
-      <div class="grid9" role="list" aria-label="What the Sales Accelerator includes">
+      <div class="grid9" role="list" aria-label="What the Sales Accelerator includes, and what comes after">
         <a role="listitem" class="cell" style="background:var(--b1);--d:0" href="#included"><span class="lab">Configured</span><span class="nm">Sales stages</span><span class="ds">Dynamics 365 Sales configured to your sales stages</span><span class="ar" aria-hidden="true">&#8600;</span></a>
         <a role="listitem" class="cell" style="background:var(--b2);--d:1" href="#included"><span class="lab">Set up</span><span class="nm">Users and roles</span><span class="ds">Users and security roles set up</span><span class="ar" aria-hidden="true">&#8600;</span></a>
         <a role="listitem" class="cell" style="background:var(--b3);--d:2" href="#included"><span class="lab">Assigned</span><span class="nm">Licenses</span><span class="ds">Your Microsoft licenses assigned to each user</span><span class="ar" aria-hidden="true">&#8600;</span></a>
@@ -94,8 +96,8 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
         <a role="listitem" class="cell core" style="background:var(--b5);--d:4" href="#included"><span class="lab">Package 03</span><span class="nm">Sales Accelerator</span><span class="ds">A first Dynamics 365 Sales system, fixed scope</span></a>
         <a role="listitem" class="cell lt" style="background:var(--b6);--d:5" href="#included"><span class="lab">Added</span><span class="nm">Custom fields</span><span class="ds">Up to [Brian sets] custom fields</span><span class="ar" aria-hidden="true">&#8600;</span></a>
         <a role="listitem" class="cell lt" style="background:var(--b7);--d:6" href="#process"><span class="lab">Stage C</span><span class="nm">Training</span><span class="ds">[Brian sets] training sessions</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b8);--d:7" href="#process"><span class="lab">After go-live</span><span class="nm">Help</span><span class="ds">[Brian sets] days of help after go-live</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b9);--d:8" href="#support"><span class="lab">Stage D</span><span class="nm">Support plan</span><span class="ds">From $500 a month after go-live</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b8);--d:7" href="#included"><span class="lab">After go-live</span><span class="nm">Help</span><span class="ds">[Brian sets] days of help after go-live</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b9);--d:8" href="#support"><span class="lab">After the package</span><span class="nm">Support plan</span><span class="ds">From $500 a month after go-live</span><span class="ar" aria-hidden="true">&#8600;</span></a>
       </div>
       <dl class="spec rise" style="--d:6">
         <div><dt class="mono">Price</dt><dd>Fixed, quoted in writing after a short call</dd></div>
@@ -176,7 +178,7 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
     <div class="stages flowbar">
       <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage A</span><span class="t">Plan</span><span class="d">We learn how you sell, using a written discovery questionnaire, and give you the plan: users, sales stages, data to move, integrations, and where Copilot and agents fit.</span></div>
       <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage B</span><span class="t">Build</span><span class="d">We build Dynamics 365 Sales to the plan, using standard features first, and move your data. You check the imported records against your old system before sign-off.</span></div>
-      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i class="on" style="--k:4"></i><i class="m" style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage C</span><span class="t">Go live</span><span class="d">Training, cut-over day, and Copilot switched on. Agents are switched on only where your data, permissions and credit budget are ready.</span></div>
+      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i class="on" style="--k:4"></i><i class="m" style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage C</span><span class="t">Go live</span><span class="d">Training and cut-over day. Copilot is switched on if your plan includes it; agents are scoped as a separate pilot.</span></div>
       <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i class="on" style="--k:4"></i><i class="m" style="--k:5"></i><i class="m" style="--k:6"></i><i class="m" style="--k:7"></i><i class="m" style="--k:8"></i></span><span class="mono">Stage D</span><span class="t">Run</span><span class="d">Your support plan starts. Health checks and updates are logged, so you always know what changed.</span></div>
     </div>
   </section>
@@ -184,11 +186,11 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
   <section class="sec" id="stories" aria-labelledby="cs-h">
     <div class="sec-head rev">
       <h2 class="h2" id="cs-h">Which businesses have we built Dynamics 365 Sales for?</h2>
-      <p class="lead">The Schiff Group in Maryland went live on a new Dynamics 365 Sales system in one month. Want a result like this? <a class="lnk" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call <span>&rarr;</span></a></p>
+      <p class="lead">The Schiff Group went live on a new Dynamics 365 Sales system in one month, and KBG Technologies moved off QuickBooks within two months. Want a result like this? <a class="lnk" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call <span>&rarr;</span></a></p>
     </div>
     <div class="stories two rev">
-      <a class="story" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><span class="mono">Maryland &middot; Product: Dynamics 365 Sales &middot; Timeline: 1 month</span><span class="big">1 month</span><span class="t">The Schiff Group</span><span class="d">A new Dynamics 365 Sales system in one month.</span><span class="go">Read The Schiff Group story &rarr;</span></a>
-      <a class="story" href="https://www.encloud9.com/blog/success_stories/kbg-technologies-enhances-sales-processes-with-dynamics-365-implementation-by-encloud9/"><span class="mono">Memphis &middot; Product: Dynamics 365 Sales &middot; Timeline: within two months</span><span class="big">2 months</span><span class="t">KBG Technologies</span><span class="d">A Dynamics 365 Sales system for a business that ran on QuickBooks alone, completed within two months.</span><span class="go">Read the KBG Technologies story &rarr;</span></a>
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><span class="mono">Rockville, MD &middot; Product: Dynamics 365 Sales &middot; Timeline: 1 month</span><span class="big">1 month</span><span class="t">The Schiff Group</span><span class="d">A new Dynamics 365 Sales system in one month.</span><span class="go">Read The Schiff Group story &rarr;</span></a>
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/kbg-technologies-enhances-sales-processes-with-dynamics-365-implementation-by-encloud9/"><span class="mono">Memphis, TN &middot; Product: Dynamics 365 Sales &middot; Timeline: within two months</span><span class="big">2 months</span><span class="t">KBG Technologies</span><span class="d">A Dynamics 365 Sales system for a business that ran on QuickBooks alone, completed within two months.</span><span class="go">Read the KBG Technologies story &rarr;</span></a>
     </div>
     <div class="acts rev" style="margin-top:32px"><a class="lnk" href="nine-stories.html">All 23 client stories <span>&rarr;</span></a></div>
   </section>
@@ -236,9 +238,9 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
   <section class="sec" id="others" aria-labelledby="op-h" >
     <h2 class="mono" id="op-h" style="font-weight:400;margin:0 0 16px">Other packages</h2>
     <nav class="lnav rev" aria-labelledby="op-h">
+      <a class="lt" href="nine-full-implementation.html" style="--c:var(--b6)"><span class="mono">Package</span>Full implementation</a>
       <a href="nine-rescue-repair.html" style="--c:var(--b5)"><span class="mono">Package</span>Rescue and Repair</a>
-      <a class="lt" href="nine-service-accelerator.html" style="--c:var(--b7)"><span class="mono">Package</span>Service Accelerator</a>
-      <a href="nine-full-implementation.html" style="--c:var(--b4)"><span class="mono">Package</span>Full implementation</a>
+      <a href="nine-service-accelerator.html" style="--c:var(--b4)"><span class="mono">Package</span>Service Accelerator</a>
       <a href="https://www.encloud9.com/microsoft-dynamics-365-salesforce-crm-migration/" style="--c:var(--b3)"><span class="mono">Move</span>Move from Salesforce</a>
       <a href="https://www.encloud9.com/lp/microsoft-dynamics-365-hubspot-crm-migration/" style="--c:var(--b2)"><span class="mono">Move</span>Move from HubSpot</a>
       <a href="https://www.dynamics365support.com/#plans" style="--c:var(--b1)"><span class="mono">After go-live</span>Support plans</a>
