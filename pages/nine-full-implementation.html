@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Dynamics 365 Implementation Services | enCloud9</title>
+<meta name="description" content="A fixed-price-per-phase Dynamics 365 implementation for Sales and Customer Service: data moved, integrations, training and support from $500 a month.">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="nine.css">
+<script defer src="nine.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Packages and support", "item": "https://www.encloud9.com/crm-cloud-automation-solutions/"}, {"@type": "ListItem", "position": 3, "name": "Full implementation", "item": "https://www.encloud9.com/microsoft-dynamics-365-implementation/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Dynamics 365 Implementation", "serviceType": "CRM implementation", "url": "https://www.encloud9.com/microsoft-dynamics-365-implementation/", "description": "A full implementation builds Dynamics 365 Sales, Customer Service or both, with your data moved from your old systems, the integrations you name and training. It is quoted as a fixed price per phase after a paid Fit Check. Microsoft licences are a separate cost, and support plans start at $500 a month.", "provider": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}, "brand": {"@type": "Organization", "name": "Microsoft"}, "areaServed": {"@type": "Country", "name": "United States"}}</script>
+<style>
+/* full implementation page (9 Nov): spec card in the hero, included/not included, Fit Check rows, other packages strip */
+body.p-full .grid9{margin-top:4px}
+body.p-full .spec{margin:14px 0 0;display:grid;border-top:2px solid var(--ink)}
+body.p-full .spec div{display:grid;grid-template-columns:90px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--line);align-items:baseline}
+body.p-full .spec dd{margin:0;font-weight:600;font-size:16px;line-height:1.4}
+body.p-full .fit.two-col{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+body.p-full .fit .lnk{color:var(--b5);font-weight:600}
+body.p-full .inc-foot{display:flex;justify-content:space-between;align-items:center;gap:20px 40px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+body.p-full .inc-foot .ask{font-weight:600}
+body.p-full .fitsplit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(32px,5vw,72px);align-items:start}
+body.p-full .fitsplit .side{position:sticky;top:110px;display:flex;flex-direction:column;gap:20px}
+body.p-full .fitsplit .fit{grid-template-columns:1fr;gap:44px}
+body.p-full .notsure-l{font-weight:600;font-size:18px;margin:0}
+body.p-full .ptiles.plans .ptile{aspect-ratio:auto;min-height:340px}
+body.p-full .ptile .price{font-family:var(--head);font-size:clamp(40px,3.6vw,54px);font-weight:600;letter-spacing:-.035em;line-height:1}
+body.p-full .ptile .price small{font-size:15px;font-weight:500;letter-spacing:0;margin-left:6px;opacity:.85}
+body.p-full .ptile .ds b{color:var(--white);font-weight:600}
+body.p-full .ptile .min{align-self:flex-start;padding:3px 7px;background:rgba(255,255,255,.18);font-family:var(--mono);font-size:11px;color:var(--white)}
+body.p-full .sp-foot{display:flex;justify-content:space-between;align-items:flex-start;gap:24px 48px;flex-wrap:wrap;margin-top:24px}
+body.p-full .sp-foot .fine{margin-top:0;max-width:760px}
+body.p-full .story .big{font-family:var(--head);font-size:clamp(40px,4vw,56px);font-weight:600;letter-spacing:-.035em;line-height:1;color:var(--b3)}
+body.p-full .lnav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+body.p-full .lnav a{display:flex;flex-direction:column;gap:10px;justify-content:space-between;min-height:120px;padding:16px;background:var(--c);color:var(--white);font-family:var(--head);font-weight:600;font-size:18px;line-height:1.2;transition:transform .35s var(--ease)}
+body.p-full .lnav a .mono{color:rgba(255,255,255,.8);font-size:11px;font-weight:400}
+body.p-full .lnav a:hover{transform:translateY(-4px)}
+body.p-full .lnav a:focus-visible{outline:3px solid var(--b6);outline-offset:3px}
+body.p-full .grid9 .cell.core .nm{font-size:clamp(15px,1.75vw,24px);hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+body.p-full #fitcheck .three .d{color:var(--muted)}
+body.p-full #others{padding-top:clamp(48px,6vw,80px)}
+body.p-full .lnav a.lt{color:var(--ink)}body.p-full .lnav a.lt .mono{color:var(--ink2)}
+@media (max-width:1100px){body.p-full .lnav{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:860px){body.p-full .fitsplit,body.p-full .fit.two-col{grid-template-columns:1fr}body.p-full .fitsplit .side{position:static}}
+@media (max-width:560px){body.p-full .lnav{grid-template-columns:1fr 1fr}body.p-full .spec div{grid-template-columns:1fr;gap:2px}body.p-full .ptiles.plans .ptile{min-height:0}}
+</style>
+</head>
+<body class="p-full">
+<nav id="lbbar" aria-label="Lookbook">
+  <a href="../index.html">All looks</a><span class="t hide-s">Look 9, Nine, built pages</span>
+  <a href="nine-home.html">Home</a><a href="nine-packages.html">Packages</a><a href="nine-full-implementation.html" class="on" aria-current="page">Full implementation</a><a href="nine-marketing.html" class="hide-s">Marketing</a>
+  <span class="sp"></span><span class="t">Font</span>
+  <button type="button" data-setfont="hanken" aria-pressed="true">Hanken</button><button type="button" data-setfont="jakarta" aria-pressed="false">Jakarta</button><button type="button" data-setfont="public" aria-pressed="false">Public Sans</button><button type="button" data-setfont="bricolage" aria-pressed="false">Bricolage</button>
+</nav>
+<header class="top">
+  <a class="skip" href="#main">Skip to main content</a>
+  <div class="wrap">
+    <a class="logo" href="nine-home.html" aria-label="enCloud9 home"><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9" width="104" height="34"></a>
+    <nav class="nav" aria-label="Main"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html" class="cur">Packages<span class="sr-only"> (current section)</span></a><a href="nine-stories.html">Stories</a><a href="nine-blog.html">Blog</a><a href="nine-about.html">About</a></nav>
+    <a class="tel" href="tel:+18442640729">1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+    <a class="btn btn-p call-m" href="tel:+18442640729">Call</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="nine-blog.html">Blog</a><a href="nine-about.html">About</a><a href="tel:+18442640729">Call 1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+  </nav>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="nine-home.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="nine-packages.html">Packages and support</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Full implementation</span></nav>
+  <section class="hero" aria-labelledby="h1">
+    <div class="copy">
+      <span class="mono rise" style="--d:0">Package 01 &middot; Full implementation</span>
+      <h1 class="h1" id="h1" style="font-size:clamp(40px,6vw,80px)"><span class="ln"><span style="--d:1">Dynamics 365</span></span><span class="ln"><span style="--d:2">Implementation</span></span></h1>
+      <p class="lead rise" style="--d:3">A full implementation builds Dynamics 365 Sales, Customer Service or both, with your data moved from your old systems, the integrations you name and training. It is quoted as a fixed price per phase after a paid Fit Check. Microsoft licences are a separate cost, and support plans start at $500 a month.</p>
+      <div class="acts rise" style="--d:4">
+        <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+        <a class="lnk" href="nine-dynamics-365-sales.html#check">Free checkups, no obligation <span>&rarr;</span></a>
+      </div>
+      <p class="phone-note rise" style="--d:5">Prefer the phone? Call <a href="tel:+18442640729">1-844-264-0729</a>.</p>
+    </div>
+    <div>
+      <div class="grid9" role="list" aria-label="What a full implementation covers">
+        <a role="listitem" class="cell" style="background:var(--b1);--d:0" href="#included"><span class="lab">Configured</span><span class="nm">Sales</span><span class="ds">Dynamics 365 Sales built to your plan</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b2);--d:1" href="#included"><span class="lab">If in scope</span><span class="nm">Customer Service</span><span class="ds">Cases and queues, built with Sales</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b3);--d:2" href="#included"><span class="lab">Moved</span><span class="nm">Your data</span><span class="ds">From your current CRM or spreadsheets</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b4);--d:3" href="#included"><span class="lab">Named in scope</span><span class="nm">Integrations</span><span class="ds">The systems you need connected on day one</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell core" style="background:var(--b5);--d:4" href="#fitcheck"><span class="lab">Package 01</span><span class="nm">Full implementation</span><span class="ds">Fixed price per phase, after a paid Fit Check</span></a>
+        <a role="listitem" class="cell" style="background:var(--b6);--d:5" href="#included"><span class="lab">Assigned</span><span class="nm">Licences</span><span class="ds">Each user gets a licence and security roles</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b7);--d:6" href="#process"><span class="lab">Stage C</span><span class="nm">Training</span><span class="ds">Training and cut-over day</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b8);--d:7" href="#process"><span class="lab">Stage C</span><span class="nm">Go live</span><span class="ds">Copilot switched on where your data is ready</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b9);--d:8" href="#support"><span class="lab">Stage D</span><span class="nm">Support plan</span><span class="ds">From $500 a month after go-live</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+      </div>
+      <dl class="spec rise" style="--d:6">
+        <div><dt class="mono">Price</dt><dd>Fixed per phase, quoted in writing after a short call</dd></div>
+        <div><dt class="mono">Time</dt><dd>Typically [Brian sets] to [Brian sets] months</dd></div>
+        <div><dt class="mono">Users</dt><dd>Set in your written scope</dd></div>
+      </dl>
+      <p class="fine" style="margin-top:12px">Microsoft licences are not part of the package price.</p>
+    </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-label="Facts" style="padding-top:clamp(56px,6vw,88px)">
+    <div class="proof big rev">
+      <a class="pf" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><b class="num">1 month</b><span>A new Dynamics 365 Sales system in one month for The Schiff Group</span><small>Read the story &rarr;</small></a>
+      <div class="pf"><b class="num">7 of 9</b><span>On our 9 published projects with a delivery time, go-live took 1 to 6 months, and 7 of the 9 took three months or less.</span></div>
+      <a class="pf" href="nine-stories.html"><b class="num">23</b><span>client stories, new builds to rescues</span><small>See the stories &rarr;</small></a>
+      <a class="pf" href="#support"><b class="num">$500</b><span>a month, where support plans start</span><small>See support plans &rarr;</small></a>
+    </div>
+  </section>
+
+  <section class="sec" id="included" aria-labelledby="inc-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="inc-h">What does a full Dynamics 365 implementation include?</h2>
+      <p class="lead">A full implementation covers everything in your signed scope: configuration of Dynamics 365 Sales, Customer Service or both, data moved from your current CRM or spreadsheets, the integrations you name, training and go-live. Anything not named in the scope, agents and Microsoft licences are not part of it.</p>
+    </div>
+    <div class="fit two-col rev">
+      <div class="yes"><h3 class="h3">Included</h3><ul>
+        <li>A written scope from a paid Fit Check, with assumptions and exclusions</li>
+        <li>Configuration of <a class="lnk" href="nine-dynamics-365-sales.html">Sales</a>, and <a class="lnk" href="nine-customer-service.html">Customer Service</a> if in scope</li>
+        <li>Data migration from your current CRM or spreadsheets</li>
+        <li>Integrations named in the scope</li>
+        <li>Your Microsoft licences assigned to each user</li>
+        <li>Training, go-live and handover to a support plan</li>
+      </ul></div>
+      <div class="no"><h3 class="h3">Not included</h3><ul>
+        <li>Anything not named in the signed scope</li>
+        <li>Agents and Copilot Studio work, scoped separately</li>
+        <li>Microsoft licences and Copilot Credits</li>
+      </ul></div>
+    </div>
+    <div class="inc-foot rev">
+      <p class="fine" style="margin-top:0">Anything outside the package is a written change order you approve before work starts.</p>
+      <div class="acts"><span class="ask">Want to know what your project would take?</span><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call to scope it</a></div>
+    </div>
+  </section>
+
+  <section class="sec" id="fitcheck" aria-labelledby="fc1-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="fc1-h">What is the paid Fit Check?</h2>
+      <p class="lead">The Fit Check is the paid first step of every full implementation: we review your current system and needs, then give you a written scope and a fixed quote for the build. The quote is yours to keep, whether or not you build with us.</p>
+    </div>
+    <div class="three rev">
+      <div><span class="mono">01 &middot; Review</span><span class="t">Your system and needs</span><span class="d">A review of your current system or need, using our written discovery questionnaire.</span></div>
+      <div><span class="mono">02 &middot; Scope</span><span class="t">A written scope</span><span class="d">A written scope with assumptions, your responsibilities and what is out of scope.</span></div>
+      <div><span class="mono">03 &middot; Quote</span><span class="t">A fixed quote</span><span class="d">A fixed quote for the build, priced per phase.</span></div>
+    </div>
+    <p class="fine rev">Fit Check price: quoted in writing. [Brian sets: whether it is credited against the build, and within how many days].</p>
+  </section>
+
+  <section class="sec" id="fit" aria-labelledby="fit-h">
+    <div class="fitsplit">
+    <div class="side rev">
+      <h2 class="h2" id="fit-h">Is a full implementation right for your business?</h2>
+      <p class="lead">A full implementation fits a business that needs other systems connected, or data moved from several systems, when Dynamics 365 goes live. It is more than you need if this is your first Dynamics 365 Sales or Customer Service system and your process is standard; an accelerator fits that better.</p>
+      <p class="notsure-l">Not sure? Book a call and we will tell you which package fits.</p>
+      <div class="acts" style="margin-top:0"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a></div>
+    </div>
+    <div class="fit rev">
+      <div class="yes"><h3 class="h3">A good fit if</h3><ul>
+        <li>You need other systems connected to Dynamics 365 on day one.</li>
+        <li>Your data lives in several systems and has to move at go-live.</li>
+        <li>You want Dynamics 365 Sales and Customer Service built together.</li>
+        <li>Your team already works in Outlook and Teams every day.</li>
+      </ul></div>
+      <div class="no"><h3 class="h3">Probably not a fit if</h3><ul>
+        <li>This is your first Dynamics 365 Sales system and your sales process is standard. The <a class="lnk" href="https://www.encloud9.com/dynamics-365-sales-accelerator/">Sales Accelerator</a> is built for that.</li>
+        <li>You already have a Dynamics 365 Sales system that is over-customized or stalled. <a class="lnk" href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a> is built for that.</li>
+        <li>You have one or two people who only need a shared address book.</li>
+      </ul></div>
+    </div>
+    </div>
+  </section>
+
+  <section class="sec" id="process" aria-labelledby="st-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="st-h">How does a full Dynamics 365 implementation run?</h2>
+      <p class="lead">Every project runs through the same four stages: Plan, Build, Go live and Run. You see the written plan before we build, and every change after that is written down and approved.</p>
+    </div>
+    <div class="stages flowbar">
+      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage A</span><span class="t">Plan</span><span class="d">We learn how you sell, serve and bill, using a written discovery questionnaire, and give you the plan: apps, users, data, and where Copilot fits.</span></div>
+      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage B</span><span class="t">Build</span><span class="d">We build Dynamics 365 to the plan, using standard features first, and move your data. You check the imported records against your old system before sign-off.</span></div>
+      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i class="on" style="--k:4"></i><i class="m" style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage C</span><span class="t">Go live</span><span class="d">Training, cut-over day, and Copilot switched on. Agents are switched on only where your data, permissions and credit budget are ready.</span></div>
+      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i class="on" style="--k:4"></i><i class="m" style="--k:5"></i><i class="m" style="--k:6"></i><i class="m" style="--k:7"></i><i class="m" style="--k:8"></i></span><span class="mono">Stage D</span><span class="t">Run</span><span class="d">Your support plan starts. Health checks and updates are logged, so you always know what changed.</span></div>
+    </div>
+    <div class="tbl-wrap rev" style="margin-top:48px">
+      <table class="tbl">
+        <caption class="mono" style="text-align:left;padding-bottom:10px">Our four stages and Microsoft's phases</caption>
+        <thead><tr><th scope="col">Our stage</th><th scope="col">Microsoft's Success by Design phase</th><th scope="col">What happens</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Fit Check and Stage A. Plan</th><td>Discover and Initiate</td><td>Requirements, high-level design, written scope and plan</td></tr>
+          <tr><th scope="row">Stage B. Build</th><td>Implement</td><td>Build to the plan, data moved and checked, integrations</td></tr>
+          <tr><th scope="row">Stage C. Go live</th><td>Prepare</td><td>Testing, training, cut-over plan, go-live</td></tr>
+          <tr><th scope="row">Stage D. Run</th><td>Operate</td><td>Live system, support plan, next-phase changes</td></tr>
+        </tbody>
+      </table>
+      <p class="fine">Microsoft's Success by Design framework uses these five phases for Dynamics 365 projects. Microsoft says the framework does not guarantee outcomes; it is a way to catch risks early.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="stories" aria-labelledby="cs-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="cs-h">Which new Dynamics 365 systems have we built?</h2>
+      <p class="lead">Here are three of our 23 client stories, each a new Dynamics 365 Sales system with a published delivery time: one month, two months and six months.</p>
+    </div>
+    <div class="stories rev">
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><span class="mono">Maryland &middot; Product: Dynamics 365 Sales &middot; Timeline: 1 month</span><span class="big">1 month</span><span class="t">The Schiff Group</span><span class="d">A new Dynamics 365 Sales system in one month.</span><span class="go">Read The Schiff Group story &rarr;</span></a>
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/kbg-technologies-enhances-sales-processes-with-dynamics-365-implementation-by-encloud9/"><span class="mono">Memphis &middot; Product: Dynamics 365 Sales &middot; Timeline: within two months</span><span class="big">2 months</span><span class="t">KBG Technologies</span><span class="d">A new Dynamics 365 Sales system in place of QuickBooks alone, completed within two months.</span><span class="go">Read the KBG Technologies story &rarr;</span></a>
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/tension-pa-tension-packaging-expands-collaboration-with-encloud9-across-multiple-divisions/"><span class="mono">Kansas City &middot; Product: Dynamics 365 Sales &middot; Timeline: six months</span><span class="big">6 months</span><span class="t">Tension Packaging and Automation</span><span class="d">A new Dynamics 365 Sales system for a pipeline that lived in Excel, completed in six months.</span><span class="go">Read the Tension Packaging story &rarr;</span></a>
+    </div>
+    <div class="acts rev" style="margin-top:32px"><a class="lnk" href="nine-stories.html">All 23 client stories <span>&rarr;</span></a></div>
+  </section>
+
+  <section class="sec" id="support" aria-labelledby="sp-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="sp-h">What does support cost after go-live?</h2>
+      <p class="lead">Support starts at $500 a month for 4 hours on the Stability plan, which is the minimum plan for new clients. Larger teams choose Optimization at $1,500 a month for 20 hours or Partnership at $2,000 a month for 35 hours.</p>
+    </div>
+    <div class="ptiles plans rev" role="list" aria-label="Support plans, prices and hours">
+      <a role="listitem" class="ptile" style="--c:var(--b4)" href="https://www.dynamics365support.com/#plans"><span class="pt-top"><span class="mono">Hourly</span><span class="g big" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">On-Demand</span><span class="price">$200<small>an hour</small></span><span class="ds">As needed, no retainer. Fit: [Brian to confirm: who can still use it, for example during a project]</span><span class="pt-foot"><span class="go">Compare support plans &rarr;</span></span></a>
+      <a role="listitem" class="ptile" style="--c:var(--b1)" href="https://www.dynamics365support.com/#plans"><span class="pt-top"><span class="min">Minimum plan</span><span class="g big" aria-hidden="true"><i class="d"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Stability</span><span class="price">$500<small>a month</small></span><span class="ds"><b>4 hours a month.</b></span><span class="pt-foot"><span class="go">Compare support plans &rarr;</span></span></a>
+      <a role="listitem" class="ptile" style="--c:var(--b2)" href="https://www.dynamics365support.com/#plans"><span class="pt-top"><span class="mono">Monthly plan</span><span class="g big" aria-hidden="true"><i class="d"></i><i class="d"></i><i></i><i class="m"></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Optimization</span><span class="price">$1,500<small>a month</small></span><span class="ds"><b>20 hours a month.</b> Up to 50 users.</span><span class="pt-foot"><span class="go">Compare support plans &rarr;</span></span></a>
+      <a role="listitem" class="ptile" style="--c:var(--b3)" href="https://www.dynamics365support.com/#plans"><span class="pt-top"><span class="mono">Monthly plan</span><span class="g big" aria-hidden="true"><i class="d"></i><i class="d"></i><i class="d"></i><i class="m"></i><i class="on"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i></span></span><span class="nm">Partnership</span><span class="price">$2,000<small>a month</small></span><span class="ds"><b>35 hours a month.</b> 50 users and up.</span><span class="pt-foot"><span class="go">Compare support plans &rarr;</span></span></a>
+    </div>
+    <div class="sp-foot rev">
+      <p class="fine">Monthly plans run on a 12-month agreement. New clients pay an onboarding fee of up to one month's charge. Hours 7:00am to 5:00pm Central, Monday to Friday, excluding US federal holidays. Monthly plans include a 1-hour response during business hours, which means a person has picked up your request, not that it is solved. Every plan includes Microsoft escalation management.</p>
+      <div class="acts"><a class="btn btn-p" href="https://www.dynamics365support.com/#plans">Compare support plans</a></div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" aria-labelledby="fq-h">
+    <div class="faqsplit">
+    <div class="faqside rev">
+      <h2 class="h2" id="fq-h">Full implementation questions we get asked</h2>
+      <p class="lead" style="margin-top:18px">Something else on your mind? Ask us on a call. You get a straight answer, whether or not you work with us.</p>
+      <div class="acts" style="margin-top:24px"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="tel:+18442640729">1-844-264-0729 <span>&rarr;</span></a></div>
+    </div>
+    <div>
+    <div class="faq rev">
+      <details><summary>How much does a full Dynamics 365 implementation cost?</summary><p>A full implementation is quoted in writing as a fixed price per phase, after a paid Fit Check. Microsoft licences are a separate cost: Microsoft's list price is $65, $105 or $150 per user per month, paid yearly, for Sales Professional, Enterprise or Premium. Support plans start at $500 a month.</p></details>
+      <details><summary>How long does a Dynamics 365 implementation take?</summary><p>A full implementation typically takes [N to N] months. You get the plan, with dates, before we build. On our 9 published projects with a delivery time, go-live took 1 to 6 months, and 7 of the 9 took three months or less.</p></details>
+      <details><summary>What is the difference between an accelerator and a full implementation?</summary><p>Start from where your system is today: a first Dynamics 365 Sales or Customer Service system fits an accelerator, and a system that needs integrations or data from several systems on day one fits a full implementation. A Dynamics 365 system that is over-customized or stalled fits Rescue and Repair.</p></details>
+      <details><summary>What is the paid Fit Check?</summary><p>The Fit Check is the paid first step of every full implementation: we review your current system and needs, then give you a written scope and a fixed quote for the build. The quote is yours to keep, whether or not you build with us.</p></details>
+      <details><summary>Can you move our data from Salesforce, HubSpot or spreadsheets?</summary><p>Yes. Moving data from your old CRM or spreadsheets is part of a full implementation, and the Sales Accelerator includes an import of up to [Brian sets] records. Integrations with other systems are quoted separately.</p></details>
+      <details><summary>Are Microsoft licences included?</summary><p>No. Microsoft licences and Copilot Credits are not part of the package price, and you pay for them separately. As part of setup we assign your licences to each user and set their security roles, because Microsoft does not let a user open the app until both are done.</p></details>
+      <details><summary>What if our scope changes during the project?</summary><p>Anything outside the package is a written change order you approve before work starts. Each phase has its own fixed price, so you approve the cost of a change before it is built.</p></details>
+      <details><summary>What are the phases of a Dynamics 365 implementation?</summary><p>Microsoft's Success by Design framework uses five phases: Discover, Initiate, Implement, Prepare and Operate. Our four stages, Plan, Build, Go live and Run, follow the same path, starting with a written scope from the Fit Check.</p></details>
+      <details><summary>Do we need a support plan after go-live?</summary><p>Yes. New clients start on at least the Stability plan, $500 a month for 4 hours, on a 12-month agreement. Monthly plans include a 1-hour response during business hours, 7:00am to 5:00pm Central, Monday to Friday.</p></details>
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="sec" id="others" aria-labelledby="op-h" >
+    <h2 class="mono" id="op-h" style="font-weight:400;margin:0 0 16px">Other packages</h2>
+    <nav class="lnav rev" aria-labelledby="op-h">
+      <a href="https://www.encloud9.com/dynamics-365-sales-accelerator/" style="--c:var(--b5)"><span class="mono">Package</span>Sales Accelerator</a>
+      <a class="lt" href="https://www.encloud9.com/dynamics-365-service-accelerator/" style="--c:var(--b7)"><span class="mono">Package</span>Service Accelerator</a>
+      <a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/" style="--c:var(--b4)"><span class="mono">Package</span>Rescue and Repair</a>
+      <a href="https://www.encloud9.com/microsoft-dynamics-365-salesforce-crm-migration/" style="--c:var(--b3)"><span class="mono">Move</span>Move from Salesforce</a>
+      <a href="https://www.encloud9.com/lp/microsoft-dynamics-365-hubspot-crm-migration/" style="--c:var(--b2)"><span class="mono">Move</span>Move from HubSpot</a>
+      <a href="https://www.dynamics365support.com/#plans" style="--c:var(--b1)"><span class="mono">After go-live</span>Support plans</a>
+    </nav>
+  </section>
+</div>
+
+<section class="final" aria-labelledby="fc-h">
+  <div class="wrap">
+    <div class="inner">
+      <div class="rev">
+        <h2 class="h2" id="fc-h">Start with a call or a free checkup</h2>
+        <p class="lead">Tell us where your system is today. You get a plan, a package and a price, whether or not you work with us.</p>
+      </div>
+      <div class="side rev">
+        <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+        <a class="lnk" href="nine-dynamics-365-sales.html#check">Free checkups, no obligation <span>&rarr;</span></a>
+        <span class="mono">Or call <a href="tel:+18442640729">1-844-264-0729</a>, 7:00am to 5:00pm Central, Monday to Friday.</span>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="fcols">
+        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft Partner since [2008], specializing in Dynamics 365.</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
+        <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-marketing.html">Marketing automation</a><a href="https://www.encloud9.com/dynamics-365-pricing/">Dynamics 365 pricing</a></nav>
+        <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="https://www.encloud9.com/microsoft-copilot-studio/">Copilot Studio</a><a href="https://www.encloud9.com/dynamics-365-power-apps/">Power Apps</a><a href="https://www.encloud9.com/microsoft-power-bi/">Power BI</a></nav>
+        <nav aria-label="Packages and support"><b>Packages and support</b><a href="nine-packages.html">All packages</a><a href="https://www.encloud9.com/dynamics-365-sales-accelerator/">Sales Accelerator</a><a href="https://www.encloud9.com/dynamics-365-service-accelerator/">Service Accelerator</a><a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>
+        <nav aria-label="Company"><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-stories.html">Client stories</a><a href="nine-blog.html">Blog</a><a href="https://www.encloud9.com/contact-us/">Contact us</a><a href="https://www.encloud9.com/microsoft-dynamics-365-partner-omaha/">Omaha and Nebraska</a></nav>
+      </div>
+      <div class="tm">enCloud9 LLC, [address Brian confirms]. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies.</div>
+    </footer>
+  </div>
+  <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>
+</section>
+</main>
+</body>
+</html>
