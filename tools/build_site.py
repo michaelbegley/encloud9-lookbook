@@ -35,6 +35,7 @@ MAP = {
     'nine-storage.html': '/lp/dataverse-storage-analysis/',
     'nine-move-salesforce.html': '/microsoft-dynamics-365-salesforce-crm-migration/',
     'nine-move-hubspot.html': '/lp/microsoft-dynamics-365-hubspot-crm-migration/',
+    'nine-story-hogan.html': '/blog/success_stories/hogans-crm-rescue-story-a-fresh-start-with-dynamics-365/',
 }
 PATHS = set(MAP.values())
 
