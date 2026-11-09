@@ -447,3 +447,42 @@ a.row .go{white-space:nowrap}
 /* breadcrumb tap targets (24px minimum) */
 .crumb{align-items:center}
 .crumb a{display:inline-flex;align-items:center;min-height:28px}
+
+/* client story template (T5), 9 Nov 2026: every story page uses body.p-story; no inline styles on story pages */
+body.p-story .hero .h1{font-size:clamp(38px,5vw,66px)}
+body.p-story .byline{margin-top:18px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+body.p-story .spec{margin:14px 0 0;display:grid;border-top:2px solid var(--ink)}
+body.p-story .spec div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--line);align-items:baseline}
+body.p-story .spec dd{margin:0;font-weight:600;font-size:16px;line-height:1.4}
+body.p-story .proof .num{white-space:nowrap}
+body.p-story .proof.n3{grid-template-columns:repeat(3,1fr)}
+body.p-story .proof.n2{grid-template-columns:repeat(2,1fr)}
+body.p-story .proof.n1{grid-template-columns:1fr}
+body.p-story .story-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(32px,5vw,72px);align-items:start}
+body.p-story .story-body .side{position:sticky;top:110px}
+body.p-story .outc{list-style:none;margin:16px 0 0;padding:0;border-top:2px solid var(--ink)}
+body.p-story .outc li{padding:14px 0 14px 28px;border-bottom:1px solid var(--line);position:relative;font-size:17px;line-height:1.5}
+body.p-story .outc li::before{content:'';position:absolute;left:0;top:21px;width:12px;height:12px;background:var(--b5)}
+body.p-story .squote{margin:24px 0 0;padding:20px 0 0;border-top:1px solid var(--line)}
+body.p-story .squote blockquote{margin:0;font-family:var(--head);font-size:22px;line-height:1.35;font-weight:500}
+body.p-story .squote figcaption{margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+body.p-story .chap{padding-bottom:clamp(28px,3vw,44px);margin-bottom:clamp(28px,3vw,44px);border-bottom:1px solid var(--line)}
+body.p-story .chap:last-child{border-bottom:0;margin-bottom:0}
+body.p-story .chap h2{font-size:clamp(28px,3vw,40px)}
+body.p-story .chap p{font-size:18px;line-height:1.65;color:var(--ink2);max-width:680px;margin:14px 0 0}
+body.p-story .slab{margin:0 0 16px}
+body.p-story .lnav{display:grid;gap:6px}
+body.p-story .lnav.n1{grid-template-columns:1fr}body.p-story .lnav.n2{grid-template-columns:repeat(2,minmax(0,1fr))}body.p-story .lnav.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
+body.p-story .lnav a{display:flex;flex-direction:column;gap:10px;justify-content:space-between;min-height:120px;padding:16px;background:var(--c);color:var(--white);font-family:var(--head);font-weight:600;font-size:18px;line-height:1.2;transition:transform .35s var(--ease)}
+body.p-story .lnav a .mono{color:rgba(255,255,255,.8);font-size:11px;font-weight:400}
+body.p-story .lnav a:hover{transform:translateY(-4px)}
+body.p-story .lnav a:focus-visible{outline:3px solid var(--b6);outline-offset:3px}
+body.p-story .pn{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+body.p-story .pn a{display:flex;flex-direction:column;gap:8px;padding:20px;border:2px solid var(--ink);min-height:130px;transition:transform .35s var(--ease)}
+body.p-story .pn a:hover{transform:translateY(-4px)}
+body.p-story .pn a.nx{text-align:right;align-items:flex-end}
+body.p-story .pn .t{font-family:var(--head);font-weight:600;font-size:22px;letter-spacing:-.01em}
+body.p-story .pn .d{color:var(--muted);font-size:15px}
+@media (prefers-reduced-motion:reduce){body.p-story .lnav a,body.p-story .pn a{transition:none}}
+@media (max-width:860px){body.p-story .story-body{grid-template-columns:1fr}body.p-story .story-body .side{position:static}body.p-story .proof.n2,body.p-story .proof.n3{grid-template-columns:1fr}body.p-story .proof .pf{border-left:0;padding-left:0;border-top:1px solid var(--line)}body.p-story .proof .pf:first-child{border-top:0}}
+@media (max-width:560px){body.p-story .lnav.n2,body.p-story .lnav.n3,body.p-story .pn{grid-template-columns:1fr}body.p-story .pn a.nx{text-align:left;align-items:flex-start}body.p-story .spec div{grid-template-columns:1fr;gap:2px}}
