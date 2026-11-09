@@ -1,0 +1,142 @@
+{
+ "key": "bsi",
+ "slug": "dynamics-365-implementation-allows-sales-and-management-teams-to-work-more-productively",
+ "client": "Biometric Signature ID (BSI)",
+ "work_type": "New build",
+ "title": "BSI: One view of the sales pipeline | enCloud9",
+ "meta": "How enCloud9 implemented Dynamics 365 Sales for Biometric Signature ID with custom process flows and real-time dashboards, from first lead to close.",
+ "h1": [
+  "BSI:",
+  "One view from lead to close"
+ ],
+ "answer": "Biometric Signature ID (BSI) is a biometric security software company in Lewisville, TX. It needed one system to track and improve its whole sales process, from first lead to closed deal. We implemented Microsoft Dynamics 365 with custom business process flows and real-time dashboards. BSI now has better pipeline management and less manual effort.",
+ "facts": [
+  [
+   "Client",
+   "Biometric Signature ID (BSI)"
+  ],
+  [
+   "Location",
+   "Lewisville, TX"
+  ],
+  [
+   "Industry",
+   "Biometric security software"
+  ],
+  [
+   "Starting point",
+   "No integrated system to track the sales process from lead to close"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales"
+  ],
+  [
+   "Services",
+   "Implementation Services"
+  ]
+ ],
+ "timeline": null,
+ "tiles": [
+  [
+   "15+ years",
+   "in biometric security"
+  ]
+ ],
+ "outcomes": [
+  "Sales pipeline management improved.",
+  "Manual effort dropped.",
+  "Overall sales efficiency increased.",
+  "Management has real-time insight into sales activities."
+ ],
+ "chapters": [
+  [
+   "What did BSI need?",
+   [
+    "Biometric Signature ID (BSI) builds software tools for security and serves sectors such as education and finance. It is an emerging startup and a Microsoft partner with over 15 years in biometric security.",
+    "BSI needed a way to track and improve its entire sales process, from initial lead generation to closing opportunities, and chose us to implement Microsoft Dynamics 365."
+   ]
+  ],
+  [
+   "What did we build?",
+   [
+    "We built customized business process flows in Dynamics 365.",
+    "We also built dashboards that give BSI's management team real-time insight into sales activities."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "Lead management and opportunity tracking are simpler. BSI has better sales pipeline management, less manual effort, and higher overall sales efficiency."
+   ]
+  ]
+ ],
+ "next_steps": null,
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2018-05-01",
+ "published_h": "May 1, 2018",
+ "sources": [
+  {
+   "claim": "Client",
+   "quote": "Biometric Signature ID (BSI)"
+  },
+  {
+   "claim": "Location line",
+   "quote": "Lewisville, TX"
+  },
+  {
+   "claim": "Industry",
+   "quote": "specializing in innovative software tools designed to revolutionize security measures"
+  },
+  {
+   "claim": "Sectors",
+   "quote": "across sectors such as Education, Finance, and more"
+  },
+  {
+   "claim": "Startup and partner",
+   "quote": "As an emerging startup and a trusted Microsoft partner,"
+  },
+  {
+   "claim": "15 years",
+   "quote": "a rich legacy of over 15 years in the field of biometric security solutions"
+  },
+  {
+   "claim": "Need",
+   "quote": "a comprehensive solution to meticulously track and optimize the entire sales process"
+  },
+  {
+   "claim": "Lead to close",
+   "quote": "spanning from initial lead generation to the successful closure of opportunities"
+  },
+  {
+   "claim": "Chose enCloud9",
+   "quote": "BSI chose enCloud9 to implement Microsoft Dynamics 365, the ideal foundation for their vision."
+  },
+  {
+   "claim": "Process flows",
+   "quote": "the meticulous crafting of customized business process flows"
+  },
+  {
+   "claim": "Dashboards",
+   "quote": "These dashboards provide BSI’s management team with real-time insights into sales activities"
+  },
+  {
+   "claim": "Simpler tracking",
+   "quote": "By simplifying lead management and opportunity tracking, BSI has achieved improved sales pipeline management,"
+  },
+  {
+   "claim": "Manual effort and efficiency",
+   "quote": "reduced manual effort, and increased overall sales efficiency."
+  },
+  {
+   "claim": "Products",
+   "quote": "Dynamics 365 Sales"
+  },
+  {
+   "claim": "Services",
+   "quote": "Implementation Services"
+  }
+ ],
+ "notes": "Page H1: 'Dynamics 365 Enhances Productivity for BSI Sales and Management Teams' (meta title 'BSI Boosts Sale Productivity with Dynamics 365', typo 'Sale'). Body says 'Located in the thriving heart of Texas'; 'Lewisville, TX' appears only in the header block. Page also shows 'Tuesday, July 23, 2024 12:28 PM', which looks like a render timestamp; publish date used is May 1, 2018. The '15+ years' tile is a company fact, not a project result. Starting point is inferred from the stated need (page does not name a prior system). Work type New build kept (no prior CRM named). No timeline, figures or named quote. WebFetch would not return full verbatim text."
+}

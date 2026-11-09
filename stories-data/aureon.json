@@ -1,0 +1,144 @@
+{
+ "key": "aureon",
+ "slug": "encloud9-helps-professional-employer-organization-peo-rescue-a-failed-crm",
+ "client": "Aureon",
+ "work_type": "Rescue or fix",
+ "title": "Aureon: A failed CRM rescued | enCloud9",
+ "meta": "How enCloud9 audited and rebuilt Aureon's self-implemented Dynamics CRM in Des Moines so staff could rely on Dynamics 365 for real-time information.",
+ "h1": [
+  "Aureon:",
+  "A failed CRM rescued"
+ ],
+ "answer": "Aureon is a business support services firm headquartered in Des Moines, IA. Years earlier it implemented Dynamics CRM without professional guidance, which led to underuse and reliability issues. We ran a systems audit and process review with Aureon and built a CRM enhancement plan. For the first time, staff can rely on Dynamics 365.",
+ "facts": [
+  [
+   "Client",
+   "Aureon"
+  ],
+  [
+   "Location",
+   "Des Moines, IA"
+  ],
+  [
+   "Industry",
+   "Business support services"
+  ],
+  [
+   "Starting point",
+   "Dynamics CRM implemented without professional guidance; underused and unreliable"
+  ],
+  [
+   "Products",
+   "Dynamics 365"
+  ],
+  [
+   "Services",
+   "Dynamics 365 Optimization, Rescue and Repair"
+  ]
+ ],
+ "timeline": null,
+ "tiles": [],
+ "outcomes": [
+  "For the first time in its history, Aureon can rely on Dynamics 365 for real-time, relevant information.",
+  "Staff can manage client relationships in Dynamics 365.",
+  "The work improved operational efficiency and client engagement potential."
+ ],
+ "chapters": [
+  [
+   "What was wrong with Aureon's CRM?",
+   [
+    "Aureon is a business support services firm headquartered in Des Moines, IA. It was founded in 1986 as Iowa Network Services to connect independent telephone companies, and rebranded in 2016.",
+    "Several years earlier, Aureon implemented Dynamics CRM without professional guidance. The system struggled to meet its requirements, which led to underuse and reliability issues."
+   ]
+  ],
+  [
+   "What did we change?",
+   [
+    "We started with a thorough systems audit and a process review, done together with Aureon.",
+    "From that work we built a CRM enhancement plan aimed at Aureon's specific challenges."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "For the first time in its history, Aureon and its staff can rely on Dynamics 365 for real-time, relevant information, and use it to manage client relationships."
+   ]
+  ]
+ ],
+ "next_steps": null,
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2018-05-01",
+ "published_h": "May 1, 2018",
+ "sources": [
+  {
+   "claim": "Client, industry, location",
+   "quote": "Aureon, a prominent Business Support services firm headquartered in Des Moines"
+  },
+  {
+   "claim": "Location line",
+   "quote": "Des Moines, IA"
+  },
+  {
+   "claim": "Founded as",
+   "quote": "Founded originally as Iowa Network Services"
+  },
+  {
+   "claim": "Founded year",
+   "quote": "since its establishment in 1986"
+  },
+  {
+   "claim": "Original mission",
+   "quote": "primary mission was to facilitate connectivity among independent telephone companies (ITCs)"
+  },
+  {
+   "claim": "Rebrand",
+   "quote": "a strategic rebranding initiative in 2016 marked the beginning"
+  },
+  {
+   "claim": "Starting point",
+   "quote": "Several years ago, they implemented Dynamics CRM without the guidance of professional expertise."
+  },
+  {
+   "claim": "Requirements not met",
+   "quote": "struggled to meet their intricate requirements"
+  },
+  {
+   "claim": "Underuse and reliability",
+   "quote": "resulting in underutilization and issues of reliability."
+  },
+  {
+   "claim": "Audit and review",
+   "quote": "a thorough systems audit and a comprehensive process review"
+  },
+  {
+   "claim": "Enhancement plan",
+   "quote": "construct a comprehensive CRM enhancement plan"
+  },
+  {
+   "claim": "First time result",
+   "quote": "For the first time in their history, Aureon and its dedicated workforce can confidently rely on Dynamics 365"
+  },
+  {
+   "claim": "Real-time result",
+   "quote": "deliver real-time, pertinent information"
+  },
+  {
+   "claim": "Client relationships result",
+   "quote": "effectively manage client relationships"
+  },
+  {
+   "claim": "Efficiency result",
+   "quote": "operational efficiency and client engagement potential"
+  },
+  {
+   "claim": "Products",
+   "quote": "Dynamics 365"
+  },
+  {
+   "claim": "Services",
+   "quote": "Dynamics 365 Optimization / Rescue and Repair"
+  }
+ ],
+ "notes": "The slug says 'professional employer organization (PEO)', but the page body never mentions PEO; it calls Aureon a 'Business Support services firm'. Industry follows the page, not the slug. Page H1: 'enCloud9 Helps Aureon Rescue a Failed CRM'. The page does not say the original CRM 'failed' in the body beyond underuse and reliability issues; 'failed CRM' comes from the H1. No timeline, figures, next steps or named quote. 'Client engagement potential' outcome is page wording; paraphrased mildly. WebFetch would not return full verbatim text."
+}

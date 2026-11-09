@@ -1,0 +1,153 @@
+{
+ "key": "jasco",
+ "slug": "jasco-modernizes-operations-with-dynamics-365-sales-and-customer-service",
+ "client": "JASCO, Inc.",
+ "work_type": "Upgrade",
+ "title": "JASCO: Modern CRM in three months | enCloud9",
+ "meta": "How enCloud9 moved JASCO off an outdated on-premises Dynamics 365 system to Dynamics 365 Sales with over 900 automated lead assignment rules.",
+ "h1": [
+  "JASCO:",
+  "Modern CRM in three months"
+ ],
+ "answer": "JASCO, Inc. is an analytical instruments maker in Easton, MD that operates in 57 countries. It was held back by an outdated on-premises Dynamics 365 system. We implemented Dynamics 365 Sales with a Lead Assignment Rule Table of over 900 rules and updated form captures. In three months, sales and lead management became centralized and automated.",
+ "facts": [
+  [
+   "Client",
+   "JASCO, Inc."
+  ],
+  [
+   "Location",
+   "Easton, MD"
+  ],
+  [
+   "Industry",
+   "Analytical instruments (chromatography and molecular spectroscopy)"
+  ],
+  [
+   "Starting point",
+   "Outdated on-premises Dynamics 365 system"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales Enterprise; Dynamics 365 Customer Service; ClickDimensions"
+  ],
+  [
+   "Services",
+   "Cloud Migration, Marketing Services, Support Contract, Customization and Development"
+  ]
+ ],
+ "timeline": "Within three months",
+ "tiles": [
+  [
+   "3 months",
+   "to complete the project"
+  ],
+  [
+   "900+",
+   "lead assignment rules"
+  ],
+  [
+   "57",
+   "countries JASCO operates in"
+  ]
+ ],
+ "outcomes": [
+  "The project was completed in three months.",
+  "Sales and lead management now run in one centralized, automated system.",
+  "Lead assignments are automated and data management improved.",
+  "Efficiency and customer interaction have greatly improved."
+ ],
+ "chapters": [
+  [
+   "What was wrong with JASCO's CRM?",
+   [
+    "JASCO, Inc. makes analytical instruments, specializing in chromatography and molecular spectroscopy. It operates in 57 countries and serves manufacturers and research labs.",
+    "JASCO was struggling with an outdated on-premises Dynamics 365 system. It needed a modern CRM to improve efficiency and streamline its processes."
+   ]
+  ],
+  [
+   "What did we change?",
+   [
+    "We implemented Dynamics 365 Sales, including a Lead Assignment Rule Table with over 900 rules, and updated JASCO's form captures.",
+    "This automated lead assignments and improved data management."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "JASCO now has a centralized, automated system for sales and lead management, which has greatly improved efficiency and customer interaction."
+   ]
+  ]
+ ],
+ "next_steps": [
+  "What comes next for JASCO?",
+  "JASCO continues to work with us on ongoing enhancements, including potential integrations such as Adobe Sign and international lead management."
+ ],
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2023-10-30",
+ "published_h": "October 30, 2023",
+ "sources": [
+  {
+   "claim": "Client and location",
+   "quote": "JASCO,Inc / Easton, MD"
+  },
+  {
+   "claim": "Industry",
+   "quote": "JASCO Inc., a global leader in analytical instruments, specializes in chromatography and molecular spectroscopy."
+  },
+  {
+   "claim": "57 countries, who it serves",
+   "quote": "Operating in 57 countries, they provide advanced solutions to manufacturers and research labs."
+  },
+  {
+   "claim": "Starting point",
+   "quote": "Jasco struggled with an outdated On-Premises Dynamics 365 system"
+  },
+  {
+   "claim": "Need",
+   "quote": "They needed a modern CRM solution to improve efficiency and streamline processes"
+  },
+  {
+   "claim": "What we did, 900 rules",
+   "quote": "enCloud9 implemented Dynamics 365 Sales, including a Lead Assignment Rule Table with over 900 rules"
+  },
+  {
+   "claim": "Form captures",
+   "quote": "updated form captures"
+  },
+  {
+   "claim": "Automation result",
+   "quote": "This solution automated lead assignments and improved data management"
+  },
+  {
+   "claim": "Timeline",
+   "quote": "Completed in three months"
+  },
+  {
+   "claim": "Centralized system result",
+   "quote": "providing a centralized, automated system for sales and lead management."
+  },
+  {
+   "claim": "Efficiency result",
+   "quote": "This has greatly improved efficiency and customer interaction."
+  },
+  {
+   "claim": "Next steps",
+   "quote": "Jasco continues to work with enCloud9 for ongoing enhancements"
+  },
+  {
+   "claim": "Next steps detail",
+   "quote": "potential integrations like Adobe Sign and international lead management"
+  },
+  {
+   "claim": "Products",
+   "quote": "Dynamics 365 Sales Enterprise / Dynamics 365 Customer Service / ClickDimensions"
+  },
+  {
+   "claim": "Services",
+   "quote": "Cloud Migration / Marketing Services / Support Contract / Customization and Development"
+  }
+ ],
+ "notes": "Off-limits ERP product: the page's Products Used list names a fourth product, the Microsoft ERP product we must not use; it is left out of every field. The services list also includes 'ERP Integration', which ties to that product; dropped from Services for the same reason (exact page list has five services). Hub product 'Click' is ClickDimensions on the page. Dynamics 365 Customer Service appears only in Products Used and tags; the body describes only a Sales implementation, so no Customer Service work is claimed. Page calls the old system 'On-Premises Dynamics 365' (odd wording, kept as on-premises Dynamics 365). Client written as 'JASCO,Inc', 'JASCO Inc.' and 'Jasco'; I used 'JASCO, Inc.' / 'JASCO'. Page H1 is 'Jasco Boosts Sales and Service with Dynamics 365'. Header image alt text reads 'Elmwood Reclaimed Timber' (leftover from another story). Page shows a modified date of August 13, 2026. Work type kept as Upgrade (on-premises to modern Dynamics 365 Sales). WebFetch would not return full verbatim text; quotes are short excerpts it returned."
+}

@@ -1,0 +1,142 @@
+{
+ "key": "rlh",
+ "slug": "investment-firm-uses-dynamics-365-mobile-to-stay-connected",
+ "client": "RLH (Riordan, Lewis, and Haden)",
+ "work_type": "Upgrade",
+ "title": "RLH: Dynamics 365 on the go | enCloud9",
+ "meta": "How enCloud9 moved RLH, a Los Angeles private equity firm, from on-premises CRM to cloud Dynamics 365 and customized the mobile app for meetings.",
+ "h1": [
+  "RLH:",
+  "Client data on the go"
+ ],
+ "answer": "RLH (Riordan, Lewis, and Haden) is a private equity firm headquartered in Los Angeles. It needed strong client communication and efficient information flow to a global client base. We migrated its on-premises CRM to cloud-based Dynamics 365 and customized the mobile app. End-user engagement rose, and staff now get instant access to vital data.",
+ "facts": [
+  [
+   "Client",
+   "RLH (Riordan, Lewis, and Haden)"
+  ],
+  [
+   "Location",
+   "Los Angeles, CA"
+  ],
+  [
+   "Industry",
+   "Private equity (business services, healthcare, and government services)"
+  ],
+  [
+   "Starting point",
+   "On-premises CRM system"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Mobile"
+  ],
+  [
+   "Services",
+   "Implementation Services"
+  ]
+ ],
+ "timeline": null,
+ "tiles": [
+  [
+   "40+ years",
+   "in private equity"
+  ]
+ ],
+ "outcomes": [
+  "End-user engagement has risen significantly.",
+  "Staff have instant access to vital data for client interactions.",
+  "Management has better insight into employee activities.",
+  "Creating and accessing meeting notes and follow-up information is more efficient."
+ ],
+ "chapters": [
+  [
+   "What did RLH need?",
+   [
+    "RLH (Riordan, Lewis, and Haden) is a private equity firm headquartered in Los Angeles, with a history of over four decades. It invests across business services, healthcare, and government services.",
+    "RLH needed to maintain strong client communication and efficient information flow to a global client base."
+   ]
+  ],
+  [
+   "What did we change?",
+   [
+    "We migrated RLH's on-premises CRM system to cloud-based Dynamics 365.",
+    "We customized the Dynamics 365 mobile app to deliver key information on the go, supporting client interactions and meetings."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "End-user engagement has risen significantly. Staff have instant access to vital data, management has better insight into employee activities, and meeting notes and follow-up information are faster to create and find."
+   ]
+  ]
+ ],
+ "next_steps": null,
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2018-05-01",
+ "published_h": "May 1, 2018",
+ "sources": [
+  {
+   "claim": "Client, industry, location",
+   "quote": "RLH (Riordan, Lewis, and Haden), a renowned private equity firm headquartered in Los Angeles"
+  },
+  {
+   "claim": "Location line",
+   "quote": "Los Angeles, CA"
+  },
+  {
+   "claim": "Four decades",
+   "quote": "With a rich legacy spanning over four decades,"
+  },
+  {
+   "claim": "Sectors",
+   "quote": "business services, healthcare, and government services"
+  },
+  {
+   "claim": "Challenge",
+   "quote": "maintaining robust client communication channels"
+  },
+  {
+   "claim": "Global client base",
+   "quote": "Ensuring seamless connectivity and efficient information flow to a global client base became a strategic imperative."
+  },
+  {
+   "claim": "Mobile customization",
+   "quote": "We meticulously customized the Dynamics 365 mobile app to deliver mission-critical information on the go"
+  },
+  {
+   "claim": "Meetings",
+   "quote": "facilitating client interactions and strategic meetings"
+  },
+  {
+   "claim": "Migration",
+   "quote": "migration of RLH’s on-premises CRM system to Dynamics 365’s agile cloud-based platform"
+  },
+  {
+   "claim": "Engagement result",
+   "quote": "End-user engagement has surged significantly"
+  },
+  {
+   "claim": "Data access result",
+   "quote": "instant access to vital data"
+  },
+  {
+   "claim": "Management insight result",
+   "quote": "RLH’s management now enjoys enhanced insights into employee activities"
+  },
+  {
+   "claim": "Meeting notes result",
+   "quote": "the efficiency of creating and accessing meeting notes and follow-up information has soared"
+  },
+  {
+   "claim": "Products",
+   "quote": "Dynamics 365 Mobile"
+  },
+  {
+   "claim": "Services",
+   "quote": "Implementation Services"
+  }
+ ],
+ "notes": "Page H1: 'RLH Boosts Productivity and Engagement with Dynamics 365'. Product 'Dynamics 365 Mobile' is the page's own label (Microsoft does not sell a product by that name; it is the Dynamics 365 mobile app). Work type kept as Upgrade: the page describes an on-premises CRM migrated to cloud Dynamics 365, which fits; the listed service is 'Implementation Services'. The 40+ years tile is a fact about the firm, not a project result; drop it if tiles should be project-only. No timeline, numbers or named quote on the page. WebFetch would not return full verbatim text."
+}

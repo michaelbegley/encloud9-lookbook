@@ -1,0 +1,141 @@
+{
+ "key": "jwc",
+ "slug": "manufacturer-integrates-website-with-crm-to-automate-lead-assignment",
+ "client": "JWC Environmental",
+ "work_type": "Integration",
+ "title": "JWC Environmental: Web leads auto-assigned | enCloud9",
+ "meta": "How enCloud9 connected JWC Environmental's website leads to Dynamics 365 Sales and assigned them automatically by customer interest and geography.",
+ "h1": [
+  "JWC Environmental:",
+  "Website leads assigned automatically"
+ ],
+ "answer": "JWC Environmental, based in Santa Ana, has made municipal wastewater equipment since 1973. Dozens of website leads arrived daily and needed a more sophisticated lead management system. We worked with JWC's web development team to connect web leads to Dynamics 365 and assign them automatically. The team saves time and responds faster to opportunities.",
+ "facts": [
+  [
+   "Client",
+   "JWC Environmental"
+  ],
+  [
+   "Location",
+   "Santa Ana"
+  ],
+  [
+   "Industry",
+   "Municipal wastewater equipment"
+  ],
+  [
+   "Starting point",
+   "Dozens of daily website leads; ClickDimensions Marketing Automation already in place"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales"
+  ],
+  [
+   "Services",
+   "Implementation Service"
+  ]
+ ],
+ "timeline": null,
+ "tiles": [
+  [
+   "Since 1973",
+   "making wastewater equipment"
+  ]
+ ],
+ "outcomes": [
+  "The team saves substantial time managing leads and contacts.",
+  "Automated lead distribution and assignment improved responsiveness to business opportunities.",
+  "Efficiency and productivity increased."
+ ],
+ "chapters": [
+  [
+   "What did JWC need?",
+   [
+    "JWC Environmental has made municipal wastewater equipment since 1973, offering waste reduction and screening solutions.",
+    "Leads arrived through its website every day, often in the dozens. JWC had already integrated ClickDimensions Marketing Automation, but it needed a more sophisticated lead management system."
+   ]
+  ],
+  [
+   "What did we build?",
+   [
+    "We worked closely with JWC Environmental's web development team to connect web-generated leads to Microsoft Dynamics 365.",
+    "Leads are assigned automatically based on factors such as customer interests and geography."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "JWC manages leads and contacts with far less effort, saving substantial time so the team can focus on high-value work. Automated lead distribution and assignment made the team more responsive to new business opportunities."
+   ]
+  ]
+ ],
+ "next_steps": null,
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2018-05-01",
+ "published_h": "May 1, 2018",
+ "sources": [
+  {
+   "claim": "Client, industry, since 1973",
+   "quote": "JWC Environmental, a trailblazer in municipal wastewater equipment since its inception in 1973,"
+  },
+  {
+   "claim": "Location",
+   "quote": "Santa Ana"
+  },
+  {
+   "claim": "Solutions",
+   "quote": "reliable and high-performance waste reduction and screening solutions"
+  },
+  {
+   "claim": "Daily leads",
+   "quote": "a daily surge of leads through their website, often numbering in dozens"
+  },
+  {
+   "claim": "ClickDimensions in place",
+   "quote": "had previously integrated ClickDimensions Marketing Automation"
+  },
+  {
+   "claim": "Need",
+   "quote": "it became apparent that a more sophisticated lead management system was imperative"
+  },
+  {
+   "claim": "Web team",
+   "quote": "collaborated closely with JWC Environmental’s web development team"
+  },
+  {
+   "claim": "Integration",
+   "quote": "establish a seamless integration between web-generated leads and Microsoft Dynamics 365"
+  },
+  {
+   "claim": "Assignment rules",
+   "quote": "intelligently assigning leads based on factors such as customer interests and geographic parameters"
+  },
+  {
+   "claim": "Time savings result",
+   "quote": "the company has unlocked substantial time savings,"
+  },
+  {
+   "claim": "High-value work",
+   "quote": "empowering their team to concentrate on high-value activities."
+  },
+  {
+   "claim": "Responsiveness result",
+   "quote": "The automation of lead distribution and assignment has significantly improved responsiveness"
+  },
+  {
+   "claim": "Efficiency result",
+   "quote": "JWC experiences a surge in efficiency and productivity"
+  },
+  {
+   "claim": "Products",
+   "quote": "Dynamics 365 Sales"
+  },
+  {
+   "claim": "Services",
+   "quote": "Implementation Service"
+  }
+ ],
+ "notes": "Page gives no state for Santa Ana; left as 'Santa Ana' (not adding CA). Page has a typo 'wnCloud9' in the results sentence. Services list is singular 'Implementation Service' on the page. Page H1: 'JWC Transforms Lead Management with Dynamics 365'. The 'Since 1973' tile is a company fact, not a project result. Work type Integration matches the page (website to CRM integration). No timeline, figures or named quote. WebFetch would not return full verbatim text."
+}

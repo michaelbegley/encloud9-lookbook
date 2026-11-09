@@ -1,0 +1,150 @@
+{
+ "key": "rei",
+ "slug": "manufacturing-company-upgrades-to-dynamics-365-transforms-sales-process",
+ "client": "Radio Engineering Industries, Inc. (REI)",
+ "work_type": "Upgrade",
+ "title": "REI: From Dynamics 2011 to Dynamics 365 | enCloud9",
+ "meta": "How enCloud9 moved Omaha manufacturer REI from on-premises Dynamics 2011 to Dynamics 365 Online with sales processes for its five divisions.",
+ "h1": [
+  "REI:",
+  "Sales moved into Dynamics 365"
+ ],
+ "answer": "Radio Engineering Industries (REI) in Omaha, NE makes audio, video and safety systems for the school and tour bus industry. Its on-premises Dynamics 2011 CRM had grown outdated and user acceptance was low. We migrated REI to Dynamics 365 Online, built sales processes for its five divisions and added dashboards. User acceptance and productivity increased.",
+ "facts": [
+  [
+   "Client",
+   "Radio Engineering Industries, Inc. (REI)"
+  ],
+  [
+   "Location",
+   "Omaha, NE"
+  ],
+  [
+   "Industry",
+   "Manufacturing (audio, video, and safety systems for the school and tour bus industry)"
+  ],
+  [
+   "Starting point",
+   "Outdated on-premises Dynamics 2011 CRM"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales"
+  ],
+  [
+   "Services",
+   "Implementation Services"
+  ]
+ ],
+ "timeline": null,
+ "tiles": [
+  [
+   "5",
+   "divisions with their own sales processes"
+  ]
+ ],
+ "outcomes": [
+  "Workflows are streamlined and more efficient.",
+  "Accessibility improved across the organization.",
+  "User acceptance and productivity increased.",
+  "Management gained insight into sales trends through dashboards."
+ ],
+ "chapters": [
+  [
+   "What was wrong with REI's CRM?",
+   [
+    "Radio Engineering Industries, Inc. (REI) is headquartered in Omaha and manufactures audio, video, and safety systems for the school and tour bus industry.",
+    "REI's on-premises Dynamics 2011 CRM had grown outdated, which led to low user acceptance. REI wanted to move to Dynamics 365 Online and shift from mostly offline processes to a CRM-centered approach."
+   ]
+  ],
+  [
+   "What did we change?",
+   [
+    "We migrated REI to Dynamics 365 Online.",
+    "We designed and implemented structured sales processes in Dynamics 365 Sales to fit the needs of REI's five divisions, and built dashboards that give management insight into sales trends."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "REI's sales work now runs on streamlined, more efficient workflows, with better accessibility across the organization and higher user acceptance and productivity."
+   ]
+  ]
+ ],
+ "next_steps": null,
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2018-05-01",
+ "published_h": "May 1, 2018",
+ "sources": [
+  {
+   "claim": "Client and location",
+   "quote": "Radio Engineering Industries, Inc. (REI), headquartered in Omaha"
+  },
+  {
+   "claim": "Location line",
+   "quote": "Omaha, NE"
+  },
+  {
+   "claim": "Industry",
+   "quote": "foremost manufacturer specializing in cutting-edge audio, video, and safety systems"
+  },
+  {
+   "claim": "Market",
+   "quote": "meticulously tailored for the school and tour bus industry"
+  },
+  {
+   "claim": "Starting point",
+   "quote": "Their existing Dynamics 2011 on-premise CRM system, once a cornerstone of their operations, had grown outdated"
+  },
+  {
+   "claim": "Low acceptance",
+   "quote": "This unfortunate circumstance led to suboptimal user acceptance"
+  },
+  {
+   "claim": "Goal",
+   "quote": "REI embarked on a mission to transition to Dynamics 365 Online"
+  },
+  {
+   "claim": "Offline to CRM",
+   "quote": "shift from predominantly offline processes to a CRM-centric approach"
+  },
+  {
+   "claim": "Migration",
+   "quote": "executing a meticulous migration"
+  },
+  {
+   "claim": "Sales processes",
+   "quote": "design and implement structured sales processes"
+  },
+  {
+   "claim": "Five divisions",
+   "quote": "cater to the distinct needs and intricacies of REI’s five distinct divisions"
+  },
+  {
+   "claim": "Dashboards",
+   "quote": "These dashboards provided REI’s management team with valuable insights into sales trends"
+  },
+  {
+   "claim": "Workflow result",
+   "quote": "The implementation of Dynamics 365 has ushered in a new era of streamlined, highly efficient workflows."
+  },
+  {
+   "claim": "Accessibility result",
+   "quote": "significantly improved accessibility across the organization"
+  },
+  {
+   "claim": "Acceptance result",
+   "quote": "The end result has been a notable increase in user acceptance and productivity."
+  },
+  {
+   "claim": "Products",
+   "quote": "Dynamics 365 Sales"
+  },
+  {
+   "claim": "Services",
+   "quote": "Implementation Services"
+  }
+ ],
+ "notes": "Page H1: 'REI Transforms Sales Process with Dynamics 365' (meta title 'REI Streamlines Sales Process with Dynamics 365 CRM'). Page says 'on-premise' (no s); written as on-premises. Page shows a modified date of August 13, 2026. The '5 divisions' tile is a count stated on the page. No timeline, figures or named quote. Work type Upgrade matches (Dynamics 2011 to Dynamics 365 Online). WebFetch would not return full verbatim text."
+}

@@ -1,0 +1,137 @@
+{
+ "key": "ppc",
+ "slug": "encloud9-enables-design-company-to-work-more-productively-and-efficiently-after-digitally-transforming-various-processes",
+ "client": "PPC Flexible Packaging",
+ "work_type": "New build",
+ "title": "PPC Flex: Artwork jobs tracked in CRM | enCloud9",
+ "meta": "How enCloud9 replaced PPC Flex's manual client artwork process with a Dynamics 365 tracking system for requests, estimates, design and artist schedules.",
+ "h1": [
+  "PPC Flex:",
+  "Artwork jobs tracked in Dynamics 365"
+ ],
+ "answer": "PPC Flexible Packaging is a flexible packaging manufacturer in Buffalo Grove, Illinois. Its manual process for managing client artwork had become outdated. We built a Dynamics 365 tracking system for client requests, job estimates and the full design process, with a dashboard and a due-date calendar. PPC expects to save hundreds of hours annually.",
+ "facts": [
+  [
+   "Client",
+   "PPC Flexible Packaging (PPC Flex)"
+  ],
+  [
+   "Location",
+   "Buffalo Grove, IL"
+  ],
+  [
+   "Industry",
+   "Flexible packaging manufacturing"
+  ],
+  [
+   "Starting point",
+   "Manual, outdated processes for managing client artwork"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales"
+  ],
+  [
+   "Services",
+   "Implementation Services"
+  ]
+ ],
+ "timeline": null,
+ "tiles": [
+  [
+   "Hundreds of hours",
+   "expected to be saved each year"
+  ]
+ ],
+ "outcomes": [
+  "PPC manages all its jobs in Dynamics 365 through a dashboard.",
+  "A calendar organizes jobs by due date and assigns them to the responsible artists.",
+  "The system is expected to save hundreds of hours annually."
+ ],
+ "chapters": [
+  [
+   "What did PPC Flex need?",
+   [
+    "PPC Flexible Packaging, formerly known as Packaging Products, makes flexible packaging in Buffalo Grove, Illinois, including consumer, cleanroom, and floral and gift packaging.",
+    "PPC saw that some of its processes had become outdated and needed to digitize and streamline its manual processes to stay competitive. Many clients depend on PPC's design services, so a smooth system for client artwork was essential."
+   ]
+  ],
+  [
+   "What did we build?",
+   [
+    "We started with PPC's manual process for managing client artwork.",
+    "Using Microsoft Dynamics 365, we built a tracking system that manages client requests, job estimates, and the entire design process."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "PPC now manages all its jobs in Dynamics 365 through a dashboard, with a calendar that organizes jobs by due date and assigns them to the responsible artists. The system is expected to save hundreds of hours annually."
+   ]
+  ]
+ ],
+ "next_steps": null,
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2018-05-01",
+ "published_h": "May 1, 2018",
+ "sources": [
+  {
+   "claim": "Client, location, industry",
+   "quote": "Located in Buffalo Grove, Illinois, PPC Flexible Packaging is a leader in high-quality flexible packaging manufacturing."
+  },
+  {
+   "claim": "Product lines",
+   "quote": "PPC offers a wide range of products, including consumer packaging, cleanroom packaging, and floral/gift packaging."
+  },
+  {
+   "claim": "Former name",
+   "quote": "Formerly known as Packaging Products, PPC partnered with enCloud9"
+  },
+  {
+   "claim": "Outdated processes",
+   "quote": "PPC, always looking ahead, realized that some of their processes had become outdated."
+  },
+  {
+   "claim": "Digitize to compete",
+   "quote": "they knew they needed to digitize and streamline their manual processes to stay competitive."
+  },
+  {
+   "claim": "Design services",
+   "quote": "Many clients depend on PPC’s design services, so a smooth and efficient system was essential."
+  },
+  {
+   "claim": "Artwork first",
+   "quote": "The first step was to overhaul their manual processes for managing client artwork"
+  },
+  {
+   "claim": "Built with Dynamics 365",
+   "quote": "Using Microsoft Dynamics 365, enCloud9 created a sophisticated tracking system."
+  },
+  {
+   "claim": "System scope",
+   "quote": "This system manages client requests, job estimates, and the entire design process"
+  },
+  {
+   "claim": "Dashboard result",
+   "quote": "PPC can now manage all their jobs through Dynamics 365, accessible via an intuitive dashboard."
+  },
+  {
+   "claim": "Calendar result",
+   "quote": "includes a calendar that organizes jobs by due date and assigns them to responsible artists."
+  },
+  {
+   "claim": "Hours saved",
+   "quote": "is expected to save hundreds of hours annually."
+  },
+  {
+   "claim": "Products",
+   "quote": "Dynamics 365 Sales"
+  },
+  {
+   "claim": "Services",
+   "quote": "Implementation Services"
+  }
+ ],
+ "notes": "Client is named three ways on the page: 'PPC Flex' (H1), 'PPC Flexible Packaging' (overview) and formerly 'Packaging Products'. Used PPC Flexible Packaging as client, PPC Flex in title and H1 to match the hub. Location: page writes 'Buffalo Grove, Illinois' in the body; written as IL in facts to match the City, ST format. Slug calls PPC a 'design company'; the page calls it a flexible packaging manufacturer. Page also says 'PPC Flex has enjoyed a long-standing partnership with enCloud9' (not used as an outcome). 'Hundreds of hours' is a projection, worded as expected. Page H1: 'PPC Flex Boosts Productivity and Efficiency with Dynamics 365'. No timeline, next steps or named quote. WebFetch would not return full verbatim text."
+}
