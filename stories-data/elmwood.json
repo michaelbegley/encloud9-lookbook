@@ -1,0 +1,140 @@
+{
+ "key": "elmwood",
+ "slug": "elmwood-reclaimed-timber-migrating-a-20-year-old-crm-to-the-cloud",
+ "client": "Elmwood Reclaimed Timber",
+ "work_type": "Upgrade",
+ "title": "Elmwood Reclaimed Timber: CRM moved to the cloud | enCloud9",
+ "meta": "How enCloud9 moved Elmwood Reclaimed Timber's on-premises Dynamics 365 to the Microsoft Cloud, with Tibco (Scribe) data transfer and GP ERP order integration.",
+ "h1": [
+  "Elmwood Reclaimed Timber:",
+  "On-premises CRM moved to the cloud"
+ ],
+ "answer": "Elmwood Reclaimed Timber, based in Peculiar, MO, supplies natural wood products to homeowners, homebuilders and architects. It wanted its on-premises Dynamics 365 system in the Microsoft Cloud. With the Microsoft Fast Track team, we migrated it, used Tibco (Scribe) for data transfer and connected its GP ERP for orders. Within 3-4 months Elmwood was using cloud-specific features.",
+ "facts": [
+  [
+   "Client",
+   "Elmwood Reclaimed Timber"
+  ],
+  [
+   "Location",
+   "Peculiar, MO"
+  ],
+  [
+   "Industry",
+   "Natural wood products for homeowners, homebuilders and architects"
+  ],
+  [
+   "Starting point",
+   "On-premises Dynamics 365"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales Enterprise; Tibco Cloud; ClickDimensions"
+  ],
+  [
+   "Services",
+   "Cloud Migration, ERP Integration, Marketing Services, Support Contract"
+  ]
+ ],
+ "timeline": "Within 3-4 months",
+ "tiles": [
+  [
+   "3-4 months",
+   "to full use of cloud features"
+  ]
+ ],
+ "outcomes": [
+  "Within 3-4 months, Elmwood was fully using cloud-specific features such as Sales Assistance for round-robin lead assignments and sequences.",
+  "The migration reduced Elmwood's server room needs.",
+  "Sales processes were streamlined.",
+  "Elmwood was very satisfied with the results."
+ ],
+ "chapters": [
+  [
+   "What did Elmwood need?",
+   [
+    "Elmwood Reclaimed Timber, based in Peculiar, MO, is a top provider of natural wood products for homeowners, homebuilders and architects.",
+    "It wanted to migrate its existing on-premises Dynamics 365 system to the Microsoft Cloud. A former consultant coworker of Brian Begley recommended enCloud9."
+   ]
+  ],
+  [
+   "What did we change?",
+   [
+    "With help from the Microsoft Fast Track team, we moved the CRM to the cloud. We used Tibco (Scribe) for data transfer and connected Elmwood's on-premises GP ERP for order submissions, along with Dynamics GP and ClickDimensions."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "Elmwood now uses cloud-specific features such as Sales Assistance for round-robin lead assignments and sequences. The migration reduced its server room needs and streamlined its sales processes."
+   ]
+  ]
+ ],
+ "next_steps": [
+  "What comes next for Elmwood?",
+  "Elmwood continues to work with enCloud9 to further clean up its data."
+ ],
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2024-07-22",
+ "published_h": "July 22, 2024",
+ "sources": [
+  {
+   "claim": "Client and location",
+   "quote": "Elmwood Reclaimed Timber, based in Peculiar, MO, is a top provider of natural wood products for homeowners, homebuilders,"
+  },
+  {
+   "claim": "Products",
+   "quote": "Dynamics 365 Sales Enterprise; Tibco Cloud; ClickDimensions (Products Used list)"
+  },
+  {
+   "claim": "Services",
+   "quote": "Cloud Migration, ERP Integration, Marketing Services, Support Contract (enCloud9 Services list)"
+  },
+  {
+   "claim": "Goal / starting point",
+   "quote": "migrate their existing on-premises Dynamics 365 system to the Microsoft Cloud"
+  },
+  {
+   "claim": "Referral",
+   "quote": "a former consultant coworker of Brian Begley"
+  },
+  {
+   "claim": "Fast Track",
+   "quote": "With help from the Microsoft Fast Track team"
+  },
+  {
+   "claim": "Data transfer",
+   "quote": "We integrated Tibco (Scribe) for efficient data transfer"
+  },
+  {
+   "claim": "ERP",
+   "quote": "connected their on-premises GP ERP for order submissions, along with Dynamics GP and ClickDimensions."
+  },
+  {
+   "claim": "Timeline / tile",
+   "quote": "Within 3-4 months, Elmwood was able to fully leverage cloud-specific features like Sales Assistance"
+  },
+  {
+   "claim": "Round-robin",
+   "quote": "Sales Assistance for round-robin lead assignments and sequences"
+  },
+  {
+   "claim": "Server room",
+   "quote": "This migration reduced their server room needs"
+  },
+  {
+   "claim": "Sales processes",
+   "quote": "streamlined sales processes"
+  },
+  {
+   "claim": "Satisfaction",
+   "quote": "Elmwood was very satisfied with the results"
+  },
+  {
+   "claim": "Next steps",
+   "quote": "continues to work with enCloud9 to further clean up data"
+  }
+ ],
+ "notes": "'20-Year' appears in the page H1 ('Migrates 20-Year CRM to the Cloud') and meta description but not in the body; I kept the age out of the new copy. Hub product list shows 'Click' truncated; the page says ClickDimensions. 'architects' confirmed only from a summarizing fetch, not an exact quote (the exact quote cut off after 'homebuilders,'). A first fetch summary also mentioned modernizing sales processes as ongoing work; I could not confirm exact wording, so next steps uses only data clean-up. Work type kept as Upgrade (on-premises to cloud migration). No named client quote; Brian Begley named only as a referral link. Business Central only in site navigation and footer."
+}

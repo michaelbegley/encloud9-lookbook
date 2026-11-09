@@ -1,0 +1,161 @@
+{
+ "key": "compana",
+ "slug": "how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio",
+ "client": "Compana",
+ "work_type": "Support",
+ "title": "Compana: Ongoing Dynamics 365 support | enCloud9",
+ "meta": "How enCloud9 supports Compana's Dynamics 365 Sales and Customer Service under a continuous support model and helps it explore Copilot Studio and chatbots.",
+ "h1": [
+  "Compana:",
+  "A stable CRM, ready to test AI"
+ ],
+ "answer": "Compana Pet Products, in St. Louis, MO, delivers pet products across multiple brands and had already invested in Dynamics 365. It needed a partner to maintain and expand that system. We support it under a continuous support model and explored Copilot Studio and chatbots with it. The result is a more stable, supported Sales and Customer Service environment.",
+ "facts": [
+  [
+   "Client",
+   "Compana Pet Products"
+  ],
+  [
+   "Location",
+   "St. Louis, MO"
+  ],
+  [
+   "Industry",
+   "Pet products across multiple brands"
+  ],
+  [
+   "Starting point",
+   "Existing Dynamics 365 Sales and Customer Service"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales; Dynamics 365 Customer Service; Microsoft Copilot Studio; Dataverse; Microsoft Azure"
+  ],
+  [
+   "Services",
+   "Dynamics 365 Ongoing Support & Optimization, Copilot Studio / Chatbot Development, CRM & Customer Service Consulting, System Integration (including Shopify-related initiatives), Licensing & Environment Management"
+  ]
+ ],
+ "timeline": null,
+ "tiles": [],
+ "outcomes": [
+  "Compana has a more stable, supported Dynamics 365 Sales and Customer Service environment.",
+  "It can explore and test AI-driven customer engagement.",
+  "It is an early adopter of Copilot Studio and chatbot capabilities.",
+  "Alignment between CRM, customer service and digital channels improved."
+ ],
+ "chapters": [
+  [
+   "What did Compana need?",
+   [
+    "Compana Pet Products is a growing organization focused on delivering high-quality pet products across multiple brands. It had already invested in Microsoft Dynamics 365 and needed a partner to help maintain and expand that system.",
+    "Compana wanted to improve customer engagement through digital channels, explore AI-driven customer service, keep its CRM and service systems stable as usage scaled, and find practical ways to extend Dynamics 365 into new areas, including eCommerce."
+   ]
+  ],
+  [
+   "What did we change?",
+   [
+    "We partnered with Compana under a continuous support model for its Sales and Customer Service systems in Dynamics 365.",
+    "Together we explored Copilot Studio and chatbot capabilities, including a Copilot Studio integration with Shopify that connects customer interaction tools with eCommerce systems. We also helped multiple Dynamics 365 applications and supporting technologies, including Dataverse and Azure-based infrastructure, work together effectively."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "Compana runs a more stable, supported Sales and Customer Service environment and has a trusted partner for both day-to-day needs and new initiatives."
+   ]
+  ]
+ ],
+ "next_steps": null,
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2026-06-17",
+ "published_h": "June 17, 2026",
+ "sources": [
+  {
+   "claim": "Client name (header)",
+   "quote": "Compana Pet Brands"
+  },
+  {
+   "claim": "Client name (body) / industry",
+   "quote": "Compana Pet Products is a growing organization focused on delivering high-quality pet products across multiple brands."
+  },
+  {
+   "claim": "Location",
+   "quote": "St. Louis, MO"
+  },
+  {
+   "claim": "Products",
+   "quote": "Dynamics 365 Sales, Dynamics 365 Customer Service, Microsoft Copilot Studio, Dataverse, Microsoft Azure (Products Used list)"
+  },
+  {
+   "claim": "Services",
+   "quote": "System Integration (including Shopify-related initiatives)"
+  },
+  {
+   "claim": "Starting point",
+   "quote": "Compana had already invested in Microsoft Dynamics 365"
+  },
+  {
+   "claim": "Need",
+   "quote": "Compana needed a partner to help maintain and expand their Dynamics 365 ecosystem."
+  },
+  {
+   "claim": "Goal: engagement",
+   "quote": "Improve customer engagement through digital channels"
+  },
+  {
+   "claim": "Goal: AI",
+   "quote": "Explore AI-driven customer service capabilities"
+  },
+  {
+   "claim": "Goal: stability",
+   "quote": "Ensure their CRM and service systems remained stable as usage scaled"
+  },
+  {
+   "claim": "Goal: eCommerce",
+   "quote": "Identify practical ways to extend Dynamics 365 into new areas, including eCommerce"
+  },
+  {
+   "claim": "Support model",
+   "quote": "partnered with Compana under a continuous support model"
+  },
+  {
+   "claim": "Copilot Studio",
+   "quote": "Compana worked with enCloud9 to explore Copilot Studio and chatbot capabilities."
+  },
+  {
+   "claim": "Shopify",
+   "quote": "Copilot Studio integration with Shopify, connecting customer interaction tools with eCommerce systems."
+  },
+  {
+   "claim": "Environment",
+   "quote": "Dataverse database and file storage, Azure-based infrastructure"
+  },
+  {
+   "claim": "Working together",
+   "quote": "these systems worked together effectively"
+  },
+  {
+   "claim": "Outcome: stability",
+   "quote": "more stable, supported Dynamics 365 Sales and Customer Service environment"
+  },
+  {
+   "claim": "Outcome: AI testing",
+   "quote": "the ability to explore and test AI-driven customer engagement"
+  },
+  {
+   "claim": "Outcome: early adoption",
+   "quote": "Early adoption of Copilot Studio and chatbot capabilities"
+  },
+  {
+   "claim": "Outcome: alignment",
+   "quote": "improved alignment between CRM, customer service, and digital channels"
+  },
+  {
+   "claim": "Partner",
+   "quote": "Compana appreciates having a trusted partner to support both day-to-day needs and new initiatives."
+  }
+ ],
+ "notes": "Client name is inconsistent on the page: header block says 'Compana Pet Brands', Client Overview says 'Compana Pet Products', H1 and body use 'Compana'. I used 'Compana' for client/title/h1 and 'Compana Pet Products' in the Client fact row and answer (body wording); pick one before publishing. A stray header line reads 'The Schiff Group', which does not belong to this story. The Shopify integration appears as a verbless bullet, so the page does not say whether it was built or only explored; copy says 'explored' at the Copilot Studio level and describes the Shopify item without claiming it shipped. No timeline (engagement is ongoing); no numbers, so tiles empty. Licensing & Environment Management appears only in the services list. No named client quote. Page metadata shows last modified August 13, 2026. Business Central only in site navigation and footer."
+}

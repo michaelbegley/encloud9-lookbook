@@ -1,0 +1,161 @@
+{
+ "key": "kbg",
+ "slug": "kbg-technologies-enhances-sales-processes-with-dynamics-365-implementation-by-encloud9",
+ "client": "KBG Technologies",
+ "work_type": "New build",
+ "title": "KBG Technologies: New sales and quoting system | enCloud9",
+ "meta": "How enCloud9 implemented Dynamics 365 for KBG Technologies in Memphis, adding pipeline management, quoting and data migration within two months.",
+ "h1": [
+  "KBG Technologies:",
+  "One platform for sales and quoting"
+ ],
+ "answer": "KBG Technologies is a new Memphis, TN company providing chemical solutions for water systems and the pulp and paper industries. It ran solely on QuickBooks, which was not enough for its growing needs. We implemented Dynamics 365 with pipeline management, quoting and data migration. Within two months KBG had one platform for its sales activity.",
+ "facts": [
+  [
+   "Client",
+   "KBG Technologies"
+  ],
+  [
+   "Location",
+   "Memphis, TN"
+  ],
+  [
+   "Industry",
+   "Chemical solutions for water systems and the pulp and paper industries"
+  ],
+  [
+   "Starting point",
+   "QuickBooks only"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales; Team Member"
+  ],
+  [
+   "Services",
+   "Implementation Services, Data Migration"
+  ]
+ ],
+ "timeline": "Within two months",
+ "tiles": [
+  [
+   "2 months",
+   "to complete the project"
+  ]
+ ],
+ "outcomes": [
+  "The project was completed within two months.",
+  "KBG gained a centralized platform for all sales-related activities, from client communication to quoting and document storage.",
+  "Its ability to track and manage sales processes improved.",
+  "KBG was particularly pleased with the improved quoting process."
+ ],
+ "chapters": [
+  [
+   "What did KBG need?",
+   [
+    "KBG Technologies is a new company that specializes in advanced chemical solutions for water systems and the pulp and paper industries. As a new company, it wanted efficient systems for client communication, sales pipelines and quoting.",
+    "KBG initially operated solely on QuickBooks, which was insufficient for its growing business needs."
+   ]
+  ],
+  [
+   "What did we build?",
+   [
+    "We implemented Dynamics 365 Customer Engagement. Sales pipeline management lets KBG track communications with customers and prospects, monitor opportunities and report on pipeline status.",
+    "We set up a quoting system and migrated data from KBG's existing systems."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "KBG now manages all sales-related activities on one platform, from client communication to quoting and document storage. That improved its ability to track and manage sales processes and supports better decision-making and customer engagement."
+   ]
+  ]
+ ],
+ "next_steps": [
+  "What comes next for KBG?",
+  "KBG plans to continue its partnership with enCloud9 for ongoing support and potential future projects, including order management."
+ ],
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2024-07-24",
+ "published_h": "July 24, 2024",
+ "sources": [
+  {
+   "claim": "Location",
+   "quote": "Memphis, TN"
+  },
+  {
+   "claim": "Products",
+   "quote": "Dynamics 365 Sales; Team Member (Products Used list)"
+  },
+  {
+   "claim": "Services",
+   "quote": "Implementation Services; Data Migration (enCloud9 Services list)"
+  },
+  {
+   "claim": "Industry",
+   "quote": "specializes in advanced chemical solutions for water systems and the pulp and paper industries."
+  },
+  {
+   "claim": "New company",
+   "quote": "As a new company, they sought to establish efficient systems"
+  },
+  {
+   "claim": "Needs",
+   "quote": "for managing client communication, sales pipelines, and quoting processes"
+  },
+  {
+   "claim": "Starting point",
+   "quote": "KBG Technologies initially operated solely on QuickBooks, which was insufficient for managing their growing business needs."
+  },
+  {
+   "claim": "What we implemented",
+   "quote": "enCloud9 implemented Dynamics 365 Customer Engagement (CE)"
+  },
+  {
+   "claim": "Pipeline management",
+   "quote": "Enabling KBG to track communications with customers and prospects, monitor opportunities, and report on pipeline status."
+  },
+  {
+   "claim": "Quoting",
+   "quote": "A robust quoting system was established"
+  },
+  {
+   "claim": "Data migration",
+   "quote": "Comprehensive data migration from existing systems to ensure seamless transition"
+  },
+  {
+   "claim": "Timeline / tile",
+   "quote": "The project was completed within two months"
+  },
+  {
+   "claim": "Central platform",
+   "quote": "provided a centralized platform for managing all sales-related activities"
+  },
+  {
+   "claim": "Document storage",
+   "quote": "from client communication to quoting and document storage"
+  },
+  {
+   "claim": "Tracking",
+   "quote": "This integration improved their ability to track and manage sales processes"
+  },
+  {
+   "claim": "Decision-making",
+   "quote": "supporting better decision-making and customer engagement"
+  },
+  {
+   "claim": "Quoting result",
+   "quote": "particularly pleased with the improved quoting process"
+  },
+  {
+   "claim": "Next steps",
+   "quote": "plan to continue their partnership with enCloud9 for ongoing support"
+  },
+  {
+   "claim": "Order management",
+   "quote": "potential future projects, including order management"
+  }
+ ],
+ "notes": "Body names the product as 'Dynamics 365 Customer Engagement (CE)' while the Products Used list says Dynamics 365 Sales and Team Member. No labeled Industry or Timeline field in the header block; industry and the two-month timeline come from the body. Page notes the owner was a shareholder in Buckman ('The owner of KBG Technologies was a shareholder in Buckman'), where enCloud9 had done earlier work; not used. No named client quote. Business Central appears only in site navigation and footer, not the story."
+}

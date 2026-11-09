@@ -1,0 +1,169 @@
+{
+ "key": "msa",
+ "slug": "msa-source-transforms-compliance-operations-with-encloud9s-tailored-solutions",
+ "client": "MSA Source",
+ "work_type": "Rescue or fix",
+ "title": "MSA Source: Better Reporting and Seed Money Math | enCloud9",
+ "meta": "How enCloud9 improved MSA Source's CRM after another partner's build, adding Document Core Pack reports, a Seed Money calculation and dashboards.",
+ "h1": [
+  "MSA Source:",
+  "More accurate reporting, simpler tracking"
+ ],
+ "answer": "MSA Source, a Brandon, FL company specializing in Medicare Secondary Payer compliance, had a CRM from another partner that relied heavily on Power Automate Flows and Word documents for reporting. We deployed Document Core Pack for reports and email templates, built a Seed Money Allocation calculation and added status dashboards. Reporting accuracy and data tracking improved.",
+ "facts": [
+  [
+   "Client",
+   "MSA Source"
+  ],
+  [
+   "Location",
+   "Brandon, FL"
+  ],
+  [
+   "Industry",
+   "Medicare Secondary Payer compliance"
+  ],
+  [
+   "Starting point",
+   "A previous CRM implementation by another partner, heavily reliant on Power Automate Flows"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales; Team Member; Click2Clone; Document Core Pack; MS CRM Add ons"
+  ],
+  [
+   "Services",
+   "Enhanced Support for Specific Tasks"
+  ]
+ ],
+ "timeline": null,
+ "tiles": [
+  [
+   "1 month",
+   "typical length of each ongoing support project"
+  ]
+ ],
+ "outcomes": [
+  "Reporting accuracy improved.",
+  "Data tracking is simpler.",
+  "The team has clear insight into the status of its projects.",
+  "The Seed Money Calculation and dashboards were particularly well received and significantly improved operational efficiency."
+ ],
+ "chapters": [
+  [
+   "What was wrong with MSA Source's CRM?",
+   [
+    "MSA Source specializes in Medicare Secondary Payer compliance, helping clients navigate the claims process and manage their responsibilities efficiently and accurately.",
+    "Its previous CRM implementation, built by another partner, relied heavily on Power Automate Flows and was inadequate for the company's complex reporting and data processing needs. Complex reports were built in Microsoft Word documents, which proved insufficient. The team struggled to calculate Seed Money Allocations accurately and needed help with templated emails and process flows."
+   ]
+  ],
+  [
+   "What did we change?",
+   [
+    "We deployed Document Core Pack for complex reports, replacing the Word-based system, and used it to create email templates for more consistent communication.",
+    "We designed a precise solution for the complex Seed Money Allocation calculations, and built dashboards that group data by status stage."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "MSA Source has a more streamlined and efficient system. Reporting is more accurate, data tracking is simpler and the team can see the status of its projects clearly. The Seed Money Calculation and dashboards were particularly well received."
+   ]
+  ]
+ ],
+ "next_steps": [
+  "What comes next for MSA Source?",
+  "MSA Source continues to work with enCloud9 for ongoing support and further enhancements, with projects typically spanning one month at a time. Budget may shape the scope of future work, and MSA Source sees room for continued improvement."
+ ],
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2024-07-24",
+ "published_h": "July 24, 2024",
+ "sources": [
+  {
+   "claim": "Client overview",
+   "quote": "MSA Source is an innovative company specializing in Medicare Secondary Payer compliance"
+  },
+  {
+   "claim": "Claims",
+   "quote": "helping clients navigate the complex claims process with confidence"
+  },
+  {
+   "claim": "Previous partner",
+   "quote": "MSA Source faced several challenges with their previous CRM implementation by another partner."
+  },
+  {
+   "claim": "Flows",
+   "quote": "heavily reliant on Power Automate Flows"
+  },
+  {
+   "claim": "Inadequate",
+   "quote": "was inadequate for handling the company's complex reporting and data processing needs"
+  },
+  {
+   "claim": "Word reporting",
+   "quote": "They used Microsoft Word Documents for complex reporting, which proved insufficient."
+  },
+  {
+   "claim": "Seed Money problem",
+   "quote": "they struggled with accurately calculating Seed Money Allocations"
+  },
+  {
+   "claim": "Templates need",
+   "quote": "needed assistance with templated emails and process flow improvements"
+  },
+  {
+   "claim": "Document Core Pack",
+   "quote": "Document Core Pack: Deployed for creating complex reports, replacing the inadequate Microsoft Word-based system."
+  },
+  {
+   "claim": "Seed Money fix",
+   "quote": "Seed Money Calculation: Designed a precise solution for handling the complex Seed Money Allocation calculations"
+  },
+  {
+   "claim": "Email templates",
+   "quote": "Email Templates: Created efficient email templates using Document Core Pack, improving communication consistency."
+  },
+  {
+   "claim": "Dashboards",
+   "quote": "Dashboards: Developed dashboards to compartmentalize data in various status stages"
+  },
+  {
+   "claim": "Outcome: streamlined",
+   "quote": "The collaboration with enCloud9 resulted in a more streamlined and efficient system for MSA Source."
+  },
+  {
+   "claim": "Outcome: accuracy and tracking",
+   "quote": "The new tools and processes improved reporting accuracy, simplified data tracking"
+  },
+  {
+   "claim": "Outcome: status insight",
+   "quote": "provided clear insights into the status of various projects"
+  },
+  {
+   "claim": "Outcome: well received",
+   "quote": "The enhanced Seed Money Calculation and detailed dashboards were particularly well-received"
+  },
+  {
+   "claim": "Outcome: efficiency",
+   "quote": "significantly improving operational efficiency"
+  },
+  {
+   "claim": "Next: ongoing",
+   "quote": "The company continues to work with enCloud9 for ongoing support and further enhancements"
+  },
+  {
+   "claim": "Tile: one month",
+   "quote": "with projects typically spanning one month at a time"
+  },
+  {
+   "claim": "Next: budget",
+   "quote": "While budget considerations may influence the scope of future work"
+  },
+  {
+   "claim": "Next: potential",
+   "quote": "MSA Source recognizes the potential for continued improvements and values the partnership with enCloud9"
+  }
+ ],
+ "notes": "Page H1 is 'MSA Source Transforms Compliance with Dynamics 365'. Rescue or fix fits: the page says the previous partner's implementation was inadequate. The 1 month tile is the typical length of each ongoing support project, not the original project; no project timeline is stated, so timeline is null. Drop the tile if the template wants project figures only. 'MS CRM Add ons' and 'Click2Clone' are in the products list but the story body never mentions them. The page does not explicitly name Dynamics 365 as the previous partner's platform in the challenge text; the H1 and products list say Dynamics 365. Location Brandon, FL from the page details as reported by WebFetch, not a separate quote. No named client quote. Business Central appears only in site navigation and footer."
+}

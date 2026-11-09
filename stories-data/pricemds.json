@@ -1,0 +1,184 @@
+{
+ "key": "pricemds",
+ "slug": "how-price-mds-transformed-healthcare-operations-with-dynamics-365",
+ "client": "PriceMDs",
+ "work_type": "New build",
+ "title": "PriceMDs: Dynamics 365 for Healthcare Operations | enCloud9",
+ "meta": "How enCloud9 moved PriceMDs from Monday CRM to Dynamics 365, then added a pharmacist portal, Tive and Ship 24 integrations and electronic signatures.",
+ "h1": [
+  "PriceMDs:",
+  "A CRM built around healthcare work"
+ ],
+ "answer": "PriceMDs, a healthcare company in Clearwater, FL, was using Monday CRM and needed to manage patient and prescription data with custom business logic. We implemented Dynamics 365 with custom entities, workflows and plugins, then added a pharmacist portal, Tive and Ship 24 integrations and electronic signatures. Patient onboarding is faster and reporting is clearer.",
+ "facts": [
+  [
+   "Client",
+   "PriceMDs"
+  ],
+  [
+   "Location",
+   "Clearwater, FL"
+  ],
+  [
+   "Industry",
+   "Healthcare"
+  ],
+  [
+   "Starting point",
+   "Monday CRM"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales and Customer Service; Dataverse; Power Pages (Portal); Document Core Pack"
+  ],
+  [
+   "Services",
+   "Dynamics 365 Implementation, Custom Development and Plugin Enhancements, Ongoing Support and optimization, API Integration (with Tive and Ship 24), Data Management and Reporting"
+  ]
+ ],
+ "timeline": null,
+ "tiles": [],
+ "outcomes": [
+  "What started as a simple migration grew into a full CRM overhaul.",
+  "A pharmacist portal replaced managing orders through informal messaging apps.",
+  "Electronic signatures through Document Core Pack and Adobe Sign significantly sped up patient onboarding.",
+  "PriceMDs reports better visibility into operations and reporting.",
+  "The CRM is aligned with real-world healthcare processes."
+ ],
+ "chapters": [
+  [
+   "What did PriceMDs need?",
+   [
+    "PriceMDs offers healthcare solutions that help organizations reduce costs while improving access to medications and patient services. Its operations rely on accurate data, efficient workflows and visibility across multiple processes. Before working with enCloud9, PriceMDs was using Monday CRM.",
+    "It needed a system to manage patient and prescription data across multiple processes, support custom business logic that out-of-the-box CRM does not handle, improve visibility into operations and reporting, and keep data consistent and reliable.",
+    "As the business grew, new needs appeared: more workflows and integrations, more data volume, and more functionality without losing stability."
+   ]
+  ],
+  [
+   "What did we build?",
+   [
+    "We implemented Dynamics 365 and configured it around how PriceMDs actually works, with custom entities, workflows, plugins and data structures.",
+    "Once PriceMDs saw what Dynamics 365 could do, the scope expanded. We supported the development of a medication Pricing Portal, enabled integration with external systems like Tive and Ship 24, and improved data management, reporting and automation.",
+    "We built a pharmacist portal and set up electronic signatures through Document Core Pack and Adobe Sign."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "The pharmacist portal ended the chaos of managing orders through informal messaging apps, and electronic signatures significantly sped up patient onboarding. The team works with greater ease and confidence, and PriceMDs reports better visibility into operations and reporting."
+   ]
+  ]
+ ],
+ "next_steps": null,
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2026-06-05",
+ "published_h": "June 5, 2026",
+ "sources": [
+  {
+   "claim": "Client overview",
+   "quote": "PriceMDs offers win-win healthcare solutions to help organizations reduce costs"
+  },
+  {
+   "claim": "Industry",
+   "quote": "reduce costs while improving access to medications and patient services"
+  },
+  {
+   "claim": "Operations",
+   "quote": "Their operations rely heavily on accurate data, efficient workflows, and visibility across multiple processes."
+  },
+  {
+   "claim": "Implementation",
+   "quote": "To support this, PriceMDs implemented Dynamics 365 with enCloud9 as their partner."
+  },
+  {
+   "claim": "Starting point",
+   "quote": "Before partnering with enCloud9, PriceMDs was using Monday CRM."
+  },
+  {
+   "claim": "Need: patient data",
+   "quote": "Managing patient and prescription data across multiple processes"
+  },
+  {
+   "claim": "Need: custom logic",
+   "quote": "Supporting custom business logic not handles by out-of-the-box CRM"
+  },
+  {
+   "claim": "Need: visibility",
+   "quote": "Improving visibility into operations and reporting"
+  },
+  {
+   "claim": "Need: consistency",
+   "quote": "Ensuring data consistency and reliability"
+  },
+  {
+   "claim": "Growth needs",
+   "quote": "As the business grew, new needs emerged:"
+  },
+  {
+   "claim": "Growth: workflows",
+   "quote": "Supporting additional workflows and integrations"
+  },
+  {
+   "claim": "Growth: volume",
+   "quote": "Handling increasing data volume"
+  },
+  {
+   "claim": "Growth: stability",
+   "quote": "Expanding system functionality while maintaining stability."
+  },
+  {
+   "claim": "Build",
+   "quote": "configured the system to support their core operations, including custom entities, workflows, plugins"
+  },
+  {
+   "claim": "Fit to process",
+   "quote": "From the start, the focus was on aligning the system with how PriceMDs actually works"
+  },
+  {
+   "claim": "Pricing Portal",
+   "quote": "supporting the development of a medication Pricing Portal"
+  },
+  {
+   "claim": "Integrations",
+   "quote": "enabling integration with external systems like Tive and Ship 24"
+  },
+  {
+   "claim": "Scope expanded",
+   "quote": "Once Price MDs saw the potential of Dynamics 365, the project scope expanded."
+  },
+  {
+   "claim": "Outcome: overhaul",
+   "quote": "What started as a simple migration grew into a full CRM overhaul"
+  },
+  {
+   "claim": "Outcome: pharmacist portal",
+   "quote": "One of the most impactful outcomes was the creation of the pharmacist portal."
+  },
+  {
+   "claim": "Outcome: orders",
+   "quote": "This enabled global coordination and eliminated the chaos of managing orders through informal messaging apps."
+  },
+  {
+   "claim": "Outcome: e-signatures",
+   "quote": "the implementation of electronic signatures through Document Core Pack and Adobe Sign"
+  },
+  {
+   "claim": "Outcome: onboarding",
+   "quote": "which significantly accelerated the patient onboarding process."
+  },
+  {
+   "claim": "Outcome: team",
+   "quote": "The client’s team now works with greater ease and confidence"
+  },
+  {
+   "claim": "Outcome: aligned CRM",
+   "quote": "PriceMDs now has a CRM system that is aligned with real-world healthcare processes."
+  },
+  {
+   "claim": "Outcome: visibility",
+   "quote": "PriceMDs has reported better visibility into operations and reporting"
+  }
+ ],
+ "notes": "Page H1 is 'How PriceMDs Improved Healthcare Operations with Dynamics 365'; slug says 'transformed'. Page writes both 'PriceMDs' and 'Price MDs'; used PriceMDs. Published June 5, 2026 with a modified date of August 13, 2026 in metadata. Page mentions both a 'medication Pricing Portal' (enCloud9 supported its development) and a 'pharmacist portal' (named as an outcome); not clear if they are the same thing, so both are kept as the page words them. Location Clearwater, FL taken from the page's details as reported by WebFetch; I did not get a separate exact quote for it. Industry is not a labeled field; 'Healthcare' is from the page's wording. Page has typos: 'PriceMDs need a system', 'accuracty', 'not handles by', and a garbled sentence 'continually adapting CRM to continuously adapting it'. No numbers or timeline, so tiles are empty. Conclusion calls it a long-term partnership focused on continuous improvement but states no specific next steps, so next_steps is null. No named client quote. Business Central appears only in site navigation and footer. Memory notes a separate PriceMDs client file exists; not used, all facts are from the page."
+}

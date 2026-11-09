@@ -1,0 +1,170 @@
+{
+ "key": "tensionenv",
+ "slug": "tension-ss",
+ "client": "Tension Envelope",
+ "work_type": "Rescue or fix",
+ "title": "Tension Envelope: Stalled CRM project done | enCloud9",
+ "meta": "How enCloud9 restarted Tension Envelope's stalled Dynamics 365 Sales project, integrating its data warehouse and training an in-house SME within three months.",
+ "h1": [
+  "Tension Envelope:",
+  "A stalled CRM project brought to life"
+ ],
+ "answer": "Tension Envelope in Kansas City, MO is the second largest envelope producer in the United States. Its Dynamics 365 Sales project had stalled after trouble with a prior deployment partner. We integrated the system with its data warehouse, completed Sales Hub updates and trained an internal subject matter expert. The dormant project came to life within three months.",
+ "facts": [
+  [
+   "Client",
+   "Tension Envelope"
+  ],
+  [
+   "Location",
+   "Kansas City, MO"
+  ],
+  [
+   "Industry",
+   "Envelope design and manufacturing"
+  ],
+  [
+   "Starting point",
+   "Stalled Dynamics 365 Sales project"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales Enterprise"
+  ],
+  [
+   "Services",
+   "Implementation Services, Support Contract"
+  ]
+ ],
+ "timeline": "Within three months",
+ "tiles": [
+  [
+   "3 months",
+   "to bring a dormant project to life"
+  ],
+  [
+   "2nd largest",
+   "envelope producer in the US"
+  ],
+  [
+   "Billions",
+   "of envelopes made each year"
+  ]
+ ],
+ "outcomes": [
+  "A project that had been dormant for some time was brought to life within three months.",
+  "Integration with Tension's data warehouse streamlined management of client orders and budgets.",
+  "An internal subject matter expert can now handle user queries, make minor customizations and pass knowledge to other team members.",
+  "enCloud9 offers continuous support and consultation."
+ ],
+ "chapters": [
+  [
+   "What was wrong with Tension's CRM?",
+   [
+    "Tension is a privately held company that designs and manufactures billions of envelopes each year for clients in billing, finance and direct marketing. It is the second largest envelope producer in the United States.",
+    "Its Dynamics 365 Sales project had stagnated after problems with its prior Dynamics 365 deployment partner. A recommendation from its data analytics partner led it to enCloud9."
+   ]
+  ],
+  [
+   "What did we change?",
+   [
+    "We integrated the system with Tension's data warehouse to streamline management of client orders and budgets, and completed updates to the Sales Hub.",
+    "We also trained a subject matter expert inside Tension to handle user queries, make minor customizations and share knowledge with other team members."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "Tension manages client orders and budgets through the integrated system, and its own subject matter expert handles user questions and minor changes, with enCloud9 providing continuous support and consultation."
+   ]
+  ]
+ ],
+ "next_steps": null,
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2023-11-27",
+ "published_h": "November 27, 2023",
+ "sources": [
+  {
+   "claim": "Client name (header)",
+   "quote": "Tension Envelope"
+  },
+  {
+   "claim": "Location",
+   "quote": "Kansas City, MO"
+  },
+  {
+   "claim": "Products",
+   "quote": "Dynamics 365 Sales Enterprise (Products Used list)"
+  },
+  {
+   "claim": "Services",
+   "quote": "Implementation Services; Support Contract (enCloud9 Services list)"
+  },
+  {
+   "claim": "Privately held",
+   "quote": "As a privately held company"
+  },
+  {
+   "claim": "Industry",
+   "quote": "designing and manufacturing billions of envelopes each year"
+  },
+  {
+   "claim": "Clients",
+   "quote": "serving clients in billing, finance, and direct marketing"
+  },
+  {
+   "claim": "Rank / tile",
+   "quote": "second largest envelope producer in the United States"
+  },
+  {
+   "claim": "Volume / tile",
+   "quote": "billions of envelopes each year"
+  },
+  {
+   "claim": "Prior partner",
+   "quote": "their prior Dynamics 365 deployment partner"
+  },
+  {
+   "claim": "Stalled",
+   "quote": "stagnant Dynamics 365 Sales project"
+  },
+  {
+   "claim": "Referral",
+   "quote": "a recommendation from their data analytics partner"
+  },
+  {
+   "claim": "Data warehouse",
+   "quote": "integrated the system with Tension's data warehouse"
+  },
+  {
+   "claim": "Orders and budgets",
+   "quote": "streamlined management of client orders and budgets"
+  },
+  {
+   "claim": "Sales Hub",
+   "quote": "completing updates to the Sales Hub"
+  },
+  {
+   "claim": "SME",
+   "quote": "empower a subject matter expert (SME) within Tension"
+  },
+  {
+   "claim": "SME tasks",
+   "quote": "could handle user queries, make minor customizations, and facilitate knowledge transfer to other team members"
+  },
+  {
+   "claim": "Dormant",
+   "quote": "a project that had been dormant for some time"
+  },
+  {
+   "claim": "Timeline / tile",
+   "quote": "brought to life within a mere three-month timeframe"
+  },
+  {
+   "claim": "Support",
+   "quote": "offering continuous support and consultation"
+  }
+ ],
+ "notes": "Body calls the client 'Tension' throughout; 'Tension Envelope' appears only in the header block and metadata. Page H1 reads 'Tension Expands Operations with Dynamics 365 Transformation'. No labeled industry in header; industry from body. The page's wording for the prior-partner problem is 'stagnant' project and 'prior Dynamics 365 deployment partner'; it does not detail what went wrong, so copy says only that it stalled. No explicit next steps (only continuous support), so next_steps is null. No named client quote. Business Central only in site navigation and footer."
+}

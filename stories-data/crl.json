@@ -1,0 +1,181 @@
+{
+ "key": "crl",
+ "slug": "clinical-reference-laboratories-optimizes-processes-and-improves-efficiency-with-dynamics-365-customer-service",
+ "client": "Clinical Reference Lab (CRL)",
+ "work_type": "New build",
+ "title": "CRL: Dynamics 365 for a new subsidiary | enCloud9",
+ "meta": "How enCloud9 implemented Dynamics 365 for CRL's newly acquired subsidiary in three months, migrating years of data and rebuilding essential workflows.",
+ "h1": [
+  "CRL:",
+  "Dynamics 365 for a new subsidiary"
+ ],
+ "answer": "Clinical Reference Lab (CRL), a laboratory testing provider in Lenexa, KS, bought Confirm BioSciences in 2020. The subsidiary used a CRM initially designed for smaller businesses. We implemented Dynamics 365, migrated several years of historical data into Dynamics 365 Sales and rebuilt essential workflows. In three months CRL gained better visibility across its sales pipeline.",
+ "facts": [
+  [
+   "Client",
+   "Clinical Reference Lab (CRL)"
+  ],
+  [
+   "Location",
+   "Lenexa, KS"
+  ],
+  [
+   "Industry",
+   "Laboratory testing services"
+  ],
+  [
+   "Starting point",
+   "CRM initially designed for smaller businesses"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales"
+  ],
+  [
+   "Services",
+   "Implementation Services, Support Contract"
+  ]
+ ],
+ "timeline": "Within three months",
+ "tiles": [
+  [
+   "3 months",
+   "initial implementation"
+  ]
+ ],
+ "outcomes": [
+  "The initial implementation was completed in three months.",
+  "Visibility across the sales pipeline improved.",
+  "Customer engagement was enhanced.",
+  "CRL Government Services expressed strong interest in expanding its relationship with enCloud9."
+ ],
+ "chapters": [
+  [
+   "What did CRL need?",
+   [
+    "In 2020, Clinical Reference Laboratory (CRL), a leading provider of laboratory testing services headquartered in Lenexa, Kansas, purchased Confirm BioSciences, a company specializing in health screening solutions. The acquisition was a step toward expanding CRL's reach into government services and corporate wellness programs, and CRL wanted to streamline and strengthen the new subsidiary's operations.",
+    "Confirm Bio, now operating as CRL Government Services, was using a CRM system initially designed for smaller businesses. It lacked scalability, integration capabilities and sophisticated reporting. CRL had already partnered with enCloud9 on other CRM initiatives."
+   ]
+  ],
+  [
+   "What did we build?",
+   [
+    "An experienced enCloud9 consultant led the project, working closely with CRL's Director of Sales. We implemented Microsoft Dynamics 365 Customer Engagement with a focus on streamlining sales and customer service processes.",
+    "We migrated several years of historical data into Dynamics 365 Sales and rebuilt essential workflows."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "The team has better visibility across its sales pipeline and stronger customer engagement, laying the groundwork for future innovation."
+   ]
+  ]
+ ],
+ "next_steps": [
+  "What comes next for CRL?",
+  "CRL Government Services expressed strong interest in expanding its relationship with enCloud9 to integrate additional Dynamics 365 applications and optimize other business functions."
+ ],
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2023-10-29",
+ "published_h": "October 29, 2023",
+ "sources": [
+  {
+   "claim": "Client name (header)",
+   "quote": "Clinical Reference Lab (CRL)"
+  },
+  {
+   "claim": "Location",
+   "quote": "Lenexa, KS"
+  },
+  {
+   "claim": "Products",
+   "quote": "Dynamics 365 Sales (Products Used list)"
+  },
+  {
+   "claim": "Services",
+   "quote": "Implementation Services; Support Contract (enCloud9 Services list)"
+  },
+  {
+   "claim": "Who / industry / 2020",
+   "quote": "In 2020, Clinical Reference Laboratory (CRL), a leading provider of laboratory testing services"
+  },
+  {
+   "claim": "HQ",
+   "quote": "a leading provider of laboratory testing services headquartered in Lenexa, Kansas"
+  },
+  {
+   "claim": "Acquisition",
+   "quote": "by purchasing Confirm BioSciences, a company specializing in health screening solutions."
+  },
+  {
+   "claim": "Expansion goal",
+   "quote": "expanding CRL's reach into government services and corporate wellness programs"
+  },
+  {
+   "claim": "Subsidiary goal",
+   "quote": "CRL sought to streamline and strengthen the operations of their newly acquired subsidiary"
+  },
+  {
+   "claim": "Starting point",
+   "quote": "Confirm Bio, now operating as CRL Government Services, was using a CRM system initially designed for smaller businesses"
+  },
+  {
+   "claim": "Gaps",
+   "quote": "The existing platform lacked scalability, integration capabilities, and the sophisticated reporting necessary"
+  },
+  {
+   "claim": "Prior work",
+   "quote": "Having previously partnered with enCloud9 for other CRM initiatives"
+  },
+  {
+   "claim": "Consultant",
+   "quote": "An experienced enCloud9 consultant led the project"
+  },
+  {
+   "claim": "Director of Sales",
+   "quote": "working closely with CRL's Director of Sales"
+  },
+  {
+   "claim": "Product built",
+   "quote": "The project centered on implementing Microsoft Dynamics 365 Customer Engagement"
+  },
+  {
+   "claim": "Focus",
+   "quote": "with a focus on streamlining the sales and customer service processes"
+  },
+  {
+   "claim": "Migration",
+   "quote": "enCloud9 expertly migrated several years of historical data into Dynamics 365 Sales"
+  },
+  {
+   "claim": "Workflows",
+   "quote": "rebuilt essential workflows"
+  },
+  {
+   "claim": "Timeline / tile",
+   "quote": "The initial implementation was completed in just three months"
+  },
+  {
+   "claim": "Pipeline",
+   "quote": "improving visibility across their sales pipeline"
+  },
+  {
+   "claim": "Engagement",
+   "quote": "enhancing customer engagement"
+  },
+  {
+   "claim": "Groundwork",
+   "quote": "laying the groundwork for future innovation"
+  },
+  {
+   "claim": "Expansion",
+   "quote": "expressed strong interest in expanding their relationship with enCloud9"
+  },
+  {
+   "claim": "Next steps",
+   "quote": "to further integrate additional Dynamics 365 applications and optimize other business functions"
+  }
+ ],
+ "notes": "Name differs: header block says 'Clinical Reference Lab (CRL)', body says 'Clinical Reference Laboratory (CRL)'. Page title and slug say 'Customer Service', but Products Used lists only Dynamics 365 Sales and the body says 'Dynamics 365 Customer Engagement'; customer service appears only as a process. The header image alt text and 'Visit Website' link point to Elmwood Reclaimed Timber (elmwoodreclaimedtimber.com), a wrong-client leftover. Timeline field written as 'Within three months' per schema style; page says 'completed in just three months'. Work type kept as New build (new Dynamics 365 for the subsidiary, replacing a small-business CRM); could also be read as an upgrade. No industry label in header; industry from body. No named client quote (Director of Sales is unnamed). Business Central only in site navigation and footer."
+}

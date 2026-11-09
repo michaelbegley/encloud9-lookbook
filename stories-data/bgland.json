@@ -1,0 +1,162 @@
+{
+ "key": "bgland",
+ "slug": "bg-landholdings-strengthens-data-quality-and-email-deliverability-with-encloud9-email-verifier",
+ "client": "B&G Landholdings",
+ "work_type": "Add-on",
+ "title": "B&G Landholdings: Email Verifier for Dynamics 365 | enCloud9",
+ "meta": "How enCloud9 added its Email Verifier to B&G Landholdings' Dynamics 365 to catch invalid emails, verify existing records and clean up marketing lists.",
+ "h1": [
+  "B&G Landholdings:",
+  "Cleaner email data in Dynamics 365"
+ ],
+ "answer": "B&G Landholdings, based in Fort Meyers, FL, relies on Dynamics 365, and email accuracy mattered more as its contact volume grew. Invalid and outdated addresses were entering the CRM, raising bounce risk and manual cleanup. We implemented our Email Verifier in Dynamics 365 with real-time and bulk verification. Contact data is now more accurate and marketing lists are cleaner.",
+ "facts": [
+  [
+   "Client",
+   "B&G Landholdings"
+  ],
+  [
+   "Location",
+   "Fort Meyers, FL"
+  ],
+  [
+   "Starting point",
+   "Dynamics 365 in place, with invalid email addresses entering the CRM"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales; Click Marketing Automation; enCloud9 Email Verifier"
+  ],
+  [
+   "Services",
+   "Implementation Services, Data Quality, Marketing Consulting"
+  ]
+ ],
+ "timeline": null,
+ "tiles": [],
+ "outcomes": [
+  "Contact information in Dynamics 365 is more accurate.",
+  "There is less risk of sending campaigns to invalid email addresses.",
+  "Cleaner marketing lists support a better sender reputation.",
+  "The team has more confidence in CRM data quality.",
+  "Less manual effort is needed to find problem records."
+ ],
+ "chapters": [
+  [
+   "What was wrong with B&G Landholdings' email data?",
+   [
+    "B&G Landholdings manages a growing portfolio of business operations and relies on Dynamics 365. As the volume of contacts increased, the accuracy and reliability of email data became more important.",
+    "Invalid email addresses were entering the CRM, and outdated contact information was reducing marketing effectiveness. Bounces put sender reputation at risk, finding and fixing bad email data by hand took time, and the team had limited visibility into which addresses posed deliverability risks."
+   ]
+  ],
+  [
+   "What did we change?",
+   [
+    "We implemented our Email Verifier inside B&G Landholdings' existing Dynamics 365 environment, without disrupting user workflows.",
+    "It validates email addresses in real time when leads and contacts are created, automatically flags invalid and high-risk addresses, and verifies existing CRM records in bulk. The team also gained visibility into email quality and deliverability risks."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "Contact records in Dynamics 365 are more accurate, marketing lists are cleaner, and less manual effort goes into finding problem records. The team has more confidence in its CRM data and is better prepared for marketing automation and customer engagement work."
+   ]
+  ]
+ ],
+ "next_steps": null,
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2026-04-10",
+ "published_h": "April 10, 2026",
+ "sources": [
+  {
+   "claim": "Client overview",
+   "quote": "B&G Landholdings manages a growing portfolio of business operations and relies on Dynamics 365"
+  },
+  {
+   "claim": "Contact volume",
+   "quote": "As the volume of contacts increased, ensuring the accuracy and reliability of email data became increasingly important"
+  },
+  {
+   "claim": "Location",
+   "quote": "Fort Meyers, FL"
+  },
+  {
+   "claim": "Products",
+   "quote": "Dynamics 365 Sales / Click Marketing Automation / enCloud9 Email Verifier"
+  },
+  {
+   "claim": "Challenge: invalid emails",
+   "quote": "Invalid email addresses entering the CRM."
+  },
+  {
+   "claim": "Challenge: outdated data",
+   "quote": "Outdated contact information reducing marketing effectiveness."
+  },
+  {
+   "claim": "Challenge: bounces",
+   "quote": "Increased risk of email bounces impacting sender reputation."
+  },
+  {
+   "claim": "Challenge: manual effort",
+   "quote": "Time-consuming manual efforts to identify and correct bad email data."
+  },
+  {
+   "claim": "Challenge: visibility",
+   "quote": "Limited visibility into which email addresses posed deliverability risks."
+  },
+  {
+   "claim": "Solution",
+   "quote": "B&G Landholdings partnered with enCloud9 to implement our Email Verifier solution within Microsoft Dynamics 365."
+  },
+  {
+   "claim": "No disruption",
+   "quote": "B&G was able to improve data quality without disrupting user workflows."
+  },
+  {
+   "claim": "Real-time validation",
+   "quote": "Real-time email validation during lead and contact creation."
+  },
+  {
+   "claim": "Risky addresses flagged",
+   "quote": "Automated identification of invalid and high-risk email addresses."
+  },
+  {
+   "claim": "Bulk verification",
+   "quote": "Bulk verification capabilities for existing CRM records."
+  },
+  {
+   "claim": "Visibility",
+   "quote": "Improved visibility into email quality and deliverability risks."
+  },
+  {
+   "claim": "Existing environment",
+   "quote": "Seamless integration within the existing Dynamics 365 environment."
+  },
+  {
+   "claim": "Outcome: accuracy",
+   "quote": "Improved accuracy of contact information within Dynamics 365."
+  },
+  {
+   "claim": "Outcome: fewer invalid sends",
+   "quote": "Reduced risk of sending campaigns to invalid email addresses."
+  },
+  {
+   "claim": "Outcome: sender reputation",
+   "quote": "Enhanced sender reputation through cleaner marketing lists."
+  },
+  {
+   "claim": "Outcome: confidence",
+   "quote": "Increased confidence in CRM data quality."
+  },
+  {
+   "claim": "Outcome: less manual effort",
+   "quote": "Reduced manual effort required to identify problematic records."
+  },
+  {
+   "claim": "Outcome: readiness",
+   "quote": "Better readiness for marketing automation and customer engagement initiatives."
+  }
+ ],
+ "notes": "Location is spelled 'Fort Meyers, FL' on the page; the real city is Fort Myers, FL. Kept the page spelling in facts and answer; fix the page or this file once Michael confirms. Product list on the page says 'Click Marketing Automation', not 'Click (formerly ClickDimensions)' as on the hub. Page title uses 'B&G Landholdings' while the slug says 'bg-landholdings'. No industry stated, so that row is dropped. No numbers on the page, so no tiles and no timeline. The only quote ('High-quality data is the foundation of effective customer engagement.') has no named person, so quote is null. Page ends with a contact call to action only, so next_steps is null. Business Central appears only in site navigation and footer, not in the story. WebFetch returns summaries; quotes above were requested as exact and are short, but were not checked against raw HTML."
+}

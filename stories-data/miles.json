@@ -1,0 +1,164 @@
+{
+ "key": "miles",
+ "slug": "miles-christi-encloud9-digitally-transforms-non-profit",
+ "client": "Miles Christi",
+ "work_type": "Upgrade",
+ "title": "Miles Christi: CRM 4.0 to Dynamics 365 cloud | enCloud9",
+ "meta": "How enCloud9 moved Miles Christi, a San Diego religious order, from Dynamics CRM 4.0 to cloud Dynamics 365, with records back to 2000 migrated by Scribe.",
+ "h1": [
+  "Miles Christi:",
+  "From CRM 4.0 to the cloud"
+ ],
+ "answer": "Miles Christi is a religious order of priests and brothers in San Diego, CA, with around 50 members. Its Dynamics CRM 4.0 system could no longer meet its needs. We rebuilt its customizations in the Dynamics 365 Unified Interface and migrated records back to 2000 with Scribe. Its CRM is now accessible from anywhere, at any time.",
+ "facts": [
+  [
+   "Client",
+   "Miles Christi"
+  ],
+  [
+   "Location",
+   "San Diego, CA"
+  ],
+  [
+   "Industry",
+   "Non-profit religious order"
+  ],
+  [
+   "Starting point",
+   "Dynamics CRM 4.0"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales"
+  ],
+  [
+   "Services",
+   "Cloud Migration, Implementation services"
+  ]
+ ],
+ "timeline": null,
+ "tiles": [
+  [
+   "Around 50",
+   "members"
+  ],
+  [
+   "Back to 2000",
+   "historical records migrated"
+  ]
+ ],
+ "outcomes": [
+  "The CRM is now accessible from anywhere, at any time.",
+  "Improved workflows and real-time data access increased operational efficiency.",
+  "The organization can focus more resources on furthering its mission."
+ ],
+ "chapters": [
+  [
+   "What was wrong with Miles Christi's CRM?",
+   [
+    "Miles Christi is a religious order of priests and brothers, a relatively small non-profit with around 50 members. It was originally established in Michigan and later expanded to California in October 2008.",
+    "It used Dynamics CRM 4.0, a platform that could no longer meet its evolving needs. It uses its CRM to manage donations, coordinate volunteer opportunities, organize events and track interactions with interested parties and benefactors, and it needed a more scalable and modern, cloud-based Dynamics 365 environment."
+   ]
+  ],
+  [
+   "What did we change?",
+   [
+    "The work began through a referral from a trusted partner. We rebuilt the existing customizations in the Dynamics 365 Unified Interface and migrated historical records dating back to 2000 using Scribe integration tools."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "The CRM is accessible from anywhere, at any time. Improved workflows and real-time data access increased operational efficiency, so the order can focus more resources on its mission."
+   ]
+  ]
+ ],
+ "next_steps": null,
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2023-10-31",
+ "published_h": "October 31, 2023",
+ "sources": [
+  {
+   "claim": "Location",
+   "quote": "San Diego, CA"
+  },
+  {
+   "claim": "Products",
+   "quote": "Dynamics 365 Sales (Products Used list)"
+  },
+  {
+   "claim": "Services",
+   "quote": "Cloud Migration; Implementation services (enCloud9 Services list)"
+  },
+  {
+   "claim": "Who",
+   "quote": "a religious order of Priests and Brothers"
+  },
+  {
+   "claim": "Size / tile",
+   "quote": "a relatively small non-profit organization with around 50 members"
+  },
+  {
+   "claim": "Origin",
+   "quote": "was originally established in Michigan"
+  },
+  {
+   "claim": "California",
+   "quote": "later expanded to California in October 2008"
+  },
+  {
+   "claim": "Starting point",
+   "quote": "Dynamics CRM 4.0, a platform that could no longer meet their evolving needs"
+  },
+  {
+   "claim": "CRM uses",
+   "quote": "manage donations, coordinate volunteer opportunities, organize events"
+  },
+  {
+   "claim": "Interactions",
+   "quote": "track various interactions with interested parties and benefactors"
+  },
+  {
+   "claim": "Goal",
+   "quote": "aimed to transition to a cloud-based Dynamics 365 environment"
+  },
+  {
+   "claim": "Scalable",
+   "quote": "a more scalable and modern system"
+  },
+  {
+   "claim": "Referral",
+   "quote": "began through a referral from a trusted partner"
+  },
+  {
+   "claim": "Rebuild",
+   "quote": "rebuilding of existing customizations within the Dynamics 365 Unified Interface"
+  },
+  {
+   "claim": "Migration / tile",
+   "quote": "historical records dating back to the year 2000 using Scribe integration tools"
+  },
+  {
+   "claim": "Access",
+   "quote": "accessible from anywhere, at any time"
+  },
+  {
+   "claim": "Efficiency",
+   "quote": "increased operational efficiency"
+  },
+  {
+   "claim": "Workflows",
+   "quote": "improved workflows"
+  },
+  {
+   "claim": "Real-time",
+   "quote": "real-time data access"
+  },
+  {
+   "claim": "Mission",
+   "quote": "focus more resources on furthering its mission"
+  }
+ ],
+ "notes": "No industry label in the header block; industry taken from body ('non-profit', 'religious order'). No project timeline stated. Header block has no labeled Client field beyond the name. Work type kept as Upgrade (CRM 4.0 to cloud Dynamics 365). No named client quote. Business Central only in site navigation and footer."
+}

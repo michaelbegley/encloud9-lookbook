@@ -1,0 +1,149 @@
+{
+ "key": "schiff",
+ "slug": "streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9",
+ "client": "The Schiff Group",
+ "work_type": "New build",
+ "title": "The Schiff Group: Dynamics 365 Sales in a Month | enCloud9",
+ "meta": "How enCloud9 implemented Dynamics 365 Sales for The Schiff Group, a government contracting consultancy, and moved its data to the cloud in one month.",
+ "h1": [
+  "The Schiff Group:",
+  "Cloud-based sales in one month"
+ ],
+ "answer": "The Schiff Group, a Rockville, MD firm that guides contractors through government contracting, lacked a comprehensive sales app to track pipelines and opportunities. We implemented Dynamics 365 Sales Hub for accounts, contacts, opportunities, opportunity products and email, and migrated their data. In one month they moved to a cloud-based system with one central platform for sales.",
+ "facts": [
+  [
+   "Client",
+   "The Schiff Group"
+  ],
+  [
+   "Location",
+   "Rockville, MD"
+  ],
+  [
+   "Industry",
+   "Government contracting consulting"
+  ],
+  [
+   "Starting point",
+   "No comprehensive sales app"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales; Team Member"
+  ],
+  [
+   "Services",
+   "Implementation Services, Data Migration"
+  ]
+ ],
+ "timeline": "Within one month",
+ "tiles": [
+  [
+   "1 month",
+   "to move to a cloud-based system"
+  ]
+ ],
+ "outcomes": [
+  "In one month, The Schiff Group moved to a cloud-based system.",
+  "Sales processes and communications are managed from one central platform.",
+  "Operational efficiency improved significantly.",
+  "The Opportunity Product feature improved how they track and manage sales opportunities."
+ ],
+ "chapters": [
+  [
+   "What did The Schiff Group need?",
+   [
+    "The Schiff Group guides contractors through securing contracts with federal, state and local governments, and provides strategic consulting to help clients navigate government procurement.",
+    "It needed a more effective way to manage customer communications and data. Without a comprehensive sales app, it was limited in tracking critical business information, including sales pipelines and opportunity details."
+   ]
+  ],
+  [
+   "What did we build?",
+   [
+    "We implemented Dynamics 365 Sales Hub to manage accounts, contacts, opportunities, opportunity products and email communications.",
+    "The work included data migration so all relevant information carried into the new system."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "Within one month The Schiff Group was working in a cloud-based system, managing sales processes and communications from one central platform. The firm was particularly pleased with the Opportunity Product feature, which improved how it tracks and manages sales opportunities."
+   ]
+  ]
+ ],
+ "next_steps": [
+  "What comes next for The Schiff Group?",
+  "The Schiff Group is continuing its partnership with enCloud9 for ongoing support and is considering additional integrations, such as with SharePoint."
+ ],
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2024-07-24",
+ "published_h": "July 24, 2024",
+ "sources": [
+  {
+   "claim": "Client overview",
+   "quote": "The Schiff Group specializes in guiding contractors through the process of securing contracts"
+  },
+  {
+   "claim": "Government",
+   "quote": "with federal, state, and local governments."
+  },
+  {
+   "claim": "Consulting",
+   "quote": "They provide strategic consulting services to help clients navigate the complexities of government procurement."
+  },
+  {
+   "claim": "Need",
+   "quote": "The Schiff Group needed a more effective way to manage communications and data related to customers"
+  },
+  {
+   "claim": "Starting point",
+   "quote": "They lacked a comprehensive Sales App, which limited their ability to track and manage critical business information"
+  },
+  {
+   "claim": "Pipeline detail",
+   "quote": "including sales pipelines and opportunity details."
+  },
+  {
+   "claim": "Build",
+   "quote": "enCloud9 implemented Dynamics 365 Sales Hub to meet The Schiff Group’s needs."
+  },
+  {
+   "claim": "Scope",
+   "quote": "This solution provided functionalities for managing Accounts, Contacts, Opportunities, Opportunity Products"
+  },
+  {
+   "claim": "Migration",
+   "quote": "The implementation also included data migration to ensure all relevant information was seamlessly integrated"
+  },
+  {
+   "claim": "Timeline / tile / outcome",
+   "quote": "In just one month, The Schiff Group transitioned to a cloud-based system"
+  },
+  {
+   "claim": "Outcome: central platform",
+   "quote": "The new system provided a centralized platform for tracking and managing sales opportunities"
+  },
+  {
+   "claim": "Outcome: efficiency",
+   "quote": "significantly improving their operational efficiency."
+  },
+  {
+   "claim": "Outcome: Opportunity Product",
+   "quote": "The Schiff Group was particularly pleased with the Opportunity Product feature"
+  },
+  {
+   "claim": "Opportunity Product effect",
+   "quote": "which has improved their ability to track and manage sales opportunities."
+  },
+  {
+   "claim": "Next: support",
+   "quote": "They are continuing their partnership with enCloud9 for ongoing support"
+  },
+  {
+   "claim": "Next: SharePoint",
+   "quote": "are considering additional integrations, such as with SharePoint."
+  }
+ ],
+ "notes": "Page H1 is 'How The Schiff Group Transformed Sales with Dynamics 365'. Body says 'Dynamics 365 Sales Hub' while the products list says 'Dynamics 365 Sales' and 'Team Member'. The page does not say what system they used before, only that they lacked a comprehensive sales app; Starting point reflects that. Industry is not a labeled field; taken from the overview. Location Rockville, MD from the page details as reported by WebFetch, not a separate quote. No named client quote. Business Central appears only in site navigation and footer."
+}

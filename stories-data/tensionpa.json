@@ -1,0 +1,162 @@
+{
+ "key": "tensionpa",
+ "slug": "tension-pa-tension-packaging-expands-collaboration-with-encloud9-across-multiple-divisions",
+ "client": "Tension Packaging and Automation",
+ "work_type": "New build",
+ "title": "Tension Packaging: Dynamics 365 Sales Rollout | enCloud9",
+ "meta": "How enCloud9 moved a Tension Packaging division from spreadsheets to Dynamics 365 Sales in six months, with data migrated and a full view of the pipeline.",
+ "h1": [
+  "Tension Packaging:",
+  "Spreadsheets to Dynamics 365 in six months"
+ ],
+ "answer": "Tension Packaging and Automation, a Kansas City, MO packaging equipment and automation company, tracked a division's sales pipeline in Excel spreadsheets and individual storage. After an earlier project with one division, we implemented Dynamics 365 Sales for another and migrated its data to the cloud. The project was completed in six months, with better pipeline visibility and reporting.",
+ "facts": [
+  [
+   "Client",
+   "Tension Packaging and Automation"
+  ],
+  [
+   "Location",
+   "Kansas City, MO"
+  ],
+  [
+   "Industry",
+   "Packaging equipment and automation"
+  ],
+  [
+   "Starting point",
+   "Excel spreadsheets and individual desktop or cloud storage"
+  ],
+  [
+   "Products",
+   "Dynamics 365 Sales"
+  ],
+  [
+   "Services",
+   "Data Migration, Implementation Services"
+  ]
+ ],
+ "timeline": "Completed in six months",
+ "tiles": [
+  [
+   "6 months",
+   "to complete the project"
+  ]
+ ],
+ "outcomes": [
+  "The project was completed in six months.",
+  "Productivity rose and management reporting improved.",
+  "The team has a full view of the sales pipeline and related product interests.",
+  "Product interests can now be connected to sales opportunities."
+ ],
+ "chapters": [
+  [
+   "What did Tension Packaging need?",
+   [
+    "Tension Packaging and Automation is a leader in packaging equipment and automation systems, serving the eCommerce and Pharmacy markets. Its services include manufacturing, installation, packaging automation, consumables and robotics.",
+    "Following a previous project with one division, Tension Packaging engaged enCloud9 for another project in a different division.",
+    "That division was using Excel spreadsheets and individual desktop or cloud storage to manage its sales pipeline and documents. This led to inefficiencies and limited visibility into the overall pipeline. It needed a cloud-based way to manage leads, accounts, opportunities and contacts."
+   ]
+  ],
+  [
+   "What did we build?",
+   [
+    "We implemented Dynamics 365 Sales and migrated the division's data to the cloud. The system gives easy access to records and detailed tracking of market, industry and product interests.",
+    "The implementation streamlined processes, improved reporting and increased overall productivity."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "The team now has a full view of the sales pipeline and related product interests, which makes sales opportunities easier to manage and track. Management gets better reporting. The client team's professionalism and engagement were key to the project's success and user adoption."
+   ]
+  ]
+ ],
+ "next_steps": [
+  "What comes next for Tension Packaging?",
+  "Tension Packaging continues to work with enCloud9 for ongoing support and future enhancements."
+ ],
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2024-07-24",
+ "published_h": "July 24, 2024",
+ "sources": [
+  {
+   "claim": "Client name",
+   "quote": "Tension Packaging and Automation"
+  },
+  {
+   "claim": "Industry",
+   "quote": "Tension Packaging and Automation is a leader in packaging equipment and automation systems,"
+  },
+  {
+   "claim": "Markets",
+   "quote": "catering to the eCommerce and Pharmacy markets."
+  },
+  {
+   "claim": "Services offered",
+   "quote": "They offer a wide range of services, including manufacturing, installation, packaging automation, consumables, and robotics"
+  },
+  {
+   "claim": "Previous division",
+   "quote": "Following the success of a previous project with one division,"
+  },
+  {
+   "claim": "New division",
+   "quote": "Tension Packaging decided to engage enCloud9 for another project in a different division of the company."
+  },
+  {
+   "claim": "Starting point",
+   "quote": "Tension Packaging was using Excel spreadsheets and individual desktop or cloud storage"
+  },
+  {
+   "claim": "Problem",
+   "quote": "This setup led to inefficiencies and limited visibility into their overall sales pipeline."
+  },
+  {
+   "claim": "Need",
+   "quote": "The company needed a more efficient, cloud-based solution to manage leads, accounts, opportunities, and contacts,"
+  },
+  {
+   "claim": "Build",
+   "quote": "enCloud9 implemented Dynamics 365 Sales to address Tension Packaging’s needs."
+  },
+  {
+   "claim": "Migration",
+   "quote": "The solution involved migrating their data to the cloud,"
+  },
+  {
+   "claim": "Tracking",
+   "quote": "providing easy access and detailed tracking of market, industry, and product interests."
+  },
+  {
+   "claim": "Process gains",
+   "quote": "This implementation streamlined their processes, improved reporting capabilities, and increased overall productivity."
+  },
+  {
+   "claim": "Timeline / tile",
+   "quote": "The project was successfully completed in six months,"
+  },
+  {
+   "claim": "Outcome: productivity",
+   "quote": "leading to a significant boost in productivity and better reporting for management."
+  },
+  {
+   "claim": "Outcome: pipeline view",
+   "quote": "The new system provided a comprehensive view of the sales pipeline and related product interests,"
+  },
+  {
+   "claim": "Outcome: product to opportunity",
+   "quote": "particularly the enhanced ability to connect product interests with sales opportunities."
+  },
+  {
+   "claim": "Adoption",
+   "quote": "The professionalism and engagement of the client team were key to the project’s success and user adoption."
+  },
+  {
+   "claim": "Next steps",
+   "quote": "Tension Packaging continues to collaborate with enCloud9 for ongoing support and future enhancements."
+  }
+ ],
+ "notes": "Page H1 is 'Tension Packaging Expands Dynamics 365 Collaboration Across Divisions'. The page does not say which division this was, or what the earlier project delivered. It says the company (not the division) used spreadsheets; I wrote 'a division's' in the answer because the project was for a different division; reword to 'the company' if that reads as going past the page. Industry is not a labeled field; taken from the overview. Location Kansas City, MO taken from the page details as reported by WebFetch, not a separate quote. Published July 24, 2024, the same date as the Schiff and MSA stories (likely a bulk upload date). No named client quote. Business Central appears only in site navigation and footer."
+}
