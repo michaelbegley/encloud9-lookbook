@@ -12,13 +12,13 @@ Links on the mock site that still go to the live encloud9.com (page not built ye
 /blog/success_stories/bg-landholdings-strengthens-data-quality-and-email-deliverability-with-encloud9-email-verifier/  <- nine-marketing.html, nine-stories.html
 /blog/success_stories/bg-peterson-ss/  <- nine-stories.html
 /blog/success_stories/clinical-reference-laboratories-optimizes-processes-and-improves-efficiency-with-dynamics-365-customer-service/  <- nine-stories.html
-/blog/success_stories/collaborative-for-children-success-story/  <- nine-stories.html, nine-story-milestone.html
+/blog/success_stories/collaborative-for-children-success-story/  <- nine-stories.html
 /blog/success_stories/dynamics-365-implementation-allows-sales-and-management-teams-to-work-more-productively/  <- nine-stories.html
 /blog/success_stories/elmwood-reclaimed-timber-migrating-a-20-year-old-crm-to-the-cloud/  <- nine-marketing.html, nine-rescue-repair.html, nine-stories.html
 /blog/success_stories/encloud9-enables-design-company-to-work-more-productively-and-efficiently-after-digitally-transforming-various-processes/  <- nine-stories.html
 /blog/success_stories/encloud9-helps-professional-employer-organization-peo-rescue-a-failed-crm/  <- nine-stories.html
 /blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/  <- nine-about.html, nine-copilot.html, nine-customer-service.html, nine-dynamics-365-sales.html, nine-dynamics-365.html, nine-home.html, nine-service-accelerator.html, nine-stories.html
-/blog/success_stories/how-price-mds-transformed-healthcare-operations-with-dynamics-365/  <- nine-customer-service.html, nine-service-accelerator.html, nine-stories.html, nine-story-hogan.html
+/blog/success_stories/how-price-mds-transformed-healthcare-operations-with-dynamics-365/  <- nine-customer-service.html, nine-service-accelerator.html, nine-stories.html
 /blog/success_stories/investment-firm-uses-dynamics-365-mobile-to-stay-connected/  <- nine-stories.html
 /blog/success_stories/jasco-modernizes-operations-with-dynamics-365-sales-and-customer-service/  <- nine-stories.html
 /blog/success_stories/kbg-technologies-enhances-sales-processes-with-dynamics-365-implementation-by-encloud9/  <- nine-full-implementation.html, nine-sales-accelerator.html, nine-stories.html
