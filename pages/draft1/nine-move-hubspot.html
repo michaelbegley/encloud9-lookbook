@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Move from HubSpot to Dynamics 365 Sales | enCloud9</title>
+<meta name="description" content="We move growing US businesses from HubSpot to Dynamics 365 Sales, with records mapped and checked before go-live, and support from $500 a month.">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="nine.css">
+<script defer src="nine.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Packages and support", "item": "https://www.encloud9.com/crm-cloud-automation-solutions/"}, {"@type": "ListItem", "position": 3, "name": "Move from HubSpot", "item": "https://www.encloud9.com/lp/microsoft-dynamics-365-hubspot-crm-migration/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Move from HubSpot to Dynamics 365 Sales", "serviceType": "CRM migration", "url": "https://www.encloud9.com/lp/microsoft-dynamics-365-hubspot-crm-migration/", "description": "We move growing US businesses from HubSpot to Dynamics 365 Sales: your contacts, companies, deals, pipelines and history, with record counts checked against HubSpot before go-live. Moving data from your old CRM or spreadsheets is part of a full implementation. Microsoft licenses are a separate cost, and support plans start at $500 a month.", "provider": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}, "brand": {"@type": "Organization", "name": "Microsoft"}, "areaServed": {"@type": "Country", "name": "United States"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does a move from HubSpot cost?", "acceptedAnswer": {"@type": "Answer", "text": "A move from HubSpot is a fixed price for our work, quoted in writing after a short call. Microsoft licenses are a separate cost: Microsoft's list price is $65, $105 or $150 per user per month, paid yearly, for Sales Professional, Enterprise or Premium. Support plans start at $500 a month."}}, {"@type": "Question", "name": "Do our HubSpot workflows and sequences move across?", "acceptedAnswer": {"@type": "Answer", "text": "Not on their own. Workflows, sequences and connected apps are rebuilt in Dynamics 365 rather than copied. We review them first and quote any rebuild separately."}}, {"@type": "Question", "name": "Does Microsoft have a tool for moving from HubSpot?", "acceptedAnswer": {"@type": "Answer", "text": "Not a dedicated one. Microsoft's own migration tool, Dynamics 365 Activate, covers moves from Salesforce. For other systems, Microsoft's guidance points to data import, dataflows and data migration tools such as Azure Data Factory."}}, {"@type": "Question", "name": "Are Microsoft licenses included?", "acceptedAnswer": {"@type": "Answer", "text": "No. Microsoft licenses and Copilot Credits are not part of the package price, and you pay for them separately. As part of the move we assign your licenses to each user and set their security roles, because Microsoft does not let a user open the app until both are done."}}, {"@type": "Question", "name": "Is Copilot included in Dynamics 365 Sales?", "acceptedAnswer": {"@type": "Answer", "text": "Copilot in Dynamics 365 Sales, Outlook and Teams is included in Sales Enterprise and Sales Premium, not in Sales Professional. The Sales agents are available on all three plans but run on Copilot Credits. Only Sales Premium includes credits; on other plans you buy them separately."}}, {"@type": "Question", "name": "What if we need more than the package covers?", "acceptedAnswer": {"@type": "Answer", "text": "Anything outside the package is a written change order you approve before work starts. If you need integrations or data from several systems at go-live, a full implementation fits better."}}, {"@type": "Question", "name": "Do we need a support plan after go-live?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. New clients start on at least the Stability plan, $500 a month for 4 hours, on a 12-month agreement. Monthly plans include a 1-hour response during business hours, 7:00am to 5:00pm Central, Monday to Friday."}}]}</script>
+<style>
+/* package pages (full implementation, rescue and repair) (9 Nov): spec card in the hero, included/not included, Fit Check rows, other packages strip */
+body.p-pkg .grid9{margin-top:4px}
+body.p-pkg .spec{margin:14px 0 0;display:grid;border-top:2px solid var(--ink)}
+body.p-pkg .spec div{display:grid;grid-template-columns:90px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--line);align-items:baseline}
+body.p-pkg .spec dd{margin:0;font-weight:600;font-size:16px;line-height:1.4}
+body.p-pkg .fit.two-col{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+body.p-pkg .fit .lnk{color:var(--b5);font-weight:600}
+body.p-pkg .inc-foot{display:flex;justify-content:space-between;align-items:center;gap:20px 40px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+body.p-pkg .inc-foot .ask{font-weight:600}
+body.p-pkg .fitsplit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(32px,5vw,72px);align-items:start}
+body.p-pkg .fitsplit .side{position:sticky;top:110px;display:flex;flex-direction:column;gap:20px}
+body.p-pkg .fitsplit .fit{grid-template-columns:1fr;gap:44px}
+body.p-pkg .notsure-l{font-weight:600;font-size:18px;margin:0}
+body.p-pkg .ptiles.plans .ptile{aspect-ratio:auto;min-height:340px}
+body.p-pkg .ptile .price{font-family:var(--head);font-size:clamp(40px,3.6vw,54px);font-weight:600;letter-spacing:-.035em;line-height:1}
+body.p-pkg .ptile .price small{font-size:15px;font-weight:500;letter-spacing:0;margin-left:6px;opacity:.85}
+body.p-pkg .ptile .ds b{color:var(--white);font-weight:600}
+body.p-pkg .ptile .min{align-self:flex-start;padding:3px 7px;background:rgba(255,255,255,.18);font-family:var(--mono);font-size:11px;color:var(--white)}
+body.p-pkg .sp-foot{display:flex;justify-content:space-between;align-items:flex-start;gap:24px 48px;flex-wrap:wrap;margin-top:24px}
+body.p-pkg .sp-foot .fine{margin-top:0;max-width:760px}
+body.p-pkg .story .big{font-family:var(--head);font-size:clamp(40px,4vw,56px);font-weight:600;letter-spacing:-.035em;line-height:1;color:var(--b3)}
+body.p-pkg .lnav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+body.p-pkg .lnav a{display:flex;flex-direction:column;gap:10px;justify-content:space-between;min-height:120px;padding:16px;background:var(--c);color:var(--white);font-family:var(--head);font-weight:600;font-size:18px;line-height:1.2;transition:transform .35s var(--ease)}
+body.p-pkg .lnav a .mono{color:rgba(255,255,255,.8);font-size:11px;font-weight:400}
+body.p-pkg .lnav a:hover{transform:translateY(-4px)}
+body.p-pkg .lnav a:focus-visible{outline:3px solid var(--b6);outline-offset:3px}
+body.p-pkg .grid9 .cell.core .nm{font-size:clamp(15px,1.75vw,24px);hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+body.p-pkg #fitcheck .three .d{color:var(--muted)}
+body.p-pkg .grid9 .cell.lt .lab{color:var(--ink)}
+body.p-pkg .proof .num{white-space:nowrap}
+@media (max-width:420px){body.p-pkg .proof .num{font-size:clamp(28px,9vw,40px)}body.p-pkg .proof .pf{min-width:0}}
+body.p-pkg #others{padding-top:clamp(48px,6vw,80px)}
+body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--ink2)}
+@media (max-width:1100px){body.p-pkg .lnav{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:860px){body.p-pkg .fitsplit,body.p-pkg .fit.two-col{grid-template-columns:1fr}body.p-pkg .fitsplit .side{position:static}}
+@media (max-width:560px){body.p-pkg .grid9 .cell.core .nm{font-size:13px;hyphens:none;-webkit-hyphens:none}body.p-pkg .lnav{grid-template-columns:1fr 1fr}body.p-pkg .spec div{grid-template-columns:1fr;gap:2px}body.p-pkg .ptiles.plans .ptile{min-height:0}}
+body.p-pkg #prices .tbl tbody th{font-size:18px}
+body.p-pkg #prices .tbl .vd{display:block;font-family:var(--mono);font-size:11px;font-weight:400;color:var(--muted);letter-spacing:0;margin-bottom:4px}
+body.p-pkg #prices .tbl tr.ms th,body.p-pkg #prices .tbl tr.ms td{background:var(--tint)}
+body.p-pkg #prices .tbl tr.ms th{padding-left:12px}
+body.p-pkg .ckl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(24px,3vw,40px);border:2px solid var(--ink)}
+body.p-pkg .ckl .ph{padding:20px;border:1px dashed var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+@media (max-width:860px){body.p-pkg .ckl{grid-template-columns:1fr}}
+body.p-pkg .ckl .lead{margin-top:14px}
+@media (max-width:640px){body.p-pkg #prices .tbl{min-width:0}body.p-pkg #prices .tbl thead{position:absolute;left:-9999px}body.p-pkg #prices .tbl tr{display:grid;grid-template-columns:1fr;padding:14px 12px;border-bottom:1px solid var(--line)}body.p-pkg #prices .tbl tbody th,body.p-pkg #prices .tbl td{display:block;border:0;padding:2px 0}body.p-pkg #prices .tbl tr.ms{background:var(--tint)}body.p-pkg #prices .tbl tr.ms th,body.p-pkg #prices .tbl tr.ms td{background:none;padding-left:0}body.p-pkg #prices .tbl td::before{content:attr(data-l) ": ";font-family:var(--mono);font-size:11px;color:var(--muted)}}
+</style>
+</head>
+<body class="p-pkg">
+<nav id="lbbar" aria-label="Lookbook">
+  <a href="../index.html">All looks</a><span class="t hide-s">Look 9, Nine, built pages</span>
+  <a href="nine-home.html">Home</a><a href="nine-packages.html">Packages</a><a href="nine-move-hubspot.html" class="on" aria-current="page">Move from HubSpot</a><a href="nine-marketing.html" class="hide-s">Marketing</a>
+  <span class="sp"></span><span class="t">Font</span>
+  <button type="button" data-setfont="hanken" aria-pressed="true">Hanken</button><button type="button" data-setfont="jakarta" aria-pressed="false">Jakarta</button><button type="button" data-setfont="public" aria-pressed="false">Public Sans</button><button type="button" data-setfont="bricolage" aria-pressed="false">Bricolage</button>
+</nav>
+<header class="top">
+  <a class="skip" href="#main">Skip to main content</a>
+  <div class="wrap">
+    <a class="logo" href="nine-home.html" aria-label="enCloud9 home"><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9" width="104" height="34"></a>
+    <nav class="nav" aria-label="Main"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html" class="cur">Packages<span class="sr-only"> (current section)</span></a><a href="nine-stories.html">Stories</a><a href="nine-blog.html">Blog</a><a href="nine-about.html">About</a></nav>
+    <a class="tel" href="tel:+18442640729">1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+    <a class="btn btn-p call-m" href="tel:+18442640729">Call</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="nine-blog.html">Blog</a><a href="nine-about.html">About</a><a href="tel:+18442640729">Call 1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+  </nav>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="nine-home.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="nine-packages.html">Packages and support</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Move from HubSpot</span></nav>
+  <section class="hero" aria-labelledby="h1">
+    <div class="copy">
+      <span class="mono rise" style="--d:0">Move &middot; Move from HubSpot</span>
+      <h1 class="h1" id="h1" style="font-size:clamp(40px,5.4vw,72px)"><span class="ln"><span style="--d:1">Move from HubSpot</span></span> <span class="ln"><span style="--d:2">to Dynamics 365 Sales</span></span></h1>
+      <p class="lead rise" style="--d:3">We move growing US businesses from HubSpot to Dynamics 365 Sales: your contacts, companies, deals, pipelines and history, with record counts checked against HubSpot before go-live. Moving data from your old CRM or spreadsheets is part of a full implementation. Microsoft licenses are a separate cost, and support plans start at $500 a month.</p>
+      <div class="acts rise" style="--d:4">
+        <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+        <a class="lnk" href="#checklist">Get the migration checklist <span>&rarr;</span></a>
+      </div>
+      <p class="phone-note rise" style="--d:5">Prefer the phone? Call <a href="tel:+18442640729">1-844-264-0729</a>.</p>
+    </div>
+    <div>
+      <div class="grid9" role="list" aria-label="What a move from HubSpot includes">
+        <a role="listitem" class="cell" style="background:var(--b1);--d:0" href="#included"><span class="lab">Reviewed</span><span class="nm">Your portal</span><span class="ds">A written review of your HubSpot portal</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b2);--d:1" href="#included"><span class="lab">Mapped</span><span class="nm">Objects and properties</span><span class="ds">HubSpot objects and properties mapped to Dynamics 365 Sales</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b3);--d:2" href="#included"><span class="lab">Mapped</span><span class="nm">Users and roles</span><span class="ds">HubSpot users mapped to Dynamics 365 users and security roles</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b4);--d:3" href="#included"><span class="lab">Assigned</span><span class="nm">Licenses</span><span class="ds">Your Microsoft licenses assigned to each user</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell core" style="background:var(--b5);--d:4" href="#included"><span class="lab">Move</span><span class="nm">From HubSpot</span><span class="ds">Your HubSpot data moved to Dynamics 365 Sales</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b6);--d:5" href="#included"><span class="lab">Tested</span><span class="nm">Trial run</span><span class="ds">A trial run first, then the full move</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b7);--d:6" href="#included"><span class="lab">Checked</span><span class="nm">Record counts</span><span class="ds">Up to [Brian sets] records moved, counts checked against HubSpot</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b8);--d:7" href="#process"><span class="lab">Stage C</span><span class="nm">Training</span><span class="ds">[Brian sets] training sessions</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b9);--d:8" href="#included"><span class="lab">After go-live</span><span class="nm">Help</span><span class="ds">[Brian sets] days of help after go-live</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+      </div>
+      <dl class="spec rise" style="--d:6">
+        <div><dt class="mono">Price</dt><dd>Fixed, quoted in writing after a short call</dd></div>
+        <div><dt class="mono">Time</dt><dd>[Brian sets] weeks</dd></div>
+        <div><dt class="mono">Users</dt><dd>Up to [Brian sets] users</dd></div>
+      </dl>
+      <p class="fine" style="margin-top:12px">Microsoft licenses are not part of the package price. Microsoft's list price for Dynamics 365 Sales is $65, $105 or $150 per user per month, paid yearly.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-label="Facts" style="padding-top:clamp(56px,6vw,88px)">
+    <div class="proof big rev">
+      <a class="pf" href="#prices"><b class="num">$65</b><span>a user a month, Microsoft's lowest Dynamics 365 Sales list price</span><small>Compare list prices &rarr;</small></a>
+      <a class="pf" href="#process"><b class="num">4</b><span>stages: Plan, Build, Go live and Run</span><small>How a move runs &rarr;</small></a>
+      <a class="pf" href="nine-stories.html"><b class="num">23</b><span>client stories, new builds to rescues</span><small>See the stories &rarr;</small></a>
+      <a class="pf" href="#support"><b class="num">$500</b><span>a month, where support plans start</span><small>See support plans &rarr;</small></a>
+    </div>
+  </section>
+
+  <section class="sec" id="included" aria-labelledby="inc-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="inc-h">What moves from HubSpot to Dynamics 365?</h2>
+      <p class="lead">Your HubSpot contacts, companies, deals, pipelines and activity history move to Dynamics 365 Sales, mapped field by field and tested in a trial run before the full move. HubSpot workflows, sequences and connected apps do not move on their own; we review them first and quote any rebuild separately.</p>
+    </div>
+    <div class="fit two-col rev">
+      <div class="yes"><h3 class="h3">Included</h3><ul>
+        <li>A written review of your HubSpot portal: objects, properties, pipelines, workflows and connected apps</li>
+        <li>Your HubSpot objects and properties mapped to <a class="lnk" href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a></li>
+        <li>Your HubSpot users mapped to Dynamics 365 users and security roles</li>
+        <li>Your Microsoft licenses assigned to each user</li>
+        <li>A trial run first, then the full move, with record counts checked against HubSpot</li>
+        <li>Up to [Brian sets] records moved</li>
+        <li>[Brian sets] training sessions</li>
+        <li>[Brian sets] days of help after go-live</li>
+      </ul></div>
+      <div class="no"><h3 class="h3">Not included</h3><ul>
+        <li>Rebuilding HubSpot workflows, sequences and connected apps, quoted separately</li>
+        <li>Marketing Hub emails, forms and landing pages, quoted separately</li>
+        <li>Integrations with other systems, quoted separately</li>
+        <li>Microsoft licenses and Copilot Credits</li>
+        <li>Ending your HubSpot contract, which stays between you and HubSpot</li>
+      </ul></div>
+    </div>
+    <div class="inc-foot rev">
+      <p class="fine" style="margin-top:0">Anything outside the package is a written change order you approve before work starts. Want to know what your portal would take? Book a call.</p>
+      <div class="acts"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Ask about a move from HubSpot</a></div>
+    </div>
+  </section>
+
+  <section class="sec" id="prices" aria-labelledby="pr-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="pr-h">What do Dynamics 365 Sales and HubSpot Sales Hub cost per user?</h2>
+      <p class="lead">Microsoft lists Dynamics 365 Sales at $65, $105 or $150 per user per month, paid yearly. HubSpot lists Sales Hub Starter from $7, Professional from $90 and Enterprise from $150 per seat per month, plus a one-time onboarding fee of $1,500 for Professional and $3,500 for Enterprise.</p>
+    </div>
+    <div class="tbl-wrap rev">
+      <table class="tbl">
+        <caption class="mono" style="text-align:left;padding-bottom:10px">List prices per user per month, from each vendor's own pricing page</caption>
+        <thead><tr><th scope="col">Edition</th><th scope="col">List price per user per month</th><th scope="col">Billing</th><th scope="col">One-time onboarding fee</th></tr></thead>
+        <tbody>
+          <tr class="ms"><th scope="row"><span class="vd">Microsoft</span>Dynamics 365 Sales Professional</th><td class="pr" data-l="List price">$65</td><td data-l="Billing">Paid yearly</td><td data-l="One-time onboarding fee">None listed</td></tr>
+          <tr class="ms"><th scope="row"><span class="vd">Microsoft</span>Dynamics 365 Sales Enterprise</th><td class="pr" data-l="List price">$105</td><td data-l="Billing">Paid yearly</td><td data-l="One-time onboarding fee">None listed</td></tr>
+          <tr class="ms"><th scope="row"><span class="vd">Microsoft</span>Dynamics 365 Sales Premium</th><td class="pr" data-l="List price">$150</td><td data-l="Billing">Paid yearly</td><td data-l="One-time onboarding fee">None listed</td></tr>
+          <tr><th scope="row"><span class="vd">HubSpot</span>Sales Hub Starter</th><td class="pr" data-l="List price">From $7 per seat</td><td data-l="Billing">Monthly or annual</td><td data-l="One-time onboarding fee">None listed</td></tr>
+          <tr><th scope="row"><span class="vd">HubSpot</span>Sales Hub Professional</th><td class="pr" data-l="List price">From $90 per seat</td><td data-l="Billing">Monthly or annual</td><td data-l="One-time onboarding fee">$1,500</td></tr>
+          <tr><th scope="row"><span class="vd">HubSpot</span>Sales Hub Enterprise</th><td class="pr" data-l="List price">From $150 per seat</td><td data-l="Billing">Not shown</td><td data-l="One-time onboarding fee">$3,500</td></tr>
+        </tbody>
+      </table>
+      <p class="fine">List prices from each vendor's own pricing page, checked 4 Nov 2026; we check them again before this page goes live. Editions do not line up feature for feature, so compare the edition you use today with the plan you need. Neither price includes setup or support.</p>
+      <p class="fine">HubSpot's starting prices are the lowest it shows; its page also shows higher prices for Starter and Professional, and some discounts are for new customers only.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="fit" aria-labelledby="fit-h">
+    <div class="fitsplit">
+    <div class="side rev">
+      <h2 class="h2" id="fit-h">Is a move from HubSpot right for your team?</h2>
+      <p class="lead">A move fits a sales team on HubSpot whose setup is mostly standard records, such as contacts, companies and deals, and who already work in Outlook and Teams. It is a weaker fit if your HubSpot portal runs many workflows and connected apps, or if you need other systems connected on day one.</p>
+      <p class="notsure-l">Not sure? Book a call and we will tell you which package fits.</p>
+      <div class="acts" style="margin-top:0"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a></div>
+    </div>
+    <div class="fit rev">
+      <div class="yes"><h3 class="h3">A good fit if</h3><ul>
+        <li>Your team already works in Outlook and Teams every day.</li>
+        <li>You sell through a sales process with stages, quotes or products.</li>
+        <li>Most of your HubSpot setup is standard records: contacts, companies and deals.</li>
+        <li>Your HubSpot renewal date is coming and you want a plan before it arrives.</li>
+      </ul></div>
+      <div class="no"><h3 class="h3">Probably not a fit if</h3><ul>
+        <li>You need other systems connected on day one. A <a class="lnk" href="nine-full-implementation.html">full implementation</a> covers data moves and integrations.</li>
+        <li>Your HubSpot portal runs many workflows and connected apps. We review them first and scope that rebuild separately.</li>
+        <li>You have one or two people who only need a shared address book.</li>
+      </ul></div>
+    </div>
+    </div>
+  </section>
+
+  <section class="sec" id="process" aria-labelledby="st-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="st-h">How does a move from HubSpot run?</h2>
+      <p class="lead">Every project runs through the same four stages: Plan, Build, Go live and Run. You see the written plan before we build, and every change after that is written down and approved.</p>
+    </div>
+    <div class="stages flowbar">
+      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage A</span><span class="t">Plan</span><span class="d">We learn how you sell, using a written discovery questionnaire, and give you the plan: users, sales stages, data to move, integrations, and where Copilot and agents fit.</span></div>
+      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage B</span><span class="t">Build</span><span class="d">We build Dynamics 365 Sales to the plan, using standard features first, and move your data. You check the imported records against your old system before sign-off.</span></div>
+      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i class="on" style="--k:4"></i><i class="m" style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><span class="mono">Stage C</span><span class="t">Go live</span><span class="d">Training and cut-over day. Copilot is switched on if your plan includes it; agents are scoped as a separate pilot.</span></div>
+      <div class="stg"><span class="g" aria-hidden="true"><i class="d" style="--k:0"></i><i class="d" style="--k:1"></i><i class="d" style="--k:2"></i><i class="m" style="--k:3"></i><i class="on" style="--k:4"></i><i class="m" style="--k:5"></i><i class="m" style="--k:6"></i><i class="m" style="--k:7"></i><i class="m" style="--k:8"></i></span><span class="mono">Stage D</span><span class="t">Run</span><span class="d">Your support plan starts. Health checks and updates are logged, so you always know what changed.</span></div>
+    </div>
+  </section>
+
+  <section class="sec" id="support" aria-labelledby="sp-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="sp-h">What does support cost after go-live?</h2>
+      <p class="lead">Support starts at $500 a month for 4 hours on the Stability plan, which is the minimum plan for new clients. Larger teams choose Optimization at $1,500 a month for 20 hours or Partnership at $2,000 a month for 35 hours.</p>
+    </div>
+    <div class="ptiles plans rev" role="list" aria-label="Support plans, prices and hours">
+      <a role="listitem" class="ptile" style="--c:var(--b4)" href="https://www.dynamics365support.com/#plans"><span class="pt-top"><span class="mono">Hourly</span><span class="g big" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">On-Demand</span><span class="price">$200<small>an hour</small></span><span class="ds">As needed, no retainer. Fit: [Brian sets: who can still use it, for example during a project]</span><span class="pt-foot"><span class="go">Compare support plans &rarr;</span></span></a>
+      <a role="listitem" class="ptile" style="--c:var(--b1)" href="https://www.dynamics365support.com/#plans"><span class="pt-top"><span class="min">Minimum plan</span><span class="g big" aria-hidden="true"><i class="d"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Stability</span><span class="price">$500<small>a month</small></span><span class="ds"><b>4 hours a month.</b></span><span class="pt-foot"><span class="go">Compare support plans &rarr;</span></span></a>
+      <a role="listitem" class="ptile" style="--c:var(--b2)" href="https://www.dynamics365support.com/#plans"><span class="pt-top"><span class="mono">Monthly plan</span><span class="g big" aria-hidden="true"><i class="d"></i><i class="d"></i><i></i><i class="m"></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Optimization</span><span class="price">$1,500<small>a month</small></span><span class="ds"><b>20 hours a month.</b> Up to 50 users.</span><span class="pt-foot"><span class="go">Compare support plans &rarr;</span></span></a>
+      <a role="listitem" class="ptile" style="--c:var(--b3)" href="https://www.dynamics365support.com/#plans"><span class="pt-top"><span class="mono">Monthly plan</span><span class="g big" aria-hidden="true"><i class="d"></i><i class="d"></i><i class="d"></i><i class="m"></i><i class="on"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i></span></span><span class="nm">Partnership</span><span class="price">$2,000<small>a month</small></span><span class="ds"><b>35 hours a month.</b> 50 users and up.</span><span class="pt-foot"><span class="go">Compare support plans &rarr;</span></span></a>
+    </div>
+    <div class="sp-foot rev">
+      <p class="fine">Monthly plans run on a 12-month agreement. New clients pay an onboarding fee of up to one month's charge. Hours 7:00am to 5:00pm Central, Monday to Friday, excluding US federal holidays. Monthly plans include a 1-hour response during business hours, which means a person has picked up your request, not that it is solved. Every plan includes Microsoft escalation management.</p>
+      <div class="acts"><a class="btn btn-p" href="https://www.dynamics365support.com/#plans">Compare support plans</a></div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" aria-labelledby="fq-h">
+    <div class="faqsplit">
+    <div class="faqside rev">
+      <h2 class="h2" id="fq-h">HubSpot move questions we get asked</h2>
+      <p class="lead" style="margin-top:18px">Something else on your mind? Ask us on a call. You get a straight answer, whether or not you work with us.</p>
+      <div class="acts" style="margin-top:24px"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="tel:+18442640729">1-844-264-0729 <span>&rarr;</span></a></div>
+    </div>
+    <div>
+    <div class="faq rev">
+      <details><summary>How much does a move from HubSpot cost?</summary><p>A move from HubSpot is a fixed price for our work, quoted in writing after a short call. Microsoft licenses are a separate cost: Microsoft's list price is $65, $105 or $150 per user per month, paid yearly, for Sales Professional, Enterprise or Premium. Support plans start at $500 a month.</p></details>
+      <details><summary>How long does a move from HubSpot take?</summary><p>A move takes [Brian sets] weeks. You get the plan, with dates, before we build.</p></details>
+      <details><summary>Do our HubSpot workflows and sequences move across?</summary><p>Not on their own. Workflows, sequences and connected apps are rebuilt in Dynamics 365 rather than copied. We review them first and quote any rebuild separately.</p></details>
+      <details><summary>Does Microsoft have a tool for moving from HubSpot?</summary><p>Not a dedicated one. Microsoft's own migration tool, Dynamics 365 Activate, covers moves from Salesforce. For other systems, Microsoft's guidance points to data import, dataflows and data migration tools such as Azure Data Factory.</p></details>
+      <details><summary>Are Microsoft licenses included?</summary><p>No. Microsoft licenses and Copilot Credits are not part of the package price, and you pay for them separately. As part of the move we assign your licenses to each user and set their security roles, because Microsoft does not let a user open the app until both are done.</p></details>
+      <details><summary>Is Copilot included in Dynamics 365 Sales?</summary><p>Copilot in <a class="lnk" href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a>, Outlook and Teams is included in Sales Enterprise and Sales Premium, not in Sales Professional. The Sales agents are available on all three plans but run on Copilot Credits. Only Sales Premium includes credits; on other plans you buy them separately.</p></details>
+      <details><summary>Can you move our data from Salesforce, HubSpot or spreadsheets?</summary><p>Yes. Moving data from your old CRM or spreadsheets is part of a full implementation, and the Sales Accelerator includes an import of up to [Brian sets] records. Integrations with other systems are quoted separately.</p></details>
+      <details><summary>What if we need more than the package covers?</summary><p>Anything outside the package is a written change order you approve before work starts. If you need integrations or data from several systems at go-live, a full implementation fits better.</p></details>
+      <details><summary>Do we need a support plan after go-live?</summary><p>Yes. New clients start on at least the Stability plan, $500 a month for 4 hours, on a 12-month agreement. Monthly plans include a 1-hour response during business hours, 7:00am to 5:00pm Central, Monday to Friday.</p></details>
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="sec" id="checklist" aria-labelledby="ck-h">
+    <div class="ckl rev">
+      <div>
+        <span class="mono">Free download</span>
+        <h2 class="h2" id="ck-h" style="margin-top:10px">Want the migration readiness checklist?</h2>
+        <p class="lead">The HubSpot CRM to Dynamics 365 Migration Readiness Checklist: what to gather and decide before a move. Tell us where to send it.</p>
+      </div>
+      <div class="ph" role="note">[Form: the existing checklist download form (first name, last name, work email, consent). Michael supplies the checklist file and the form before this page goes live.]</div>
+    </div>
+  </section>
+
+  <section class="sec" id="others" aria-labelledby="op-h" >
+    <h2 class="mono" id="op-h" style="font-weight:400;margin:0 0 16px">Other packages</h2>
+    <nav class="lnav rev" aria-labelledby="op-h">
+      <a class="lt" href="nine-full-implementation.html" style="--c:var(--b6)"><span class="mono">Package</span>Full implementation</a>
+      <a href="nine-rescue-repair.html" style="--c:var(--b5)"><span class="mono">Package</span>Rescue and Repair</a>
+      <a href="nine-sales-accelerator.html" style="--c:var(--b4)"><span class="mono">Package</span>Sales Accelerator</a>
+      <a href="nine-service-accelerator.html" style="--c:var(--b3)"><span class="mono">Package</span>Service Accelerator</a>
+      <a href="nine-move-salesforce.html" style="--c:var(--b2)"><span class="mono">Move</span>Move from Salesforce</a>
+      <a href="https://www.dynamics365support.com/#plans" style="--c:var(--b1)"><span class="mono">After go-live</span>Support plans</a>
+    </nav>
+  </section>
+</div>
+
+<section class="final" aria-labelledby="fc-h">
+  <div class="wrap">
+    <div class="inner">
+      <div class="rev">
+        <h2 class="h2" id="fc-h">Start with a call or a free checkup</h2>
+        <p class="lead">Tell us where your system is today. You get a straight answer on which package fits, whether or not you work with us.</p>
+      </div>
+      <div class="side rev">
+        <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+        <a class="lnk" href="nine-dynamics-365-sales.html#check">Free checkups, no obligation <span>&rarr;</span></a>
+        <span class="mono">Or call <a href="tel:+18442640729">1-844-264-0729</a>, 7:00am to 5:00pm Central, Monday to Friday.</span>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="fcols">
+        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft Partner since [2008], specializing in Dynamics 365.</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
+        <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-marketing.html">Marketing automation</a><a href="https://www.encloud9.com/dynamics-365-pricing/">Dynamics 365 pricing</a></nav>
+        <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="https://www.encloud9.com/microsoft-copilot-studio/">Copilot Studio</a><a href="https://www.encloud9.com/dynamics-365-power-apps/">Power Apps</a><a href="https://www.encloud9.com/microsoft-power-bi/">Power BI</a></nav>
+        <nav aria-label="Packages and support"><b>Packages and support</b><a href="nine-packages.html">All packages</a><a href="https://www.encloud9.com/dynamics-365-sales-accelerator/">Sales Accelerator</a><a href="https://www.encloud9.com/dynamics-365-service-accelerator/">Service Accelerator</a><a href="https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>
+        <nav aria-label="Company"><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-stories.html">Client stories</a><a href="nine-blog.html">Blog</a><a href="https://www.encloud9.com/contact-us/">Contact us</a><a href="https://www.encloud9.com/microsoft-dynamics-365-partner-omaha/">Omaha and Nebraska</a></nav>
+      </div>
+      <div class="tm">enCloud9 LLC, [address Brian confirms]. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies.</div>
+    </footer>
+  </div>
+  <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>
+</section>
+</main>
+</body>
+</html>

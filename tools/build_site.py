@@ -33,6 +33,8 @@ MAP = {
     'nine-blog-post.html': '/blog/generative-pages-dynamics-365/',
     'nine-blog-2024.html': '/blog/optimizing-sales-strategies-with-dynamics-365-enabling-and-utilizing-sales-usage-reports/',
     'nine-storage.html': '/lp/dataverse-storage-analysis/',
+    'nine-move-salesforce.html': '/microsoft-dynamics-365-salesforce-crm-migration/',
+    'nine-move-hubspot.html': '/lp/microsoft-dynamics-365-hubspot-crm-migration/',
 }
 PATHS = set(MAP.values())
 
@@ -82,6 +84,9 @@ def rewrite(html, src, here):
         return f'{attr}="{repo}pages/{url}{frag}"'
 
     html = re.sub(r'\b(href|src)="([^"]*)"', fix, html)
+    # concept page names inside scripts (for example the package picker), as quoted strings
+    for k, v in MAP.items():
+        html = html.replace(f"'{k}'", f"'{rel(here, v)}'")
     return html
 
 def main():
