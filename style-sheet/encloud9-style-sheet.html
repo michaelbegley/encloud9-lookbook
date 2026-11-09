@@ -1,0 +1,201 @@
+<title>enCloud9 Style Sheet</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column reference sheet; the nine-step blue scale is the only colour; square corners; grid lines as ornament.
+   Single light look on purpose: it shows the brand colours exactly as they print and appear on the site. */
+:root{
+  --s1:#0E1A3A;--s2:#172A5E;--s3:#1F3A80;--s4:#2A4B94;--s5:#355DA6;
+  --s6:#6F8FCB;--s7:#9DB3DC;--s8:#C9D6EE;--s9:#EAF0F9;
+  --ink:#0E1A3A;--muted:#4A5675;--line:#D7DEEA;--paper:#FFFFFF;--wash:#F7F9FC;
+  --display:'Hanken Grotesk',Arial,sans-serif;
+  --mono:'DM Mono',ui-monospace,Menlo,Consolas,monospace;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--display);font-optical-sizing:auto;font-size:17px;line-height:1.6;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:48px 0}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(44px,8vw,84px);line-height:.98;font-weight:600;letter-spacing:-.032em;margin:12px 0 18px;text-wrap:balance}
+h2{font-size:clamp(30px,4.6vw,44px);line-height:1.04;font-weight:550;letter-spacing:-.028em;margin:0;text-wrap:balance}
+p{margin:0;max-width:62ch}
+.lede{font-size:19px;color:var(--muted)}
+section{display:grid;gap:24px;padding-block:56px;border-top:2px solid var(--ink)}
+.head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:28px}
+.meta div{display:grid;gap:2px}
+.meta b{font-weight:550}
+
+/* colours */
+.scale{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:4px}
+.sw{min-height:170px;padding:12px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;border:0;font:inherit;text-align:left;cursor:pointer;transition:transform .25s var(--ease)}
+.sw:hover{transform:translateY(-3px)}
+.sw:focus-visible,.btn:focus-visible,.copy:focus-visible{outline:2px solid var(--s5);outline-offset:3px}
+.sw .n{font-family:var(--mono);font-size:12px}
+.sw .hx{font-family:var(--mono);font-size:13px;font-weight:500}
+.sw .use{font-size:13px;line-height:1.3}
+.light{color:#FFFFFF}.dark{color:var(--ink)}
+.brand{outline:2px solid var(--ink);outline-offset:3px}
+.neutrals{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:4px}
+.nt{display:flex;gap:14px;align-items:center;padding:14px;border:1px solid var(--line);background:var(--paper);font:inherit;text-align:left;cursor:pointer}
+.chip{width:40px;height:40px;flex:none;border:1px solid var(--line)}
+.nt span{display:grid;line-height:1.35}
+.nt small{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 32px;margin:0;padding:0;list-style:none}
+.rules li{border-top:1px solid var(--line);padding-top:14px}
+.rules b{display:block;font-weight:550}
+
+/* type */
+.type{display:grid;gap:0}
+.trow{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:baseline;padding-block:22px;border-bottom:1px solid var(--line)}
+.trow .spec{display:grid;gap:2px}
+.trow .spec b{font-weight:550;font-size:15px}
+.ex-h1{font-size:clamp(40px,7vw,84px);line-height:.98;font-weight:600;letter-spacing:-.032em}
+.ex-h2{font-size:clamp(30px,4.6vw,48px);line-height:1.04;font-weight:550;letter-spacing:-.028em}
+.ex-h3{font-size:26px;line-height:1.1;font-weight:600;letter-spacing:-.02em}
+.ex-body{font-size:18px;line-height:1.6;max-width:60ch}
+.ex-mono{font-family:var(--mono);font-size:14px}
+.faces{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:4px}
+.face{padding:24px;background:var(--wash);display:grid;gap:10px;align-content:start}
+.face .big{font-size:96px;line-height:.9;font-weight:600;letter-spacing:-.04em}
+.face .big.m{font-family:var(--mono);font-weight:400;letter-spacing:0;font-size:80px}
+
+/* buttons */
+.btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:4px}
+.stage{padding:32px 24px;display:grid;gap:18px;align-content:start}
+.stage.on-dark{background:var(--s1);color:#FFFFFF}
+.stage.on-dark .mono{color:var(--s7)}
+.stage.on-light{background:var(--wash)}
+.row{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center}
+.btn{height:52px;display:inline-flex;align-items:center;padding:0 24px;font-family:var(--display);font-size:16px;font-weight:550;white-space:nowrap;border:0;border-radius:0;text-decoration:none;cursor:pointer;transition:transform .25s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn-p{background:var(--s5);color:#FFFFFF}
+.btn-w{background:#FFFFFF;color:var(--ink)}
+.lnk{font-size:16px;font-weight:550;display:inline-flex;gap:8px;align-items:center;color:inherit;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;padding-bottom:3px;transition:background-size .35s var(--ease)}
+.lnk:hover{background-size:100% 1px}
+.lnk span{transition:transform .35s var(--ease)}
+.lnk:hover span{transform:translateX(4px)}
+.specs{display:grid;gap:4px;font-size:15px;color:inherit}
+.specs code{font-family:var(--mono);font-size:13px}
+.email{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px}
+.mail{background:#FFFFFF;border:1px solid var(--line);padding:24px;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;color:#222}
+.mailbtn{display:inline-block;background:#355DA6;color:#FFFFFF;padding:10px 14px;font-family:Arial,Helvetica,sans-serif;font-size:16px;text-decoration:none;border-radius:4px;margin-block:8px}
+.copy{font:inherit;font-family:var(--mono);font-size:12px;background:none;border:1px solid var(--line);padding:4px 8px;cursor:pointer;color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:#FFFFFF;padding:10px 16px;font-family:var(--mono);font-size:13px}
+footer{display:grid;grid-template-columns:repeat(9,1fr);height:22px;gap:2px;margin-top:24px}
+.note{font-size:15px;color:var(--muted)}
+
+@media (max-width:760px){
+  .scale{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .sw{min-height:120px}
+  .trow{grid-template-columns:minmax(0,1fr);gap:8px}
+  .email{grid-template-columns:minmax(0,1fr)}
+  .face .big{font-size:72px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="mono">enCloud9 · Look 9 "Nine" · for Brian and Kristin</div>
+    <h1>Style sheet</h1>
+    <p class="lede">The colours, fonts and buttons for the new encloud9.com and for anything we send out. Click any colour to copy its hex code.</p>
+    <div class="meta">
+      <div><span class="mono">Version</span><b>Draft 1, 9 Nov 2026</b></div>
+      <div><span class="mono">Source</span><b>Look 9 brand kit</b></div>
+      <div><span class="mono">Brand blue</span><b>#355DA6</b></div>
+      <div><span class="mono">Main font</span><b>Hanken Grotesk</b></div>
+    </div>
+  </header>
+
+  <section aria-labelledby="c">
+    <div class="head"><h2 id="c">Colours</h2><span class="mono">The nine-step blue scale</span></div>
+    <p>Every colour comes from these nine steps. Step 5 is the brand blue, used for main buttons and the one highlight on a page. Steps 1 to 5 take white text. Steps 6 to 9 take dark ink text.</p>
+    <div class="scale" id="scale"></div>
+    <div class="neutrals" id="neutrals"></div>
+    <ul class="rules">
+      <li><b>One blue per moment</b>Use brand blue (step 5) for the main button and one highlight. Do not spread it across a whole page.</li>
+      <li><b>Dark sections</b>Use step 1 as the background, white text, and step 7 for small labels.</li>
+      <li><b>Square corners</b>No rounded corners on the site. The grid lines are the decoration.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="f">
+    <div class="head"><h2 id="f">Fonts</h2><span class="mono">Two families, both free</span></div>
+    <div class="faces">
+      <div class="face"><div class="big">Aa</div><b>Hanken Grotesk</b><p class="note">Everything: headlines, body copy, buttons. Weights 300 to 700. Free on Google Fonts (open licence).</p></div>
+      <div class="face"><div class="big m">09</div><b>DM Mono</b><p class="note">Only for small labels, prices and numbers, 12 to 14 px. Free on Google Fonts.</p></div>
+    </div>
+    <div class="type">
+      <div class="trow"><div class="spec"><span class="mono">Page headline</span><b>84 to 92 px · 600</b></div><div class="ex-h1">Dynamics 365, set up right</div></div>
+      <div class="trow"><div class="spec"><span class="mono">Section headline</span><b>48 to 56 px · 550</b></div><div class="ex-h2">Pick the package that fits</div></div>
+      <div class="trow"><div class="spec"><span class="mono">Card title</span><b>26 px · 600</b></div><div class="ex-h3">Rescue and Repair</div></div>
+      <div class="trow"><div class="spec"><span class="mono">Body</span><b>18 to 19 px · line height 1.6</b></div><div class="ex-body">We set up and support Dynamics 365 and Copilot for growing businesses across the US, from first install to the help desk after go-live.</div></div>
+      <div class="trow"><div class="spec"><span class="mono">Label / price</span><b>DM Mono 12 to 14 px</b></div><div class="ex-mono">PACKAGE 01 · FROM $X,XXX</div></div>
+    </div>
+    <p class="note">In emails, Word and PowerPoint, where these fonts may not load, use Arial. The price above is a placeholder, not a real price.</p>
+  </section>
+
+  <section aria-labelledby="b">
+    <div class="head"><h2 id="b">Buttons and links</h2><span class="mono">Square, 52 px tall</span></div>
+    <div class="btns">
+      <div class="stage on-light">
+        <span class="mono">On white or light</span>
+        <div class="row"><a class="btn btn-p" href="#b">Book a call</a><a class="lnk" href="#b">See plans and prices <span aria-hidden="true">→</span></a></div>
+        <div class="specs"><span>Main button: <code>#355DA6</code> fill, white text</span><span>Text link: dark ink, underline slides in on hover</span></div>
+      </div>
+      <div class="stage on-dark">
+        <span class="mono">On dark (step 1)</span>
+        <div class="row"><a class="btn btn-w" href="#b">Check if your data is ready</a><a class="lnk" href="#b">How it works <span aria-hidden="true">→</span></a></div>
+        <div class="specs"><span>Button: white fill, <code>#0E1A3A</code> text</span><span>Text link: white</span></div>
+      </div>
+    </div>
+    <ul class="rules">
+      <li><b>One main button per section</b>Everything else on that section is a text link.</li>
+      <li><b>Say what happens</b>"Book a call", "Book my free storage analysis". Never "Click here" or "Submit".</li>
+      <li><b>Size</b>52 px tall, 24 px side padding, 16 px text at weight 550.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="e">
+    <div class="head"><h2 id="e">In email</h2><span class="mono">ClickDimensions and Outlook</span></div>
+    <p>Email can't load our fonts, so it uses Arial with the same brand blue. The button sits on the left, in line with the text.</p>
+    <div class="email">
+      <div class="mail">
+        <p>Hi Sam,</p>
+        <p style="margin-top:12px">Here is the line of copy that leads into the button.</p>
+        <a class="mailbtn" href="#e">Book my free storage analysis</a>
+        <p>Best regards,<br>Brian Begley</p>
+      </div>
+      <div class="stage on-light">
+        <span class="mono">Email button</span>
+        <div class="specs">
+          <span>Fill <code>#355DA6</code>, white text</span>
+          <span>Arial 16 px, regular weight</span>
+          <span>Left aligned, 4 px corners (the ClickDimensions default; some email apps square them anyway)</span>
+          <span>Live now on the storage analysis email</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer aria-hidden="true" id="bar"></footer>
+  <div style="height:32px"></div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const steps=[["1","#0E1A3A","Text ink, dark sections"],["2","#172A5E",""],["3","#1F3A80",""],["4","#2A4B94","Photo tint"],["5","#355DA6","Brand blue, main buttons"],["6","#6F8FCB",""],["7","#9DB3DC","Labels on dark"],["8","#C9D6EE",""],["9","#EAF0F9","Hover, light panels"]];
+const neutrals=[["White","#FFFFFF","Page background"],["Wash","#F7F9FC","Light section background"],["Line","#D7DEEA","Dividers and borders"],["Muted","#4A5675","Secondary text"]];
+const toast=document.getElementById('toast');let tt;
+function say(m){toast.textContent=m;toast.hidden=false;clearTimeout(tt);tt=setTimeout(()=>toast.hidden=true,1600)}
+async function copy(hex){try{await navigator.clipboard.writeText(hex);say('Copied '+hex)}catch(e){say(hex+' (copy not allowed here)')}}
+const sc=document.getElementById('scale');
+steps.forEach(([n,h,u],i)=>{const b=document.createElement('button');b.className='sw '+(i<5?'light':'dark')+(n==='5'?' brand':'');b.style.background=h;b.setAttribute('aria-label','Copy step '+n+' '+h);b.innerHTML=`<span class="n">STEP ${n}</span><span><span class="use">${u}</span><br><span class="hx">${h}</span></span>`;b.onclick=()=>copy(h);sc.appendChild(b)});
+const ne=document.getElementById('neutrals');
+neutrals.forEach(([n,h,u])=>{const b=document.createElement('button');b.className='nt';b.setAttribute('aria-label','Copy '+n+' '+h);b.innerHTML=`<i class="chip" style="background:${h}"></i><span><b>${n}</b><small>${h} · ${u}</small></span>`;b.onclick=()=>copy(h);ne.appendChild(b)});
+const bar=document.getElementById('bar');steps.forEach(([,h])=>{const s=document.createElement('span');s.style.background=h;bar.appendChild(s)});
+</script>
