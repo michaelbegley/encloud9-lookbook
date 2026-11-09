@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Dynamics 365 Packages and Support Plans | enCloud9</title>
+<meta name="description" content="Fixed-scope Dynamics 365 packages for Sales and Customer Service, full implementations, rescues and CRM moves, with support plans from $500 a month.">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../pages/nine.css">
+<script defer src="../../pages/nine.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.encloud9.com/"},{"@type":"ListItem","position":2,"name":"Packages and support","item":"https://www.encloud9.com/crm-cloud-automation-solutions/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Which package do I need?","acceptedAnswer":{"@type":"Answer","text":"Start from where your system is today: a first Dynamics 365 Sales or Customer Service system fits an accelerator, and a system that needs integrations or data from several systems on day one fits a full implementation. A Dynamics 365 system that is over-customized or stalled fits Rescue and Repair."}},
+{"@type":"Question","name":"Are Microsoft licenses included?","acceptedAnswer":{"@type":"Answer","text":"No. Microsoft licenses and Copilot Credits are not part of the package price, and you pay for them separately. As part of setup we assign your licenses to each user and set their security roles, because Microsoft does not let a user open the app until both are done."}},
+{"@type":"Question","name":"What if we need more than the package covers?","acceptedAnswer":{"@type":"Answer","text":"Anything outside the package is a written change order you approve before work starts. If you need integrations or data from several systems at go-live, a full implementation fits better."}},
+{"@type":"Question","name":"Can you take over a system another partner built?","acceptedAnswer":{"@type":"Answer","text":"Yes. Rescue and Repair is for Dynamics 365 systems that are over-customized, stalled or out of date. We review it first and tell you what to keep."}},
+{"@type":"Question","name":"Do we need a support plan after go-live?","acceptedAnswer":{"@type":"Answer","text":"Yes. New clients start on at least the Stability plan, $500 a month for 4 hours, on a 12-month agreement. Monthly plans include a 1-hour response during business hours, 7:00am to 5:00pm Central, Monday to Friday."}}]}</script>
+<style>
+/* packages page only */
+body.p-packages .pk-hero .cell .ds{max-height:none;opacity:1;margin-top:8px}
+body.p-packages .pk-hero .cell .nm{font-size:clamp(18px,1.65vw,24px)}
+body.p-packages .pk-hero .cell.base{grid-column:1/-1;flex-direction:row;align-items:flex-end;gap:24px;justify-content:space-between}
+body.p-packages .pk-hero .cell.base .nm{margin-top:0}
+body.p-packages .pk-hero .cell.base .big{font-family:var(--head);font-size:clamp(28px,3vw,40px);font-weight:600;letter-spacing:-.03em;line-height:1;white-space:nowrap}
+body.p-packages .pk-hero .cell.base .big small{display:block;font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:0;margin-top:6px;opacity:.85}
+@media (max-width:560px){body.p-packages .pk-hero .cell .nm{font-size:14px}body.p-packages .pk-hero .cell.base{flex-direction:column;align-items:flex-start;gap:6px}body.p-packages .pk-hero .cell.base .nm{font-size:17px}body.p-packages .pk-hero .cell.base .big{font-size:22px}}
+.sh{display:none}
+@media (max-width:560px){.sh{display:inline}}
+@media (max-width:420px){body.p-packages .pk-hero .cell .nm,body.p-packages .dest .nm{font-size:13px}body.p-packages .pk-hero .cell{padding:10px}body.p-packages .pk-hero .cell.base{padding:16px}}
+@media (max-width:640px){
+  body.p-packages .fit-tbl{min-width:0}
+  body.p-packages .fit-tbl thead{display:none}
+  body.p-packages .fit-tbl tr{display:block;padding:14px 0;border-bottom:1px solid var(--line)}
+  body.p-packages .fit-tbl td,body.p-packages .fit-tbl tbody th{display:block;border:0;padding:0;width:auto}
+  body.p-packages .fit-tbl tbody th{margin-top:6px}
+}
+body.p-packages .fit-tbl tbody th{font-family:var(--body);font-size:16px;font-weight:600}
+@media (min-width:641px){body.p-packages .fit-tbl tbody th{width:34%}}
+body.p-packages .fit-tbl tbody td{color:var(--ink2)}
+/* package cards */
+.pk-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.pk{position:relative;background:var(--white);border:1px solid var(--line);padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:16px;min-height:380px;transition:transform .4s var(--bounce),box-shadow .3s,border-color .3s}
+.pk:hover{transform:translateY(-6px);border-color:var(--b7);box-shadow:0 22px 40px -28px rgba(14,26,58,.5);z-index:2}
+.pk .sq{width:44px;height:44px;display:flex;align-items:flex-end;padding:6px;font-family:var(--mono);font-size:11px;color:var(--white)}
+.pk .sq.lt{color:var(--ink)}
+.pk .h3{font-size:clamp(24px,2.2vw,30px)}
+.pk .one{color:var(--muted);font-size:16px}
+.pk dl{margin:auto 0 0;border-top:2px solid var(--ink)}
+.pk dl div{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.pk dt{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:2px}
+.pk dd{margin:0;font-weight:600}
+.pk .go{font-size:15px;color:var(--b5);font-weight:600}
+@media (max-width:1080px){.pk-cards{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.pk-cards{grid-template-columns:1fr}.pk{min-height:0}}
+.pk-more{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+/* support scale */
+.sp-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:end}
+.sp-scale{list-style:none;margin:clamp(48px,6vw,72px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;align-items:end;height:440px}
+.sp-scale li{position:relative;height:var(--h);display:flex;flex-direction:column;gap:6px;padding:20px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:var(--white);transform-origin:bottom}
+.sp-scale li.s2{background:var(--b5);border:0}
+.sp-scale li.s2::after{content:"";position:absolute;inset:8px;border:1.5px solid rgba(255,255,255,.85);pointer-events:none}
+.sp-scale li.s3{background:var(--b6);border:0}
+.sp-scale li.s4{background:var(--b8);border:0;color:var(--ink)}
+.sp-scale .nm{font-family:var(--mono);font-size:13px;opacity:.9}
+.sp-scale .tag{align-self:flex-start;font-family:var(--mono);font-size:11px;background:var(--white);color:var(--b3);padding:3px 8px;position:relative;z-index:1}
+.sp-scale .pr{font-family:var(--head);font-size:clamp(28px,3vw,44px);font-weight:600;letter-spacing:-.03em;line-height:1;margin-top:auto}
+.sp-scale .per{font-size:14px;opacity:.85}
+.sp-scale .hrs{font-size:15px;font-weight:600;padding-top:10px;margin-top:6px;border-top:1px solid currentColor;border-top-color:rgba(255,255,255,.3)}
+.sp-scale li.s4 .hrs{border-top-color:rgba(14,26,58,.25)}
+.sp-scale .fitl{font-size:14px;opacity:.85}
+@media (max-width:860px){
+  .sp-top{grid-template-columns:1fr}
+  .sp-scale{grid-template-columns:1fr;height:auto;align-items:stretch}
+  .sp-scale li{height:auto;width:var(--w);min-height:0;transform-origin:left}
+  .sp-scale .pr{margin-top:8px}
+}
+@media (max-width:480px){.sp-scale li{width:100%}}
+.band .fine{color:var(--b8)}
+/* picker */
+.pick{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:start}
+.pick-q{display:flex;flex-direction:column;border-top:2px solid var(--ink)}
+.pick-q button{display:flex;gap:16px;align-items:flex-start;text-align:left;width:100%;background:none;border:0;border-bottom:1px solid var(--line);padding:16px 8px 16px 0;font:500 17px/1.45 var(--body);color:var(--ink);cursor:pointer;transition:background .25s,padding .3s var(--ease)}
+.pick-q button .k{flex-shrink:0;width:22px;height:22px;border:1.5px solid var(--b6);margin-top:2px;transition:background .25s,border-color .25s}
+.pick-q button:hover{background:var(--tint);padding-left:8px}
+.pick-q button[aria-pressed="true"]{background:var(--tint);padding-left:8px;font-weight:600}
+.pick-q button[aria-pressed="true"] .k{background:var(--b5);border-color:var(--b5)}
+.pick-side{position:sticky;top:132px;scroll-margin-top:128px}
+.dest{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;aspect-ratio:1/1}
+.dest>div{position:relative;padding:14px;display:flex;flex-direction:column;background:var(--b9);color:var(--ink2);transition:background .35s,color .35s,opacity .35s,transform .5s var(--bounce)}
+.dest .lab{font-family:var(--mono);font-size:11px;opacity:.8}
+.dest .nm{margin-top:auto;font-family:var(--head);font-size:clamp(16px,1.6vw,21px);font-weight:600;line-height:1.1;letter-spacing:-.015em}
+.dest.on>div{opacity:.38}
+.dest>div.lit{opacity:1;background:var(--b5);color:var(--white);transform:scale(1.04);z-index:2;box-shadow:0 18px 30px -18px rgba(14,26,58,.6)}
+.dest>div.lit::after{content:"";position:absolute;inset:7px;border:1.5px solid rgba(255,255,255,.85);pointer-events:none}
+.dest>div.also{opacity:1;background:var(--b2);color:var(--white)}
+.res{margin-top:16px;border-top:2px solid var(--ink);padding-top:16px;min-height:132px;display:flex;flex-direction:column;gap:8px}
+.res b{font-family:var(--head);font-size:26px;letter-spacing:-.02em;line-height:1.15}
+.res p{color:var(--muted);font-size:16px;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+@media (max-width:860px){.pick{grid-template-columns:1fr}.pick-side{position:static}.dest{aspect-ratio:auto;grid-auto-rows:96px}.dest .nm{font-size:15px}.dest>div{padding:10px}}
+@media (prefers-reduced-motion:reduce){.dest>div.lit{transform:none}.pk:hover{transform:none}}
+@media (prefers-reduced-motion:no-preference){
+  .js body.p-packages .pk-hero .cell{animation:pop .75s var(--ease) backwards;animation-delay:calc(var(--d,0)*70ms + 350ms)}
+  .js .sp-scale li{transform:scaleY(.04);opacity:.2;transition:transform .9s var(--bounce),opacity .5s;transition-delay:calc(var(--i,0)*140ms)}
+  .js .sp-scale.in li{transform:none;opacity:1}
+  .js .dest>div.lit{animation:pop .6s var(--ease)}
+}
+@media (prefers-reduced-motion:no-preference) and (max-width:860px){.js .sp-scale li{transform:scaleX(.04)}}
+/* ===== polish round (4 Nov): consistent with the home page ===== */
+/* hero cubes: let the hover-grow from nine.css win once the entrance pop has played */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-packages .grid9:hover .cell.base:hover{transform:perspective(900px) translateZ(40px) translateY(-8px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.03)}
+}
+/* package cards become coloured cubes, the hovered one comes toward you */
+.pk{background:var(--c);border:0;color:var(--white);min-height:400px}
+.pk.lt{color:var(--ink)}
+.pk .pt-top{display:flex;justify-content:space-between;align-items:flex-start}
+.pk .pt-top .mono{color:rgba(255,255,255,.78)}.pk.lt .pt-top .mono{color:var(--ink2)}
+.pk.lt .g.big i{background:rgba(14,26,58,.16)}.pk.lt .g.big i.on{background:var(--ink)}
+.pk .h3{margin-top:clamp(24px,3vw,40px)}
+.pk dl{margin-top:auto!important}
+.pk .one{color:rgba(255,255,255,.84)}.pk.lt .one{color:var(--ink2)}
+.pk dl{margin:0;border-top:1.5px solid rgba(255,255,255,.5)}.pk.lt dl{border-top-color:rgba(14,26,58,.4)}
+.pk dl div{border-bottom-color:rgba(255,255,255,.18)}.pk.lt dl div{border-bottom-color:rgba(14,26,58,.16)}
+.pk dt{color:rgba(255,255,255,.72)}.pk.lt dt{color:var(--ink2)}
+.pk .go{color:var(--white)}.pk.lt .go{color:var(--ink)}
+.pk:hover{border-color:transparent}
+.pk:focus-visible{outline-offset:3px}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .pk-cards{perspective:1200px}
+  .pk{transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+  .pk-cards:hover .pk{filter:saturate(.92) brightness(.96);transform:perspective(1200px) scale(.98)}
+  .pk-cards:hover .pk:hover{filter:none;z-index:3;transform:perspective(1200px) translateZ(60px) translateY(-10px) scale(1.05);box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 10px 20px -12px rgba(14,26,58,.45)}
+}
+/* support bars: same hover feel; the whole bar opens the plan comparison */
+.sp-scale li .cover{position:absolute;inset:0;z-index:2}
+.sp-scale li .cover:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+.sp-scale li .go{font-size:13px;font-weight:600;opacity:.85}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .js body.p-packages .sp-scale li{transition:transform .9s var(--bounce) calc(var(--i,0)*140ms),opacity .5s calc(var(--i,0)*140ms),scale .5s var(--bounce),translate .5s var(--bounce),filter .4s var(--ease),box-shadow .4s var(--ease)}
+  body.p-packages .sp-scale:hover li{filter:brightness(.85);scale:.98}
+  body.p-packages .sp-scale:hover li:hover{filter:none;scale:1.05;translate:0 -10px;z-index:3;box-shadow:0 34px 60px -26px rgba(0,0,0,.7)}
+}
+/* the line-by-line table now sits behind a toggle under the picker */
+.fitmore{margin-top:clamp(32px,4vw,48px);border-top:1px solid var(--line)}
+.fitmore summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding-top:12px;font-weight:600;font-size:15px}
+.fitmore summary::-webkit-details-marker{display:none}
+.fitmore summary::after{content:"+";font-size:20px;color:var(--b5);transition:transform .3s var(--ease)}
+.fitmore[open] summary::after{transform:rotate(45deg)}
+.fitmore .tbl-wrap{margin-top:16px}
+/* stories: words left, two outcome cards right */
+.pk-st{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,5vw,72px);align-items:center}
+.pk-st .copyc{display:flex;flex-direction:column;gap:20px}
+.pk-st .story .big{margin-top:4px}
+@media (max-width:1080px){.pk-st{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body class="p-packages">
+<header class="top">
+  <a class="skip" href="#main">Skip to main content</a>
+  <div class="wrap">
+    <a class="logo" href="../" aria-label="enCloud9 home"><img src="../../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9" width="104" height="34"></a>
+    <nav class="nav" aria-label="Main"><a href="../power-platform-dynamics-365/">Dynamics 365</a><a href="../marketing-services/">Marketing</a><a href="../microsoft-copilot-for-business/">Copilot and AI</a><a href="./" class="cur">Packages<span class="sr-only"> (current section)</span></a><a href="../about-encloud9/microsoft-dynamics-365-success/">Stories</a><a href="../blog/">Blog</a><a href="../about-encloud9/">About</a></nav>
+    <a class="tel" href="tel:+18442640729">1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+    <a class="btn btn-p call-m" href="tel:+18442640729">Call</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile"><a href="../power-platform-dynamics-365/">Dynamics 365</a><a href="../marketing-services/">Marketing</a><a href="../microsoft-copilot-for-business/">Copilot and AI</a><a href="./">Packages</a><a href="../about-encloud9/microsoft-dynamics-365-success/">Stories</a><a href="../blog/">Blog</a><a href="../about-encloud9/">About</a><a href="tel:+18442640729">Call 1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+  </nav>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="../">Home</a><span aria-hidden="true">/</span><span aria-current="page">Packages and support</span></nav>
+  <section class="hero" aria-labelledby="h1">
+    <div class="copy">
+      <span class="mono rise" style="--d:0">Packages and support</span>
+      <h1 class="h1" id="h1" style="font-size:clamp(40px,5.6vw,78px)"><span class="ln"><span style="--d:1">Dynamics 365,</span></span><span class="ln"><span style="--d:2">in packages</span></span><span class="ln"><span style="--d:3">you can read</span></span><span class="ln"><span style="--d:4">before you buy</span></span></h1>
+      <p class="lead rise" style="--d:4">enCloud9 sells Dynamics 365 setup as named packages: the Sales Accelerator, the Service Accelerator, a full implementation, Rescue and Repair for systems that are not working, and moves from Salesforce, HubSpot or another CRM. Each package lists what is included, what is not and how long it takes, and support plans start at $500 a month.</p>
+      <p class="rise" style="--d:5;font-weight:600;font-size:18px">Pick the package that fits where you are.</p>
+      <div class="acts rise" style="--d:5">
+        <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+        <a class="lnk" href="#checkups">Free checkups, no obligation <span>&rarr;</span></a>
+      </div>
+      <p class="phone-note rise" style="--d:6">Prefer the phone? Call <a href="tel:+18442640729">1-844-264-0729</a>.</p>
+    </div>
+    <div>
+      <div class="grid9 pk-hero" role="list" aria-label="Our packages, and our monthly support plans">
+        <a role="listitem" class="cell" style="background:var(--b1);--d:0" href="#pk-sales"><span class="lab">Package 01</span><span class="nm">Sales Accelerator</span><span class="ds">A first Dynamics 365 Sales system</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b2);--d:1" href="#pk-service"><span class="lab">Package 02</span><span class="nm">Service Accelerator</span><span class="ds">A first Customer Service system</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b3);--d:2" href="#pk-full"><span class="lab">Package 03</span><span class="nm">Full imple<span class="sh">&shy;</span>mentation</span><span class="ds">Data moves and integrations</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b4);--d:3" href="#pk-rescue"><span class="lab">Package 04</span><span class="nm">Rescue and Repair</span><span class="ds">Over-customized or stalled systems</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b6);--d:4" href="#pk-salesforce"><span class="lab">Package 05</span><span class="nm">Move from Salesforce</span><span class="ds">Your old CRM data, moved</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b7);--d:5" href="#pk-hubspot"><span class="lab">Package 06</span><span class="nm">Move from HubSpot or another CRM</span><span class="ds">Your old CRM data, moved</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="cell core base" style="background:var(--b5);--d:7" href="#support"><span><span class="lab">After go-live</span><span class="nm" style="display:block;margin-top:8px">Professional, responsive monthly support plans</span></span><span class="big">From $500<small>a month, Stability plan</small></span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      </div>
+      <p class="fine" style="margin-top:14px">Package prices are quoted in writing after a short call. <a class="lnk" href="#fit">Which package fits <span>&rarr;</span></a></p>
+    </div>
+  </section>
+
+  <section class="sec" aria-label="Facts" style="padding-top:clamp(56px,6vw,88px)">
+    <div class="proof big rev">
+      <a class="pf" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><b class="num">1 month</b><span>A new Dynamics 365 Sales system for The Schiff Group</span><small>Read the story &rarr;</small></a>
+      <a class="pf" href="../about-encloud9/microsoft-dynamics-365-success/"><b class="num">23</b><span>client stories, new builds to rescues</span><small>See the stories &rarr;</small></a>
+      <div class="pf"><b class="num">[30+]</b><span>US states with enCloud9 clients</span></div>
+      <a class="pf" href="#support"><b class="num">$500</b><span>a month, where support plans start</span><small>See the plans &rarr;</small></a>
+    </div>
+  </section>
+
+  <section class="sec" id="packages" aria-labelledby="pk-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="pk-h">Which Dynamics 365 packages can we build for you?</h2>
+      <p class="lead">We build Dynamics 365 through six packages, backed by professional, responsive monthly support plans from $500. Each one lists what is included, what is not and how long it takes. You get the price in writing after a short call.</p>
+    </div>
+    <div class="pk-cards rev">
+      <a class="pk" id="pk-sales" style="--c:var(--b1)" href="../dynamics-365-sales-accelerator/"><span class="pt-top"><span class="mono">Package 01</span><span class="g big" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></span><h3 class="h3">Sales Accelerator</h3><p class="one">Dynamics 365 Sales with your users, pipeline and records set up, for a business starting fresh or leaving spreadsheets or an old CRM.</p><dl><div><dt>Time</dt><dd>[Brian sets] weeks</dd></div><div><dt>Users</dt><dd>Up to [Brian sets] users</dd></div><div><dt>Price</dt><dd>Quoted in writing after a short call</dd></div></dl><span class="go">See the package &rarr;</span></a>
+      <a class="pk" id="pk-service" style="--c:var(--b2)" href="../dynamics-365-service-accelerator/"><span class="pt-top"><span class="mono">Package 02</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></span><h3 class="h3">Service Accelerator</h3><p class="one">Dynamics 365 Customer Service with cases, queues and service levels.</p><dl><div><dt>Time</dt><dd>[Brian sets] weeks</dd></div><div><dt>Users</dt><dd>Up to [Brian sets] users</dd></div><div><dt>Price</dt><dd>Quoted in writing after a short call</dd></div></dl><span class="go">See the package &rarr;</span></a>
+      <a class="pk" id="pk-full" style="--c:var(--b3)" href="../microsoft-dynamics-365-implementation/"><span class="pt-top"><span class="mono">Package 03</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span></span><h3 class="h3">Full implementation</h3><p class="one">Sales, Customer Service or both, with data moved, integrations and training.</p><dl><div><dt>Time</dt><dd>Typically [Brian sets] to [Brian sets] months</dd></div><div><dt>Users</dt><dd>Set in your written scope</dd></div><div><dt>Price</dt><dd>Quoted in writing after a short call</dd></div></dl><span class="go">See the package &rarr;</span></a>
+      <a class="pk" id="pk-rescue" style="--c:var(--b4)" href="../encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/"><span class="pt-top"><span class="mono">Package 04</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></span><h3 class="h3">Rescue and Repair</h3><p class="one">We take over a Dynamics system that is over-customized, stalled or out of date, and get it working.</p><dl><div><dt>Time</dt><dd>Typically [Brian sets] months</dd></div><div><dt>Users</dt><dd>Set in your written scope</dd></div><div><dt>Price</dt><dd>Quoted in writing after a short call</dd></div></dl><span class="go">See the package &rarr;</span></a>
+      <a class="pk" id="pk-salesforce" style="--c:var(--b5)" href="https://www.encloud9.com/microsoft-dynamics-365-salesforce-crm-migration/"><span class="pt-top"><span class="mono">Package 05</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><h3 class="h3">Move from Salesforce</h3><p class="one">Moving data from your old CRM or spreadsheets is part of a full implementation.</p><dl><div><dt>Time</dt><dd>[Brian sets] weeks</dd></div><div><dt>Users</dt><dd>Up to [Brian sets] users</dd></div><div><dt>Price</dt><dd>Quoted in writing after a short call</dd></div></dl><span class="go">See the package &rarr;</span></a>
+      <a class="pk lt" id="pk-hubspot" style="--c:var(--b7)" href="https://www.encloud9.com/lp/microsoft-dynamics-365-hubspot-crm-migration/"><span class="pt-top"><span class="mono">Package 06</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></span><h3 class="h3">Move from HubSpot or another CRM</h3><p class="one">Moving data from your old CRM or spreadsheets is part of a full implementation.</p><dl><div><dt>Time</dt><dd>[Brian sets] weeks</dd></div><div><dt>Users</dt><dd>Up to [Brian sets] users</dd></div><div><dt>Price</dt><dd>Quoted in writing after a short call</dd></div></dl><span class="go">See the package &rarr;</span></a>
+    </div>
+    <div class="pk-more">
+      <span>Also moving from Zoho or Monday.com? See <a class="lnk" href="https://www.encloud9.com/microsoft-dynamics-365-zoho-crm-migration/">Move from Zoho</a> and <a class="lnk" href="https://www.encloud9.com/lp/monday-to-dynamics-365-migration/">Move from Monday.com</a>.</span>
+    </div>
+    <p class="fine">Microsoft licenses are not part of the package price. Anything outside the package is a written change order you approve before work starts.</p>
+  </section>
+</div>
+
+<section class="band" id="support" aria-labelledby="sp-h" style="margin-top:clamp(80px,9vw,136px)">
+  <div class="wrap">
+    <div class="sp-top">
+      <div class="rev">
+        <span class="mono">Support plans</span>
+        <h2 class="h2" id="sp-h" style="margin-top:16px">What does support cost after go-live?</h2>
+      </div>
+      <p class="lead rev">Support starts at $500 a month for 4 hours on the Stability plan, which is the minimum plan for new clients. Larger teams choose Optimization at $1,500 a month for 20 hours or Partnership from $2,000 a month for 35 hours.</p>
+    </div>
+    <ol class="sp-scale rev" aria-label="Support plans, from smallest to largest">
+      <li class="s1" style="--h:48%;--w:58%;--i:0"><span class="nm">On-Demand</span><span class="pr">$200</span><span class="per">an hour</span><span class="hrs">As needed, no retainer</span><a class="cover" href="https://www.dynamics365support.com/#plans" aria-label="Compare the On-Demand plan"></a></li>
+      <li class="s2" style="--h:64%;--w:72%;--i:1"><span class="tag">Minimum plan</span><span class="nm">Stability</span><span class="pr">$500</span><span class="per">a month</span><span class="hrs">4 hours a month</span><span class="fitl">Small teams</span><a class="cover" href="https://www.dynamics365support.com/#plans" aria-label="Compare the Stability plan"></a></li>
+      <li class="s3" style="--h:82%;--w:86%;--i:2"><span class="nm">Optimization</span><span class="pr">$1,500</span><span class="per">a month</span><span class="hrs">20 hours a month</span><span class="fitl">Up to 50 users</span><a class="cover" href="https://www.dynamics365support.com/#plans" aria-label="Compare the Optimization plan"></a></li>
+      <li class="s4" style="--h:100%;--w:100%;--i:3"><span class="nm">Partnership</span><span class="pr">$2,000+</span><span class="per">a month</span><span class="hrs">35 hours a month</span><span class="fitl">50 users and up</span><a class="cover" href="https://www.dynamics365support.com/#plans" aria-label="Compare the Partnership plan"></a></li>
+    </ol>
+    <p class="fine" style="max-width:900px;margin-top:28px">Monthly plans run on a 12-month agreement. New clients pay an onboarding fee of up to one month's charge. Hours 7:00am to 5:00pm Central, Monday to Friday, excluding US federal holidays. Monthly plans include a 1-hour response during business hours, which means a person has picked up your request, not that it is solved. Every plan includes Microsoft escalation management.</p>
+    <div class="band-foot">
+      <a class="btn btn-w" href="https://www.dynamics365support.com/#plans">Compare support plans</a>
+      <a class="lnk" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call <span>&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="sec" id="fit" aria-labelledby="fit-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="fit-h">Which Dynamics 365 package fits my business?</h2>
+      <p class="lead">Start from where your system is today: a first Dynamics 365 Sales or Customer Service system fits an accelerator, and a system that needs integrations or data from several systems on day one fits a full implementation. A Dynamics 365 system that is over-customized or stalled fits Rescue and Repair.</p>
+    </div>
+    <div class="pick rev" id="picker">
+      <div>
+        <span class="mono" style="display:block;margin-bottom:12px">Which line sounds like you?</span>
+        <div class="pick-q" role="group" aria-label="Pick the line that sounds like you">
+          <button type="button" aria-pressed="false" data-go="sales"><span class="k" aria-hidden="true"></span>This is your first Dynamics 365 Sales system.</button>
+          <button type="button" aria-pressed="false" data-go="sales"><span class="k" aria-hidden="true"></span>Leads, quotes and follow-ups live in spreadsheets, inboxes or an old CRM nobody trusts.</button>
+          <button type="button" aria-pressed="false" data-go="service"><span class="k" aria-hidden="true"></span>This is your first Dynamics 365 Customer Service system.</button>
+          <button type="button" aria-pressed="false" data-go="service"><span class="k" aria-hidden="true"></span>Customer requests live in a shared inbox, spreadsheets or a help desk tool nobody trusts.</button>
+          <button type="button" aria-pressed="false" data-go="full"><span class="k" aria-hidden="true"></span>You need other systems connected on day one.</button>
+          <button type="button" aria-pressed="false" data-go="rescue"><span class="k" aria-hidden="true"></span>You already have a Dynamics 365 Sales system that is over-customized or stalled.</button>
+          <button type="button" aria-pressed="false" data-go="rescue"><span class="k" aria-hidden="true"></span>You already have a Dynamics 365 Customer Service system that is over-customized or stalled.</button>
+          <button type="button" aria-pressed="false" data-go="cc"><span class="k" aria-hidden="true"></span>You need phone and chat routing for a contact center on day one.</button>
+          <button type="button" aria-pressed="false" data-go="move"><span class="k" aria-hidden="true"></span>You are moving from Salesforce, HubSpot or another CRM.</button>
+          <button type="button" aria-pressed="false" data-go="checkup"><span class="k" aria-hidden="true"></span>You have a Dynamics 365 system and want to know where it stands first.</button>
+        </div>
+      </div>
+      <div class="pick-side">
+        <div class="dest" aria-hidden="true">
+          <div data-k="sales" style="--d:0"><span class="lab">Package 01</span><span class="nm">Sales Accelerator</span></div>
+          <div data-k="service"><span class="lab">Package 02</span><span class="nm">Service Accelerator</span></div>
+          <div data-k="full"><span class="lab">Package 03</span><span class="nm">Full imple<span class="sh">&shy;</span>mentation</span></div>
+          <div data-k="rescue"><span class="lab">Package 04</span><span class="nm">Rescue and Repair</span></div>
+          <div data-k="support"><span class="lab">After go-live</span><span class="nm">Support plan</span></div>
+          <div data-k="cc"><span class="lab">Talk to us</span><span class="nm">Contact Center</span></div>
+          <div data-k="salesforce"><span class="lab">Package 05</span><span class="nm">Move from Salesforce</span></div>
+          <div data-k="hubspot"><span class="lab">Package 06</span><span class="nm">Move from HubSpot or another CRM</span></div>
+          <div data-k="checkup"><span class="lab">Free checkup</span><span class="nm">CRM Health Check</span></div>
+        </div>
+        <div class="res" aria-live="polite" data-res>
+          <span class="mono">Start with</span>
+          <b data-res-name>Pick the line that sounds like you</b>
+          <p data-res-note>The matching package lights up here.</p>
+        </div>
+      </div>
+    </div>
+    <details class="fitmore">
+    <summary>See every line as a table</summary>
+    <div class="tbl-wrap">
+      <table class="tbl fit-tbl">
+        <caption class="mono" style="text-align:left;padding-bottom:10px">Which package fits, line by line</caption>
+        <thead><tr><th scope="col">If this is you</th><th scope="col">Start with</th></tr></thead>
+        <tbody>
+          <tr><td>This is your first Dynamics 365 Sales system.</td><th scope="row"><a class="lnk" href="../dynamics-365-sales-accelerator/">Sales Accelerator</a></th></tr>
+          <tr><td>Leads, quotes and follow-ups live in spreadsheets, inboxes or an old CRM nobody trusts.</td><th scope="row"><a class="lnk" href="../dynamics-365-sales-accelerator/">Sales Accelerator</a></th></tr>
+          <tr><td>This is your first Dynamics 365 Customer Service system.</td><th scope="row"><a class="lnk" href="../dynamics-365-service-accelerator/">Service Accelerator</a></th></tr>
+          <tr><td>Customer requests live in a shared inbox, spreadsheets or a help desk tool nobody trusts.</td><th scope="row"><a class="lnk" href="../dynamics-365-service-accelerator/">Service Accelerator</a></th></tr>
+          <tr><td>You need other systems connected on day one. A full implementation covers data moves and integrations.</td><th scope="row"><a class="lnk" href="../microsoft-dynamics-365-implementation/">Full implementation</a></th></tr>
+          <tr><td>You already have a Dynamics 365 Sales system that is over-customized or stalled. Rescue and Repair is built for that.</td><th scope="row"><a class="lnk" href="../encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a></th></tr>
+          <tr><td>You already have a Dynamics 365 Customer Service system that is over-customized or stalled. Rescue and Repair is built for that.</td><th scope="row"><a class="lnk" href="../encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a></th></tr>
+          <tr><td>You need phone and chat routing for a contact center on day one. Dynamics 365 Contact Center is built for that.</td><th scope="row"><a class="lnk" href="https://www.encloud9.com/dynamics-365-contact-center/">Talk to us about Dynamics 365 Contact Center</a></th></tr>
+          <tr><td>You are moving from Salesforce, HubSpot or another CRM. Moving your data is part of a full implementation.</td><th scope="row"><a class="lnk" href="../microsoft-dynamics-365-implementation/">Full implementation</a> (<a class="lnk" href="https://www.encloud9.com/microsoft-dynamics-365-salesforce-crm-migration/">Move from Salesforce</a>, <a class="lnk" href="https://www.encloud9.com/lp/microsoft-dynamics-365-hubspot-crm-migration/">Move from HubSpot or another CRM</a>)</th></tr>
+          <tr><td>You have a Dynamics 365 system and want to know where it stands first.</td><th scope="row"><a class="lnk" href="https://www.encloud9.com/lp/schedule-a-meeting/">CRM Health Check, free</a></th></tr>
+        </tbody>
+      </table>
+    </div>
+    </details>
+    <p class="fine">Not sure? <a class="lnk" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call and we will tell you which package fits <span>&rarr;</span></a></p>
+  </section>
+
+  <section class="sec" id="stories" aria-labelledby="cs-h">
+    <div class="pk-st">
+    <div class="copyc rev">
+      <h2 class="h2" id="cs-h">Which businesses have we built or rescued on Dynamics 365?</h2>
+      <p class="lead">Here are two of our 23 client stories: one new Dynamics 365 Sales system and one rescue of a stalled project from a prior partner.</p>
+      <div class="acts">
+        <a class="btn btn-o" href="../about-encloud9/microsoft-dynamics-365-success/">All 23 client stories</a>
+        <a class="lnk" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call <span>&rarr;</span></a>
+      </div>
+    </div>
+    <div class="stories two rev">
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><span class="mono">Maryland &middot; Dynamics 365 Sales</span><span class="big">1 month</span><span class="t">The Schiff Group</span><span class="d">A new Dynamics 365 Sales system in one month.</span><span class="go">Read The Schiff Group story &rarr;</span></a>
+      <a class="story" href="https://www.encloud9.com/blog/success_stories/tension-ss/"><span class="mono">Kansas City, MO &middot; Rescue</span><span class="big">3 months</span><span class="t">Tension Envelope</span><span class="d">A stalled Dynamics 365 Sales Enterprise project from a prior partner, rescued within a mere three-month timeframe.</span><span class="go">Read the Tension Envelope story &rarr;</span></a>
+    </div>
+    </div>
+  </section>
+
+  <section class="sec" id="checkups" aria-labelledby="ck-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="ck-h">Free checkups, no obligation</h2>
+      <p class="lead">Find out where your system stands before you spend anything.</p>
+    </div>
+    <div class="rows rev">
+      <a class="row" href="../lp/dataverse-storage-analysis/"><span class="g" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="m"></i><i class="m"></i><i></i><i></i><i></i><i></i></span><span class="nm">Dataverse Storage Analysis</span><span class="ds">What is filling your storage, which type is over, and a written plan to stay under the limit. One hour.</span><span class="go">Book it &rarr;</span></a>
+      <a class="row" href="https://www.encloud9.com/lp/schedule-a-meeting/"><span class="g" aria-hidden="true"><i class="d"></i><i></i><i class="d"></i><i></i><i class="on"></i><i></i><i class="d"></i><i></i><i class="d"></i></span><span class="nm">CRM Health Check</span><span class="ds">A review of your Dynamics 365 setup, with findings ranked by what each fix is worth.</span><span class="go">Book it &rarr;</span></a>
+      <a class="row" href="../dynamics-365-sales/#check"><span class="g" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span><span class="nm">Copilot readiness check</span><span class="ds">Five questions on data and permissions, with a written next step.</span><span class="go">Take the check &rarr;</span></a>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" aria-labelledby="fq-h">
+    <div class="faqsplit">
+      <div class="faqside rev">
+        <h2 class="h2" id="fq-h">Package questions we get asked</h2>
+        <p class="lead" style="margin-top:18px">Something else on your mind? Ask us on a call. You get a straight answer, whether or not you work with us.</p>
+        <div class="acts" style="margin-top:24px"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="tel:+18442640729">1-844-264-0729 <span>&rarr;</span></a></div>
+      </div>
+    <div class="faq rev">
+      <details><summary>Which package do I need?</summary><p>Start from where your system is today: a first Dynamics 365 Sales or Customer Service system fits an accelerator, and a system that needs integrations or data from several systems on day one fits a full implementation. A Dynamics 365 system that is over-customized or stalled fits Rescue and Repair.</p></details>
+      <details><summary>Are Microsoft licenses included?</summary><p>No. Microsoft licenses and Copilot Credits are not part of the package price, and you pay for them separately. As part of setup we assign your licenses to each user and set their security roles, because Microsoft does not let a user open the app until both are done.</p></details>
+      <details><summary>How long does a Dynamics 365 setup take?</summary><p>Our accelerators take [N] weeks. A full implementation typically takes [N to N] months. You get the plan, with dates, before we build.</p></details>
+      <details><summary>What if we need more than the package covers?</summary><p>Anything outside the package is a written change order you approve before work starts. If you need integrations or data from several systems at go-live, a full implementation fits better.</p></details>
+      <details><summary>Can you take over a system another partner built?</summary><p>Yes. <a class="lnk" href="../encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a> is for Dynamics 365 systems that are over-customized, stalled or out of date. We review it first and tell you what to keep.</p></details>
+      <details><summary>Do we need a support plan after go-live?</summary><p>Yes. New clients start on at least the Stability plan, $500 a month for 4 hours, on a 12-month agreement. Monthly plans include a 1-hour response during business hours, 7:00am to 5:00pm Central, Monday to Friday.</p></details>
+    </div>
+    </div>
+  </section>
+</div>
+
+<section class="final" aria-labelledby="fc-h">
+  <div class="wrap">
+    <div class="inner">
+      <div class="rev">
+        <h2 class="h2" id="fc-h">Start with a call or a free checkup</h2>
+        <p class="lead">Tell us where your system is today. You get a plan, a package and a price, whether or not you work with us.</p>
+      </div>
+      <div class="side rev">
+        <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+        <a class="lnk" href="#checkups">Free checkups, no obligation <span>&rarr;</span></a>
+        <span class="mono">Or call <a href="tel:+18442640729">1-844-264-0729</a>, 7:00am to 5:00pm Central, Monday to Friday.</span>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="fcols">
+        <div><img src="../../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft Partner since [2008], specializing in Dynamics 365.</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
+        <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="../power-platform-dynamics-365/">All Dynamics 365 apps</a><a href="../dynamics-365-sales/">Dynamics 365 Sales</a><a href="../dynamics-365-customer-service/">Customer Service</a><a href="../marketing-services/">Marketing automation</a><a href="https://www.encloud9.com/dynamics-365-pricing/">Dynamics 365 pricing</a></nav>
+        <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="../microsoft-copilot-for-business/">Copilot and agents</a><a href="../microsoft-copilot-for-business/#genpages">Generative pages</a><a href="https://www.encloud9.com/microsoft-copilot-studio/">Copilot Studio</a><a href="https://www.encloud9.com/dynamics-365-power-apps/">Power Apps</a><a href="https://www.encloud9.com/microsoft-power-bi/">Power BI</a></nav>
+        <nav aria-label="Packages and support"><b>Packages and support</b><a href="./">All packages</a><a href="../dynamics-365-sales-accelerator/">Sales Accelerator</a><a href="../dynamics-365-service-accelerator/">Service Accelerator</a><a href="../encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>
+        <nav aria-label="Company"><b>Company</b><a href="../about-encloud9/">About enCloud9</a><a href="../about-encloud9/microsoft-dynamics-365-success/">Client stories</a><a href="../blog/">Blog</a><a href="https://www.encloud9.com/contact-us/">Contact us</a><a href="https://www.encloud9.com/microsoft-dynamics-365-partner-omaha/">Omaha and Nebraska</a></nav>
+      </div>
+      <div class="tm">enCloud9 LLC, [address Brian confirms]. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies.</div>
+    </footer>
+  </div>
+  <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>
+</section>
+</main>
+<script>
+/* signature: which package fits picker (plain JS, no loops, motion gated in CSS) */
+(function(){
+  var root=document.getElementById('picker');if(!root)return;
+  var dest=root.querySelector('.dest'),cubes=dest.querySelectorAll('[data-k]'),name=root.querySelector('[data-res-name]'),note=root.querySelector('[data-res-note]');
+  var R={
+    sales:['Sales Accelerator','https://www.encloud9.com/dynamics-365-sales-accelerator/',1],
+    service:['Service Accelerator','https://www.encloud9.com/dynamics-365-service-accelerator/',1],
+    full:['Full implementation','https://www.encloud9.com/microsoft-dynamics-365-implementation/',1],
+    rescue:['Rescue and Repair','https://www.encloud9.com/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/',1],
+    cc:['Talk to us about Dynamics 365 Contact Center','https://www.encloud9.com/dynamics-365-contact-center/',0],
+    move:['Move from Salesforce, HubSpot or another CRM','https://www.encloud9.com/microsoft-dynamics-365-implementation/',1,['salesforce','hubspot'],'See the Full implementation package','Moving your data is part of a full implementation. '],
+    checkup:['CRM Health Check, free','https://www.encloud9.com/lp/schedule-a-meeting/',0,0,'Book a free CRM Health Check']
+  };
+  root.addEventListener('click',function(e){
+    var b=e.target.closest('.pick-q button');if(!b)return;
+    root.querySelectorAll('.pick-q button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    var k=b.getAttribute('data-go'),r=R[k];
+    dest.classList.add('on');
+    cubes.forEach(function(c){var ck=c.getAttribute('data-k');c.classList.remove('lit','also');void c.offsetWidth;if(r[3]?r[3].indexOf(ck)>-1:ck===k)c.classList.add('lit');else if(ck==='support'&&r[2])c.classList.add('also')});
+    name.textContent=r[0];
+    note.innerHTML='';
+    if(r[5]){note.appendChild(document.createTextNode(r[5]))}
+    if(r[1]){var a=document.createElement('a');a.className='lnk';a.href=r[1];a.innerHTML=(r[4]||(k==='cc'?'See Dynamics 365 Contact Center':'See the '+r[0]+' package'))+' <span>&rarr;</span>';note.appendChild(a)}
+    if(r[2]){note.appendChild(document.createTextNode(' Then professional, responsive monthly support plans from $500.'))}
+    if(window.matchMedia('(max-width:860px)').matches){var sd=root.querySelector('.pick-side'),rr=sd.getBoundingClientRect();if(rr.top>window.innerHeight*.5||rr.bottom<0)sd.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
+  });
+})();
+</script>
+</body>
+</html>
