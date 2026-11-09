@@ -2,9 +2,9 @@ enCloud9 BRAND KIT
 9 November 2026. Questions: Michael Begley (marketing).
 
 START HERE
-Open "enCloud9 Style Sheet.pdf". It shows the logo, colours, fonts and buttons on one page,
+Open "enCloud9 Style Sheet.pdf". It shows the logo, colors, fonts and buttons on one page,
 with the rules for using them. The .html version is the same page; open it in a browser and
-click a colour to copy its hex code.
+click a color to copy its hex code.
 
 THE SHORT VERSION
   Brand blue   #355DA6  (RGB 53, 93, 166). Main buttons and one highlight per page or graphic.
@@ -16,14 +16,14 @@ THE SHORT VERSION
   Logo         Wordmark only, blue on light, white on dark. The cloud symbol is retired.
 
 DON'T
-  Recolour, stretch, outline or add effects to the logo, or put it on a busy photo.
-  Use colours outside the kit, or more than one brand-blue highlight per graphic.
+  Recolor, stretch, outline or add effects to the logo, or put it on a busy photo.
+  Use colors outside the kit, or more than one brand-blue highlight per graphic.
   Put white text on the light blues (steps 6 to 9) or dark text on the dark blues (steps 1 to 5).
 
 WHAT IS IN THIS ZIP
   enCloud9 Style Sheet.pdf      The style sheet, to read and print
   enCloud9 Style Sheet.html     The same page, works offline in any browser
-  enCloud9 Colours.csv          Every colour with hex and RGB values and what it is for
+  enCloud9 Colors.csv          Every color with hex and RGB values and what it is for
   logo/svg/                     Wordmark, blue and white, any size (best for print and web)
   logo/png/                     Wordmark, blue and white, transparent, trimmed:
                                   2000px for slides, documents and graphics
@@ -31,7 +31,7 @@ WHAT IS IN THIS ZIP
   fonts/Hanken Grotesk/static/  The main font, 7 styles, for installing on your computer
   fonts/Hanken Grotesk/variable/ The same font as one file, for web designers
   fonts/DM Mono/                The label font, 4 styles
-  office/                       Colour and font themes for Word and PowerPoint (Windows)
+  office/                       Color and font themes for Word and PowerPoint (Windows)
 
 INSTALL THE FONTS
   Windows: open fonts/Hanken Grotesk/static, select all the .ttf files, right-click, Install.
@@ -48,7 +48,7 @@ WORD AND POWERPOINT THEMES (Windows)
        %APPDATA%\Microsoft\Templates\Document Themes\Theme Fonts
   4. Restart PowerPoint. Design tab > Variants > Colors > "enCloud9", then Fonts > "enCloud9".
      In Word: Design tab > Colors, then Fonts.
-  Mac: the folder for theme files was not checked. Pick colours by hex from the Colours file.
+  Mac: the folder for theme files was not checked. Pick colors by hex from the Colors file.
 
 CANVA
   Search "Hanken Grotesk" in Canva's font list. If it is not there, a Canva admin can upload the
@@ -62,7 +62,7 @@ EMAIL (ClickDimensions)
   Button: background #355DA6, text #FFFFFF, Arial (global font), Regular, 16 px,
   line height 2, border radius 4, aligned left.
 
-LICENCES
+LICENSES
   Hanken Grotesk and DM Mono are free under the SIL Open Font License 1.1 (OFL.txt in each
   font folder). They can be used for anything, including commercial work, and shared inside the
   company. Keep the OFL.txt files with the fonts. The static Hanken Grotesk styles were made from
@@ -70,5 +70,5 @@ LICENCES
 
 STILL TO CONFIRM (Brian)
   1. Font: Hanken Grotesk replaces Bricolage Grotesque from the first Look 9 kit.
-  2. Logo colour: the logo files use #255DA6, while the brand blue everywhere else is #355DA6.
+  2. Logo color: the logo files use #255DA6, while the brand blue everywhere else is #355DA6.
      If Brian picks #355DA6, the logo files in this kit will be updated.
