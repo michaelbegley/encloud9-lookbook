@@ -56,3 +56,8 @@ html body .faq summary::after{top:14px}
   html body .faq summary::after{top:10px;font-size:22px;right:2px}
   html body .faq details p{padding:0 0 16px;font-size:16px}
 }
+/* 10 Nov 2026 (Michael, iPhone): anchor links land below the sticky header, not under it */
+html{scroll-padding-top:96px}
+html:has(#lbbar){scroll-padding-top:136px}
+/* arrows render as text, never as emoji (U+FE0E is added after each arrow too) */
+.ar,.go,.arr{font-variant-emoji:text}
