@@ -212,7 +212,7 @@ header.top,.final{transition:opacity .5s var(--ease)}
   var mode='attract';            // attract | play | pause | between | over | won
   var body,dir,queue,prevTail,moved,grace,walls,lead,bonus,level,leads,total,sinceBonus;
   var best=0,sound=false,lastTick=0,fx=[],pops=[],shake=0,banner=null,deathAt=0,flow=[],lastFrame=0;
-  try{best=+localStorage.getItem('n9snakeBest')||0;sound=localStorage.getItem('n9snakeSound')==='1'}catch(e){}
+  var soundPref=null;try{best=+localStorage.getItem('n9snakeBest')||0;soundPref=localStorage.getItem('n9snakeSound');sound=soundPref==='1'}catch(e){}
 
   /* ---------- helpers ---------- */
   var key=function(x,y){return x+y*N};
@@ -224,12 +224,86 @@ header.top,.final{transition:opacity .5s var(--ease)}
   function save(){if(total>best){best=total;try{localStorage.setItem('n9snakeBest',String(best))}catch(e){}}}
   function say(t){live.textContent=t}
 
-  /* ---------- sound (off unless you turn it on) ---------- */
-  var ac=null;
-  function tone(f,t,len,type,vol){if(!sound)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();var o=ac.createOscillator(),g=ac.createGain(),s=ac.currentTime+(t||0);o.type=type||'square';o.frequency.setValueAtTime(f,s);g.gain.setValueAtTime(vol||.05,s);g.gain.exponentialRampToValueAtTime(.0001,s+(len||.08));o.connect(g).connect(ac.destination);o.start(s);o.stop(s+(len||.08)+.02)}catch(e){}}
-  var sfx={lead:function(){tone(660,0,.06);tone(990,.05,.07)},bonus:function(){[523,659,784,1047].forEach(function(f,i){tone(f,i*.05,.08,'triangle',.06)})},
-    die:function(){tone(220,0,.18,'sawtooth',.05);tone(140,.12,.3,'sawtooth',.05)},level:function(){[392,523,659,784,1047].forEach(function(f,i){tone(f,i*.07,.12,'triangle',.06)})}};
-  function setSound(on){sound=on;sndB.textContent=on?'Sound on':'Sound off';sndB.setAttribute('aria-pressed',on);try{localStorage.setItem('n9snakeSound',on?'1':'0')}catch(e){}if(on)sfx.lead()}
+  /* ---------- music: "Cloud Nine Pipeline", an original theme ----------
+     Built on Koji Kondo's methods, not his tunes (research report, 10 Nov 2026):
+     - sequenced on the game's own clock, and the tempo rises with the stage and the pipe's length (rhythm);
+     - straight eighth-note melody and bass over a triplet hi-hat, for forward push;
+     - four two-bar motifs joined in a random order, so a long run never repeats the same way;
+     - layer, don't swap: each pipeline stage adds a part, and a live deal brings in a bright arpeggio;
+     - sound effects are pitched to the chord that is playing, so music and effects stay one piece (balance);
+     - a fanfare for each stage, and a short game-over tag that leans you into another round. */
+  var ac=null,master=null,musicBus=null,noiseBuf=null;
+  function audio(){
+    if(ac)return ac;
+    try{ac=new (window.AudioContext||window.webkitAudioContext)()}catch(e){return null}
+    master=ac.createGain();master.gain.value=.9;master.connect(ac.destination);
+    musicBus=ac.createGain();musicBus.gain.value=0;musicBus.connect(master);
+    noiseBuf=ac.createBuffer(1,ac.sampleRate*.5,ac.sampleRate);var d=noiseBuf.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;
+    return ac;
+  }
+  var hz=function(m){return 440*Math.pow(2,(m-69)/12)};
+  function note(m,t,len,type,vol,bus,slide){   // one voice: oscillator into a short envelope
+    var o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.setValueAtTime(hz(m),t);
+    if(slide)o.frequency.exponentialRampToValueAtTime(hz(m+slide),t+len);
+    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+.006);g.gain.setTargetAtTime(vol*.55,t+.03,.06);g.gain.setTargetAtTime(0,t+len*.85,.03);
+    o.connect(g).connect(bus||master);o.start(t);o.stop(t+len+.2);
+  }
+  function hit(t,kind,vol,bus){   // noise drums: hat, snare; and a pitched-down kick
+    if(kind==='kick'){var o=ac.createOscillator(),g=ac.createGain();o.frequency.setValueAtTime(140,t);o.frequency.exponentialRampToValueAtTime(45,t+.12);g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.001,t+.16);o.connect(g).connect(bus);o.start(t);o.stop(t+.2);return}
+    var s=ac.createBufferSource(),f=ac.createBiquadFilter(),g2=ac.createGain();s.buffer=noiseBuf;
+    f.type=kind==='hat'?'highpass':'bandpass';f.frequency.value=kind==='hat'?7000:1800;
+    var len=kind==='hat'?.035:.11;g2.gain.setValueAtTime(vol,t);g2.gain.exponentialRampToValueAtTime(.001,t+len);
+    s.connect(f).connect(g2).connect(bus);s.start(t);s.stop(t+len+.02);
+  }
+
+  // The score, in semitones from the key's root (C5 = 0). "." is a rest; each motif is two bars of eight eighths.
+  var _=null;
+  var MOTIF={
+    A:[4,7,_,12,11,_,7,_,  9,_,4,_,0,2,4,_],          // over I then vi
+    C:[7,_,4,7,12,_,14,_,  16,_,14,12,11,_,7,_],      // over I then vi, reaching up
+    B:[5,9,12,_,9,_,5,7,   _,11,14,_,11,7,_,_],       // over IV then V
+    D:[9,7,5,_,9,_,12,_,   11,_,7,_,2,_,7,_]          // over IV then V, settling
+  };
+  var CHORDS={A:[[0,4,7],[-3,0,4]],C:[[0,4,7],[-3,0,4]],B:[[-7,-3,0],[-5,-1,2]],D:[[-7,-3,0],[-5,-1,2]]};
+  var TONIC=[0,0,0,2,2,2,5,5,7];        // the key steps up as the pipeline moves through its stages
+  var mus={on:false,next:0,step:0,bar:0,phrase:[],chord:[0,4,7],timer:null,deal:false};
+  function pickPhrase(){return [Math.random()<.5?'A':'C',Math.random()<.5?'B':'D',Math.random()<.6?'C':'A',Math.random()<.6?'D':'B']}
+  function eighth(){var bpm=Math.min(176,124+(level-1)*5+Math.min(14,body.length-4));return 30/bpm}
+  function schedule(){
+    if(!mus.on||!ac)return;
+    while(mus.next<ac.currentTime+.15){
+      var t=mus.next,e=eighth(),k=TONIC[level-1]+72,m=MOTIF[mus.phrase[mus.bar>>1]],half=(mus.bar&1)*8,s=mus.step,ch=CHORDS[mus.phrase[mus.bar>>1]][mus.bar&1];
+      mus.chord=ch;
+      var mel=m[half+s];
+      if(mel!==_&&level>=1)note(k+mel,t,e*1.6,'square',.045,musicBus);
+      // bass: root, octave, fifth, octave, in even eighths
+      var bassPat=[0,_,12,_,7,_,12,0];if(bassPat[s]!==_)note(k-24+ch[0]+bassPat[s],t,e*.9,'triangle',.16,musicBus);
+      // triplet hi-hat over the even eighths: three hits across every quarter
+      if(s%2===0)for(var h=0;h<3;h++)hit(t+h*(2*e/3),'hat',h?.025:.04,musicBus);
+      if(level>=3){if(s===0||s===4)hit(t,'kick',.32,musicBus);if(s===2||s===6)hit(t,'snare',.07,musicBus)}
+      if(level>=5&&(s===0||s===4))ch.forEach(function(c,i){note(k-12+c,t,e*3.6,'triangle',.035,musicBus)});
+      if(mus.deal||level>=7){var arp=[0,1,2,1];note(k+12+ch[arp[s%4]],t,e*.45,'square',mus.deal?.03:.018,musicBus);note(k+12+ch[arp[(s+2)%4]],t+e/2,e*.45,'square',mus.deal?.026:.014,musicBus)}
+      mus.next+=e;mus.step++;
+      if(mus.step===8){mus.step=0;mus.bar++;if(mus.bar===8){mus.bar=0;mus.phrase=pickPhrase()}}
+    }
+  }
+  var music={
+    start:function(){if(!sound||!audio())return;ac.resume&&ac.resume();mus.on=true;mus.step=0;mus.bar=0;mus.phrase=['A','B','C','D'];mus.next=ac.currentTime+.08;
+      musicBus.gain.cancelScheduledValues(ac.currentTime);musicBus.gain.setTargetAtTime(.9,ac.currentTime,.05);clearInterval(mus.timer);mus.timer=setInterval(schedule,25);schedule()},
+    stop:function(fade){if(!ac)return;mus.on=false;clearInterval(mus.timer);musicBus.gain.cancelScheduledValues(ac.currentTime);musicBus.gain.setTargetAtTime(0,ac.currentTime,fade||.04)},
+    jingle:function(notes,e,type,vol){if(!sound||!audio())return;var t=ac.currentTime+.03,k=TONIC[level-1]+72;
+      notes.forEach(function(n){if(n[0]!==_)[].concat(n[0]).forEach(function(p,i){note(k+p,t,n[1]*e,type||'square',(vol||.06)*(i?.6:1))});t+=n[1]*e})}
+  };
+  // Effects that land on the chord now playing
+  var sfx={
+    lead:function(){if(!sound||!audio())return;var k=TONIC[level-1]+84,c=mus.chord,t=ac.currentTime;note(k+c[1],t,.07,'square',.05);note(k+c[2],t+.05,.09,'square',.05)},
+    bonus:function(){if(!sound||!audio())return;var k=TONIC[level-1]+84,c=mus.chord,t=ac.currentTime;[c[0],c[1],c[2],c[0]+12].forEach(function(p,i){note(k+p,t+i*.05,.09,'triangle',.07)})},
+    die:function(){music.stop(.02);music.jingle([[7,1],[4,1],[0,1],[-1,1],[-5,2],[_,1],[[2,-5],1],[[4,0],1],[[7,4],3]],.11,'square',.05)},   // falls, then picks itself up: try again
+    stage:function(){music.stop(.02);music.jingle([[0,1],[4,1],[7,1],[12,2],[_,1],[[11,7],1],[[12,7,4],4]],.09,'square',.06)},
+    won:function(){music.stop(.02);music.jingle([[0,1],[4,1],[7,1],[12,1],[9,1],[12,1],[16,2],[_,1],[14,1],[17,1],[[19,12,7],6]],.1,'square',.065)}
+  };
+  function setSound(on){sound=on;sndB.textContent=on?'Sound on':'Sound off';sndB.setAttribute('aria-pressed',on);try{localStorage.setItem('n9snakeSound',on?'1':'0')}catch(e){}
+    if(on&&audio()){ac.resume&&ac.resume();if(mode==='play'||mode==='between')music.start();else sfx.lead()}else music.stop()}
 
   /* ---------- level setup ---------- */
   function load(lv){flow=[];level=lv;walls=buildWalls(lv);body=START.map(function(p){return p.slice()});dir='right';queue=[];prevTail=null;moved=false;grace=0;leads=0;sinceBonus=0;bonus=null;lead=null;lead=freeCell();hud()}
@@ -251,6 +325,7 @@ header.top,.final{transition:opacity .5s var(--ease)}
     if(eats)eatLead(nx,ny);
     if(bonus&&bonus.x===nx&&bonus.y===ny)eatBonus();
     if(bonus&&--bonus.left<=0){bonus=null;sinceBonus=0}
+    mus.deal=!!bonus;
   }
   function eatLead(x,y){
     if(mode==='attract'){if(body.length>14)body.length=5;lead=freeCell();return}
@@ -264,12 +339,12 @@ header.top,.final{transition:opacity .5s var(--ease)}
 
   /* ---------- flow ---------- */
   function clearLevel(){
-    sfx.level();mode='between';bonus=null;
+    (level>=LAST?sfx.won:sfx.stage)();mode='between';bonus=null;
     for(var i=0;i<body.length;i+=2)burst(body[i][0],body[i][1],'#C9D6EE',4);
     if(level>=LAST){say('All levels cleared. You made it to cloud nine.');for(var b2=0;b2<6;b2++)burst(Math.random()*N|0,Math.random()*N|0,'#2E9BD6',12);setTimeout(function(){if(mode!=='between')return;mode='won';winP.hidden=false;menu('Closed won','Final score '+total+'. You made it to cloud nine.','Play again')},900);return}
     banner={text:STAGES[level-1]+' done',t:performance.now()};say('Stage '+level+', '+STAGES[level-1]+', done.');
     setTimeout(function(){if(mode!=='between')return;load(level+1);banner={text:STAGES[level-1],t:performance.now()};say('Stage '+level+' of '+LAST+': '+STAGES[level-1]+'. '+NEED[level-1]+' leads to move on.');
-      setTimeout(function(){if(mode==='between'){mode='play';lastTick=performance.now()}},calm?300:900)},calm?400:1300);
+      setTimeout(function(){if(mode==='between'){mode='play';lastTick=performance.now();music.start()}},calm?300:900)},calm?400:1300);
   }
   function die(){mode='over';deathAt=performance.now();shake=calm?0:10;sfx.die();save();hud();say('Game over. Score '+total+'.');
     body.forEach(function(p,i){setTimeout(function(){burst(p[0],p[1],i?'#6F8FCB':'#FFFFFF',3)},calm?0:i*30)});
@@ -279,16 +354,17 @@ header.top,.final{transition:opacity .5s var(--ease)}
 
   function play(){
     var takeover=mode==='attract';winP.hidden=true;
+    if(soundPref===null&&!sound){sound=true;sndB.textContent='Sound on';sndB.setAttribute('aria-pressed',true);audio()}   // pressing Play turns the music on, unless you switched it off before
     if(takeover){total=0;var keep=body.slice(0,4);load(1);body=keep;dir=dirOf(keep);moved=false;lead=freeCell()}   // you take the snake that was already moving
     else{total=0;load(1)}
     mode='between';ov.hidden=true;exitB.hidden=true;pad.hidden=false;screen.classList.remove('demo');hud();
     say('Stage 1: Prospecting. You have the pipeline. Arrow keys to steer.');banner={text:'Prospecting',t:performance.now()+(calm?0:500)};
-    enter(function(){cv.focus({preventScroll:true});setTimeout(function(){if(mode==='between'){mode='play';lastTick=performance.now()}},calm?0:350)});
+    enter(function(){cv.focus({preventScroll:true});setTimeout(function(){if(mode==='between'){mode='play';lastTick=performance.now();music.start()}},calm?0:350)});
   }
   function dirOf(b){var dx=b[0][0]-b[1][0],dy=b[0][1]-b[1][1];if(Math.abs(dx)>1)dx=-Math.sign(dx);if(Math.abs(dy)>1)dy=-Math.sign(dy);return dx>0?'right':dx<0?'left':dy>0?'down':'up'}
-  function pause(){if(mode==='play'){mode='pause';menu('Paused','Space to keep going','Resume')}else if(mode==='pause')resume()}
-  function resume(){mode='play';ov.hidden=true;exitB.hidden=true;pad.hidden=false;screen.classList.remove('demo');lastTick=performance.now();cv.focus({preventScroll:true})}
-  function leave(){winP.hidden=true;ovt.textContent='Pipeline';ovs.textContent='Lay the pipeline. Catch the leads, grab the deals, close in nine stages.';startB.textContent='Play';exitB.hidden=true;ov.hidden=false;pad.hidden=true;
+  function pause(){if(mode==='play'){mode='pause';music.stop(.08);menu('Paused','Space to keep going','Resume')}else if(mode==='pause')resume()}
+  function resume(){mode='play';music.start();ov.hidden=true;exitB.hidden=true;pad.hidden=false;screen.classList.remove('demo');lastTick=performance.now();cv.focus({preventScroll:true})}
+  function leave(){music.stop(.1);winP.hidden=true;ovt.textContent='Pipeline';ovs.textContent='Lay the pipeline. Catch the leads, grab the deals, close in nine stages.';startB.textContent='Play';exitB.hidden=true;ov.hidden=false;pad.hidden=true;
     screen.classList.add('demo');total=0;load(1);mode='attract';hud();exit(function(){startB.focus({preventScroll:true})})}
 
   /* ---------- growing into focus: FLIP the box from where it was to where it lands ---------- */
@@ -413,7 +489,7 @@ header.top,.final{transition:opacity .5s var(--ease)}
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nf.classList.contains('focus')&&document.activeElement!==cv){e.preventDefault();leave()}});
   startB.addEventListener('click',function(){mode==='pause'?resume():play()});
   exitB.addEventListener('click',leave);
-  sndB.addEventListener('click',function(){setSound(!sound)});
+  sndB.addEventListener('click',function(){soundPref=sound?'0':'1';setSound(!sound)});
   pad.addEventListener('pointerdown',function(e){var b=e.target.closest('[data-dir]');if(b){e.preventDefault();steer(b.getAttribute('data-dir'))}});
   pad.addEventListener('click',function(e){if(e.detail===0){var b=e.target.closest('[data-dir]');if(b)steer(b.getAttribute('data-dir'))}});   // keyboard on the pad
   var sx=0,sy=0,swiped=false;
