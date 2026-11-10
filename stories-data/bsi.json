@@ -9,7 +9,7 @@
   "BSI:",
   "One view from lead to close"
  ],
- "answer": "Biometric Signature ID (BSI) is a biometric security software company in Lewisville, TX. It needed one system to track and improve its whole sales process, from first lead to closed deal. We implemented Microsoft Dynamics 365 with custom business process flows and real-time dashboards. BSI now has better pipeline management and less manual effort.",
+ "answer": "Biometric Signature ID (BSI) is a security software company specializing in biometric solutions in Lewisville, TX. It needed an integrated CRM to track and improve its whole sales process, from first lead to closed deal. We implemented Microsoft Dynamics 365 with custom business process flows and real-time dashboards. BSI now has better pipeline management and less manual effort.",
  "facts": [
   [
    "Client",
@@ -25,7 +25,7 @@
   ],
   [
    "Starting point",
-   "No integrated system to track the sales process from lead to close"
+   "Needed a way to track and improve the sales process from lead to close"
   ],
   [
    "Products",

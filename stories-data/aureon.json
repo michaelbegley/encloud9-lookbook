@@ -4,7 +4,7 @@
  "client": "Aureon",
  "work_type": "Rescue or fix",
  "title": "Aureon: A failed CRM rescued | enCloud9",
- "meta": "How enCloud9 audited and rebuilt Aureon's self-implemented Dynamics CRM in Des Moines so staff could rely on Dynamics 365 for real-time information.",
+ "meta": "How enCloud9 audited Aureon's self-implemented Dynamics CRM in Des Moines and built a CRM enhancement plan so staff could rely on Dynamics 365.",
  "h1": [
   "Aureon:",
   "A failed CRM rescued"
@@ -41,7 +41,7 @@
  "outcomes": [
   "For the first time in its history, Aureon can rely on Dynamics 365 for real-time, relevant information.",
   "Staff can manage client relationships in Dynamics 365.",
-  "The work improved operational efficiency and client engagement potential."
+  "Dynamics 365 now gives Aureon operational efficiency and client engagement potential."
  ],
  "chapters": [
   [
@@ -55,7 +55,7 @@
    "What did we change?",
    [
     "We started with a thorough systems audit and a process review, done together with Aureon.",
-    "From that work we built a CRM enhancement plan aimed at Aureon's specific challenges."
+    "From that work we built a CRM enhancement plan aimed at Aureon's unique challenges."
    ]
   ],
   [

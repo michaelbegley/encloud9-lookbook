@@ -4,12 +4,12 @@
  "client": "PPC Flexible Packaging",
  "work_type": "New build",
  "title": "PPC Flex: Artwork jobs tracked in CRM | enCloud9",
- "meta": "How enCloud9 replaced PPC Flex's manual client artwork process with a Dynamics 365 tracking system for requests, estimates, design and artist schedules.",
+ "meta": "How enCloud9 replaced PPC Flex's manual client artwork process with a Dynamics 365 tracking system for requests, estimates, design and due dates.",
  "h1": [
   "PPC Flex:",
   "Artwork jobs tracked in Dynamics 365"
  ],
- "answer": "PPC Flexible Packaging is a flexible packaging manufacturer in Buffalo Grove, Illinois. Its manual process for managing client artwork had become outdated. We built a Dynamics 365 tracking system for client requests, job estimates and the full design process, with a dashboard and a due-date calendar. PPC expects to save hundreds of hours annually.",
+ "answer": "PPC Flexible Packaging is a flexible packaging manufacturer in Buffalo Grove, Illinois. Some of its processes had become outdated, including its manual process for managing client artwork. We built a Dynamics 365 tracking system for client requests, job estimates and the full design process, with a dashboard and a due-date calendar. PPC expects to save hundreds of hours annually.",
  "facts": [
   [
    "Client",
