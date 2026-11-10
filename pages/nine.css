@@ -518,3 +518,7 @@ html :is(.aigrid,.dgx,.fgx,.jgrid,.mk-cg,.dest,.fgrid[role="list"])>*{min-height
 .ptile{min-width:0}.ptile .nm{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
 .top .call-m,.top .menu-btn{min-height:48px}
 @media(max-width:600px){.tbl-stack{min-width:0}.tbl-stack thead{position:absolute;left:-9999px}.tbl-stack tr{display:grid;grid-template-columns:1fr;padding:14px 0;border-bottom:1px solid var(--line)}.tbl-stack tbody th,.tbl-stack td{display:block;border:0;padding:2px 0}.tbl-stack td::before{content:attr(data-l) ": ";font-family:var(--mono);font-size:11px;color:var(--muted)}}
+/* Call sits next to Menu on phones and tablets (Michael, 9 Nov): cancels the 36px header gap, leaves 10px */
+.top .call-m + .menu-btn{margin-left:-26px}
+/* Framed centre square on phones: keeps 10px between the frame and the words, as on desktop (Michael screenshot, 9 Nov) */
+@media (max-width:560px){.core::after{inset:5px}.cell.core{padding:15px}}
