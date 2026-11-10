@@ -38,4 +38,46 @@ const WIDTHS=[320,360,390,480,600,768,900,1024,1180,1280,1440,1920];
   await q.addScriptTag({content:axe});ax[w+'/'+rm]=await q.evaluate(async()=>(await axe.run(document,{resultTypes:['violations']})).violations.map(v=>({id:v.id,impact:v.impact,n:v.nodes.length,t:v.nodes[0].target.join(' ')})));await c.close()}}
  const serious=Object.values(ax).flat().filter(v=>v.impact==='serious'||v.impact==='critical');
  out.gates.G3={pass:axe?!serious.length:null,runs:ax};
+ // ---- added 9 Nov 2026 (standard checks G11 to G14 and the keyboard walk in area 7) ----
+ const repo=path.resolve(path.dirname(file),'..');const base=path.basename(file);
+ const meta=n=>(html.match(new RegExp('<meta (?:property|name)="'+n+'" content="([^"]*)"'))||[])[1]||'';
+ const canon=(html.match(/<link rel="canonical" href="([^"]*)"/)||[])[1]||'';
+ // G11 share and find: preview tags, canonical, in sitemap, linked from another page (404 exempt)
+ if(base==='nine-404.html'){out.gates.G11={pass:true,exempt:'404 page'}}else{
+  let sm='';try{sm=fs.readFileSync(path.join(repo,'site','sitemap.xml'),'utf8')}catch(e){}
+  const legal=/nine-(privacy|accessibility)\.html/.test(base);
+  const live=canon.replace('https://www.encloud9.com','');
+  const inbound=fs.readdirSync(path.dirname(file)).filter(f=>/^nine-.*\.html$/.test(f)&&f!==base&&f!=='nine-faq.html').filter(f=>{const s=fs.readFileSync(path.join(path.dirname(file),f),'utf8');return s.includes('href="'+base)||(canon&&s.includes('href="'+canon))});
+  const tags={canonical:!!canon,'og:title':!!meta('og:title'),'og:description':!!meta('og:description'),'og:image':!!meta('og:image'),'og:url':!!meta('og:url'),'twitter:card':!!meta('twitter:card')};
+  const inSitemap=legal?'legal page, kept out until approved':sm.includes('<loc>'+canon+'</loc>');
+  out.gates.G11={pass:Object.values(tags).every(Boolean)&&(legal||inSitemap===true)&&inbound.length>0,tags,inSitemap,inboundCount:inbound.length,inboundSample:inbound.slice(0,5)}}
+ // G12 images: alt on every img, a row in assets/IMAGE-SOURCES.csv with a known licence, 300 KB or less
+ let man='';try{man=fs.readFileSync(path.join(repo,'assets','IMAGE-SOURCES.csv'),'utf8')}catch(e){}
+ const rows=man.split('\n').slice(1).filter(Boolean).map(l=>{const c=l.split(',');return {pat:c[0],licence:c[3]||''}});
+ const match=u=>rows.find(r=>r.pat.includes('*')?new RegExp('^'+r.pat.replace(/[.+?^${}()|[\]\\]/g,'\\$&').replace(/\*/g,'.*')+'$').test(u):r.pat===u);
+ const q2=await (await b.newContext({viewport:{width:1440,height:900}})).newPage();await q2.goto('file://'+file);await q2.waitForTimeout(400);
+ const imgs=await q2.evaluate(()=>{const o=[];document.querySelectorAll('img').forEach(i=>o.push({src:i.getAttribute('src'),alt:i.hasAttribute('alt')?i.getAttribute('alt'):null,inLink:!!i.closest('a,button')}));
+  document.querySelectorAll('body *').forEach(e=>{const bg=getComputedStyle(e).backgroundImage;const m=bg&&bg.match(/url\("?([^")]+)"?\)/);if(m)o.push({src:m[1],css:true})});return o});
+ const imgRes=[];const seen=new Set();for(const im of imgs){const u0=im.src||'';let u=u0.startsWith('file://')?path.relative(repo,decodeURI(u0.slice(7))):u0.replace(/^\.\.\//,'');
+  if(u.startsWith('data:'))continue;const key=u+(im.css?'#css':'')+(im.alt===null?'#noalt':'');if(seen.has(key))continue;seen.add(key);
+  let kb=null;if(!/^https?:/.test(u)){try{kb=Math.round(fs.statSync(path.join(repo,u)).size/1024)}catch(e){kb='missing'}}
+  const r=match(u);const lic=r?r.licence:'';const issues=[];
+  if(!im.css&&im.alt===null)issues.push('no alt');if(!im.css&&im.inLink&&im.alt==='')issues.push('empty alt inside a link');
+  if(!r)issues.push('not in IMAGE-SOURCES.csv');else if(/could not determine/i.test(lic))issues.push('licence unknown');
+  if(kb==='missing')issues.push('file missing');else if(kb!==null&&kb>300)issues.push(kb+' KB, over 300');
+  imgRes.push({src:u,kb,issues})}
+ out.gates.G12={pass:imgRes.every(r=>!r.issues.length),problems:imgRes.filter(r=>r.issues.length),count:imgRes.length};
+ // G13 outside links: listed here, opened by Claude's web fetch on review day (the shell cannot reach outside sites)
+ const ext=[...new Set([...html.replace(/<nav id="lbbar".*?<\/nav>/s,'').matchAll(/href="(https?:\/\/[^"#]+)/g)].map(m=>m[1]).filter(u=>!u.startsWith('https://www.encloud9.com')))];
+ out.gates.G13={pass:null,note:'open each with web fetch',outside:ext};
+ // G14 spelling and Microsoft product names
+ const sp=JSON.parse(require('child_process').execFileSync('python3',[path.join(__dirname,'spell.py'),file]).toString());
+ out.gates.G14={pass:!sp.unknown.length&&!sp.names.length,unknown:sp.unknown,wrongNames:sp.names};
+ // Area 7 keyboard walk at 1440: Tab through the page; every stop visible, no trap, reaches the footer
+ const kb=await q2.evaluate(()=>{document.activeElement&&document.activeElement.blur();return document.querySelectorAll('a[href],button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])').length});
+ const stops=[];let invisible=[];let reachedFooter=false;let trap=false;
+ for(let i=0;i<Math.min(kb+20,600);i++){await q2.keyboard.press('Tab');const s=await q2.evaluate(()=>{const e=document.activeElement;if(!e||e===document.body)return null;const cs=getComputedStyle(e);const r=e.getBoundingClientRect();
+   const shown=(cs.outlineStyle!=='none'&&parseFloat(cs.outlineWidth)>0)||cs.boxShadow!=='none';if(!e.dataset.kbi)e.dataset.kbi=String(document.querySelectorAll('[data-kbi]').length);return {id:e.dataset.kbi+' '+e.tagName+':'+(e.textContent||e.getAttribute('aria-label')||'').trim().slice(0,30),shown,size:r.width*r.height,footer:!!e.closest('footer')}});
+  if(!s)break;if(stops.length&&stops[stops.length-1]===s.id){trap=true;break}if(stops.includes(s.id)&&stops.indexOf(s.id)===0)break;stops.push(s.id);if(!s.shown&&s.size>0)invisible.push(s.id);if(s.footer)reachedFooter=true}
+ out.area7_keyboard={stops:stops.length,reachedFooter,trap,noVisibleFocus:invisible.slice(0,8),noVisibleFocusCount:invisible.length};
  console.log(JSON.stringify(out,null,1));await b.close()})();

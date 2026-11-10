@@ -1,0 +1,8 @@
+file,owner,source,licence or terms,notes
+assets/brand/enCloud9-wordmark-blue.svg,enCloud9,enCloud9 brand kit (live site logo),enCloud9 own,recoloured to #355DA6 on 9 Nov 2026
+assets/brand/enCloud9-wordmark-white.svg,enCloud9,enCloud9 brand kit (live site logo),enCloud9 own,
+assets/brand/share-card.png,enCloud9,made by Claude 9 Nov 2026 from the wordmark,enCloud9 own,link preview image (G11)
+assets/icons/ms/*.svg,Microsoft,Power Platform and Dynamics 365 architecture icon sets supplied by Michael 9 Nov 2026,Microsoft icon terms (TERMS-*.pdf; see assets/icons/ms/README.txt),LAUNCH CHECK: Brian confirms use on the public marketing site
+assets/icons/ms/PowerBI_scalable.svg,Microsoft,Fabric icons (fabric-samples Icons.zip v6.1.0) supplied by Michael 9 Nov 2026,MIT (LICENSE-fabric-icons-MIT.txt) plus Learn's Fabric icon terms,
+https://www.encloud9.com/wp-content/uploads/*,enCloud9,live encloud9.com media library,enCloud9 own,images from enCloud9's own blog posts
+assets/photos/charlesdeluvio-Lks7vei-eAg.jpg,could not determine,uploaded to the repo 3 Nov 2026 (commit 0bcece4); filename pattern suggests Unsplash (inferred),could not determine,used as the .slices tile texture; confirm source and licence

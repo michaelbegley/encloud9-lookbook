@@ -154,7 +154,17 @@ def rewrite(html, src, here):
         html = html.replace(f"'{k}'", f"'{rel(here, v)}'")
     return html
 
+NO_SITEMAP = {'nine-404.html', 'nine-privacy.html', 'nine-accessibility.html'}  # 404, and legal pages stay noindex until the lawyer and Brian approve
+
+def write_sitemap():
+    """sitemap.xml with the real encloud9.com addresses (standard gate G11)."""
+    rows = ''.join(f'  <url><loc>{LIVE}{p}</loc></url>\n' for s, p in MAP.items() if s not in NO_SITEMAP)
+    with open(os.path.join(SITE, 'sitemap.xml'), 'w', encoding='utf-8') as f:
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + rows + '</urlset>\n')
+
 def main():
+    import headmeta
+    print('headmeta: updated', headmeta.apply(), 'pages')
     if os.path.isdir(SITE):
         shutil.rmtree(SITE)
     for src, path in MAP.items():
@@ -169,7 +179,8 @@ def main():
         f.write('Links on the mock site that still go to the live encloud9.com (page not built yet), with the pages that link to them.\n\n')
         for p in sorted(not_built):
             f.write(f'{p}  <- {", ".join(sorted(not_built[p]))}\n')
-    print(f'built {len(MAP)} pages; {len(not_built)} link targets not built yet')
+    write_sitemap()
+    print(f'built {len(MAP)} pages; {len(not_built)} link targets not built yet; sitemap.xml written')
 
 if __name__ == '__main__':
     main()
