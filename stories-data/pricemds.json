@@ -4,12 +4,12 @@
  "client": "PriceMDs",
  "work_type": "New build",
  "title": "PriceMDs: Dynamics 365 for Healthcare Operations | enCloud9",
- "meta": "How enCloud9 moved PriceMDs from Monday CRM to Dynamics 365, then added a pharmacist portal, Tive and Ship 24 integrations and electronic signatures.",
+ "meta": "How enCloud9 moved PriceMDs from Monday CRM to Dynamics 365, in work that grew to include a pharmacist portal, integrations and electronic signatures.",
  "h1": [
   "PriceMDs:",
   "A CRM built around healthcare work"
  ],
- "answer": "PriceMDs, a healthcare company in Clearwater, FL, was using Monday CRM and needed to manage patient and prescription data with custom business logic. We implemented Dynamics 365 with custom entities, workflows and plugins, then added a pharmacist portal, Tive and Ship 24 integrations and electronic signatures. Patient onboarding is faster and reporting is clearer.",
+ "answer": "PriceMDs, a healthcare company in Clearwater, FL, was using Monday CRM and needed to manage patient and prescription data with custom business logic. We implemented Dynamics 365 with custom entities, workflows and plugins, and the work grew to include a pharmacist portal, Tive and Ship 24 integrations and electronic signatures. Patient onboarding is faster, and PriceMDs reports better visibility into operations and reporting.",
  "facts": [
   [
    "Client",
@@ -59,7 +59,7 @@
    [
     "We implemented Dynamics 365 and configured it around how PriceMDs actually works, with custom entities, workflows, plugins and data structures.",
     "Once PriceMDs saw what Dynamics 365 could do, the scope expanded. We supported the development of a medication Pricing Portal, enabled integration with external systems like Tive and Ship 24, and improved data management, reporting and automation.",
-    "We built a pharmacist portal and set up electronic signatures through Document Core Pack and Adobe Sign."
+    "The project delivered a pharmacist portal and electronic signatures through Document Core Pack and Adobe Sign."
    ]
   ],
   [

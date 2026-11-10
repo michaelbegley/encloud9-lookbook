@@ -9,11 +9,11 @@
   "Compana:",
   "A stable CRM, ready to test AI"
  ],
- "answer": "Compana Pet Products, in St. Louis, MO, delivers pet products across multiple brands and had already invested in Dynamics 365. It needed a partner to maintain and expand that system. We support it under a continuous support model and explored Copilot Studio and chatbots with it. The result is a more stable, supported Sales and Customer Service environment.",
+ "answer": "Compana, in St. Louis, MO, delivers pet products across multiple brands and had already invested in Dynamics 365. It needed a partner to maintain and expand that system. We support it under a continuous support model and explored Copilot Studio and chatbots with it. The result is a more stable, supported Sales and Customer Service environment.",
  "facts": [
   [
    "Client",
-   "Compana Pet Products"
+   "Compana"
   ],
   [
    "Location",
@@ -41,14 +41,14 @@
  "outcomes": [
   "Compana has a more stable, supported Dynamics 365 Sales and Customer Service environment.",
   "It can explore and test AI-driven customer engagement.",
-  "It is an early adopter of Copilot Studio and chatbot capabilities.",
+  "It adopted Copilot Studio and chatbot capabilities early.",
   "Alignment between CRM, customer service and digital channels improved."
  ],
  "chapters": [
   [
    "What did Compana need?",
    [
-    "Compana Pet Products is a growing organization focused on delivering high-quality pet products across multiple brands. It had already invested in Microsoft Dynamics 365 and needed a partner to help maintain and expand that system.",
+    "Compana is a growing organization focused on delivering high-quality pet products across multiple brands. It had already invested in Microsoft Dynamics 365 and needed a partner to help maintain and expand that system.",
     "Compana wanted to improve customer engagement through digital channels, explore AI-driven customer service, keep its CRM and service systems stable as usage scaled, and find practical ways to extend Dynamics 365 into new areas, including eCommerce."
    ]
   ],
@@ -78,7 +78,7 @@
   },
   {
    "claim": "Client name (body) / industry",
-   "quote": "Compana Pet Products is a growing organization focused on delivering high-quality pet products across multiple brands."
+   "quote": "Compana is a growing organization focused on delivering high-quality pet products across multiple brands."
   },
   {
    "claim": "Location",
@@ -157,5 +157,5 @@
    "quote": "Compana appreciates having a trusted partner to support both day-to-day needs and new initiatives."
   }
  ],
- "notes": "Client name is inconsistent on the page: header block says 'Compana Pet Brands', Client Overview says 'Compana Pet Products', H1 and body use 'Compana'. I used 'Compana' for client/title/h1 and 'Compana Pet Products' in the Client fact row and answer (body wording); pick one before publishing. A stray header line reads 'The Schiff Group', which does not belong to this story. The Shopify integration appears as a verbless bullet, so the page does not say whether it was built or only explored; copy says 'explored' at the Copilot Studio level and describes the Shopify item without claiming it shipped. No timeline (engagement is ongoing); no numbers, so tiles empty. Licensing & Environment Management appears only in the services list. No named client quote. Page metadata shows last modified August 13, 2026. Business Central only in site navigation and footer."
+ "notes": "Client name is inconsistent on the page: header block says 'Compana Pet Brands', Client Overview says 'Compana', H1 and body use 'Compana'. I used 'Compana' for client/title/h1 and 'Compana' in the Client fact row and answer (body wording); pick one before publishing. A stray header line reads 'The Schiff Group', which does not belong to this story. The Shopify integration appears as a verbless bullet, so the page does not say whether it was built or only explored; copy says 'explored' at the Copilot Studio level and describes the Shopify item without claiming it shipped. No timeline (engagement is ongoing); no numbers, so tiles empty. Licensing & Environment Management appears only in the services list. No named client quote. Page metadata shows last modified August 13, 2026. Business Central only in site navigation and footer."
 }
