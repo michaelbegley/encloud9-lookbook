@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="../../../pages/nine.css">
 <script defer src="../../../pages/nine.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "Mastering Lead Management in Dynamics 365", "item": "https://www.encloud9.com/blog/mastering-lead-management-in-dynamics-365-igniting-your-sales-pipeline/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Mastering Lead Management in Dynamics 365: Igniting Your Sales Pipeline", "description": "How Dynamics 365 Sales handles leads from capture to opportunity: scoring, assignment rules, nurturing, qualification and the reports to watch.", "url": "https://www.encloud9.com/blog/mastering-lead-management-in-dynamics-365-igniting-your-sales-pipeline/", "dateModified": "2026-11-10", "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Mastering Lead Management in Dynamics 365: Igniting Your Sales Pipeline", "description": "How Dynamics 365 Sales handles leads from capture to opportunity: scoring, assignment rules, nurturing, qualification and the reports to watch.", "url": "https://www.encloud9.com/blog/mastering-lead-management-in-dynamics-365-igniting-your-sales-pipeline/", "dateModified": "2026-11-10", "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}, "datePublished": "2023-11-15", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does lead scoring work in Dynamics 365?", "acceptedAnswer": {"@type": "Answer", "text": "Predictive lead scoring uses a machine learning model trained on your past leads to score open ones. It needs at least 40 qualified and 40 disqualified leads from the training period."}}, {"@type": "Question", "name": "Can Dynamics 365 assign leads automatically?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Assignment rules in Dynamics 365 Sales assign new leads to sellers or teams based on conditions you set, such as territory or product."}}, {"@type": "Question", "name": "What happens when you qualify a lead?", "acceptedAnswer": {"@type": "Answer", "text": "The lead closes as qualified. Dynamics 365 can then create an account, contact and opportunity from it, depending on how your admin set it up."}}]}</script>
 <style>
 /* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
@@ -202,16 +202,16 @@ body.p-post .upd p+p{margin-top:12px}
     <header class="phead">
       <div class="pmain">
         <h1 class="h1 rise" id="h1" style="--d:2">Mastering Lead Management in Dynamics 365: Igniting Your Sales Pipeline</h1>
-                <span class="mono cat rise" style="--d:1">Dynamics 365 Sales</span>
-        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By [Author, Brian confirms]</span><span><b>[publish date]</b></span><span>Updated <b>November 10, 2026</b></span><span>3 min read</span></p>
+                <span class="mono cat rise" style="--d:1">Admin and how-to</span>
+        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>November 15, 2023</b></span><span>Updated <b>November 10, 2026</b></span><span>3 min read</span></p>
       </div>
       <aside class="glance" aria-labelledby="gl-h">
         <p class="mono" id="gl-h">At a glance</p>
         <ul class="gl">
-          <li class="lt" style="--c:var(--b9);--k:0"><span class="k">Published</span><b>[publish date]</b></li>
-          <li class="lt" style="--c:var(--b8);--k:1"><span class="k">Topic</span><b>Dynamics 365 Sales</b></li>
+          <li class="lt" style="--c:var(--b9);--k:0"><span class="k">Published</span><b>November 15, 2023</b></li>
+          <li class="lt" style="--c:var(--b8);--k:1"><span class="k">Topic</span><b>Admin and how-to</b></li>
           <li class="lt" style="--c:var(--b6);--k:2"><span class="k">Reading time</span><b>3 minutes</b></li>
-          <li style="--c:var(--b4);--k:3"><span class="k">Written by</span><b>[Author, Brian confirms]</b></li>
+          <li style="--c:var(--b4);--k:3"><span class="k">Written by</span><b>Brian Begley</b></li>
         </ul>
       </aside>
     </header>
@@ -249,7 +249,7 @@ body.p-post .upd p+p{margin-top:12px}
         <h2 id="score">How do you qualify and score leads?</h2>
         <p>Start by setting the criteria that make a lead ready for sales, such as demographics, lead source and engagement level.</p>
         <p>Lead scoring then gives each lead a number based on its attributes and interactions. A higher score means a better chance of converting, so sellers know where to start.</p>
-        <p>Microsoft’s <a href="https://learn.microsoft.com/dynamics365/sales/configure-predictive-lead-scoring">predictive lead scoring</a> builds that score from your own history. It needs at least 40 qualified and 40 disqualified leads to train a model (checked 10 November 2026).</p>
+        <p>Microsoft’s <a href="https://learn.microsoft.com/dynamics365/sales/configure-predictive-lead-scoring">predictive lead scoring</a> builds that score from your own history. It needs at least 40 qualified and 40 disqualified leads to train a model (checked 10 November 2026). Predictive scoring is part of Sales Insights; a Dynamics 365 Sales Enterprise license includes 1,500 scored records a month (<a href="https://learn.microsoft.com/dynamics365/sales/digital-selling-scoring">Microsoft Learn</a>, checked 10 November 2026).</p>
         <h2 id="route">How do you route leads to the right seller?</h2>
         <p>Assignment rules route each lead by geographic territory, product expertise and workload, so it reaches the right person fast.</p>
         <p>Faster response times mean more chances to convert. In Dynamics 365 Sales, <a href="https://learn.microsoft.com/dynamics365/sales/wa-create-and-activate-assignment-rule">assignment rules</a> assign new leads to sellers or teams automatically once a rule is active (checked 10 November 2026).</p>
@@ -265,10 +265,9 @@ body.p-post .upd p+p{margin-top:12px}
         <p>Those numbers show where to put your budget and your people. The aim is more leads becoming opportunities, and a better return on what you spend to get them.</p>
         <h2 id="sales-marketing">How do sales and marketing share leads in Dynamics 365?</h2>
         <p>Sales and marketing work in the same system, so leads move from marketing to sales without being re-entered.</p>
-        <p>Marketing automation brings leads in. Sellers then use the same lead data to close deals.</p>
+        <p>Marketing automation brings leads in. Sellers then use the same lead data to close deals. More leads that convert mean more revenue and profit.</p>
         <h2 id="encloud9-help">How can enCloud9 help with lead management?</h2>
-        <p>enCloud9 has been a Microsoft Partner since 2008, specializing in Dynamics 365.</p>
-        <p>Contact enCloud9 to see how it can help you ignite your sales pipeline.</p>
+        <p>enCloud9 has been a Microsoft Partner since 2008 and helps small and medium-sized businesses set up lead scoring, assignment and follow-up in Dynamics 365 Sales. The <a href="../../dynamics-365-sales-accelerator/">Sales Accelerator</a> sets up Dynamics 365 Sales for your pipeline for $7,500.</p>
         <h2 id="faq">Frequently asked questions</h2>
         <div class="faq">
           <details><summary>How does lead scoring work in Dynamics 365?</summary><p>Predictive lead scoring uses a machine learning model trained on your past leads to score open ones. It needs at least 40 qualified and 40 disqualified leads from the training period.</p></details>
@@ -278,7 +277,7 @@ body.p-post .upd p+p{margin-top:12px}
 
         <section class="abox" aria-labelledby="ab-h">
           <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
-          <div><h2 class="nm" id="ab-h">About the author: [Author, Brian confirms]</h2><p>[One line on the author’s role at enCloud9, Brian confirms.]</p></div>
+          <div><h2 class="nm" id="ab-h">About the author: Brian Begley</h2><p>Brian Begley is the founder and CEO of enCloud9.</p></div>
         </section>
 
         <div class="ctabox">

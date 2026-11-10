@@ -372,3 +372,5 @@ CHANGED 9 NOV 11:30 PM (rev 30): Package fit check is "a good fit if" and "consi
 
 ADDED 10 NOV 2026: G2 also runs by machine: python3 tools/consistency.py must print "clean" (one canonical value per fact, known wrong variants flagged across all pages). Add a fact to its list the day it is decided.
 ADDED 10 NOV 2026: internal links run by machine at stage 6: node tools/linkcheck.js pages --prefix=nine- must exit 0 (no orphan, self, duplicate or generic links in body copy). Monthly pass after launch, Michael approves the link table before any edit (Michael, 5 Nov 2026).
+
+ADDED 10 NOV 2026 (Claude's call, reversible; Michael can overrule): confirmation pages (thank-you, thank-you-contact, request-received, newsletter-thanks, call-prep) score area 2 (Proof) as not applicable, and the total scales to 32 (score / 28 x 32). They stay out of the sitemap and are exempt from the inbound-link part of G11 and from the linkcheck orphan rule. Campaign landing pages (nine-lp-*) keep every area, including proof, but are also kept out of the sitemap and exempt from the inbound-link rules.
