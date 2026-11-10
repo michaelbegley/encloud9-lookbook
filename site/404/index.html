@@ -69,8 +69,8 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
 .hud .snd{background:none;border:0;padding:4px 0;color:var(--g-soft);font:500 13px var(--body);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .hud .snd:focus-visible{outline:2px solid var(--g-line);outline-offset:2px}
 .meter{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--g-soft)}
-.pips{display:grid;grid-template-columns:repeat(9,1fr);gap:4px;flex:1}
-.pips i{height:6px;background:#1B2B57;border-radius:1px;transition:background .25s,transform .25s var(--bounce)}
+.pips{display:flex;gap:4px;flex:1}
+.pips i{flex:1;height:6px;background:#1B2B57;border-radius:1px;transition:background .25s,transform .25s var(--bounce)}
 .pips i.on{background:#2E9BD6;transform:scaleY(1.5)}
 .screen{position:relative;aspect-ratio:1/1}
 .screen canvas{display:block;width:100%;height:100%;outline:none;touch-action:none;transition:opacity .45s var(--ease)}
@@ -134,14 +134,14 @@ header.top,.final{transition:opacity .5s var(--ease)}
     </div>
     <div class="playbox" id="play" aria-label="Pipeline, a small game">
       <div class="hud"><span class="name">Pipeline</span><span class="right"><span id="score">Score 0 &middot; Best 0</span><button type="button" class="snd" id="snd" aria-pressed="false">Sound off</button></span></div>
-      <div class="meter"><span id="lvl">Level 1</span><span class="pips" id="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+      <div class="meter"><span id="lvl">Stage 1 of 9 &middot; Prospecting</span><span class="pips" id="pips" aria-hidden="true"></span></div>
       <div class="screen demo" id="screen">
         <canvas id="cv" tabindex="-1" role="application" aria-label="Pipeline game board. Arrow keys or WASD to steer, Space to pause, Escape to leave." aria-describedby="gstatus"></canvas>
         <div class="overlay" id="ov">
           <p class="big" id="ovt">Pipeline</p>
-          <p class="sub" id="ovs">Catch the leads. Grab the deals before they go cold.</p>
+          <p class="sub" id="ovs">Lay the pipeline. Catch the leads, grab the deals, close in nine stages.</p>
           <div class="acts"><button class="btn btn-p" type="button" id="start">Play</button><button class="exit" type="button" id="exit" hidden>Back to the page</button></div>
-          <p class="win" id="gwin" hidden>You made it to cloud nine. Want a CRM that works as hard as you do? <a href="../lp/schedule-a-meeting/">Book a call</a>.</p>
+          <p class="win" id="gwin" hidden>Want a CRM that works as hard as you do? <a href="../lp/schedule-a-meeting/">Book a call</a>.</p>
         </div>
       </div>
       <p class="status" id="gstatus" aria-live="polite"></p>
@@ -182,12 +182,15 @@ header.top,.final{transition:opacity .5s var(--ease)}
   var $=function(id){return document.getElementById(id)};
   var nf=document.querySelector('.nf'),box=$('play'),screen=$('screen'),cv=$('cv'),ctx=cv.getContext('2d');
   var ov=$('ov'),ovt=$('ovt'),ovs=$('ovs'),startB=$('start'),exitB=$('exit'),winP=$('gwin'),pad=$('pad'),live=$('gstatus');
-  var scoreEl=$('score'),lvlEl=$('lvl'),pips=[].slice.call($('pips').children),sndB=$('snd');
+  var scoreEl=$('score'),lvlEl=$('lvl'),pipsBox=$('pips'),sndB=$('snd');
   var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- config ---------- */
-  var N=18,PER_LEVEL=9,LAST=9,BONUS_EVERY=5,BONUS_TICKS=48,GRACE=1;
+  var N=18,LAST=9,BONUS_EVERY=5,BONUS_TICKS=48,GRACE=1;
   var START=[[6,9],[5,9],[4,9],[3,9]];
+  // Nine levels are the nine stages of a sales pipeline; early stages are short, later ones ask for more leads
+  var STAGES=['Prospecting','Qualifying','Discovery','Demo','Proposal','Negotiation','Contract','Closing','Closed won'];
+  var NEED=[5,6,6,7,7,8,8,9,9];
   var D={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]},OPP={up:'down',down:'up',left:'right',right:'left'};
   var C={bg:'#0E1A3A',dot:'#1B2B57',wall:'#355DA6',wallHi:'#4A6FB8',lead:'#2E9BD6',head:[255,255,255],tail:[111,143,203],eye:'#0E1A3A'};
   // One maze per level, as wall rectangles [x,y,w,h]. Row 9 stays open so every level starts safely.
@@ -208,7 +211,7 @@ header.top,.final{transition:opacity .5s var(--ease)}
   /* ---------- state ---------- */
   var mode='attract';            // attract | play | pause | between | over | won
   var body,dir,queue,prevTail,moved,grace,walls,lead,bonus,level,leads,total,sinceBonus;
-  var best=0,sound=false,lastTick=0,acc=0,fx=[],pops=[],shake=0,banner=null,deathAt=0;
+  var best=0,sound=false,lastTick=0,fx=[],pops=[],shake=0,banner=null,deathAt=0,flow=[],lastFrame=0;
   try{best=+localStorage.getItem('n9snakeBest')||0;sound=localStorage.getItem('n9snakeSound')==='1'}catch(e){}
 
   /* ---------- helpers ---------- */
@@ -229,8 +232,10 @@ header.top,.final{transition:opacity .5s var(--ease)}
   function setSound(on){sound=on;sndB.textContent=on?'Sound on':'Sound off';sndB.setAttribute('aria-pressed',on);try{localStorage.setItem('n9snakeSound',on?'1':'0')}catch(e){}if(on)sfx.lead()}
 
   /* ---------- level setup ---------- */
-  function load(lv){level=lv;walls=buildWalls(lv);body=START.map(function(p){return p.slice()});dir='right';queue=[];prevTail=null;moved=false;grace=0;leads=0;sinceBonus=0;bonus=null;lead=null;lead=freeCell();hud()}
-  function hud(){scoreEl.textContent='Score '+total+' · Best '+best;lvlEl.textContent='Level '+level;pips.forEach(function(p,i){p.classList.toggle('on',i<leads)})}
+  function load(lv){flow=[];level=lv;walls=buildWalls(lv);body=START.map(function(p){return p.slice()});dir='right';queue=[];prevTail=null;moved=false;grace=0;leads=0;sinceBonus=0;bonus=null;lead=null;lead=freeCell();hud()}
+  function hud(){scoreEl.textContent='Score '+total+' · Best '+best;lvlEl.textContent='Stage '+level+' of '+LAST+' · '+STAGES[level-1];
+    var need=NEED[level-1];while(pipsBox.children.length<need)pipsBox.appendChild(document.createElement('i'));while(pipsBox.children.length>need)pipsBox.removeChild(pipsBox.lastChild);
+    [].forEach.call(pipsBox.children,function(p,i){p.classList.toggle('on',i<leads)})}
 
   /* ---------- the tick ---------- */
   function step(){
@@ -241,7 +246,7 @@ header.top,.final{transition:opacity .5s var(--ease)}
       if(mode==='play'&&grace<GRACE){grace++;moved=false;prevTail=null;return}   // Armanto's last-chance pause
       return mode==='play'?die():reboot();
     }
-    grace=0;moved=true;body.unshift([nx,ny]);
+    grace=0;moved=true;body.unshift([nx,ny]);flow.forEach(function(f){f.i+=1});   // what's in the pipe stays put in the world as the pipe lays forward
     prevTail=eats?null:body.pop();
     if(eats)eatLead(nx,ny);
     if(bonus&&bonus.x===nx&&bonus.y===ny)eatBonus();
@@ -249,21 +254,21 @@ header.top,.final{transition:opacity .5s var(--ease)}
   }
   function eatLead(x,y){
     if(mode==='attract'){if(body.length>14)body.length=5;lead=freeCell();return}
-    leads++;total+=level;sinceBonus++;burst(x,y,'#2E9BD6',14);pop(x,y,'+'+level);sfx.lead();buzz();save();hud();
-    if(leads>=PER_LEVEL){lead=null;return clearLevel()}
+    leads++;total+=level;sinceBonus++;flow.push({i:0,c:C.lead,r:.17});burst(x,y,'#2E9BD6',10);pop(x,y,'+'+level);sfx.lead();buzz();save();hud();
+    if(leads>=NEED[level-1]){lead=null;return clearLevel()}
     lead=freeCell();
     if(sinceBonus>=BONUS_EVERY&&!bonus){var c=freeCell();bonus={x:c[0],y:c[1],left:BONUS_TICKS,born:performance.now()};sinceBonus=0;say('A deal showed up. Grab it before it goes cold.')}
   }
-  function eatBonus(){var worth=Math.max(level*2,Math.round(level*12*bonus.left/BONUS_TICKS));total+=worth;burst(bonus.x,bonus.y,'#FFFFFF',22);pop(bonus.x,bonus.y,'+'+worth);sfx.bonus();buzz();bonus=null;save();hud();say('Deal closed, plus '+worth+'.')}
+  function eatBonus(){var worth=Math.max(level*2,Math.round(level*12*bonus.left/BONUS_TICKS));total+=worth;flow.push({i:0,c:'#FFFFFF',r:.21,deal:1});burst(bonus.x,bonus.y,'#FFFFFF',22);pop(bonus.x,bonus.y,'+'+worth);sfx.bonus();buzz();bonus=null;save();hud();say('Deal closed, plus '+worth+'.')}
   function buzz(){if(!calm&&navigator.vibrate)try{navigator.vibrate(12)}catch(e){}}
 
   /* ---------- flow ---------- */
   function clearLevel(){
     sfx.level();mode='between';bonus=null;
     for(var i=0;i<body.length;i+=2)burst(body[i][0],body[i][1],'#C9D6EE',4);
-    if(level>=LAST){say('All levels cleared. You made it to cloud nine.');for(var b2=0;b2<6;b2++)burst(Math.random()*N|0,Math.random()*N|0,'#2E9BD6',12);setTimeout(function(){if(mode!=='between')return;mode='won';winP.hidden=false;menu('Cloud nine','Final score '+total,'Play again')},900);return}
-    banner={text:'Level '+level+' clear',t:performance.now()};say('Level '+level+' cleared.');
-    setTimeout(function(){if(mode!=='between')return;load(level+1);banner={text:'Level '+level,t:performance.now()};say('Level '+level+'. New maze.');
+    if(level>=LAST){say('All levels cleared. You made it to cloud nine.');for(var b2=0;b2<6;b2++)burst(Math.random()*N|0,Math.random()*N|0,'#2E9BD6',12);setTimeout(function(){if(mode!=='between')return;mode='won';winP.hidden=false;menu('Closed won','Final score '+total+'. You made it to cloud nine.','Play again')},900);return}
+    banner={text:STAGES[level-1]+' done',t:performance.now()};say('Stage '+level+', '+STAGES[level-1]+', done.');
+    setTimeout(function(){if(mode!=='between')return;load(level+1);banner={text:STAGES[level-1],t:performance.now()};say('Stage '+level+' of '+LAST+': '+STAGES[level-1]+'. '+NEED[level-1]+' leads to move on.');
       setTimeout(function(){if(mode==='between'){mode='play';lastTick=performance.now()}},calm?300:900)},calm?400:1300);
   }
   function die(){mode='over';deathAt=performance.now();shake=calm?0:10;sfx.die();save();hud();say('Game over. Score '+total+'.');
@@ -277,13 +282,13 @@ header.top,.final{transition:opacity .5s var(--ease)}
     if(takeover){total=0;var keep=body.slice(0,4);load(1);body=keep;dir=dirOf(keep);moved=false;lead=freeCell()}   // you take the snake that was already moving
     else{total=0;load(1)}
     mode='between';ov.hidden=true;exitB.hidden=true;pad.hidden=false;screen.classList.remove('demo');hud();
-    say('Level 1. You have the snake. Arrow keys to steer.');banner={text:'Go',t:performance.now()+(calm?0:500)};
+    say('Stage 1: Prospecting. You have the pipeline. Arrow keys to steer.');banner={text:'Prospecting',t:performance.now()+(calm?0:500)};
     enter(function(){cv.focus({preventScroll:true});setTimeout(function(){if(mode==='between'){mode='play';lastTick=performance.now()}},calm?0:350)});
   }
   function dirOf(b){var dx=b[0][0]-b[1][0],dy=b[0][1]-b[1][1];if(Math.abs(dx)>1)dx=-Math.sign(dx);if(Math.abs(dy)>1)dy=-Math.sign(dy);return dx>0?'right':dx<0?'left':dy>0?'down':'up'}
   function pause(){if(mode==='play'){mode='pause';menu('Paused','Space to keep going','Resume')}else if(mode==='pause')resume()}
   function resume(){mode='play';ov.hidden=true;exitB.hidden=true;pad.hidden=false;screen.classList.remove('demo');lastTick=performance.now();cv.focus({preventScroll:true})}
-  function leave(){winP.hidden=true;ovt.textContent='Pipeline';ovs.textContent='Catch the leads. Grab the deals before they go cold.';startB.textContent='Play';exitB.hidden=true;ov.hidden=false;pad.hidden=true;
+  function leave(){winP.hidden=true;ovt.textContent='Pipeline';ovs.textContent='Lay the pipeline. Catch the leads, grab the deals, close in nine stages.';startB.textContent='Play';exitB.hidden=true;ov.hidden=false;pad.hidden=true;
     screen.classList.add('demo');total=0;load(1);mode='attract';hud();exit(function(){startB.focus({preventScroll:true})})}
 
   /* ---------- growing into focus: FLIP the box from where it was to where it lands ---------- */
@@ -321,7 +326,7 @@ header.top,.final{transition:opacity .5s var(--ease)}
   function pop(x,y,t){pops.push({x:x+.5,y:y+.2,t:t,life:1})}
 
   /* ---------- drawing ---------- */
-  var W=0,cell=0,dpr=1,font='sans-serif';
+  var W=0,cell=0,dpr=1,font='sans-serif',mouth=0;
   function size(){var r=cv.getBoundingClientRect();dpr=Math.min(2,window.devicePixelRatio||1);W=Math.round(r.width);cv.width=Math.round(W*dpr);cv.height=Math.round(W*dpr);cell=W/N;font=getComputedStyle(box).fontFamily}
   function rr(x,y,w,h,r){ctx.beginPath();ctx.roundRect?ctx.roundRect(x,y,w,h,r):ctx.rect(x,y,w,h)}
   function mix(a,b,t){return 'rgb('+a.map(function(v,i){return Math.round(v+(b[i]-v)*t)}).join(',')+')'}
@@ -352,29 +357,43 @@ header.top,.final{transition:opacity .5s var(--ease)}
     // the lead: a pulsing dot with a soft ring
     if(lead){var p=calm?0:(Math.sin(now/260)+1)/2,lx=(lead[0]+.5)*cell,ly=(lead[1]+.5)*cell;
       ctx.fillStyle='rgba(46,155,214,'+(.18+.2*p)+')';ctx.beginPath();ctx.arc(lx,ly,cell*(.42+.08*p),0,7);ctx.fill();
-      ctx.fillStyle=C.lead;ctx.beginPath();ctx.arc(lx,ly,cell*.26,0,7);ctx.fill()}
+      ctx.fillStyle=C.lead;ctx.beginPath();ctx.arc(lx,ly-cell*.13,cell*.12,0,7);ctx.fill();   // a lead is a person: head and shoulders
+      ctx.beginPath();ctx.arc(lx,ly+cell*.25,cell*.22,Math.PI,0);ctx.closePath();ctx.fill()}
     // the deal: a white diamond with a timer ring that drains
     if(bonus){var bx=(bonus.x+.5)*cell,by=(bonus.y+.5)*cell,f=bonus.left/BONUS_TICKS,s=cell*.3*(calm?1:Math.min(1,(now-bonus.born)/250));
       ctx.strokeStyle='rgba(255,255,255,.85)';ctx.lineWidth=Math.max(1.5,cell*.07);ctx.beginPath();ctx.arc(bx,by,cell*.46,-Math.PI/2,-Math.PI/2+Math.PI*2*f);ctx.stroke();
       if(f>.3||Math.floor(now/120)%2){ctx.fillStyle='#fff';ctx.beginPath();ctx.moveTo(bx,by-s);ctx.lineTo(bx+s,by);ctx.lineTo(bx,by+s);ctx.lineTo(bx-s,by);ctx.closePath();ctx.fill()}}
-    // the snake: one smooth rounded line, head interpolated forward, tail interpolated in
+    // the pipeline: a pipe laid behind an intake; couplings at every joint; leads and deals flow through it to the far end
+    var dt=Math.min(64,now-(lastFrame||now));lastFrame=now;
     if(mode!=='over'||now-deathAt<120||Math.floor((now-deathAt)/90)%2){
       var pts=[],h0=body[0];
       if(t<1&&body.length>1){var from=body[1],to=unwrapTo(from,h0);pts.push([from[0]+(to[0]-from[0])*t,from[1]+(to[1]-from[1])*t])}else pts.push(h0);
       for(var i=1;i<body.length;i++)pts.push(body[i]);
       if(prevTail&&t<1){var end=body[body.length-1],pt=unwrapTo(end,prevTail);pts.push([pt[0]+(end[0]-pt[0])*t,pt[1]+(end[1]-pt[1])*t])}
       ctx.save();ctx.beginPath();ctx.rect(0,0,W,W);ctx.clip();
-      ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=cell*.66;
-      // one stroke for the whole body, so joints never double up; shaded from the head back to the tail
-      var tl=pts[pts.length-1],g=ctx.createLinearGradient((pts[0][0]+.5)*cell,(pts[0][1]+.5)*cell,(tl[0]+.5)*cell+.01,(tl[1]+.5)*cell+.01);
-      g.addColorStop(0,mix(C.head,C.tail,.15));g.addColorStop(1,mix(C.head,C.tail,1));ctx.strokeStyle=g;
-      ctx.beginPath();for(var j=pts.length-1;j>0;j--)seg(pts[j],pts[j-1]);ctx.stroke()
-      // head and eyes
-      var hd=pts[0],hx=(((hd[0]%N)+N)%N+.5)*cell,hy=(((hd[1]%N)+N)%N+.5)*cell,v=D[dir];
-      ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(hx,hy,cell*.38,0,7);ctx.fill();
-      ctx.fillStyle=C.eye;var ex=-v[1]*cell*.16,ey=v[0]*cell*.16,fx2=v[0]*cell*.1,fy2=v[1]*cell*.1,er=Math.max(1.4,cell*.07);
-      if(mode==='over'){ctx.strokeStyle=C.eye;ctx.lineWidth=er*.9;[1,-1].forEach(function(sg){var cx=hx+ex*sg+fx2,cy=hy+ey*sg+fy2;ctx.beginPath();ctx.moveTo(cx-er,cy-er);ctx.lineTo(cx+er,cy+er);ctx.moveTo(cx+er,cy-er);ctx.lineTo(cx-er,cy+er);ctx.stroke()})}
-      else{ctx.beginPath();ctx.arc(hx+ex+fx2,hy+ey+fy2,er,0,7);ctx.arc(hx-ex+fx2,hy-ey+fy2,er,0,7);ctx.fill()}
+      ctx.lineCap='round';ctx.lineJoin='round';
+      function tube(w,col){ctx.lineWidth=cell*w;ctx.strokeStyle=col;ctx.beginPath();for(var j=pts.length-1;j>0;j--)seg(pts[j],pts[j-1]);ctx.stroke()}
+      tube(.7,'#9DB3DC');tube(.5,'#4A6FB8');tube(.12,'rgba(201,214,238,.35)');   // rim, bore, sheen
+      // couplings: a band across the pipe on straight runs, an elbow block on corners
+      for(var c=1;c<body.length;c++){var p0=body[c],pa=unwrapTo(p0,body[c-1]),pb=c+1<body.length?unwrapTo(p0,body[c+1]):null,
+          ax=pa[0]-p0[0],ay=pa[1]-p0[1],cx=(p0[0]+.5)*cell,cy=(p0[1]+.5)*cell;ctx.fillStyle='#9DB3DC';
+        if(pb&&(pb[0]-p0[0])!==-ax&&(pb[1]-p0[1])!==-ay){rr(cx-cell*.4,cy-cell*.4,cell*.8,cell*.8,cell*.22);ctx.fill();ctx.fillStyle='#4A6FB8';ctx.beginPath();ctx.arc(cx,cy,cell*.2,0,7);ctx.fill()}
+        else if(ax){ctx.fillRect(cx-cell*.05,cy-cell*.4,cell*.1,cell*.8)}else{ctx.fillRect(cx-cell*.4,cy-cell*.05,cell*.8,cell*.1)}}
+      // what's flowing: drift toward the far end, then pop out
+      var speed=mode==='play'?dt/1000*6:0;
+      flow=flow.filter(function(f){f.i+=speed;if(f.i>=pts.length-1){var e=pts[pts.length-1];if(!f.deal)burst(((e[0]%N)+N)%N,((e[1]%N)+N)%N,'#2E9BD6',5);else burst(((e[0]%N)+N)%N,((e[1]%N)+N)%N,'#FFFFFF',10);return false}
+        var k=Math.floor(f.i),fr=f.i-k,A=pts[k],B=unwrapTo(A,pts[k+1]),x=((A[0]+(B[0]-A[0])*fr)%N+N)%N,y=((A[1]+(B[1]-A[1])*fr)%N+N)%N;
+        ctx.fillStyle=f.c;ctx.beginPath();ctx.arc((x+.5)*cell,(y+.5)*cell,cell*f.r,0,7);ctx.fill();return true});
+      // the intake: a flared mouth facing forward that opens wide when a lead is close
+      var hd=pts[0],hx=(((hd[0]%N)+N)%N+.5)*cell,hy=(((hd[1]%N)+N)%N+.5)*cell,v=D[dir],near=0;
+      if(lead){var ddx=Math.abs(lead[0]-body[0][0]),ddy=Math.abs(lead[1]-body[0][1]);ddx=Math.min(ddx,N-ddx);ddy=Math.min(ddy,N-ddy);near=Math.max(0,1-(ddx+ddy-1)/2.5)}
+      mouth+=((near>0?near:0)-mouth)*.2;
+      var px=-v[1],py=v[0],fw=cell*(.44+.08*mouth);   // flare: a trapezoid wider at the front
+      ctx.fillStyle='#FFFFFF';ctx.beginPath();
+      ctx.moveTo(hx-v[0]*cell*.18+px*cell*.36,hy-v[1]*cell*.18+py*cell*.36);ctx.lineTo(hx+v[0]*cell*.3+px*fw,hy+v[1]*cell*.3+py*fw);
+      ctx.lineTo(hx+v[0]*cell*.3-px*fw,hy+v[1]*cell*.3-py*fw);ctx.lineTo(hx-v[0]*cell*.18-px*cell*.36,hy-v[1]*cell*.18-py*cell*.36);ctx.closePath();ctx.fill();
+      ctx.fillStyle=mode==='over'?'#6F8FCB':C.bg;var ow=fw*(.62+.25*mouth);   // the opening: a dark slot across the wide end
+      ctx.beginPath();ctx.ellipse(hx+v[0]*cell*.22,hy+v[1]*cell*.22,v[0]?cell*(.09+.05*mouth):ow,v[0]?ow:cell*(.09+.05*mouth),0,0,7);ctx.fill();
       ctx.restore()}
     // particles and score pops
     fx=fx.filter(function(p){p.x+=p.vx;p.y+=p.vy;p.vx*=.94;p.vy*=.94;p.life-=.025;if(p.life<=0)return false;ctx.globalAlpha=p.life;ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(p.x*cell,p.y*cell,p.r*cell*p.life+1,0,7);ctx.fill();return true});
