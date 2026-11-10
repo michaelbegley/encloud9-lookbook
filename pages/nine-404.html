@@ -59,7 +59,7 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
 .board{--n:9;width:min(360px,100%);aspect-ratio:1/1;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));grid-template-rows:repeat(9,minmax(0,1fr));gap:3px;outline:none;touch-action:none}
 .board:focus-visible{outline:2px solid var(--b5);outline-offset:4px}
 .board i{background:var(--b9,#EAF0F9);display:block}
-.board i.s{background:var(--b3,#1F3A80)}.board i.h{background:var(--b1,#0E1A3A)}.board i.f{background:var(--b6,#6F8FCB)}
+.board i.s{background:var(--b3,#1F3A80)}.board i.h{background:var(--b1,#0E1A3A)}.board i.f{background:var(--b6,#6F8FCB)}.board i.cl{background:#355DA6;animation:cl-in .35s both}.board i.fc{background:#fff;animation:cl-in .35s both}@keyframes cl-in{from{transform:scale(.2);opacity:0}to{transform:none;opacity:1}}@media (prefers-reduced-motion:reduce){.board i.cl,.board i.fc{animation:none}}
 .status{font-family:var(--mono);font-size:14px;color:var(--ink);text-align:center;min-height:21px;margin:0}
 .pad{display:grid;grid-template-columns:repeat(3,48px);grid-template-rows:repeat(2,48px);gap:6px}
 .pad button{background:var(--b9,#EAF0F9);border:1px solid var(--line);font:600 18px var(--body);color:var(--ink);cursor:pointer}
@@ -147,13 +147,18 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
   for(var i=0;i<N*N;i++){var c=document.createElement('i');board.appendChild(c);cells.push(c)}
   var D={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]};
   function place(){var free=[];for(var i=0;i<N*N;i++){if(!snake.some(function(p){return p[0]+p[1]*N===i}))free.push(i)}var k=free[Math.floor(Math.random()*free.length)];food=[k%N,Math.floor(k/N)]}
-  function draw(){cells.forEach(function(c){c.className=''});snake.forEach(function(p,j){cells[p[0]+p[1]*N].className=j===0?'h':'s'});if(food)cells[food[0]+food[1]*N].className='f'}
+  function draw(){cells.forEach(function(c){c.className='';c.style.animationDelay=''});snake.forEach(function(p,j){cells[p[0]+p[1]*N].className=j===0?'h':'s'});if(food)cells[food[0]+food[1]*N].className='f'}
   function stop(msg){running=false;clearInterval(timer);status.textContent=msg;start.textContent='Play again';start.parentElement.hidden=false}
   function tick(){dir=next;var h=snake[0],nh=[h[0]+D[dir][0],h[1]+D[dir][1]];
     if(nh[0]<0||nh[1]<0||nh[0]>=N||nh[1]>=N||snake.some(function(p){return p[0]===nh[0]&&p[1]===nh[1]})){draw();return stop('Game over: '+eaten+' of 9 squares. Play again?')}
     snake.unshift(nh);
-    if(food&&nh[0]===food[0]&&nh[1]===food[1]){eaten++;status.textContent='Squares eaten: '+eaten+' of 9';if(eaten===9){food=null;draw();return stop('Nine squares. You are on cloud nine.')}place()}else snake.pop();
+    if(food&&nh[0]===food[0]&&nh[1]===food[1]){eaten++;status.textContent='Squares eaten: '+eaten+' of 9';if(eaten===9){food=null;draw();stop('Nine squares. You are on cloud nine.');return cloud()}place()}else snake.pop();
     draw()}
+  var CLOUD=['.........','...XXX...','.XXXXXXX.','XXXXXXXXX','XXXXXXXXX','XXXXXXXXX','XXXXXXXXX','.XXXXXXX.','.........'];
+  var FACE={'3,3':1,'3,5':1,'5,2':1,'5,6':1,'6,3':1,'6,4':1,'6,5':1};
+  function cloud(){cells.forEach(function(c){c.className='';c.style.animationDelay=''});
+    for(var y=0;y<N;y++)for(var x=0;x<N;x++){if(CLOUD[y][x]!=='X')continue;var c=cells[x+y*N],d=Math.abs(x-4)+Math.abs(y-4);
+      c.style.animationDelay=(d*90)+'ms';c.className=FACE[y+','+x]?'fc':'cl'}}
   function begin(){snake=[[2,4],[1,4],[0,4]];dir=next='right';eaten=0;place();draw();game.hidden=false;pad.hidden=false;start.parentElement.hidden=true;status.textContent='Squares eaten: 0 of 9';running=true;clearInterval(timer);timer=setInterval(tick,220);board.focus()}
   function close(){running=false;clearInterval(timer);game.hidden=true;pad.hidden=true;start.parentElement.hidden=false;start.textContent='Play nine squares';status.textContent='Eat nine light squares to reach cloud nine.';start.focus()}
   function steer(d){if(!running)return;var o={up:'down',down:'up',left:'right',right:'left'};if(d&&o[d]!==dir)next=d}
