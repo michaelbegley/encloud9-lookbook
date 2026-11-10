@@ -39,6 +39,7 @@ MAP = {
     'nine-faq.html': '/faq/',
     'nine-power-apps.html': '/dynamics-365-power-apps/',
     'nine-power-bi.html': '/microsoft-power-bi/',
+    'nine-copilot-studio.html': '/microsoft-copilot-studio/',
     'nine-email-verifier.html': '/email-verifier/',
     'nine-accelerators.html': '/encloud9-dynamics-365-crm-services/microsoft-dynamics-365-crm-accelerators/',
     'nine-support.html': '/microsoft-dynamics-365-support-services/',
