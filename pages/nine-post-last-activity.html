@@ -222,10 +222,10 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
         <details open id="tocd">
           <summary>On this page</summary>
           <ol>
-            <li><a href="#why-tracking-activity-dates-matters">Why Tracking Activity Dates Matters</a></li>
-            <li><a href="#how-to-create-last-and-next-activity-dat">How to Create Last and Next Activity Date Fields in Dynamics 365</a></li>
-            <li><a href="#adding-the-fields-to-views-and-forms">Adding the Fields to Views and Forms</a></li>
-            <li><a href="#improve-crm-tracking-with-rollup-fields">Improve CRM Tracking with Rollup Fields</a></li>
+            <li><a href="#why-tracking-activity-dates-matters">Why track last and next activity dates?</a></li>
+            <li><a href="#how-to-create-last-and-next-activity-dat">How do you create last and next activity date fields in Dynamics 365?</a></li>
+            <li><a href="#adding-the-fields-to-views-and-forms">Where should the new fields go?</a></li>
+            <li><a href="#improve-crm-tracking-with-rollup-fields">When do the rollup fields fill in?</a></li>
             <li><a href="#about-encloud9">About enCloud9</a></li>
             <li><a href="#see">Want help with this?</a></li>
           </ol>
@@ -236,10 +236,10 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
         <p class="answer"><span class="mono">The short answer</span><strong>Microsoft Dynamics 365 does not include a built-in last activity date. Add two rollup columns to the lead table: Last Activity Date, the maximum Actual End date of its activities, and Next Activity Due Date, the minimum Due Date of its open activities. Then add both to your forms and views so reps see who needs follow-up.</strong></p>
         <p>The steps below show how, and the full tutorial is also on YouTube.</p>
         <p><strong>Watch the full tutorial on YouTube:</strong> <a href="https://youtu.be/HUgUlEYomKM">Easily Track Last & Next Activity Dates in Dynamics 365</a></p>
-        <h2 id="why-tracking-activity-dates-matters">Why Tracking Activity Dates Matters</h2>
+        <h2 id="why-tracking-activity-dates-matters">Why track last and next activity dates?</h2>
         <p>Knowing the <strong>last activity date</strong> allows sales teams to quickly see when they last engaged with a lead, contact, or account. If a prospect hasn’t been contacted in a while, it might be time to re-engage.</p>
         <p>Meanwhile, the <strong>next activity due date</strong> ensures that sales reps never miss an upcoming call, meeting, or email. This field provides a clear schedule of future interactions, improving responsiveness and boosting conversion rates.</p>
-        <h2 id="how-to-create-last-and-next-activity-dat">How to Create Last and Next Activity Date Fields in Dynamics 365</h2>
+        <h2 id="how-to-create-last-and-next-activity-dat">How do you create last and next activity date fields in Dynamics 365?</h2>
         <p>To automate activity tracking in Dynamics 365, follow these steps:</p>
         <h3>Step 1: Create the Last Activity Date Field</h3>
         <ul>
@@ -256,11 +256,11 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
           <li>Filter the Activity Records to use only <strong>Open</strong> Activities.</li>
           <li>Save the field and add it to the form.</li>
         </ul>
-        <h2 id="adding-the-fields-to-views-and-forms">Adding the Fields to Views and Forms</h2>
+        <h2 id="adding-the-fields-to-views-and-forms">Where should the new fields go?</h2>
         <p>Once the fields are created, add them to your <strong>Lead forms</strong> for easy access. You should also include them in your <strong>Open Leads views</strong> to monitor past and future activities at a glance.</p>
-        <h2 id="improve-crm-tracking-with-rollup-fields">Improve CRM Tracking with Rollup Fields</h2>
+        <h2 id="improve-crm-tracking-with-rollup-fields">When do the rollup fields fill in?</h2>
+        <p>Existing records fill in about 12 hours after you create the column. After that, values refresh about every hour, or right away with Recalculate on the form. See <a href="https://learn.microsoft.com/power-apps/maker/data-platform/define-rollup-fields">rollup columns on Microsoft Learn</a> (checked 10 November 2026).</p>
         <p>By adding these rollup fields, your team can <strong>stay organized, follow up on time, and never miss a critical opportunity.</strong></p>
-        <p><strong>Note:</strong> Existing records fill in about 12 hours after you create the column. After that, values refresh about every hour, or right away with Recalculate on the form. See <a href="https://learn.microsoft.com/power-apps/maker/data-platform/define-rollup-fields">rollup columns on Microsoft Learn</a> (checked 10 November 2026).</p>
         <p>Add the two columns, then check a few leads the next day to confirm the dates filled in.</p>
         <h2 id="about-encloud9">About enCloud9</h2>
         <p>enCloud9 is a Dynamics 365 partner specializing in CRM solutions that help businesses streamline their <a href="nine-dynamics-365-sales.html">sales</a>, <a href="nine-marketing.html">marketing</a>, and <a href="nine-customer-service.html">customer service</a> operations. Our team provides expert implementation, customization, and <a href="nine-support.html">support services</a>.</p>
