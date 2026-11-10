@@ -9,7 +9,7 @@ import glob, html, re, sys
 
 FACTS = [
     # (fact, canonical, [regex of wrong variants], note)
-    ("Partnership price", "from $2,000 a month", [r"\$2,000\+", r"\bat \$2,000\b"], "Brian call 23 '$2,000+'; site wording 9 Nov"),
+    ("Partnership price", "from $2,000 a month", [r"\$2,000\+", r"\bat \$2,000\b", r"Partnership is \$2,000", r"data-l=\"Price\">\$2,000 a month"], "Brian call 23 '$2,000+'; site wording 9 Nov"),
     ("Full implementation price", "from $20,000", [r"\$24,000", r"from \$2[1-9],000"], "Brian call 27 and Teams '20', 9 Nov"),
     ("Rescue and Repair price", "$500 to $10,000", [r"Rescue[^.]{0,60}\$(?!500\b)\d[\d,]* to"], "Brian call 27"),
     ("Accelerator price", "$7,500 (Sales and Service), $5,000 (Marketing)", [r"(?<!Sales and Service )(?<!Service )Accelerators are \$7,500"], "Brian call 27; per accelerator or both still open"),

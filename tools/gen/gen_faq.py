@@ -21,12 +21,16 @@ for gid, gname, pages in GROUPS:
         for q, a in re.findall(r'<details><summary>((?:(?!</?details|</summary>).)*?)</summary><p>((?:(?!</?details).)*?)</p></details>', s, re.S):  # tempered: never spans the menu's details (10 Nov 2026 fix, G4/G7)
             key = re.sub(r'\W+', ' ', H.unescape(q).lower()).strip()
             if key in seen: dup += 1; continue
-            seen.add(key); items.append((H.unescape(q), a, fn, label))
+            seen.add(key); qq = H.unescape(q)
+            # REVIEW-G6 (10 Nov 2026): a short question with no subject loses its meaning on a page of 200; name the page it comes from
+            if len(qq.split()) <= 7 and re.search(r'\b(it|this|that|setup|the integration)\b', qq, re.I) and not re.search(r'Dynamics|Copilot|Power|Salesforce|HubSpot|Zoho|monday|Dataverse|Business Central|Microsoft', qq):
+                qq = f'{qq} ({label})'
+            items.append((qq, a, fn, label))
     total += len(items); groups.append((gid, gname, items))
-ANSWER = (f'This page holds every question answered across our site, {total} in all, grouped by topic. Each answer links back to the page it comes from. '
+ANSWER = (f'This page holds every question from our product, package and company pages, {total} in all, grouped by topic. Each answer links back to the page it comes from. '
           'Search the list, or jump to a topic: Dynamics 365, Copilot and AI, marketing, packages, moving from another CRM, and support.')
 TITLE = 'Dynamics 365 Questions, Answered | enCloud9 FAQ'
-META = 'Every question we answer about Dynamics 365, Copilot, Power Platform, packages, moving from another CRM and support plans, in one place.'
+META = 'The questions we answer about Dynamics 365, Copilot, Power Platform, packages, moving from another CRM and support plans, in one place.'
 css = ('.fqtools{display:grid;gap:14px;margin:8px 0 32px}.fqtools input{font:inherit;font-size:17px;padding:14px 16px;border:1px solid var(--line);background:#fff;color:var(--ink);width:100%;max-width:640px}'
        '.chips{display:flex;flex-wrap:wrap;gap:8px}.chips a{font-family:var(--mono);font-size:12px;padding:8px 12px;border:1px solid var(--line);color:var(--ink);text-decoration:none;background:#fff}'
        '.chips a:hover{border-color:var(--b5)}.fqfrom{display:block;margin-top:10px;font-family:var(--mono);font-size:12px}.fqcount{font-family:var(--mono);font-size:12px;color:var(--muted)}'
@@ -52,9 +56,10 @@ main = crumbnav([('Home','nine-home.html'),('Questions',None)]) + f'''  <section
       <p class="lead rise" style="--d:3">{e(ANSWER)}</p>
       <div class="fqtools rise" style="--d:4">
         <label class="sr-only" for="fqs">Search the questions</label>
-        <input id="fqs" type="search" placeholder="Search the questions, for example licenses" autocomplete="off">
+        <input id="fqs" type="search" placeholder="Search, for example licenses" autocomplete="off">
         <p class="fqcount" id="fqn" role="status">{total} questions</p>
         <nav class="chips" aria-label="Topics">{chips}</nav>
+        <div class="acts"><a class="btn btn-p" href="{BOOK}">Book a call</a></div>
       </div>
     </div>
   </section>
