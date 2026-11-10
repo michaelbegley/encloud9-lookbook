@@ -1,0 +1,24 @@
+/* One gap and one type scale for the whole site (Michael's decision, 9 Nov 2026, gate G15).
+   Loaded after nine.css and each page's own styles, so it wins. */
+
+/* Nine-square grids use the logo's spacing: gap = 15.5% of a square (4.5 to 29).
+   With three squares and two gaps across, that gap is 4.68% of the grid's width.
+   The grids below are square (aspect-ratio 1/1), so the same percentage works down as well as across.
+   Small icon grids (squares under 30px) keep their 1 to 3px gaps so they stay crisp. */
+html body :is(.grid9,.aigrid,.fgx,.dgx,.jgrid,.fgrid,.dest){gap:4.68%}
+@media (min-width:561px){html body ol.bel{aspect-ratio:1/1;gap:4.68%}}
+
+/* Type scale: one size per job. !important because page styles set heading sizes with longer selectors; this file is the one place sizes are set now.
+   Main headline: Home 96px (its signature), every other page 72px, blog posts 60px; phones 44, 40 and 34. */
+html body main h1{font-size:clamp(40px,5vw,72px)!important}
+html body.p-home main h1{font-size:clamp(44px,6.67vw,96px)!important}
+html body.p-post main h1{font-size:clamp(34px,4.17vw,60px)!important}
+/* Section headings: pages 54px (phones 32), blog posts and client stories 40px (phones 28).
+   A closing call-to-action heading may stay larger on purpose. */
+html body main h2{font-size:clamp(32px,3.75vw,54px)!important}
+html body:is(.p-post,.p-story) main h2{font-size:clamp(28px,2.78vw,40px)!important}
+html body main section.final h2,html body main .final h2{font-size:clamp(40px,5.28vw,76px)!important}
+/* Body text: 18px on desktop, 17px on phones. */
+/* Plain paragraphs only; lead paragraphs and text inside cards, tiles and tables keep their own sizes. */
+html body main p:not([class]):not(:is(.cell,.tile,.ptile,.bc,.pk,.pc,.fc,.lnav,.flowbar,.proofline,table,figure,aside,details,li,.card,.pf) p){font-size:18px}
+@media (max-width:600px){html body main p:not([class]):not(:is(.cell,.tile,.ptile,.bc,.pk,.pc,.fc,.lnav,.flowbar,.proofline,table,figure,aside,details,li,.card,.pf) p){font-size:17px}}
