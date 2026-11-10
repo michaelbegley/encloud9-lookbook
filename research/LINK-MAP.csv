@@ -1,0 +1,84 @@
+page,url,title,in_header,in_footer,in_body,out_body,out_body_unique
+nine-about.html,/about-encloud9/,"About enCloud9, a Dynamics 365 Partner | enCloud9",164,82,10,14,10
+nine-accelerators.html,/encloud9-dynamics-365-crm-services/microsoft-dynamics-365-crm-accelerators/,"Dynamics 365 Accelerators, Fixed-Scope Packages | enCloud9",0,0,5,25,10
+nine-accessibility.html,/accessibility/,Accessibility Statement | enCloud9,0,82,0,6,5
+nine-blog-2024.html,/blog/optimizing-sales-strategies-with-dynamics-365-enabling-and-utilizing-sales-usage-reports/,Enabling and Utilizing Sales Usage Reports in Dynamics 365,0,0,1,12,8
+nine-blog-post.html,/blog/generative-pages-dynamics-365/,Generative Pages in Dynamics 365: 12 Ways to Use Them,0,0,3,12,9
+nine-blog-pricing-2026.html,/blog/dynamics-365-pricing-licensing-2025-guide/,"Dynamics 365 Pricing 2026: Licenses, Copilot and Costs",0,0,12,16,13
+nine-blog.html,/blog/,Dynamics 365 Blog | enCloud9,164,82,27,18,17
+nine-business-central.html,/dynamics-365-business-central/,Dynamics 365 and Business Central Integration | enCloud9,0,0,11,16,11
+nine-contact-center.html,/dynamics-365-contact-center/,Dynamics 365 Contact Center | enCloud9,0,0,13,17,12
+nine-contact.html,/contact-us/,Contact enCloud9 | Dynamics 365 Partner,0,82,21,17,10
+nine-copilot-studio.html,/microsoft-copilot-studio/,Microsoft Copilot Studio Agents | enCloud9,0,82,12,19,10
+nine-copilot.html,/microsoft-copilot-for-business/,Copilot and AI Agents for Dynamics 365 | enCloud9,164,164,34,15,8
+nine-customer-insights.html,/dynamics-365-customer-insights/,Dynamics 365 Customer Insights | enCloud9,0,0,9,19,11
+nine-customer-service.html,/dynamics-365-customer-service/,Dynamics 365 Customer Service Setup and Support | enCloud9,0,82,25,31,20
+nine-d365-licensing.html,/dynamics-365-licensing/,Dynamics 365 Licensing Explained | enCloud9,0,0,15,19,12
+nine-d365-pricing.html,/dynamics-365-pricing/,"Dynamics 365 Pricing, Plans and Total Cost | enCloud9",0,82,22,19,11
+nine-distribution.html,/dynamics-365-distribution/,Dynamics 365 for Distributors | enCloud9,0,82,4,17,13
+nine-document-core-pack.html,/add-on-products/document-core-pack/,Document Core Pack for Dynamics 365 | enCloud9,0,0,7,20,13
+nine-dynamics-365-sales.html,/dynamics-365-sales/,Dynamics 365 Sales Implementation and Support | enCloud9,0,82,88,22,15
+nine-dynamics-365.html,/power-platform-dynamics-365/,Dynamics 365 Partner for Sales and Service Apps | enCloud9,164,82,35,39,19
+nine-email-verifier.html,/email-verifier/,Email Verifier for Dynamics 365 | enCloud9,0,0,11,14,7
+nine-faq.html,/faq/,"Dynamics 365 Questions, Answered | enCloud9 FAQ",0,82,26,243,51
+nine-field-service.html,/dynamics-365-field-service/,Dynamics 365 Field Service | enCloud9,0,0,9,17,12
+nine-full-implementation.html,/microsoft-dynamics-365-implementation/,Dynamics 365 Implementation Services | enCloud9,0,82,45,28,16
+nine-guides.html,/free-guides-and-checks/,Free Dynamics 365 Guides and Checks | enCloud9,0,82,100,20,11
+nine-health-check.html,/crm-health-check/,Free Dynamics 365 CRM Health Check | enCloud9,0,0,4,14,10
+nine-healthcare.html,/lp/healthcare-crm-software-dynamics-365/,Dynamics 365 for Healthcare Companies | enCloud9,0,82,5,21,15
+nine-home.html,/,Copilot AI-driven Dynamics 365 for US Businesses | enCloud9,82,0,170,26,18
+nine-how-we-work.html,/about-encloud9/how-we-work/,How We Work on Dynamics 365 Projects | enCloud9,0,82,7,21,10
+nine-license-check.html,/dynamics-365-license-check/,Free Dynamics 365 License Check | enCloud9,0,0,4,13,9
+nine-manufacturing.html,/dynamics-365-manufacturing/,Dynamics 365 for Manufacturers | enCloud9,0,82,5,26,17
+nine-marketing.html,/marketing-services/,Marketing Automation for Dynamics 365: Click (formerly ClickDimensions) | enCloud9,164,82,99,19,14
+nine-move-hubspot.html,/lp/microsoft-dynamics-365-hubspot-crm-migration/,Move from HubSpot to Dynamics 365 Sales | enCloud9,0,0,15,21,12
+nine-move-monday.html,/lp/monday-to-dynamics-365-migration/,Move from monday.com to Dynamics 365 Sales | enCloud9,0,0,5,21,12
+nine-move-salesforce.html,/microsoft-dynamics-365-salesforce-crm-migration/,Move from Salesforce to Dynamics 365 Sales | enCloud9,0,0,22,21,12
+nine-move-zoho.html,/microsoft-dynamics-365-zoho-crm-migration/,Move from Zoho CRM to Dynamics 365 Sales | enCloud9,0,0,5,21,12
+nine-omaha.html,/microsoft-dynamics-365-partner-omaha/,"Dynamics 365 Partner in Omaha, Nebraska | enCloud9",0,82,6,24,13
+nine-packages.html,/crm-cloud-automation-solutions/,Dynamics 365 Packages and Support Plans | enCloud9,164,82,89,36,17
+nine-post-activate-salesforce.html,/blog/how-dynamics-365-activate-makes-leaving-salesforce-easier/,How Dynamics 365 Activate Makes Leaving Salesforce Easier,0,0,6,13,9
+nine-post-click-dashboards.html,/blog/clickdimensions-dashboards-2025-update/,New ClickDimensions Dashboards in Dynamics 365,0,0,10,13,9
+nine-post-crm-skills.html,/blog/microsoft-dynamics-365-crm-skills-copilot/,30 New Dynamics 365 CRM Skills for Copilot,0,0,4,12,9
+nine-post-customizations.html,/blog/which-dynamics-365-customizations-are-worth-it-and-which-ones-we-usually-advise-against/,Which Dynamics 365 Customizations Are Worth It?,0,0,6,13,10
+nine-post-last-activity.html,/blog/how-to-track-the-last-activity-date-in-microsoft-dynamics-365-sales/,Track the Last Activity Date in Dynamics 365 Sales,0,0,2,16,10
+nine-post-leads-cracks.html,/blog/how-to-stop-leads-from-falling-through-the-cracks-in-dynamics-365/,Stop Leads Falling Through the Cracks in Dynamics 365,0,0,2,12,8
+nine-post-partner-list-2026.html,/blog/encloud9-recognized-on-crm-software-blogs-best-dynamics-365-partner-list-2026/,enCloud9 on CRM Software Blog's Best Partner List 2026,0,0,11,13,9
+nine-post-qualification-agent.html,/blog/dynamics-365-sales-qualification-agent/,"The Dynamics 365 Sales Qualification Agent, Explained",0,0,13,13,9
+nine-post-storage-warning.html,/blog/microsoft-dataverse-storage-notifications/,The Microsoft Dataverse Storage Warning You Shouldn’t Ignore,0,0,2,18,10
+nine-power-apps.html,/dynamics-365-power-apps/,Power Apps for Dynamics 365 | enCloud9,0,82,16,19,12
+nine-power-bi.html,/microsoft-power-bi/,Power BI for Dynamics 365 Reporting | enCloud9,0,82,11,20,13
+nine-power-platform.html,/microsoft-power-platform/,Microsoft Power Platform Partner | enCloud9,0,82,20,24,16
+nine-privacy.html,/privacy-policy/,Privacy Policy | enCloud9,0,82,1,6,5
+nine-professional-services.html,/dynamics-365-professional-services/,Dynamics 365 for Professional Services Firms | enCloud9,0,82,5,25,15
+nine-project-operations.html,/dynamics-365-project-operations/,Dynamics 365 Project Operations | enCloud9,0,0,11,17,12
+nine-rescue-repair.html,/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/,Dynamics 365 Rescue and Repair | enCloud9,0,82,58,27,14
+nine-sales-accelerator.html,/dynamics-365-sales-accelerator/,"Dynamics 365 Sales Accelerator, Fixed-Scope Build | enCloud9",0,82,51,26,14
+nine-service-accelerator.html,/dynamics-365-service-accelerator/,"Dynamics 365 Service Accelerator, Fixed Scope | enCloud9",0,82,22,27,15
+nine-storage.html,/lp/dataverse-storage-analysis/,Free Dataverse Storage Analysis | enCloud9,0,0,32,4,3
+nine-stories.html,/about-encloud9/microsoft-dynamics-365-success/,23 Dynamics 365 Client Stories | enCloud9,164,82,103,46,27
+nine-story-aureon.html,/blog/success_stories/encloud9-helps-professional-employer-organization-peo-rescue-a-failed-crm/,Aureon: A failed CRM rescued | enCloud9,0,0,8,12,9
+nine-story-bgland.html,/blog/success_stories/bg-landholdings-strengthens-data-quality-and-email-deliverability-with-encloud9-email-verifier/,B&G Landholdings: Email Verifier for Dynamics 365 | enCloud9,0,0,8,12,9
+nine-story-bsi.html,/blog/success_stories/dynamics-365-implementation-allows-sales-and-management-teams-to-work-more-productively/,BSI: One view of the sales pipeline | enCloud9,0,0,5,12,9
+nine-story-cfc.html,/blog/success_stories/collaborative-for-children-success-story/,Collaborative for Children: Custom CRM and Portal | enCloud9,0,0,9,12,9
+nine-story-compana.html,/blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/,Compana: Ongoing Dynamics 365 support | enCloud9,0,0,20,13,10
+nine-story-crl.html,/blog/success_stories/clinical-reference-laboratories-optimizes-processes-and-improves-efficiency-with-dynamics-365-customer-service/,CRL: Dynamics 365 for a new subsidiary | enCloud9,0,0,8,12,9
+nine-story-elmwood.html,/blog/success_stories/elmwood-reclaimed-timber-migrating-a-20-year-old-crm-to-the-cloud/,Elmwood Reclaimed Timber: CRM moved to the cloud | enCloud9,0,0,8,12,9
+nine-story-hogan.html,/blog/success_stories/hogans-crm-rescue-story-a-fresh-start-with-dynamics-365/,Hogan Assessments: Dynamics 365 Rescue | enCloud9,0,0,6,12,9
+nine-story-jasco.html,/blog/success_stories/jasco-modernizes-operations-with-dynamics-365-sales-and-customer-service/,JASCO: Modern CRM in three months | enCloud9,0,0,7,13,10
+nine-story-jwc.html,/blog/success_stories/manufacturer-integrates-website-with-crm-to-automate-lead-assignment/,JWC Environmental: Web leads auto-assigned | enCloud9,0,0,5,12,9
+nine-story-kbg.html,/blog/success_stories/kbg-technologies-enhances-sales-processes-with-dynamics-365-implementation-by-encloud9/,KBG Technologies: New sales and quoting system | enCloud9,0,0,7,12,9
+nine-story-miles.html,/blog/success_stories/miles-christi-encloud9-digitally-transforms-non-profit/,Miles Christi: CRM 4.0 to Dynamics 365 cloud | enCloud9,0,0,3,12,9
+nine-story-milestone.html,/blog/success_stories/how-milestone-leasing-optimized-dynamics-365-to-support-sales-and-lease-renewals/,Milestone Leasing: Dynamics 365 Clean-up | enCloud9,0,0,10,12,9
+nine-story-msa.html,/blog/success_stories/msa-source-transforms-compliance-operations-with-encloud9s-tailored-solutions/,MSA Source: Better Reporting and Seed Money Math | enCloud9,0,0,3,12,9
+nine-story-ppc.html,/blog/success_stories/encloud9-enables-design-company-to-work-more-productively-and-efficiently-after-digitally-transforming-various-processes/,PPC Flex: Artwork jobs tracked in CRM | enCloud9,0,0,7,12,9
+nine-story-pricemds.html,/blog/success_stories/how-price-mds-transformed-healthcare-operations-with-dynamics-365/,PriceMDs: Dynamics 365 for Healthcare Operations | enCloud9,0,0,16,13,10
+nine-story-rei.html,/blog/success_stories/manufacturing-company-upgrades-to-dynamics-365-transforms-sales-process/,REI: From Dynamics 2011 to Dynamics 365 | enCloud9,0,0,14,12,9
+nine-story-rlh.html,/blog/success_stories/investment-firm-uses-dynamics-365-mobile-to-stay-connected/,RLH: Dynamics 365 on the go | enCloud9,0,0,4,12,9
+nine-story-schiff.html,/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/,The Schiff Group: Dynamics 365 Sales in a Month | enCloud9,0,0,20,12,9
+nine-story-tensionenv.html,/blog/success_stories/tension-ss/,Tension Envelope: Stalled CRM project revived | enCloud9,0,0,12,12,9
+nine-story-tensionpa.html,/blog/success_stories/tension-pa-tension-packaging-expands-collaboration-with-encloud9-across-multiple-divisions/,Tension Packaging: Dynamics 365 Sales Rollout | enCloud9,0,0,6,12,9
+nine-support.html,/microsoft-dynamics-365-support-services/,"Dynamics 365 Support Plans, From $500 a Month | enCloud9",0,82,99,14,11
+nine-team-brian.html,/about-encloud9/team/brian-begley/,"Brian Begley, Founder of enCloud9",0,0,1,18,15
+nine-team.html,/about-encloud9/team/,The enCloud9 Team | Dynamics 365 Partner,0,82,4,14,11
+nine-vs-crm.html,/dynamics-365-vs-salesforce-vs-hubspot/,Dynamics 365 vs Salesforce vs HubSpot Compared | enCloud9,0,0,5,18,12
