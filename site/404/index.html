@@ -191,7 +191,7 @@ header.top,.final{transition:opacity .5s var(--ease)}
 /* Pipeline: a Snake game for the 404 page.
    Built on the lessons of Nokia's Snake II (research report, 10 Nov 2026):
    fixed game tick drawn smoothly in between, buffered turns, no reversing,
-   wrap-around edges, a maze per level, a bonus that is worth more the faster
+   solid edges, a maze per level, a bonus that is worth more the faster
    you get it, speed that rises as you grow, and a short grace before a crash. */
 (function(){
   'use strict';
@@ -232,10 +232,10 @@ header.top,.final{transition:opacity .5s var(--ease)}
 
   /* ---------- helpers ---------- */
   var key=function(x,y){return x+y*N};
-  var wrap=function(v){return (v+N)%N};
+  var wrap=function(v){return v};   // no wrap-around: the board's edge is a wall, like classic Snake (Michael, 10 Nov)
   function interval(){return Math.max(68,150-(level-1)*9-Math.min(24,(body.length-4)*1.5))}
   function buildWalls(lv){var w=new Set();MAZES[lv-1].forEach(function(r){for(var y=r[1];y<r[1]+r[3];y++)for(var x=r[0];x<r[0]+r[2];x++)w.add(key(x,y))});return w}
-  function occupied(x,y,ignoreTail){var k=key(x,y);if(walls.has(k))return true;for(var i=0,n=body.length-(ignoreTail?1:0);i<n;i++)if(body[i][0]===x&&body[i][1]===y)return true;return false}
+  function occupied(x,y,ignoreTail){if(x<0||y<0||x>=N||y>=N)return true;var k=key(x,y);if(walls.has(k))return true;for(var i=0,n=body.length-(ignoreTail?1:0);i<n;i++)if(body[i][0]===x&&body[i][1]===y)return true;return false}
   function freeCell(){var free=[];for(var y=0;y<N;y++)for(var x=0;x<N;x++){if(occupied(x,y))continue;if(lead&&lead[0]===x&&lead[1]===y)continue;if(bonus&&bonus.x===x&&bonus.y===y)continue;free.push([x,y])}return free[Math.floor(Math.random()*free.length)]}
   function save(){if(total>best){best=total;try{localStorage.setItem('n9snakeBest',String(best))}catch(e){}}}
   function say(t){live.textContent=t}
@@ -1112,6 +1112,8 @@ SONGS[9]={
     // the floor is the site's square grid: every cell a square, split by the nine-grid gap (3.875% of a square)
     var gp=Math.max(1,cell*.0775);ctx.fillStyle='#14234C';
     for(var y=0;y<N;y++)for(var x=0;x<N;x++)if(!walls.has(key(x,y)))ctx.fillRect(x*cell+gp/2,y*cell+gp/2,cell-gp,cell-gp);
+    // the edge is solid now, so draw it like a wall
+    ctx.strokeStyle=C.wall;ctx.lineWidth=Math.max(2,cell*.1);ctx.strokeRect(ctx.lineWidth/2,ctx.lineWidth/2,W-ctx.lineWidth,W-ctx.lineWidth);
     // walls
     walls.forEach(function(k){var x=k%N,y=(k-x)/N;ctx.fillStyle=C.wall;ctx.fillRect(x*cell+gp/2,y*cell+gp/2,cell-gp,cell-gp);ctx.fillStyle=C.wallHi;ctx.fillRect(x*cell+gp/2,y*cell+gp/2,cell-gp,Math.max(1,cell*.08))});   // walls are solid squares
     // the lead: a pulsing dot with a soft ring
