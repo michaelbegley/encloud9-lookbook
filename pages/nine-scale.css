@@ -17,7 +17,7 @@ html body.p-post main h1{font-size:clamp(34px,4.17vw,60px)!important}
    A closing call-to-action heading may stay larger on purpose. */
 html body main h2{font-size:clamp(32px,3.75vw,54px)!important}
 html body:is(.p-post,.p-story) main h2{font-size:clamp(28px,2.78vw,40px)!important}
-html body main section.final h2,html body main .final h2{font-size:clamp(34px,3.75vw,54px)!important}
+html body main section.final h2,html body main .final h2{font-size:clamp(32px,3.75vw,54px)!important}
 /* Body text: 18px on desktop, 17px on phones. */
 /* Plain paragraphs only; lead paragraphs and text inside cards, tiles and tables keep their own sizes. */
 html body main p:not([class]):not(:is(.cell,.tile,.ptile,.bc,.pk,.pc,.fc,.lnav,.flowbar,.proofline,table,figure,aside,details,li,.card,.pf) p){font-size:18px}
