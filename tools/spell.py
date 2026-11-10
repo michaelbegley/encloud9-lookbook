@@ -9,7 +9,7 @@ src = re.sub(r'<(script|style)\b.*?</\1>', ' ', src, flags=re.S)
 src = re.sub(r'<span class="sh">&shy;</span>', '', src)
 src = re.sub(r'<!--headmeta-->.*?<!--/headmeta-->', ' ', src, flags=re.S)
 alts = ' '.join(re.findall(r'\b(?:alt|aria-label|title)="([^"]*)"', src) + re.findall(r'<meta name="description" content="([^"]*)"', src))
-text = html.unescape(re.sub(r'<[^>]+>', ' ', src) + ' ' + alts).replace('\u00ad', '')
+text = html.unescape(re.sub(r'<[^>]+>', ' ', src) + ' ' + alts).replace('\u00ad', '').replace('\u2019', "'").replace('\u2018', "'")  # curly apostrophes keep contractions whole (10 Nov 2026)
 here = os.path.dirname(os.path.abspath(__file__))
 extra = {w.strip().lower() for w in open(os.path.join(here, 'words.txt'), encoding='utf-8') if w.strip() and not w.startswith('#')}
 sp = SpellChecker()
