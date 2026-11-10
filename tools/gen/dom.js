@@ -1,0 +1,4 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();
+for(const [f,sel] of [['nine-full-implementation.html','#included'],['nine-dynamics-365-sales.html','section.sec']]){for(const w of [390,1440]){const p=await b.newPage({viewport:{width:w,height:900}});await p.goto('file:///home/claude/lb/pages/'+f);
+console.log(f,w,await p.evaluate((s)=>{const e=document.querySelector(s);const h=document.querySelector('.hero');const core=document.querySelector('.grid9 .cell.core .nm');return 'parent='+e.parentElement.tagName+'.'+e.parentElement.className+' left='+Math.round(e.querySelector('h2,.h2,div').getBoundingClientRect().left)+' heroLeft='+Math.round(h.getBoundingClientRect().left)+(core?' coreNm sw/cw='+core.scrollWidth+'/'+core.clientWidth+' text='+core.textContent:'')},sel));await p.close()}}
+await b.close()})();

@@ -1,0 +1,25 @@
+const {chromium}=require('playwright');
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1440,height:900}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file:///home/claude/lb/pages/nine-blog.html');
+await p.click('.chip[data-cat="admin"]');console.log('admin:',await p.textContent('#count'));
+await p.fill('#q','salesforce');console.log('admin+salesforce:',await p.textContent('#count'),'empty hidden',await p.$eval('#empty',e=>e.hidden));
+await p.click('#clear');console.log('clear:',await p.textContent('#count'));
+await p.fill('#q','copilot');console.log('copilot search:',await p.textContent('#count'));
+await p.fill('#q','');
+await p.waitForTimeout(800);
+await p.hover('#posts .pc:nth-child(2)');await p.waitForTimeout(700);
+console.log('card hover',await p.$$eval('#posts .pc',a=>a.slice(0,3).map(e=>getComputedStyle(e).transform)));
+await p.hover('.feat .fc:nth-child(3)');await p.waitForTimeout(700);
+console.log('feat hover',await p.$$eval('.feat .fc',a=>a.map(e=>getComputedStyle(e).transform)));
+const q=await b.newPage({viewport:{width:1440,height:900}});q.on('pageerror',e=>errs.push(e.message));
+await q.goto('file:///home/claude/lb/pages/nine-blog-post.html');
+await q.evaluate(()=>document.getElementById('uses').scrollIntoView({behavior:'instant'}));await q.waitForTimeout(1900);
+console.log('toc on:',await q.$eval('.toc a.on',a=>a.textContent),'progress',await q.$eval('.progress i',e=>e.style.transform));
+await q.hover('#usegrid .use:nth-child(5)');await q.waitForTimeout(700);
+console.log('use hover',await q.$$eval('#usegrid .use',a=>[a[3],a[4]].map(e=>getComputedStyle(e).transform)));
+await q.click('.faq details:nth-child(2) summary');console.log('faq open',await q.$eval('.faq details:nth-child(2)',d=>d.open));
+console.log('errors',errs);
+// reduced motion
+const r=await b.newPage({viewport:{width:1440,height:900},reducedMotion:'reduce'});await r.goto('file:///home/claude/lb/pages/nine-blog-post.html');
+console.log('reduced use opacity',await r.$eval('#usegrid .use',e=>getComputedStyle(e).opacity));
+await b.close()})();

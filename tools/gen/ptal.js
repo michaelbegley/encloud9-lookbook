@@ -1,0 +1,2 @@
+const {chromium}=require('playwright');const path=require('path');(async()=>{const b=await chromium.launch();for(const f of process.argv.slice(2))for(const w of [1440,820]){const p=await b.newPage({viewport:{width:w,height:900}});await p.goto('file://'+path.resolve(f));await p.waitForTimeout(200);
+console.log(path.basename(f),w,await p.evaluate(()=>[...document.querySelectorAll('.ptile')].map(t=>{const n=t.querySelector('.nm');return n?Math.round(n.getBoundingClientRect().top-t.getBoundingClientRect().top):'-'}).join(' ')));await p.close()}await b.close()})();

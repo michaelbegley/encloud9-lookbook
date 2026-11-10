@@ -1,0 +1,371 @@
+{"verdict":"allow","rev":20,"data":{"rev":20,"xml":"Page Quality Standard: new encloud9.com
+ · 
+The standard in one screen
+A page is done when it clears every gate (pass or fail, no exceptions) and scores 28 of 32 on the eight scored areas, judged by a reviewer who did not build it, and Michael approves it.
+Gates first. One failed gate means the page is not done, whatever its score. Gates cover the things that embarrass enCloud9 in public: a made-up fact, a broken link, an accessibility error, a leftover bracket.
+Then the score. The eight areas and the 0 to 4 scale are the ones the page builds have used since 4 Nov (RUBRIC.md), so earlier reviews still compare. What changes is that every page type and the blog now get their own extra checks inside those areas.
+Two levels of done. Draft 2 done = every gate except the launch gates, and 28 or more. Launch ready = also the launch gates: no brackets anywhere, real forms, prices re-checked that week, Brian's sign-off on anything under his name.
+One page at a time. Freeze the page, run the checks, independent review and score, fix once, re-check, Michael approves, then the next page. Nothing moves on while a page sits below 28.
+Level
+ | Gates
+ | Score
+ | Who says yes
+ | 
+Draft 1 (built)
+ | Builds, 0 broken internal links
+ | Not scored
+ | Claude
+ | 
+Draft 2 done
+ | All gates G1 to G10
+ | 28 of 32 or more
+ | Michael
+ | 
+Launch ready
+ | Also launch gates L1 to L5
+ | 28 of 32 or more, re-checked
+ | Michael, Brian for prices, claims and legal
+ | 
+What the research says
+Teams that publish well agree on four things: a fixed checklist, a second person who did not write the page, a final check on the page as readers will see it, and a recheck whenever the page changes. Read on 9 Nov 2026.
+Source
+ | What it says about "done"
+ | What we take
+ | 
+GOV.UK 2i checklist
+ | A "second pair of eyes" checks every page before it goes live: clear user need, title under 65 characters, summary under 140, most important thing first, sentences around 25 words, links that say where they go
+ | The independent reviewer; title and description limits; answer first; plain words
+ | 
+DfE design system, reviewing content
+ | The 2i check is the final check, done on the page in context (a preview), and content is rechecked if it changes. Images need alt text and rights cleared
+ | Review the built page, not the copy file; any edit after review means a recheck
+ | 
+Google: helpful, reliable, people-first content (updated 5 Oct 2026)
+ | Self-assessment questions: original information, clear sourcing, written by someone who knows the topic, no easily checked errors, readers leave having learned enough; who wrote it, how, and why
+ | The accuracy gate; bylines and sources on blog posts; the "would a buyer bookmark this" test
+ | 
+web.dev Core Web Vitals
+ | Good means LCP 2.5 s or less, INP 200 ms or less, CLS 0.1 or less, at the 75th percentile of loads
+ | Speed thresholds in the Mobile area
+ | 
+BugHerd website review checklist
+ | Seven categories (design, content, navigation, performance, SEO, devices, accessibility); one owner per category; review before launch, after launch and quarterly
+ | Post-launch and quarterly rechecks; one named owner per check
+ | 
+enCloud9's own RUBRIC.md and QA-CHECKS.md (4 Nov 2026) and SEO-AEO-PLAYBOOK.md (5 Nov 2026)
+ | 8 areas scored 0 to 4, pass at 28; 14 automated checks; 15 search rules
+ | The scored areas, the automated checks and the search rules, kept and extended
+ | 
+What the sources do not settle: a word count for pages (Google and the playbook say write to the answer, not to a length), and whether schema lifts AI citations (no study shows it). The standard leaves both out of the score.
+Checks every page must pass
+Every page type, blog posts included, runs these. Gates are pass or fail; the eight areas are scored 0 to 4 (4 = every point met, 3 = one real gap, 2 = two gaps or one a buyer hits on the first screen, 1 = mostly missing, 0 = absent).
+Gates (Draft 2)
+#
+ | Gate
+ | Pass
+ | How it is checked
+ | 
+G1
+ | Nothing made up
+ | Every price, date, count, name, quote and claim traces to a source or to Brian, Michael or a client; unknowns stay as a visible bracket or "could not determine"
+ | Reviewer traces each one; the page's notes file lists sources
+ | 
+G2
+ | Consistent with the rest of the site
+ | Prices, times, offers, hours and names match every other built page
+ | Script across all pages (QA-CHECKS 13)
+ | 
+G3
+ | Accessibility errors
+ | axe: 0 serious or critical at 390 and 1440, motion on and reduced
+ | qa.js
+ | 
+G4
+ | No sideways scroll
+ | At all 12 widths from 320 to 1920
+ | qa.js sweep
+ | 
+G5
+ | Links and buttons
+ | 0 broken internal links, 0 bare "#", every in-page anchor lands, every button does what its label says
+ | crawl.js plus a click-through
+ | 
+G6
+ | One H1, first in main
+ | Exactly 1, and it is the first text after the breadcrumb (a short eyebrow label directly above it is allowed; amended 9 Nov, tools/gates.js)
+ | qa.js
+ | 
+G7
+ | Structured data
+ | Every JSON-LD block parses and matches the visible text; no brackets inside FAQPage answers
+ | qa.js plus a read
+ | 
+G8
+ | House rules
+ | 0 em or en dashes; "Microsoft Partner" capitalised; Business Central only on the integration page and the pages Brian approves; nothing disparaging about a real company or person; client details minimal
+ | Script plus a read
+ | 
+G9
+ | No pop-ups, no blog sidebar
+ | None on the page; help is the chat agent
+ | Read
+ | 
+G10
+ | Reviewed as built
+ | The score is for the file as it stands; any edit after the review means the gates run again
+ | File hash before and after
+ | 
+Launch gates (before go-live)
+#
+ | Gate
+ | Pass
+ | 
+L1
+ | No brackets
+ | 0 visible "[...]" on the page or in its JSON-LD
+ | 
+L2
+ | Forms are real
+ | Every form reaches the CRM and shows a visible confirmation
+ | 
+L3
+ | Prices re-checked
+ | Microsoft, Salesforce and HubSpot prices re-read the week of launch, with the date on the page
+ | 
+L4
+ | Sign-off
+ | Brian has approved prices, claims, client names and anything legal on the page
+ | 
+L5
+ | Speed
+ | Core Web Vitals good on mobile: LCP 2.5 s or less, INP 200 ms or less, CLS 0.1 or less (Lighthouse at launch; field data 28 days later)
+ | 
+The eight scored areas
+#
+ | Area
+ | What a 4 looks like
+ | 
+1
+ | Answer and clarity
+ | H1 plus a 40 to 60 word answer right under it; the main action and the phone on the first screen at 390 and 1440; a stranger can say who it is for, what it is and what to click within 5 seconds
+ | 
+2
+ | Proof
+ | A named client result linked near the top; named stories with facts (product, timeline); counts with units and a source; no stars, no invented quotes
+ | 
+3
+ | Pricing and actions
+ | Our price or "quoted in writing" stated plainly; Microsoft list prices marked as separate; the ladder of free check, book a call and phone; the main action at least three times; every action goes somewhere real
+ | 
+4
+ | Search and AI readiness
+ | Title under 60 characters and description under 160, both unique; question-style H2s answered in their first sentence; FAQ answers visible; breadcrumb trail matches the JSON-LD; links say where they go
+ | 
+5
+ | Design fit
+ | Built from the Look 9 components and tokens only; one signature moment on the first screen; motion once, transform and opacity, off under reduced motion; softened hover values
+ | 
+6
+ | Mobile
+ | Tables reflow to short labelled rows; buttons 48 px or taller; phone menu opens, closes on Escape and on link tap; a reasonable page height
+ | 
+7
+ | Accessibility beyond axe
+ | Skip link first, visible focus rings, non-text contrast 3:1, labelled inputs, status messages announced, headings not hidden in summaries
+ | 
+8
+ | Copy and voice
+ | Plain words, sentences under 25 words, "enCloud9" rather than "we" where it reads naturally (Brian, call 27), active verbs in headlines, no filler; nothing contradicts another page
+ | 
+Changes from RUBRIC.md: "Accuracy" moved up into gates G1 and G2 (a made-up fact now fails the page outright), and area 8 is now Copy and voice. The "no Business Central" check now follows Brian's call 27 decision.
+Extra checks by page type
+Each type adds its own checks inside the eight areas (the area number is in brackets). A page meets its type's checks to earn a 4 in that area.
+Type
+ | Pages (count today)
+ | Extra checks
+ | 
+Home
+ | 1
+ | (1) Says what enCloud9 does and for whom in one sentence, SMB generalist first (Brian, call 27); (2) at least three named client results on the first two screens; (3) every package and the support floor priced; (4) Organization and WebSite JSON-LD
+ | 
+Hub (Dynamics 365, Packages, Accelerators, Copilot and AI, Power Platform, Marketing, Stories, Blog)
+ | 8
+ | (1) A reader picks their next page within one screen; (3) every child page linked once with a one-line reason; (4) no page competes with its children for the same search
+ | 
+Package (Full implementation, Rescue and Repair, Sales and Service Accelerators, four moves, Support plans)
+ | 9
+ | (1) A fit check: "a good fit if" and "probably not a fit if"; (3) price, time and what is included in the first screen; what is not included stated; (2) one story for this exact package; (4) Service JSON-LD with an Offer only where a price is printed
+ | 
+Product (Sales, Customer Service, Copilot, Copilot Studio, Power Apps, Power BI, Field Service, Contact Center, Customer Insights, Project Operations, Document Core Pack, Email Verifier, Business Central integration, pricing, licensing)
+ | 14
+ | (3) Microsoft list prices with source and date, marked "does not include our setup"; (2) a client who uses it, or the page says plainly that none is shown; (8) product facts checked on Microsoft Learn or the maker's site that month
+ | 
+Industry (Healthcare, Distribution, Professional services, Manufacturing) and Omaha
+ | 5
+ | (2) Named clients in that industry, with Brian's OK to name them; (8) compliance claims (HIPAA, BAA) quote Microsoft and say what enCloud9 does not promise; (1) the reader sees their own problem in the first screen
+ | 
+Client story
+ | 21
+ | (2) Client named and approved, starting point, what was built, result with a number or a dated fact; (8) no quote the client did not say; logo alt text names the right client; (4) links to the package and product it used
+ | 
+Company (About, How we work, Team, Meet Brian, Contact, FAQ, Free guides and checks, comparison)
+ | 8
+ | (2) Real photos, not AI; titles that match LinkedIn and do not downplay anyone (Brian, call 27); (3) contact details identical everywhere: 1-844-264-0729, 8:00am to 5:00pm Central, 2915 Lynnwood Dr., Bellevue, NE 68123; (8) competitor facts sourced and dated (comparison page)
+ | 
+Free check (CRM Health Check, license check, Dataverse storage analysis)
+ | 3
+ | (3) What happens after the form, who replies and when; session length stated; a sample of real findings; (2) what the check looks at, in a list
+ | 
+Legal (Privacy policy, Accessibility statement)
+ | 2
+ | Gate only, not scored: the lawyer and Brian approve the text; noindex until then; effective date and contact email filled
+ | 
+Page counts are measured on the concept site, 9 Nov 2026: 83 pages = 1 home, 8 hubs, 9 packages, 14 products, 5 industry, 21 stories, 8 company, 3 free checks, 2 legal, and 12 blog pages scored on the blog rubric below.
+Blog posts: knowledge content
+A post is done when it clears the same gates (G1 to G10, plus L1 and L3 at launch) and scores 28 of 32 on its own eight areas. Posts are judged as answers a buyer would bookmark, not as sales pages, so proof and pricing give way to sourcing, expertise and freshness. The areas follow Google's people-first questions and the SEO-AEO playbook.
+#
+ | Area
+ | What a 4 looks like
+ | 
+1
+ | Answer first
+ | Title is the question or the promise; a 40 to 60 word answer opens the post and works on its own if quoted
+ | 
+2
+ | Expertise you can see
+ | Something only enCloud9 knows: a client pattern, a number from real work, a screenshot from a real system; written or reviewed by someone who does the work
+ | 
+3
+ | Who, when, sources
+ | Byline that links to a real author page; published date and, after a real change, an updated date; every fact from Microsoft or a vendor linked to the page it came from
+ | 
+4
+ | Still true
+ | Product names, statuses (preview or generally available), prices and dates checked against Microsoft Learn that month; out-of-date posts get a dated update note
+ | 
+5
+ | Easy to scan
+ | Question-style H2s answered in their first sentence; table of contents on long posts; tables for comparisons; images with alt text
+ | 
+6
+ | Next step that fits
+ | One call to action that matches the post (a free check, a package, a guide); links to two to four related posts or pages that say where they go
+ | 
+7
+ | Search and AI readiness
+ | Title under 60 characters, description under 160, unique; BlogPosting JSON-LD with author, datePublished and dateModified; slug kept from the live post, or a 301 Brian approves
+ | 
+8
+ | Copy and voice
+ | Plain words, sentences under 25 words, no filler intro, nothing a reader could not act on; ported posts read sentence by sentence where dashes were swapped by script
+ | 
+The blog index and post template are scored once, as a hub, on the page rubric. Each post after that is scored on this rubric alone.
+Sources: Google, creating helpful content; SEO-AEO-PLAYBOOK.md rules 2, 4 and 9 (5 Nov 2026).
+Protecting Google rankings (added 9 Nov, Michael)
+The biggest ranking risk is the move itself, not any one page. Google's own migration guidance and our research (SITE-RESEARCH-R1-SEO.md, BRAIN-B4-ANALYTICS.md, SITE-REDIRECT-PLAN.md) come down to these checks, run on top of each page's area 4 score.
+#
+ | Check
+ | When
+ | Pass
+ | 
+R1
+ | Baseline saved
+ | At least 4 weeks before launch
+ | 16 months of Search Console data by page and query, a full crawl of the live site, the 94 redirects exported, Core Web Vitals for the top 10 pages
+ | 
+R2
+ | Every URL kept
+ | Before launch
+ | Each page keeps its live address; any page that must move gets one 301 to the closest page, never to home
+ | 
+R3
+ | The pages that earn clicks keep their words
+ | Each page review
+ | The 83 live pages that earn 90% of clicks keep their main topic, title focus and H1 focus; big rewrites wait 4 to 8 weeks after launch
+ | 
+R4
+ | Nothing blocks Google
+ | Launch day
+ | No stray noindex, robots.txt live, sitemap submitted to Google and Bing, self-referencing canonicals
+ | 
+R5
+ | Watched after launch
+ | Days 1, 7, 30, 90
+ | Clicks and leads compared with the baseline; any page down 30% for two weeks gets looked at
+ | 
+The page-by-page review adds one line for each live page: its clicks over the last 16 months, so the pages that earn the most get the most care.
+How the one-page-at-a-time review runs
+The site-wide structure audit runs first (menus, footer, breadcrumbs, buttons, every link going to the right page, and the URL map Brian asked for). Then each page goes through the same seven steps, one page at a time.
+Freeze. Pull the latest, save the file's hash, and list the page's sources and open brackets.
+Run the checks. qa.js, crawl.js and the cross-page script cover gates G2 to G8 and the automated half of the areas. Results go in the page's review file.
+Independent review. A separate agent that did not build the page gets only the page, this standard and the page's sources. It traces every fact (G1), scores the eight areas with a one-line reason each, and returns fixes in order of impact. It changes nothing.
+Fix once. Claude makes every fix the review confirms, in one pass, keeping anything the review said to keep.
+Recheck. Gates run again on the fixed file; the reviewer re-scores only the areas that moved.
+Michael approves. He sees the score, the five biggest changes, what was not changed and why, and the questions only he or Brian can answer. His yes makes the page Draft 2 done.
+Log and move on. The review file is saved as site-build/REVIEW-&lt;page&gt;.md and the page's row in the build list is marked done.
+Order
+#
+ | Pages
+ | Why first
+ | 
+1
+ | Home
+ | Every visitor and every review with Brian starts here
+ | 
+2
+ | Packages, Full implementation, Rescue and Repair, Sales and Service Accelerators, Support plans
+ | Where buyers decide; prices just changed
+ | 
+3
+ | Dynamics 365 Sales, Customer Service, Dynamics 365 hub
+ | The products enCloud9 actively sells (Brian, call 27)
+ | 
+4
+ | Copilot and AI, Copilot Studio, Power Platform and its three product pages
+ | The generative pages demo and the new family chart
+ | 
+5
+ | Healthcare, Distribution, then the other industry pages and Omaha
+ | Brian's lead industries
+ | 
+6
+ | Contact, About, How we work, Team, Free checks, FAQ, comparison
+ | Trust and contact pages
+ | 
+7
+ | The other product pages, moves, stories
+ | Lower traffic; stories are quick once the template passes
+ | 
+8
+ | Blog index, then the posts, newest first
+ | On the blog rubric
+ | 
+The page-by-page session with Brian (week of Thanksgiving, recorded) works from pages that are already Draft 2 done, so his time goes to decisions, not typos.
+For Michael to approve or change
+Approved by Michael, 9 Nov 2026, 9:28 PM Central: "yes to the whole standard." City pages: Brian's call wins (keep the ones that work), so they are reviewed and scored as industry-type pages.
+Pass mark stays at 28 of 32. It matches every review since 4 Nov. A higher bar (30) would mean more rework per page.
+A made-up fact fails the page outright (gate G1), instead of costing a point as it did before.
+City pages: Brian wants to keep the ones that work, but the SEO-AEO playbook (rule 5) says no city pages. Decided: keep and score them as industry-type pages.
+"enCloud9" instead of "we" is scored in Copy and voice (area 8), page by page, not changed by search and replace.
+Launch gates L1 to L5 wait until the whole site is Draft 2 done, then run on every page in one pass the week before launch.
+Reviewer: a separate agent per page. For the home page and the packages, a second agent also checks the facts, because those carry the prices.
+Sources
+GOV.UK: what to check before you publish, a 2i checklist
+DfE design system: reviewing and checking content
+Google Search Central: creating helpful, reliable, people-first content
+web.dev: Web Vitals
+BugHerd: website review checklist
+Project files: claude/skills/encloud9-page-build/RUBRIC.md and QA-CHECKS.md (4 Nov 2026), claude/SEO-AEO-PLAYBOOK.md (5 Nov 2026), claude/BRIAN-CALL-27-NOTES.md (9 Nov 2026)
+","complete":true},"frame":{"slug":"9d6cb52b-9310-4b91-a7be-11be8d5e09f1","url":"https://claude.ai/artifact/LSVN1skxi21iH1uM2gUtGQ","artifactUrl":"https://claude.ai/artifact/LSVN1skxi21iH1uM2gUtGQ"}}
+This doc takes suggestions. Rewording what is already here ("tighten", "improve", "review", "clean up", "this is clunky") → lay the changes in the doc as suggestions: guide( items = ["topic.index", "topic.suggestions"] ) first. Small fixes met on the way (a typo) go in as suggestions with them. The same when asked to suggest, propose or mark up, when the person wants to look before it goes in, and for a question that invites changes ("Any suggestions?", "What would you change?"): suggestions in the doc on this reply, not a list in chat and not comments. An ask for only an exact fix (a typo, a stated fact), new content, a delete or a move → save the edit as usual; the same in a doc you made in this chat, for a rewrite of the whole doc, when told to edit directly, and on an unattended run. While the person is in Suggesting mode, lay it as a suggestion. The person tells you in chat to go ahead with suggestions you laid on an earlier reply ("go ahead", "do the second one") → accept the ones they mean, one call each (topic.suggestions), rather than write the change again. Any other question about the doc → answer in chat.
+ADDED 9 NOV 2026 (rev 29), on top of the text above:
+G4 also: Michael opens the page on his iPhone before approval. G1 to G15 now.
+G11 Share and find: canonical, og:title/description/image, twitter card; in sitemap.xml; linked from another page.
+G12 Images: alt text; row in assets/IMAGE-SOURCES.csv with known licence; 300 KB or less.
+G13 Outside links: every off-site link opens.
+G14 Spelling and Microsoft names: US spelling; product names as Microsoft writes them.
+G15 Looks right: no lonely last row (3 over 2, never 4 over 1); every 3x3 grid nine equal squares, equal gaps, brand blues; cards side by side share title, icon, button sizes (framed centre square may stand out); type sizes per role consistent; reviewer looks at full-page screenshots at 390 and 1440 for alignment, spacing, balance.
+Area 4 also: page names its target search (claude/site-build/QUERY-MAP.csv) and uses it in title, H1, answer.
+Area 6 also: mobile Lighthouse logged. Area 7 also: keyboard walk reaches footer, no trap, visible focus.
+Launch: L6 tracking, L7 consent and Partner badge, L8 quarterly recheck.
+CHANGED 9 NOV 11:30 PM (rev 30): Package fit check is "a good fit if" and "consider another option if" (each line points to the better package); never "not a fit" (Brian, call 23). G15 also: no word broken across lines without a hyphen, no lone last letters, no text cut off or touching a frame. Nine-square grid gap is 7.75% of a square on every grid (Michael). Type scale: H1 72px on pages (Home 96, blog posts 60), H2 54px (posts and stories 40), body 18px (17 on phones).

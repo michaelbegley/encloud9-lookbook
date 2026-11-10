@@ -1,0 +1,6 @@
+const {chromium}=require('playwright');const path=require('path');(async()=>{const b=await chromium.launch();const out={};
+for(const f of process.argv.slice(2)){const p=await b.newPage({viewport:{width:1440,height:900},reducedMotion:'reduce'});await p.goto('file://'+path.resolve(f));await p.waitForTimeout(300);
+ const r=await p.evaluate(()=>{const o=[];for(const c of document.querySelectorAll('body *')){const k=[...c.children].filter(x=>x.getBoundingClientRect().width>1);if(k.length!==9)continue;const R=k.map(x=>x.getBoundingClientRect());if(new Set(R.map(r=>Math.round(r.top))).size!==3||new Set(R.map(r=>Math.round(r.left))).size!==3)continue;
+  const cs=getComputedStyle(c);o.push({sel:c.tagName.toLowerCase()+'.'+[...c.classList].join('.'),gap:cs.columnGap+'/'+cs.rowGap,cell:Math.round(R[0].width),ratio:+((R[1].left-R[0].right)/R[0].width).toFixed(3),ar:cs.aspectRatio})}return o});
+ for(const x of r){const k=x.sel+' '+x.gap;(out[k]=out[k]||{n:0,ratio:x.ratio,cell:x.cell,ar:x.ar,pages:new Set()});out[k].n++;out[k].pages.add(path.basename(f))}await p.close()}
+for(const [k,v] of Object.entries(out))console.log(v.n,k,'ratio',v.ratio,'cell',v.cell,'ar',v.ar,[...v.pages].slice(0,3).join(','));await b.close()})();

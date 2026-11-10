@@ -1,0 +1,5 @@
+const {chromium,devices}=require('playwright');(async()=>{const b=await chromium.launch();const c=await b.newContext({...devices['iPhone 13']});const p=await c.newPage();await p.goto('file://'+require('path').resolve('pages/nine-home.html'));await p.waitForTimeout(800);
+const g=await p.evaluate(()=>{const a=document.querySelector('.top .call-m').getBoundingClientRect(),m=document.querySelector('.top .menu-btn').getBoundingClientRect();return {gap:m.left-a.right,callH:a.height,menuH:m.height,right:innerWidth-m.right}});console.log(JSON.stringify(g));
+await p.evaluate(()=>document.getElementById('lbbar')&&document.getElementById('lbbar').remove());await p.screenshot({path:process.argv[2],clip:{x:0,y:0,width:390,height:110}});
+for(const w of [600,900,1024]){await p.setViewportSize({width:w,height:800});await p.waitForTimeout(150);console.log(w,await p.evaluate(()=>{const a=document.querySelector('.top .call-m').getBoundingClientRect(),m=document.querySelector('.top .menu-btn').getBoundingClientRect();return a.width?Math.round(m.left-a.right):'hidden'}))}
+await b.close()})();

@@ -1,0 +1,2 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1440,height:900}});await p.goto('file://'+require('path').resolve(process.argv[2]));await p.waitForTimeout(400);
+for(let i=0;i<40;i++){await p.keyboard.press('Tab');console.log(i,await p.evaluate(()=>{const e=document.activeElement;return e.tagName+'.'+e.className+' | '+(e.textContent||'').trim().slice(0,40)+' | '+(e.getAttribute('href')||'')}))}await b.close()})();

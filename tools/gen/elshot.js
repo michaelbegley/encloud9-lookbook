@@ -1,0 +1,4 @@
+// usage: node elshot.js page.html selector width out.png
+const {chromium}=require('playwright');(async()=>{const [f,sel,w,out]=process.argv.slice(2);const b=await chromium.launch();const p=await b.newPage({viewport:{width:+w,height:900},reducedMotion:'reduce'});await p.goto('file://'+require('path').resolve(f));await p.waitForTimeout(500);
+const el=await p.$(sel);await el.scrollIntoViewIfNeeded();await p.waitForTimeout(300);await el.screenshot({path:out});
+console.log(await p.evaluate(s=>{const c=document.querySelector(s+' .cell.base');if(!c)return '';const cs=getComputedStyle(c);const big=c.querySelector('.big');return 'pad '+cs.padding+' big '+getComputedStyle(big).fontSize+' ws '+getComputedStyle(big).whiteSpace+' cell '+JSON.stringify(c.getBoundingClientRect())},sel));await b.close()})();

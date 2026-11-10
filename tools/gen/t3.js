@@ -1,0 +1,15 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();
+const p=await b.newPage({viewport:{width:1440,height:900},reducedMotion:'reduce'});
+const base='file:///home/claude/lb/pages/';
+await p.goto(base+'nine-faq.html');await p.waitForTimeout(600);
+await p.fill('#fqs','licenses');await p.waitForTimeout(300);
+console.log('faq search:',await p.textContent('#fqn'), 'visible groups:', await p.$$eval('.fqg',g=>g.filter(x=>!x.hidden).length));
+await p.screenshot({path:'faq_search.png'});
+await p.fill('#fqs','');
+await p.goto(base+'nine-contact.html');await p.waitForTimeout(600);
+await p.click('#cform button');console.log('empty submit:',await p.textContent('#cmsg'));
+await p.fill('[name=name]','Test');await p.fill('[name=company]','Test Co');await p.fill('[name=email]','t@example.com');await p.fill('[name=msg]','hi');await p.check('[name=ok]');
+await p.click('#cform button');console.log('full submit:',await p.textContent('#cmsg'));
+await p.goto(base+'nine-contact.html');await p.waitForTimeout(900);await p.screenshot({path:'contact_top.png'});
+await p.goto(base+'nine-power-platform.html');await p.evaluate(async()=>{for(let y=0;y<document.body.scrollHeight;y+=400){window.scrollTo(0,y);await new Promise(r=>setTimeout(r,80))}window.scrollTo(0,0)});await p.waitForTimeout(900);await p.screenshot({path:'pp_full.png',fullPage:true});
+await b.close()})();

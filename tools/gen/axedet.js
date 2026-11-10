@@ -1,0 +1,3 @@
+const {chromium}=require('playwright');const fs=require('fs');(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:+process.argv[3],height:900}});await p.goto('file://'+require('path').resolve(process.argv[2]));
+await p.evaluate(async()=>{for(let y=0;y<document.body.scrollHeight;y+=400){window.scrollTo(0,y);await new Promise(r=>setTimeout(r,60))}});await p.waitForTimeout(2000);
+await p.addScriptTag({content:fs.readFileSync(process.argv[4],'utf8')});const r=await p.evaluate(async()=>(await axe.run(document,{runOnly:['color-contrast']})).violations.flatMap(v=>v.nodes.map(n=>n.target.join(' ')+' :: '+n.any.map(a=>a.message).join('|'))));console.log(r.join('\n'));await b.close()})();

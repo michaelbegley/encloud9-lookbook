@@ -1,0 +1,24 @@
+const {chromium}=require('playwright');
+(async()=>{
+ const b=await chromium.launch();
+ const p=await b.newPage({viewport:{width:1440,height:1000}});
+ const errs=[];p.on('pageerror',e=>errs.push(e.message));
+ await p.goto('file:///home/claude/lb/pages/nine-dynamics-365.html');await p.waitForTimeout(1500);
+ const vis=async()=>p.evaluate(()=>{const o=document.querySelector('#pick-d .pd.on');return o.getAttribute('data-k')+' | '+o.innerText.replace(/\s+/g,' ')});
+ console.log('initial:',await vis());
+ await p.hover('.pk [data-k="ci"]');await p.waitForTimeout(300);console.log('hover ci:',await vis());
+ await p.focus('.pk [data-k="sales"]');await p.keyboard.press('ArrowRight');await p.waitForTimeout(200);console.log('arrow right:',await vis(), 'focused', await p.evaluate(()=>document.activeElement.dataset.k));
+ await p.keyboard.press('ArrowDown');await p.waitForTimeout(200);console.log('arrow down:',await vis());
+ await p.click('.pk [data-k="li"]');await p.waitForTimeout(500);console.log('click li:',await vis());
+ const pressed=await p.evaluate(()=>[...document.querySelectorAll('.pk button')].filter(b=>b.getAttribute('aria-pressed')==='true').map(b=>b.dataset.k));console.log('pressed',pressed);
+ await p.hover('.pk [data-k="cop"]');await p.waitForTimeout(600);
+ await p.screenshot({path:'/home/claude/dec/shots/nine-dynamics-365-picker-cop.png',clip:{x:740,y:200,width:660,height:950}});
+ console.log('errors',errs);
+ const n=await b.newPage({viewport:{width:1440,height:1000},javaScriptEnabled:false});
+ await n.goto('file:///home/claude/lb/pages/nine-dynamics-365.html');
+ await n.screenshot({path:'/home/claude/dec/shots/nine-dynamics-365-nojs.png',clip:{x:0,y:0,width:1440,height:2200}});
+ const ctx=await b.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'});const r=await ctx.newPage();
+ await r.goto('file:///home/claude/lb/pages/nine-customer-service.html');await r.waitForTimeout(500);
+ console.log('reduced CS summary:',await r.evaluate(()=>document.querySelector('[data-sum]').textContent.length));
+ await b.close();
+})();
