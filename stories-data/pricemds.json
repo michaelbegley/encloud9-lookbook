@@ -9,7 +9,7 @@
   "PriceMDs:",
   "A CRM built around healthcare work"
  ],
- "answer": "PriceMDs, a healthcare company in Clearwater, FL, was using Monday CRM and needed to manage patient and prescription data with custom business logic. We implemented Dynamics 365 with custom entities, workflows and plugins, and the work grew to include a pharmacist portal, Tive and Ship 24 integrations and electronic signatures. Patient onboarding is faster, and PriceMDs reports better visibility into operations and reporting.",
+ "answer": "PriceMDs, a healthcare company in Clearwater, FL, was using Monday CRM and needed to manage patient and prescription data. We implemented Dynamics 365 with custom entities, workflows and plugins, and the work grew to include a pharmacist portal, Tive and Ship 24 integrations and electronic signatures. Patient onboarding is faster, and PriceMDs reports better visibility into operations.",
  "facts": [
   [
    "Client",
