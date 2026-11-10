@@ -12,3 +12,4 @@ Paths assume the repo is cloned at /home/claude/lb.
 
 - STALE GENERATORS (10 Nov 2026): since the 9 Nov site-wide fixes and the Draft 2 reviews, pages are edited directly in pages/. gen_pp.py, gen_ppprod.py and most other generators no longer reproduce the approved pages (tested 10 Nov: rerunning gen_ppprod.py changed 5 pages, including old wording that failed review). Do not rerun a page generator on a reviewed page. gen_faq.py is the exception: rerun it after any page FAQ change.
 - con.js was renamed console-check.js (10 Nov): CON is a reserved file name on Windows and broke a clone there.
+- consistency.py (10 Nov 2026): site-wide fact check (prices, phone, hours, partner year, client and product names, brand blue, fit wording). Run after every fix pass, before a review and before launch; must print "clean".
