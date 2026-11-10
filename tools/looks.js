@@ -27,7 +27,9 @@ for(const file of files){const page={file:path.basename(file),orphans:[],nine:[]
     if(kids.length>=3&&kids.every(k=>{const r=k.getBoundingClientRect();return r.width>=120&&r.height>=48})){
      const rows={};kids.forEach(k=>{const t=Math.round(k.getBoundingClientRect().top/4);rows[t]=(rows[t]||0)+1});const counts=Object.keys(rows).sort((a,b)=>a-b).map(k=>rows[k]);
      if(counts.length>=2){const first=Math.max(...counts.slice(0,-1)),last=counts[counts.length-1];
-      if(first>=3&&last<first&&(last===1||last/first<0.5))res.orphans.push({where:where(c),grid:name(c),rows:counts.join(' + ')})}}
+      const lastKids=kids.filter(k=>Math.round(k.getBoundingClientRect().top/4)==Object.keys(rows).sort((a,b)=>a-b).pop());const fullBand=lastKids.length===1&&lastKids[0].getBoundingClientRect().width>=c.getBoundingClientRect().width-4;
+      // a last item that spans the whole row on purpose (a band) is not an orphan
+      if(!fullBand&&first>=3&&last<first&&(last===1||last/first<0.5))res.orphans.push({where:where(c),grid:name(c),rows:counts.join(' + ')})}}
     // nine grids
     if(kids.length===9){const R=kids.map(k=>k.getBoundingClientRect());const tops=[...new Set(R.map(r=>Math.round(r.top)))],lefts=[...new Set(R.map(r=>Math.round(r.left)))];
      if(tops.length===3&&lefts.length===3){const ws=R.map(r=>r.width),hs=R.map(r=>r.height);const sp=a=>Math.max(...a)-Math.min(...a);
@@ -39,7 +41,9 @@ for(const file of files){const page={file:path.basename(file),orphans:[],nine:[]
       if(off.length)issues.push('colours off the brand blues: '+off.join(' | '));
       res.nine.push({where:where(c),grid:name(c),cell:Math.round(cell),gap:+gx.toFixed(1),ratio:+(gx/cell).toFixed(3),issues})}}
     // sets: cards side by side
-    if(kids.length>=2&&kids.length<=12&&kids.every(k=>k.getBoundingClientRect().width>=120)){
+    const sig=k=>k.tagName+'.'+(k.classList[0]||'');const kw=kids.map(k=>k.getBoundingClientRect().width);
+    // a card set: same kind of element, similar widths, and no section heading inside (that is a two-column layout, not cards)
+    if(kids.length>=2&&kids.length<=12&&kw.every(x=>x>=120)&&new Set(kids.filter((k,i)=>!(kids.length===9&&i===4)).map(sig)).size===1&&Math.max(...kw)/Math.min(...kw)<=1.15&&!kids.some(k=>k.querySelector('h2'))){
      const byTop={};kids.forEach(k=>{const t=Math.round(k.getBoundingClientRect().top/4);(byTop[t]=byTop[t]||[]).push(k)});
      const issues=[];const nineGrid=kids.length===9&&new Set(kids.map(k=>Math.round(k.getBoundingClientRect().top))).size===3;
      // the centre square of a nine grid may stand out on purpose (the Look 9 "core" cell)

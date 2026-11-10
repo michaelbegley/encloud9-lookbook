@@ -79,7 +79,8 @@ body.p-about .ph span{z-index:2;pointer-events:none}
 .who .facts2 .mono{padding-top:3px}
 @media (max-width:860px){.who{grid-template-columns:1fr}.who .facts2 div{grid-template-columns:1fr;gap:4px}}
 /* nine beliefs */
-.bel{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.bel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+@media (min-width:561px){.bel .bc{aspect-ratio:1/1}}
 .bc{position:relative;min-height:clamp(220px,20vw,280px);padding:clamp(20px,2.2vw,30px);display:flex;flex-direction:column;gap:10px;background:var(--c);color:var(--white);transition:background .7s var(--ease),color .5s,box-shadow .5s}
 .bc.lt{color:var(--ink)}
 .bc .k{font-family:var(--mono);font-size:13px;opacity:.8}
