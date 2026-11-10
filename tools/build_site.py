@@ -40,6 +40,8 @@ MAP = {
     'nine-power-apps.html': '/dynamics-365-power-apps/',
     'nine-power-bi.html': '/microsoft-power-bi/',
     'nine-copilot-studio.html': '/microsoft-copilot-studio/',
+    'nine-d365-pricing.html': '/dynamics-365-pricing/',
+    'nine-d365-licensing.html': '/dynamics-365-licensing/',
     'nine-email-verifier.html': '/email-verifier/',
     'nine-accelerators.html': '/encloud9-dynamics-365-crm-services/microsoft-dynamics-365-crm-accelerators/',
     'nine-support.html': '/microsoft-dynamics-365-support-services/',
