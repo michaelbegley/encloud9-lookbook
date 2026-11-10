@@ -36,12 +36,12 @@ def header(cur):
     <a class="logo" href="nine-home.html" aria-label="enCloud9 home"><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9" width="104" height="34"></a>
     <nav class="nav" aria-label="Main">{items}</nav>
     <a class="tel" href="tel:+18442640729">1-844-264-0729</a>
-    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+    <a class="btn btn-p" href="nine-book.html">Book a call</a>
     <a class="btn btn-p call-m" href="tel:+18442640729">Call</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
   </div>
   <nav class="mnav" id="mnav" aria-label="Mobile">{m}<a href="tel:+18442640729">Call 1-844-264-0729</a>
-    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+    <a class="btn btn-p" href="nine-book.html">Book a call</a>
   </nav>
 </header>'''
 FOOT='''<footer class="foot">

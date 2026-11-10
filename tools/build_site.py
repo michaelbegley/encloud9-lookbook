@@ -101,6 +101,25 @@ MAP = {
     'nine-story-tensionpa.html': '/blog/success_stories/tension-pa-tension-packaging-expands-collaboration-with-encloud9-across-multiple-divisions/',
     'nine-story-milestone.html': '/blog/success_stories/how-milestone-leasing-optimized-dynamics-365-to-support-sales-and-lease-renewals/',
     'nine-story-hogan.html': '/blog/success_stories/hogans-crm-rescue-story-a-fresh-start-with-dynamics-365/',
+    'nine-story-wid.html': '/blog/success_stories/world-import-distributors/',
+    'nine-story-bgpeterson.html': '/blog/success_stories/bg-peterson-ss/',
+    'nine-book.html': '/lp/schedule-a-meeting/',
+    'nine-guide-copilot.html': '/lp/copilot-guide-dynamics-365-crm/',
+    'nine-guide-cleanup.html': '/lp/dynamics-365-crm-cleanup-checklist/',
+    'nine-guide-sales-mgmt.html': '/lp/dynamics-365-sales-management-guide/',
+    'nine-lp-consulting.html': '/lp/dynamics-365-consulting/',
+    'nine-lp-consulting-yt.html': '/lp/dynamics-365-consulting-youtube/',
+    'nine-lp-best-partner.html': '/lp/best-crm-partner/',
+    'nine-thank-you.html': '/thank-you/',
+    'nine-thank-you-contact.html': '/thank-you-contact/',
+    'nine-request-received.html': '/request-received/',
+    'nine-newsletter-thanks.html': '/newsletter-signup-successful/',
+    'nine-call-prep.html': '/call-prep/',
+    'nine-post-adoption.html': '/blog/dynamics-365-adoption/',
+    'nine-post-lead-management.html': '/blog/mastering-lead-management-in-dynamics-365-igniting-your-sales-pipeline/',
+    'nine-post-healthy-system.html': '/blog/what-a-healthy-dynamics-365-system-actually-looks-like/',
+    'nine-post-whats-new-2026-11.html': '/blog/whats-new-in-dynamics-365-november-2026/',
+    'nine-updates.html': '/how-microsoft-updates-dynamics-365/',
 }
 PATHS = set(MAP.values())
 
@@ -155,7 +174,11 @@ def rewrite(html, src, here):
         html = html.replace(f"'{k}'", f"'{rel(here, v)}'")
     return html
 
-NO_SITEMAP = {'nine-404.html', 'nine-privacy.html', 'nine-accessibility.html', 'nine-terms.html'}  # 404, and legal pages stay noindex until the lawyer and Brian approve
+NO_SITEMAP = {'nine-404.html', 'nine-privacy.html', 'nine-accessibility.html', 'nine-terms.html',
+              # confirmation pages, reached only after a form or a booking; noindex at launch (10 Nov 2026)
+              'nine-thank-you.html', 'nine-thank-you-contact.html', 'nine-request-received.html', 'nine-newsletter-thanks.html', 'nine-call-prep.html',
+              # campaign landing pages (ads, YouTube), kept out of the sitemap so they do not compete with the main pages
+              'nine-lp-consulting.html', 'nine-lp-consulting-yt.html', 'nine-lp-best-partner.html'}  # 404, and legal pages stay noindex until the lawyer and Brian approve
 
 def write_sitemap():
     """sitemap.xml with the real encloud9.com addresses (standard gate G11)."""

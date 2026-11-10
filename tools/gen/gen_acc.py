@@ -10,7 +10,7 @@ stages = base[base.index('    <div class="stages flowbar">'):]
 stages = stages[:stages.index('  </section>')].rstrip('\n')
 sup = base[base.index('  <section class="sec" id="support"'):]
 sup = sup[:sup.index('  </section>') + len('  </section>')]
-BOOK = 'https://www.encloud9.com/lp/schedule-a-meeting/'
+BOOK = 'nine-book.html'
 URL = 'https://www.encloud9.com/encloud9-dynamics-365-crm-services/microsoft-dynamics-365-crm-accelerators/'
 def e(s): return H.escape(s, quote=False)
 TITLE = 'Dynamics 365 Accelerators, Fixed-Scope Packages | enCloud9'

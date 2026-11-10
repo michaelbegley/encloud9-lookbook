@@ -77,7 +77,7 @@ for slug, (fn, cat, tp, tl, tb, meta) in META.items():
     import datetime; d = datetime.date.fromisoformat(date[:10]); dh = f'{d:%B} {d.day}, {d.year}'
     words = len(re.sub('<[^>]+>', ' ', body).split()); mins = max(1, round(words / 230))
     ans = f'        <p class="answer"><span class="mono">The short answer</span><strong>{answer}</strong></p>\n' if answer else ''
-    ctah, ctap, ctaurl, ctab = (('Want help with this?', 'Tell us where your Dynamics 365 system is today. You get a straight answer, whether or not you work with us.', 'https://www.encloud9.com/lp/schedule-a-meeting/', 'Book a call with enCloud9')
+    ctah, ctap, ctaurl, ctab = (('Want help with this?', 'Tell us where your Dynamics 365 system is today. You get a straight answer, whether or not you work with us.', 'nine-book.html', 'Book a call with enCloud9')
                                if not cta else ('Don\'t ignore the warning', cta[0], cta[1], cta[2]))
     toc.append(('see', ctah))
     tail = f'''        <section class="abox" aria-labelledby="ab-h">

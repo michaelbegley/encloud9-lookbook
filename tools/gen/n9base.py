@@ -4,7 +4,7 @@ base = open(P + 'nine-sales-accelerator.html', encoding='utf-8').read()
 head = base[:base.index('<header class="top">')]
 hdr = base[base.index('<header class="top">'):base.index('</header>') + 9]
 tail = base[base.index('<section class="final"'):]
-BOOK = 'https://www.encloud9.com/lp/schedule-a-meeting/'
+BOOK = 'nine-book.html'
 def e(s): return H.escape(s, quote=False)
 def mkhead(title, meta, crumbs, extra_ld=(), faq=None, css=''):
     hd = re.sub(r'<title>.*?</title>', f'<title>{e(title)}</title>', head)

@@ -1,0 +1,83 @@
+{
+ "key": "wid",
+ "slug": "world-import-distributors",
+ "client": "World Import Distributors (WID)",
+ "work_type": "New build",
+ "title": "World Import Distributors: Accounting in 90 Days | enCloud9",
+ "meta": "How enCloud9 replaced QuickBooks and an Access database at World Import Distributors with one system for finances, inventory and orders in 90 days.",
+ "h1": [
+  "World Import Distributors:",
+  "One accounting system in 90 days"
+ ],
+ "answer": "World Import Distributors (WID), based in Mahwah, NJ, brings cheeses from Europe to the United States. It ran its finances and ERP on QuickBooks and an Access database that could not manage inventory by lot. We implemented one integrated system for finances, inventory and order management. The project was completed in 90 days, with all data consolidated in one place.",
+ "facts": [
+  ["Client", "World Import Distributors (WID)"],
+  ["Location", "Mahwah, NJ"],
+  ["Industry", "Importing European cheeses"],
+  ["Starting point", "QuickBooks and a proprietary Access database"],
+  ["Products", "Business Central"],
+  ["Services", "Report Development Implementation"]
+ ],
+ "timeline": "Completed in 90 days",
+ "tiles": [
+  ["90 days", "to complete the project"]
+ ],
+ "outcomes": [
+  "The project was completed in 90 days.",
+  "WID has a modern accounting system with all data consolidated in one place.",
+  "Inventory and finances no longer run on separate systems.",
+  "All data is easily accessible via mobile through the Microsoft cloud.",
+  "WID reports improved efficiency and streamlined operations."
+ ],
+ "chapters": [
+  [
+   "What did WID need?",
+   [
+    "World Import Distributors is a family-owned business founded in 1991 and based in Mahwah, NJ. It specializes in bringing the finest cheeses from Europe to the United States. It is known for exclusive products and partnerships with Wisconsin-based dairy farmers.",
+    "WID needed to streamline its financial management and complex inventory tracking. It managed its finances and ERP with QuickBooks and a proprietary Access database. Those systems could not manage inventory by lot and other factors, which led to inefficiencies and delays. They began to hinder WID's growth plans, prompting a search for modern solutions."
+   ]
+  ],
+  [
+   "What did we build?",
+   [
+    "We implemented Business Central, giving WID a single, integrated system for finances, inventory and order management.",
+    "We worked closely with WID's main contacts to ensure a smooth transition."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "The project was completed in 90 days. WID now has a modern accounting system with all data consolidated in one place. It no longer relies on separate systems for inventory and finances, and all data is easily accessible via mobile through the Microsoft cloud.",
+    "WID is extremely satisfied with the implementation, particularly the trusted partnership with enCloud9. It now enjoys improved efficiency and streamlined operations."
+   ]
+  ]
+ ],
+ "next_steps": [
+  "What comes next for WID?",
+  "WID plans to continue working with enCloud9 for future needs."
+ ],
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2025-05-17",
+ "published_h": "May 17, 2025",
+ "sources": [
+  {"claim": "Client, founding, location", "quote": "World Import Distributors (WID), a family-owned business founded in 1991 and based out of Mahwah, NJ,"},
+  {"claim": "Industry", "quote": "specializes in bringing the finest cheeses from Europe to the United States."},
+  {"claim": "Known for", "quote": "Known for their exclusive products and partnerships with Wisconsin-based dairy farmers."},
+  {"claim": "Need", "quote": "WID needed to streamline their financial management and complex inventory tracking."},
+  {"claim": "Inventory by lot", "quote": "Their existing systems were insufficient for managing inventory by lot and other factors, leading to inefficiencies and delays."},
+  {"claim": "Starting point", "quote": "WID had been managing their finances and ERP using QuickBooks and a proprietary Access database."},
+  {"claim": "Growth", "quote": "However, these systems began to hinder their growth plans, prompting a search for modern solutions."},
+  {"claim": "Build (Business Central)", "quote": "enCloud9 implemented Business Central, providing WID with a single, integrated system for financials, inventory, and order management."},
+  {"claim": "Transition", "quote": "We worked closely with WID's main contacts to ensure a smooth transition."},
+  {"claim": "Timeline / tile / outcome", "quote": "The project was completed in 90 days, resulting in a modern accounting system with all data consolidated in one place."},
+  {"claim": "Outcome: one system, mobile", "quote": "WID no longer relies on separate systems for inventory and financials, and all data is easily accessible via mobile through the Microsoft cloud."},
+  {"claim": "Satisfaction", "quote": "World Import Distributors is extremely satisfied with the implementation of Business Central, particularly appreciating the trusted partnership with enCloud9."},
+  {"claim": "Outcome: efficiency", "quote": "WID now enjoys improved efficiency and streamlined operations."},
+  {"claim": "Next", "quote": "They plan to continue working with enCloud9 for future needs."},
+  {"claim": "Products box", "quote": "Products Used: Business Central"},
+  {"claim": "Services box", "quote": "enCloud9 Services: Report Development Implementation"},
+  {"claim": "Byline", "quote": "May 17, 2025 | By Kristin Caniglia"}
+ ],
+ "notes": "Built on the coordinator's 10 Nov instruction to build faithfully, which overrides this brief's 'no Business Central' rule for this file: the whole story is a Business Central implementation (title 'World Import Distributors Modernizes Accounting with Business Central', Products Used: Business Central, solution and conclusion sentences). Page is noindex until Brian decides. Live page has no Client, Industry or Timeline labels; Industry is taken from the overview sentence about cheeses, Timeline from 'The project was completed in 90 days'. 'Known for ...' is a sentence fragment on the live page. Services box says 'Report Development Implementation' although the body describes an implementation; kept word for word. No named client quote. Work type 'New build' because the body describes replacing QuickBooks and Access with a new system. Long sentences were read through WebFetch in pieces under 125 characters and joined."
+}

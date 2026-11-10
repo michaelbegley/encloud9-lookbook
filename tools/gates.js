@@ -46,7 +46,7 @@ const WIDTHS=[320,360,390,480,600,768,900,1024,1180,1280,1440,1920];
  const meta=n=>(html.match(new RegExp('<meta (?:property|name)="'+n+'" content="([^"]*)"'))||[])[1]||'';
  const canon=(html.match(/<link rel="canonical" href="([^"]*)"/)||[])[1]||'';
  // G11 share and find: preview tags, canonical, in sitemap, linked from another page (404 exempt)
- if(base==='nine-404.html'){out.gates.G11={pass:true,exempt:'404 page'}}else{
+ if(base==='nine-404.html'){out.gates.G11={pass:true,exempt:'404 page'}}else if(/^nine-(thank-you|thank-you-contact|request-received|newsletter-thanks|call-prep|lp-[a-z-]+)\.html$/.test(base)){out.gates.G11={pass:!!canon,exempt:'confirmation or campaign landing page, reached only after a form, a booking or an ad; noindex, kept out of the sitemap'}}else{
   let sm='';try{sm=fs.readFileSync(path.join(repo,'site','sitemap.xml'),'utf8')}catch(e){}
   const legal=/nine-(privacy|accessibility|terms)\.html/.test(base);
   const live=canon.replace('https://www.encloud9.com','');

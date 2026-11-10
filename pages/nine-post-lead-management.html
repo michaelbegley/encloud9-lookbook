@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lead Management in Dynamics 365: Capture to Conversion</title>
+<meta name="description" content="How Dynamics 365 Sales handles leads from capture to opportunity: scoring, assignment rules, nurturing, qualification and the reports to watch.">
+<!--headmeta-->
+<link rel="canonical" href="https://www.encloud9.com/blog/mastering-lead-management-in-dynamics-365-igniting-your-sales-pipeline/">
+<meta property="og:site_name" content="enCloud9">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lead Management in Dynamics 365: Capture to Conversion">
+<meta property="og:description" content="How Dynamics 365 Sales handles leads from capture to opportunity: scoring, assignment rules, nurturing, qualification and the reports to watch.">
+<meta property="og:url" content="https://www.encloud9.com/blog/mastering-lead-management-in-dynamics-365-igniting-your-sales-pipeline/">
+<meta property="og:image" content="https://michaelbegley.github.io/encloud9-lookbook/assets/brand/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="enCloud9, Microsoft Dynamics 365 partner in Bellevue, Nebraska">
+<meta name="twitter:card" content="summary_large_image">
+<!--/headmeta-->
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="nine.css">
+<script defer src="nine.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "Mastering Lead Management in Dynamics 365", "item": "https://www.encloud9.com/blog/mastering-lead-management-in-dynamics-365-igniting-your-sales-pipeline/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Mastering Lead Management in Dynamics 365: Igniting Your Sales Pipeline", "description": "How Dynamics 365 Sales handles leads from capture to opportunity: scoring, assignment rules, nurturing, qualification and the reports to watch.", "url": "https://www.encloud9.com/blog/mastering-lead-management-in-dynamics-365-igniting-your-sales-pipeline/", "dateModified": "2026-11-10", "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does lead scoring work in Dynamics 365?", "acceptedAnswer": {"@type": "Answer", "text": "Predictive lead scoring uses a machine learning model trained on your past leads to score open ones. It needs at least 40 qualified and 40 disqualified leads from the training period."}}, {"@type": "Question", "name": "Can Dynamics 365 assign leads automatically?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Assignment rules in Dynamics 365 Sales assign new leads to sellers or teams based on conditions you set, such as territory or product."}}, {"@type": "Question", "name": "What happens when you qualify a lead?", "acceptedAnswer": {"@type": "Answer", "text": "The lead closes as qualified. Dynamics 365 can then create an account, contact and opportunity from it, depending on how your admin set it up."}}]}</script>
+<style>
+/* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
+body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
+body.p-post .progress i{display:block;height:100%;background:var(--b5);transform-origin:left;transform:scaleX(0)}
+body.p-post .crumb{flex-wrap:wrap;row-gap:0}
+body.p-post .crumb [aria-current]{min-height:28px;display:inline-flex;align-items:center}
+body.p-post .phead{padding-top:clamp(24px,3vw,40px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:clamp(32px,5vw,80px);align-items:start}
+body.p-post .pmain{display:flex;flex-direction:column;gap:22px;min-width:0}
+body.p-post .pmain .draft{order:-2}body.p-post .pmain .cat{order:-1}
+/* at a glance: four cubes, light to dark (Brian, 4 Nov: "I like light to dark") */
+body.p-post .glance{margin:0}
+body.p-post .glance .mono{display:block;margin-bottom:10px}
+body.p-post .gl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+body.p-post .gl li{background:var(--c);color:var(--white);aspect-ratio:1/1;padding:16px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;transition:transform .45s var(--bounce),box-shadow .35s var(--ease)}
+body.p-post .gl li.lt{color:var(--ink)}
+body.p-post .gl .k{font-family:var(--mono);font-size:12px;line-height:1.3}
+body.p-post .gl b{font-family:var(--head);font-size:clamp(18px,1.6vw,22px);line-height:1.15;font-weight:600;letter-spacing:-.015em}
+body.p-post .byline .av{width:22px;height:22px;background:var(--b5);display:inline-block;vertical-align:middle}
+body.p-post .draft{align-self:flex-start;display:inline-flex;gap:10px;align-items:center;font-family:var(--mono);font-size:13px;background:var(--ink);color:var(--white);padding:8px 12px}
+body.p-post .draft i{width:10px;height:10px;background:var(--b6);display:block}
+body.p-post .phead .h1{font-size:clamp(34px,4.2vw,62px);line-height:1.04}
+body.p-post .byline{display:flex;gap:10px 24px;flex-wrap:wrap;font-family:var(--mono);font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+body.p-post .byline b{color:var(--ink);font-weight:400}
+
+body.p-post .pgrid{display:grid;grid-template-columns:240px minmax(0,68ch);gap:clamp(40px,6vw,96px);margin-top:clamp(28px,3vw,44px);align-items:start}
+body.p-post .toc{position:sticky;top:140px;border-top:2px solid var(--ink);padding-top:14px}
+body.p-post .toc summary{font-family:var(--mono);font-size:12px;color:var(--muted);list-style:none;cursor:pointer;padding:4px 0 10px}
+body.p-post .toc summary::-webkit-details-marker{display:none}
+body.p-post .toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;counter-reset:t}
+body.p-post .toc li{counter-increment:t}
+body.p-post .toc a{display:grid;grid-template-columns:28px 1fr;gap:6px;padding:8px 0 8px 10px;font-size:14px;line-height:1.35;color:var(--muted);border-left:2px solid var(--line);transition:color .25s,border-color .25s,background .25s}
+body.p-post .toc a::before{content:counter(t,decimal-leading-zero);font-family:var(--mono);font-size:11px;padding-top:2px}
+body.p-post .toc a:hover{color:var(--ink);background:var(--tint)}
+body.p-post .toc a.on{color:var(--ink);font-weight:600;border-left-color:var(--b5)}
+body.p-post .toc a.on::before{color:var(--b5)}
+
+body.p-post .art{font-size:18px;line-height:1.7;color:var(--ink2);min-width:0}
+/* screenshot slot: a framed placeholder until real screenshots are taken in the demo environment */
+body.p-post .shot{margin:32px 0 0}
+body.p-post .shot .frame{border:1.5px solid var(--ink);background:var(--bg)}
+body.p-post .shot .bar{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+body.p-post .shot .bar i{width:10px;height:10px;background:var(--b8);display:block}
+body.p-post .shot .ph{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:var(--mono);font-size:13px;line-height:1.5;color:var(--muted);background:repeating-linear-gradient(135deg,var(--bg) 0 14px,var(--tint) 14px 15px)}
+body.p-post .shot figcaption{font-size:14px;color:var(--muted);margin-top:10px;line-height:1.5}
+/* author box */
+body.p-post .abox{display:grid;grid-template-columns:72px minmax(0,1fr);gap:20px;align-items:start;border-top:2px solid var(--ink);padding-top:24px;margin-top:clamp(56px,6vw,80px)}
+body.p-post .abox .pic{width:72px;height:72px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+body.p-post .abox .pic i{background:var(--c)}
+body.p-post .abox .nm{margin-top:0;font-family:var(--head);font-size:21px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+body.p-post .abox p{font-size:16px;line-height:1.6;margin-top:6px}
+body.p-post .art>*+*{margin-top:22px}
+body.p-post .art h2:not(.nm){font-family:var(--head);font-size:clamp(28px,3vw,38px);line-height:1.12;font-weight:600;letter-spacing:-.025em;color:var(--ink);margin-top:clamp(56px,6vw,80px);scroll-margin-top:140px}
+body.p-post .art h3{font-family:var(--head);font-size:21px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+body.p-post .art strong{color:var(--ink)}
+body.p-post .art a:not(.btn){color:var(--b4);font-weight:600;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat}
+body.p-post .art a:not(.btn):hover{color:var(--b5)}
+body.p-post .art ul{margin:22px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+body.p-post .art ul li{position:relative;padding-left:26px}
+body.p-post .art ul li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;background:var(--b5)}
+body.p-post .art ul.not li::before{content:"\00D7";background:none;width:auto;height:auto;top:0;color:var(--b5);font-weight:700;font-size:20px;line-height:1.5}
+body.p-post .answer{position:relative;background:var(--b9);border-left:6px solid var(--b5);padding:26px 28px 28px;font-size:clamp(19px,1.6vw,21px);line-height:1.6}
+body.p-post .answer .mono{display:block;color:var(--b4);margin-bottom:10px}
+body.p-post .answer strong{font-weight:600}
+body.p-post .ways{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+body.p-post .ways>div{background:var(--white);border:1px solid var(--line);border-top:6px solid var(--c);padding:22px}
+body.p-post .ways .mono{display:block;margin-bottom:10px}
+
+/* 12 uses as numbered cubes, 3 by 4 */
+body.p-post .uses{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+body.p-post .use{background:var(--c);color:var(--white);padding:18px 18px 20px;min-height:236px;display:flex;flex-direction:column;gap:8px;position:relative;transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+body.p-post .use.lt{color:var(--ink)}
+body.p-post .use .hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+body.p-post .use .n{font-family:var(--head);font-size:40px;font-weight:600;letter-spacing:-.04em;line-height:1}
+body.p-post .use .grp{font-family:var(--mono);font-size:11px;opacity:.82;text-align:right}
+body.p-post .use b{font-family:var(--head);font-size:18px;line-height:1.2;font-weight:600;letter-spacing:-.01em;margin-top:auto;color:inherit}
+body.p-post .use span.x{font-size:14px;line-height:1.45;opacity:.9}
+body.p-post .use.lt span.x{opacity:1;color:var(--ink)}
+body.p-post .use.lt .grp{opacity:1}
+body.p-post .groups{font-size:15px;color:var(--muted)}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-post .uses{perspective:900px}
+  body.p-post .uses:hover .use{filter:saturate(.92) brightness(.96);transform:scale(.98)}
+  body.p-post .uses:hover .use:hover{filter:none;z-index:3;transform:translateY(-6px) scale(1.03);box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 10px 20px -12px rgba(14,26,58,.45)}
+}
+@media (prefers-reduced-motion:no-preference){
+  body.p-post .use{transition:opacity .6s var(--ease),transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+  .js .p-post .gl li{animation:pop .7s var(--ease) backwards;animation-delay:calc(var(--k,0)*80ms + 300ms)}
+}
+
+body.p-post .faq{max-width:none;margin-top:24px}
+body.p-post .faq details p{font-size:17px}
+body.p-post .ctabox{background:var(--b2);color:var(--white);padding:clamp(28px,4vw,44px);margin-top:clamp(56px,6vw,80px)}
+body.p-post .art .ctabox h2{color:var(--white);margin-top:0}
+body.p-post .ctabox p{color:var(--b8);margin-top:16px}
+body.p-post .ctabox .btn{margin-top:24px}
+body.p-post .src{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+
+/* next step tiles and related posts */
+body.p-post .nx{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+body.p-post .nx .ptile{aspect-ratio:auto;min-height:260px}
+body.p-post .nx .ptile.lt{color:var(--ink)}
+body.p-post .nx .ptile.lt .mono,body.p-post .nx .ptile.lt .ds{color:var(--ink2)}
+body.p-post .nx .ptile.lt .g.big i{background:rgba(14,26,58,.15)}body.p-post .nx .ptile.lt .g.big i.on{background:var(--b1)}
+body.p-post .nx .ptile.lt .pt-foot{border-top-color:rgba(14,26,58,.2)}
+body.p-post .rel{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;border-top:2px solid var(--ink);padding-top:28px}
+body.p-post .pc{position:relative;background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;gap:14px;padding:26px 26px 22px;min-height:250px;transition:transform .5s var(--bounce),box-shadow .4s var(--ease),border-color .3s}
+body.p-post .pc::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:8px;background:var(--c)}
+body.p-post .pc .mono{padding-top:6px}
+body.p-post .pc .t{font-family:var(--head);font-size:clamp(21px,1.8vw,24px);line-height:1.2;font-weight:600;letter-spacing:-.015em}
+body.p-post .pc .d{font-size:15px;color:var(--muted)}
+body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:15px;color:var(--b5);font-weight:600}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-post .nx:hover .ptile,body.p-post .rel:hover .pc{transform:scale(.98);filter:saturate(.92) brightness(.96)}
+  body.p-post .nx .ptile,body.p-post .rel .pc{transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+  body.p-post .nx:hover .ptile:hover,body.p-post .rel:hover .pc:hover{transform:translateY(-6px) scale(1.03);filter:none;z-index:3;box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 8px 16px -12px rgba(14,26,58,.4)}
+}
+
+@media (max-width:1080px){
+  body.p-post .phead{grid-template-columns:1fr;align-items:start}
+  body.p-post .glance{display:none} /* phones and tablets: every glance fact is in the answer and the body, so the answer stays on the first screen */
+  body.p-post .pgrid{grid-template-columns:minmax(0,68ch);justify-content:start}
+  body.p-post .toc{position:static}
+  body.p-post .toc summary{font-size:13px;color:var(--ink)}
+  body.p-post .toc summary::after{content:" +";color:var(--b5)}
+  body.p-post .toc details[open] summary::after{content:" \2212"}
+  body.p-post .nx,body.p-post .rel{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){body.p-post .uses{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){
+  body.p-post .pmain{gap:12px}
+  body.p-post .draft{display:none} /* review marker only; live posts carry no draft tag */
+  body.p-post .phead .h1{font-size:30px;line-height:1.08}
+  body.p-post .byline{gap:4px 16px;padding-top:12px;font-size:12px}
+  body.p-post .art{font-size:17px}
+  body.p-post .ways{grid-template-columns:1fr}
+  body.p-post .uses{grid-template-columns:1fr}
+  body.p-post .use{min-height:0}
+  body.p-post .use b{margin-top:6px}
+  body.p-post .nx,body.p-post .rel{grid-template-columns:1fr}
+  body.p-post .nx .ptile{min-height:0}
+  body.p-post .answer{padding:20px 20px 22px}
+  body.p-post .gl li{aspect-ratio:auto;min-height:120px}
+  body.p-post .abox{grid-template-columns:56px minmax(0,1fr)}
+  body.p-post .abox .pic{width:56px;height:56px}
+}
+body.p-post .upd{background:var(--white);border:1.5px solid var(--ink);border-top:8px solid var(--b5);padding:22px 24px 24px;font-size:17px;line-height:1.6}
+body.p-post .upd .mono{display:block;color:var(--b4);margin-bottom:8px}
+body.p-post .upd p+p{margin-top:12px}
+@media (max-width:640px){body.p-post .upd{padding:18px 18px 20px}}
+</style>
+<link rel="stylesheet" href="nine-scale.css">
+</head>
+<body class="p-post">
+<div class="progress" aria-hidden="true"><i></i></div>
+<nav id="lbbar" aria-label="Lookbook">
+  <a href="../index.html">All looks</a><span class="t hide-s">Look 9, Nine, built pages: Blog post</span>
+  <a href="nine-home.html">Home</a><a href="nine-dynamics-365-sales.html">Sales page</a><a href="nine-marketing.html" class="hide-s">Marketing</a>
+  <span class="sp"></span><span class="t">Font</span>
+  <button type="button" data-setfont="hanken" aria-pressed="true">Hanken</button><button type="button" data-setfont="jakarta" aria-pressed="false">Jakarta</button><button type="button" data-setfont="public" aria-pressed="false">Public Sans</button><button type="button" data-setfont="bricolage" aria-pressed="false">Bricolage</button>
+</nav>
+<header class="top">
+  <a class="skip" href="#main">Skip to main content</a>
+  <div class="wrap">
+    <a class="logo" href="nine-home.html" aria-label="enCloud9 home"><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9" width="104" height="34"></a>
+    <nav class="nav" aria-label="Main"><div class="nav-i"><a href="nine-dynamics-365.html">Dynamics 365</a><button class="nav-x" type="button" aria-expanded="false" aria-controls="p-d365"><span class="sr-only">Dynamics 365 pages</span><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button><div class="panel" id="p-d365" hidden><div class="wrap pgrid"><div class="pcol"><b>Apps</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-field-service.html">Field Service</a><a href="nine-contact-center.html">Contact Center</a><a href="nine-customer-insights.html">Customer Insights</a><a href="nine-project-operations.html">Project Operations</a></div><div class="pcol"><b>Plan and buy</b><a href="nine-d365-pricing.html">Dynamics 365 pricing</a><a href="nine-d365-licensing.html">Dynamics 365 licensing</a><a href="nine-vs-crm.html">Compare with Salesforce and HubSpot</a><a href="nine-document-core-pack.html">Document Core Pack</a><a href="nine-email-verifier.html">Email Verifier</a></div><div class="pcol"><b>Industries</b><a href="nine-healthcare.html">Healthcare</a><a href="nine-distribution.html">Distribution</a><a href="nine-professional-services.html">Professional services</a><a href="nine-manufacturing.html">Manufacturing</a><a href="nine-omaha.html">Omaha and Nebraska</a></div></div></div></div><div class="nav-i"><a href="nine-marketing.html">Marketing</a></div><div class="nav-i"><a href="nine-copilot.html">Copilot and AI</a><button class="nav-x" type="button" aria-expanded="false" aria-controls="p-copilot"><span class="sr-only">Copilot and AI pages</span><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button><div class="panel" id="p-copilot" hidden><div class="wrap pgrid"><div class="pcol"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="nine-copilot-studio.html">Copilot Studio</a></div><div class="pcol"><b>Power Platform</b><a href="nine-power-platform.html">Power Platform family</a><a href="nine-power-apps.html">Power Apps</a><a href="nine-power-bi.html">Power BI</a></div></div></div></div><div class="nav-i"><a href="nine-packages.html">Packages</a><button class="nav-x" type="button" aria-expanded="false" aria-controls="p-packages"><span class="sr-only">Packages pages</span><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button><div class="panel" id="p-packages" hidden><div class="wrap pgrid"><div class="pcol"><b>Packages</b><a href="nine-packages.html">All packages</a><a href="nine-full-implementation.html">Full implementation</a><a href="nine-rescue-repair.html">Rescue and Repair</a><a href="nine-accelerators.html">Accelerators</a><a href="nine-sales-accelerator.html">Sales Accelerator</a><a href="nine-service-accelerator.html">Service Accelerator</a></div><div class="pcol"><b>Move to Dynamics 365</b><a href="nine-move-salesforce.html">From Salesforce</a><a href="nine-move-hubspot.html">From HubSpot</a><a href="nine-move-zoho.html">From Zoho</a><a href="nine-move-monday.html">From monday.com</a></div><div class="pcol"><b>After go-live</b><a href="nine-support.html">Support plans</a><a href="nine-guides.html">Free guides and checks</a><a href="nine-health-check.html">CRM Health Check</a><a href="nine-license-check.html">License check</a></div></div></div></div><div class="nav-i"><a href="nine-stories.html">Stories</a></div><div class="nav-i"><a href="nine-blog.html" class="cur">Blog<span class="sr-only"> (current section)</span></a></div><div class="nav-i"><a href="nine-about.html">About</a><button class="nav-x" type="button" aria-expanded="false" aria-controls="p-about"><span class="sr-only">About pages</span><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button><div class="panel" id="p-about" hidden><div class="wrap pgrid"><div class="pcol"><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-how-we-work.html">How we work</a><a href="nine-team.html">Team</a><a href="nine-contact.html">Contact us</a><a href="nine-faq.html">All questions</a></div></div></div></div></nav>
+    <a class="tel" href="tel:+18442640729"><span style="white-space:nowrap">1-844-264-0729</span></a>
+    <a class="btn btn-p" href="nine-book.html">Book a call</a>
+    <a class="btn btn-p call-m" href="tel:+18442640729">Call</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile"><details><summary>Dynamics 365</summary><b>Apps</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-field-service.html">Field Service</a><a href="nine-contact-center.html">Contact Center</a><a href="nine-customer-insights.html">Customer Insights</a><a href="nine-project-operations.html">Project Operations</a><b>Plan and buy</b><a href="nine-d365-pricing.html">Dynamics 365 pricing</a><a href="nine-d365-licensing.html">Dynamics 365 licensing</a><a href="nine-vs-crm.html">Compare with Salesforce and HubSpot</a><a href="nine-document-core-pack.html">Document Core Pack</a><a href="nine-email-verifier.html">Email Verifier</a><b>Industries</b><a href="nine-healthcare.html">Healthcare</a><a href="nine-distribution.html">Distribution</a><a href="nine-professional-services.html">Professional services</a><a href="nine-manufacturing.html">Manufacturing</a><a href="nine-omaha.html">Omaha and Nebraska</a></details><a href="nine-marketing.html">Marketing</a><details><summary>Copilot and AI</summary><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="nine-copilot-studio.html">Copilot Studio</a><b>Power Platform</b><a href="nine-power-platform.html">Power Platform family</a><a href="nine-power-apps.html">Power Apps</a><a href="nine-power-bi.html">Power BI</a></details><details><summary>Packages</summary><b>Packages</b><a href="nine-packages.html">All packages</a><a href="nine-full-implementation.html">Full implementation</a><a href="nine-rescue-repair.html">Rescue and Repair</a><a href="nine-accelerators.html">Accelerators</a><a href="nine-sales-accelerator.html">Sales Accelerator</a><a href="nine-service-accelerator.html">Service Accelerator</a><b>Move to Dynamics 365</b><a href="nine-move-salesforce.html">From Salesforce</a><a href="nine-move-hubspot.html">From HubSpot</a><a href="nine-move-zoho.html">From Zoho</a><a href="nine-move-monday.html">From monday.com</a><b>After go-live</b><a href="nine-support.html">Support plans</a><a href="nine-guides.html">Free guides and checks</a><a href="nine-health-check.html">CRM Health Check</a><a href="nine-license-check.html">License check</a></details><a href="nine-stories.html">Stories</a><a href="nine-blog.html">Blog</a><details><summary>About</summary><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-how-we-work.html">How we work</a><a href="nine-team.html">Team</a><a href="nine-contact.html">Contact us</a><a href="nine-faq.html">All questions</a></details><a href="tel:+18442640729">Call <span style="white-space:nowrap">1-844-264-0729</span></a>
+    <a class="btn btn-p" href="nine-book.html">Book a call</a>
+  </nav>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="nine-home.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="nine-blog.html">Blog</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Mastering Lead Management in Dynamics 365</span></nav>
+
+  <article aria-labelledby="h1">
+    <header class="phead">
+      <div class="pmain">
+        <h1 class="h1 rise" id="h1" style="--d:2">Mastering Lead Management in Dynamics 365: Igniting Your Sales Pipeline</h1>
+                <span class="mono cat rise" style="--d:1">Dynamics 365 Sales</span>
+        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By [Author, Brian confirms]</span><span><b>[publish date]</b></span><span>Updated <b>November 10, 2026</b></span><span>3 min read</span></p>
+      </div>
+      <aside class="glance" aria-labelledby="gl-h">
+        <p class="mono" id="gl-h">At a glance</p>
+        <ul class="gl">
+          <li class="lt" style="--c:var(--b9);--k:0"><span class="k">Published</span><b>[publish date]</b></li>
+          <li class="lt" style="--c:var(--b8);--k:1"><span class="k">Topic</span><b>Dynamics 365 Sales</b></li>
+          <li class="lt" style="--c:var(--b6);--k:2"><span class="k">Reading time</span><b>3 minutes</b></li>
+          <li style="--c:var(--b4);--k:3"><span class="k">Written by</span><b>[Author, Brian confirms]</b></li>
+        </ul>
+      </aside>
+    </header>
+
+    <div class="pgrid">
+      <nav class="toc" aria-label="On this page">
+        <details open id="tocd">
+          <summary>On this page</summary>
+          <ol>
+            <li><a href="#capture">How do leads get into Dynamics 365?</a></li>
+            <li><a href="#score">How do you qualify and score leads?</a></li>
+            <li><a href="#route">How do you route leads to the right seller?</a></li>
+            <li><a href="#nurture">How do you nurture leads until they are ready to buy?</a></li>
+            <li><a href="#convert">What happens when a lead is qualified?</a></li>
+            <li><a href="#reports">Which lead reports should you watch?</a></li>
+            <li><a href="#sales-marketing">How do sales and marketing share leads in Dynamics 365?</a></li>
+            <li><a href="#encloud9-help">How can enCloud9 help with lead management?</a></li>
+            <li><a href="#faq">Frequently asked questions</a></li>
+            <li><a href="#see">Ready to ignite your sales pipeline?</a></li>
+          </ol>
+        </details>
+      </nav>
+
+      <div class="art" id="art">
+        <p class="answer"><span class="mono">The short answer</span><strong>Dynamics 365 Sales manages a lead from first contact to a qualified opportunity. Leads from your website, social media and email campaigns land in one place. You score them, route them to the right seller, nurture them with automated follow-up, and convert qualified leads into opportunities. Reports then show which sources and nurturing steps work best.</strong></p>
+        <section class="upd" aria-labelledby="update">
+          <span class="mono">Update, November 2026</span>
+          <h2 id="update" class="sr-only">What changed since this post was written?</h2>
+          <p><strong>The Microsoft features in this post were checked 10 November 2026 on Microsoft Learn.</strong> Dynamics 365 Sales now offers <a href="https://learn.microsoft.com/dynamics365/sales/configure-predictive-lead-scoring">predictive lead scoring</a>, <a href="https://learn.microsoft.com/dynamics365/sales/wa-create-and-activate-assignment-rule">assignment rules</a> and an <a href="https://learn.microsoft.com/dynamics365/sales/lead-management-overview">AI agent that researches and engages leads</a>. Microsoft also recommends <a href="https://learn.microsoft.com/power-automate/replace-workflows-with-flows">Power Automate flows instead of classic workflows</a> for new automation.</p>
+          <p>The original post follows, with those features linked where it mentions them.</p>
+        </section>
+        <h2 id="capture">How do leads get into Dynamics 365?</h2>
+        <p>Dynamics 365 collects leads from your website, social media, email campaigns and other sources in one central place.</p>
+        <p>Lead entry forms can be tailored to your business, so you gather the details your team needs from the start.</p>
+        <h2 id="score">How do you qualify and score leads?</h2>
+        <p>Start by setting the criteria that make a lead ready for sales, such as demographics, lead source and engagement level.</p>
+        <p>Lead scoring then gives each lead a number based on its attributes and interactions. A higher score means a better chance of converting, so sellers know where to start.</p>
+        <p>Microsoft’s <a href="https://learn.microsoft.com/dynamics365/sales/configure-predictive-lead-scoring">predictive lead scoring</a> builds that score from your own history. It needs at least 40 qualified and 40 disqualified leads to train a model (checked 10 November 2026).</p>
+        <h2 id="route">How do you route leads to the right seller?</h2>
+        <p>Assignment rules route each lead by geographic territory, product expertise and workload, so it reaches the right person fast.</p>
+        <p>Faster response times mean more chances to convert. In Dynamics 365 Sales, <a href="https://learn.microsoft.com/dynamics365/sales/wa-create-and-activate-assignment-rule">assignment rules</a> assign new leads to sellers or teams automatically once a rule is active (checked 10 November 2026).</p>
+        <h2 id="nurture">How do you nurture leads until they are ready to buy?</h2>
+        <p>Automated follow-up sends personalized emails, newsletters and targeted promotions.</p>
+        <p>Dynamics 365 keeps each lead’s interaction and engagement history, so your team can tailor what it sends next. That might mean sharing more information, answering a concern or offering an exclusive deal.</p>
+        <p>For new automation, Microsoft recommends <a href="https://learn.microsoft.com/power-automate/replace-workflows-with-flows">Power Automate flows rather than classic workflows</a> (checked 10 November 2026).</p>
+        <h2 id="convert">What happens when a lead is qualified?</h2>
+        <p>A qualified lead moves into the opportunity stage, where sellers build tailored solutions and proposals.</p>
+        <p>When you <a href="https://learn.microsoft.com/dynamics365/sales/qualify-lead-convert-opportunity-sales">qualify a lead</a>, Dynamics 365 can create the account, contact and opportunity for you. What it creates depends on how your admin set it up (checked 10 November 2026).</p>
+        <h2 id="reports">Which lead reports should you watch?</h2>
+        <p>Track conversion rates, lead sources and how well each nurturing approach works.</p>
+        <p>Those numbers show where to put your budget and your people. The aim is more leads becoming opportunities, and a better return on what you spend to get them.</p>
+        <h2 id="sales-marketing">How do sales and marketing share leads in Dynamics 365?</h2>
+        <p>Sales and marketing work in the same system, so leads move from marketing to sales without being re-entered.</p>
+        <p>Marketing automation brings leads in. Sellers then use the same lead data to close deals.</p>
+        <h2 id="encloud9-help">How can enCloud9 help with lead management?</h2>
+        <p>enCloud9 has been a Microsoft Partner since 2008, specializing in Dynamics 365.</p>
+        <p>Contact enCloud9 to see how it can help you ignite your sales pipeline.</p>
+        <h2 id="faq">Frequently asked questions</h2>
+        <div class="faq">
+          <details><summary>How does lead scoring work in Dynamics 365?</summary><p>Predictive lead scoring uses a machine learning model trained on your past leads to score open ones. It needs at least 40 qualified and 40 disqualified leads from the training period.</p></details>
+          <details><summary>Can Dynamics 365 assign leads automatically?</summary><p>Yes. Assignment rules in Dynamics 365 Sales assign new leads to sellers or teams based on conditions you set, such as territory or product.</p></details>
+          <details><summary>What happens when you qualify a lead?</summary><p>The lead closes as qualified. Dynamics 365 can then create an account, contact and opportunity from it, depending on how your admin set it up.</p></details>
+        </div>
+
+        <section class="abox" aria-labelledby="ab-h">
+          <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
+          <div><h2 class="nm" id="ab-h">About the author: [Author, Brian confirms]</h2><p>[One line on the author’s role at enCloud9, Brian confirms.]</p></div>
+        </section>
+
+        <div class="ctabox">
+          <h2 id="see">Ready to ignite your sales pipeline?</h2>
+          <p>Tell enCloud9 how leads reach your team today, and get a plan for scoring, routing and follow-up in Dynamics 365 Sales.</p>
+          <a class="btn btn-w" href="nine-book.html">Book a call</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <section class="sec" aria-labelledby="nx-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="nx-h">Next step</h2>
+      <p class="lead">See Dynamics 365 Sales, the Sales Accelerator, or talk to us.</p>
+    </div>
+    <div class="nx rev">
+      <a class="ptile lt" style="--c:var(--b8)" href="nine-dynamics-365-sales.html"><span class="pt-top"><span class="mono">Related</span><span class="g big" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Dynamics 365 Sales</span><span class="ds">Leads, opportunities and pipeline in one place.</span><span class="pt-foot"><span class="go">See Dynamics 365 Sales &rarr;</span></span></a>
+      <a class="ptile" style="--c:var(--b4)" href="nine-sales-accelerator.html"><span class="pt-top"><span class="mono">Package</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="m"></i><i class="m"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Sales Accelerator</span><span class="ds">Dynamics 365 Sales set up for your pipeline, $7,500.</span><span class="pt-foot"><span class="go">See the Sales Accelerator &rarr;</span></span></a>
+      <a class="ptile" style="--c:var(--b2)" href="nine-book.html"><span class="pt-top"><span class="mono">Talk to us</span><span class="g big" aria-hidden="true"><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i></span></span><span class="nm">Book a call</span><span class="ds">Tell us where your system is today.</span><span class="pt-foot"><span class="go">Book a call &rarr;</span></span></a>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="rl-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="rl-h">Related posts</h2>
+      <p class="lead">More from the enCloud9 blog. <a class="lnk" href="nine-blog.html">All posts <span>&rarr;</span></a></p>
+    </div>
+    <div class="rel rev">
+      <a class="pc" style="--c:var(--b7)" href="nine-post-leads-cracks.html"><span class="mono">Admin and how-to &middot; September 9, 2026</span><span class="t">How to Stop Leads From Falling Through the Cracks in Dynamics 365</span><span class="d">Four ways to stop leads going cold in Dynamics 365: an owner for every lead, a next step with sequences, regular reviews and automation as a safety net.</span><span class="go">Read the post &#8599;&#xFE0E;</span></a>
+      <a class="pc" style="--c:var(--b5)" href="nine-post-qualification-agent.html"><span class="mono">Copilot and AI &middot; August 18, 2025</span><span class="t">Smarter Selling with the Dynamics 365 Sales Qualification Agent</span><span class="d">How the Dynamics 365 Sales Qualification Agent researches, scores and follows up with leads against your ideal customer profile, with a worked example.</span><span class="go">Read the post &#8599;&#xFE0E;</span></a>
+      <a class="pc" style="--c:var(--b3)" href="nine-post-last-activity.html"><span class="mono">Admin and how-to &middot; February 13, 2025</span><span class="t">How To Track the Last Activity Date in Microsoft Dynamics 365 Sales</span><span class="d">Dynamics 365 has no built-in last activity date. Add rollup fields for last activity and next activity due, step by step, with a video tutorial.</span><span class="go">Read the post &#8599;&#xFE0E;</span></a>
+    </div>
+  </section>
+</div>
+
+<section class="final" aria-labelledby="fc-h">
+  <div class="wrap">
+    <div class="inner">
+      <div class="rev">
+        <h2 class="h2" id="fc-h">Start with a call or a free checkup</h2>
+        <p class="lead">Tell us where your system is today. You get a plan, a package and a price, whether or not you work with us.</p>
+      </div>
+      <div class="side rev">
+        <a class="btn btn-w" href="nine-book.html">Book a call</a>
+        <a class="lnk" href="nine-guides.html">Free checkups, no obligation <span>&rarr;</span></a>
+        <span class="mono">or call <a href="tel:+18442640729"><span style="white-space:nowrap">1-844-264-0729</span></a>, 8:00am to 5:00pm Central</span>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="fcols">
+        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft Partner since 2008, specializing in Dynamics 365.</p><p><a href="tel:+18442640729"><span style="white-space:nowrap">1-844-264-0729</span></a><br>8:00am to 5:00pm Central</p></div>
+        <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-marketing.html">Marketing automation</a><a href="nine-d365-pricing.html">Dynamics 365 pricing</a><a href="nine-vs-crm.html">Compare with Salesforce and HubSpot</a></nav>
+        <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="nine-power-platform.html">Power Platform</a><a href="nine-copilot-studio.html">Copilot Studio</a><a href="nine-power-apps.html">Power Apps</a><a href="nine-power-bi.html">Power BI</a></nav>
+        <nav aria-label="Packages and support"><b>Packages and support</b><a href="nine-packages.html">All packages</a><a href="nine-full-implementation.html">Full implementation</a><a href="nine-sales-accelerator.html">Sales Accelerator</a><a href="nine-service-accelerator.html">Service Accelerator</a><a href="nine-rescue-repair.html">Rescue and Repair</a><a href="nine-support.html#plans">Support plans</a></nav>
+        <nav aria-label="Industries"><b>Industries</b><a href="nine-healthcare.html">Healthcare</a><a href="nine-distribution.html">Distribution</a><a href="nine-professional-services.html">Professional services</a><a href="nine-manufacturing.html">Manufacturing</a><a href="nine-omaha.html">Omaha and Nebraska</a></nav>
+        <nav aria-label="Company"><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-how-we-work.html">How we work</a><a href="nine-team.html">Team</a><a href="nine-stories.html">Client stories</a><a href="nine-blog.html">Blog</a><a href="nine-contact.html">Contact us</a><a href="nine-faq.html">All questions</a><a href="nine-guides.html">Free guides and checks</a></nav>
+      </div>
+      <div class="tm">enCloud9 LLC, 2915 Lynnwood Dr., Bellevue, NE 68123. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. Prices are subject to change; Microsoft sets its own prices. <a href="nine-terms.html">Terms of use</a> &middot; <a href="nine-privacy.html">Privacy policy</a> &middot; <a href="nine-accessibility.html">Accessibility statement</a></div>
+    </footer>
+  </div>
+  <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>
+</section>
+</main>
+<script>
+/* post: reading progress and the current section in the contents */
+(function(){
+  var d=document,bar=d.querySelector('.progress i'),art=d.getElementById('art'),
+      links=[].slice.call(d.querySelectorAll('.toc a')),heads=links.map(function(a){return d.getElementById(a.getAttribute('href').slice(1))}),
+      tocd=d.getElementById('tocd'),ticking=false;
+  if(window.matchMedia('(max-width:1080px)').matches&&tocd)tocd.removeAttribute('open');
+  function upd(){
+    ticking=false;
+    var r=art.getBoundingClientRect(),h=window.innerHeight,tot=r.height-h*.6,p=tot>0?Math.min(1,Math.max(0,(-r.top+h*.25)/tot)):0;
+    bar.style.transform='scaleX('+p.toFixed(4)+')';
+    var cur=-1;heads.forEach(function(el,i){if(el&&el.getBoundingClientRect().top<170)cur=i});
+    links.forEach(function(a,i){var on=i===cur;a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd)}},{passive:true});
+  window.addEventListener('resize',upd);upd();
+})();
+</script>
+</body>
+</html>
+

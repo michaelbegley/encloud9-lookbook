@@ -10,7 +10,7 @@ hdr = base[head_end:base.index('</header>') + len('</header>')]
 final_start = base.index('<section class="final"')
 tail = base[final_start:]
 
-BOOK = 'https://www.encloud9.com/lp/schedule-a-meeting/'
+BOOK = 'nine-book.html'
 SUP = 'nine-support.html#plans'
 
 V = {

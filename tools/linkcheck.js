@@ -55,6 +55,8 @@ for (const f of files) {
   if (out > 5) issues.push({ page: f, level: 'WARN', rule: 'too many', detail: out + ' body links to other pages (fine on a hub)' });
   // footer-only pages (404, legal) are not meant to be linked from body copy (10 Nov 2026)
   if (p.inbound === 0 && /^(nine-)?(404|accessibility|terms|privacy)\.html$/.test(f)) issues.push({ page: f, level: 'INFO', rule: 'footer only', detail: 'linked from the footer only, by design' });
+  else if (p.inbound === 0 && /^nine-(thank-you|thank-you-contact|request-received|newsletter-thanks|call-prep)\.html$/.test(f)) issues.push({ page: f, level: 'INFO', rule: 'confirmation', detail: 'reached after a form or booking, not from body copy, by design' });
+  else if (p.inbound === 0 && /^nine-lp-[a-z-]+\.html$/.test(f)) issues.push({ page: f, level: 'INFO', rule: 'campaign', detail: 'ad or video landing page, reached from the campaign, by design' });
   else if (p.inbound === 0) issues.push({ page: f, level: 'FAIL', rule: 'orphan', detail: 'no link in the body copy of any other page (nav and footer links do not count)' });
 }
 const summary = files.map(f => ({ page: f, out: new Set(pages[f].links.map(l => l.target).filter(t => t !== f && pages[t])).size, in: pages[f].inbound }));

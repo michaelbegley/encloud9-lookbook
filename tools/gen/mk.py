@@ -109,7 +109,7 @@ new_setup='''  <section class="sec" id="setup" aria-labelledby="set-h">
         <h2 class="h2" id="set-h">What does enCloud9 set up?</h2>
         <p class="lead">A marketing setup is only useful if every form and email lands on the right record. That is the part we build carefully.</p>
         <p class="fine" style="margin:0">Anything outside the agreed scope is a written change order you approve before work starts.</p>
-        <div class="acts"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="#checkups">Free checkups, no obligation <span>&rarr;</span></a></div>
+        <div class="acts"><a class="btn btn-p" href="nine-book.html">Book a call</a><a class="lnk" href="#checkups">Free checkups, no obligation <span>&rarr;</span></a></div>
       </div>
     </div>
   </section>'''
@@ -136,7 +136,7 @@ pairs.append(('''    <div class="sec-head rev"><h2 class="h2" id="fq-h">Marketin
       <div class="faqside rev">
         <h2 class="h2" id="fq-h">Marketing automation questions we get asked</h2>
         <p class="lead" style="margin-top:18px">Something else on your mind? Ask us on a call. You get a straight answer, whether or not you work with us.</p>
-        <div class="acts" style="margin-top:24px"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="tel:+18442640729">1-844-264-0729 <span>&rarr;</span></a></div>
+        <div class="acts" style="margin-top:24px"><a class="btn btn-p" href="nine-book.html">Book a call</a><a class="lnk" href="tel:+18442640729">1-844-264-0729 <span>&rarr;</span></a></div>
       </div>
       <div>
     <div class="faq rev">'''))

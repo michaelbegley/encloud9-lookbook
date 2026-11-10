@@ -103,7 +103,7 @@ pairs.append(('''    <div class="sec-head rev">
       <p class="lead">Here are two of our 23 client stories: one new Dynamics 365 Sales system and one rescue of an over-customized system.</p>
       <div class="acts">
         <a class="btn btn-o" href="nine-stories.html">All 23 client stories</a>
-        <a class="lnk" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call <span>&rarr;</span></a>
+        <a class="lnk" href="nine-book.html">Book a call <span>&rarr;</span></a>
       </div>
     </div>
     <div class="stories two rev">'''))
@@ -111,7 +111,7 @@ pairs.append(('<span class="mono">Maryland &middot; Product: Dynamics 365 Sales 
 pairs.append(('<span class="mono">Tulsa &middot; Work: rescue and clean-up &middot; Timeline: within three months</span><span class="t">Hogan Assessments</span>','<span class="mono">Tulsa &middot; Rescue and clean-up</span><span class="big">3 months</span><span class="t">Hogan Assessments</span>'))
 pairs.append(('''    </div>
     <div class="acts" style="margin-top:28px">
-      <span>Want to know which package would fit your system? <a class="lnk" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call <span>&rarr;</span></a></span>
+      <span>Want to know which package would fit your system? <a class="lnk" href="nine-book.html">Book a call <span>&rarr;</span></a></span>
       <a class="btn btn-o" href="nine-stories.html">All 23 client stories</a>
     </div>''','''    </div>
     </div>'''))
@@ -121,7 +121,7 @@ pairs.append(('''    <div class="sec-head rev"><h2 class="h2" id="fq-h">Package 
       <div class="faqside rev">
         <h2 class="h2" id="fq-h">Package questions we get asked</h2>
         <p class="lead" style="margin-top:18px">Something else on your mind? Ask us on a call. You get a straight answer, whether or not you work with us.</p>
-        <div class="acts" style="margin-top:24px"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="tel:+18442640729">1-844-264-0729 <span>&rarr;</span></a></div>
+        <div class="acts" style="margin-top:24px"><a class="btn btn-p" href="nine-book.html">Book a call</a><a class="lnk" href="tel:+18442640729">1-844-264-0729 <span>&rarr;</span></a></div>
       </div>
     <div class="faq rev">'''))
 pairs.append(('''      <details><summary>Do we need a support plan after go-live?</summary><p>Yes. New clients start on at least the Stability plan, $500 a month for 4 hours, on a 12-month agreement. Monthly plans include a 1-hour response during business hours, 7:00am to 5:00pm Central, Monday to Friday.</p></details>

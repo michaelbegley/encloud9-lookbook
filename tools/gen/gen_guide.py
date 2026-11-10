@@ -90,7 +90,7 @@ body = f'''        <p class="answer"><span class="mono">The short answer</span><
         <div class="ctabox">
           <h2 id="see">Are you paying for the right licenses?</h2>
           <p>Book a call and we go through your users, apps and storage with you, and show you where you can save or what you are missing.</p>
-          <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call with enCloud9</a>
+          <a class="btn btn-w" href="nine-book.html">Book a call with enCloud9</a>
         </div>
 '''
 art0 = s.index('      <div class="art" id="art">'); art1 = s.index('        <section class="abox"')

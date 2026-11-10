@@ -1,0 +1,85 @@
+{
+ "key": "bgpeterson",
+ "slug": "bg-peterson-ss",
+ "client": "BG Peterson",
+ "work_type": "Support",
+ "title": "BG Peterson: A Stable CRM and Steadier Finances | enCloud9",
+ "meta": "How enCloud9 set up a Dynamics 365 Sales foundation for BG Peterson, an Omaha mechanical services company, then stabilized its financial processes.",
+ "h1": [
+  "BG Peterson:",
+  "A stable CRM and steadier finances"
+ ],
+ "answer": "BG Peterson, an Omaha, NE mechanical services company, had Dynamics 365 Sales and Business Central but struggled to get consistent value from either. We set up a basic Dynamics 365 Sales foundation, then gave ongoing support to stabilize its financial system and Power BI reports. Financial processes and reporting are now more reliable.",
+ "facts": [
+  ["Client", "BG Peterson"],
+  ["Location", "Omaha, NE"],
+  ["Industry", "Mechanical services: HVAC, plumbing and facility solutions"],
+  ["Starting point", "Dynamics 365 Sales and Business Central, without consistent value from either"],
+  ["Products", "Dynamics 365 Sales; Dynamics 365 Business Central"],
+  ["Services", "Dynamics 365 Implementation, Data Migration and CRM Setup, Financial Process Troubleshooting, Reporting & Power BI Support"]
+ ],
+ "timeline": null,
+ "tiles": [],
+ "outcomes": [
+  "Financial processes and reporting are more reliable.",
+  "The team has more confidence in its Business Central data.",
+  "A usable CRM foundation tracks customer activity.",
+  "Less time goes to troubleshooting recurring system issues.",
+  "BG Peterson has ongoing access to expert support for new questions and challenges."
+ ],
+ "chapters": [
+  [
+   "What was wrong with BG Peterson's systems?",
+   [
+    "BG Peterson is a long-standing mechanical services company based in Omaha, Nebraska, providing HVAC, plumbing and facility solutions. As the business grew, it needed better visibility into customer interactions and more reliable financial processes.",
+    "BG Peterson had Dynamics 365 Sales for CRM and Business Central for financial management, but struggled to get consistent value from either. On the financial side, ongoing issues in Business Central created bottlenecks and confusion. They centered on bank reconciliations and account balances, sales tax calculations and refunds, month-end and year-end close, and reporting inconsistencies.",
+    "Instead of improving efficiency, these challenges created extra manual work and made it difficult for the team to trust their data."
+   ]
+  ],
+  [
+   "What did we change?",
+   [
+    "We first implemented a basic Dynamics 365 Sales environment. It centralizes contacts and accounts, tracks activities and communication history, and gives the team a simple, usable CRM foundation. The work included data import and cleanup, so existing customer and contact data was structured correctly and ready for use in Dynamics 365.",
+    "The engagement then shifted into ongoing support and optimization, primarily within Business Central. Working closely with the BG Peterson team, we resolved bank reconciliation issues and cleaned up and reorganized general ledger accounts. We supported month-end and year-end close and addressed sales tax calculation and reporting challenges. We also created and tested new company environments to isolate issues.",
+    "We made targeted Business Central customizations, such as salesperson-related adjustments. We also helped troubleshoot and stabilize financial reports in Power BI."
+   ]
+  ],
+  [
+   "What changed day to day?",
+   [
+    "The engagement was more of a stabilization and support effort than a traditional transformation project. Still, the improvements made a meaningful difference in day-to-day operations. Financial processes and reporting are more reliable, and the team has more confidence in its Business Central data. Less time goes to troubleshooting recurring system issues, and the team has ongoing access to expert support."
+   ]
+  ]
+ ],
+ "next_steps": null,
+ "quote": null,
+ "author": "Kristin Caniglia",
+ "published": "2026-06-16",
+ "published_h": "June 16, 2026",
+ "sources": [
+  {"claim": "Client, location, industry", "quote": "BG Peterson is a long-standing mechanical services company based in Omaha, Nebraska, providing HVAC, plumbing, and facility solutions."},
+  {"claim": "Need", "quote": "As the business continued to grow, they needed better visibility into customer interactions and more reliable financial processes to support day-to-day operations."},
+  {"claim": "Starting point", "quote": "BG Peterson had two key systems in place"},
+  {"claim": "Starting point systems", "quote": "Dynamics 365 Sales for CRM and Business Central for financial management"},
+  {"claim": "Starting point problem", "quote": "but struggled to get consistent value from either."},
+  {"claim": "Business Central issues", "quote": "On the financial side, ongoing issues in Business Central created bottlenecks and confusion, particularly around:"},
+  {"claim": "Issue list", "quote": "Bank reconciliations and account balances / Sales tax calculations and refunds / Month-end and year-end close processes / Reporting inconsistencies"},
+  {"claim": "Effect", "quote": "these challenges created extra manual work and made it difficult for the team to trust their data."},
+  {"claim": "Effect opener", "quote": "Instead of improving efficiency, these challenges created extra manual work"},
+  {"claim": "Phase 1", "quote": "Phase 1: CRM Foundation with Dynamics 365 Sales"},
+  {"claim": "CRM build", "quote": "enCloud9 implemented a basic Dynamics 365 Sales environment focused on:"},
+  {"claim": "CRM scope", "quote": "Centralizing contacts and accounts / Tracking activities and communication history / Providing a simple, usable CRM foundation for the team"},
+  {"claim": "Data import", "quote": "This included data import and cleanup, ensuring BG Peterson's existing customer and contact data was structured correctly and ready for use in Dynamics 365."},
+  {"claim": "Shift to support (Business Central)", "quote": "the engagement shifted into ongoing support and optimization, primarily within Business Central."},
+  {"claim": "Support intro", "quote": "enCloud9 worked closely with the BG Peterson team to:"},
+  {"claim": "Support work (Business Central)", "quote": "Troubleshoot and resolve bank reconciliation issues / Clean up and reorganize general ledger accounts / Support month-end and year-end close processes / Address sales tax calculation and reporting challenges / Create and test new company environments to isolate issues"},
+  {"claim": "Customizations (Business Central)", "quote": "Made targeted Business Central customizations (such as salesperson-related adjustments)"},
+  {"claim": "Power BI", "quote": "Assisted with Power BI reporting issues, helping troubleshoot and stabilize financial reports"},
+  {"claim": "Results framing", "quote": "While BG Peterson's engagement was more of a stabilization and support effort than a traditional transformation project, the improvements made a meaningful difference in day-to-day operations:"},
+  {"claim": "Outcomes", "quote": "More reliable financial processes and reporting / Improved confidence in Business Central data / A usable CRM foundation for tracking customer activity / Reduced time spent troubleshooting recurring system issues / Ongoing access to expert support for new questions and challenges"},
+  {"claim": "Products box", "quote": "Products Used: Dynamics 365 Sales, Dynamics 365 Business Central"},
+  {"claim": "Services box", "quote": "enCloud9 Services: Dynamics 365 Implementation, Data Migration and CRM Setup, Financial Process Troubleshooting, Reporting & Power BI Support"},
+  {"claim": "Byline", "quote": "June 16, 2026 | By Kristin Caniglia"}
+ ],
+ "notes": "Built on the coordinator's 10 Nov instruction to build faithfully, which overrides this brief's 'no Business Central' rule for this file. Business Central is one of the two systems in the story: the starting point, the issue list, the whole ongoing support phase, the customizations and one outcome are Business Central. Only the Phase 1 CRM work (Dynamics 365 Sales) and the Power BI help are not Business Central. Page is noindex until Brian decides. Live page has no Client, Industry or Timeline labels; no timeline is stated, so the Timeline row and the number tiles are left out. The live page uses an em dash in 'two key systems in place' and 'not a one-time fix'; neither dash is carried over. The live page says 'Omaha, Nebraska' in the body and 'Omaha, NE' in the details. Work type 'Support' because the page calls it 'more of a stabilization and support effort than a traditional transformation project'. No named client quote; no next steps stated (the conclusion is general), so next_steps is null. Long sentences were read through WebFetch in pieces and joined."
+}
