@@ -14,3 +14,4 @@ Paths assume the repo is cloned at /home/claude/lb.
 - con.js was renamed console-check.js (10 Nov): CON is a reserved file name on Windows and broke a clone there.
 - consistency.py (10 Nov 2026): site-wide fact check (prices, phone, hours, partner year, client and product names, brand blue, fit wording). Run after every fix pass, before a review and before launch; must print "clean".
 - copycheck.py (10 Nov 2026): per page we/enCloud9 counts, sentences over 25 words, banned words, the QUERY-MAP phrase in title/H1/answer, and every bracket placeholder site-wide (the launch L1 list). Reads /home/claude/src/QUERY-MAP.csv or --query-map PATH.
+- linkcheck.js (from the blog SEO loose chat, 5 Nov; added 10 Nov 2026): internal links in body copy only: orphans, self links, duplicate prose links, generic anchors (FAIL); more than 5 body links out (WARN, fine on hubs). Run: node tools/linkcheck.js pages --prefix=nine- ; must exit 0. Footer-only pages (404, legal) are INFO.
