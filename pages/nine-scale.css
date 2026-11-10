@@ -1,12 +1,12 @@
 /* One gap and one type scale for the whole site (Michael's decision, 9 Nov 2026, gate G15).
    Loaded after nine.css and each page's own styles, so it wins. */
 
-/* Nine-square grids: gap = 7.75% of a square (Michael, 9 Nov 11:17 PM: half the logo's 15.5%, which read too thick on the page).
-   With three squares and two gaps across, that gap is 2.46% of the grid's width.
+/* Nine-square grids: gap = 3.875% of a square (Michael, 10 Nov 12:48 AM: half again, 7.75% still read too thick; first set 9 Nov 11:17 PM at half the logo's 15.5%).
+   With three squares and two gaps across, that gap is 1.26% of the grid's width.
    The grids below are square (aspect-ratio 1/1), so the same percentage works down as well as across.
    Small icon grids (squares under 30px) keep their 1 to 3px gaps so they stay crisp. */
-html body :is(.grid9,.aigrid,.fgx,.dgx,.jgrid,.fgrid,.dest){gap:2.46%}
-@media (min-width:561px){html body ol.bel{aspect-ratio:1/1;gap:2.46%}}
+html body :is(.grid9,.aigrid,.fgx,.dgx,.jgrid,.fgrid,.dest){gap:1.26%}
+@media (min-width:561px){html body ol.bel{aspect-ratio:1/1;gap:1.26%}}
 
 /* Type scale: one size per job. !important because page styles set heading sizes with longer selectors; this file is the one place sizes are set now.
    Main headline: Home 96px (its signature), every other page 72px, blog posts 60px; phones 44, 40 and 34. */
@@ -30,7 +30,7 @@ html body :is(h1,h2,h3,.nm,.t){text-wrap:balance}
 
 /* Packages hero support band on phones: price and small line sit inside the frame (G15, 9 Nov review) */
 @media (max-width:560px){html body.p-packages .pk-hero .cell.base{padding:16px 18px}html body.p-packages .pk-hero .cell.base .big{white-space:normal;font-size:20px}html body.p-packages .pk-hero .cell.base .big small{font-size:11px;white-space:normal}}
-@media (max-width:560px){html body.p-packages .pk-hero{aspect-ratio:auto;grid-template-rows:none;grid-auto-rows:auto;gap:calc((100vw - 40px) * .0246)}html body.p-packages .pk-hero .cell:not(.base){aspect-ratio:1/1}html body.p-packages .pk-hero .cell.base{min-height:168px;height:auto;justify-content:flex-end}}
+@media (max-width:560px){html body.p-packages .pk-hero{aspect-ratio:auto;grid-template-rows:none;grid-auto-rows:auto;gap:calc((100vw - 40px) * .0126)}html body.p-packages .pk-hero .cell:not(.base){aspect-ratio:1/1}html body.p-packages .pk-hero .cell.base{min-height:168px;height:auto;justify-content:flex-end}}
 
 /* proof numbers on small phones: no wrap, and small enough to fit two across (G4, G15) */
 @media (max-width:420px){html body .proof .num{white-space:nowrap;font-size:clamp(24px,7vw,30px)!important}}
