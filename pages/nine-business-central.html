@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Dynamics 365 and Business Central Integration | enCloud9</title>
+<meta name="description" content="Connect Dynamics 365 Sales to Business Central so sellers see balances, credit limits, open invoices and stock. enCloud9 sets up the integration.">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="nine.css">
+<script defer src="nine.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Dynamics 365", "item": "https://www.encloud9.com/power-platform-dynamics-365/"}, {"@type": "ListItem", "position": 3, "name": "Business Central integration", "item": "https://www.encloud9.com/dynamics-365-business-central/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can Dynamics 365 Sales show Business Central data?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. With Microsoft's integration, sellers see a customer's balance, open invoices and item availability from Business Central while they work in Dynamics 365 Sales."}}, {"@type": "Question", "name": "Do you implement Business Central?", "acceptedAnswer": {"@type": "Answer", "text": "enCloud9 focuses on Dynamics 365 and works with a network of Business Central partners for the accounting setup. enCloud9 connects the two systems so they work as one."}}, {"@type": "Question", "name": "Does Business Central integrate with Customer Service?", "acceptedAnswer": {"@type": "Answer", "text": "Microsoft's built-in integration is with Dynamics 365 Sales only. Other connections can be built with Power Automate or custom work, quoted in writing."}}, {"@type": "Question", "name": "How often does data sync?", "acceptedAnswer": {"@type": "Answer", "text": "Microsoft's default sync jobs run every 30 minutes, and the schedule can be changed. Some updates, like account statistics, can also be run by hand."}}, {"@type": "Question", "name": "What does the integration cost?", "acceptedAnswer": {"@type": "Answer", "text": "Our setup work is quoted in writing after a short call. Business Central and Dynamics 365 are licensed separately, and enCloud9 sells Microsoft licenses."}}]}</script>
+<style>
+/* package pages (full implementation, rescue and repair) (9 Nov): spec card in the hero, included/not included, Fit Check rows, other packages strip */
+body.p-pkg .grid9{margin-top:4px}
+body.p-pkg .spec{margin:14px 0 0;display:grid;border-top:2px solid var(--ink)}
+body.p-pkg .spec div{display:grid;grid-template-columns:90px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--line);align-items:baseline}
+body.p-pkg .spec dd{margin:0;font-weight:600;font-size:16px;line-height:1.4}
+body.p-pkg .fit.two-col{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+body.p-pkg .fit .lnk{color:var(--b5);font-weight:600}
+body.p-pkg .inc-foot{display:flex;justify-content:space-between;align-items:center;gap:20px 40px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+body.p-pkg .inc-foot .ask{font-weight:600}
+body.p-pkg .fitsplit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(32px,5vw,72px);align-items:start}
+body.p-pkg .fitsplit .side{position:sticky;top:110px;display:flex;flex-direction:column;gap:20px}
+body.p-pkg .fitsplit .fit{grid-template-columns:1fr;gap:44px}
+body.p-pkg .notsure-l{font-weight:600;font-size:18px;margin:0}
+body.p-pkg .ptiles.plans .ptile{aspect-ratio:auto;min-height:340px}
+body.p-pkg .ptile .price{font-family:var(--head);font-size:clamp(40px,3.6vw,54px);font-weight:600;letter-spacing:-.035em;line-height:1}
+body.p-pkg .ptile .price small{font-size:15px;font-weight:500;letter-spacing:0;margin-left:6px;opacity:.85}
+body.p-pkg .ptile .ds b{color:var(--white);font-weight:600}
+body.p-pkg .ptile .min{align-self:flex-start;padding:3px 7px;background:rgba(255,255,255,.18);font-family:var(--mono);font-size:11px;color:var(--white)}
+body.p-pkg .sp-foot{display:flex;justify-content:space-between;align-items:flex-start;gap:24px 48px;flex-wrap:wrap;margin-top:24px}
+body.p-pkg .sp-foot .fine{margin-top:0;max-width:760px}
+body.p-pkg .story .big{font-family:var(--head);font-size:clamp(40px,4vw,56px);font-weight:600;letter-spacing:-.035em;line-height:1;color:var(--b3)}
+body.p-pkg .lnav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+body.p-pkg .lnav a{display:flex;flex-direction:column;gap:10px;justify-content:space-between;min-height:120px;padding:16px;background:var(--c);color:var(--white);font-family:var(--head);font-weight:600;font-size:18px;line-height:1.2;transition:transform .35s var(--ease)}
+body.p-pkg .lnav a .mono{color:rgba(255,255,255,.8);font-size:11px;font-weight:400}
+body.p-pkg .lnav a:hover{transform:translateY(-4px)}
+body.p-pkg .lnav a:focus-visible{outline:3px solid var(--b6);outline-offset:3px}
+body.p-pkg .grid9 .cell.core .nm{font-size:clamp(15px,1.75vw,24px);hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+body.p-pkg #fitcheck .three .d{color:var(--muted)}
+body.p-pkg .grid9 .cell.lt .lab{color:var(--ink)}
+body.p-pkg .proof .num{white-space:nowrap}
+@media (max-width:420px){body.p-pkg .proof .num{font-size:clamp(28px,9vw,40px)}body.p-pkg .proof .pf{min-width:0}}
+body.p-pkg #others{padding-top:clamp(48px,6vw,80px)}
+body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--ink2)}
+@media (max-width:1100px){body.p-pkg .lnav{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:860px){body.p-pkg .fitsplit,body.p-pkg .fit.two-col{grid-template-columns:1fr}body.p-pkg .fitsplit .side{position:static}}
+@media (max-width:560px){body.p-pkg .grid9 .cell.core .nm{font-size:13px;hyphens:none;-webkit-hyphens:none}body.p-pkg .lnav{grid-template-columns:1fr 1fr}body.p-pkg .spec div{grid-template-columns:1fr;gap:2px}body.p-pkg .ptiles.plans .ptile{min-height:0}}
+</style>
+<style>@media(max-width:640px){#plans .tbl{min-width:0}#plans .tbl thead{position:absolute;left:-9999px}#plans .tbl tr{display:grid;grid-template-columns:1fr;padding:14px 0;border-bottom:1px solid var(--line)}#plans .tbl tbody th,#plans .tbl td{display:block;border:0;padding:2px 0}#plans .tbl td::before{content:attr(data-l) ": ";font-family:var(--mono);font-size:11px;color:var(--muted)}}</style>
+</head>
+<body class="p-pkg">
+<nav id="lbbar" aria-label="Lookbook">
+  <a href="../index.html">All looks</a><span class="t hide-s">Look 9, Nine, built pages</span>
+  <a href="nine-home.html">Home</a><a href="nine-packages.html">Packages</a><a href="nine-sales-accelerator.html" class="on" aria-current="page">Sales Accelerator</a><a href="nine-marketing.html" class="hide-s">Marketing</a>
+  <span class="sp"></span><span class="t">Font</span>
+  <button type="button" data-setfont="hanken" aria-pressed="true">Hanken</button><button type="button" data-setfont="jakarta" aria-pressed="false">Jakarta</button><button type="button" data-setfont="public" aria-pressed="false">Public Sans</button><button type="button" data-setfont="bricolage" aria-pressed="false">Bricolage</button>
+</nav>
+<header class="top">
+  <a class="skip" href="#main">Skip to main content</a>
+  <div class="wrap">
+    <a class="logo" href="nine-home.html" aria-label="enCloud9 home"><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9" width="104" height="34"></a>
+    <nav class="nav" aria-label="Main"><a href="nine-dynamics-365.html" class="cur">Dynamics 365<span class="sr-only"> (current section)</span></a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="nine-blog.html">Blog</a><a href="nine-about.html">About</a></nav>
+    <a class="tel" href="tel:+18442640729">1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+    <a class="btn btn-p call-m" href="tel:+18442640729">Call</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="nine-blog.html">Blog</a><a href="nine-about.html">About</a><a href="tel:+18442640729">Call 1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+  </nav>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="nine-home.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="nine-dynamics-365.html">Dynamics 365</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Business Central integration</span></nav>
+  <section class="hero" aria-labelledby="h1">
+    <div class="copy">
+      <span class="mono rise" style="--d:0">Dynamics 365 &middot; Integration</span>
+      <h1 class="h1" id="h1" style="font-size:clamp(40px,5.4vw,72px)"><span class="ln"><span style="--d:1">Dynamics 365 Sales</span></span> <span class="ln"><span style="--d:2">with Business Central</span></span></h1>
+      <p class="lead rise" style="--d:3">Connect Dynamics 365 Sales to Business Central and your sales team sees each customer's balance, credit limit and open invoices, plus item prices and stock, without leaving the CRM. Orders submitted in Sales flow to Business Central. enCloud9 sets up the connection and works with a network of Business Central partners for the accounting side.</p>
+      <div class="acts rise" style="--d:4"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="#plans">See what syncs <span>&rarr;</span></a></div>
+      <p class="phone-note rise" style="--d:5">Prefer the phone? Call <a href="tel:+18442640729">1-844-264-0729</a>.</p>
+    </div>
+    <div>
+      <div class="grid9" role="list" aria-label="What Business Central integration does">
+        <a role="listitem" class="cell" style="background:var(--b1);--d:0" href="#plans"><span class="lab">Credit</span><span class="nm">Credit limits</span><span class="ds">Seen before the deal</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b2);--d:1" href="#plans"><span class="lab">Invoices</span><span class="nm">Open invoices</span><span class="ds">Billed and paid status</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b3);--d:2" href="#plans"><span class="lab">Orders</span><span class="nm">Sales to Business Central</span><span class="ds">No retyping</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b4);--d:3" href="#plans"><span class="lab">Stock</span><span class="nm">Item availability</span><span class="ds">While quoting</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell core" style="background:var(--b5);--d:4" href="#plans"><span class="lab">Integration</span><span class="nm">Sales and Business Central</span><span class="ds">One customer, two systems</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b6);--d:5" href="nine-dynamics-365-sales.html"><span class="lab">Pairs with</span><span class="nm">Dynamics 365 Sales</span><span class="ds">Where sellers work</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b7);--d:6" href="nine-full-implementation.html"><span class="lab">Package</span><span class="nm">Full implementation</span><span class="ds">Integrations included</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b8);--d:7" href="nine-power-platform.html"><span class="lab">Extend</span><span class="nm">Power Platform</span><span class="ds">Flows and reports</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b9);--d:8" href="nine-contact.html"><span class="lab">Next step</span><span class="nm">Book a call</span><span class="ds">Talk through your setup</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="plans" aria-labelledby="pl-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="pl-h">What syncs between Dynamics 365 Sales and Business Central?</h2>
+      <p class="lead">Microsoft's built-in integration runs through Dataverse. These are the pieces sales and finance teams use most.</p>
+    </div>
+    <div class="tbl-wrap rev">
+      <table class="tbl">
+        <caption class="mono" style="text-align:left;padding-bottom:10px">What syncs between Dynamics 365 Sales and Business Central</caption>
+        <thead><tr><th scope="col">Data</th><th scope="col">Direction</th><th scope="col">What your team gets</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Customers and accounts</th><td data-l="Direction">Both ways</td><td data-l="What your team gets">One customer record, coupled in both systems</td></tr>
+          <tr><th scope="row">Balances and statistics</th><td data-l="Direction">Business Central to Sales</td><td data-l="What your team gets">Balance and total sales on the account, in a Business Central statistics panel</td></tr>
+          <tr><th scope="row">Posted invoices</th><td data-l="Direction">Business Central to Sales</td><td data-l="What your team gets">Invoices show as billed, then paid when the payment comes in</td></tr>
+          <tr><th scope="row">Items, prices and stock</th><td data-l="Direction">Business Central to Sales</td><td data-l="What your team gets">Price lists and item availability while building a quote or order</td></tr>
+          <tr><th scope="row">Quotes and orders</th><td data-l="Direction">Sales to Business Central, or both ways</td><td data-l="What your team gets">Orders submitted in Sales arrive in Business Central to ship and invoice</td></tr>
+        </tbody>
+      </table>
+      <p class="fine">From Microsoft's Business Central integration documentation, checked 9 Nov 2026. <a class="lnk" href="https://learn.microsoft.com/dynamics365/business-central/marketing-integrate-dynamicscrm">Read Microsoft's guide</a>. Our setup work is quoted in writing; Business Central and Dynamics 365 are licensed separately.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="fit" aria-labelledby="fit-h">
+    <div class="fitsplit">
+    <div class="side rev">
+      <h2 class="h2" id="fit-h">When is the integration worth it?</h2>
+      <p class="lead">When sellers have to ask finance before they can answer a customer.</p>
+      <div class="acts" style="margin-top:0"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a></div>
+    </div>
+    <div class="fit rev">
+      <div class="yes"><h3 class="h3">A good fit if</h3><ul>
+        <li>Sellers ask accounting whether a customer is over their credit limit or has unpaid invoices.</li>
+        <li>Someone retypes orders from the CRM into Business Central.</li>
+        <li>Quotes go out with prices or stock that changed in Business Central.</li>
+        <li>Finance and sales keep two customer lists that never quite match.</li>
+      </ul></div>
+    </div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" aria-labelledby="fq-h">
+    <div class="faqsplit">
+    <div class="faqside rev">
+      <h2 class="h2" id="fq-h">Business Central integration questions we get asked</h2>
+      <p class="lead" style="margin-top:18px">Something else on your mind? Ask us on a call. You get a straight answer, whether or not you work with us.</p>
+      <div class="acts" style="margin-top:24px"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="nine-faq.html">All questions <span>&rarr;</span></a></div>
+    </div>
+    <div>
+    <div class="faq rev">
+      <details><summary>Can Dynamics 365 Sales show Business Central data?</summary><p>Yes. With Microsoft's integration, sellers see a customer's balance, open invoices and item availability from Business Central while they work in Dynamics 365 Sales.</p></details>
+      <details><summary>Do you implement Business Central?</summary><p>enCloud9 focuses on Dynamics 365 and works with a network of Business Central partners for the accounting setup. enCloud9 connects the two systems so they work as one.</p></details>
+      <details><summary>Does Business Central integrate with Customer Service?</summary><p>Microsoft's built-in integration is with Dynamics 365 Sales only. Other connections can be built with Power Automate or custom work, quoted in writing.</p></details>
+      <details><summary>How often does data sync?</summary><p>Microsoft's default sync jobs run every 30 minutes, and the schedule can be changed. Some updates, like account statistics, can also be run by hand.</p></details>
+      <details><summary>What does the integration cost?</summary><p>Our setup work is quoted in writing after a short call. Business Central and Dynamics 365 are licensed separately, and enCloud9 sells Microsoft licenses.</p></details>
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="sec" id="others" aria-labelledby="op-h">
+    <h2 class="mono" id="op-h" style="font-weight:400;margin:0 0 16px">Related</h2>
+    <nav class="lnav rev" aria-labelledby="op-h">
+      <a class="lt" href="nine-dynamics-365-sales.html" style="--c:var(--b6)"><span class="mono">Dynamics 365</span>Dynamics 365 Sales</a>
+      <a href="nine-full-implementation.html" style="--c:var(--b5)"><span class="mono">Package</span>Full implementation</a>
+      <a href="nine-power-platform.html" style="--c:var(--b4)"><span class="mono">Power Platform</span>All the tools</a>
+      <a href="nine-contact.html" style="--c:var(--b3)"><span class="mono">Company</span>Contact us</a>
+    </nav>
+  </section>
+</div>
+
+<section class="final" aria-labelledby="fc-h">
+  <div class="wrap">
+    <div class="inner">
+      <div class="rev">
+        <h2 class="h2" id="fc-h">Start with a call or a free checkup</h2>
+        <p class="lead">Tell us where your system is today. You get a straight answer on which package fits, whether or not you work with us.</p>
+      </div>
+      <div class="side rev">
+        <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+        <a class="lnk" href="nine-dynamics-365-sales.html#check">Free checkups, no obligation <span>&rarr;</span></a>
+        <span class="mono">Or call <a href="tel:+18442640729">1-844-264-0729</a>, 8:00am to 5:00pm Central, Monday to Friday.</span>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="fcols">
+        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft Partner since 2008, specializing in Dynamics 365.</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>8:00am to 5:00pm Central</p></div>
+        <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-marketing.html">Marketing automation</a><a href="nine-d365-pricing.html">Dynamics 365 pricing</a></nav>
+        <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="nine-power-platform.html">Power Platform</a><a href="nine-copilot-studio.html">Copilot Studio</a><a href="nine-power-apps.html">Power Apps</a><a href="nine-power-bi.html">Power BI</a></nav>
+        <nav aria-label="Packages and support"><b>Packages and support</b><a href="nine-packages.html">All packages</a><a href="nine-sales-accelerator.html">Sales Accelerator</a><a href="nine-service-accelerator.html">Service Accelerator</a><a href="nine-rescue-repair.html">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>
+        <nav aria-label="Company"><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-how-we-work.html">How we work</a><a href="nine-team.html">Team</a><a href="nine-stories.html">Client stories</a><a href="nine-blog.html">Blog</a><a href="nine-contact.html">Contact us</a><a href="nine-faq.html">All questions</a><a href="nine-guides.html">Free guides and checks</a><a href="nine-healthcare.html">Healthcare</a><a href="nine-professional-services.html">Professional services</a><a href="nine-manufacturing.html">Manufacturing</a><a href="nine-omaha.html">Omaha and Nebraska</a></nav>
+      </div>
+      <div class="tm">enCloud9 LLC, [address Brian confirms]. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. <a href="nine-privacy.html">Privacy policy</a> &middot; <a href="nine-accessibility.html">Accessibility statement</a></div>
+    </footer>
+  </div>
+  <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>
+</section>
+</main>
+</body>
+</html>

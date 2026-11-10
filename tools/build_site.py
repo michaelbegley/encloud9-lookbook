@@ -49,6 +49,7 @@ MAP = {
     'nine-blog-pricing-2026.html': '/blog/dynamics-365-pricing-licensing-2025-guide/',
     'nine-omaha.html': '/microsoft-dynamics-365-partner-omaha/',
     'nine-document-core-pack.html': '/add-on-products/document-core-pack/',
+    'nine-business-central.html': '/dynamics-365-business-central/',
     'nine-post-click-dashboards.html': '/blog/clickdimensions-dashboards-2025-update/',
     'nine-post-qualification-agent.html': '/blog/dynamics-365-sales-qualification-agent/',
     'nine-post-partner-list-2026.html': '/blog/encloud9-recognized-on-crm-software-blogs-best-dynamics-365-partner-list-2026/',
