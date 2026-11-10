@@ -121,6 +121,9 @@ body.p-blog .nl .mockform input{min-height:52px;border:1px solid var(--line);bac
 body.p-blog .nl .mockform button{opacity:.5;cursor:not-allowed}
 body.p-blog .nl .mockform button:hover{transform:none;background:var(--b5)}
 @media (max-width:860px){body.p-blog .nl{grid-template-columns:1fr}}
+
+/* card footer: "Read the post" never breaks; the date drops to its own line when space is tight (10 Nov 2026) */
+body.p-blog .pc .go{flex-wrap:wrap;align-items:baseline;white-space:nowrap;row-gap:2px}body.p-blog .pc .go small{white-space:nowrap;margin-left:auto}
 </style>
 <link rel="stylesheet" href="nine-scale.css">
 </head>

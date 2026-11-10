@@ -99,3 +99,17 @@
     else{var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();light()}},{threshold:.5});io.observe(ai)}
   }
 })();
+
+/* Opened straight to a section (#anchor): settle the scroll once fonts and late content have loaded,
+   so the heading lands below the sticky header instead of a few pixels under it (10 Nov 2026). */
+(function(){
+  if(!location.hash||location.hash.length<2)return;
+  var id;try{id=decodeURIComponent(location.hash.slice(1))}catch(e){return}
+  function settle(){var t=document.getElementById(id);if(!t)return;
+    var hd=document.querySelector('header.top')||document.querySelector('header');var pad=hd?Math.max(hd.getBoundingClientRect().bottom,0)+16:96;
+    var top=t.getBoundingClientRect().top;if(Math.abs(top-pad)>4)window.scrollTo(0,window.scrollY+top-pad)}
+  var moved=false;['wheel','touchstart','keydown'].forEach(function(e){window.addEventListener(e,function(){moved=true},{once:true,passive:true})});
+  function go(){if(!moved)settle()}
+  window.addEventListener('load',function(){go();setTimeout(go,300);setTimeout(go,900)});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(go);
+})();
