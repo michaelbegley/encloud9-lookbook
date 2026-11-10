@@ -34,6 +34,7 @@ MAP = {
     'nine-blog-2024.html': '/blog/optimizing-sales-strategies-with-dynamics-365-enabling-and-utilizing-sales-usage-reports/',
     'nine-storage.html': '/lp/dataverse-storage-analysis/',
     'nine-move-salesforce.html': '/microsoft-dynamics-365-salesforce-crm-migration/',
+    'nine-support.html': '/microsoft-dynamics-365-support-services/',
     'nine-move-zoho.html': '/microsoft-dynamics-365-zoho-crm-migration/',
     'nine-move-monday.html': '/lp/monday-to-dynamics-365-migration/',
     'nine-move-hubspot.html': '/lp/microsoft-dynamics-365-hubspot-crm-migration/',
