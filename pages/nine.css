@@ -508,3 +508,7 @@ body.p-story .pn .d{color:var(--muted);font-size:15px}
 .mnav details b{display:block;font-family:var(--mono);font-weight:400;font-size:12px;color:var(--muted);padding:10px 0 2px 14px}
 .mnav details a{display:block;font-size:16px;padding:10px 0 10px 14px;border-bottom:0}
 @media (prefers-reduced-motion:reduce){.nav-x svg{transition:none}}
+/* nine equal squares: rows share the square evenly so hover and the centre description never stretch a row (Michael, 9 Nov) */
+.grid9{grid-template-rows:repeat(3,minmax(0,1fr))}
+.grid9 .cell{min-height:0;min-width:0}
+.grid9 .cell .nm{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
