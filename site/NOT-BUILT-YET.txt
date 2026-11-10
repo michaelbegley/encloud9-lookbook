@@ -8,7 +8,6 @@ Links on the mock site that still go to the live encloud9.com (page not built ye
 /blog/success_stories/bg-peterson-ss/  <- nine-stories.html
 /blog/success_stories/world-import-distributors/  <- nine-stories.html
 /blog/what-a-healthy-dynamics-365-system-actually-looks-like/  <- nine-post-customizations.html
-/clickdimensions-powerpack/  <- nine-marketing.html
 /lp/copilot-guide-dynamics-365-crm/  <- nine-guides.html
 /lp/dynamics-365-crm-cleanup-checklist/  <- nine-guides.html
 /lp/dynamics-365-sales-management-guide/  <- nine-guides.html
