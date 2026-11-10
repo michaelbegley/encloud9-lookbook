@@ -56,13 +56,13 @@ const WIDTHS=[320,360,390,480,600,768,900,1024,1180,1280,1440,1920];
  const rows=man.split('\n').slice(1).filter(Boolean).map(l=>{const c=l.split(',');return {pat:c[0],licence:c[3]||''}});
  const match=u=>rows.find(r=>r.pat.includes('*')?new RegExp('^'+r.pat.replace(/[.+?^${}()|[\]\\]/g,'\\$&').replace(/\*/g,'.*')+'$').test(u):r.pat===u);
  const q2=await (await b.newContext({viewport:{width:1440,height:900}})).newPage();await q2.goto('file://'+file);await q2.waitForTimeout(400);
- const imgs=await q2.evaluate(()=>{const o=[];document.querySelectorAll('img').forEach(i=>o.push({src:i.getAttribute('src'),alt:i.hasAttribute('alt')?i.getAttribute('alt'):null,inLink:!!i.closest('a,button')}));
+ const imgs=await q2.evaluate(()=>{const o=[];document.querySelectorAll('img').forEach(i=>o.push({src:i.getAttribute('src'),alt:i.hasAttribute('alt')?i.getAttribute('alt'):null,inLink:(()=>{const a=i.closest('a,button');return !!a&&!(a.textContent||'').trim()&&!a.getAttribute('aria-label')})()}));
   document.querySelectorAll('body *').forEach(e=>{const bg=getComputedStyle(e).backgroundImage;const m=bg&&bg.match(/url\("?([^")]+)"?\)/);if(m)o.push({src:m[1],css:true})});return o});
  const imgRes=[];const seen=new Set();for(const im of imgs){const u0=im.src||'';let u=u0.startsWith('file://')?path.relative(repo,decodeURI(u0.slice(7))):u0.replace(/^\.\.\//,'');
   if(u.startsWith('data:'))continue;const key=u+(im.css?'#css':'')+(im.alt===null?'#noalt':'');if(seen.has(key))continue;seen.add(key);
   let kb=null;if(!/^https?:/.test(u)){try{kb=Math.round(fs.statSync(path.join(repo,u)).size/1024)}catch(e){kb='missing'}}
   const r=match(u);const lic=r?r.licence:'';const issues=[];
-  if(!im.css&&im.alt===null)issues.push('no alt');if(!im.css&&im.inLink&&im.alt==='')issues.push('empty alt inside a link');
+  if(!im.css&&im.alt===null)issues.push('no alt');if(!im.css&&im.inLink&&im.alt==='')issues.push('empty alt in a link with no text');
   if(!r)issues.push('not in IMAGE-SOURCES.csv');else if(/could not determine/i.test(lic))issues.push('licence unknown');
   if(kb==='missing')issues.push('file missing');else if(kb!==null&&kb>300)issues.push(kb+' KB, over 300');
   imgRes.push({src:u,kb,issues})}
