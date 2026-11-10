@@ -522,3 +522,6 @@ html :is(.aigrid,.dgx,.fgx,.jgrid,.mk-cg,.dest,.fgrid[role="list"])>*{min-height
 .top .call-m + .menu-btn{margin-left:-26px}
 /* Framed centre square on phones: keeps 10px between the frame and the words, as on desktop (Michael screenshot, 9 Nov) */
 @media (max-width:560px){.core::after{inset:5px}.cell.core{padding:15px}}
+/* G3, 9 Nov: small mono text on the mid-blue light tiles needs ink, not ink2 (4.0 to 1 was too low) */
+.lnav a.lt .mono,.lt > .mono{color:var(--ink)}
+.lt.ptile .pt-top .m{color:var(--ink)}
