@@ -48,14 +48,6 @@ html body .lt.ptile :is(.mono,.ds,.from .pre,.from small),html body .at>span{col
 html body *{hyphenate-limit-chars:6 3 3}
 /* 10 Nov 2026 (REVIEW-G7B template fix 1): settled package price under the related package tile on stories */
 html body .lnav a small.pr{display:block;font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:0;line-height:1.35;opacity:.92}
-/* 10 Nov 2026 (Michael, iPhone: FAQ "feels clunky"): tighter, lighter FAQ rows */
-html body .faq summary{padding:18px 44px 18px 0;font-size:19px;line-height:1.3}
-html body .faq summary::after{top:14px}
-@media (max-width:600px){
-  html body .faq summary{padding:14px 36px 14px 0;font-size:17px;line-height:1.3;font-weight:600}
-  html body .faq summary::after{top:10px;font-size:22px;right:2px}
-  html body .faq details p{padding:0 0 16px;font-size:16px}
-}
 /* 10 Nov 2026 (Michael, iPhone): anchor links land below the sticky header, not under it */
 html{scroll-padding-top:96px}
 html:has(#lbbar){scroll-padding-top:136px}
