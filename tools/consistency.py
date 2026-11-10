@@ -5,7 +5,7 @@ One canonical list of facts, each with the wrong variants that have turned up on
 Every page's visible text and JSON-LD is searched; any wrong variant is reported with the page and a snippet.
 Exit code 1 if anything is found. Add a fact here the day it is decided (source and date in the note).
 """
-import glob, html, re, sys
+import glob, html, os, re, sys
 
 FACTS = [
     ("Fort Myers spelling", "Fort Myers, FL", [r"Fort Meyers"], "bgland.json facts; REVIEW-G7B issue 6"),
@@ -56,6 +56,12 @@ def main(paths):
             print(f"[{fact}] should be: {canon}   ({note})")
             for h in sorted(set(hits))[:40]:
                 print(h)
+    # No monospace font anywhere on the new site (Michael, 10 Nov 2026: it reads as AI-made).
+    mono = re.compile(r"monospace|['\"][A-Za-z ]*Mono['\"]|var\(--mono\)")
+    for p in list(paths) + [x for x in ("pages/nine.css", "pages/nine-scale.css") if os.path.exists(x)]:
+        for m in mono.finditer(open(p, encoding="utf-8").read()):
+            found += 1
+            print(f"[monospace font] {p.split('/')[-1]}: {m.group(0)}")
     print(f"\n{found} inconsistencies across {len(paths)} pages" if found else f"\nclean: {len(paths)} pages")
     return 1 if found else 0
 

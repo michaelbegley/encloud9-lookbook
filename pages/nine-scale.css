@@ -47,7 +47,7 @@ html body .lt.ptile :is(.mono,.ds,.from .pre,.from small),html body .at>span{col
 /* 10 Nov 2026: never hyphenate off one or two letters (looks.js "last line is only s") */
 html body *{hyphenate-limit-chars:6 3 3}
 /* 10 Nov 2026 (REVIEW-G7B template fix 1): settled package price under the related package tile on stories */
-html body .lnav a small.pr{display:block;font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:0;line-height:1.35;opacity:.92}
+html body .lnav a small.pr{display:block;font-family:var(--label);font-size:12px;font-weight:400;letter-spacing:0;line-height:1.35;opacity:.92}
 /* 10 Nov 2026 (Michael, iPhone): anchor links land below the sticky header, not under it */
 html{scroll-padding-top:96px}
 html:has(#lbbar){scroll-padding-top:136px}

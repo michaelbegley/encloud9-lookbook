@@ -23,7 +23,7 @@ FAQ = [("Are the checks really free?","Yes. Free checkups, no obligation. You ge
 css = ('.gcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}'
        '.gcards a{display:flex;flex-direction:column;gap:10px;background:var(--bg,#fff);padding:26px;text-decoration:none;color:var(--ink);min-height:200px}'
        '.gcards a:hover{background:var(--tint,#EAF0F8)}.gcards .t{font-family:var(--head);font-size:21px;font-weight:600;line-height:1.25}.gcards .d{color:var(--muted);font-size:16px;flex:1}'
-       '.gcards .go{font-family:var(--mono);font-size:12px;color:var(--b5)}'
+       '.gcards .go{font-family:var(--label);font-size:12px;color:var(--b5)}'
        '.gcards.two{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:900px){.gcards{grid-template-columns:1fr 1fr}}@media(max-width:560px){.gcards{grid-template-columns:1fr}.gcards a{min-height:0}}')
 hd = mkhead(TITLE, META, [('Home','https://www.encloud9.com/'),('Free guides and checks',URL)], faq=FAQ, css=css)
 cards = lambda items, c='': f'    <div class="gcards{c} rev">\n' + ''.join(f'      <a href="{h}"><span class="mono">{m}</span><span class="t">{e(t)}</span><span class="d">{e(d)}</span><span class="go">{g} &rarr;</span></a>\n' for m,t,d,h,g in items) + '    </div>\n'
