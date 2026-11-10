@@ -42,3 +42,7 @@ html body .lt.ptile :is(.mono,.ds,.from .pre,.from small),html body .at>span{col
 @media (max-width:600px){html body table.tbl-stack{min-width:0!important;width:100%}}
 /* 10 Nov 2026 (REVIEW-G5 issue 7, REVIEW-G6 issue 5): a 4-link Related strip fills the row on desktop */
 @media (min-width:901px){html body .lnav:has(> a:nth-child(4):last-child){grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* 10 Nov 2026: a long button label wraps instead of pushing the page sideways on the narrowest phones (320 px, move-monday G4) */
+@media (max-width:360px){html body .acts .btn{white-space:normal;text-align:center;line-height:1.25;padding:12px 18px}}
+/* 10 Nov 2026: never hyphenate off one or two letters (looks.js "last line is only s") */
+html body *{hyphenate-limit-chars:6 3 3}
