@@ -31,7 +31,7 @@
 {"@type":"Question","name":"Are generative pages generally available?","acceptedAnswer":{"@type":"Answer","text":"Yes. Generative pages in model-driven apps are generally available. Using Power Platform connectors and Dataverse custom APIs with them is still in preview."}},
 {"@type":"Question","name":"Does building generative pages cost extra?","acceptedAnswer":{"@type":"Answer","text":"Microsoft says the maker experience doesn't require any additional AI or message credits. Users still need a license for the app the page sits in."}},
 {"@type":"Question","name":"Do generative pages replace Power BI or Copilot?","acceptedAnswer":{"@type":"Answer","text":"No. Use Power BI for heavy analytics, Copilot for questions about your data, and generative pages for focused working screens."}},
-{"@type":"Question","name":"When does another tool work better than a generative page?","acceptedAnswer":{"@type":"Answer","text":"Simple data entry, big reporting over lots of data, or a chat-style need. We will say so in Plan and point you to the better tool."}}]}</script>
+{"@type":"Question","name":"When does another tool work better than a generative page?","acceptedAnswer":{"@type":"Answer","text":"Simple data entry, big reporting over lots of data, or a chat-style need. enCloud9 will say so before the build and point you to the better tool."}}]}</script>
 <style>
 /* page: Copilot and AI (signature: a generative page builds itself, then takes a change; hero cubes grow toward you on hover like home) */
 /* hero: the home cube grid, with a status line that swaps for the one-line description on hover */
@@ -189,7 +189,7 @@ body.p-copilot .tbl tr.grp th{font-family:var(--mono);font-size:12px;font-weight
 @media (max-width:860px){.gp-low{grid-template-columns:1fr;row-gap:56px}}
 @media (max-width:640px){.gx-pick{gap:6px}.gx-pick button{padding:12px 10px}.gx-pick button .t{font-size:15px}.gx-pick button .d{display:none}.gx-sc{grid-template-columns:repeat(2,minmax(0,1fr))}.s2,.s3{grid-column:span 1}.s4,.s6,.gx-sc .w2{grid-column:1/-1}.gx-canvas{padding:10px;min-height:0}.gx-meta .tb{margin-left:0}.gx-refine{padding:12px 10px}.gx::before{inset:-28px 0}.pt .v{font-size:22px}.apv{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:4px 12px}.apv .badge{grid-column:2;justify-self:start}}
 @media (prefers-reduced-motion:reduce){.pt,.pt>*,.bars i,.ring .fg,.gx-prog i,.gx-chip{transition:none}.gx .pt.flash{animation:none}}
-</style>
+@media (max-width:600px){body.p-copilot .gx-again,body.p-copilot .gx-chip{min-height:48px}}</style>
 <link rel="stylesheet" href="nine-scale.css">
 </head>
 <body class="p-copilot">
@@ -220,8 +220,8 @@ body.p-copilot .tbl tr.grp th{font-family:var(--mono);font-size:12px;font-weight
   <section class="hero" aria-labelledby="h1">
     <div class="copy">
       <span class="mono rise" style="--d:0">Copilot and AI for Dynamics 365</span>
-      <h1 class="h1" id="h1" style="font-size:clamp(40px,5.6vw,78px)"><span class="ln"><span style="--d:1">Copilot and agents,</span></span> <span class="ln"><span style="--d:2">working on your</span></span> <span class="ln"><span style="--d:3">Dynamics 365 data</span></span></h1>
-      <p class="lead rise" style="--d:4">AI in Dynamics 365 comes in three forms: Copilot inside the app, agents Microsoft includes, and agents built for your business in Copilot Studio. We build each one after a data and permissions review, and tell you what it costs to run before it is switched on.</p>
+      <h1 class="h1" id="h1" style="font-size:clamp(40px,5.6vw,78px)"><span class="ln"><span style="--d:1">Put Copilot and agents</span></span> <span class="ln"><span style="--d:2">to work on your</span></span> <span class="ln"><span style="--d:3">Dynamics 365 data</span></span></h1>
+      <p class="lead rise" style="--d:4">AI in Dynamics 365 comes in three forms: Copilot inside the app, agents Microsoft includes, and agents built for your business in Copilot Studio. enCloud9 builds each one after a data and permissions review and gives you the running cost first. Compana Pet Brands is testing Copilot Studio with enCloud9.</p>
       <div class="acts rise" style="--d:5">
         <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
         <a class="lnk" href="nine-guides.html">Free checkups, no obligation <span>&rarr;</span></a>
@@ -232,7 +232,7 @@ body.p-copilot .tbl tr.grp th{font-family:var(--mono);font-size:12px;font-weight
       <a class="cell" style="background:var(--b1);--d:0" href="nine-dynamics-365-sales.html"><span class="lab">App</span><span class="nm">Dynamics 365 Sales</span><span class="ds">Summaries, email drafts and meeting prep, inside the app</span><span class="st">Copilot in Enterprise and Premium</span><span class="ar" aria-hidden="true">&#8599;</span></a>
       <a class="cell" style="background:var(--b2);--d:1" href="#agents"><span class="lab">Agent, Sales</span><span class="nm">Sales Qualification Agent</span><span class="ds">Researches leads and drafts outreach</span><span class="st">Generally available</span><span class="ar" aria-hidden="true">&#8599;</span></a>
       <a class="cell" style="background:var(--b3);--d:2" href="#agents"><span class="lab">Agent, Sales</span><span class="nm">Sales Opportunity Agent</span><span class="ds">Flags deal risks and shows which deals to focus on</span><span class="st">Generally available</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-      <a class="cell" style="background:var(--b4);--d:3" href="#built"><span class="lab">Built for you</span><span class="nm">Copilot Studio agents</span><span class="ds">For a job only your business has</span><span class="st">Quoted on its own</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      <a class="cell" style="background:var(--b4);--d:3" href="#built"><span class="lab">Built for you</span><span class="nm">Copilot Studio agents</span><span class="ds">For a job only your business has</span><span class="st">Quoted in writing</span><span class="ar" aria-hidden="true">&#8599;</span></a>
       <a class="cell core" style="background:var(--b5);--d:4" href="#forms"><span class="lab">At the center</span><span class="nm">Copilot</span><span class="ds">Only sees records the signed-in person can already open</span></a>
       <a class="cell" style="background:var(--b6);--d:5" href="#genpages"><span class="lab">Pages</span><span class="nm">Generative pages</span><span class="ds">Describe a screen, get a working page</span><span class="st">Generally available</span><span class="ar" aria-hidden="true">&#8599;</span></a>
       <a class="cell lt" style="background:var(--b7);--d:6" href="nine-customer-service.html"><span class="lab">App</span><span class="nm">Customer Service</span><span class="ds">Answers from your knowledge, drafts replies, summarizes cases</span><span class="st">Copilot in Enterprise and Premium</span><span class="ar" aria-hidden="true">&#8599;</span></a>
@@ -274,7 +274,7 @@ body.p-copilot .tbl tr.grp th{font-family:var(--mono);font-size:12px;font-weight
         <span class="d"><b>Customer Service.</b> Dynamics 365 Customer Service includes agents that work on their own: creating and updating cases, finding the most common reasons customers get in touch, turning closed cases into knowledge articles, and scoring the quality of cases.</span>
         <span class="d">We switch on the ones that fit, test them on a small group first, and set a monthly limit on what they can spend.</span></div>
       <div><span class="mono">03</span><span class="t">Agents built for you</span>
-        <span class="d">For a job only your business has, we build an agent in <a class="lnk" href="nine-copilot-studio.html">Copilot Studio</a> that works on your Dynamics 365 data in Dataverse and can be published to Teams or your website. It is quoted on its own, with its running cost written down.</span></div>
+        <span class="d">For a job only your business has, enCloud9 builds an agent in <a class="lnk" href="nine-copilot-studio.html">Copilot Studio</a> that works on your Dynamics 365 data in Dataverse and can be published to Teams or your website. It is quoted in writing, with its running cost written down.</span></div>
     </div>
     <div class="band-foot">
       <a class="lnk" href="#agents">See every agent and its status <span>&rarr;</span></a>
@@ -287,7 +287,7 @@ body.p-copilot .tbl tr.grp th{font-family:var(--mono);font-size:12px;font-weight
   <section class="sec" id="agents" aria-labelledby="ag-h">
     <div class="sec-head rev">
       <h2 class="h2" id="ag-h">Which agents come with Dynamics 365 Sales and Customer Service?</h2>
-      <p class="lead">Microsoft includes agents with both apps. Each one runs on Copilot Credits, and some are still in preview, so we tell you which is which before you decide.</p>
+      <p class="lead">Microsoft includes agents with both apps. Each one runs on Copilot Credits, and some are still in preview, so enCloud9 tells you which is which before you decide.</p>
     </div>
     <div class="tbl-wrap rev" tabindex="0" role="region" aria-label="Table: Which agents come with Dynamics 365 Sales and Customer Service?">
       <table class="tbl tbl-stack">
@@ -309,9 +309,9 @@ body.p-copilot .tbl tr.grp th{font-family:var(--mono);font-size:12px;font-weight
           <tr><th scope="row" data-l="Agent">Service Agent</th><td data-l="What it does">Lets reps find, summarize and update case information from Microsoft 365 Copilot or Copilot Service workspace.</td><td class="sx" data-l="Status"><span class="chip ga">Generally available</span></td></tr>
         </tbody>
       </table>
-      <p class="fine">Agents run on Copilot Credits. Sales Premium includes 1,000 credits per user per month; other plans buy credits separately. If prepaid credits run out and no pay-as-you-go plan is set, the agents stop until more are added.</p>
+      <p class="fine">Agents run on Copilot Credits. Sales Premium includes 1,000 credits per user per month; other plans buy credits separately. If prepaid credits run out and no pay-as-you-go plan is set, the agents stop until more are added. Microsoft list prices from the <a class="lnk" href="https://www.microsoft.com/dynamics-365/products/sales/pricing">Sales</a> and <a class="lnk" href="https://www.microsoft.com/dynamics-365/products/customer-service/pricing">Customer Service</a> pricing pages, checked 10 Nov 2026; they do not include enCloud9&#8217;s setup.</p>
       <p class="fine" style="margin-top:10px">Customer Service Premium includes base credit capacity for the four service agents; other plans buy credits separately. Some agents, including the Case Management and Customer Intent agents, also need a pay-as-you-go plan on an Azure subscription.</p>
-      <p class="fine" style="margin-top:10px">Preview features are not meant for production use. We tell you which is which before you decide.</p>
+      <p class="fine" style="margin-top:10px">Preview features are not meant for production use. enCloud9 tells you which is which before you decide.</p>
     </div>
   </section>
 
@@ -321,7 +321,7 @@ body.p-copilot .tbl tr.grp th{font-family:var(--mono);font-size:12px;font-weight
         <span class="mono">Generative pages</span>
         <h2 class="h2" id="gp-h" style="margin-top:16px">Describe the screen. Watch the page build.</h2>
       </div>
-      <p class="lead">Generative pages let you describe a screen in plain English and get a working page inside a Dynamics 365 app. Microsoft's app agent writes the code and connects it to your Dataverse tables, and you refine it by chatting. This is AI used as a tool to build the report, and we rate it the best use of AI we have seen in a CRM.</p>
+      <p class="lead">Generative pages let you describe a screen in plain English and get a working page inside a Dynamics 365 app. Microsoft's app agent writes the code and connects it to your Dataverse tables, and you refine it by chatting. The AI builds the page; the finished page is an ordinary screen on your data.</p>
     </div>
 
     <div class="gx rev" data-gx>
@@ -461,13 +461,13 @@ body.p-copilot .tbl tr.grp th{font-family:var(--mono);font-size:12px;font-weight
       <div class="cards2 rev">
         <a class="story" href="nine-story-compana.html"><span class="mono">St. Louis &middot; Sales, Customer Service, Copilot Studio</span><span class="big">Copilot Studio</span><span class="t">Compana Pet Brands</span><span class="d">Ongoing support for Dynamics 365 Sales and Customer Service, plus Copilot Studio work on a Shopify integration.</span><span class="go">Read the Compana Pet Brands story &rarr;</span></a>
         <a class="story spec" href="nine-copilot-studio.html"><span class="mono">An agent built for you</span>
-          <dl><div><dt>Built in</dt><dd>Copilot Studio</dd></div><div><dt>Works on</dt><dd>Your Dynamics 365 data in Dataverse</dd></div><div><dt>Published to</dt><dd>Teams or your website</dd></div><div><dt>Priced</dt><dd>Quoted on its own, running cost written down</dd></div></dl>
+          <dl><div><dt>Built in</dt><dd>Copilot Studio</dd></div><div><dt>Works on</dt><dd>Your Dynamics 365 data in Dataverse</dd></div><div><dt>Published to</dt><dd>Teams or your website</dd></div><div><dt>Priced</dt><dd>Quoted in writing, running cost written down</dd></div></dl>
           <span class="go">About Copilot Studio &rarr;</span></a>
       </div>
       <div class="txt rev">
         <span class="mono">Agents built for you</span>
         <h2 class="h2" id="bt-h" style="margin-top:16px">What does an agent built for your business look like?</h2>
-        <p class="lead">For a job only your business has, we build an agent in Copilot Studio that works on your Dynamics 365 data in Dataverse and can be published to Teams or your website. It is quoted on its own, with its running cost written down.</p>
+        <p class="lead">For a job only your business has, enCloud9 builds an agent in Copilot Studio that works on your Dynamics 365 data in Dataverse and can be published to Teams or your website. It is quoted in writing, with its running cost written down.</p>
         <div class="acts" style="margin-top:28px"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Talk about your agent</a><a class="lnk" href="nine-dynamics-365-sales.html#check">Check if your data is ready <span>&rarr;</span></a></div>
       </div>
     </div>
@@ -488,7 +488,7 @@ body.p-copilot .tbl tr.grp th{font-family:var(--mono);font-size:12px;font-weight
       <details><summary>Are generative pages generally available?</summary><p>Yes. Generative pages in model-driven apps are generally available. Using Power Platform connectors and Dataverse custom APIs with them is still in preview.</p></details>
       <details><summary>Does building generative pages cost extra?</summary><p>Microsoft says the maker experience doesn't require any additional AI or message credits. Users still need a license for the app the page sits in.</p></details>
       <details><summary>Do generative pages replace Power BI or Copilot?</summary><p>No. Use Power BI for heavy analytics, Copilot for questions about your data, and generative pages for focused working screens.</p></details>
-      <details><summary>When does another tool work better than a generative page?</summary><p>Simple data entry, big reporting over lots of data, or a chat-style need. We will say so in Plan and point you to the better tool.</p></details>
+      <details><summary>When does another tool work better than a generative page?</summary><p>Simple data entry, big reporting over lots of data, or a chat-style need. enCloud9 will say so before the build and point you to the better tool.</p></details>
     </div>
     </div>
   </section>
