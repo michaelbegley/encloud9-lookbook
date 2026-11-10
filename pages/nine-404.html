@@ -479,12 +479,16 @@ header.top,.final{transition:opacity .5s var(--ease)}
       var hd=pts[0],hx=(((hd[0]%N)+N)%N+.5)*cell,hy=(((hd[1]%N)+N)%N+.5)*cell,v=D[dir],near=0;
       if(lead){var ddx=Math.abs(lead[0]-body[0][0]),ddy=Math.abs(lead[1]-body[0][1]);ddx=Math.min(ddx,N-ddx);ddy=Math.min(ddy,N-ddy);near=Math.max(0,1-(ddx+ddy-1)/2.5)}
       mouth+=((near>0?near:0)-mouth)*.2;
+      function intake(hx,hy){
       var px=-v[1],py=v[0],fw=cell*(.44+.08*mouth);   // flare: a trapezoid wider at the front
       ctx.fillStyle='#FFFFFF';ctx.beginPath();
       ctx.moveTo(hx-v[0]*cell*.18+px*cell*.36,hy-v[1]*cell*.18+py*cell*.36);ctx.lineTo(hx+v[0]*cell*.3+px*fw,hy+v[1]*cell*.3+py*fw);
       ctx.lineTo(hx+v[0]*cell*.3-px*fw,hy+v[1]*cell*.3-py*fw);ctx.lineTo(hx-v[0]*cell*.18-px*cell*.36,hy-v[1]*cell*.18-py*cell*.36);ctx.closePath();ctx.fill();
       ctx.fillStyle=mode==='over'?'#6F8FCB':C.bg;var ow=fw*(.62+.25*mouth);   // the opening: a dark slot across the wide end
       ctx.beginPath();ctx.ellipse(hx+v[0]*cell*.22,hy+v[1]*cell*.22,v[0]?cell*(.09+.05*mouth):ow,v[0]?ow:cell*(.09+.05*mouth),0,0,7);ctx.fill();
+      }
+      intake(hx,hy);   // and its twin on the far edge while it crosses a wrap, so the intake never looks cut off
+      if(hx<cell)intake(hx+W,hy);if(hx>W-cell)intake(hx-W,hy);if(hy<cell)intake(hx,hy+W);if(hy>W-cell)intake(hx,hy-W);
       ctx.restore()}
     // particles and score pops
     fx=fx.filter(function(p){p.x+=p.vx;p.y+=p.vy;p.vx*=.94;p.vy*=.94;p.life-=.025;if(p.life<=0)return false;ctx.globalAlpha=p.life;ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(p.x*cell,p.y*cell,p.r*cell*p.life+1,0,7);ctx.fill();return true});
