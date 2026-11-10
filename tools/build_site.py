@@ -57,6 +57,7 @@ MAP = {
     'nine-post-storage-warning.html': '/blog/microsoft-dataverse-storage-notifications/',
     'nine-post-crm-skills.html': '/blog/microsoft-dynamics-365-crm-skills-copilot/',
     'nine-post-customizations.html': '/blog/which-dynamics-365-customizations-are-worth-it-and-which-ones-we-usually-advise-against/',
+    'nine-guides.html': '/free-guides-and-checks/',
     'nine-email-verifier.html': '/email-verifier/',
     'nine-accelerators.html': '/encloud9-dynamics-365-crm-services/microsoft-dynamics-365-crm-accelerators/',
     'nine-support.html': '/microsoft-dynamics-365-support-services/',

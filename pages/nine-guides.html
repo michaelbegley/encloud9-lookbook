@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Free Dynamics 365 Guides and Checks | enCloud9</title>
+<meta name="description" content="Free help for Dynamics 365 teams: a Dataverse Storage Analysis, a CRM Health Check, a Copilot readiness check, downloadable guides and how-to videos.">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="nine.css">
+<script defer src="nine.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Free guides and checks", "item": "https://www.encloud9.com/free-guides-and-checks/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are the checks really free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Free checkups, no obligation. You get a straight answer on where your system stands, whether or not you work with us."}}, {"@type": "Question", "name": "Which check should I start with?", "acceptedAnswer": {"@type": "Answer", "text": "If Microsoft is sending you storage warnings, start with the Dataverse Storage Analysis. If the system feels slow, messy or unused, start with the CRM Health Check."}}]}</script>
+<style>
+/* package pages (full implementation, rescue and repair) (9 Nov): spec card in the hero, included/not included, Fit Check rows, other packages strip */
+body.p-pkg .grid9{margin-top:4px}
+body.p-pkg .spec{margin:14px 0 0;display:grid;border-top:2px solid var(--ink)}
+body.p-pkg .spec div{display:grid;grid-template-columns:90px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--line);align-items:baseline}
+body.p-pkg .spec dd{margin:0;font-weight:600;font-size:16px;line-height:1.4}
+body.p-pkg .fit.two-col{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+body.p-pkg .fit .lnk{color:var(--b5);font-weight:600}
+body.p-pkg .inc-foot{display:flex;justify-content:space-between;align-items:center;gap:20px 40px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+body.p-pkg .inc-foot .ask{font-weight:600}
+body.p-pkg .fitsplit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(32px,5vw,72px);align-items:start}
+body.p-pkg .fitsplit .side{position:sticky;top:110px;display:flex;flex-direction:column;gap:20px}
+body.p-pkg .fitsplit .fit{grid-template-columns:1fr;gap:44px}
+body.p-pkg .notsure-l{font-weight:600;font-size:18px;margin:0}
+body.p-pkg .ptiles.plans .ptile{aspect-ratio:auto;min-height:340px}
+body.p-pkg .ptile .price{font-family:var(--head);font-size:clamp(40px,3.6vw,54px);font-weight:600;letter-spacing:-.035em;line-height:1}
+body.p-pkg .ptile .price small{font-size:15px;font-weight:500;letter-spacing:0;margin-left:6px;opacity:.85}
+body.p-pkg .ptile .ds b{color:var(--white);font-weight:600}
+body.p-pkg .ptile .min{align-self:flex-start;padding:3px 7px;background:rgba(255,255,255,.18);font-family:var(--mono);font-size:11px;color:var(--white)}
+body.p-pkg .sp-foot{display:flex;justify-content:space-between;align-items:flex-start;gap:24px 48px;flex-wrap:wrap;margin-top:24px}
+body.p-pkg .sp-foot .fine{margin-top:0;max-width:760px}
+body.p-pkg .story .big{font-family:var(--head);font-size:clamp(40px,4vw,56px);font-weight:600;letter-spacing:-.035em;line-height:1;color:var(--b3)}
+body.p-pkg .lnav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+body.p-pkg .lnav a{display:flex;flex-direction:column;gap:10px;justify-content:space-between;min-height:120px;padding:16px;background:var(--c);color:var(--white);font-family:var(--head);font-weight:600;font-size:18px;line-height:1.2;transition:transform .35s var(--ease)}
+body.p-pkg .lnav a .mono{color:rgba(255,255,255,.8);font-size:11px;font-weight:400}
+body.p-pkg .lnav a:hover{transform:translateY(-4px)}
+body.p-pkg .lnav a:focus-visible{outline:3px solid var(--b6);outline-offset:3px}
+body.p-pkg .grid9 .cell.core .nm{font-size:clamp(15px,1.75vw,24px);hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+body.p-pkg #fitcheck .three .d{color:var(--muted)}
+body.p-pkg .grid9 .cell.lt .lab{color:var(--ink)}
+body.p-pkg .proof .num{white-space:nowrap}
+@media (max-width:420px){body.p-pkg .proof .num{font-size:clamp(28px,9vw,40px)}body.p-pkg .proof .pf{min-width:0}}
+body.p-pkg #others{padding-top:clamp(48px,6vw,80px)}
+body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--ink2)}
+@media (max-width:1100px){body.p-pkg .lnav{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:860px){body.p-pkg .fitsplit,body.p-pkg .fit.two-col{grid-template-columns:1fr}body.p-pkg .fitsplit .side{position:static}}
+@media (max-width:560px){body.p-pkg .grid9 .cell.core .nm{font-size:13px;hyphens:none;-webkit-hyphens:none}body.p-pkg .lnav{grid-template-columns:1fr 1fr}body.p-pkg .spec div{grid-template-columns:1fr;gap:2px}body.p-pkg .ptiles.plans .ptile{min-height:0}}
+</style>
+<style>.gcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}.gcards a{display:flex;flex-direction:column;gap:10px;background:var(--bg,#fff);padding:26px;text-decoration:none;color:var(--ink);min-height:200px}.gcards a:hover{background:var(--tint,#EAF0F8)}.gcards .t{font-family:var(--head);font-size:21px;font-weight:600;line-height:1.25}.gcards .d{color:var(--muted);font-size:16px;flex:1}.gcards .go{font-family:var(--mono);font-size:12px;color:var(--b5)}.gcards.two{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:900px){.gcards{grid-template-columns:1fr 1fr}}@media(max-width:560px){.gcards{grid-template-columns:1fr}.gcards a{min-height:0}}</style>
+</head>
+<body class="p-pkg">
+<nav id="lbbar" aria-label="Lookbook">
+  <a href="../index.html">All looks</a><span class="t hide-s">Look 9, Nine, built pages</span>
+  <a href="nine-home.html">Home</a><a href="nine-packages.html">Packages</a><a href="nine-sales-accelerator.html" class="on" aria-current="page">Sales Accelerator</a><a href="nine-marketing.html" class="hide-s">Marketing</a>
+  <span class="sp"></span><span class="t">Font</span>
+  <button type="button" data-setfont="hanken" aria-pressed="true">Hanken</button><button type="button" data-setfont="jakarta" aria-pressed="false">Jakarta</button><button type="button" data-setfont="public" aria-pressed="false">Public Sans</button><button type="button" data-setfont="bricolage" aria-pressed="false">Bricolage</button>
+</nav>
+<header class="top">
+  <a class="skip" href="#main">Skip to main content</a>
+  <div class="wrap">
+    <a class="logo" href="nine-home.html" aria-label="enCloud9 home"><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9" width="104" height="34"></a>
+    <nav class="nav" aria-label="Main"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="nine-blog.html">Blog</a><a href="nine-about.html" class="cur">About<span class="sr-only"> (current section)</span></a></nav>
+    <a class="tel" href="tel:+18442640729">1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+    <a class="btn btn-p call-m" href="tel:+18442640729">Call</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="nine-blog.html">Blog</a><a href="nine-about.html">About</a><a href="tel:+18442640729">Call 1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+  </nav>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="nine-home.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Free guides and checks</span></nav>
+  <section class="hero" aria-labelledby="h1">
+    <div class="copy">
+      <span class="mono rise" style="--d:0">Free &middot; Guides and checks</span>
+      <h1 class="h1" id="h1" style="font-size:clamp(40px,5.4vw,72px)"><span class="ln"><span style="--d:1">Free guides</span></span> <span class="ln"><span style="--d:2">and checks</span></span></h1>
+      <p class="lead rise" style="--d:3">Free help for Dynamics 365 teams, each piece built to fix one problem. Book a free check and we look at your own system with you, or download a guide and work through it yourself. Free checkups, no obligation: you get a straight answer, whether or not you work with us.</p>
+      <div class="acts rise" style="--d:4"><a class="btn btn-p" href="nine-storage.html">Book a free storage analysis</a><a class="lnk" href="#guides">See the guides <span>&rarr;</span></a></div>
+    </div>
+    <div>
+      <div class="grid9" role="list" aria-label="Free help from enCloud9">
+        <a role="listitem" class="cell" style="background:var(--b1);--d:0" href="#checks"><span class="lab">Free check</span><span class="nm">Storage</span><span class="ds">Dataverse Storage Analysis</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b2);--d:1" href="#checks"><span class="lab">Free check</span><span class="nm">Health Check</span><span class="ds">Your Dynamics 365 setup</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b3);--d:2" href="#checks"><span class="lab">Two minutes</span><span class="nm">Copilot</span><span class="ds">Readiness check</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b4);--d:3" href="#guides"><span class="lab">Download</span><span class="nm">Guides</span><span class="ds">Checklists and how-tos</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell core" style="background:var(--b5);--d:4" href="#checks"><span class="lab">Free</span><span class="nm">No obligation</span><span class="ds">A straight answer</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b6);--d:5" href="#videos"><span class="lab">Watch</span><span class="nm">Videos</span><span class="ds">Short how-tos</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b7);--d:6" href="nine-blog.html"><span class="lab">Read</span><span class="nm">Blog</span><span class="ds">Weekly posts</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b8);--d:7" href="nine-faq.html"><span class="lab">Ask</span><span class="nm">All questions</span><span class="ds">Every answer in one place</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b9);--d:8" href="nine-d365-licensing.html"><span class="lab">Coming</span><span class="nm">License check</span><span class="ds">Before February 2027</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="checks" aria-labelledby="ck-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="ck-h">Which free checks can we run on your system?</h2>
+      <p class="lead">A check is a short session on your own Dynamics 365 system. You leave with written findings and a next step.</p>
+    </div>
+    <div class="gcards rev">
+      <a href="nine-storage.html"><span class="mono">Free check</span><span class="t">Dataverse Storage Analysis</span><span class="d">What is filling your storage, which type is over, and a written plan to stay under the limit. One hour.</span><span class="go">Book it &rarr;</span></a>
+      <a href="nine-home.html#checkups"><span class="mono">Free check</span><span class="t">CRM Health Check</span><span class="d">A review of your Dynamics 365 setup, with findings ranked by what each fix is worth.</span><span class="go">Book it &rarr;</span></a>
+      <a href="nine-home.html#checkups"><span class="mono">Free check</span><span class="t">Copilot readiness check</span><span class="d">Five questions on data and permissions, with a written next step. About two minutes.</span><span class="go">Start &rarr;</span></a>
+    </div>
+  </section>
+
+  <section class="sec" id="guides" aria-labelledby="gd-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="gd-h">Which guides can I download?</h2>
+      <p class="lead">Each guide covers one job in Dynamics 365. Fill in a short form to get it.</p>
+    </div>
+    <div class="gcards rev">
+      <a href="https://www.encloud9.com/lp/dynamics-365-crm-cleanup-checklist/"><span class="mono">Free guide</span><span class="t">Dynamics 365 CRM Cleanup Checklist for Admins</span><span class="d">A free PDF checklist for cleaning up a Dynamics 365 system.</span><span class="go">Get the guide &rarr;</span></a>
+      <a href="https://www.encloud9.com/lp/copilot-guide-dynamics-365-crm/"><span class="mono">Free guide</span><span class="t">Microsoft Copilot Guide for Dynamics 365 CRM Users</span><span class="d">A free guide to Copilot in Dynamics 365 Sales and Customer Service.</span><span class="go">Get the guide &rarr;</span></a>
+      <a href="https://www.encloud9.com/lp/dynamics-365-sales-management-guide/"><span class="mono">Free guide</span><span class="t">Sales Management Best Practices for Dynamics 365</span><span class="d">A free guide for sales managers running a team in Dynamics 365.</span><span class="go">Get the guide &rarr;</span></a>
+    </div>
+  </section>
+
+  <section class="sec" id="videos" aria-labelledby="vd-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="vd-h">Are there short how-to videos?</h2>
+      <p class="lead">Yes. Each one walks through a single task in Dynamics 365, start to finish.</p>
+    </div>
+    <div class="gcards two rev">
+      <a href="https://youtu.be/HUgUlEYomKM"><span class="mono">Video</span><span class="t">Easily Track Last and Next Activity Dates in Dynamics 365</span><span class="d">A short walkthrough on YouTube.</span><span class="go">Watch on YouTube &rarr;</span></a>
+      <a href="https://youtu.be/pZdhwN6AIM4"><span class="mono">Video</span><span class="t">How to Use Lead Sequences in Dynamics 365 Sales</span><span class="d">A short walkthrough on YouTube.</span><span class="go">Watch on YouTube &rarr;</span></a>
+      <a href="https://youtu.be/mJ2Vf09tGng"><span class="mono">Video</span><span class="t">How to Link Leads to Campaigns in Dynamics 365</span><span class="d">A short walkthrough on YouTube.</span><span class="go">Watch on YouTube &rarr;</span></a>
+      <a href="https://youtu.be/5Q-JYI6b-So"><span class="mono">Video</span><span class="t">How to Create a Lead from an Outlook Email in Copilot for Sales</span><span class="d">A short walkthrough on YouTube.</span><span class="go">Watch on YouTube &rarr;</span></a>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" aria-labelledby="fq-h">
+    <div class="faqsplit">
+    <div class="faqside rev">
+      <h2 class="h2" id="fq-h">Questions about the free guides and checks</h2>
+      <p class="lead" style="margin-top:18px">Something else on your mind? Ask us on a call. You get a straight answer, whether or not you work with us.</p>
+      <div class="acts" style="margin-top:24px"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="nine-faq.html">All questions <span>&rarr;</span></a></div>
+    </div>
+    <div>
+    <div class="faq rev">
+      <details><summary>Are the checks really free?</summary><p>Yes. Free checkups, no obligation. You get a straight answer on where your system stands, whether or not you work with us.</p></details>
+      <details><summary>What happens after I download a guide?</summary><p>You get the guide after a short form. [Follow-up email from a real person a few days later, per the lead magnet plan; Brian approves the wording.]</p></details>
+      <details><summary>Which check should I start with?</summary><p>If Microsoft is sending you storage warnings, start with the <a class="lnk" href="nine-storage.html">Dataverse Storage Analysis</a>. If the system feels slow, messy or unused, start with the CRM Health Check.</p></details>
+      <details><summary>How often do you add new guides?</summary><p>We add a guide when something changes in Dynamics 365 that teams need to act on. [Monthly cadence planned; confirm before launch.]</p></details>
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="sec" id="others" aria-labelledby="op-h">
+    <h2 class="mono" id="op-h" style="font-weight:400;margin:0 0 16px">Related</h2>
+    <nav class="lnav rev" aria-labelledby="op-h">
+      <a class="lt" href="nine-storage.html" style="--c:var(--b6)"><span class="mono">Free check</span>Dataverse storage</a>
+      <a href="nine-d365-licensing.html" style="--c:var(--b5)"><span class="mono">Dynamics 365</span>Licensing</a>
+      <a href="nine-blog.html" style="--c:var(--b4)"><span class="mono">Read</span>Blog</a>
+      <a href="nine-contact.html" style="--c:var(--b3)"><span class="mono">Company</span>Contact us</a>
+    </nav>
+  </section>
+</div>
+
+<section class="final" aria-labelledby="fc-h">
+  <div class="wrap">
+    <div class="inner">
+      <div class="rev">
+        <h2 class="h2" id="fc-h">Start with a call or a free checkup</h2>
+        <p class="lead">Tell us where your system is today. You get a straight answer on which package fits, whether or not you work with us.</p>
+      </div>
+      <div class="side rev">
+        <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+        <a class="lnk" href="nine-dynamics-365-sales.html#check">Free checkups, no obligation <span>&rarr;</span></a>
+        <span class="mono">Or call <a href="tel:+18442640729">1-844-264-0729</a>, 7:00am to 5:00pm Central, Monday to Friday.</span>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="fcols">
+        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft Partner since [2008], specializing in Dynamics 365.</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
+        <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-marketing.html">Marketing automation</a><a href="nine-d365-pricing.html">Dynamics 365 pricing</a></nav>
+        <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="nine-power-platform.html">Power Platform</a><a href="nine-copilot-studio.html">Copilot Studio</a><a href="nine-power-apps.html">Power Apps</a><a href="nine-power-bi.html">Power BI</a></nav>
+        <nav aria-label="Packages and support"><b>Packages and support</b><a href="nine-packages.html">All packages</a><a href="nine-sales-accelerator.html">Sales Accelerator</a><a href="nine-service-accelerator.html">Service Accelerator</a><a href="nine-rescue-repair.html">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>
+        <nav aria-label="Company"><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-stories.html">Client stories</a><a href="nine-blog.html">Blog</a><a href="nine-contact.html">Contact us</a><a href="nine-faq.html">All questions</a><a href="nine-guides.html">Free guides and checks</a><a href="nine-omaha.html">Omaha and Nebraska</a></nav>
+      </div>
+      <div class="tm">enCloud9 LLC, [address Brian confirms]. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies.</div>
+    </footer>
+  </div>
+  <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>
+</section>
+</main>
+</body>
+</html>
