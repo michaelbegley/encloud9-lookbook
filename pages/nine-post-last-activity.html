@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="nine.css">
 <script defer src="nine.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "How To Track the Last Activity Date in Microsoft Dynamics 365 Sales", "item": "https://www.encloud9.com/blog/how-to-track-the-last-activity-date-in-microsoft-dynamics-365-sales/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How To Track the Last Activity Date in Microsoft Dynamics 365 Sales", "description": "Dynamics 365 has no built-in last activity date. Add rollup fields for last activity and next activity due, step by step, with a video tutorial.", "url": "https://www.encloud9.com/blog/how-to-track-the-last-activity-date-in-microsoft-dynamics-365-sales/", "datePublished": "2025-02-13", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How To Track the Last Activity Date in Microsoft Dynamics 365 Sales", "description": "Dynamics 365 has no built-in last activity date. Add rollup fields for last activity and next activity due, step by step, with a video tutorial.", "url": "https://www.encloud9.com/blog/how-to-track-the-last-activity-date-in-microsoft-dynamics-365-sales/", "datePublished": "2025-02-13", "dateModified": "2026-11-10", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
 <style>
 /* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
 body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
@@ -233,8 +233,8 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
       </nav>
 
       <div class="art" id="art">
-        <p class="answer"><span class="mono">The short answer</span><strong>Keeping track of past and upcoming interactions with prospects, customers, and accounts is essential for effective sales and customer management. However, <strong>Microsoft Dynamics 365 does not include a built-in field to monitor the last activity date or the next activity due date.</strong> This missing feature can make it difficult for teams to stay organized and follow up with leads at the right time.</strong></p>
-        <p>The good news? <strong>You can easily add rollup fields to capture this information automatically.</strong> In this blog, we’ll walk you through the steps to create and implement these fields, helping you improve engagement tracking and follow-up consistency.</p>
+        <p class="answer"><span class="mono">The short answer</span><strong>Microsoft Dynamics 365 does not include a built-in last activity date. Add two rollup columns to the lead table: Last Activity Date, the maximum Actual End date of its activities, and Next Activity Due Date, the minimum Due Date of its open activities. Then add both to your forms and views so reps see who needs follow-up.</strong></p>
+        <p>The steps below show how, and the full tutorial is also on YouTube.</p>
         <p><strong>Watch the full tutorial on YouTube:</strong> <a href="https://youtu.be/HUgUlEYomKM">Easily Track Last & Next Activity Dates in Dynamics 365</a></p>
         <h2 id="why-tracking-activity-dates-matters">Why Tracking Activity Dates Matters</h2>
         <p>Knowing the <strong>last activity date</strong> allows sales teams to quickly see when they last engaged with a lead, contact, or account. If a prospect hasn’t been contacted in a while, it might be time to re-engage.</p>
@@ -260,7 +260,7 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
         <p>Once the fields are created, add them to your <strong>Lead forms</strong> for easy access. You should also include them in your <strong>Open Leads views</strong> to monitor past and future activities at a glance.</p>
         <h2 id="improve-crm-tracking-with-rollup-fields">Improve CRM Tracking with Rollup Fields</h2>
         <p>By adding these rollup fields, your team can <strong>stay organized, follow up on time, and never miss a critical opportunity.</strong></p>
-        <p><strong>Note:</strong> Rollup fields take <strong>up to 12 hours</strong> to update across all records.</p>
+        <p><strong>Note:</strong> Existing records fill in about 12 hours after you create the column. After that, values refresh about every hour, or right away with Recalculate on the form. See <a href="https://learn.microsoft.com/power-apps/maker/data-platform/define-rollup-fields">rollup columns on Microsoft Learn</a> (checked 10 November 2026).</p>
         <p>Try implementing these fields in Dynamics 365 today and optimize your sales process!</p>
         <h2 id="about-encloud9">About enCloud9</h2>
         <p>enCloud9 is a Dynamics 365 partner specializing in CRM solutions that help businesses streamline their <a href="nine-dynamics-365-sales.html">sales</a>, <a href="nine-marketing.html">marketing</a>, and <a href="nine-customer-service.html">customer service</a> operations. Our team provides expert implementation, customization, and <a href="nine-support.html">support services</a>.</p>
@@ -268,7 +268,7 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
 
         <section class="abox" aria-labelledby="ab-h">
           <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
-          <div><h2 class="nm" id="ab-h">About the author: Brian Begley</h2><p>[One line on Brian's role at enCloud9, Brian confirms.]</p></div>
+          <div><h2 class="nm" id="ab-h">About the author: Brian Begley</h2><p>Brian Begley is the founder and CEO of enCloud9.</p></div>
         </section>
 
         <div class="ctabox">
@@ -298,9 +298,9 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
       <p class="lead">More from the enCloud9 blog. <a class="lnk" href="nine-blog.html">All posts <span>&rarr;</span></a></p>
     </div>
     <div class="rel rev">
-      <a class="pc" style="--c:var(--b7)" href="nine-post-click-dashboards.html"><span class="mono">Marketing automation &middot; July 1, 2025</span><span class="t">ClickDimensions Dashboards: What’s Changed and Why It Matters</span><span class="d">ClickDimensions added five dashboards inside Dynamics 365 for campaigns, emails, forms,.</span><span class="go">Read the post &#8599;</span></a>
-      <a class="pc" style="--c:var(--b5)" href="nine-post-qualification-agent.html"><span class="mono">Copilot and AI &middot; August 18, 2025</span><span class="t">Smarter Selling with the Dynamics 365 Sales Qualification Agent</span><span class="d">How the Dynamics 365 Sales Qualification Agent researches, scores and follows up with.</span><span class="go">Read the post &#8599;</span></a>
-      <a class="pc" style="--c:var(--b3)" href="nine-post-partner-list-2026.html"><span class="mono">News &middot; September 23, 2026</span><span class="t">enCloud9 Recognized on CRM Software Blog’s Best Dynamics 365 Partner List 2026</span><span class="d">enCloud9 was named on CRM Software Blog&#x27;s Best Dynamics 365 Partner List 2026, the only.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b7)" href="nine-post-leads-cracks.html"><span class="mono">Admin and how-to &middot; September 9, 2026</span><span class="t">How to Stop Leads From Falling Through the Cracks in Dynamics 365</span><span class="d">Four ways to stop leads going cold in Dynamics 365: an owner for every lead, a next step with sequences, regular reviews and automation as a safety net.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b5)" href="nine-blog-2024.html"><span class="mono">Admin and how-to &middot; June 12, 2024</span><span class="t">Enabling and Utilizing Sales Usage Reports in Dynamics 365</span><span class="d">How to enable Sales Usage Reports in Dynamics 365 Sales and what they show. June 2024 post; Microsoft deprecated the reports on December 1, 2025.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b3)" href="nine-post-customizations.html"><span class="mono">Admin and how-to &middot; October 7, 2026</span><span class="t">Which Dynamics 365 Customizations Are Worth It (And Which Ones We Usually Advise Against)</span><span class="d">The Dynamics 365 customizations we usually recommend, the ones we advise against, and five questions to ask before you build one.</span><span class="go">Read the post &#8599;</span></a>
     </div>
   </section>
 </div>

@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>The Microsoft Dataverse Storage Warning You Shouldn’t Ignore</title>
+<title>Dataverse Storage Warning: What It Means and What to Do</title>
 <meta name="description" content="What a Microsoft Dataverse storage warning means, what happens when you go over your limit, and how to get back under it before sandboxes lock.">
 <!--headmeta-->
 <link rel="canonical" href="./">
 <meta property="og:site_name" content="enCloud9">
 <meta property="og:type" content="article">
-<meta property="og:title" content="The Microsoft Dataverse Storage Warning You Shouldn’t Ignore">
+<meta property="og:title" content="Dataverse Storage Warning: What It Means and What to Do">
 <meta property="og:description" content="What a Microsoft Dataverse storage warning means, what happens when you go over your limit, and how to get back under it before sandboxes lock.">
 <meta property="og:url" content="https://www.encloud9.com/blog/microsoft-dataverse-storage-notifications/">
 <meta property="og:image" content="https://michaelbegley.github.io/encloud9-lookbook/assets/brand/share-card.png">
@@ -22,9 +22,9 @@
 <link rel="stylesheet" href="../../../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../../../pages/nine.css">
 <script defer src="../../../pages/nine.js"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "The Microsoft Dataverse Storage Warning You Shouldn’t Ignore", "item": "https://www.encloud9.com/blog/microsoft-dataverse-storage-notifications/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "The Microsoft Dataverse Storage Warning You Shouldn’t Ignore", "description": "What a Microsoft Dataverse storage warning means, what happens when you go over your limit, and how to get back under it before sandboxes lock.", "url": "https://www.encloud9.com/blog/microsoft-dataverse-storage-notifications/", "datePublished": "2026-11-03", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Will Dynamics 365 CRM stop working?", "acceptedAnswer": {"@type": "Answer", "text": "No. Your production apps keep running. But anything that needs a restore, a copy or a test environment is blocked."}}, {"@type": "Question", "name": "Can we turn off Microsoft’s storage warning emails or notifications?", "acceptedAnswer": {"@type": "Answer", "text": "No. Once you are near or over the limit, your admins get the emails every week and see the warning banners, with no way to switch them off."}}, {"@type": "Question", "name": "What takes up the most Dataverse storage?", "acceptedAnswer": {"@type": "Answer", "text": "Old emails and their attachments, notes and attachments, audit history, logs, and environments nobody uses anymore. The analysis shows the tables using the most space and the ones growing fastest."}}, {"@type": "Question", "name": "What is the free Dataverse Storage Analysis?", "acceptedAnswer": {"@type": "Answer", "text": "A one-hour Teams meeting with an enCloud9 consultant. We find what is using your storage and how fast it is growing, and work with you on a plan to get back under your limit. It is free, and open to any organization."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "Dataverse Storage Warning: What It Means and What to Do", "item": "https://www.encloud9.com/blog/microsoft-dataverse-storage-notifications/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Dataverse Storage Warning: What It Means and What to Do", "description": "What a Microsoft Dataverse storage warning means, what happens when you go over your limit, and how to get back under it before sandboxes lock.", "url": "https://www.encloud9.com/blog/microsoft-dataverse-storage-notifications/", "datePublished": "2026-11-03", "dateModified": "2026-11-10", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Will Dynamics 365 CRM stop working?", "acceptedAnswer": {"@type": "Answer", "text": "No. Your production apps keep running. But anything that needs a restore, a copy or a test environment is blocked."}}, {"@type": "Question", "name": "Can we turn off Microsoft’s storage warning emails or notifications?", "acceptedAnswer": {"@type": "Answer", "text": "No. Admins get the emails every week with no opt-out. The banner can be dismissed for seven days, then it comes back."}}, {"@type": "Question", "name": "What takes up the most Dataverse storage?", "acceptedAnswer": {"@type": "Answer", "text": "Old emails and their attachments, notes and attachments, audit history, logs, and environments nobody uses anymore. The analysis shows the tables using the most space and the ones growing fastest."}}, {"@type": "Question", "name": "What is the free Dataverse Storage Analysis?", "acceptedAnswer": {"@type": "Answer", "text": "A one-hour Teams meeting with an enCloud9 consultant. We find what is using your storage and how fast it is growing, and work with you on a plan to get back under your limit. It is free, and open to any organization."}}]}</script>
 <style>
 /* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
 body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
@@ -192,12 +192,12 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
 
 <main id="main">
 <div class="wrap">
-  <nav class="crumb" aria-label="Breadcrumb"><a href="../../">Home</a><span class="sep" aria-hidden="true">/</span><a href="../">Blog</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">The Microsoft Dataverse Storage Warning You Shouldn’t Ignore</span></nav>
+  <nav class="crumb" aria-label="Breadcrumb"><a href="../../">Home</a><span class="sep" aria-hidden="true">/</span><a href="../">Blog</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Dataverse Storage Warning: What It Means and What to Do</span></nav>
 
   <article aria-labelledby="h1">
     <header class="phead">
       <div class="pmain">
-        <h1 class="h1 rise" id="h1" style="--d:2">The Microsoft Dataverse Storage Warning You Shouldn’t Ignore</h1>
+        <h1 class="h1 rise" id="h1" style="--d:2">Dataverse Storage Warning: What It Means and What to Do</h1>
                 <span class="mono cat rise" style="--d:1">Admin and how-to</span>
         <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>November 3, 2026</b></span><span>4 min read</span></p>
       </div>
@@ -229,10 +229,9 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
       </nav>
 
       <div class="art" id="art">
-        <p class="answer"><span class="mono">The short answer</span><strong>A Dataverse storage warning means your tenant has less than 15% of its database, file or log storage left. Microsoft emails admins every week, warns again under 5%, and again once you go over. Over the limit, you can’t create, copy, restore or recover environments. Production keeps running, but sandboxes are restricted the longer the overage lasts.</strong></p>
+        <p class="answer"><span class="mono">The short answer</span><strong>A Dataverse storage warning means your tenant has less than 15% of its database, file or log storage left. Microsoft emails admins every week, warns again under 5%, and again once you go over. Over the limit, you can’t create, copy, restore or recover environments. Production keeps running, and Microsoft is rolling out stricter limits for sandboxes.</strong></p>
         <h2 id="what-does-a-dataverse-storage-warning-me">What does a Dataverse storage warning mean?</h2>
-        <p>Have you received a Microsoft Dataverse storage notification? Maybe you received a Dataverse storage warning and thought, <em>“We’ll deal with that later.”</em> You’re not alone. Most companies don’t spend much time thinking about Microsoft Dataverse storage until Microsoft warns them that they are at 85% of their allocation. By then, the issue may have been growing for months, sometimes years, without anyone realizing it.</p>
-        <p>The good news is that these notifications give you an opportunity to <strong>get ahead of the problem</strong>. The bad news is that ignoring them could create challenges for your Dynamics 365 and Power Platform environments down the road.</p>
+        <p>Most companies don’t think about Dataverse storage until Microsoft warns them. By then, the issue may have been growing for months without anyone realizing it.</p>
         <p>Microsoft Dataverse sits at the heart of Dynamics 365 and Power Platform environments. It has three kinds of storage: database, file and log. Microsoft sends the first warning when any of the three has less than 15% left, the next under 5%, and the last when you go over. Admins and makers get the emails every week, and a banner shows in the Power Platform admin center and your Dynamics 365 apps.</p>
         <h2 id="what-is-using-up-your-dataverse-storage">What is using up your Dataverse storage?</h2>
         <p>Every customer record, attachment, workflow, integration, audit log, and business process adds to your Dataverse storage usage. The problem is that storage growth isn’t always obvious. It happens little by little until one day Microsoft starts sending notifications.</p>
@@ -249,31 +248,31 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
         <p>When Dataverse storage warning notifications start showing up, it’s easy to push them to the bottom of the priority list. After all, everything is still working. But that’s exactly why these notifications catch people off guard.</p>
         <p>Storage issues rarely become urgent overnight. They build quietly in the background until your team suddenly needs to create an environment, perform a restore, refresh a sandbox, or support a deployment. That’s when storage becomes everyone’s problem. The sooner you understand what’s driving your storage growth, the more options you’ll have to address it.</p>
         <h2 id="what-happens-when-you-go-over-your-datav">What happens when you go over your Dataverse storage limit?</h2>
-        <p>Ignoring a Microsoft Dataverse storage notification doesn’t stop storage from growing. Once you go over, <a href="https://learn.microsoft.com/en-us/power-platform/admin/capacity-storage">Microsoft’s capacity rules</a> work in stages:</p>
+        <p>Ignoring a Microsoft Dataverse storage notification doesn’t stop storage from growing. Once you go over, <a href="https://learn.microsoft.com/en-us/power-platform/admin/capacity-storage">Microsoft’s capacity rules</a> work in stages. Microsoft is rolling out the stricter checks, so the 30 and 90 day stages apply once they reach your tenant:</p>
         <ul>
           <li><strong>The day you go over:</strong> you can’t create, copy, restore or recover environments.</li>
           <li><strong>After 30 days:</strong> your sandbox environments lock to administrators only.</li>
           <li><strong>After 90 days:</strong> nobody can sign in to those sandboxes, admins included.</li>
         </ul>
-        <p>Your production apps keep running through all of it. But anything that needs a restore, a copy or a test environment is blocked. The longer you wait, the greater the risk of unexpected costs, unnecessary storage purchases, and operational headaches.</p>
+        <p>Production environments never enter the admin-only or blocked stages, so your production apps keep running. But anything that needs a restore, a copy or a test environment is blocked. The longer you wait, the greater the risk of unexpected costs, unnecessary storage purchases, and operational headaches.</p>
         <p><strong>A simple assessment today from enCloud9</strong> can help prevent a much more expensive problem tomorrow. A proactive assessment is almost always easier, less expensive, and far less disruptive than reacting after the fact.</p>
         <h2 id="how-encloud9-helps-you-take-control-of-d">How enCloud9 helps you take control of Dataverse storage</h2>
         <p>If Microsoft is sending you Dataverse storage notifications, don’t spend weeks wondering whether they’re important. Find out.</p>
-        <p>Our <strong>Microsoft Dataverse Storage Analysis</strong> gives you a clear picture of what’s happening inside your environment. We’ll identify what’s consuming your storage, where growth is occurring, and what steps you can take to reduce risk before it impacts your business.</p>
-        <p>We’ll also help you determine whether additional Dataverse storage is actually necessary, or whether you can reclaim capacity through better governance, data cleanup, and optimization. Every extra GB of database storage can cost up to $500 a year, so cleaning up often pays for itself.</p>
+        <p>enCloud9’s <strong>Microsoft Dataverse Storage Analysis</strong> gives you a clear picture of what’s happening inside your environment. We’ll identify what’s consuming your storage, where growth is occurring, and what steps you can take to reduce risk before it impacts your business.</p>
+        <p>We’ll also help you determine whether additional Dataverse storage is actually necessary, or whether you can reclaim capacity through better governance, data cleanup, and optimization. Extra database storage lists at <a href="https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq">$40 per GB per month</a> ($480 a year), and <a href="https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters">$48 on pay-as-you-go</a>, so cleaning up often pays for itself.</p>
         <p>And because storage management isn’t a one-time project, many customers pair that analysis with one of our <strong><a href="../../microsoft-dynamics-365-support-services/">ongoing support plans</a></strong>. enCloud9’s managed services team helps monitor your environment, provide governance guidance, and stay ahead of problems before they turn into costly disruptions.</p>
         <p>The companies that avoid storage headaches aren’t necessarily the ones with the biggest budgets. They’re the ones that take action before small issues become big ones.</p>
         <h2 id="faq">Frequently asked questions</h2>
         <div class="faq">
           <details><summary>Will Dynamics 365 CRM stop working?</summary><p>No. Your production apps keep running. But anything that needs a restore, a copy or a test environment is blocked.</p></details>
-          <details><summary>Can we turn off Microsoft’s storage warning emails or notifications?</summary><p>No. Once you are near or over the limit, your admins get the emails every week and see the warning banners, with no way to switch them off.</p></details>
+          <details><summary>Can we turn off Microsoft’s storage warning emails or notifications?</summary><p>No. Admins get the emails every week with no opt-out. The banner can be dismissed for seven days, then it comes back.</p></details>
           <details><summary>What takes up the most Dataverse storage?</summary><p>Old emails and their attachments, notes and attachments, audit history, logs, and environments nobody uses anymore. The analysis shows the tables using the most space and the ones growing fastest.</p></details>
           <details><summary>What is the free Dataverse Storage Analysis?</summary><p>A one-hour Teams meeting with an enCloud9 consultant. We find what is using your storage and how fast it is growing, and work with you on a plan to get back under your limit. It is free, and open to any organization.</p></details>
         </div>
 
         <section class="abox" aria-labelledby="ab-h">
           <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
-          <div><h2 class="nm" id="ab-h">About the author: Brian Begley</h2><p>[One line on Brian's role at enCloud9, Brian confirms.]</p></div>
+          <div><h2 class="nm" id="ab-h">About the author: Brian Begley</h2><p>Brian Begley is the founder and CEO of enCloud9.</p></div>
         </section>
 
         <div class="ctabox">
@@ -303,9 +302,9 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
       <p class="lead">More from the enCloud9 blog. <a class="lnk" href="../">All posts <span>&rarr;</span></a></p>
     </div>
     <div class="rel rev">
-      <a class="pc" style="--c:var(--b7)" href="../clickdimensions-dashboards-2025-update/"><span class="mono">Marketing automation &middot; July 1, 2025</span><span class="t">ClickDimensions Dashboards: What’s Changed and Why It Matters</span><span class="d">ClickDimensions added five dashboards inside Dynamics 365 for campaigns, emails, forms,.</span><span class="go">Read the post &#8599;</span></a>
-      <a class="pc" style="--c:var(--b5)" href="../dynamics-365-sales-qualification-agent/"><span class="mono">Copilot and AI &middot; August 18, 2025</span><span class="t">Smarter Selling with the Dynamics 365 Sales Qualification Agent</span><span class="d">How the Dynamics 365 Sales Qualification Agent researches, scores and follows up with.</span><span class="go">Read the post &#8599;</span></a>
-      <a class="pc" style="--c:var(--b3)" href="../encloud9-recognized-on-crm-software-blogs-best-dynamics-365-partner-list-2026/"><span class="mono">News &middot; September 23, 2026</span><span class="t">enCloud9 Recognized on CRM Software Blog’s Best Dynamics 365 Partner List 2026</span><span class="d">enCloud9 was named on CRM Software Blog&#x27;s Best Dynamics 365 Partner List 2026, the only.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b7)" href="../dynamics-365-pricing-licensing-2025-guide/"><span class="mono">Licensing and pricing &middot; Updated November 10, 2026</span><span class="t">Dynamics 365 Pricing and Licensing: The 2026 Guide</span><span class="d">Dynamics 365 prices for 2026: Sales, Customer Service, Field Service and more, plus Copilot costs, licensing rules and what drives your total cost.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b5)" href="../which-dynamics-365-customizations-are-worth-it-and-which-ones-we-usually-advise-against/"><span class="mono">Admin and how-to &middot; October 7, 2026</span><span class="t">Which Dynamics 365 Customizations Are Worth It (And Which Ones We Usually Advise Against)</span><span class="d">The Dynamics 365 customizations we usually recommend, the ones we advise against, and five questions to ask before you build one.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b3)" href="../how-to-track-the-last-activity-date-in-microsoft-dynamics-365-sales/"><span class="mono">Admin and how-to &middot; February 13, 2025</span><span class="t">How To Track the Last Activity Date in Microsoft Dynamics 365 Sales</span><span class="d">Dynamics 365 has no built-in last activity date. Add rollup fields for last activity and next activity due, step by step, with a video tutorial.</span><span class="go">Read the post &#8599;</span></a>
     </div>
   </section>
 </div>

@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="../../../pages/nine.css">
 <script defer src="../../../pages/nine.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "Smarter Selling with the Dynamics 365 Sales Qualification Agent", "item": "https://www.encloud9.com/blog/dynamics-365-sales-qualification-agent/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Smarter Selling with the Dynamics 365 Sales Qualification Agent", "description": "How the Dynamics 365 Sales Qualification Agent researches, scores and follows up with leads against your ideal customer profile, with a worked example.", "url": "https://www.encloud9.com/blog/dynamics-365-sales-qualification-agent/", "datePublished": "2025-08-18", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Smarter Selling with the Dynamics 365 Sales Qualification Agent", "description": "How the Dynamics 365 Sales Qualification Agent researches, scores and follows up with leads against your ideal customer profile, with a worked example.", "url": "https://www.encloud9.com/blog/dynamics-365-sales-qualification-agent/", "datePublished": "2025-08-18", "dateModified": "2026-11-10", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
 <style>
 /* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
 body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
@@ -87,6 +87,9 @@ body.p-post .art ul.not li::before{content:"\00D7";background:none;width:auto;he
 body.p-post .answer{position:relative;background:var(--b9);border-left:6px solid var(--b5);padding:26px 28px 28px;font-size:clamp(19px,1.6vw,21px);line-height:1.6}
 body.p-post .answer .mono{display:block;color:var(--b4);margin-bottom:10px}
 body.p-post .answer strong{font-weight:600}
+body.p-post .upd{background:var(--white);border:1.5px solid var(--ink);border-top:8px solid var(--b5);padding:22px 24px 24px;font-size:17px;line-height:1.6}
+body.p-post .upd .mono{display:block;color:var(--b4);margin-bottom:8px}
+body.p-post .upd p+p{margin-top:12px}
 body.p-post .ways{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 body.p-post .ways>div{background:var(--white);border:1px solid var(--line);border-top:6px solid var(--c);padding:22px}
 body.p-post .ways .mono{display:block;margin-bottom:10px}
@@ -165,6 +168,7 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
   body.p-post .nx,body.p-post .rel{grid-template-columns:1fr}
   body.p-post .nx .ptile{min-height:0}
   body.p-post .answer{padding:20px 20px 22px}
+  body.p-post .upd{padding:18px 18px 20px}
   body.p-post .gl li{aspect-ratio:auto;min-height:120px}
   body.p-post .abox{grid-template-columns:56px minmax(0,1fr)}
   body.p-post .abox .pic{width:56px;height:56px}
@@ -216,6 +220,7 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
         <details open id="tocd">
           <summary>On this page</summary>
           <ol>
+            <li><a href="#update">What changed since 2025?</a></li>
             <li><a href="#what-is-the-dynamics-365-sales-qualifica">What Is the Dynamics 365 Sales Qualification Agent?</a></li>
             <li><a href="#how-the-dynamics-365-sales-qualification">How the Dynamics 365 Sales Qualification Agent Works: A Real Example</a></li>
             <li><a href="#why-sales-teams-need-the-dynamics-365-sa">Why Sales Teams Need the Dynamics 365 Sales Qualification Agent</a></li>
@@ -228,8 +233,17 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
       </nav>
 
       <div class="art" id="art">
+        <p class="answer"><span class="mono">The short answer</span><strong>The Dynamics 365 Sales Qualification Agent is an AI agent inside Dynamics 365 Sales that researches and scores each new lead against your ideal customer profile, using Microsoft’s FIRE model: Fit, Intent, Recency and Engagement. In research-only mode it enriches and scores leads; in research and engage mode it also emails prospects and hands good leads to sellers.</strong></p>
+
+        <section class="upd" aria-labelledby="update">
+          <span class="mono">Update, November 2026</span>
+          <h2 id="update" class="sr-only">What changed since 2025?</h2>
+          <p>The Sales Qualification Agent is no longer marked preview on <a href="https://learn.microsoft.com/en-us/dynamics365/sales/sales-qualification-agent">Microsoft Learn</a>. It runs on Copilot Credits, prepaid or pay-as-you-go.</p>
+          <p>The original 2025 post follows.</p>
+        </section>
+
         <p>Qualifying leads takes time, and often, that time goes to waste when those leads don’t convert. To address this challenge, Microsoft introduced the <strong>Dynamics 365 Sales Qualification Agent</strong>, a powerful AI tool built into Dynamics 365 Sales.</p>
-        <p>Currently, it’s available in <a href="https://learn.microsoft.com/en-us/dynamics365/sales/sales-qualification-agent-43">public preview</a>.<strong> Looking ahead,</strong> Microsoft plans to roll it out more broadly by <strong>October 2025</strong>. This feature helps sales teams focus their time on leads that are most likely to close.</p>
+        <p>This feature helps sales teams focus their time on leads that are most likely to close.</p>
         <h2 id="what-is-the-dynamics-365-sales-qualifica">What Is the Dynamics 365 Sales Qualification Agent?</h2>
         <p>The <strong>Dynamics 365 Sales Qualification Agent</strong> is an AI assistant that works inside Dynamics 365 Sales. It handles lead research, scoring, and, in its full version, email outreach and follow-up. The agent checks each new lead against your <strong>Ideal Customer Profile (ICP)</strong>. If the lead is a good match, it moves forward in the process.</p>
         <p>This tool runs in two different modes:</p>
@@ -259,13 +273,13 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
         <p>To start using the <strong>Dynamics 365 Sales Qualification Agent</strong>, make sure your system meets the technical requirements. These include mailbox setup, server-side sync, and licensing. Microsoft outlines everything you need in its step-by-step guide.</p>
         <h2 id="final-thoughts">Final Thoughts</h2>
         <p>The <strong>Dynamics 365 Sales Qualification Agent</strong> isn’t just a helpful add-on, it’s a smarter way to sell. It helps your team move faster, work smarter, and stay focused on real opportunities. Instead of wasting time on unqualified leads, your team can spend more time closing deals.</p>
-        <p>With full availability expected by <strong>October 2025</strong>, now’s the time to test it, adjust your ICP, and prepare to bring smarter selling into your business.</p>
+        <p>Now’s the time to test it, adjust your ICP, and bring smarter selling into your business.</p>
         <h2 id="partner-with-dynamics-365-sales-experts-">Partner with Dynamics 365 Sales Experts at enCloud9</h2>
         <p>At <strong>enCloud9</strong>, we’re experts in <a href="../../dynamics-365-sales/">Dynamics 365 Sales</a>. We help businesses streamline their sales process and close more deals. From setting up the <strong>Dynamics 365 Sales Qualification Agent</strong> to improving lead scoring and follow-up, we make sure you get the most from your CRM.</p>
 
         <section class="abox" aria-labelledby="ab-h">
           <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
-          <div><h2 class="nm" id="ab-h">About the author: Brian Begley</h2><p>[One line on Brian's role at enCloud9, Brian confirms.]</p></div>
+          <div><h2 class="nm" id="ab-h">About the author: Brian Begley</h2><p>Brian Begley is the founder and CEO of enCloud9.</p></div>
         </section>
 
         <div class="ctabox">
@@ -295,9 +309,9 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
       <p class="lead">More from the enCloud9 blog. <a class="lnk" href="../">All posts <span>&rarr;</span></a></p>
     </div>
     <div class="rel rev">
-      <a class="pc" style="--c:var(--b7)" href="../clickdimensions-dashboards-2025-update/"><span class="mono">Marketing automation &middot; July 1, 2025</span><span class="t">ClickDimensions Dashboards: What’s Changed and Why It Matters</span><span class="d">ClickDimensions added five dashboards inside Dynamics 365 for campaigns, emails, forms,.</span><span class="go">Read the post &#8599;</span></a>
-      <a class="pc" style="--c:var(--b5)" href="../encloud9-recognized-on-crm-software-blogs-best-dynamics-365-partner-list-2026/"><span class="mono">News &middot; September 23, 2026</span><span class="t">enCloud9 Recognized on CRM Software Blog’s Best Dynamics 365 Partner List 2026</span><span class="d">enCloud9 was named on CRM Software Blog&#x27;s Best Dynamics 365 Partner List 2026, the only.</span><span class="go">Read the post &#8599;</span></a>
-      <a class="pc" style="--c:var(--b3)" href="../how-dynamics-365-activate-makes-leaving-salesforce-easier/"><span class="mono">Switching to Dynamics 365 &middot; September 16, 2026</span><span class="t">How Dynamics 365 Activate Makes Leaving Salesforce Easier</span><span class="d">Dynamics 365 Activate maps a Salesforce environment before a move. What it does, what it.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b7)" href="../how-to-stop-leads-from-falling-through-the-cracks-in-dynamics-365/"><span class="mono">Admin and how-to &middot; September 9, 2026</span><span class="t">How to Stop Leads From Falling Through the Cracks in Dynamics 365</span><span class="d">Four ways to stop leads going cold in Dynamics 365: an owner for every lead, a next step with sequences, regular reviews and automation as a safety net.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b5)" href="../microsoft-dynamics-365-crm-skills-copilot/"><span class="mono">Copilot and AI &middot; October 14, 2026</span><span class="t">Microsoft Introduces 30 New Dynamics 365 CRM Skills for Copilot</span><span class="d">Microsoft added 30 CRM skills for Copilot, built on more than 180 Dynamics 365 tools. What they do for sales, service and marketing teams.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b3)" href="../dynamics-365-pricing-licensing-2025-guide/"><span class="mono">Licensing and pricing &middot; Updated November 10, 2026</span><span class="t">Dynamics 365 Pricing and Licensing: The 2026 Guide</span><span class="d">Dynamics 365 prices for 2026: Sales, Customer Service, Field Service and more, plus Copilot costs, licensing rules and what drives your total cost.</span><span class="go">Read the post &#8599;</span></a>
     </div>
   </section>
 </div>

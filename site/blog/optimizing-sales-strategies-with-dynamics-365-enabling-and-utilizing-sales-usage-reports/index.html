@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Enabling and Utilizing Sales Usage Reports in Dynamics 365</title>
-<meta name="description" content="How to enable Sales Usage Reports in Dynamics 365 Sales, what they show, and the five benefits for sales managers. Original June 2024 post with a November 2026 update.">
+<meta name="description" content="How to enable Sales Usage Reports in Dynamics 365 Sales and what they show. June 2024 post; Microsoft deprecated the reports on December 1, 2025.">
 <!--headmeta-->
 <link rel="canonical" href="./">
 <meta property="og:site_name" content="enCloud9">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Enabling and Utilizing Sales Usage Reports in Dynamics 365">
-<meta property="og:description" content="How to enable Sales Usage Reports in Dynamics 365 Sales, what they show, and the five benefits for sales managers. Original June 2024 post with a November 2026 update.">
+<meta property="og:description" content="How to enable Sales Usage Reports in Dynamics 365 Sales and what they show. June 2024 post; Microsoft deprecated the reports on December 1, 2025.">
 <meta property="og:url" content="https://www.encloud9.com/blog/optimizing-sales-strategies-with-dynamics-365-enabling-and-utilizing-sales-usage-reports/">
 <meta property="og:image" content="https://michaelbegley.github.io/encloud9-lookbook/assets/brand/share-card.png">
 <meta property="og:image:width" content="1200">
@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="../../../pages/nine.css">
 <script defer src="../../../pages/nine.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.encloud9.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.encloud9.com/blog/"},{"@type":"ListItem","position":3,"name":"Enabling and Utilizing Sales Usage Reports in Dynamics 365"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Enabling and Utilizing Sales Usage Reports in Dynamics 365","description":"How to enable Sales Usage Reports in Dynamics 365 Sales, what they show, and the five benefits for sales managers.","datePublished":"2024-06-12","dateModified":"2026-11-05","author":{"@type":"Person","name":"Brian Begley","jobTitle":"CEO"},"image":"https://www.encloud9.com/wp-content/uploads/2024/08/Enabling-and-Utilizing-Sales-Usage-Reports-1200-x-628-px.png.webp","mainEntityOfPage":"https://www.encloud9.com/blog/optimizing-sales-strategies-with-dynamics-365-enabling-and-utilizing-sales-usage-reports/","inLanguage":"en-US","publisher":{"@type":"Organization","name":"enCloud9","url":"https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Enabling and Utilizing Sales Usage Reports in Dynamics 365","description":"How to enable Sales Usage Reports in Dynamics 365 Sales and what they show. June 2024 post; Microsoft deprecated the reports on December 1, 2025.","datePublished":"2024-06-12","dateModified":"2026-11-10","author":{"@type":"Person","name":"Brian Begley","jobTitle":"CEO","url":"https://www.encloud9.com/about-encloud9/team/brian-begley/"},"image":"https://www.encloud9.com/wp-content/uploads/2024/08/Enabling-and-Utilizing-Sales-Usage-Reports-1200-x-628-px.png.webp","mainEntityOfPage":"https://www.encloud9.com/blog/optimizing-sales-strategies-with-dynamics-365-enabling-and-utilizing-sales-usage-reports/","inLanguage":"en-US","publisher":{"@type":"Organization","name":"enCloud9","url":"https://www.encloud9.com/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Are sales usage reports still available in Dynamics 365 Sales?","acceptedAnswer":{"@type":"Answer","text":"Microsoft deprecated sales usage reports effective December 1, 2025. As an alternative, Microsoft offers a sample Power BI report for sales usage reporting, which you can customize and maintain yourself."}},
 {"@type":"Question","name":"Where do you turn on sales usage reports?","acceptedAnswer":{"@type":"Answer","text":"In the Sales app, go to App Settings in the lower left corner of the page, then turn on the Sales usage reports toggle and select Save."}},
@@ -232,7 +232,7 @@ body.p-post blockquote.sum{margin:22px 0 0;border-left:6px solid var(--b6);paddi
         <h1 class="h1 rise" id="h1" style="--d:2">Enabling and Utilizing Sales Usage Reports in Dynamics 365</h1>
         <span class="draft rise" style="--d:0"><i aria-hidden="true"></i>June 2024 post, shown in the new style</span>
         <span class="mono cat rise" style="--d:1">Dynamics 365 Sales &middot; Admin and how-to</span>
-        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>June 12, 2024</b></span><span>5 min read</span><span>Update note added 5 Nov 2026</span></p>
+        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>June 12, 2024</b></span><span>5 min read</span><span>Updated 10 Nov 2026</span></p>
       </div>
       <aside class="glance" aria-labelledby="gl-h">
         <p class="mono" id="gl-h">At a glance</p>
@@ -262,12 +262,13 @@ body.p-post blockquote.sum{margin:22px 0 0;border-left:6px solid var(--b6);paddi
       </nav>
 
       <div class="art" id="art">
-        <p class="answer"><span class="mono">The short answer</span><strong>Sales Usage Reports in Dynamics 365 Sales show sales managers how their team performs and how the system is used. An admin turns them on in App Settings with one toggle, and managers read them under Sales Analytics to make data-driven decisions.</strong></p>
+        <p class="answer"><span class="mono">The short answer</span><strong>Microsoft deprecated sales usage reports in Dynamics 365 Sales on December 1, 2025. As an alternative, it offers a sample Power BI report for sales usage reporting, which you customize and maintain yourself, without Microsoft support. Before then, an admin turned the reports on in App Settings, and managers read them under Sales Analytics.</strong></p>
 
         <section class="upd" aria-labelledby="update">
           <span class="mono">Update, November 2026</span>
           <h2 id="update" class="sr-only">What changed since 2024?</h2>
           <p><strong>Microsoft deprecated sales usage reports effective December 1, 2025.</strong> As an alternative, Microsoft offers a <a href="https://github.com/microsoft/Dynamics365-Apps-Samples/blob/master/sales/SalesUsageReporting/Sales%20Usage%20Reporting%20Sample.pbit">sample Power BI report for sales usage reporting</a>. Microsoft says you customize and maintain it yourself, and it does not support the sample. Details are on <a href="https://learn.microsoft.com/en-us/dynamics365/sales/deprecations-sales#sales-usage-reports">Microsoft Learn</a>.</p>
+          <p>Microsoft’s own page describes four usage reports, for opportunities, leads, accounts and contacts.</p>
           <p>The original 2024 post follows, as Brian wrote it.</p>
         </section>
 
@@ -325,7 +326,7 @@ body.p-post blockquote.sum{margin:22px 0 0;border-left:6px solid var(--b6);paddi
 
         <section class="abox" aria-labelledby="ab-h">
           <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
-          <div><h2 class="nm" id="ab-h">About the author: Brian Begley</h2><p>CEO, Microsoft Dynamics 365 Consultant and CRM Strategist. Brian Begley is a CRM expert and CEO of enCloud9, helping businesses grow with Dynamics 365, Power Platform, and AI-powered digital solutions.</p></div>
+          <div><h2 class="nm" id="ab-h">About the author: Brian Begley</h2><p>Brian Begley is the founder and CEO of enCloud9.</p></div>
         </section>
 
         <div class="ctabox">
@@ -355,9 +356,9 @@ body.p-post blockquote.sum{margin:22px 0 0;border-left:6px solid var(--b6);paddi
       <p class="lead">More on Dynamics 365 Sales. <a class="lnk" href="../">All posts <span>&rarr;</span></a></p>
     </div>
     <div class="rel rev">
-      <a class="pc" style="--c:var(--b7)" href="../dynamics-365-sales-qualification-agent/"><span class="mono">Copilot and AI &middot; August 18, 2025</span><span class="t">Smarter Selling with the Dynamics 365 Sales Qualification Agent</span><span class="d">About one of the agents in Dynamics 365 Sales.</span><span class="go">Read the post &#8599;</span></a>
-      <a class="pc" style="--c:var(--b5)" href="../which-dynamics-365-customizations-are-worth-it-and-which-ones-we-usually-advise-against/"><span class="mono">Admin and how-to &middot; October 7, 2026</span><span class="t">Which Dynamics 365 Customizations Are Worth It (And Which Ones We Usually Advise Against)</span><span class="d">Our advice on Dynamics 365 customizations.</span><span class="go">Read the post &#8599;</span></a>
-      <a class="pc" style="--c:var(--b3)" href="../generative-pages-dynamics-365/"><span class="mono">Copilot and AI &middot; Draft</span><span class="t">Generative pages in Dynamics 365: what they are and 12 ways to use them</span><span class="d">The December draft, in the same layout.</span><span class="go">Read the post &rarr;</span></a>
+      <a class="pc" style="--c:var(--b7)" href="../how-to-track-the-last-activity-date-in-microsoft-dynamics-365-sales/"><span class="mono">Admin and how-to &middot; February 13, 2025</span><span class="t">How To Track the Last Activity Date in Microsoft Dynamics 365 Sales</span><span class="d">Dynamics 365 has no built-in last activity date. Add rollup fields for last activity and next activity due, step by step, with a video tutorial.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b5)" href="../clickdimensions-dashboards-2025-update/"><span class="mono">Marketing automation &middot; July 1, 2025</span><span class="t">ClickDimensions Dashboards: What’s Changed and Why It Matters</span><span class="d">ClickDimensions added five dashboards inside Dynamics 365 for campaigns, emails, forms, surveys and landing pages. What they show and where they help.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b3)" href="../how-to-stop-leads-from-falling-through-the-cracks-in-dynamics-365/"><span class="mono">Admin and how-to &middot; September 9, 2026</span><span class="t">How to Stop Leads From Falling Through the Cracks in Dynamics 365</span><span class="d">Four ways to stop leads going cold in Dynamics 365: an owner for every lead, a next step with sequences, regular reviews and automation as a safety net.</span><span class="go">Read the post &#8599;</span></a>
     </div>
   </section>
 </div>

@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="../../../pages/nine.css">
 <script defer src="../../../pages/nine.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "Which Dynamics 365 Customizations Are Worth It (And Which Ones We Usually Advise Against)", "item": "https://www.encloud9.com/blog/which-dynamics-365-customizations-are-worth-it-and-which-ones-we-usually-advise-against/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Which Dynamics 365 Customizations Are Worth It (And Which Ones We Usually Advise Against)", "description": "The Dynamics 365 customizations we usually recommend, the ones we advise against, and five questions to ask before you build one.", "url": "https://www.encloud9.com/blog/which-dynamics-365-customizations-are-worth-it-and-which-ones-we-usually-advise-against/", "datePublished": "2026-10-07", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Which Dynamics 365 Customizations Are Worth It (And Which Ones We Usually Advise Against)", "description": "The Dynamics 365 customizations we usually recommend, the ones we advise against, and five questions to ask before you build one.", "url": "https://www.encloud9.com/blog/which-dynamics-365-customizations-are-worth-it-and-which-ones-we-usually-advise-against/", "datePublished": "2026-10-07", "dateModified": "2026-11-10", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
 <style>
 /* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
 body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
@@ -217,7 +217,7 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
           <summary>On this page</summary>
           <ol>
             <li><a href="#dynamics-365-customizations-we-often-rec">Dynamics 365 Customizations We Often Recommend</a></li>
-            <li><a href="#dynamics-365-customizations-we-often-rec">Dynamics 365 Customizations We Often Recommend Avoiding</a></li>
+            <li><a href="#dynamics-365-customizations-we-often-avo">Dynamics 365 Customizations We Often Recommend Avoiding</a></li>
             <li><a href="#how-to-evaluate-dynamics-365-customizati">How to Evaluate Dynamics 365 Customizations Before Building Them</a></li>
             <li><a href="#the-bottom-line-on-dynamics-365-customiz">The Bottom Line on Dynamics 365 Customizations</a></li>
             <li><a href="#further-reading">Further Reading</a></li>
@@ -228,6 +228,7 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
       </nav>
 
       <div class="art" id="art">
+        <p class="answer"><span class="mono">The short answer</span><strong>The Dynamics 365 customizations usually worth it are role-based forms, workflow and process automation, integrations that end duplicate data entry, dashboards that support decisions, and custom fields with a clear purpose. Avoid fields added just in case, rebuilding your old CRM, customizing around a broken process, complex code without a business case, and approvals for everything.</strong></p>
         <p><strong>Have you ever opened a Dynamics 365 account record and wondered, “Do we really need all of this?”</strong></p>
         <p>A field gets added. Then another. Someone requests a custom form. A workflow gets built to handle a unique situation. A few years later, users are scrolling through pages of information they rarely use, and simple updates feel anything but simple. The problem isn’t Dynamics 365 customizations themselves. Some Dynamics 365 customizations can improve adoption, reporting, and productivity. The challenge is knowing which customizations add real business value and which ones simply add more complexity. After years of implementing, optimizing, and supporting Dynamics 365, we’ve seen both.</p>
         <h2 id="dynamics-365-customizations-we-often-rec">Dynamics 365 Customizations We Often Recommend</h2>
@@ -242,7 +243,7 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
         <p>A well-designed dashboard helps leaders quickly understand what’s happening in the business. Among all Dynamics 365 customizations, reporting and dashboard improvements are often some of the most valuable because they help organizations get more insight from the data they’re already collecting.</p>
         <h3>Custom Fields With a Clear Purpose</h3>
         <p>Custom fields aren’t the enemy. The key question is why the field exists. If it supports reporting, forecasting, automation, or a business process, it may be worthwhile. If there’s no clear answer, it’s probably worth reconsidering.</p>
-        <h2 id="dynamics-365-customizations-we-often-rec">Dynamics 365 Customizations We Often Recommend Avoiding</h2>
+        <h2 id="dynamics-365-customizations-we-often-avo">Dynamics 365 Customizations We Often Recommend Avoiding</h2>
         <p>These Dynamics 365 customizations tend to create more problems than they solve.</p>
         <h3>Adding Fields “Just in Case”</h3>
         <p>Most CRM administrators have heard this request: <em>“Let’s add the field now in case we need it later.”</em></p>
@@ -254,7 +255,7 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
         <h3>Complex Custom Code Without a Strong Business Case</h3>
         <p>Custom code has its place, but it comes with long-term maintenance costs. Whenever standard functionality, configuration, or low-code tools can meet the requirement, that’s often the better long-term choice. Every custom development project should have a clear business justification.</p>
         <h3>Approval Processes for Everything</h3>
-        <p>Approvals can improve accountability, but they can also create bottlenecks. We’ve seen organizations build complex approval chains that slow down day-to-day work and frustrate users. The goal should be control where it’s needed, not approval for every single action.</p>
+        <p>Approvals can improve accountability, but they can also create bottlenecks. enCloud9 has seen organizations build complex approval chains that slow down day-to-day work and frustrate users. The goal should be control where it’s needed, not approval for every single action.</p>
         <h2 id="how-to-evaluate-dynamics-365-customizati">How to Evaluate Dynamics 365 Customizations Before Building Them</h2>
         <p>Before approving any Dynamics 365 customization, ask:</p>
         <ul>
@@ -267,7 +268,7 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
         <p>If those questions are difficult to answer, the customization may not be necessary.</p>
         <h2 id="the-bottom-line-on-dynamics-365-customiz">The Bottom Line on Dynamics 365 Customizations</h2>
         <p>The best Dynamics 365 environments aren’t usually the most customized. They’re the ones where every field, workflow, form, integration, and report serves a <strong>clear purpose</strong>.</p>
-        <p>We’ve worked with organizations that struggled because they didn’t customize enough. We’ve worked with many more that struggled because years of well-intentioned Dynamics 365 customizations created systems that were harder to use, harder to maintain, and harder to trust.</p>
+        <p>enCloud9 has worked with organizations that struggled because they didn’t customize enough, and with many more that struggled because years of well-intentioned Dynamics 365 customizations created systems that were harder to use, harder to maintain, and harder to trust.</p>
         <p>The goal isn’t to avoid Dynamics 365 customizations. The goal is to make thoughtful decisions that improve the user experience, support business goals, and keep the system manageable as your organization grows.</p>
         <h2 id="further-reading">Further Reading</h2>
         <p>If you’re evaluating your Dynamics 365 environment, these resources may also help:</p>
@@ -277,12 +278,12 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
           <li><a href="https://www.encloud9.com/blog/what-a-healthy-dynamics-365-system-actually-looks-like/"><strong>Is Your Dynamics 365 Healthy or Just “Working?”</strong></a>: how to identify CRM drift before it impacts adoption, reporting, and business performance.</li>
         </ul>
         <h2 id="need-help-deciding-which-dynamics-365-cu">Need Help Deciding Which Dynamics 365 Customizations Are Worth Keeping?</h2>
-        <p>If your Dynamics 365 environment has grown more complicated over the years, you’re not alone. We’ve worked with organizations that have accumulated years of fields, workflows, reports, and customizations, many of which no longer serve a clear purpose.</p>
+        <p>If your Dynamics 365 environment has grown more complicated over the years, you’re not alone. enCloud9 has worked with organizations that have accumulated years of fields, workflows, reports, and customizations, many of which no longer serve a clear purpose.</p>
         <p>Whether you’re evaluating a new request, planning a cleanup project, or simply wondering if your CRM has become more complex than it needs to be, enCloud9 can help. We’ll help you identify what’s adding value, what’s creating unnecessary complexity, and where opportunities exist to simplify and optimize your system.</p>
 
         <section class="abox" aria-labelledby="ab-h">
           <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
-          <div><h2 class="nm" id="ab-h">About the author: Brian Begley</h2><p>[One line on Brian's role at enCloud9, Brian confirms.]</p></div>
+          <div><h2 class="nm" id="ab-h">About the author: Brian Begley</h2><p>Brian Begley is the founder and CEO of enCloud9.</p></div>
         </section>
 
         <div class="ctabox">
@@ -312,9 +313,9 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
       <p class="lead">More from the enCloud9 blog. <a class="lnk" href="../">All posts <span>&rarr;</span></a></p>
     </div>
     <div class="rel rev">
-      <a class="pc" style="--c:var(--b7)" href="../clickdimensions-dashboards-2025-update/"><span class="mono">Marketing automation &middot; July 1, 2025</span><span class="t">ClickDimensions Dashboards: What’s Changed and Why It Matters</span><span class="d">ClickDimensions added five dashboards inside Dynamics 365 for campaigns, emails, forms,.</span><span class="go">Read the post &#8599;</span></a>
-      <a class="pc" style="--c:var(--b5)" href="../dynamics-365-sales-qualification-agent/"><span class="mono">Copilot and AI &middot; August 18, 2025</span><span class="t">Smarter Selling with the Dynamics 365 Sales Qualification Agent</span><span class="d">How the Dynamics 365 Sales Qualification Agent researches, scores and follows up with.</span><span class="go">Read the post &#8599;</span></a>
-      <a class="pc" style="--c:var(--b3)" href="../encloud9-recognized-on-crm-software-blogs-best-dynamics-365-partner-list-2026/"><span class="mono">News &middot; September 23, 2026</span><span class="t">enCloud9 Recognized on CRM Software Blog’s Best Dynamics 365 Partner List 2026</span><span class="d">enCloud9 was named on CRM Software Blog&#x27;s Best Dynamics 365 Partner List 2026, the only.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b7)" href="../how-dynamics-365-activate-makes-leaving-salesforce-easier/"><span class="mono">Switching to Dynamics 365 &middot; September 16, 2026</span><span class="t">How Dynamics 365 Activate Makes Leaving Salesforce Easier</span><span class="d">Dynamics 365 Activate maps a Salesforce environment before a move. What it does, what it cannot decide for you, and how to plan a better CRM.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b5)" href="../how-to-stop-leads-from-falling-through-the-cracks-in-dynamics-365/"><span class="mono">Admin and how-to &middot; September 9, 2026</span><span class="t">How to Stop Leads From Falling Through the Cracks in Dynamics 365</span><span class="d">Four ways to stop leads going cold in Dynamics 365: an owner for every lead, a next step with sequences, regular reviews and automation as a safety net.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b3)" href="../microsoft-dataverse-storage-notifications/"><span class="mono">Admin and how-to &middot; November 3, 2026</span><span class="t">Dataverse Storage Warning: What It Means and What to Do</span><span class="d">What a Microsoft Dataverse storage warning means, what happens when you go over your limit, and how to get back under it before sandboxes lock.</span><span class="go">Read the post &#8599;</span></a>
     </div>
   </section>
 </div>
