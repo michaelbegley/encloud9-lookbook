@@ -11,7 +11,7 @@ const WIDTHS=[1440,1024,768,390];
 const files=process.argv.slice(2).map(f=>path.resolve(f));
 (async()=>{const b=await chromium.launch();const site={nine:[],type:{}};const out=[];
 for(const file of files){const page={file:path.basename(file),orphans:[],nine:[],sets:[],type:{}};
- const ctx=await b.newContext({viewport:{width:1440,height:900},reducedMotion:'reduce'});const p=await ctx.newPage();await p.goto('file://'+file);await p.waitForTimeout(500);
+ const ctx=await b.newContext({viewport:{width:1440,height:900},reducedMotion:'reduce'});const p=await ctx.newPage();await p.goto('file://'+file);await p.evaluate(()=>document.fonts.ready);await p.waitForTimeout(500);
  for(const w of WIDTHS){await p.setViewportSize({width:w,height:900});await p.waitForTimeout(250);
   const r=await p.evaluate((w)=>{
    const vis=e=>{const r=e.getBoundingClientRect();const cs=getComputedStyle(e);return r.width>1&&r.height>1&&cs.visibility!=='hidden'&&cs.display!=='none'&&cs.position!=='absolute'&&cs.position!=='fixed'};
@@ -60,7 +60,7 @@ for(const file of files){const page={file:path.basename(file),orphans:[],nine:[]
    for(const e of document.querySelectorAll('main :is(h1,h2,h3,.nm,.t,.big,.num,.lab), footer :is(h2,h3)')){if(!vis(e)||!e.textContent.trim())continue;
     // walk the characters: find a word split across two lines with no hyphen shown, or a last line of one or two letters
     // only a break inside one run of letters in one text node counts; spaces, soft hyphens and element edges are fine places to break
-    const chars=[];const tw=document.createTreeWalker(e,NodeFilter.SHOW_TEXT);let n,node=0;while(n=tw.nextNode()){node++;for(let i=0;i<n.length;i++){const r=document.createRange();r.setStart(n,i);r.setEnd(n,i+1);const q=[...r.getClientRects()].filter(x=>x.width>0)[0];chars.push({c:n.data[i],top:q?Math.round(q.top):null,node})}}
+    const chars=[];const tw=document.createTreeWalker(e,NodeFilter.SHOW_TEXT);let n,node=0;while(n=tw.nextNode()){node++;for(let i=0;i<n.length;i++){const r=document.createRange();r.setStart(n,i);r.setEnd(n,i+1);const q=[...r.getClientRects()].filter(x=>x.width>0).pop();chars.push({c:n.data[i],top:q?Math.round(q.top):null,node})}}
     const vc=chars.filter(x=>x.top!==null);if(!vc.length)continue;const tops=[...new Set(vc.map(x=>x.top))].sort((a,b)=>a-b);if(tops.length<2)continue;
     let issue='';
     // with hyphens:auto the browser draws its own hyphen at the break, so a split there is fine
