@@ -49,7 +49,7 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
 @media (max-width:860px){body.p-pkg .fitsplit,body.p-pkg .fit.two-col{grid-template-columns:1fr}body.p-pkg .fitsplit .side{position:static}}
 @media (max-width:560px){body.p-pkg .grid9 .cell.core .nm{font-size:13px;hyphens:none;-webkit-hyphens:none}body.p-pkg .lnav{grid-template-columns:1fr 1fr}body.p-pkg .spec div{grid-template-columns:1fr;gap:2px}body.p-pkg .ptiles.plans .ptile{min-height:0}}
 </style>
-<style>@media(max-width:640px){#tools .tbl{min-width:0}#tools .tbl thead{position:absolute;left:-9999px}#tools .tbl tr{display:grid;grid-template-columns:1fr;padding:14px 0;border-bottom:1px solid var(--line)}#tools .tbl tbody th,#tools .tbl td{display:block;border:0;padding:2px 0}#tools .tbl td::before{content:attr(data-l) ": ";font-family:var(--mono);font-size:11px;color:var(--muted)}}</style>
+<style>.fm-row{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.fm-t{display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 8px;border:1px solid var(--line);border-radius:14px;text-decoration:none;color:inherit;transition:transform .2s,border-color .2s}.fm-t:hover,.fm-t:focus-visible{transform:translateY(-2px);border-color:var(--c)}.fm-b{display:inline-grid;place-items:center;min-width:56px;height:56px;padding:0 8px;border-radius:14px;background:var(--c);color:#fff;font-family:var(--mono);font-size:13px;font-weight:600}.fm-n{font-weight:600;text-align:center}.fm-base{margin-top:12px;padding:12px;border-radius:12px;background:var(--b5);color:#fff;text-align:center;font-family:var(--mono);font-size:13px}.fm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:28px}.fm-blk{border-left:4px solid var(--c);padding:4px 0 4px 18px;scroll-margin-top:96px}.fm-blk h3{display:flex;align-items:center;gap:12px}.fm-blk .fm-b{min-width:40px;height:40px;font-size:11px;border-radius:10px}@media(max-width:640px){.fm-row{grid-template-columns:repeat(2,1fr)}.fm-row li:last-child{grid-column:1/-1}}@media(prefers-reduced-motion:reduce){.fm-t{transition:none}.fm-t:hover{transform:none}}@media(max-width:640px){#tools .tbl{min-width:0}#tools .tbl thead{position:absolute;left:-9999px}#tools .tbl tr{display:grid;grid-template-columns:1fr;padding:14px 0;border-bottom:1px solid var(--line)}#tools .tbl tbody th,#tools .tbl td{display:block;border:0;padding:2px 0}#tools .tbl td::before{content:attr(data-l) ": ";font-family:var(--mono);font-size:11px;color:var(--muted)}}</style>
 </head>
 <body class="p-pkg">
 <nav id="lbbar" aria-label="Lookbook">
@@ -81,21 +81,45 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
       <span class="mono rise" style="--d:0">Copilot and AI &middot; Power Platform</span>
       <h1 class="h1" id="h1" style="font-size:clamp(40px,5.4vw,72px)"><span class="ln"><span style="--d:1">Microsoft</span></span> <span class="ln"><span style="--d:2">Power Platform</span></span></h1>
       <p class="lead rise" style="--d:3">Microsoft Power Platform is Microsoft's low-code family: Power Apps for business apps, Power Automate for workflows, Power BI for reports, Power Pages for portals and Copilot Studio for agents. It runs on Dataverse, the same data as Dynamics 365. We build on it for Dynamics 365 teams.</p>
-      <div class="acts rise" style="--d:4"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="#tools">See the tools <span>&rarr;</span></a></div>
+      <div class="acts rise" style="--d:4"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="#family">See the tools <span>&rarr;</span></a></div>
       <p class="phone-note rise" style="--d:5">Prefer the phone? Call <a href="tel:+18442640729">1-844-264-0729</a>.</p>
     </div>
     <div>
       <div class="grid9" role="list" aria-label="The Power Platform tools">
-        <a role="listitem" class="cell" style="background:var(--b1);--d:0" href="#tools"><span class="lab">Apps</span><span class="nm">Power Apps</span><span class="ds">Business apps on your data</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b2);--d:1" href="#tools"><span class="lab">Workflows</span><span class="nm">Power Automate</span><span class="ds">Approvals, alerts, handoffs</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b3);--d:2" href="#tools"><span class="lab">Reports</span><span class="nm">Power BI</span><span class="ds">Reports and dashboards</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b4);--d:3" href="nine-story-cfc.html"><span class="lab">Portals</span><span class="nm">Power Pages</span><span class="ds">Portals for people outside</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell core" style="background:var(--b5);--d:4" href="#tools"><span class="lab">Power Platform</span><span class="nm">One data</span><span class="ds">Dataverse, shared with Dynamics 365</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b6);--d:5" href="nine-copilot.html"><span class="lab">Agents</span><span class="nm">Copilot Studio</span><span class="ds">Agents that take actions</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b1);--d:0" href="#power-apps"><span class="lab">Apps</span><span class="nm">Power Apps</span><span class="ds">Business apps on your data</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b2);--d:1" href="#power-automate"><span class="lab">Workflows</span><span class="nm">Power Automate</span><span class="ds">Approvals, alerts, handoffs</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b3);--d:2" href="#power-bi"><span class="lab">Reports</span><span class="nm">Power BI</span><span class="ds">Reports and dashboards</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell" style="background:var(--b4);--d:3" href="#power-pages"><span class="lab">Portals</span><span class="nm">Power Pages</span><span class="ds">Portals for people outside</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a role="listitem" class="cell core" style="background:var(--b5);--d:4" href="#family"><span class="lab">Power Platform</span><span class="nm">One data</span><span class="ds">Dataverse, shared with Dynamics 365</span></a>
+        <a role="listitem" class="cell lt" style="background:var(--b6);--d:5" href="#copilot-studio"><span class="lab">Agents</span><span class="nm">Copilot Studio</span><span class="ds">Agents that take actions</span><span class="ar" aria-hidden="true">&#8600;</span></a>
         <a role="listitem" class="cell lt" style="background:var(--b7);--d:6" href="nine-dynamics-365.html"><span class="lab">Pairs with</span><span class="nm">Dynamics 365</span><span class="ds">Sales and Customer Service</span><span class="ar" aria-hidden="true">&#8599;</span></a>
         <a role="listitem" class="cell lt" style="background:var(--b8);--d:7" href="nine-copilot.html#genpages"><span class="lab">New</span><span class="nm">Generative pages</span><span class="ds">Pages built from a prompt</span><span class="ar" aria-hidden="true">&#8599;</span></a>
         <a role="listitem" class="cell lt" style="background:var(--b9);--d:8" href="nine-stories.html"><span class="lab">Proof</span><span class="nm">Client stories</span><span class="ds">What we built</span><span class="ar" aria-hidden="true">&#8599;</span></a>
       </div>
+    </div>
+  </section>
+
+  <section class="sec" id="family" aria-labelledby="fm-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="fm-h">Which tools make up the Power Platform family?</h2>
+      <p class="lead">Five tools, one data platform. Pick a tool to jump to what it does and what enCloud9 has built with it.</p>
+    </div>
+    <nav aria-label="Power Platform tools" class="rev">
+      <ul class="fm-row">
+        <li><a class="fm-t" href="#power-apps" style="--c:var(--b1)"><span class="fm-b" aria-hidden="true">Apps</span><span class="fm-n">Power Apps</span></a></li>
+        <li><a class="fm-t" href="#power-automate" style="--c:var(--b2)"><span class="fm-b" aria-hidden="true">Automate</span><span class="fm-n">Power Automate</span></a></li>
+        <li><a class="fm-t" href="#power-bi" style="--c:var(--b3)"><span class="fm-b" aria-hidden="true">BI</span><span class="fm-n">Power BI</span></a></li>
+        <li><a class="fm-t" href="#power-pages" style="--c:var(--b4)"><span class="fm-b" aria-hidden="true">Pages</span><span class="fm-n">Power Pages</span></a></li>
+        <li><a class="fm-t" href="#copilot-studio" style="--c:var(--b5)"><span class="fm-b" aria-hidden="true">Copilot</span><span class="fm-n">Copilot Studio</span></a></li>
+      </ul>
+      <div class="fm-base">All five run on Dataverse, the same data as Dynamics 365</div>
+    </nav>
+    <div class="fm-grid">
+      <div class="fm-blk rev" id="power-apps" style="--c:var(--b1)"><h3 class="h3"><span class="fm-b" aria-hidden="true">Apps</span>Power Apps</h3><p>Business apps your team uses on a phone or a desk, built on your Dynamics 365 data.</p><p class="fine">Microsoft list price: $20 per user per month (Premium)</p><p>enCloud9 built a Power App for Green Print Partners.</p><a class="lnk" href="nine-power-apps.html">More on Power Apps <span>&rarr;</span></a></div>
+      <div class="fm-blk rev" id="power-automate" style="--c:var(--b2)"><h3 class="h3"><span class="fm-b" aria-hidden="true">Automate</span>Power Automate</h3><p>Workflows, approvals and alerts that move work between people and systems without copying data by hand.</p><p class="fine">Microsoft list price: $15 per user per month (Premium)</p></div>
+      <div class="fm-blk rev" id="power-bi" style="--c:var(--b3)"><h3 class="h3"><span class="fm-b" aria-hidden="true">BI</span>Power BI</h3><p>Reports and dashboards that pull from Dynamics 365 and your other systems.</p><p class="fine">Microsoft list price: $14 per user per month (Pro); $24 (Premium Per User)</p><p>enCloud9 built Power BI reports for <a class="lnk" href="nine-story-pricemds.html">PriceMDs</a>.</p><a class="lnk" href="nine-power-bi.html">More on Power BI <span>&rarr;</span></a></div>
+      <div class="fm-blk rev" id="power-pages" style="--c:var(--b4)"><h3 class="h3"><span class="fm-b" aria-hidden="true">Pages</span>Power Pages</h3><p>Portals for clients, partners or the public, on the same data as your CRM.</p><p class="fine">Microsoft list price: See Microsoft's price list</p><p>See the <a class="lnk" href="nine-story-cfc.html">Collaborative for Children</a> portal story.</p></div>
+      <div class="fm-blk rev" id="copilot-studio" style="--c:var(--b5)"><h3 class="h3"><span class="fm-b" aria-hidden="true">Copilot</span>Copilot Studio</h3><p>Agents that answer questions from your data and take actions.</p><p class="fine">Microsoft list price: Prepaid Copilot Credits</p><p>enCloud9 built Copilot Studio chat agents for <a class="lnk" href="nine-story-compana.html">Compana Pet Brands</a>.</p><a class="lnk" href="nine-copilot-studio.html">More on Copilot Studio <span>&rarr;</span></a></div>
     </div>
   </section>
 
