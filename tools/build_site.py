@@ -60,6 +60,8 @@ MAP = {
     'nine-guides.html': '/free-guides-and-checks/',
     'nine-how-we-work.html': '/about-encloud9/how-we-work/',
     'nine-healthcare.html': '/lp/healthcare-crm-software-dynamics-365/',
+    'nine-professional-services.html': '/dynamics-365-professional-services/',
+    'nine-manufacturing.html': '/dynamics-365-manufacturing/',
     'nine-email-verifier.html': '/email-verifier/',
     'nine-accelerators.html': '/encloud9-dynamics-365-crm-services/microsoft-dynamics-365-crm-accelerators/',
     'nine-support.html': '/microsoft-dynamics-365-support-services/',
