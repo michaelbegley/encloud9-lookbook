@@ -164,8 +164,9 @@ def write_sitemap():
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + rows + '</urlset>\n')
 
 def main():
-    import headmeta
+    import headmeta, tables
     print('headmeta: updated', headmeta.apply(), 'pages')
+    print('tables: updated', tables.apply(), 'pages')
     if os.path.isdir(SITE):
         shutil.rmtree(SITE)
     for src, path in MAP.items():

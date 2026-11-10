@@ -37,3 +37,6 @@ html body :is(h1,h2,h3,.nm,.t){text-wrap:balance}
 
 /* text on the mid blue (#6F8FCB) tiles is full ink: ink2 and faded ink only reach 4.0 to 4.2 to 1 (G3, 9 Nov) */
 html body .lt.ptile :is(.mono,.ds,.from .pre,.from small),html body .at>span{color:var(--ink)!important;opacity:1!important}
+
+/* every data table stacks into labelled rows on phones (tools/tables.py adds the labels) */
+@media (max-width:600px){html body table.tbl-stack{min-width:0!important;width:100%}}
