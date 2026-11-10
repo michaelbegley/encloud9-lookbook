@@ -346,7 +346,7 @@ a.row:hover{background:var(--tint)}
   .mnav .btn{margin-top:12px}
 }
 .foot{display:block}
-.fcols{display:grid;grid-template-columns:1.3fr repeat(4,1fr);gap:32px}
+.fcols{display:grid;grid-template-columns:1.3fr repeat(5,1fr);gap:28px}
 .fcols>div{display:flex;flex-direction:column;gap:14px;font-size:14px;line-height:1.5}
 .fcols nav{display:flex;flex-direction:column;gap:10px;font-size:14px}
 .fcols nav b{color:var(--white);font-family:var(--mono);font-weight:400;font-size:12px;margin-bottom:4px}
