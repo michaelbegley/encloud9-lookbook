@@ -415,6 +415,14 @@ header.top,.final{transition:opacity .5s var(--ease)}
   function size(){var r=cv.getBoundingClientRect();dpr=Math.min(2,window.devicePixelRatio||1);W=Math.round(r.width);cv.width=Math.round(W*dpr);cv.height=Math.round(W*dpr);cell=W/N;font=getComputedStyle(box).fontFamily}
   function rr(x,y,w,h,r){ctx.beginPath();ctx.roundRect?ctx.roundRect(x,y,w,h,r):ctx.rect(x,y,w,h)}
   function mix(a,b,t){return 'rgb('+a.map(function(v,i){return Math.round(v+(b[i]-v)*t)}).join(',')+')'}
+  function collar(x,y,dx,dy,open){
+    var px=-dy,py=dx,w=cell*(.5+.06*open),t=cell*.2,fx=x+dx*cell*.2,fy=y+dy*cell*.2;
+    ctx.fillStyle='#1F3A80';ctx.beginPath();ctx.moveTo(fx+px*(w+1.5)-dx*(t+1.5),fy+py*(w+1.5)-dy*(t+1.5));ctx.lineTo(fx+px*(w+1.5)+dx*1.5,fy+py*(w+1.5)+dy*1.5);ctx.lineTo(fx-px*(w+1.5)+dx*1.5,fy-py*(w+1.5)+dy*1.5);ctx.lineTo(fx-px*(w+1.5)-dx*(t+1.5),fy-py*(w+1.5)-dy*(t+1.5));ctx.closePath();ctx.fill();
+    ctx.fillStyle='#EAF0F9';ctx.beginPath();ctx.moveTo(fx+px*w-dx*t,fy+py*w-dy*t);ctx.lineTo(fx+px*w,fy+py*w);ctx.lineTo(fx-px*w,fy-py*w);ctx.lineTo(fx-px*w-dx*t,fy-py*w-dy*t);ctx.closePath();ctx.fill();
+    var bw=w*(.72+.2*open),bt=cell*(.1+.06*open);   // the bore: a dark ellipse on the open face
+    ctx.fillStyle=mode==='over'?'#4A6FB8':C.bg;ctx.beginPath();ctx.ellipse(fx+dx*bt*.6,fy+dy*bt*.6,dx?bt:bw,dx?bw:bt,0,0,7);ctx.fill();
+    ctx.strokeStyle='#C9D6EE';ctx.lineWidth=Math.max(1,cell*.04);ctx.stroke();
+  }
   function unwrapTo(a,b){var dx=b[0]-a[0],dy=b[1]-a[1];if(dx>N/2)dx-=N;if(dx<-N/2)dx+=N;if(dy>N/2)dy-=N;if(dy<-N/2)dy+=N;return [a[0]+dx,a[1]+dy]}
   function line(a,b){ctx.moveTo((a[0]+.5)*cell,(a[1]+.5)*cell);ctx.lineTo((b[0]+.5)*cell,(b[1]+.5)*cell)}   // adds to the current path
   function seg(a,b){b=unwrapTo(a,b);line(a,b);   // draw the piece, plus its twin on the far edge when it wraps
@@ -458,12 +466,19 @@ header.top,.final{transition:opacity .5s var(--ease)}
       ctx.save();ctx.beginPath();ctx.rect(0,0,W,W);ctx.clip();
       ctx.lineCap='round';ctx.lineJoin='round';
       function tube(w,col){ctx.lineWidth=cell*w;ctx.strokeStyle=col;ctx.beginPath();for(var j=pts.length-1;j>0;j--)seg(pts[j],pts[j-1]);ctx.stroke()}
-      tube(.7,'#9DB3DC');tube(.5,'#4A6FB8');tube(.12,'rgba(201,214,238,.35)');   // rim, bore, sheen
-      // couplings: a band across the pipe on straight runs, an elbow block on corners
+      tube(.76,'#1F3A80');tube(.64,'#6F8FCB');tube(.3,'#9DB6E3');tube(.08,'#EAF0F9');   // a metal tube: dark edge, body, shine down the middle
+      // flanges with bolts at every joint, and a round elbow fitting on every corner
       for(var c=1;c<body.length;c++){var p0=body[c],pa=unwrapTo(p0,body[c-1]),pb=c+1<body.length?unwrapTo(p0,body[c+1]):null,
-          ax=pa[0]-p0[0],ay=pa[1]-p0[1],cx=(p0[0]+.5)*cell,cy=(p0[1]+.5)*cell;ctx.fillStyle='#9DB3DC';
-        if(pb&&(pb[0]-p0[0])!==-ax&&(pb[1]-p0[1])!==-ay){rr(cx-cell*.4,cy-cell*.4,cell*.8,cell*.8,cell*.22);ctx.fill();ctx.fillStyle='#4A6FB8';ctx.beginPath();ctx.arc(cx,cy,cell*.2,0,7);ctx.fill()}
-        else if(ax){ctx.fillRect(cx-cell*.05,cy-cell*.4,cell*.1,cell*.8)}else{ctx.fillRect(cx-cell*.4,cy-cell*.05,cell*.8,cell*.1)}}
+          ax=pa[0]-p0[0],ay=pa[1]-p0[1],cx=(p0[0]+.5)*cell,cy=(p0[1]+.5)*cell;
+        if(pb&&(pb[0]-p0[0])!==-ax&&(pb[1]-p0[1])!==-ay){
+          ctx.fillStyle='#1F3A80';ctx.beginPath();ctx.arc(cx,cy,cell*.46,0,7);ctx.fill();ctx.fillStyle='#C9D6EE';ctx.beginPath();ctx.arc(cx,cy,cell*.4,0,7);ctx.fill();
+          ctx.fillStyle='#355DA6';[[1,1],[1,-1],[-1,1],[-1,-1]].forEach(function(q){ctx.beginPath();ctx.arc(cx+q[0]*cell*.2,cy+q[1]*cell*.2,cell*.05,0,7);ctx.fill()})}
+        else if(c%2===0){var lx=ax?cell*.09:cell*.48,ly=ax?cell*.48:cell*.09;
+          ctx.fillStyle='#1F3A80';ctx.fillRect(cx-lx-1,cy-ly-1,lx*2+2,ly*2+2);ctx.fillStyle='#C9D6EE';ctx.fillRect(cx-lx,cy-ly,lx*2,ly*2);
+          ctx.fillStyle='#355DA6';[1,-1].forEach(function(sg){ctx.beginPath();ctx.arc(cx+(ax?0:sg*cell*.37),cy+(ax?sg*cell*.37:0),cell*.045,0,7);ctx.fill()})}}
+      // the far end is open too: a collar, with the bore showing
+      (function(){var e=pts[pts.length-1],q=unwrapTo(e,pts[Math.max(0,pts.length-2)]),dx=e[0]-q[0],dy=e[1]-q[1],L=Math.hypot(dx,dy)||1;dx/=L;dy/=L;
+        var ex=(((e[0]%N)+N)%N+.5)*cell,ey=(((e[1]%N)+N)%N+.5)*cell;collar(ex,ey,dx,dy,0)})();
       // what's flowing: drift toward the far end, then pop out
       var speed=mode==='play'?dt/1000*6:0;
       flow=flow.filter(function(f){f.i+=speed;if(f.i>=pts.length-1){var e=pts[pts.length-1];if(!f.deal)burst(((e[0]%N)+N)%N,((e[1]%N)+N)%N,'#2E9BD6',5);else burst(((e[0]%N)+N)%N,((e[1]%N)+N)%N,'#FFFFFF',10);return false}
@@ -473,14 +488,7 @@ header.top,.final{transition:opacity .5s var(--ease)}
       var hd=pts[0],hx=(((hd[0]%N)+N)%N+.5)*cell,hy=(((hd[1]%N)+N)%N+.5)*cell,v=D[dir],near=0;
       if(lead){var ddx=Math.abs(lead[0]-body[0][0]),ddy=Math.abs(lead[1]-body[0][1]);ddx=Math.min(ddx,N-ddx);ddy=Math.min(ddy,N-ddy);near=Math.max(0,1-(ddx+ddy-1)/2.5)}
       mouth+=((near>0?near:0)-mouth)*.2;
-      function intake(hx,hy){
-      var px=-v[1],py=v[0],fw=cell*(.44+.08*mouth);   // flare: a trapezoid wider at the front
-      ctx.fillStyle='#FFFFFF';ctx.beginPath();
-      ctx.moveTo(hx-v[0]*cell*.18+px*cell*.36,hy-v[1]*cell*.18+py*cell*.36);ctx.lineTo(hx+v[0]*cell*.3+px*fw,hy+v[1]*cell*.3+py*fw);
-      ctx.lineTo(hx+v[0]*cell*.3-px*fw,hy+v[1]*cell*.3-py*fw);ctx.lineTo(hx-v[0]*cell*.18-px*cell*.36,hy-v[1]*cell*.18-py*cell*.36);ctx.closePath();ctx.fill();
-      ctx.fillStyle=mode==='over'?'#6F8FCB':C.bg;var ow=fw*(.62+.25*mouth);   // the opening: a dark slot across the wide end
-      ctx.beginPath();ctx.ellipse(hx+v[0]*cell*.22,hy+v[1]*cell*.22,v[0]?cell*(.09+.05*mouth):ow,v[0]?ow:cell*(.09+.05*mouth),0,0,7);ctx.fill();
-      }
+      function intake(hx,hy){collar(hx,hy,v[0],v[1],mouth)}
       intake(hx,hy);   // and its twin on the far edge while it crosses a wrap, so the intake never looks cut off
       if(hx<cell)intake(hx+W,hy);if(hx>W-cell)intake(hx-W,hy);if(hy<cell)intake(hx,hy+W);if(hy>W-cell)intake(hx,hy-W);
       ctx.restore()}
