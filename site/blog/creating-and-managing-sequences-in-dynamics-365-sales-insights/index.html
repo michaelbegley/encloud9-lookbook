@@ -24,7 +24,7 @@
 <script defer src="../../../pages/nine.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "Creating and Managing Sequences in Dynamics 365 Sales", "item": "https://www.encloud9.com/blog/creating-and-managing-sequences-in-dynamics-365-sales-insights/"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Creating and Managing Sequences in Dynamics 365 Sales", "description": "How to create, connect, disconnect and edit sequences in Dynamics 365 Sales, with steps checked against Microsoft Learn in November 2026.", "url": "https://www.encloud9.com/blog/creating-and-managing-sequences-in-dynamics-365-sales-insights/", "datePublished": "2022-01-05", "dateModified": "2026-11-10", "author": {"@type": "Person", "name": "Kristin Caniglia"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a sequence in Dynamics 365 Sales?", "acceptedAnswer": {"@type": "Answer", "text": "A set of sales activities, such as emails, calls and tasks, that sellers follow in order. Managers build sequences in the sales accelerator and connect them to leads or opportunities."}}, {"@type": "Question", "name": "Do I need Sales Premium to use sequences?", "acceptedAnswer": {"@type": "Answer", "text": "No. A Sales Enterprise license includes the sales accelerator with 1,500 sequence-connected records a month. Sales Premium has no monthly limit."}}, {"@type": "Question", "name": "Can I edit a sequence that is already active?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Select Edit sequence to create a new version. Records already connected stay on the old version. You can also deactivate the sequence or edit a copy."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a sequence in Dynamics 365 Sales?", "acceptedAnswer": {"@type": "Answer", "text": "A set of sales activities, such as emails, calls and tasks, that sellers follow in order. Managers, and sellers for themselves, build sequences in the sales accelerator and connect them to records such as leads or opportunities."}}, {"@type": "Question", "name": "Do I need Sales Premium to use sequences?", "acceptedAnswer": {"@type": "Answer", "text": "No. A Sales Enterprise license includes the sales accelerator with 1,500 sequence-connected records a month. Sales Premium has no monthly limit."}}, {"@type": "Question", "name": "Can I edit a sequence that is already active?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Select Edit sequence to create a new version. Records already connected stay on the old version. You can also deactivate the sequence or edit a copy."}}]}</script>
 <style>
 /* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
 body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
@@ -242,7 +242,7 @@ body.p-post .art code{font-family:var(--mono);font-size:.88em;background:var(--t
       </nav>
 
       <div class="art" id="art">
-        <p class="answer"><span class="mono">The short answer</span><strong>A sequence is a set of sales activities, such as emails, calls and tasks, that sellers follow in order. In Dynamics 365 Sales, you build sequences in the sales accelerator. Go to Sales Insights settings, select Sequences, then New sequence. Add your steps, save and activate. Then connect the sequence to leads or opportunities, by hand or with Power Automate.</strong></p>
+        <p class="answer"><span class="mono">The short answer</span><strong>A sequence is a set of sales activities, such as emails, calls and tasks, that sellers follow in order. In Dynamics 365 Sales, you build sequences in the sales accelerator. Go to Sales Insights settings, select Sequences, then New sequence. Add your steps, save and activate. Then connect the sequence to records, such as leads or opportunities, by hand or with Power Automate.</strong></p>
         <section class="upd" aria-labelledby="update">
           <span class="mono">Update, November 2026</span>
           <h2 id="update" class="sr-only">What changed since this post was written?</h2>
@@ -255,7 +255,7 @@ body.p-post .art code{font-family:var(--mono);font-size:.88em;background:var(--t
             <li>You can edit an active sequence without deactivating it. Doing so creates a new version.</li>
           </ul>
         </section>
-        <p>Sequences give sellers a set of steps that reflect the company’s best practices. Sales managers and admins create them. They decide which activities sellers perform, and in what order.</p>
+        <p>Sequences give sellers a set of steps that reflect the company’s best practices. Sales managers and admins create them, and sellers can create their own. They decide which activities sellers perform, and in what order.</p>
         <p>That helps sellers prioritize their day, stay productive and follow the business process. When this post was written in 2022, sequences were a feature of Dynamics 365 Sales Insights. Today, Microsoft includes them in the <a href="https://learn.microsoft.com/dynamics365/sales/create-manage-sequences">sales accelerator</a> (checked 10 November 2026).</p>
         <h2 id="create">How do you create a new sequence?</h2>
         <p>You create it in Sales Insights settings, under Sales accelerator. These are the current steps from Microsoft’s guide to <a href="https://learn.microsoft.com/dynamics365/sales/create-and-activate-a-sequence">creating and activating a sequence</a> (checked 10 November 2026):</p>
@@ -264,7 +264,7 @@ body.p-post .art code{font-family:var(--mono);font-size:.88em;background:var(--t
           <li>Under <strong>Sales accelerator</strong>, select <strong>Sequences</strong>.</li>
           <li>Select <strong>New sequence</strong>.</li>
           <li>Choose <strong>Use template</strong> or <strong>Use blank sequence</strong>.</li>
-          <li>Enter a sequence name, an optional description and the entity. The entity is lead by default; you can choose opportunity instead.</li>
+          <li>Enter a sequence name, an optional description and the entity. Lead is the default. You can also pick another record type set up for the sales accelerator, such as opportunity, account or contact.</li>
           <li>Select <strong>Next</strong>. The sequence designer opens with a <strong>Sequence start here</strong> step.</li>
           <li>Select the <strong>Add</strong> icon (+) to add each step. Step types are:
             <ul>
@@ -327,7 +327,7 @@ body.p-post .art code{font-family:var(--mono);font-size:.88em;background:var(--t
         <p>Both videos predate this update, so some screens may look different today.</p>
         <h2 id="faq">Frequently asked questions</h2>
         <div class="faq">
-          <details><summary>What is a sequence in Dynamics 365 Sales?</summary><p>A set of sales activities, such as emails, calls and tasks, that sellers follow in order. Managers build sequences in the sales accelerator and connect them to leads or opportunities.</p></details>
+          <details><summary>What is a sequence in Dynamics 365 Sales?</summary><p>A set of sales activities, such as emails, calls and tasks, that sellers follow in order. Managers, and sellers for themselves, build sequences in the sales accelerator and connect them to records such as leads or opportunities.</p></details>
           <details><summary>Do I need Sales Premium to use sequences?</summary><p>No. A Sales Enterprise license includes the sales accelerator with 1,500 sequence-connected records a month. Sales Premium has no monthly limit.</p></details>
           <details><summary>Can I edit a sequence that is already active?</summary><p>Yes. Select Edit sequence to create a new version. Records already connected stay on the old version. You can also deactivate the sequence or edit a copy.</p></details>
         </div>
