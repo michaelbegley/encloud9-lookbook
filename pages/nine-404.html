@@ -238,22 +238,21 @@ header.top,.final{transition:opacity .5s var(--ease)}
      - layer, don't swap: each pipeline stage adds a part, and a live deal brings in a bright arpeggio;
      - sound effects are pitched to the chord that is playing, so music and effects stay one piece (balance);
      - a fanfare for each stage, and a short game-over tag that leans you into another round. */
-  var ac=null,master=null,musicBus=null,noiseBuf=null;
+  var ac=null,master=null,musicBus=null,fxBus=null,jingleBus=null,noiseBuf=null;
   function audio(){
     if(ac)return ac;
     try{ac=new (window.AudioContext||window.webkitAudioContext)()}catch(e){return null}
-    master=ac.createGain();master.gain.value=.9;master.connect(ac.destination);
+    master=ac.createGain();master.gain.value=.8;var comp=ac.createDynamicsCompressor();comp.threshold.value=-14;comp.ratio.value=4;master.connect(comp).connect(ac.destination);
     musicBus=ac.createGain();musicBus.gain.value=0;musicBus.connect(master);
+    // a dark echo for the cool stuff: a dotted-eighth-ish delay, filtered so the repeats sit back
+    var dl=ac.createDelay(1),fb=ac.createGain(),wf=ac.createBiquadFilter(),wet=ac.createGain();dl.delayTime.value=.33;fb.gain.value=.32;wf.type='lowpass';wf.frequency.value=2200;wet.gain.value=.38;
+    dl.connect(fb).connect(dl);dl.connect(wf).connect(wet).connect(master);
+    fxBus=ac.createGain();fxBus.connect(musicBus);fxBus.connect(dl);
+    jingleBus=ac.createGain();jingleBus.gain.value=.9;jingleBus.connect(master);jingleBus.connect(dl);
     noiseBuf=ac.createBuffer(1,ac.sampleRate*.5,ac.sampleRate);var d=noiseBuf.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;
     return ac;
   }
   var hz=function(m){return 440*Math.pow(2,(m-69)/12)};
-  function note(m,t,len,type,vol,bus,slide){   // one voice: oscillator into a short envelope
-    var o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.setValueAtTime(hz(m),t);
-    if(slide)o.frequency.exponentialRampToValueAtTime(hz(m+slide),t+len);
-    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+.006);g.gain.setTargetAtTime(vol*.55,t+.03,.06);g.gain.setTargetAtTime(0,t+len*.85,.03);
-    o.connect(g).connect(bus||master);o.start(t);o.stop(t+len+.2);
-  }
   function hit(t,kind,vol,bus){   // noise drums: hat, snare; and a pitched-down kick
     if(kind==='kick'){var o=ac.createOscillator(),g=ac.createGain();o.frequency.setValueAtTime(140,t);o.frequency.exponentialRampToValueAtTime(45,t+.12);g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.001,t+.16);o.connect(g).connect(bus);o.start(t);o.stop(t+.2);return}
     var s=ac.createBufferSource(),f=ac.createBiquadFilter(),g2=ac.createGain();s.buffer=noiseBuf;
@@ -262,33 +261,43 @@ header.top,.final{transition:opacity .5s var(--ease)}
     s.connect(f).connect(g2).connect(bus);s.start(t);s.stop(t+len+.02);
   }
 
-  // The score, in semitones from the key's root (C5 = 0). "." is a rest; each motif is two bars of eight eighths.
+  // A two-oscillator synth voice: detuned saws through a resonant low-pass whose cutoff sweeps down (a pluck), or opens slowly (a pad)
+  function synth(m,t,len,vol,o){o=o||{};var f=ac.createBiquadFilter(),g=ac.createGain(),cut=o.cut||1400,att=o.att||.008;
+    f.type='lowpass';f.Q.value=o.q||7;f.frequency.setValueAtTime(o.pad?cut*.4:cut*2.2,t);
+    if(o.pad)f.frequency.linearRampToValueAtTime(cut,t+len*.5);else f.frequency.setTargetAtTime(cut*.5,t+.01,.08);
+    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+att);g.gain.setTargetAtTime(o.pad?vol*.8:vol*.5,t+att,.12);g.gain.setTargetAtTime(0,t+len,o.pad?.25:.05);
+    [-7,7].forEach(function(cents){var x=ac.createOscillator();x.type=o.wave||'sawtooth';x.frequency.setValueAtTime(hz(m),t);x.detune.value=cents;x.connect(f);x.start(t);x.stop(t+len+(o.pad?1.4:.4))});
+    f.connect(g).connect(o.bus||musicBus);
+  }
+
+  // The score: A minor, i - VI - III - VII. Numbers are semitones from the key's root (A3 = 0); "_" is a rest; each motif is two bars of eight eighths.
   var _=null;
   var MOTIF={
-    A:[4,7,_,12,11,_,7,_,  9,_,4,_,0,2,4,_],          // over I then vi
-    C:[7,_,4,7,12,_,14,_,  16,_,14,12,11,_,7,_],      // over I then vi, reaching up
-    B:[5,9,12,_,9,_,5,7,   _,11,14,_,11,7,_,_],       // over IV then V
-    D:[9,7,5,_,9,_,12,_,   11,_,7,_,2,_,7,_]          // over IV then V, settling
+    A:[12,_,10,12,15,_,12,_,  12,_,_,10,7,_,8,_],     // over Am then F
+    C:[7,_,12,_,10,_,7,3,     5,_,8,_,12,_,8,_],      // over Am then F, lower answer
+    B:[7,_,10,_,15,_,14,12,   10,_,_,14,_,10,7,_],    // over C then G
+    D:[15,_,14,_,10,_,7,_,    5,_,7,10,_,14,_,_]      // over C then G, climbing out
   };
-  var CHORDS={A:[[0,4,7],[-3,0,4]],C:[[0,4,7],[-3,0,4]],B:[[-7,-3,0],[-5,-1,2]],D:[[-7,-3,0],[-5,-1,2]]};
+  var CHORDS={A:[[0,3,7],[-4,0,3]],C:[[0,3,7],[-4,0,3]],B:[[3,7,10],[-2,2,5]],D:[[3,7,10],[-2,2,5]]};
   var TONIC=[0,0,0,2,2,2,5,5,7];        // the key steps up as the pipeline moves through its stages
-  var mus={on:false,next:0,step:0,bar:0,phrase:[],chord:[0,4,7],timer:null,deal:false};
+  var ROOT=57;                          // A3: mid register, nothing shrill
+  var mus={on:false,next:0,step:0,bar:0,phrase:[],chord:[0,3,7],timer:null,deal:false};
   function pickPhrase(){return [Math.random()<.5?'A':'C',Math.random()<.5?'B':'D',Math.random()<.6?'C':'A',Math.random()<.6?'D':'B']}
-  function eighth(){var bpm=Math.min(176,124+(level-1)*5+Math.min(14,body.length-4));return 30/bpm}
+  function eighth(){var bpm=Math.min(150,112+(level-1)*4+Math.min(12,body.length-4));return 30/bpm}
   function schedule(){
     if(!mus.on||!ac)return;
-    while(mus.next<ac.currentTime+.15){
-      var t=mus.next,e=eighth(),k=TONIC[level-1]+72,m=MOTIF[mus.phrase[mus.bar>>1]],half=(mus.bar&1)*8,s=mus.step,ch=CHORDS[mus.phrase[mus.bar>>1]][mus.bar&1];
+    while(mus.next<(ac.currentTime)+.15){
+      var t=mus.next,e=eighth(),k=TONIC[level-1]+ROOT,m=MOTIF[mus.phrase[mus.bar>>1]],half=(mus.bar&1)*8,s=mus.step,ch=CHORDS[mus.phrase[mus.bar>>1]][mus.bar&1];
       mus.chord=ch;
-      var mel=m[half+s];
-      if(mel!==_&&level>=1)note(k+mel,t,e*1.6,'square',.045,musicBus);
-      // bass: root, octave, fifth, octave, in even eighths
-      var bassPat=[0,_,12,_,7,_,12,0];if(bassPat[s]!==_)note(k-24+ch[0]+bassPat[s],t,e*.9,'triangle',.16,musicBus);
-      // triplet hi-hat over the even eighths: three hits across every quarter
-      if(s%2===0)for(var h=0;h<3;h++)hit(t+h*(2*e/3),'hat',h?.025:.04,musicBus);
-      if(level>=3){if(s===0||s===4)hit(t,'kick',.32,musicBus);if(s===2||s===6)hit(t,'snare',.07,musicBus)}
-      if(level>=5&&(s===0||s===4))ch.forEach(function(c,i){note(k-12+c,t,e*3.6,'triangle',.035,musicBus)});
-      if(mus.deal||level>=7){var arp=[0,1,2,1];note(k+12+ch[arp[s%4]],t,e*.45,'square',mus.deal?.03:.018,musicBus);note(k+12+ch[arp[(s+2)%4]],t+e/2,e*.45,'square',mus.deal?.026:.014,musicBus)}
+      // driving synth bass: straight eighths on the root, an octave jump for lift
+      var bp=[0,0,12,0,0,0,12,0];synth(k-12+ch[0]+bp[s],t,e*.85,.11,{cut:520,q:9});
+      // kick on every beat, triplet hats over the straight eighths (Kondo's push)
+      if(s%2===0){hit(t,'kick',.42,musicBus);for(var h=0;h<3;h++)hit(t+h*(2*e/3),'hat',h?.012:.022,musicBus)}
+      // lead melody
+      var mel=m[half+s];if(mel!==_)synth(k+mel,t,e*1.7,.07,{cut:1500,q:5,bus:fxBus});
+      if(level>=3&&(s===2||s===6))hit(t,'snare',.09,fxBus);
+      if(level>=5&&s===0)ch.forEach(function(c){synth(k+c,t,e*7.6,.03,{cut:900,pad:1,att:.25,q:2,bus:fxBus})});
+      if(mus.deal||level>=7){var arp=[0,1,2,1];[0,.5].forEach(function(off,j){synth(k+12+ch[arp[(s*2+j)%4]],t+off*e,e*.4,mus.deal?.045:.025,{cut:2200,q:8,wave:'square',bus:fxBus})})}
       mus.next+=e;mus.step++;
       if(mus.step===8){mus.step=0;mus.bar++;if(mus.bar===8){mus.bar=0;mus.phrase=pickPhrase()}}
     }
@@ -297,16 +306,16 @@ header.top,.final{transition:opacity .5s var(--ease)}
     start:function(){if(!sound||!audio())return;ac.resume&&ac.resume();mus.on=true;mus.step=0;mus.bar=0;mus.phrase=['A','B','C','D'];mus.next=ac.currentTime+.08;
       musicBus.gain.cancelScheduledValues(ac.currentTime);musicBus.gain.setTargetAtTime(.9,ac.currentTime,.05);clearInterval(mus.timer);mus.timer=setInterval(schedule,25);schedule()},
     stop:function(fade){if(!ac)return;mus.on=false;clearInterval(mus.timer);musicBus.gain.cancelScheduledValues(ac.currentTime);musicBus.gain.setTargetAtTime(0,ac.currentTime,fade||.04)},
-    jingle:function(notes,e,type,vol){if(!sound||!audio())return;var t=ac.currentTime+.03,k=TONIC[level-1]+72;
-      notes.forEach(function(n){if(n[0]!==_)[].concat(n[0]).forEach(function(p,i){note(k+p,t,n[1]*e,type||'square',(vol||.06)*(i?.6:1))});t+=n[1]*e})}
+    jingle:function(notes,e,vol){if(!sound||!audio())return;var t=ac.currentTime+.03,k=TONIC[level-1]+ROOT+12;
+      notes.forEach(function(n){if(n[0]!==_)[].concat(n[0]).forEach(function(p,i){synth(k+p,t,n[1]*e,(vol||.08)*(i?.6:1),{cut:1800,q:6,bus:jingleBus})});t+=n[1]*e})}
   };
-  // Effects that land on the chord now playing
+  // Effects that land on the chord now playing, in the same register as the melody
   var sfx={
-    lead:function(){if(!sound||!audio())return;var k=TONIC[level-1]+84,c=mus.chord,t=ac.currentTime;note(k+c[1],t,.07,'square',.05);note(k+c[2],t+.05,.09,'square',.05)},
-    bonus:function(){if(!sound||!audio())return;var k=TONIC[level-1]+84,c=mus.chord,t=ac.currentTime;[c[0],c[1],c[2],c[0]+12].forEach(function(p,i){note(k+p,t+i*.05,.09,'triangle',.07)})},
-    die:function(){music.stop(.02);music.jingle([[7,1],[4,1],[0,1],[-1,1],[-5,2],[_,1],[[2,-5],1],[[4,0],1],[[7,4],3]],.11,'square',.05)},   // falls, then picks itself up: try again
-    stage:function(){music.stop(.02);music.jingle([[0,1],[4,1],[7,1],[12,2],[_,1],[[11,7],1],[[12,7,4],4]],.09,'square',.06)},
-    won:function(){music.stop(.02);music.jingle([[0,1],[4,1],[7,1],[12,1],[9,1],[12,1],[16,2],[_,1],[14,1],[17,1],[[19,12,7],6]],.1,'square',.065)}
+    lead:function(){if(!sound||!audio())return;var k=TONIC[level-1]+ROOT+12,c=mus.chord,t=ac.currentTime;synth(k+c[1],t,.08,.07,{cut:2400,q:8,bus:jingleBus});synth(k+c[2],t+.06,.12,.07,{cut:2400,q:8,bus:jingleBus})},
+    bonus:function(){if(!sound||!audio())return;var k=TONIC[level-1]+ROOT+12,c=mus.chord,t=ac.currentTime;[c[0],c[1],c[2],c[0]+12].forEach(function(p,i){synth(k+p,t+i*.06,.14,.08,{cut:2600,q:8,bus:jingleBus})})},
+    die:function(){music.stop(.02);music.jingle([[7,1],[3,1],[0,1],[-2,1],[-5,3],[_,1],[[0,-5],1],[[3,0],1],[[7,3],3]],.12,.07)},   // falls, then picks itself up: try again
+    stage:function(){music.stop(.02);music.jingle([[0,1],[3,1],[7,1],[10,1],[_,1],[[12,7,3],5]],.1,.08)},
+    won:function(){music.stop(.02);music.jingle([[0,1],[3,1],[7,1],[12,1],[10,1],[7,1],[15,2],[_,1],[14,1],[16,1],[[19,16,12],7]],.11,.085)}   // minor all game, major at the close
   };
   function setSound(on){sound=on;sndB.textContent=on?'Sound on':'Sound off';sndB.setAttribute('aria-pressed',on);try{localStorage.setItem('n9snakeSound',on?'1':'0')}catch(e){}
     if(on&&audio()){ac.resume&&ac.resume();if(mode==='play'||mode==='between')music.start();else sfx.lead()}else music.stop()}
