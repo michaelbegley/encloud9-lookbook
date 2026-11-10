@@ -38,7 +38,7 @@ body.p-packages .pk-hero .cell.base .nm{margin-top:0}
 body.p-packages .pk-hero .cell.base .big{font-family:var(--head);font-size:clamp(28px,3vw,40px);font-weight:600;letter-spacing:-.03em;line-height:1;white-space:nowrap}
 body.p-packages .pk-hero .cell.base .big small{display:block;font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:0;margin-top:6px;opacity:.85}
 @media (max-width:560px){body.p-packages .pk-hero .cell .nm{font-size:14px}body.p-packages .pk-hero .cell.base{flex-direction:column;align-items:flex-start;gap:6px}body.p-packages .pk-hero .cell.base .nm{font-size:17px}body.p-packages .pk-hero .cell.base .big{font-size:22px}}
-.sh{display:none}
+.sh{display:inline}
 @media (max-width:560px){.sh{display:inline}}
 @media (max-width:420px){body.p-packages .pk-hero .cell .nm,body.p-packages .dest .nm{font-size:13px}body.p-packages .pk-hero .cell{padding:10px}body.p-packages .pk-hero .cell.base{padding:16px}}
 @media (max-width:640px){
@@ -168,6 +168,7 @@ body.p-packages .fit-tbl tbody td{color:var(--ink2)}
 @media (max-width:1080px){.pk-st{grid-template-columns:1fr}}
 
 </style>
+<link rel="stylesheet" href="../../pages/nine-scale.css">
 </head>
 <body class="p-packages">
 <header class="top">
@@ -201,14 +202,14 @@ body.p-packages .fit-tbl tbody td{color:var(--ink2)}
       <p class="phone-note rise" style="--d:6">Prefer the phone? Call <a href="tel:+18442640729">1-844-264-0729</a>.</p>
     </div>
     <div>
-      <div class="grid9 pk-hero" role="list" aria-label="Our packages, and our monthly support plans">
-        <a role="listitem" class="cell" style="background:var(--b1);--d:0" href="#pk-full"><span class="lab">Package 01</span><span class="nm">Full imple<span class="sh">&shy;</span>mentation</span><span class="ds">Data moves and integrations</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b2);--d:1" href="#pk-rescue"><span class="lab">Package 02</span><span class="nm">Rescue and Repair</span><span class="ds">Over-customized or stalled systems</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b3);--d:2" href="#pk-sales"><span class="lab">Package 03</span><span class="nm">Sales Accelerator</span><span class="ds">A first Dynamics 365 Sales system</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b4);--d:3" href="#pk-service"><span class="lab">Package 04</span><span class="nm">Service Accelerator</span><span class="ds">A first Customer Service system</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b6);--d:4" href="#pk-salesforce"><span class="lab">Package 05</span><span class="nm">Move from Salesforce</span><span class="ds">Your old CRM data, moved</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b7);--d:5" href="#pk-hubspot"><span class="lab">Package 06</span><span class="nm">Move from HubSpot or another CRM</span><span class="ds">Your old CRM data, moved</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell core base" style="background:var(--b5);--d:7" href="#support"><span><span class="lab">After go-live</span><span class="nm" style="display:block;margin-top:8px">Professional, responsive monthly support plans</span></span><span class="big">From $500<small>a month, Stability plan</small></span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      <div class="grid9 pk-hero" role="group" aria-label="Our packages, and our monthly support plans">
+        <a class="cell" style="background:var(--b1);--d:0" href="#pk-full"><span class="lab">Package 01</span><span class="nm">Full imple<span class="sh">&shy;</span>mentation</span><span class="ds">Data moves and integrations</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell" style="background:var(--b2);--d:1" href="#pk-rescue"><span class="lab">Package 02</span><span class="nm">Rescue and Repair</span><span class="ds">Over-customized or stalled systems</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell" style="background:var(--b3);--d:2" href="#pk-sales"><span class="lab">Package 03</span><span class="nm">Sales Accelerator</span><span class="ds">A first Dynamics 365 Sales system</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell" style="background:var(--b4);--d:3" href="#pk-service"><span class="lab">Package 04</span><span class="nm">Service Accelerator</span><span class="ds">A first Customer Service system</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell" style="background:var(--b6);--d:4" href="#pk-salesforce"><span class="lab">Package 05</span><span class="nm">Move from Salesforce</span><span class="ds">Your old CRM data, moved</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell lt" style="background:var(--b7);--d:5" href="#pk-hubspot"><span class="lab">Package 06</span><span class="nm">Move from HubSpot or another CRM</span><span class="ds">Your old CRM data, moved</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell core base" style="background:var(--b5);--d:7" href="#support"><span><span class="lab">After go-live</span><span class="nm" style="display:block;margin-top:8px">Professional, responsive monthly support plans</span></span><span class="big">From $500<small>a month, Stability plan</small></span><span class="ar" aria-hidden="true">&#8599;</span></a>
       </div>
       <p class="fine" style="margin-top:14px">Each package shows its starting price, and the final quote comes in writing before work starts. <a class="lnk" href="#fit">Which package fits <span>&rarr;</span></a></p>
     </div>
@@ -226,18 +227,18 @@ body.p-packages .fit-tbl tbody td{color:var(--ink2)}
   <section class="sec" id="packages" aria-labelledby="pk-h">
     <div class="sec-head rev">
       <h2 class="h2" id="pk-h">Which Dynamics 365 packages can we build for you?</h2>
-      <p class="lead">We build Dynamics 365 through six packages, backed by professional, responsive monthly support plans from $500. Each one lists what is included, what is not and how long it takes. You get the price in writing after a short call.</p>
+      <p class="lead">We build Dynamics 365 through six packages, backed by professional, responsive monthly support plans from $500. Each one lists what is included, what is not and how long it takes. You get a written quote before work starts.</p>
     </div>
     <div class="pk-cards rev">
       <a class="pk" id="pk-full" style="--c:var(--b1)" href="../microsoft-dynamics-365-implementation/"><span class="pt-top"><span class="mono">Package 01</span><span class="g big" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></span><h3 class="h3">Full implementation</h3><p class="one">Sales, Customer Service or both, with data moved, integrations and training.</p><dl><div><dt>Time</dt><dd>Typically 8 to 16 weeks</dd></div><div><dt>Users</dt><dd>Set in your written scope</dd></div><div><dt>Price</dt><dd>From $20,000, quoted in writing</dd></div></dl><span class="go">See the package &rarr;</span></a>
       <a class="pk" id="pk-rescue" style="--c:var(--b2)" href="../encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/"><span class="pt-top"><span class="mono">Package 02</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></span><h3 class="h3">Rescue and Repair</h3><p class="one">We take over a Dynamics system that is over-customized, stalled or out of date, and get it working.</p><dl><div><dt>Time</dt><dd>Typically 8 to 16 weeks</dd></div><div><dt>Users</dt><dd>Set in your written scope</dd></div><div><dt>Price</dt><dd>$500 to $10,000, quoted in writing</dd></div></dl><span class="go">See the package &rarr;</span></a>
       <a class="pk" id="pk-sales" style="--c:var(--b3)" href="../dynamics-365-sales-accelerator/"><span class="pt-top"><span class="mono">Package 03</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span></span><h3 class="h3">Sales Accelerator</h3><p class="one">Dynamics 365 Sales with your users, pipeline and records set up, for a business starting fresh or leaving spreadsheets or an old CRM.</p><dl><div><dt>Time</dt><dd>[Brian sets] weeks</dd></div><div><dt>Users</dt><dd>Up to [Brian sets] users</dd></div><div><dt>Price</dt><dd>$7,500</dd></div></dl><span class="go">See the package &rarr;</span></a>
       <a class="pk" id="pk-service" style="--c:var(--b4)" href="../dynamics-365-service-accelerator/"><span class="pt-top"><span class="mono">Package 04</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></span><h3 class="h3">Service Accelerator</h3><p class="one">Dynamics 365 Customer Service with cases, queues and service levels.</p><dl><div><dt>Time</dt><dd>[Brian sets] weeks</dd></div><div><dt>Users</dt><dd>Up to [Brian sets] users</dd></div><div><dt>Price</dt><dd>$7,500</dd></div></dl><span class="go">See the package &rarr;</span></a>
-      <a class="pk" id="pk-salesforce" style="--c:var(--b5)" href="../microsoft-dynamics-365-salesforce-crm-migration/"><span class="pt-top"><span class="mono">Package 05</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><h3 class="h3">Move from Salesforce</h3><p class="one">Moving data from your old CRM or spreadsheets is part of a full implementation.</p><dl><div><dt>Time</dt><dd>[Brian sets] weeks</dd></div><div><dt>Users</dt><dd>Up to [Brian sets] users</dd></div><div><dt>Price</dt><dd>Quoted in writing after a short call</dd></div></dl><span class="go">See the package &rarr;</span></a>
-      <a class="pk lt" id="pk-hubspot" style="--c:var(--b7)" href="../lp/microsoft-dynamics-365-hubspot-crm-migration/"><span class="pt-top"><span class="mono">Package 06</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></span><h3 class="h3">Move from HubSpot or another CRM</h3><p class="one">Moving data from your old CRM or spreadsheets is part of a full implementation.</p><dl><div><dt>Time</dt><dd>[Brian sets] weeks</dd></div><div><dt>Users</dt><dd>Up to [Brian sets] users</dd></div><div><dt>Price</dt><dd>Quoted in writing after a short call</dd></div></dl><span class="go">See the package &rarr;</span></a>
+      <a class="pk" id="pk-salesforce" style="--c:var(--b5)" href="../microsoft-dynamics-365-salesforce-crm-migration/"><span class="pt-top"><span class="mono">Package 05</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><h3 class="h3">Move from Salesforce</h3><p class="one">Your Salesforce records, users and history moved into Dynamics 365.</p><dl><div><dt>Time</dt><dd>[Brian sets] weeks</dd></div><div><dt>Users</dt><dd>Up to [Brian sets] users</dd></div><div><dt>Price</dt><dd>Quoted in writing after a short call</dd></div></dl><span class="go">See the package &rarr;</span></a>
+      <a class="pk lt" id="pk-hubspot" style="--c:var(--b7)" href="../lp/microsoft-dynamics-365-hubspot-crm-migration/"><span class="pt-top"><span class="mono">Package 06</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></span><h3 class="h3">Move from HubSpot or another CRM</h3><p class="one">Your HubSpot, Zoho, monday.com or other CRM data moved into Dynamics 365.</p><dl><div><dt>Time</dt><dd>[Brian sets] weeks</dd></div><div><dt>Users</dt><dd>Up to [Brian sets] users</dd></div><div><dt>Price</dt><dd>Quoted in writing after a short call</dd></div></dl><span class="go">See the package &rarr;</span></a>
     </div>
     <div class="pk-more">
-      <span>Also moving from Zoho or Monday.com? See <a class="lnk" href="../microsoft-dynamics-365-zoho-crm-migration/">Move from Zoho</a> and <a class="lnk" href="../lp/monday-to-dynamics-365-migration/">Move from Monday.com</a>.</span>
+      <span>Also moving from Zoho or monday.com? See <a class="lnk" href="../microsoft-dynamics-365-zoho-crm-migration/">Move from Zoho</a> and <a class="lnk" href="../lp/monday-to-dynamics-365-migration/">Move from monday.com</a>.</span>
     </div>
     <p class="fine">Microsoft licenses are not part of the package price. Anything outside the package is a written change order you approve before work starts.</p>
   </section>
@@ -250,7 +251,7 @@ body.p-packages .fit-tbl tbody td{color:var(--ink2)}
         <span class="mono">Support plans</span>
         <h2 class="h2" id="sp-h" style="margin-top:16px">What does support cost after go-live?</h2>
       </div>
-      <p class="lead rev">Support starts at $500 a month for 4 hours on the Stability plan, which is the minimum plan for new clients. Larger teams choose Optimization at $1,500 a month for 20 hours or Partnership from $2,000 a month for 35 hours.</p>
+      <p class="lead rev">Support starts at $500 a month for 4 hours on the Stability plan, which is the minimum plan for new clients. Larger teams choose Optimization at $1,500 a month for 20 hours or Partnership at $2,000 a month for 35 hours.</p>
     </div>
     <ol class="sp-scale rev" aria-label="Support plans, from smallest to largest">
       <li class="s1" style="--h:48%;--w:58%;--i:0"><span class="nm">On-Demand</span><span class="pr">$200</span><span class="per">an hour</span><span class="hrs">As needed, no retainer</span><a class="cover" href="../microsoft-dynamics-365-support-services/#plans" aria-label="Compare the On-Demand plan"></a></li>
@@ -258,7 +259,7 @@ body.p-packages .fit-tbl tbody td{color:var(--ink2)}
       <li class="s3" style="--h:82%;--w:86%;--i:2"><span class="nm">Optimization</span><span class="pr">$1,500</span><span class="per">a month</span><span class="hrs">20 hours a month</span><span class="fitl">Up to 50 users</span><a class="cover" href="../microsoft-dynamics-365-support-services/#plans" aria-label="Compare the Optimization plan"></a></li>
       <li class="s4" style="--h:100%;--w:100%;--i:3"><span class="nm">Partnership</span><span class="pr">$2,000</span><span class="per">a month</span><span class="hrs">35 hours a month</span><span class="fitl">50 users and up</span><a class="cover" href="../microsoft-dynamics-365-support-services/#plans" aria-label="Compare the Partnership plan"></a></li>
     </ol>
-    <p class="fine" style="max-width:900px;margin-top:28px">Monthly plans run on a 12-month agreement. New clients pay an onboarding fee of up to one month's charge. Hours 7:00am to 5:00pm Central, Monday to Friday, excluding US federal holidays. Monthly plans include a 1-hour response during business hours, which means a person has picked up your request, not that it is solved. Every plan includes Microsoft escalation management.</p>
+    <p class="fine" style="max-width:900px;margin-top:28px">Monthly plans run on a 12-month agreement. New clients pay an onboarding fee of up to one month's charge. Hours 7:00am to 5:00pm Central, Monday to Friday. Monthly plans include a 1-hour response during business hours, which means a person has picked up your request, not that it is solved. Every monthly plan includes Microsoft escalation management.</p>
     <div class="band-foot">
       <a class="btn btn-w" href="../microsoft-dynamics-365-support-services/#plans">Compare support plans</a>
       <a class="lnk" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call <span>&rarr;</span></a>
@@ -323,7 +324,7 @@ body.p-packages .fit-tbl tbody td{color:var(--ink2)}
           <tr><td>You already have a Dynamics 365 Customer Service system that is over-customized or stalled. Rescue and Repair is built for that.</td><th scope="row"><a class="lnk" href="../encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a></th></tr>
           <tr><td>You need phone and chat routing for a contact center on day one. Dynamics 365 Contact Center is built for that.</td><th scope="row"><a class="lnk" href="../dynamics-365-contact-center/">Talk to us about Dynamics 365 Contact Center</a></th></tr>
           <tr><td>You are moving from Salesforce, HubSpot or another CRM. Moving your data is part of a full implementation.</td><th scope="row"><a class="lnk" href="../microsoft-dynamics-365-implementation/">Full implementation</a> (<a class="lnk" href="../microsoft-dynamics-365-salesforce-crm-migration/">Move from Salesforce</a>, <a class="lnk" href="../lp/microsoft-dynamics-365-hubspot-crm-migration/">Move from HubSpot or another CRM</a>)</th></tr>
-          <tr><td>You have a Dynamics 365 system and want to know where it stands first.</td><th scope="row"><a class="lnk" href="https://www.encloud9.com/lp/schedule-a-meeting/">CRM Health Check, free</a></th></tr>
+          <tr><td>You have a Dynamics 365 system and want to know where it stands first.</td><th scope="row"><a class="lnk" href="../crm-health-check/">CRM Health Check, free</a></th></tr>
         </tbody>
       </table>
     </div>
@@ -343,7 +344,7 @@ body.p-packages .fit-tbl tbody td{color:var(--ink2)}
     </div>
     <div class="stories two rev">
       <a class="story" href="../blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/"><span class="mono">Maryland &middot; Dynamics 365 Sales</span><span class="big">1 month</span><span class="t">The Schiff Group</span><span class="d">A new Dynamics 365 Sales system in one month.</span><span class="go">Read The Schiff Group story &rarr;</span></a>
-      <a class="story" href="../blog/success_stories/tension-ss/"><span class="mono">Kansas City, MO &middot; Rescue</span><span class="big">3 months</span><span class="t">Tension Envelope</span><span class="d">A stalled Dynamics 365 Sales Enterprise project from a prior partner, rescued within a mere three-month timeframe.</span><span class="go">Read the Tension Envelope story &rarr;</span></a>
+      <a class="story" href="../blog/success_stories/tension-ss/"><span class="mono">Kansas City, MO &middot; Rescue</span><span class="big">3 months</span><span class="t">Tension Envelope</span><span class="d">A stalled Dynamics 365 Sales Enterprise project from a prior partner, back on track within three months.</span><span class="go">Read the Tension Envelope story &rarr;</span></a>
     </div>
     </div>
   </section>
@@ -384,7 +385,7 @@ body.p-packages .fit-tbl tbody td{color:var(--ink2)}
     <div class="inner">
       <div class="rev">
         <h2 class="h2" id="fc-h">Start with a call or a free checkup</h2>
-        <p class="lead">Tell us where your system is today. You get a plan, a package and a price, whether or not you work with us.</p>
+        <p class="lead">Tell us where your system is today. You get a straight answer on which package fits, whether or not you work with us.</p>
       </div>
       <div class="side rev">
         <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
@@ -401,7 +402,7 @@ body.p-packages .fit-tbl tbody td{color:var(--ink2)}
         <nav aria-label="Industries"><b>Industries</b><a href="../lp/healthcare-crm-software-dynamics-365/">Healthcare</a><a href="../dynamics-365-distribution/">Distribution</a><a href="../dynamics-365-professional-services/">Professional services</a><a href="../dynamics-365-manufacturing/">Manufacturing</a><a href="../microsoft-dynamics-365-partner-omaha/">Omaha and Nebraska</a></nav>
         <nav aria-label="Company"><b>Company</b><a href="../about-encloud9/">About enCloud9</a><a href="../about-encloud9/how-we-work/">How we work</a><a href="../about-encloud9/team/">Team</a><a href="../about-encloud9/microsoft-dynamics-365-success/">Client stories</a><a href="../blog/">Blog</a><a href="../contact-us/">Contact us</a><a href="../faq/">All questions</a><a href="../free-guides-and-checks/">Free guides and checks</a></nav>
       </div>
-      <div class="tm">enCloud9 LLC, 2915 Lynnwood Dr., Bellevue, NE 68123. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. <a href="../privacy-policy/">Privacy policy</a> &middot; <a href="../accessibility/">Accessibility statement</a></div>
+      <div class="tm">enCloud9 LLC, 2915 Lynnwood Dr., Bellevue, NE 68123. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. Prices are subject to change; Microsoft sets its own prices. <a href="../terms-of-use/">Terms of use</a> &middot; <a href="../privacy-policy/">Privacy policy</a> &middot; <a href="../accessibility/">Accessibility statement</a></div>
     </footer>
   </div>
   <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>
@@ -417,9 +418,9 @@ body.p-packages .fit-tbl tbody td{color:var(--ink2)}
     service:['Service Accelerator','../dynamics-365-service-accelerator/',1],
     full:['Full implementation','../microsoft-dynamics-365-implementation/',1],
     rescue:['Rescue and Repair','../encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/',1],
-    cc:['Talk to us about Dynamics 365 Contact Center','https://www.encloud9.com/dynamics-365-contact-center/',0],
+    cc:['Talk to us about Dynamics 365 Contact Center','../dynamics-365-contact-center/',0],
     move:['Move from Salesforce, HubSpot or another CRM','../microsoft-dynamics-365-implementation/',1,['salesforce','hubspot'],'See the Full implementation package','Moving your data is part of a full implementation. '],
-    checkup:['CRM Health Check, free','https://www.encloud9.com/lp/schedule-a-meeting/',0,0,'Book a free CRM Health Check']
+    checkup:['CRM Health Check, free','../crm-health-check/',0,0,'See the free CRM Health Check']
   };
   root.addEventListener('click',function(e){
     var b=e.target.closest('.pick-q button');if(!b)return;

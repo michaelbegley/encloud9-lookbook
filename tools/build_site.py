@@ -73,6 +73,7 @@ MAP = {
     'nine-license-check.html': '/dynamics-365-license-check/',
     'nine-accessibility.html': '/accessibility/',
     'nine-privacy.html': '/privacy-policy/',
+    'nine-terms.html': '/terms-of-use/',  # new page (9 Nov 2026, Brian's pricing disclaimer); the live site has no terms page
     'nine-email-verifier.html': '/email-verifier/',
     'nine-accelerators.html': '/encloud9-dynamics-365-crm-services/microsoft-dynamics-365-crm-accelerators/',
     'nine-support.html': '/microsoft-dynamics-365-support-services/',
@@ -154,7 +155,7 @@ def rewrite(html, src, here):
         html = html.replace(f"'{k}'", f"'{rel(here, v)}'")
     return html
 
-NO_SITEMAP = {'nine-404.html', 'nine-privacy.html', 'nine-accessibility.html'}  # 404, and legal pages stay noindex until the lawyer and Brian approve
+NO_SITEMAP = {'nine-404.html', 'nine-privacy.html', 'nine-accessibility.html', 'nine-terms.html'}  # 404, and legal pages stay noindex until the lawyer and Brian approve
 
 def write_sitemap():
     """sitemap.xml with the real encloud9.com addresses (standard gate G11)."""

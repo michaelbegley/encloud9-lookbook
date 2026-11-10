@@ -45,7 +45,7 @@ const WIDTHS=[320,360,390,480,600,768,900,1024,1180,1280,1440,1920];
  // G11 share and find: preview tags, canonical, in sitemap, linked from another page (404 exempt)
  if(base==='nine-404.html'){out.gates.G11={pass:true,exempt:'404 page'}}else{
   let sm='';try{sm=fs.readFileSync(path.join(repo,'site','sitemap.xml'),'utf8')}catch(e){}
-  const legal=/nine-(privacy|accessibility)\.html/.test(base);
+  const legal=/nine-(privacy|accessibility|terms)\.html/.test(base);
   const live=canon.replace('https://www.encloud9.com','');
   const inbound=fs.readdirSync(path.dirname(file)).filter(f=>/^nine-.*\.html$/.test(f)&&f!==base&&f!=='nine-faq.html').filter(f=>{const s=fs.readFileSync(path.join(path.dirname(file),f),'utf8');return s.includes('href="'+base)||(canon&&s.includes('href="'+canon))});
   const tags={canonical:!!canon,'og:title':!!meta('og:title'),'og:description':!!meta('og:description'),'og:image':!!meta('og:image'),'og:url':!!meta('og:url'),'twitter:card':!!meta('twitter:card')};

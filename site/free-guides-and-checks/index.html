@@ -63,6 +63,7 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
 @media (max-width:560px){body.p-pkg .grid9 .cell.core .nm{font-size:13px;hyphens:none;-webkit-hyphens:none}body.p-pkg .lnav{grid-template-columns:1fr 1fr}body.p-pkg .spec div{grid-template-columns:1fr;gap:2px}body.p-pkg .ptiles.plans .ptile{min-height:0}}
 </style>
 <style>.gcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}.gcards a{display:flex;flex-direction:column;gap:10px;background:var(--bg,#fff);padding:26px;text-decoration:none;color:var(--ink);min-height:200px}.gcards a:hover{background:var(--tint,#EAF0F8)}.gcards .t{font-family:var(--head);font-size:21px;font-weight:600;line-height:1.25}.gcards .d{color:var(--muted);font-size:16px;flex:1}.gcards .go{font-family:var(--mono);font-size:12px;color:var(--b5)}.gcards.two{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:900px){.gcards{grid-template-columns:1fr 1fr}}@media(max-width:560px){.gcards{grid-template-columns:1fr}.gcards a{min-height:0}}</style>
+<link rel="stylesheet" href="../../pages/nine-scale.css">
 </head>
 <body class="p-pkg">
 <header class="top">
@@ -91,16 +92,16 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
       <div class="acts rise" style="--d:4"><a class="btn btn-p" href="../lp/dataverse-storage-analysis/">Book a free storage analysis</a><a class="lnk" href="#guides">See the guides <span>&rarr;</span></a></div>
     </div>
     <div>
-      <div class="grid9" role="list" aria-label="Free help from enCloud9">
-        <a role="listitem" class="cell" style="background:var(--b1);--d:0" href="#checks"><span class="lab">Free check</span><span class="nm">Storage</span><span class="ds">Dataverse Storage Analysis</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b2);--d:1" href="../crm-health-check/"><span class="lab">Free check</span><span class="nm">Health Check</span><span class="ds">Your Dynamics 365 setup</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b3);--d:2" href="#checks"><span class="lab">Two minutes</span><span class="nm">Copilot</span><span class="ds">Readiness check</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b4);--d:3" href="#guides"><span class="lab">Download</span><span class="nm">Guides</span><span class="ds">Checklists and how-tos</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell core" style="background:var(--b5);--d:4" href="#checks"><span class="lab">Free</span><span class="nm">No obligation</span><span class="ds">A straight answer</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b6);--d:5" href="#videos"><span class="lab">Watch</span><span class="nm">Videos</span><span class="ds">Short how-tos</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b7);--d:6" href="../blog/"><span class="lab">Read</span><span class="nm">Blog</span><span class="ds">Weekly posts</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b8);--d:7" href="../faq/"><span class="lab">Ask</span><span class="nm">All questions</span><span class="ds">Every answer in one place</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b9);--d:8" href="../dynamics-365-license-check/"><span class="lab">Free check</span><span class="nm">License check</span><span class="ds">Before February 2027</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      <div class="grid9" role="group" aria-label="Free help from enCloud9">
+        <a class="cell" style="background:var(--b1);--d:0" href="#checks"><span class="lab">Free check</span><span class="nm">Storage</span><span class="ds">Dataverse Storage Analysis</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell" style="background:var(--b2);--d:1" href="../crm-health-check/"><span class="lab">Free check</span><span class="nm">Health Check</span><span class="ds">Your Dynamics 365 setup</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell" style="background:var(--b3);--d:2" href="#checks"><span class="lab">Two minutes</span><span class="nm">Copilot</span><span class="ds">Readiness check</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell" style="background:var(--b4);--d:3" href="#guides"><span class="lab">Download</span><span class="nm">Guides</span><span class="ds">Checklists and how-tos</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell core" style="background:var(--b5);--d:4" href="#checks"><span class="lab">Free</span><span class="nm">No obligation</span><span class="ds">A straight answer</span></a>
+        <a class="cell lt" style="background:var(--b6);--d:5" href="#videos"><span class="lab">Watch</span><span class="nm">Videos</span><span class="ds">Short how-tos</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell lt" style="background:var(--b7);--d:6" href="../blog/"><span class="lab">Read</span><span class="nm">Blog</span><span class="ds">Weekly posts</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell lt" style="background:var(--b8);--d:7" href="../faq/"><span class="lab">Ask</span><span class="nm">All questions</span><span class="ds">Every answer in one place</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell lt" style="background:var(--b9);--d:8" href="../dynamics-365-license-check/"><span class="lab">Free check</span><span class="nm">License check</span><span class="ds">Before February 2027</span><span class="ar" aria-hidden="true">&#8599;</span></a>
       </div>
     </div>
   </section>
@@ -194,7 +195,7 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
         <nav aria-label="Industries"><b>Industries</b><a href="../lp/healthcare-crm-software-dynamics-365/">Healthcare</a><a href="../dynamics-365-distribution/">Distribution</a><a href="../dynamics-365-professional-services/">Professional services</a><a href="../dynamics-365-manufacturing/">Manufacturing</a><a href="../microsoft-dynamics-365-partner-omaha/">Omaha and Nebraska</a></nav>
         <nav aria-label="Company"><b>Company</b><a href="../about-encloud9/">About enCloud9</a><a href="../about-encloud9/how-we-work/">How we work</a><a href="../about-encloud9/team/">Team</a><a href="../about-encloud9/microsoft-dynamics-365-success/">Client stories</a><a href="../blog/">Blog</a><a href="../contact-us/">Contact us</a><a href="../faq/">All questions</a><a href="./">Free guides and checks</a></nav>
       </div>
-      <div class="tm">enCloud9 LLC, 2915 Lynnwood Dr., Bellevue, NE 68123. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. <a href="../privacy-policy/">Privacy policy</a> &middot; <a href="../accessibility/">Accessibility statement</a></div>
+      <div class="tm">enCloud9 LLC, 2915 Lynnwood Dr., Bellevue, NE 68123. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. Prices are subject to change; Microsoft sets its own prices. <a href="../terms-of-use/">Terms of use</a> &middot; <a href="../privacy-policy/">Privacy policy</a> &middot; <a href="../accessibility/">Accessibility statement</a></div>
     </footer>
   </div>
   <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>

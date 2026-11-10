@@ -29,13 +29,21 @@ def block(path, title, desc):
             '<meta name="twitter:card" content="summary_large_image">\n'
             '<!--/headmeta-->\n')
 
+SCALE = '<link rel="stylesheet" href="nine-scale.css">'
+
 def apply():
     n = 0
     for src, path in MAP.items():
-        if src in SKIP:
-            continue
         fp = os.path.join(PAGES, src)
         s = open(fp, encoding='utf-8').read()
+        # one gap and one type scale (nine-scale.css) load last, after the page's own styles
+        if SCALE not in s:
+            s0 = s
+            s = s.replace('</head>', SCALE + '\n</head>', 1)
+            open(fp, 'w', encoding='utf-8').write(s)
+            n += 1
+        if src in SKIP:
+            continue
         title = H.unescape((re.search(r'<title>(.*?)</title>', s, re.S) or [None, ''])[1].strip())
         m = re.search(r'<meta name="description" content="([^"]*)">\n?', s)
         desc = H.unescape(m.group(1)) if m else ''

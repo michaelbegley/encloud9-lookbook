@@ -99,6 +99,7 @@ body.p-cs .ch-body{padding:clamp(24px,3vw,36px);display:flex;flex-direction:colu
 body.p-cs .ch-body .proofline{font-size:15px;padding:14px 16px;background:var(--tint);border-left:3px solid var(--b5)}
 @media (max-width:560px){body.p-cs .ch-head{min-height:0}body.p-cs .ch-head .facts{grid-template-columns:1fr}body.p-cs .ch-head .facts div+div{padding-left:0;border-left:0;border-top:1px solid rgba(255,255,255,.24)}}
 </style>
+<link rel="stylesheet" href="../../pages/nine-scale.css">
 </head>
 <body class="p-cs">
 <header class="top">
@@ -132,10 +133,10 @@ body.p-cs .ch-body .proofline{font-size:15px;padding:14px 16px;background:var(--
       <p class="phone-note rise" style="--d:5">Prefer the phone? Call <a href="tel:+18442640729">1-844-264-0729</a>.</p>
     </div>
     <div>
-      <div class="lic" role="list" aria-label="Dynamics 365 Customer Service, Microsoft list price">
-        <a role="listitem" class="cell" href="#plans" style="background:var(--b2);--d:0"><span class="lab">Customer Service Professional</span><span class="pr">$50</span><span class="per">per user per month, paid yearly</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell core" href="#plans" style="background:var(--b4);--d:1"><span class="lab">Customer Service Enterprise</span><span class="pr">$105</span><span class="per">per user per month, paid yearly</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell" href="#plans" style="background:var(--b5);--d:2"><span class="lab">Customer Service Premium</span><span class="pr">$195</span><span class="per">per user per month, paid yearly</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+      <div class="lic" role="group" aria-label="Dynamics 365 Customer Service, Microsoft list price">
+        <a class="cell" href="#plans" style="background:var(--b2);--d:0"><span class="lab">Customer Service Professional</span><span class="pr">$50</span><span class="per">per user per month, paid yearly</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell core" href="#plans" style="background:var(--b4);--d:1"><span class="lab">Customer Service Enterprise</span><span class="pr">$105</span><span class="per">per user per month, paid yearly</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell" href="#plans" style="background:var(--b5);--d:2"><span class="lab">Customer Service Premium</span><span class="pr">$195</span><span class="per">per user per month, paid yearly</span><span class="ar" aria-hidden="true">&#8600;</span></a>
       </div>
       <p class="fine" style="margin-top:14px">Microsoft list prices, checked [publish date]. <a class="lnk" href="#plans">Compare plans <span>&rarr;</span></a></p>
       <figure class="rise" style="--d:6;margin:28px 0 0">
@@ -319,13 +320,13 @@ body.p-cs .ch-body .proofline{font-size:15px;padding:14px 16px;background:var(--
           <caption class="mono" style="text-align:left;padding-bottom:10px">Support plans, prices and hours</caption>
           <thead><tr><th scope="col">Plan</th><th scope="col">Price</th><th scope="col">Hours included</th><th scope="col">Fit</th></tr></thead>
           <tbody>
-            <tr><th scope="row">On-Demand</th><td class="pr">$200 an hour</td><td>As needed, no retainer</td><td>Anyone can ask. No SLA, so plan clients come first.</td></tr>
+            <tr><th scope="row">On-Demand</th><td class="pr">$200 an hour</td><td>As needed, no retainer</td><td>Anyone can ask. No SLA.</td></tr>
             <tr><th scope="row">Stability<span class="min">Minimum plan</span></th><td class="pr">$500 a month</td><td>4 hours a month</td><td></td></tr>
             <tr><th scope="row">Optimization</th><td class="pr">$1,500 a month</td><td>20 hours a month</td><td>Up to 50 users</td></tr>
             <tr><th scope="row">Partnership</th><td class="pr">$2,000 a month</td><td>35 hours a month</td><td>50 users and up</td></tr>
           </tbody>
         </table>
-        <p class="fine">Monthly plans run on a 12-month agreement. New clients pay an onboarding fee of up to one month's charge. Hours 7:00am to 5:00pm Central, Monday to Friday, excluding US federal holidays. Monthly plans include a 1-hour response during business hours, which means a person has picked up your request, not that it is solved. Every plan includes Microsoft escalation management.</p>
+        <p class="fine">Monthly plans run on a 12-month agreement. New clients pay an onboarding fee of up to one month's charge. Hours 7:00am to 5:00pm Central, Monday to Friday. Monthly plans include a 1-hour response during business hours, which means a person has picked up your request, not that it is solved. Every monthly plan includes Microsoft escalation management.</p>
       </div>
     </div>
   </section>
@@ -410,7 +411,7 @@ body.p-cs .ch-body .proofline{font-size:15px;padding:14px 16px;background:var(--
         <nav aria-label="Industries"><b>Industries</b><a href="../lp/healthcare-crm-software-dynamics-365/">Healthcare</a><a href="../dynamics-365-distribution/">Distribution</a><a href="../dynamics-365-professional-services/">Professional services</a><a href="../dynamics-365-manufacturing/">Manufacturing</a><a href="../microsoft-dynamics-365-partner-omaha/">Omaha and Nebraska</a></nav>
         <nav aria-label="Company"><b>Company</b><a href="../about-encloud9/">About enCloud9</a><a href="../about-encloud9/how-we-work/">How we work</a><a href="../about-encloud9/team/">Team</a><a href="../about-encloud9/microsoft-dynamics-365-success/">Client stories</a><a href="../blog/">Blog</a><a href="../contact-us/">Contact us</a><a href="../faq/">All questions</a><a href="../free-guides-and-checks/">Free guides and checks</a></nav>
       </div>
-      <div class="tm">enCloud9 LLC, 2915 Lynnwood Dr., Bellevue, NE 68123. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. <a href="../privacy-policy/">Privacy policy</a> &middot; <a href="../accessibility/">Accessibility statement</a></div>
+      <div class="tm">enCloud9 LLC, 2915 Lynnwood Dr., Bellevue, NE 68123. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. Prices are subject to change; Microsoft sets its own prices. <a href="../terms-of-use/">Terms of use</a> &middot; <a href="../privacy-policy/">Privacy policy</a> &middot; <a href="../accessibility/">Accessibility statement</a></div>
     </footer>
   </div>
   <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>

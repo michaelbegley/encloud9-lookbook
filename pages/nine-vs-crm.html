@@ -63,6 +63,7 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
 @media (max-width:560px){body.p-pkg .grid9 .cell.core .nm{font-size:13px;hyphens:none;-webkit-hyphens:none}body.p-pkg .lnav{grid-template-columns:1fr 1fr}body.p-pkg .spec div{grid-template-columns:1fr;gap:2px}body.p-pkg .ptiles.plans .ptile{min-height:0}}
 </style>
 <style>.vtbl th[scope=col]{white-space:nowrap}@media(max-width:760px){#compare .tbl{min-width:0}#compare .tbl thead{position:absolute;left:-9999px}#compare .tbl tr{display:grid;grid-template-columns:1fr;padding:14px 0;border-bottom:1px solid var(--line)}#compare .tbl tbody th,#compare .tbl td{display:block;border:0;padding:3px 0}#compare .tbl td::before{content:attr(data-l) ": ";font-family:var(--mono);font-size:11px;color:var(--muted)}}</style>
+<link rel="stylesheet" href="nine-scale.css">
 </head>
 <body class="p-pkg">
 <nav id="lbbar" aria-label="Lookbook">
@@ -97,16 +98,16 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
       <div class="acts rise" style="--d:4"><a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a><a class="lnk" href="#compare">See the comparison <span>&rarr;</span></a></div>
     </div>
     <div>
-      <div class="grid9" role="list" aria-label="Three CRMs compared">
-        <a role="listitem" class="cell" style="background:var(--b1);--d:0" href="#compare"><span class="lab">Dynamics 365</span><span class="nm">$65 to $150</span><span class="ds">Per user per month</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b2);--d:1" href="#compare"><span class="lab">Salesforce</span><span class="nm">$25 to $550</span><span class="ds">Per user per month</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b3);--d:2" href="#compare"><span class="lab">HubSpot</span><span class="nm">Free to $150</span><span class="ds">Per seat, plus onboarding</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b4);--d:3" href="#fit"><span class="lab">Decides it</span><span class="nm">Fit</span><span class="ds">Not the sticker price</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell core" style="background:var(--b5);--d:4" href="#compare"><span class="lab">Compared</span><span class="nm">Three CRMs</span><span class="ds">Prices checked Nov 2026</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b6);--d:5" href="nine-move-salesforce.html"><span class="lab">Switching</span><span class="nm">From Salesforce</span><span class="ds">How the move works</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b7);--d:6" href="nine-move-hubspot.html"><span class="lab">Switching</span><span class="nm">From HubSpot</span><span class="ds">How the move works</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b8);--d:7" href="nine-d365-pricing.html"><span class="lab">Prices</span><span class="nm">Dynamics 365</span><span class="ds">Every plan</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b9);--d:8" href="nine-copilot.html"><span class="lab">AI</span><span class="nm">Copilot</span><span class="ds">What is included</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      <div class="grid9" role="group" aria-label="Three CRMs compared">
+        <a class="cell" style="background:var(--b1);--d:0" href="#compare"><span class="lab">Dynamics 365</span><span class="nm">$65 to $150</span><span class="ds">Per user per month</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell" style="background:var(--b2);--d:1" href="#compare"><span class="lab">Salesforce</span><span class="nm">$25 to $550</span><span class="ds">Per user per month</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell" style="background:var(--b3);--d:2" href="#compare"><span class="lab">HubSpot</span><span class="nm">Free to $150</span><span class="ds">Per seat, plus onboarding</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell" style="background:var(--b4);--d:3" href="#fit"><span class="lab">Decides it</span><span class="nm">Fit</span><span class="ds">Not the sticker price</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell core" style="background:var(--b5);--d:4" href="#compare"><span class="lab">Compared</span><span class="nm">Three CRMs</span><span class="ds">Prices checked Nov 2026</span></a>
+        <a class="cell lt" style="background:var(--b6);--d:5" href="nine-move-salesforce.html"><span class="lab">Switching</span><span class="nm">From Salesforce</span><span class="ds">How the move works</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell lt" style="background:var(--b7);--d:6" href="nine-move-hubspot.html"><span class="lab">Switching</span><span class="nm">From HubSpot</span><span class="ds">How the move works</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell lt" style="background:var(--b8);--d:7" href="nine-d365-pricing.html"><span class="lab">Prices</span><span class="nm">Dynamics 365</span><span class="ds">Every plan</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell lt" style="background:var(--b9);--d:8" href="nine-copilot.html"><span class="lab">AI</span><span class="nm">Copilot</span><span class="ds">What is included</span><span class="ar" aria-hidden="true">&#8599;</span></a>
       </div>
     </div>
   </section>
@@ -203,7 +204,7 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
         <nav aria-label="Industries"><b>Industries</b><a href="nine-healthcare.html">Healthcare</a><a href="nine-distribution.html">Distribution</a><a href="nine-professional-services.html">Professional services</a><a href="nine-manufacturing.html">Manufacturing</a><a href="nine-omaha.html">Omaha and Nebraska</a></nav>
         <nav aria-label="Company"><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-how-we-work.html">How we work</a><a href="nine-team.html">Team</a><a href="nine-stories.html">Client stories</a><a href="nine-blog.html">Blog</a><a href="nine-contact.html">Contact us</a><a href="nine-faq.html">All questions</a><a href="nine-guides.html">Free guides and checks</a></nav>
       </div>
-      <div class="tm">enCloud9 LLC, 2915 Lynnwood Dr., Bellevue, NE 68123. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. <a href="nine-privacy.html">Privacy policy</a> &middot; <a href="nine-accessibility.html">Accessibility statement</a></div>
+      <div class="tm">enCloud9 LLC, 2915 Lynnwood Dr., Bellevue, NE 68123. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. Prices are subject to change; Microsoft sets its own prices. <a href="nine-terms.html">Terms of use</a> &middot; <a href="nine-privacy.html">Privacy policy</a> &middot; <a href="nine-accessibility.html">Accessibility statement</a></div>
     </footer>
   </div>
   <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>

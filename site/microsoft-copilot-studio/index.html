@@ -63,6 +63,7 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
 @media (max-width:560px){body.p-pkg .grid9 .cell.core .nm{font-size:13px;hyphens:none;-webkit-hyphens:none}body.p-pkg .lnav{grid-template-columns:1fr 1fr}body.p-pkg .spec div{grid-template-columns:1fr;gap:2px}body.p-pkg .ptiles.plans .ptile{min-height:0}}
 </style>
 <style>@media(max-width:640px){#plans .tbl{min-width:0}#plans .tbl thead{position:absolute;left:-9999px}#plans .tbl tr{display:grid;grid-template-columns:1fr;padding:14px 0;border-bottom:1px solid var(--line)}#plans .tbl tbody th,#plans .tbl td{display:block;border:0;padding:2px 0}#plans .tbl td::before{content:attr(data-l) ": ";font-family:var(--mono);font-size:11px;color:var(--muted)}}</style>
+<link rel="stylesheet" href="../../pages/nine-scale.css">
 </head>
 <body class="p-pkg">
 <header class="top">
@@ -92,16 +93,16 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
       <p class="phone-note rise" style="--d:5">Prefer the phone? Call <a href="tel:+18442640729">1-844-264-0729</a>.</p>
     </div>
     <div>
-      <div class="grid9" role="list" aria-label="What Copilot Studio does">
-        <a role="listitem" class="cell" style="background:var(--b1);--d:0" href="#plans"><span class="lab">Price</span><span class="nm">$200</span><span class="ds">25,000 credits a month</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b2);--d:1" href="#fit"><span class="lab">Answers</span><span class="nm">Questions</span><span class="ds">From your own data</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b3);--d:2" href="#fit"><span class="lab">Acts</span><span class="nm">Actions</span><span class="ds">Creates and updates records</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b4);--d:3" href="#fit"><span class="lab">Runs in</span><span class="nm">Teams and web</span><span class="ds">Where people already work</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell core" style="background:var(--b5);--d:4" href="#plans"><span class="lab">Copilot Studio</span><span class="nm">Your agents</span><span class="ds">On your Dynamics 365 data</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b6);--d:5" href="../microsoft-copilot-for-business/"><span class="lab">Family</span><span class="nm">Copilot and AI</span><span class="ds">Built-in agents too</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b7);--d:6" href="../microsoft-power-platform/"><span class="lab">Pairs with</span><span class="nm">Power Platform</span><span class="ds">Apps, flows, reports</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b8);--d:7" href="../blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/"><span class="lab">Client story</span><span class="nm">Compana</span><span class="ds">Copilot Studio and chatbots</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b9);--d:8" href="../microsoft-copilot-for-business/#genpages"><span class="lab">New</span><span class="nm">Generative pages</span><span class="ds">Pages from a prompt</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      <div class="grid9" role="group" aria-label="What Copilot Studio does">
+        <a class="cell" style="background:var(--b1);--d:0" href="#plans"><span class="lab">Price</span><span class="nm">$200</span><span class="ds">25,000 credits a month</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell" style="background:var(--b2);--d:1" href="#fit"><span class="lab">Answers</span><span class="nm">Questions</span><span class="ds">From your own data</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell" style="background:var(--b3);--d:2" href="#fit"><span class="lab">Acts</span><span class="nm">Actions</span><span class="ds">Creates and updates records</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell" style="background:var(--b4);--d:3" href="#fit"><span class="lab">Runs in</span><span class="nm">Teams and web</span><span class="ds">Where people already work</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell core" style="background:var(--b5);--d:4" href="#plans"><span class="lab">Copilot Studio</span><span class="nm">Your agents</span><span class="ds">On your Dynamics 365 data</span></a>
+        <a class="cell lt" style="background:var(--b6);--d:5" href="../microsoft-copilot-for-business/"><span class="lab">Family</span><span class="nm">Copilot and AI</span><span class="ds">Built-in agents too</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell lt" style="background:var(--b7);--d:6" href="../microsoft-power-platform/"><span class="lab">Pairs with</span><span class="nm">Power Platform</span><span class="ds">Apps, flows, reports</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell lt" style="background:var(--b8);--d:7" href="../blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/"><span class="lab">Client story</span><span class="nm">Compana</span><span class="ds">Copilot Studio and chatbots</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell lt" style="background:var(--b9);--d:8" href="../microsoft-copilot-for-business/#genpages"><span class="lab">New</span><span class="nm">Generative pages</span><span class="ds">Pages from a prompt</span><span class="ar" aria-hidden="true">&#8599;</span></a>
       </div>
     </div>
   </section>
@@ -197,7 +198,7 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
         <nav aria-label="Industries"><b>Industries</b><a href="../lp/healthcare-crm-software-dynamics-365/">Healthcare</a><a href="../dynamics-365-distribution/">Distribution</a><a href="../dynamics-365-professional-services/">Professional services</a><a href="../dynamics-365-manufacturing/">Manufacturing</a><a href="../microsoft-dynamics-365-partner-omaha/">Omaha and Nebraska</a></nav>
         <nav aria-label="Company"><b>Company</b><a href="../about-encloud9/">About enCloud9</a><a href="../about-encloud9/how-we-work/">How we work</a><a href="../about-encloud9/team/">Team</a><a href="../about-encloud9/microsoft-dynamics-365-success/">Client stories</a><a href="../blog/">Blog</a><a href="../contact-us/">Contact us</a><a href="../faq/">All questions</a><a href="../free-guides-and-checks/">Free guides and checks</a></nav>
       </div>
-      <div class="tm">enCloud9 LLC, 2915 Lynnwood Dr., Bellevue, NE 68123. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. <a href="../privacy-policy/">Privacy policy</a> &middot; <a href="../accessibility/">Accessibility statement</a></div>
+      <div class="tm">enCloud9 LLC, 2915 Lynnwood Dr., Bellevue, NE 68123. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. Prices are subject to change; Microsoft sets its own prices. <a href="../terms-of-use/">Terms of use</a> &middot; <a href="../privacy-policy/">Privacy policy</a> &middot; <a href="../accessibility/">Accessibility statement</a></div>
     </footer>
   </div>
   <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>

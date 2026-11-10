@@ -511,10 +511,10 @@ body.p-story .pn .d{color:var(--muted);font-size:15px}
 /* nine equal squares: rows share the square evenly so hover and the centre description never stretch a row (Michael, 9 Nov) */
 .grid9{grid-template-rows:repeat(3,minmax(0,1fr))}
 .grid9 .cell{min-height:0;min-width:0}
-.grid9 .cell .nm{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+.grid9 .cell .nm{hyphens:manual;-webkit-hyphens:manual;overflow-wrap:break-word}
 /* every nine-square grid on the site: equal squares (Michael, 9 Nov) */
-html :is(.aigrid,.dgx,.fgx,.jgrid,.mk-cg,.dest,.fgrid[role="list"]){grid-template-rows:repeat(3,minmax(0,1fr));grid-auto-rows:auto;aspect-ratio:1/1}
-html :is(.aigrid,.dgx,.fgx,.jgrid,.mk-cg,.dest,.fgrid[role="list"])>*{min-height:0;min-width:0;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+html :is(.aigrid,.dgx,.fgx,.jgrid,.mk-cg,.dest,.fgrid:is([role="list"],[role="group"])){grid-template-rows:repeat(3,minmax(0,1fr));grid-auto-rows:auto;aspect-ratio:1/1}
+html :is(.aigrid,.dgx,.fgx,.jgrid,.mk-cg,.dest,.fgrid:is([role="list"],[role="group"]))>*{min-height:0;min-width:0;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
 .ptile{min-width:0}.ptile .nm{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
 .top .call-m,.top .menu-btn{min-height:48px}
 @media(max-width:600px){.tbl-stack{min-width:0}.tbl-stack thead{position:absolute;left:-9999px}.tbl-stack tr{display:grid;grid-template-columns:1fr;padding:14px 0;border-bottom:1px solid var(--line)}.tbl-stack tbody th,.tbl-stack td{display:block;border:0;padding:2px 0}.tbl-stack td::before{content:attr(data-l) ": ";font-family:var(--mono);font-size:11px;color:var(--muted)}}
@@ -525,3 +525,11 @@ html :is(.aigrid,.dgx,.fgx,.jgrid,.mk-cg,.dest,.fgrid[role="list"])>*{min-height
 /* G3, 9 Nov: small mono text on the mid-blue light tiles needs ink, not ink2 (4.0 to 1 was too low) */
 .lnav a.lt .mono,.lt > .mono{color:var(--ink)}
 .lt.ptile .pt-top .m{color:var(--ink)}
+/* 9 Nov review fixes (G15) */
+/* Packages hero: the support band fits inside its frame on phones */
+@media (max-width:560px){body.p-packages .pk-hero .cell.base{padding:15px}body.p-packages .pk-hero .cell.base .big{white-space:normal;font-size:20px}body.p-packages .pk-hero .cell.base .big small{font-size:11px}}
+/* proof numbers never wrap ("3 / months", "10 of / 23") */
+.proof .num{white-space:nowrap}
+@media (max-width:420px){.proof .num{font-size:clamp(26px,7.4vw,34px)}}
+/* support plan tiles: titles and prices line up across all four tiles */
+.ptile .nm{margin-top:clamp(24px,3.4vw,52px)}.ptile .ds{flex:1}

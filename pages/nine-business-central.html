@@ -63,6 +63,7 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
 @media (max-width:560px){body.p-pkg .grid9 .cell.core .nm{font-size:13px;hyphens:none;-webkit-hyphens:none}body.p-pkg .lnav{grid-template-columns:1fr 1fr}body.p-pkg .spec div{grid-template-columns:1fr;gap:2px}body.p-pkg .ptiles.plans .ptile{min-height:0}}
 </style>
 <style>@media(max-width:640px){#plans .tbl{min-width:0}#plans .tbl thead{position:absolute;left:-9999px}#plans .tbl tr{display:grid;grid-template-columns:1fr;padding:14px 0;border-bottom:1px solid var(--line)}#plans .tbl tbody th,#plans .tbl td{display:block;border:0;padding:2px 0}#plans .tbl td::before{content:attr(data-l) ": ";font-family:var(--mono);font-size:11px;color:var(--muted)}}</style>
+<link rel="stylesheet" href="nine-scale.css">
 </head>
 <body class="p-pkg">
 <nav id="lbbar" aria-label="Lookbook">
@@ -98,16 +99,16 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
       <p class="phone-note rise" style="--d:5">Prefer the phone? Call <a href="tel:+18442640729">1-844-264-0729</a>.</p>
     </div>
     <div>
-      <div class="grid9" role="list" aria-label="What Business Central integration does">
-        <a role="listitem" class="cell" style="background:var(--b1);--d:0" href="#plans"><span class="lab">Credit</span><span class="nm">Credit limits</span><span class="ds">Seen before the deal</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b2);--d:1" href="#plans"><span class="lab">Invoices</span><span class="nm">Open invoices</span><span class="ds">Billed and paid status</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b3);--d:2" href="#plans"><span class="lab">Orders</span><span class="nm">Sales to Business Central</span><span class="ds">No retyping</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell" style="background:var(--b4);--d:3" href="#plans"><span class="lab">Stock</span><span class="nm">Item availability</span><span class="ds">While quoting</span><span class="ar" aria-hidden="true">&#8600;</span></a>
-        <a role="listitem" class="cell core" style="background:var(--b5);--d:4" href="#plans"><span class="lab">Integration</span><span class="nm">Sales and Business Central</span><span class="ds">One customer, two systems</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b6);--d:5" href="nine-dynamics-365-sales.html"><span class="lab">Pairs with</span><span class="nm">Dynamics 365 Sales</span><span class="ds">Where sellers work</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b7);--d:6" href="nine-full-implementation.html"><span class="lab">Package</span><span class="nm">Full implementation</span><span class="ds">Integrations included</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b8);--d:7" href="nine-power-platform.html"><span class="lab">Extend</span><span class="nm">Power Platform</span><span class="ds">Flows and reports</span><span class="ar" aria-hidden="true">&#8599;</span></a>
-        <a role="listitem" class="cell lt" style="background:var(--b9);--d:8" href="nine-contact.html"><span class="lab">Next step</span><span class="nm">Book a call</span><span class="ds">Talk through your setup</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+      <div class="grid9" role="group" aria-label="What Business Central integration does">
+        <a class="cell" style="background:var(--b1);--d:0" href="#plans"><span class="lab">Credit</span><span class="nm">Credit limits</span><span class="ds">Seen before the deal</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell" style="background:var(--b2);--d:1" href="#plans"><span class="lab">Invoices</span><span class="nm">Open invoices</span><span class="ds">Billed and paid status</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell" style="background:var(--b3);--d:2" href="#plans"><span class="lab">Orders</span><span class="nm">Sales to Business Central</span><span class="ds">No retyping</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell" style="background:var(--b4);--d:3" href="#plans"><span class="lab">Stock</span><span class="nm">Item availability</span><span class="ds">While quoting</span><span class="ar" aria-hidden="true">&#8600;</span></a>
+        <a class="cell core" style="background:var(--b5);--d:4" href="#plans"><span class="lab">Integration</span><span class="nm">Sales and Business Central</span><span class="ds">One customer, two systems</span></a>
+        <a class="cell lt" style="background:var(--b6);--d:5" href="nine-dynamics-365-sales.html"><span class="lab">Pairs with</span><span class="nm">Dynamics 365 Sales</span><span class="ds">Where sellers work</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell lt" style="background:var(--b7);--d:6" href="nine-full-implementation.html"><span class="lab">Package</span><span class="nm">Full imple&shy;mentation</span><span class="ds">Integrations included</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell lt" style="background:var(--b8);--d:7" href="nine-power-platform.html"><span class="lab">Extend</span><span class="nm">Power Platform</span><span class="ds">Flows and reports</span><span class="ar" aria-hidden="true">&#8599;</span></a>
+        <a class="cell lt" style="background:var(--b9);--d:8" href="nine-contact.html"><span class="lab">Next step</span><span class="nm">Book a call</span><span class="ds">Talk through your setup</span><span class="ar" aria-hidden="true">&#8599;</span></a>
       </div>
     </div>
   </section>
@@ -203,7 +204,7 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
         <nav aria-label="Industries"><b>Industries</b><a href="nine-healthcare.html">Healthcare</a><a href="nine-distribution.html">Distribution</a><a href="nine-professional-services.html">Professional services</a><a href="nine-manufacturing.html">Manufacturing</a><a href="nine-omaha.html">Omaha and Nebraska</a></nav>
         <nav aria-label="Company"><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-how-we-work.html">How we work</a><a href="nine-team.html">Team</a><a href="nine-stories.html">Client stories</a><a href="nine-blog.html">Blog</a><a href="nine-contact.html">Contact us</a><a href="nine-faq.html">All questions</a><a href="nine-guides.html">Free guides and checks</a></nav>
       </div>
-      <div class="tm">enCloud9 LLC, 2915 Lynnwood Dr., Bellevue, NE 68123. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. <a href="nine-privacy.html">Privacy policy</a> &middot; <a href="nine-accessibility.html">Accessibility statement</a></div>
+      <div class="tm">enCloud9 LLC, 2915 Lynnwood Dr., Bellevue, NE 68123. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies. Prices are subject to change; Microsoft sets its own prices. <a href="nine-terms.html">Terms of use</a> &middot; <a href="nine-privacy.html">Privacy policy</a> &middot; <a href="nine-accessibility.html">Accessibility statement</a></div>
     </footer>
   </div>
   <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>
