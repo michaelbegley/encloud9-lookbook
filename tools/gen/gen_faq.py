@@ -54,12 +54,12 @@ main = crumbnav([('Home','nine-home.html'),('Questions',None)]) + f'''  <section
       <span class="mono rise" style="--d:0">Questions &middot; All topics</span>
       <h1 class="h1" id="h1" style="font-size:clamp(40px,5.4vw,72px)"><span class="ln"><span style="--d:1">Questions,</span></span> <span class="ln"><span style="--d:2">answered</span></span></h1>
       <p class="lead rise" style="--d:3">{e(ANSWER)}</p>
+      <div class="acts rise" style="--d:4"><a class="btn btn-p" href="{BOOK}">Book a call</a></div>
       <div class="fqtools rise" style="--d:4">
         <label class="sr-only" for="fqs">Search the questions</label>
         <input id="fqs" type="search" placeholder="Search, for example licenses" autocomplete="off">
         <p class="fqcount" id="fqn" role="status">{total} questions</p>
         <nav class="chips" aria-label="Topics">{chips}</nav>
-        <div class="acts"><a class="btn btn-p" href="{BOOK}">Book a call</a></div>
       </div>
     </div>
   </section>
