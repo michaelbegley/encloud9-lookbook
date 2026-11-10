@@ -75,6 +75,17 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
 .pad .up{grid-column:2}.pad .left{grid-column:1;grid-row:2}.pad .down{grid-column:2;grid-row:2}.pad .right{grid-column:3;grid-row:2}
 @media (hover:hover) and (pointer:fine){.pad{display:none}}
 .playbox [hidden]{display:none!important}
+.nf>div:first-child{transition:opacity .35s ease,transform .35s ease}
+.nf.playing>div:first-child{opacity:0;transform:translateX(-80px);pointer-events:none}
+.nf.focus{grid-template-columns:1fr}.nf.focus>div:first-child{display:none}
+.nf.focus .playbox{width:min(560px,100%);justify-self:center}
+.playbox{transition:width .35s ease}
+.board i.f{animation:pulse 1.1s ease-in-out infinite}@keyframes pulse{50%{transform:scale(.78)}}
+.overlay .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.overlay .exit{min-height:48px;padding:0 18px;background:transparent;border:1.5px solid #9DB6E3;color:#fff;font:600 16px var(--body);cursor:pointer}
+.overlay .exit:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.nf>div:first-child,.playbox{transition:none}.board i.f{animation:none}}
+
 @media (max-width:900px){.nf{grid-template-columns:1fr}}
 </style>
 <link rel="stylesheet" href="nine-scale.css">
@@ -118,10 +129,10 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
     <div class="playbox" id="play" aria-label="Pipeline, a small game">
       <div class="hud"><b>Pipeline</b><span id="score">Score 0 &middot; Best 0</span></div>
       <div class="screen demo" id="screen">
-        <div class="board" id="board" tabindex="-1" role="application" aria-label="Pipeline game board. Arrow keys to steer, Escape to stop." aria-describedby="gstatus"></div>
+        <div class="board" id="board" tabindex="-1" role="application" aria-label="Pipeline game board. Arrow keys to steer, Space to pause, Escape to leave." aria-describedby="gstatus"></div>
         <div class="overlay" id="ov">
           <p class="big" id="ovt">Pipeline</p>
-          <button class="btn btn-p" type="button" id="start">Play</button>
+          <div class="row"><button class="btn btn-p" type="button" id="start">Play</button><button class="exit" type="button" id="exit" hidden>Back to the page</button></div>
           <p class="win" id="gwin" hidden>You made it to cloud nine. Want a CRM that works this hard? <a href="nine-book.html">Book a call</a>.</p>
         </div>
       </div>
@@ -132,7 +143,7 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
         <button type="button" class="down" data-dir="down" aria-label="Down">&darr;</button>
         <button type="button" class="right" data-dir="right" aria-label="Right">&rarr;</button>
       </div>
-      <p class="keys">Arrows or WASD &middot; swipe on a phone</p>
+      <p class="keys">Arrows or WASD &middot; Space to pause &middot; swipe on a phone</p>
     </div>
   </section>
 </div>
@@ -154,7 +165,7 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
 </main>
 <script>
 (function(){
-  var N=9,board=document.getElementById('board'),screen=document.getElementById('screen'),ov=document.getElementById('ov'),ovt=document.getElementById('ovt'),pad=document.getElementById('pad'),status=document.getElementById('gstatus'),start=document.getElementById('start'),win=document.getElementById('gwin'),score=document.getElementById('score');
+  var N=9,board=document.getElementById('board'),screen=document.getElementById('screen'),ov=document.getElementById('ov'),ovt=document.getElementById('ovt'),pad=document.getElementById('pad'),status=document.getElementById('gstatus'),start=document.getElementById('start'),exitb=document.getElementById('exit'),nf=document.querySelector('.nf'),fromDemo=false,paused=false,win=document.getElementById('gwin'),score=document.getElementById('score');
   var calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var cells=[],snake,dir,next,food,eaten,timer,demoTimer,running=false,level=1,total=0,best=0,nextLevel=false;
   try{best=parseInt(localStorage.getItem('n9snakeBest')||'0',10)||0}catch(e){}
@@ -166,7 +177,10 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
   function place(){var free=[];for(var i=0;i<N*N;i++){if(!snake.some(function(p){return p[0]+p[1]*N===i}))free.push(i)}var k=free[Math.floor(Math.random()*free.length)];food=[k%N,Math.floor(k/N)]}
   function draw(){cells.forEach(function(c){c.className='';c.style.animationDelay=''});snake.forEach(function(p,j){cells[p[0]+p[1]*N].className=j===0?'h':'s'});if(food)cells[food[0]+food[1]*N].className='f'}
   function hit(nh){return nh[0]<0||nh[1]<0||nh[0]>=N||nh[1]>=N||snake.some(function(p){return p[0]===nh[0]&&p[1]===nh[1]})}
-  function show(title,label){running=false;clearInterval(timer);screen.classList.add('demo');ovt.textContent=title;start.textContent=label;ov.hidden=false;pad.hidden=true;start.focus()}
+  function show(title,label){running=false;paused=false;clearInterval(timer);screen.classList.add('demo');ovt.textContent=title;start.textContent=label;exitb.hidden=false;ov.hidden=false;pad.hidden=true;start.focus()}
+  function focusOn(){if(nf.classList.contains('focus'))return;nf.classList.add('playing');setTimeout(function(){nf.classList.add('focus');document.getElementById('play').scrollIntoView({block:'center',behavior:calm?'auto':'smooth'});board.focus()},calm?0:350)}
+  function focusOff(){nf.classList.remove('focus');requestAnimationFrame(function(){nf.classList.remove('playing')})}
+  function buzz(){if(!calm&&navigator.vibrate)try{navigator.vibrate(12)}catch(e){}}
   /* attract mode: the snake plays itself behind the Play button */
   function demoStep(){var h=snake[0],opts=['up','down','left','right'].filter(function(d){return d!==O[dir]});
     opts.sort(function(a,b){function dist(d){var x=h[0]+D[d][0],y=h[1]+D[d][1];return Math.abs(x-food[0])+Math.abs(y-food[1])}return dist(a)-dist(b)});
@@ -174,11 +188,11 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
     dir=pick;var nh=[h[0]+D[dir][0],h[1]+D[dir][1]];snake.unshift(nh);
     if(nh[0]===food[0]&&nh[1]===food[1]){if(snake.length>12)snake.length=4;place()}else snake.pop();draw()}
   function demoReset(){snake=[[2,4],[1,4],[0,4]];dir='right';place();draw()}
-  function demo(){clearInterval(demoTimer);screen.classList.add('demo');demoReset();if(!calm)demoTimer=setInterval(demoStep,260)}
+  function demo(){clearInterval(demoTimer);screen.classList.add('demo');fromDemo=true;demoReset();if(!calm)demoTimer=setInterval(demoStep,260)}
   function tick(){dir=next;var h=snake[0],nh=[h[0]+D[dir][0],h[1]+D[dir][1]];
     if(hit(nh)){draw();save();nextLevel=false;hud();status.textContent='Game over. Score '+total+'.';return show('Game over','Play again')}
     snake.unshift(nh);
-    if(food&&nh[0]===food[0]&&nh[1]===food[1]){eaten++;total++;save();hud();
+    if(food&&nh[0]===food[0]&&nh[1]===food[1]){eaten++;total++;save();hud();buzz();
       if(eaten===9){food=null;cloud();
         if(level===9){nextLevel=false;win.hidden=false;status.textContent='All nine levels cleared.';return show('Cloud nine','Play again')}
         nextLevel=true;status.textContent='Level '+level+' cleared.';return show('Level '+level+' clear','Next level')}
@@ -189,17 +203,22 @@ body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--i
   function cloud(){cells.forEach(function(c){c.className='';c.style.animationDelay=''});
     for(var y=0;y<N;y++)for(var x=0;x<N;x++){if(CLOUD[y][x]!=='X')continue;var c=cells[x+y*N],d=Math.abs(x-4)+Math.abs(y-4);
       c.style.animationDelay=(d*90)+'ms';c.className=FACE[y+','+x]?'fc':'cl'}}
-  function begin(){clearInterval(demoTimer);screen.classList.remove('demo');if(nextLevel){level++}else{level=1;total=0;win.hidden=true}nextLevel=false;
-    snake=[[2,4],[1,4],[0,4]];dir=next='right';eaten=0;place();draw();ov.hidden=true;pad.hidden=false;running=true;hud();status.textContent='Level '+level+'.';clearInterval(timer);timer=setInterval(tick,speed());board.focus()}
-  function close(){running=false;clearInterval(timer);nextLevel=false;win.hidden=true;total=0;hud();ovt.textContent='Pipeline';start.textContent='Play';ov.hidden=false;pad.hidden=true;demo();start.focus()}
+  function begin(){clearInterval(demoTimer);screen.classList.remove('demo');if(nextLevel){level++}else{level=1;total=0;win.hidden=true}var takeover=fromDemo&&!nextLevel&&snake&&food;nextLevel=false;fromDemo=false;
+    if(takeover){if(snake.length>4)snake.length=4;next=dir}else{snake=[[2,4],[1,4],[0,4]];dir=next='right';place()}
+    eaten=0;draw();ov.hidden=true;exitb.hidden=true;pad.hidden=false;running=true;paused=false;hud();status.textContent='Level '+level+'. You have the snake.';clearInterval(timer);focusOn();board.focus();
+    setTimeout(function(){if(running&&!paused){clearInterval(timer);timer=setInterval(tick,speed())}},takeover?650:200)}
+  function pause(){if(!running&&!paused)return;if(!paused){paused=true;running=false;clearInterval(timer);ovt.textContent='Paused';start.textContent='Resume';ov.hidden=false;exitb.hidden=false;start.focus()}else{resume()}}
+  function resume(){paused=false;running=true;ov.hidden=true;exitb.hidden=true;board.focus();clearInterval(timer);timer=setInterval(tick,speed())}
+  function close(){running=false;paused=false;clearInterval(timer);nextLevel=false;win.hidden=true;total=0;hud();ovt.textContent='Pipeline';start.textContent='Play';exitb.hidden=true;ov.hidden=false;pad.hidden=true;focusOff();demo();start.focus()}
   function steer(d){if(!running)return;if(d&&O[d]!==dir)next=d}
-  start.addEventListener('click',begin);
+  start.addEventListener('click',function(){if(paused)resume();else begin()});exitb.addEventListener('click',close);
   board.addEventListener('keydown',function(e){var k={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right',W:'up',S:'down',A:'left',D:'right'}[e.key];
-    if(k){e.preventDefault();steer(k)}else if(e.key==='Escape'){e.preventDefault();close()}});
+    if(k){e.preventDefault();steer(k)}else if(e.key===' '){e.preventDefault();pause()}else if(e.key==='Escape'){e.preventDefault();close()}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nf.classList.contains('focus')&&document.activeElement!==board){e.preventDefault();close()}});
   pad.addEventListener('click',function(e){var b=e.target.closest('[data-dir]');if(b)steer(b.getAttribute('data-dir'))});
   var sx,sy;board.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
   board.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.max(Math.abs(dx),Math.abs(dy))<24)return;steer(Math.abs(dx)>Math.abs(dy)?(dx>0?'right':'left'):(dy>0?'down':'up'))});
-  document.addEventListener('visibilitychange',function(){if(document.hidden&&running){nextLevel=false;show('Paused','Play again')}});
+  document.addEventListener('visibilitychange',function(){if(document.hidden&&running)pause()});
   hud();demo();
 })();
 </script>
