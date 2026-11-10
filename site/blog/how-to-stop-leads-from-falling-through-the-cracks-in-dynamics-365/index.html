@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Stop Leads Falling Through the Cracks in Dynamics 365</title>
+<meta name="description" content="Four ways to stop leads going cold in Dynamics 365: an owner for every lead, a next step with sequences, regular reviews and automation as a safety net.">
+<link rel="stylesheet" href="../../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../../pages/nine.css">
+<script defer src="../../../pages/nine.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "How to Stop Leads From Falling Through the Cracks in Dynamics 365", "item": "https://www.encloud9.com/blog/how-to-stop-leads-from-falling-through-the-cracks-in-dynamics-365/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Stop Leads From Falling Through the Cracks in Dynamics 365", "description": "Four ways to stop leads going cold in Dynamics 365: an owner for every lead, a next step with sequences, regular reviews and automation as a safety net.", "url": "https://www.encloud9.com/blog/how-to-stop-leads-from-falling-through-the-cracks-in-dynamics-365/", "datePublished": "2026-09-09", "author": {"@type": "Person", "name": "Brian Begley"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<style>
+/* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
+body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
+body.p-post .progress i{display:block;height:100%;background:var(--b5);transform-origin:left;transform:scaleX(0)}
+body.p-post .crumb{flex-wrap:wrap;row-gap:0}
+body.p-post .crumb [aria-current]{min-height:28px;display:inline-flex;align-items:center}
+body.p-post .phead{padding-top:clamp(24px,3vw,40px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:clamp(32px,5vw,80px);align-items:start}
+body.p-post .pmain{display:flex;flex-direction:column;gap:22px;min-width:0}
+body.p-post .pmain .draft{order:-2}body.p-post .pmain .cat{order:-1}
+/* at a glance: four cubes, light to dark (Brian, 4 Nov: "I like light to dark") */
+body.p-post .glance{margin:0}
+body.p-post .glance .mono{display:block;margin-bottom:10px}
+body.p-post .gl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+body.p-post .gl li{background:var(--c);color:var(--white);aspect-ratio:1/1;padding:16px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;transition:transform .45s var(--bounce),box-shadow .35s var(--ease)}
+body.p-post .gl li.lt{color:var(--ink)}
+body.p-post .gl .k{font-family:var(--mono);font-size:12px;line-height:1.3}
+body.p-post .gl b{font-family:var(--head);font-size:clamp(18px,1.6vw,22px);line-height:1.15;font-weight:600;letter-spacing:-.015em}
+body.p-post .byline .av{width:22px;height:22px;background:var(--b5);display:inline-block;vertical-align:middle}
+body.p-post .draft{align-self:flex-start;display:inline-flex;gap:10px;align-items:center;font-family:var(--mono);font-size:13px;background:var(--ink);color:var(--white);padding:8px 12px}
+body.p-post .draft i{width:10px;height:10px;background:var(--b6);display:block}
+body.p-post .phead .h1{font-size:clamp(34px,4.2vw,62px);line-height:1.04}
+body.p-post .byline{display:flex;gap:10px 24px;flex-wrap:wrap;font-family:var(--mono);font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+body.p-post .byline b{color:var(--ink);font-weight:400}
+
+body.p-post .pgrid{display:grid;grid-template-columns:240px minmax(0,68ch);gap:clamp(40px,6vw,96px);margin-top:clamp(28px,3vw,44px);align-items:start}
+body.p-post .toc{position:sticky;top:140px;border-top:2px solid var(--ink);padding-top:14px}
+body.p-post .toc summary{font-family:var(--mono);font-size:12px;color:var(--muted);list-style:none;cursor:pointer;padding:4px 0 10px}
+body.p-post .toc summary::-webkit-details-marker{display:none}
+body.p-post .toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;counter-reset:t}
+body.p-post .toc li{counter-increment:t}
+body.p-post .toc a{display:grid;grid-template-columns:28px 1fr;gap:6px;padding:8px 0 8px 10px;font-size:14px;line-height:1.35;color:var(--muted);border-left:2px solid var(--line);transition:color .25s,border-color .25s,background .25s}
+body.p-post .toc a::before{content:counter(t,decimal-leading-zero);font-family:var(--mono);font-size:11px;padding-top:2px}
+body.p-post .toc a:hover{color:var(--ink);background:var(--tint)}
+body.p-post .toc a.on{color:var(--ink);font-weight:600;border-left-color:var(--b5)}
+body.p-post .toc a.on::before{color:var(--b5)}
+
+body.p-post .art{font-size:18px;line-height:1.7;color:var(--ink2);min-width:0}
+/* screenshot slot: a framed placeholder until real screenshots are taken in the demo environment */
+body.p-post .shot{margin:32px 0 0}
+body.p-post .shot .frame{border:1.5px solid var(--ink);background:var(--bg)}
+body.p-post .shot .bar{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+body.p-post .shot .bar i{width:10px;height:10px;background:var(--b8);display:block}
+body.p-post .shot .ph{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:var(--mono);font-size:13px;line-height:1.5;color:var(--muted);background:repeating-linear-gradient(135deg,var(--bg) 0 14px,var(--tint) 14px 15px)}
+body.p-post .shot figcaption{font-size:14px;color:var(--muted);margin-top:10px;line-height:1.5}
+/* author box */
+body.p-post .abox{display:grid;grid-template-columns:72px minmax(0,1fr);gap:20px;align-items:start;border-top:2px solid var(--ink);padding-top:24px;margin-top:clamp(56px,6vw,80px)}
+body.p-post .abox .pic{width:72px;height:72px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+body.p-post .abox .pic i{background:var(--c)}
+body.p-post .abox .nm{margin-top:0;font-family:var(--head);font-size:21px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+body.p-post .abox p{font-size:16px;line-height:1.6;margin-top:6px}
+body.p-post .art>*+*{margin-top:22px}
+body.p-post .art h2:not(.nm){font-family:var(--head);font-size:clamp(28px,3vw,38px);line-height:1.12;font-weight:600;letter-spacing:-.025em;color:var(--ink);margin-top:clamp(56px,6vw,80px);scroll-margin-top:140px}
+body.p-post .art h3{font-family:var(--head);font-size:21px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+body.p-post .art strong{color:var(--ink)}
+body.p-post .art a:not(.btn){color:var(--b4);font-weight:600;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat}
+body.p-post .art a:not(.btn):hover{color:var(--b5)}
+body.p-post .art ul{margin:22px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+body.p-post .art ul li{position:relative;padding-left:26px}
+body.p-post .art ul li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;background:var(--b5)}
+body.p-post .art ul.not li::before{content:"\00D7";background:none;width:auto;height:auto;top:0;color:var(--b5);font-weight:700;font-size:20px;line-height:1.5}
+body.p-post .answer{position:relative;background:var(--b9);border-left:6px solid var(--b5);padding:26px 28px 28px;font-size:clamp(19px,1.6vw,21px);line-height:1.6}
+body.p-post .answer .mono{display:block;color:var(--b4);margin-bottom:10px}
+body.p-post .answer strong{font-weight:600}
+body.p-post .ways{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+body.p-post .ways>div{background:var(--white);border:1px solid var(--line);border-top:6px solid var(--c);padding:22px}
+body.p-post .ways .mono{display:block;margin-bottom:10px}
+
+/* 12 uses as numbered cubes, 3 by 4 */
+body.p-post .uses{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+body.p-post .use{background:var(--c);color:var(--white);padding:18px 18px 20px;min-height:236px;display:flex;flex-direction:column;gap:8px;position:relative;transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+body.p-post .use.lt{color:var(--ink)}
+body.p-post .use .hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+body.p-post .use .n{font-family:var(--head);font-size:40px;font-weight:600;letter-spacing:-.04em;line-height:1}
+body.p-post .use .grp{font-family:var(--mono);font-size:11px;opacity:.82;text-align:right}
+body.p-post .use b{font-family:var(--head);font-size:18px;line-height:1.2;font-weight:600;letter-spacing:-.01em;margin-top:auto;color:inherit}
+body.p-post .use span.x{font-size:14px;line-height:1.45;opacity:.9}
+body.p-post .use.lt span.x{opacity:1;color:var(--ink)}
+body.p-post .use.lt .grp{opacity:1}
+body.p-post .groups{font-size:15px;color:var(--muted)}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-post .uses{perspective:900px}
+  body.p-post .uses:hover .use{filter:saturate(.92) brightness(.96);transform:scale(.98)}
+  body.p-post .uses:hover .use:hover{filter:none;z-index:3;transform:translateY(-6px) scale(1.03);box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 10px 20px -12px rgba(14,26,58,.45)}
+}
+@media (prefers-reduced-motion:no-preference){
+  body.p-post .use{transition:opacity .6s var(--ease),transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+  .js .p-post .gl li{animation:pop .7s var(--ease) backwards;animation-delay:calc(var(--k,0)*80ms + 300ms)}
+}
+
+body.p-post .faq{max-width:none;margin-top:24px}
+body.p-post .faq details p{font-size:17px}
+body.p-post .ctabox{background:var(--b2);color:var(--white);padding:clamp(28px,4vw,44px);margin-top:clamp(56px,6vw,80px)}
+body.p-post .art .ctabox h2{color:var(--white);margin-top:0}
+body.p-post .ctabox p{color:var(--b8);margin-top:16px}
+body.p-post .ctabox .btn{margin-top:24px}
+body.p-post .src{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+
+/* next step tiles and related posts */
+body.p-post .nx{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+body.p-post .nx .ptile{aspect-ratio:auto;min-height:260px}
+body.p-post .nx .ptile.lt{color:var(--ink)}
+body.p-post .nx .ptile.lt .mono,body.p-post .nx .ptile.lt .ds{color:var(--ink2)}
+body.p-post .nx .ptile.lt .g.big i{background:rgba(14,26,58,.15)}body.p-post .nx .ptile.lt .g.big i.on{background:var(--b1)}
+body.p-post .nx .ptile.lt .pt-foot{border-top-color:rgba(14,26,58,.2)}
+body.p-post .rel{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;border-top:2px solid var(--ink);padding-top:28px}
+body.p-post .pc{position:relative;background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;gap:14px;padding:26px 26px 22px;min-height:250px;transition:transform .5s var(--bounce),box-shadow .4s var(--ease),border-color .3s}
+body.p-post .pc::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:8px;background:var(--c)}
+body.p-post .pc .mono{padding-top:6px}
+body.p-post .pc .t{font-family:var(--head);font-size:clamp(21px,1.8vw,24px);line-height:1.2;font-weight:600;letter-spacing:-.015em}
+body.p-post .pc .d{font-size:15px;color:var(--muted)}
+body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:15px;color:var(--b5);font-weight:600}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-post .nx:hover .ptile,body.p-post .rel:hover .pc{transform:scale(.98);filter:saturate(.92) brightness(.96)}
+  body.p-post .nx .ptile,body.p-post .rel .pc{transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+  body.p-post .nx:hover .ptile:hover,body.p-post .rel:hover .pc:hover{transform:translateY(-6px) scale(1.03);filter:none;z-index:3;box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 8px 16px -12px rgba(14,26,58,.4)}
+}
+
+@media (max-width:1080px){
+  body.p-post .phead{grid-template-columns:1fr;align-items:start}
+  body.p-post .glance{display:none} /* phones and tablets: every glance fact is in the answer and the body, so the answer stays on the first screen */
+  body.p-post .pgrid{grid-template-columns:minmax(0,68ch);justify-content:start}
+  body.p-post .toc{position:static}
+  body.p-post .toc summary{font-size:13px;color:var(--ink)}
+  body.p-post .toc summary::after{content:" +";color:var(--b5)}
+  body.p-post .toc details[open] summary::after{content:" \2212"}
+  body.p-post .nx,body.p-post .rel{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){body.p-post .uses{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){
+  body.p-post .pmain{gap:12px}
+  body.p-post .draft{display:none} /* review marker only; live posts carry no draft tag */
+  body.p-post .phead .h1{font-size:30px;line-height:1.08}
+  body.p-post .byline{gap:4px 16px;padding-top:12px;font-size:12px}
+  body.p-post .art{font-size:17px}
+  body.p-post .ways{grid-template-columns:1fr}
+  body.p-post .uses{grid-template-columns:1fr}
+  body.p-post .use{min-height:0}
+  body.p-post .use b{margin-top:6px}
+  body.p-post .nx,body.p-post .rel{grid-template-columns:1fr}
+  body.p-post .nx .ptile{min-height:0}
+  body.p-post .answer{padding:20px 20px 22px}
+  body.p-post .gl li{aspect-ratio:auto;min-height:120px}
+  body.p-post .abox{grid-template-columns:56px minmax(0,1fr)}
+  body.p-post .abox .pic{width:56px;height:56px}
+}
+</style>
+</head>
+<body class="p-post">
+<div class="progress" aria-hidden="true"><i></i></div>
+<header class="top">
+  <a class="skip" href="#main">Skip to main content</a>
+  <div class="wrap">
+    <a class="logo" href="../../" aria-label="enCloud9 home"><img src="../../../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9" width="104" height="34"></a>
+    <nav class="nav" aria-label="Main"><a href="../../power-platform-dynamics-365/">Dynamics 365</a><a href="../../marketing-services/">Marketing</a><a href="../../microsoft-copilot-for-business/">Copilot and AI</a><a href="../../crm-cloud-automation-solutions/">Packages</a><a href="../../about-encloud9/microsoft-dynamics-365-success/">Stories</a><a href="../" class="cur">Blog<span class="sr-only"> (current section)</span></a><a href="../../about-encloud9/">About</a></nav>
+    <a class="tel" href="tel:+18442640729">1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+    <a class="btn btn-p call-m" href="tel:+18442640729">Call</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile"><a href="../../power-platform-dynamics-365/">Dynamics 365</a><a href="../../marketing-services/">Marketing</a><a href="../../microsoft-copilot-for-business/">Copilot and AI</a><a href="../../crm-cloud-automation-solutions/">Packages</a><a href="../../about-encloud9/microsoft-dynamics-365-success/">Stories</a><a href="../">Blog</a><a href="../../about-encloud9/">About</a><a href="tel:+18442640729">Call 1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+  </nav>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="../../">Home</a><span class="sep" aria-hidden="true">/</span><a href="../">Blog</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Stop Leads Falling Through the Cracks in Dynamics 365</span></nav>
+
+  <article aria-labelledby="h1">
+    <header class="phead">
+      <div class="pmain">
+        <h1 class="h1 rise" id="h1" style="--d:2">How to Stop Leads From Falling Through the Cracks in Dynamics 365</h1>
+                <span class="mono cat rise" style="--d:1">Admin and how-to</span>
+        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <b>Brian Begley</b></span><span><b>September 9, 2026</b></span><span>4 min read</span></p>
+      </div>
+      <aside class="glance" aria-labelledby="gl-h">
+        <p class="mono" id="gl-h">At a glance</p>
+        <ul class="gl">
+          <li class="lt" style="--c:var(--b9);--k:0"><span class="k">Published</span><b>September 9, 2026</b></li>
+          <li class="lt" style="--c:var(--b8);--k:1"><span class="k">Topic</span><b>Admin and how-to</b></li>
+          <li class="lt" style="--c:var(--b6);--k:2"><span class="k">Reading time</span><b>4 minutes</b></li>
+          <li style="--c:var(--b4);--k:3"><span class="k">Written by</span><b>Brian Begley</b></li>
+        </ul>
+      </aside>
+    </header>
+
+    <div class="pgrid">
+      <nav class="toc" aria-label="On this page">
+        <details open id="tocd">
+          <summary>On this page</summary>
+          <ol>
+            <li><a href="#the-problem-isn-t-usually-dynamics-365">The Problem Isn’t Usually Dynamics 365</a></li>
+            <li><a href="#make-sure-every-lead-has-an-owner">Make Sure Every Lead Has an Owner</a></li>
+            <li><a href="#every-lead-needs-a-next-step">Every Lead Needs a Next Step</a></li>
+            <li><a href="#monitor-your-dynamics-365-lead-managemen">Monitor Your Dynamics 365 Lead Management Process</a></li>
+            <li><a href="#use-automation-as-a-safety-net">Use Automation as a Safety Net</a></li>
+            <li><a href="#the-bottom-line">The Bottom Line</a></li>
+            <li><a href="#further-reading">Further Reading</a></li>
+            <li><a href="#how-encloud9-can-help">How enCloud9 Can Help</a></li>
+            <li><a href="#see">Want help with this?</a></li>
+          </ol>
+        </details>
+      </nav>
+
+      <div class="art" id="art">
+        <p><strong>What if some of your best sales opportunities are slipping through the cracks without anyone realizing it?</strong></p>
+        <p>A prospect submits a form, requests a demo, or responds to a marketing campaign. The lead enters Dynamics 365, but no one follows up. Days turn into weeks, and the prospect moves on to a competitor.</p>
+        <p>The good news is that this is often a process problem, not a CRM problem. In this blog, we’ll show you how to prevent leads from falling through the cracks with practical Dynamics 365 lead management strategies that improve accountability, strengthen follow-up, and help ensure every lead gets the attention it deserves.</p>
+        <h2 id="the-problem-isn-t-usually-dynamics-365">The Problem Isn’t Usually Dynamics 365</h2>
+        <p>After years of working with Dynamics 365 Sales, we’ve noticed something interesting.</p>
+        <p>Most organizations don’t have a lead generation problem. They have a Dynamics 365 lead management problem.</p>
+        <p>When clients tell us they’re not getting enough leads, one of the first things we do is look at what happens after a lead enters the CRM. More often than not, we find opportunities that were never contacted, never assigned, or never followed up on.</p>
+        <h2 id="make-sure-every-lead-has-an-owner">Make Sure Every Lead Has an Owner</h2>
+        <p>One of the most common issues we see is leads sitting in Dynamics 365 without a clear owner.</p>
+        <p>A lead comes in from the website, an event, a referral, or a marketing campaign. It’s entered into the system, but nobody is specifically responsible for taking the next step.</p>
+        <p>That may not seem like a big deal at first, but it’s often where the problem starts.</p>
+        <p>Every lead should have a designated owner from day one. Whether you’re assigning leads automatically or manually, someone needs to be accountable for contacting the prospect and moving the conversation forward.</p>
+        <p>When everyone owns a lead, nobody owns a lead.</p>
+        <h2 id="every-lead-needs-a-next-step">Every Lead Needs a Next Step</h2>
+        <p>Another common red flag is a lead with no activities.</p>
+        <p>We’ve seen organizations with hundreds of open leads in Dynamics 365, but many have no calls, emails, or tasks associated with them. That’s often a sign the lead has stalled.</p>
+        <p>One of the best ways to prevent this is with <strong>Sequences</strong>. A well-designed sequence automatically delivers the next recommended action to the salesperson, whether that’s a call, email, task, or meeting. Instead of wondering who to contact next or what to do next, reps have a clear path to follow.</p>
+        <p>When your team always knows the next step, leads are far less likely to sit untouched or fall through the cracks.</p>
+        <h2 id="monitor-your-dynamics-365-lead-managemen">Monitor Your Dynamics 365 Lead Management Process</h2>
+        <p>Not every prospect is ready to buy immediately.</p>
+        <p>Some opportunities take weeks or months to develop. That’s normal.</p>
+        <p>What isn’t normal is allowing leads to sit untouched for long periods of time without anyone noticing.</p>
+        <p>One of the best ways to improve <strong>Dynamics 365 lead management</strong> is to regularly review inactive leads, overdue activities, and records with no recent engagement.</p>
+        <p>Dynamics 365 makes it easy to create views, dashboards, and reports that identify records that need attention. We often recommend that sales managers review these records regularly to make sure opportunities aren’t being forgotten.</p>
+        <h2 id="use-automation-as-a-safety-net">Use Automation as a Safety Net</h2>
+        <p>Even good salespeople get busy.</p>
+        <p>That’s why automation can help reinforce your Dynamics 365 lead management process.</p>
+        <p>Simple Power Automate flows or Dynamics 365 workflows can notify users when new leads are created, remind sales reps about overdue activities, or alert managers when records have gone untouched for too long.</p>
+        <p>Automation won’t fix a broken process on its own, but it can help prevent opportunities from slipping through the cracks due to simple oversight.</p>
+        <h2 id="the-bottom-line">The Bottom Line</h2>
+        <p>We’ve worked with Dynamics 365 clients who were ready to spend more money on advertising, SEO, events, and lead generation because they believed they needed more leads.</p>
+        <p>In reality, they already had opportunities sitting in their CRM.</p>
+        <p>What they needed was better Dynamics 365 lead management.</p>
+        <p>When every lead has an owner, every lead has a next step, and managers have visibility into stalled records, the number of missed opportunities drops dramatically.</p>
+        <p>Before you focus on generating more leads, make sure you’re getting the most out of the ones you already have.</p>
+        <h2 id="further-reading">Further Reading</h2>
+        <p>If you’re looking to strengthen your lead management process and get more value from Dynamics 365 Sales, these additional resources can help.</p>
+        <h3>Related Articles</h3>
+        <ul>
+          <li><a href="https://www.encloud9.com/blog/mastering-lead-management-in-dynamics-365-igniting-your-sales-pipeline/"><strong>Mastering Lead Management in Dynamics 365 Sales: Igniting Your Sales Pipeline</strong></a>: learn how Dynamics 365 helps businesses capture, qualify, assign, nurture, and convert leads more effectively.</li>
+          <li><a href="https://www.encloud9.com/blog/creating-and-managing-sequences-in-dynamics-365-sales-insights/"><strong>Creating and Managing Sequences in Dynamics 365 Sales Insights</strong></a>: learn how to create and manage sequences to streamline sales processes and improve engagement with prospects.</li>
+          <li><a href="https://www.encloud9.com/blog/how-to-improve-dynamics-365-data-quality-garbage-in-garbage-out/"><strong>How to Improve Dynamics 365 Data Quality: Garbage In, Garbage Out</strong></a>: poor data quality often leads to missed follow-ups, duplicate records, unreliable reporting, and lost sales opportunities.</li>
+        </ul>
+        <h3>Related Videos</h3>
+        <ul>
+          <li><a href="https://youtu.be/pZdhwN6AIM4"><strong>How to Use Lead Sequences in Dynamics 365 Sales</strong></a>: copy existing sequences, adjust wait times, add tasks, and apply them directly to lead records.</li>
+          <li><a href="https://youtu.be/mJ2Vf09tGng"><strong>How to Link Leads to Campaigns in Dynamics 365</strong></a>: improve tracking, reporting, and accountability throughout the sales process.</li>
+          <li><a href="https://youtu.be/5Q-JYI6b-So"><strong>How to Create a Lead from an Outlook Email in Copilot for Sales</strong></a>: create leads directly from Outlook to reduce manual data entry.</li>
+        </ul>
+        <h2 id="how-encloud9-can-help">How enCloud9 Can Help</h2>
+        <p>If leads are falling through the cracks in your Dynamics 365 environment, the issue is rarely the software itself. More often, it’s a combination of process gaps, inconsistent follow-up, lack of visibility, or missing automation.</p>
+        <p>At enCloud9, we’ve spent years helping organizations improve Dynamics 365 lead management, streamline sales processes, and build systems that help sales teams stay on top of every opportunity. From lead assignment and dashboards to Power Automate reminders and workflow automation, we can help you create a process that keeps leads moving and reduces the risk of missed opportunities.</p>
+
+        <section class="abox" aria-labelledby="ab-h">
+          <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
+          <div><h2 class="nm" id="ab-h">About the author: Brian Begley</h2><p>[One line on Brian's role at enCloud9, Brian confirms.]</p></div>
+        </section>
+
+        <div class="ctabox">
+          <h2 id="see">Want help with this?</h2>
+          <p>Tell us where your Dynamics 365 system is today. You get a straight answer, whether or not you work with us.</p>
+          <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call with enCloud9</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <section class="sec" aria-labelledby="nx-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="nx-h">Next step</h2>
+      <p class="lead">See Dynamics 365 Sales, start with a free checkup, or talk to us.</p>
+    </div>
+    <div class="nx rev">
+      <a class="ptile lt" style="--c:var(--b8)" href="../../dynamics-365-sales/"><span class="pt-top"><span class="mono">Related</span><span class="g big" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Dynamics 365 Sales</span><span class="ds">The app your sellers work in every day.</span><span class="pt-foot"><span class="go">See Dynamics 365 Sales &rarr;</span></span></a>
+      <a class="ptile" style="--c:var(--b4)" href="../../#checkups"><span class="pt-top"><span class="mono">Free</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="m"></i><i class="m"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Free checkups, no obligation</span><span class="ds">Find out where your system stands before you spend anything.</span><span class="pt-foot"><span class="go">See the checkups &rarr;</span></span></a>
+      <a class="ptile" style="--c:var(--b2)" href="https://www.encloud9.com/lp/schedule-a-meeting/"><span class="pt-top"><span class="mono">Talk to us</span><span class="g big" aria-hidden="true"><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i></span></span><span class="nm">Book a call</span><span class="ds">Tell us where your system is today.</span><span class="pt-foot"><span class="go">Book a call &rarr;</span></span></a>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="rl-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="rl-h">Related posts</h2>
+      <p class="lead">More from the enCloud9 blog. <a class="lnk" href="../">All posts <span>&rarr;</span></a></p>
+    </div>
+    <div class="rel rev">
+      <a class="pc" style="--c:var(--b7)" href="../clickdimensions-dashboards-2025-update/"><span class="mono">Marketing automation &middot; July 1, 2025</span><span class="t">ClickDimensions Dashboards: What’s Changed and Why It Matters</span><span class="d">ClickDimensions added five dashboards inside Dynamics 365 for campaigns, emails, forms,.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b5)" href="../dynamics-365-sales-qualification-agent/"><span class="mono">Copilot and AI &middot; August 18, 2025</span><span class="t">Smarter Selling with the Dynamics 365 Sales Qualification Agent</span><span class="d">How the Dynamics 365 Sales Qualification Agent researches, scores and follows up with.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b3)" href="../encloud9-recognized-on-crm-software-blogs-best-dynamics-365-partner-list-2026/"><span class="mono">News &middot; September 23, 2026</span><span class="t">enCloud9 Recognized on CRM Software Blog’s Best Dynamics 365 Partner List 2026</span><span class="d">enCloud9 was named on CRM Software Blog&#x27;s Best Dynamics 365 Partner List 2026, the only.</span><span class="go">Read the post &#8599;</span></a>
+    </div>
+  </section>
+</div>
+
+<section class="final" aria-labelledby="fc-h">
+  <div class="wrap">
+    <div class="inner">
+      <div class="rev">
+        <h2 class="h2" id="fc-h">Start with a call or a free checkup</h2>
+        <p class="lead">Tell us where your system is today. You get a plan, a package and a price, whether or not you work with us.</p>
+      </div>
+      <div class="side rev">
+        <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+        <a class="lnk" href="../../#checkups">Free checkups, no obligation <span>&rarr;</span></a>
+        <span class="mono">or call <a href="tel:+18442640729">1-844-264-0729</a>, 7:00am to 5:00pm Central</span>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="fcols">
+        <div><img src="../../../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft Partner since [2008], specializing in Dynamics 365.</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
+        <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="../../power-platform-dynamics-365/">All Dynamics 365 apps</a><a href="../../dynamics-365-sales/">Dynamics 365 Sales</a><a href="../../dynamics-365-customer-service/">Customer Service</a><a href="../../marketing-services/">Marketing automation</a><a href="../../dynamics-365-pricing/">Dynamics 365 pricing</a></nav>
+        <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="../../microsoft-copilot-for-business/">Copilot and agents</a><a href="../../microsoft-copilot-for-business/#genpages">Generative pages</a><a href="../../microsoft-power-platform/">Power Platform</a><a href="../../microsoft-copilot-studio/">Copilot Studio</a><a href="../../dynamics-365-power-apps/">Power Apps</a><a href="../../microsoft-power-bi/">Power BI</a></nav>
+        <nav aria-label="Packages and support"><b>Packages and support</b><a href="../../crm-cloud-automation-solutions/">All packages</a><a href="../../dynamics-365-sales-accelerator/">Sales Accelerator</a><a href="../../dynamics-365-service-accelerator/">Service Accelerator</a><a href="../../encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>
+        <nav aria-label="Company"><b>Company</b><a href="../../about-encloud9/">About enCloud9</a><a href="../../about-encloud9/microsoft-dynamics-365-success/">Client stories</a><a href="../">Blog</a><a href="../../contact-us/">Contact us</a><a href="../../faq/">All questions</a><a href="../../microsoft-dynamics-365-partner-omaha/">Omaha and Nebraska</a></nav>
+      </div>
+      <div class="tm">enCloud9 LLC, [address Brian confirms]. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies.</div>
+    </footer>
+  </div>
+  <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>
+</section>
+</main>
+<script>
+/* post: reading progress and the current section in the contents */
+(function(){
+  var d=document,bar=d.querySelector('.progress i'),art=d.getElementById('art'),
+      links=[].slice.call(d.querySelectorAll('.toc a')),heads=links.map(function(a){return d.getElementById(a.getAttribute('href').slice(1))}),
+      tocd=d.getElementById('tocd'),ticking=false;
+  if(window.matchMedia('(max-width:1080px)').matches&&tocd)tocd.removeAttribute('open');
+  function upd(){
+    ticking=false;
+    var r=art.getBoundingClientRect(),h=window.innerHeight,tot=r.height-h*.6,p=tot>0?Math.min(1,Math.max(0,(-r.top+h*.25)/tot)):0;
+    bar.style.transform='scaleX('+p.toFixed(4)+')';
+    var cur=-1;heads.forEach(function(el,i){if(el&&el.getBoundingClientRect().top<170)cur=i});
+    links.forEach(function(a,i){var on=i===cur;a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd)}},{passive:true});
+  window.addEventListener('resize',upd);upd();
+})();
+</script>
+</body>
+</html>

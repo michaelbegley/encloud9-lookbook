@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>How Dynamics 365 Activate Makes Leaving Salesforce Easier</title>
+<meta name="description" content="Dynamics 365 Activate maps a Salesforce environment before a move. What it does, what it cannot decide for you, and how to plan a better CRM.">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="nine.css">
+<script defer src="nine.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "How Dynamics 365 Activate Makes Leaving Salesforce Easier", "item": "https://www.encloud9.com/blog/how-dynamics-365-activate-makes-leaving-salesforce-easier/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How Dynamics 365 Activate Makes Leaving Salesforce Easier", "description": "Dynamics 365 Activate maps a Salesforce environment before a move. What it does, what it cannot decide for you, and how to plan a better CRM.", "url": "https://www.encloud9.com/blog/how-dynamics-365-activate-makes-leaving-salesforce-easier/", "datePublished": "2026-09-16", "author": {"@type": "Person", "name": "Brian Begley"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<style>
+/* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
+body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
+body.p-post .progress i{display:block;height:100%;background:var(--b5);transform-origin:left;transform:scaleX(0)}
+body.p-post .crumb{flex-wrap:wrap;row-gap:0}
+body.p-post .crumb [aria-current]{min-height:28px;display:inline-flex;align-items:center}
+body.p-post .phead{padding-top:clamp(24px,3vw,40px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:clamp(32px,5vw,80px);align-items:start}
+body.p-post .pmain{display:flex;flex-direction:column;gap:22px;min-width:0}
+body.p-post .pmain .draft{order:-2}body.p-post .pmain .cat{order:-1}
+/* at a glance: four cubes, light to dark (Brian, 4 Nov: "I like light to dark") */
+body.p-post .glance{margin:0}
+body.p-post .glance .mono{display:block;margin-bottom:10px}
+body.p-post .gl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+body.p-post .gl li{background:var(--c);color:var(--white);aspect-ratio:1/1;padding:16px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;transition:transform .45s var(--bounce),box-shadow .35s var(--ease)}
+body.p-post .gl li.lt{color:var(--ink)}
+body.p-post .gl .k{font-family:var(--mono);font-size:12px;line-height:1.3}
+body.p-post .gl b{font-family:var(--head);font-size:clamp(18px,1.6vw,22px);line-height:1.15;font-weight:600;letter-spacing:-.015em}
+body.p-post .byline .av{width:22px;height:22px;background:var(--b5);display:inline-block;vertical-align:middle}
+body.p-post .draft{align-self:flex-start;display:inline-flex;gap:10px;align-items:center;font-family:var(--mono);font-size:13px;background:var(--ink);color:var(--white);padding:8px 12px}
+body.p-post .draft i{width:10px;height:10px;background:var(--b6);display:block}
+body.p-post .phead .h1{font-size:clamp(34px,4.2vw,62px);line-height:1.04}
+body.p-post .byline{display:flex;gap:10px 24px;flex-wrap:wrap;font-family:var(--mono);font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+body.p-post .byline b{color:var(--ink);font-weight:400}
+
+body.p-post .pgrid{display:grid;grid-template-columns:240px minmax(0,68ch);gap:clamp(40px,6vw,96px);margin-top:clamp(28px,3vw,44px);align-items:start}
+body.p-post .toc{position:sticky;top:140px;border-top:2px solid var(--ink);padding-top:14px}
+body.p-post .toc summary{font-family:var(--mono);font-size:12px;color:var(--muted);list-style:none;cursor:pointer;padding:4px 0 10px}
+body.p-post .toc summary::-webkit-details-marker{display:none}
+body.p-post .toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;counter-reset:t}
+body.p-post .toc li{counter-increment:t}
+body.p-post .toc a{display:grid;grid-template-columns:28px 1fr;gap:6px;padding:8px 0 8px 10px;font-size:14px;line-height:1.35;color:var(--muted);border-left:2px solid var(--line);transition:color .25s,border-color .25s,background .25s}
+body.p-post .toc a::before{content:counter(t,decimal-leading-zero);font-family:var(--mono);font-size:11px;padding-top:2px}
+body.p-post .toc a:hover{color:var(--ink);background:var(--tint)}
+body.p-post .toc a.on{color:var(--ink);font-weight:600;border-left-color:var(--b5)}
+body.p-post .toc a.on::before{color:var(--b5)}
+
+body.p-post .art{font-size:18px;line-height:1.7;color:var(--ink2);min-width:0}
+/* screenshot slot: a framed placeholder until real screenshots are taken in the demo environment */
+body.p-post .shot{margin:32px 0 0}
+body.p-post .shot .frame{border:1.5px solid var(--ink);background:var(--bg)}
+body.p-post .shot .bar{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+body.p-post .shot .bar i{width:10px;height:10px;background:var(--b8);display:block}
+body.p-post .shot .ph{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:var(--mono);font-size:13px;line-height:1.5;color:var(--muted);background:repeating-linear-gradient(135deg,var(--bg) 0 14px,var(--tint) 14px 15px)}
+body.p-post .shot figcaption{font-size:14px;color:var(--muted);margin-top:10px;line-height:1.5}
+/* author box */
+body.p-post .abox{display:grid;grid-template-columns:72px minmax(0,1fr);gap:20px;align-items:start;border-top:2px solid var(--ink);padding-top:24px;margin-top:clamp(56px,6vw,80px)}
+body.p-post .abox .pic{width:72px;height:72px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+body.p-post .abox .pic i{background:var(--c)}
+body.p-post .abox .nm{margin-top:0;font-family:var(--head);font-size:21px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+body.p-post .abox p{font-size:16px;line-height:1.6;margin-top:6px}
+body.p-post .art>*+*{margin-top:22px}
+body.p-post .art h2:not(.nm){font-family:var(--head);font-size:clamp(28px,3vw,38px);line-height:1.12;font-weight:600;letter-spacing:-.025em;color:var(--ink);margin-top:clamp(56px,6vw,80px);scroll-margin-top:140px}
+body.p-post .art h3{font-family:var(--head);font-size:21px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+body.p-post .art strong{color:var(--ink)}
+body.p-post .art a:not(.btn){color:var(--b4);font-weight:600;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat}
+body.p-post .art a:not(.btn):hover{color:var(--b5)}
+body.p-post .art ul{margin:22px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+body.p-post .art ul li{position:relative;padding-left:26px}
+body.p-post .art ul li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;background:var(--b5)}
+body.p-post .art ul.not li::before{content:"\00D7";background:none;width:auto;height:auto;top:0;color:var(--b5);font-weight:700;font-size:20px;line-height:1.5}
+body.p-post .answer{position:relative;background:var(--b9);border-left:6px solid var(--b5);padding:26px 28px 28px;font-size:clamp(19px,1.6vw,21px);line-height:1.6}
+body.p-post .answer .mono{display:block;color:var(--b4);margin-bottom:10px}
+body.p-post .answer strong{font-weight:600}
+body.p-post .ways{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+body.p-post .ways>div{background:var(--white);border:1px solid var(--line);border-top:6px solid var(--c);padding:22px}
+body.p-post .ways .mono{display:block;margin-bottom:10px}
+
+/* 12 uses as numbered cubes, 3 by 4 */
+body.p-post .uses{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+body.p-post .use{background:var(--c);color:var(--white);padding:18px 18px 20px;min-height:236px;display:flex;flex-direction:column;gap:8px;position:relative;transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+body.p-post .use.lt{color:var(--ink)}
+body.p-post .use .hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+body.p-post .use .n{font-family:var(--head);font-size:40px;font-weight:600;letter-spacing:-.04em;line-height:1}
+body.p-post .use .grp{font-family:var(--mono);font-size:11px;opacity:.82;text-align:right}
+body.p-post .use b{font-family:var(--head);font-size:18px;line-height:1.2;font-weight:600;letter-spacing:-.01em;margin-top:auto;color:inherit}
+body.p-post .use span.x{font-size:14px;line-height:1.45;opacity:.9}
+body.p-post .use.lt span.x{opacity:1;color:var(--ink)}
+body.p-post .use.lt .grp{opacity:1}
+body.p-post .groups{font-size:15px;color:var(--muted)}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-post .uses{perspective:900px}
+  body.p-post .uses:hover .use{filter:saturate(.92) brightness(.96);transform:scale(.98)}
+  body.p-post .uses:hover .use:hover{filter:none;z-index:3;transform:translateY(-6px) scale(1.03);box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 10px 20px -12px rgba(14,26,58,.45)}
+}
+@media (prefers-reduced-motion:no-preference){
+  body.p-post .use{transition:opacity .6s var(--ease),transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+  .js .p-post .gl li{animation:pop .7s var(--ease) backwards;animation-delay:calc(var(--k,0)*80ms + 300ms)}
+}
+
+body.p-post .faq{max-width:none;margin-top:24px}
+body.p-post .faq details p{font-size:17px}
+body.p-post .ctabox{background:var(--b2);color:var(--white);padding:clamp(28px,4vw,44px);margin-top:clamp(56px,6vw,80px)}
+body.p-post .art .ctabox h2{color:var(--white);margin-top:0}
+body.p-post .ctabox p{color:var(--b8);margin-top:16px}
+body.p-post .ctabox .btn{margin-top:24px}
+body.p-post .src{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+
+/* next step tiles and related posts */
+body.p-post .nx{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+body.p-post .nx .ptile{aspect-ratio:auto;min-height:260px}
+body.p-post .nx .ptile.lt{color:var(--ink)}
+body.p-post .nx .ptile.lt .mono,body.p-post .nx .ptile.lt .ds{color:var(--ink2)}
+body.p-post .nx .ptile.lt .g.big i{background:rgba(14,26,58,.15)}body.p-post .nx .ptile.lt .g.big i.on{background:var(--b1)}
+body.p-post .nx .ptile.lt .pt-foot{border-top-color:rgba(14,26,58,.2)}
+body.p-post .rel{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;border-top:2px solid var(--ink);padding-top:28px}
+body.p-post .pc{position:relative;background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;gap:14px;padding:26px 26px 22px;min-height:250px;transition:transform .5s var(--bounce),box-shadow .4s var(--ease),border-color .3s}
+body.p-post .pc::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:8px;background:var(--c)}
+body.p-post .pc .mono{padding-top:6px}
+body.p-post .pc .t{font-family:var(--head);font-size:clamp(21px,1.8vw,24px);line-height:1.2;font-weight:600;letter-spacing:-.015em}
+body.p-post .pc .d{font-size:15px;color:var(--muted)}
+body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:15px;color:var(--b5);font-weight:600}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-post .nx:hover .ptile,body.p-post .rel:hover .pc{transform:scale(.98);filter:saturate(.92) brightness(.96)}
+  body.p-post .nx .ptile,body.p-post .rel .pc{transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+  body.p-post .nx:hover .ptile:hover,body.p-post .rel:hover .pc:hover{transform:translateY(-6px) scale(1.03);filter:none;z-index:3;box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 8px 16px -12px rgba(14,26,58,.4)}
+}
+
+@media (max-width:1080px){
+  body.p-post .phead{grid-template-columns:1fr;align-items:start}
+  body.p-post .glance{display:none} /* phones and tablets: every glance fact is in the answer and the body, so the answer stays on the first screen */
+  body.p-post .pgrid{grid-template-columns:minmax(0,68ch);justify-content:start}
+  body.p-post .toc{position:static}
+  body.p-post .toc summary{font-size:13px;color:var(--ink)}
+  body.p-post .toc summary::after{content:" +";color:var(--b5)}
+  body.p-post .toc details[open] summary::after{content:" \2212"}
+  body.p-post .nx,body.p-post .rel{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){body.p-post .uses{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){
+  body.p-post .pmain{gap:12px}
+  body.p-post .draft{display:none} /* review marker only; live posts carry no draft tag */
+  body.p-post .phead .h1{font-size:30px;line-height:1.08}
+  body.p-post .byline{gap:4px 16px;padding-top:12px;font-size:12px}
+  body.p-post .art{font-size:17px}
+  body.p-post .ways{grid-template-columns:1fr}
+  body.p-post .uses{grid-template-columns:1fr}
+  body.p-post .use{min-height:0}
+  body.p-post .use b{margin-top:6px}
+  body.p-post .nx,body.p-post .rel{grid-template-columns:1fr}
+  body.p-post .nx .ptile{min-height:0}
+  body.p-post .answer{padding:20px 20px 22px}
+  body.p-post .gl li{aspect-ratio:auto;min-height:120px}
+  body.p-post .abox{grid-template-columns:56px minmax(0,1fr)}
+  body.p-post .abox .pic{width:56px;height:56px}
+}
+</style>
+</head>
+<body class="p-post">
+<div class="progress" aria-hidden="true"><i></i></div>
+<nav id="lbbar" aria-label="Lookbook">
+  <a href="../index.html">All looks</a><span class="t hide-s">Look 9, Nine, built pages: Blog post</span>
+  <a href="nine-home.html">Home</a><a href="nine-dynamics-365-sales.html">Sales page</a><a href="nine-marketing.html" class="hide-s">Marketing</a>
+  <span class="sp"></span><span class="t">Font</span>
+  <button type="button" data-setfont="hanken" aria-pressed="true">Hanken</button><button type="button" data-setfont="jakarta" aria-pressed="false">Jakarta</button><button type="button" data-setfont="public" aria-pressed="false">Public Sans</button><button type="button" data-setfont="bricolage" aria-pressed="false">Bricolage</button>
+</nav>
+<header class="top">
+  <a class="skip" href="#main">Skip to main content</a>
+  <div class="wrap">
+    <a class="logo" href="nine-home.html" aria-label="enCloud9 home"><img src="../assets/brand/enCloud9-wordmark-blue.svg" alt="enCloud9" width="104" height="34"></a>
+    <nav class="nav" aria-label="Main"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="nine-blog.html" class="cur">Blog<span class="sr-only"> (current section)</span></a><a href="nine-about.html">About</a></nav>
+    <a class="tel" href="tel:+18442640729">1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+    <a class="btn btn-p call-m" href="tel:+18442640729">Call</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile"><a href="nine-dynamics-365.html">Dynamics 365</a><a href="nine-marketing.html">Marketing</a><a href="nine-copilot.html">Copilot and AI</a><a href="nine-packages.html">Packages</a><a href="nine-stories.html">Stories</a><a href="nine-blog.html">Blog</a><a href="nine-about.html">About</a><a href="tel:+18442640729">Call 1-844-264-0729</a>
+    <a class="btn btn-p" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+  </nav>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="nine-home.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="nine-blog.html">Blog</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">How Dynamics 365 Activate Makes Leaving Salesforce Easier</span></nav>
+
+  <article aria-labelledby="h1">
+    <header class="phead">
+      <div class="pmain">
+        <h1 class="h1 rise" id="h1" style="--d:2">How Dynamics 365 Activate Makes Leaving Salesforce Easier</h1>
+                <span class="mono cat rise" style="--d:1">Switching to Dynamics 365</span>
+        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <b>Brian Begley</b></span><span><b>September 16, 2026</b></span><span>6 min read</span></p>
+      </div>
+      <aside class="glance" aria-labelledby="gl-h">
+        <p class="mono" id="gl-h">At a glance</p>
+        <ul class="gl">
+          <li class="lt" style="--c:var(--b9);--k:0"><span class="k">Published</span><b>September 16, 2026</b></li>
+          <li class="lt" style="--c:var(--b8);--k:1"><span class="k">Topic</span><b>Switching to Dynamics 365</b></li>
+          <li class="lt" style="--c:var(--b6);--k:2"><span class="k">Reading time</span><b>6 minutes</b></li>
+          <li style="--c:var(--b4);--k:3"><span class="k">Written by</span><b>Brian Begley</b></li>
+        </ul>
+      </aside>
+    </header>
+
+    <div class="pgrid">
+      <nav class="toc" aria-label="On this page">
+        <details open id="tocd">
+          <summary>On this page</summary>
+          <ol>
+            <li><a href="#the-real-reason-companies-don-t-switch-c">The Real Reason Companies Don’t Switch CRMs</a></li>
+            <li><a href="#microsoft-is-removing-some-of-that-frict">Microsoft Is Removing Some of That Friction with Dynamics 365 Activate</a></li>
+            <li><a href="#a-better-crm-not-just-a-new-crm">A Better CRM, Not Just a New CRM</a></li>
+            <li><a href="#why-more-businesses-are-evaluating-dynam">Why More Businesses Are Evaluating Dynamics 365</a></li>
+            <li><a href="#why-an-experienced-partner-still-matters">Why an Experienced Partner Still Matters</a></li>
+            <li><a href="#further-reading-from-microsoft">Further Reading from Microsoft</a></li>
+            <li><a href="#how-encloud9-can-help">How enCloud9 Can Help</a></li>
+            <li><a href="#ready-to-explore-your-options">Ready to Explore Your Options?</a></li>
+            <li><a href="#see">Want help with this?</a></li>
+          </ol>
+        </details>
+      </nav>
+
+      <div class="art" id="art">
+        <p>Most companies don’t wake up one morning and decide to replace their CRM. In fact, many stay with a system long after they’ve started questioning it.</p>
+        <p>Maybe costs keep climbing. Maybe users are frustrated. Maybe reporting has become difficult to maintain. Maybe you’re already invested in Microsoft 365 and wonder why your CRM feels disconnected from the rest of your technology stack. But then reality sets in. You have years of customer data. Custom fields. Workflows. Integrations. Reports. User training.</p>
+        <p>Moving to a new CRM feels a lot like moving houses. You might love the idea of a better home, but the thought of packing everything up and starting over is enough to make you stay where you are. That’s why many organizations continue renewing platforms they aren’t completely happy with. The question is rarely whether another CRM could be better. The question is whether changing is worth the disruption.</p>
+        <h2 id="the-real-reason-companies-don-t-switch-c">The Real Reason Companies Don’t Switch CRMs</h2>
+        <p>When people talk about Salesforce versus Dynamics 365, the conversation often centers on features. In reality, that’s usually not what stops companies from making a move. The biggest obstacle is friction.</p>
+        <p>Organizations worry about what happens to years of customer history. They wonder how much downtime they’ll face, what migration will cost, and whether they’ll end up with the same problems on a different platform.</p>
+        <p>We’ve had countless conversations with companies that were interested in Dynamics 365 but hesitant to start the process because the migration itself felt overwhelming. That’s understandable.</p>
+        <p>A CRM is one of the most important systems in your business. It’s where your sales team works, where your customer information lives, and where many of your critical processes take place. The thought of moving everything somewhere new can feel risky.</p>
+        <h2 id="microsoft-is-removing-some-of-that-frict">Microsoft Is Removing Some of That Friction with Dynamics 365 Activate</h2>
+        <p>Microsoft recently introduced <a href="https://www.microsoft.com/en-us/dynamics-365/blog/business-leader/2026/09/09/dynamics-365-activate/">Dynamics 365 Activate</a>, a new AI-powered migration and implementation experience currently in public preview for Salesforce environments. Microsoft says the tool can analyze a Salesforce environment, identify data, business processes, customizations, and dependencies, and provide recommendations that help organizations understand the scope of a migration before they begin.</p>
+        <p>Dynamics 365 Activate helps organizations get a clearer picture of what’s actually inside their CRM before they start planning a move. That’s important because many businesses have spent years building and modifying their Salesforce environment. Over time, complexity accumulates.</p>
+        <ul>
+          <li>Fields nobody uses anymore.</li>
+          <li>Old workflows that still run in the background.</li>
+          <li>Reports created for employees who left years ago.</li>
+          <li>Customizations layered on top of customizations.</li>
+        </ul>
+        <p>Many organizations don’t fully understand how much has accumulated until they begin evaluating a migration.</p>
+        <p>Dynamics 365 Activate is designed to help uncover those details earlier in the process, making it easier to understand what you’re working with before making major decisions.</p>
+        <h2 id="a-better-crm-not-just-a-new-crm">A Better CRM, Not Just a New CRM</h2>
+        <p>What’s interesting about Dynamics 365 Activate isn’t the technology itself. It’s what the technology makes possible. For years, a significant portion of a migration project involved figuring out what existed in the current system. If Activate can reduce some of that effort, organizations can spend less time documenting their old CRM and more time planning their future one.</p>
+        <p>That’s where the real value is. Because the goal shouldn’t be to recreate Salesforce inside Dynamics 365. The goal should be to improve what wasn’t working in the first place.</p>
+        <p>A migration is one of the few times a business has permission to step back and ask important questions:</p>
+        <ul>
+          <li>Do we still need this process?</li>
+          <li>Is this customization adding value?</li>
+          <li>Can we simplify the way our team works?</li>
+          <li>Is our data organized in a way that supports growth?</li>
+          <li>Are we making life easier for our users?</li>
+        </ul>
+        <p>Those are the questions that determine whether a CRM project succeeds. And those questions can’t be answered by software alone. The companies that get the most value from a CRM migration aren’t the ones that move the fastest. They’re the ones that use the opportunity to simplify, modernize, and align their CRM with how the business operates today.</p>
+        <h2 id="why-more-businesses-are-evaluating-dynam">Why More Businesses Are Evaluating Dynamics 365</h2>
+        <p>We’re seeing more companies take a fresh look at Dynamics 365 because they want a CRM that’s more closely aligned with the technology they already use every day. For organizations running Outlook, Teams, SharePoint, Power Platform, and Microsoft Copilot, Dynamics 365 feels like a natural extension of the Microsoft ecosystem. Instead of maintaining separate platforms from different vendors, businesses are looking for ways to simplify operations, improve collaboration, and create a more connected user experience.</p>
+        <p>That doesn’t automatically make Dynamics 365 the right choice for everyone. But it does make the evaluation worth considering, especially when tools like Dynamics 365 Activate are helping reduce some of the barriers traditionally associated with switching platforms.</p>
+        <h2 id="why-an-experienced-partner-still-matters">Why an Experienced Partner Still Matters</h2>
+        <p>Dynamics 365 Activate can help identify customizations, workflows, data structures, and dependencies, but it can’t tell you what should stay, what should go, or how your future CRM should work. That’s where enCloud9 comes in.</p>
+        <p>A successful CRM migration isn’t about moving everything from Salesforce to Dynamics 365. It’s about taking the opportunity to simplify processes, clean up data, and build a system that better supports your business. While Dynamics 365 Activate helps you understand your current environment, enCloud9 helps you turn that insight into a CRM strategy that works for your team today and can grow with you tomorrow.</p>
+        <h2 id="further-reading-from-microsoft">Further Reading from Microsoft</h2>
+        <p>If you’d like to learn more about Dynamics 365 Activate and Microsoft’s approach to CRM implementations, these resources provide additional information:</p>
+        <ul>
+          <li><a href="https://learn.microsoft.com/en-us/dynamics365/dynamics-365-activate/dynamics-365-activate-overview">Dynamics 365 Activate overview (preview)</a>: Microsoft’s official introduction to Dynamics 365 Activate and its vision for simplifying CRM migrations.</li>
+          <li><a href="https://www.microsoft.com/en-us/dynamics-365/blog/business-leader/2026/09/09/accelerate-your-move-to-agentic-business-applications-with-dynamics-365-activate/">Accelerate your move to agentic business applications with Dynamics 365 Activate</a>: Learn how Dynamics 365 Activate helps organizations reduce migration friction and move to Dynamics 365 with greater confidence.</li>
+          <li><a href="https://learn.microsoft.com/en-us/dynamics365/dynamics-365-activate/migrate-salesforce-to-dynamics-365-overview">Overview of Salesforce migration to Dynamics 365</a>: Learn how Dynamics 365 Activate helps assess your Salesforce environment and plan a smoother move to Dynamics 365.</li>
+        </ul>
+        <h2 id="how-encloud9-can-help">How enCloud9 Can Help</h2>
+        <p>Technology is only part of a successful CRM migration. The bigger challenge is making sure your next CRM helps your business perform better than the one you’re leaving behind.</p>
+        <p>At enCloud9, we’ve helped organizations implement, optimize, and support Microsoft Dynamics 365 for years. We understand that moving from Salesforce isn’t simply a data migration project. It’s an opportunity to improve the way your business manages customer relationships, sales processes, and service operations.</p>
+        <p>Our team can help you:</p>
+        <ul>
+          <li>Evaluate whether Dynamics 365 is the right fit for your organization</li>
+          <li>Assess your current Salesforce environment</li>
+          <li>Identify opportunities to simplify processes and improve data quality</li>
+          <li>Plan and execute a migration strategy</li>
+          <li>Configure Dynamics 365 to align with your business goals</li>
+          <li>Train users and drive adoption</li>
+          <li>Optimize your CRM for long-term success</li>
+        </ul>
+        <p>As Microsoft continues to expand Dynamics 365 Activate, we’re following its development closely and exploring how it can help reduce migration effort for our clients. At the same time, our focus remains on what matters most: helping organizations build CRM systems that support growth, improve productivity, and deliver long-term value.</p>
+        <h2 id="ready-to-explore-your-options">Ready to Explore Your Options?</h2>
+        <p>If you’ve been considering a move from Salesforce to Dynamics 365 but have been hesitant because of the complexity, now may be the right time to revisit the conversation. Tools like Dynamics 365 Activate are helping reduce some of the friction traditionally associated with CRM migrations. But technology is only part of the equation.</p>
+        <p>The real goal isn’t simply to switch CRMs. It’s to end up with a better one.</p>
+        <p>Whether you’re evaluating Dynamics 365 for the first time or actively planning a migration from Salesforce, enCloud9 can help you understand your options, reduce risk, and create a strategy that supports your business long after go-live. See <a href="nine-move-salesforce.html">Move from Salesforce</a>.</p>
+
+        <section class="abox" aria-labelledby="ab-h">
+          <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
+          <div><h2 class="nm" id="ab-h">About the author: Brian Begley</h2><p>[One line on Brian's role at enCloud9, Brian confirms.]</p></div>
+        </section>
+
+        <div class="ctabox">
+          <h2 id="see">Want help with this?</h2>
+          <p>Tell us where your Dynamics 365 system is today. You get a straight answer, whether or not you work with us.</p>
+          <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call with enCloud9</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <section class="sec" aria-labelledby="nx-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="nx-h">Next step</h2>
+      <p class="lead">See Move from Salesforce, start with a free checkup, or talk to us.</p>
+    </div>
+    <div class="nx rev">
+      <a class="ptile lt" style="--c:var(--b8)" href="nine-move-salesforce.html"><span class="pt-top"><span class="mono">Related</span><span class="g big" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Move from Salesforce</span><span class="ds">How we move a team from Salesforce to Dynamics 365.</span><span class="pt-foot"><span class="go">See Move from Salesforce &rarr;</span></span></a>
+      <a class="ptile" style="--c:var(--b4)" href="nine-home.html#checkups"><span class="pt-top"><span class="mono">Free</span><span class="g big" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="m"></i><i class="m"></i><i></i><i></i><i></i><i></i></span></span><span class="nm">Free checkups, no obligation</span><span class="ds">Find out where your system stands before you spend anything.</span><span class="pt-foot"><span class="go">See the checkups &rarr;</span></span></a>
+      <a class="ptile" style="--c:var(--b2)" href="https://www.encloud9.com/lp/schedule-a-meeting/"><span class="pt-top"><span class="mono">Talk to us</span><span class="g big" aria-hidden="true"><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i></span></span><span class="nm">Book a call</span><span class="ds">Tell us where your system is today.</span><span class="pt-foot"><span class="go">Book a call &rarr;</span></span></a>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="rl-h">
+    <div class="sec-head rev">
+      <h2 class="h2" id="rl-h">Related posts</h2>
+      <p class="lead">More from the enCloud9 blog. <a class="lnk" href="nine-blog.html">All posts <span>&rarr;</span></a></p>
+    </div>
+    <div class="rel rev">
+      <a class="pc" style="--c:var(--b7)" href="nine-post-click-dashboards.html"><span class="mono">Marketing automation &middot; July 1, 2025</span><span class="t">ClickDimensions Dashboards: What’s Changed and Why It Matters</span><span class="d">ClickDimensions added five dashboards inside Dynamics 365 for campaigns, emails, forms,.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b5)" href="nine-post-qualification-agent.html"><span class="mono">Copilot and AI &middot; August 18, 2025</span><span class="t">Smarter Selling with the Dynamics 365 Sales Qualification Agent</span><span class="d">How the Dynamics 365 Sales Qualification Agent researches, scores and follows up with.</span><span class="go">Read the post &#8599;</span></a>
+      <a class="pc" style="--c:var(--b3)" href="nine-post-partner-list-2026.html"><span class="mono">News &middot; September 23, 2026</span><span class="t">enCloud9 Recognized on CRM Software Blog’s Best Dynamics 365 Partner List 2026</span><span class="d">enCloud9 was named on CRM Software Blog&#x27;s Best Dynamics 365 Partner List 2026, the only.</span><span class="go">Read the post &#8599;</span></a>
+    </div>
+  </section>
+</div>
+
+<section class="final" aria-labelledby="fc-h">
+  <div class="wrap">
+    <div class="inner">
+      <div class="rev">
+        <h2 class="h2" id="fc-h">Start with a call or a free checkup</h2>
+        <p class="lead">Tell us where your system is today. You get a plan, a package and a price, whether or not you work with us.</p>
+      </div>
+      <div class="side rev">
+        <a class="btn btn-w" href="https://www.encloud9.com/lp/schedule-a-meeting/">Book a call</a>
+        <a class="lnk" href="nine-home.html#checkups">Free checkups, no obligation <span>&rarr;</span></a>
+        <span class="mono">or call <a href="tel:+18442640729">1-844-264-0729</a>, 7:00am to 5:00pm Central</span>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="fcols">
+        <div><img src="../assets/brand/enCloud9-wordmark-white.svg" alt="enCloud9" width="84" height="28"><p>Microsoft Partner since [2008], specializing in Dynamics 365.</p><p><a href="tel:+18442640729">1-844-264-0729</a><br>7:00am to 5:00pm Central</p></div>
+        <nav aria-label="Dynamics 365"><b>Dynamics 365</b><a href="nine-dynamics-365.html">All Dynamics 365 apps</a><a href="nine-dynamics-365-sales.html">Dynamics 365 Sales</a><a href="nine-customer-service.html">Customer Service</a><a href="nine-marketing.html">Marketing automation</a><a href="nine-d365-pricing.html">Dynamics 365 pricing</a></nav>
+        <nav aria-label="Copilot and Power Platform"><b>Copilot and AI</b><a href="nine-copilot.html">Copilot and agents</a><a href="nine-copilot.html#genpages">Generative pages</a><a href="nine-power-platform.html">Power Platform</a><a href="nine-copilot-studio.html">Copilot Studio</a><a href="nine-power-apps.html">Power Apps</a><a href="nine-power-bi.html">Power BI</a></nav>
+        <nav aria-label="Packages and support"><b>Packages and support</b><a href="nine-packages.html">All packages</a><a href="nine-sales-accelerator.html">Sales Accelerator</a><a href="nine-service-accelerator.html">Service Accelerator</a><a href="nine-rescue-repair.html">Rescue and Repair</a><a href="https://www.dynamics365support.com/#plans">Support plans</a></nav>
+        <nav aria-label="Company"><b>Company</b><a href="nine-about.html">About enCloud9</a><a href="nine-stories.html">Client stories</a><a href="nine-blog.html">Blog</a><a href="nine-contact.html">Contact us</a><a href="nine-faq.html">All questions</a><a href="nine-omaha.html">Omaha and Nebraska</a></nav>
+      </div>
+      <div class="tm">enCloud9 LLC, [address Brian confirms]. Serving clients across the US. Microsoft, Dynamics 365 and Copilot are trademarks of the Microsoft group of companies.</div>
+    </footer>
+  </div>
+  <div class="scale" aria-hidden="true"><i style="background:var(--b1);--i:0"></i><i style="background:var(--b2);--i:1"></i><i style="background:var(--b3);--i:2"></i><i style="background:var(--b4);--i:3"></i><i style="background:var(--b5);--i:4"></i><i style="background:var(--b6);--i:5"></i><i style="background:var(--b7);--i:6"></i><i style="background:var(--b8);--i:7"></i><i style="background:var(--b9);--i:8"></i></div>
+</section>
+</main>
+<script>
+/* post: reading progress and the current section in the contents */
+(function(){
+  var d=document,bar=d.querySelector('.progress i'),art=d.getElementById('art'),
+      links=[].slice.call(d.querySelectorAll('.toc a')),heads=links.map(function(a){return d.getElementById(a.getAttribute('href').slice(1))}),
+      tocd=d.getElementById('tocd'),ticking=false;
+  if(window.matchMedia('(max-width:1080px)').matches&&tocd)tocd.removeAttribute('open');
+  function upd(){
+    ticking=false;
+    var r=art.getBoundingClientRect(),h=window.innerHeight,tot=r.height-h*.6,p=tot>0?Math.min(1,Math.max(0,(-r.top+h*.25)/tot)):0;
+    bar.style.transform='scaleX('+p.toFixed(4)+')';
+    var cur=-1;heads.forEach(function(el,i){if(el&&el.getBoundingClientRect().top<170)cur=i});
+    links.forEach(function(a,i){var on=i===cur;a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd)}},{passive:true});
+  window.addEventListener('resize',upd);upd();
+})();
+</script>
+</body>
+</html>
