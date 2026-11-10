@@ -3,7 +3,7 @@ Live pages (read 9 Nov) have no prices, FAQ or client proof. No story names Powe
 import sys; sys.path.insert(0, __import__('os').path.dirname(__import__('os').path.abspath(__file__)))
 from n9base import *
 TCSS = ('@media(max-width:640px){#plans .tbl{min-width:0}#plans .tbl thead{position:absolute;left:-9999px}#plans .tbl tr{display:grid;grid-template-columns:1fr;padding:14px 0;border-bottom:1px solid var(--line)}'
-        '#plans .tbl tbody th,#plans .tbl td{display:block;border:0;padding:2px 0}#plans .tbl td::before{content:attr(data-l) ": ";font-family:var(--label);font-size:11px;color:var(--muted)}}')
+        '#plans .tbl tbody th,#plans .tbl td{display:block;border:0;padding:2px 0}#plans .tbl td::before{content:attr(data-l) ": ";font-family:var(--label);font-size:13px;color:var(--muted)}}')
 PAGES = {
 'nine-power-apps.html': dict(
   url='https://www.encloud9.com/dynamics-365-power-apps/', name='Power Apps', h1=('Power Apps','for Dynamics 365'),

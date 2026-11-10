@@ -132,14 +132,14 @@ def build(k):
     lds = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld)
     hd = hd.replace('<style>', lds + '<style>', 1)
     extra_css = ("body.p-pkg #prices .tbl tbody th{font-size:18px}\n"
-                 "body.p-pkg #prices .tbl .vd{display:block;font-family:var(--label);font-size:11px;font-weight:400;color:var(--muted);letter-spacing:0;margin-bottom:4px}\n"
+                 "body.p-pkg #prices .tbl .vd{display:block;font-family:var(--label);font-size:13px;font-weight:400;color:var(--muted);letter-spacing:0;margin-bottom:4px}\n"
                  "body.p-pkg #prices .tbl tr.ms th,body.p-pkg #prices .tbl tr.ms td{background:var(--tint)}\n"
                  "body.p-pkg #prices .tbl tr.ms th{padding-left:12px}\n"
                  "body.p-pkg .ckl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(24px,3vw,40px);border:2px solid var(--ink)}\n"
-                 "body.p-pkg .ckl .ph{padding:20px;border:1px dashed var(--line);font-family:var(--label);font-size:12px;color:var(--muted)}\n"
+                 "body.p-pkg .ckl .ph{padding:20px;border:1px dashed var(--line);font-family:var(--label);font-size:14px;color:var(--muted)}\n"
                  "@media (max-width:860px){body.p-pkg .ckl{grid-template-columns:1fr}}\n"
                  "body.p-pkg .ckl .lead{margin-top:14px}\n"
-                 "@media (max-width:640px){body.p-pkg #prices .tbl{min-width:0}body.p-pkg #prices .tbl thead{position:absolute;left:-9999px}body.p-pkg #prices .tbl tr{display:grid;grid-template-columns:1fr;padding:14px 12px;border-bottom:1px solid var(--line)}body.p-pkg #prices .tbl tbody th,body.p-pkg #prices .tbl td{display:block;border:0;padding:2px 0}body.p-pkg #prices .tbl tr.ms{background:var(--tint)}body.p-pkg #prices .tbl tr.ms th,body.p-pkg #prices .tbl tr.ms td{background:none;padding-left:0}body.p-pkg #prices .tbl td::before{content:attr(data-l) \": \";font-family:var(--label);font-size:11px;color:var(--muted)}}\n")
+                 "@media (max-width:640px){body.p-pkg #prices .tbl{min-width:0}body.p-pkg #prices .tbl thead{position:absolute;left:-9999px}body.p-pkg #prices .tbl tr{display:grid;grid-template-columns:1fr;padding:14px 12px;border-bottom:1px solid var(--line)}body.p-pkg #prices .tbl tbody th,body.p-pkg #prices .tbl td{display:block;border:0;padding:2px 0}body.p-pkg #prices .tbl tr.ms{background:var(--tint)}body.p-pkg #prices .tbl tr.ms th,body.p-pkg #prices .tbl tr.ms td{background:none;padding-left:0}body.p-pkg #prices .tbl td::before{content:attr(data-l) \": \";font-family:var(--label);font-size:13px;color:var(--muted)}}\n")
     hd = hd.replace('</style>', extra_css + '</style>', 1)
     hd = hd.replace('nine-sales-accelerator.html" class="on" aria-current="page">Sales Accelerator', f'{v["file"]}" class="on" aria-current="page">{v["crumb"]}')
 

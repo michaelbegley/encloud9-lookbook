@@ -32,8 +32,8 @@ ANSWER = (f'This page holds every question from our product, package and company
 TITLE = 'Dynamics 365 Questions, Answered | enCloud9 FAQ'
 META = 'The questions we answer about Dynamics 365, Copilot, Power Platform, packages, moving from another CRM and support plans, in one place.'
 css = ('.fqtools{display:grid;gap:14px;margin:8px 0 32px}.fqtools input{font:inherit;font-size:17px;padding:14px 16px;border:1px solid var(--line);background:#fff;color:var(--ink);width:100%;max-width:640px}'
-       '.chips{display:flex;flex-wrap:wrap;gap:8px}.chips a{font-family:var(--label);font-size:12px;padding:8px 12px;border:1px solid var(--line);color:var(--ink);text-decoration:none;background:#fff}'
-       '.chips a:hover{border-color:var(--b5)}.fqfrom{display:block;margin-top:10px;font-family:var(--label);font-size:12px}.fqcount{font-family:var(--label);font-size:12px;color:var(--muted)}'
+       '.chips{display:flex;flex-wrap:wrap;gap:8px}.chips a{font-family:var(--label);font-size:15px;font-weight:500;padding:10px 16px;border:1px solid var(--line);color:var(--ink);text-decoration:none;background:#fff}'
+       '.chips a:hover{border-color:var(--b5)}.fqfrom{display:block;margin-top:10px;font-family:var(--label);font-size:14px}.fqcount{font-family:var(--label);font-size:14px;color:var(--muted)}'
        '.fqg{scroll-margin-top:96px}.fqg .faq{max-width:none}')
 allqa = [(q, a) for _, _, it in groups for q, a, _, _ in it]
 hd = mkhead(TITLE, META, [('Home','https://www.encloud9.com/'),('Questions',URL)], faq=allqa, css=css)

@@ -150,7 +150,7 @@ main = f'''<main id="main">
 '''
 css = '''<style>.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line,#ddd);border:1px solid var(--line,#ddd)}.fgrid .cell-f{background:var(--bg,#fff);padding:24px}.fgrid .cell-f p{margin:8px 0 0}
 @media(max-width:900px){.fgrid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.fgrid{grid-template-columns:1fr}}
-@media(max-width:640px){#plans .tbl{min-width:0}#plans .tbl thead{position:absolute;left:-9999px}#plans .tbl tr{display:grid;grid-template-columns:1fr;padding:14px 0;border-bottom:1px solid var(--line)}#plans .tbl tbody th,#plans .tbl td{display:block;border:0;padding:2px 0}#plans .tbl td::before{content:attr(data-l) ": ";font-family:var(--label);font-size:11px;color:var(--muted)}}</style>
+@media(max-width:640px){#plans .tbl{min-width:0}#plans .tbl thead{position:absolute;left:-9999px}#plans .tbl tr{display:grid;grid-template-columns:1fr;padding:14px 0;border-bottom:1px solid var(--line)}#plans .tbl tbody th,#plans .tbl td{display:block;border:0;padding:2px 0}#plans .tbl td::before{content:attr(data-l) ": ";font-family:var(--label);font-size:13px;color:var(--muted)}}</style>
 '''
 hd = hd.replace('</head>', css + '</head>', 1)
 open(P + 'nine-email-verifier.html', 'w', encoding='utf-8').write(hd + hdr + '\n\n' + main + tail)

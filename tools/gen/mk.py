@@ -38,7 +38,7 @@ css=r'''@media (max-width:860px){.vs{grid-template-columns:1fr}}
 @media (max-width:560px){.mk-set{grid-template-columns:1fr}.mt{aspect-ratio:auto;min-height:190px}}
 /* client grid in the band: every cube carries a label, the four Click clients are links */
 .mk-cg{width:min(380px,100%)}
-.mk-cg .aic{display:flex;align-items:flex-end;padding:10px;font-family:var(--label);font-size:11px;line-height:1.3;color:var(--b8);position:relative}
+.mk-cg .aic{display:flex;align-items:flex-end;padding:10px;font-family:var(--label);font-size:13px;line-height:1.3;color:var(--b8);position:relative}
 .mk-cg .aic.cl{background:var(--b4);border-color:transparent;color:var(--white);font-family:var(--head);font-size:15px;font-weight:600;letter-spacing:-.01em;line-height:1.15}
 .mk-cg .aic.cl::before{content:"";position:absolute;top:10px;left:10px;width:8px;height:8px;background:var(--b8)}
 .mk-cg .aic.on{align-items:center;justify-content:center;font-family:var(--head);font-size:26px;font-weight:600;letter-spacing:-.02em;color:var(--white)}

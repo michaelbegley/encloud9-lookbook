@@ -126,7 +126,7 @@ ld = [{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement
       {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in FAQ]}]
 css = ('<style>.art .tbl-wrap{margin:22px 0}.art .gtbl{min-width:0}.art .gtbl caption{text-align:left;padding-bottom:8px}.art h3{margin:28px 0 0}'
        '@media(max-width:640px){.art .gtbl thead{position:absolute;left:-9999px}.art .gtbl tr{display:grid;grid-template-columns:1fr;padding:12px 0;border-bottom:1px solid var(--line)}'
-       '.art .gtbl tbody th,.art .gtbl td{display:block;border:0;padding:2px 0}.art .gtbl td::before{content:attr(data-l) ": ";font-family:var(--label);font-size:11px;color:var(--muted)}}</style>\n')
+       '.art .gtbl tbody th,.art .gtbl td{display:block;border:0;padding:2px 0}.art .gtbl td::before{content:attr(data-l) ": ";font-family:var(--label);font-size:13px;color:var(--muted)}}</style>\n')
 s = s.replace('<style>', ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + css + '<style>', 1)
 open(L + 'nine-blog-pricing-2026.html', 'w', encoding='utf-8').write(s)
 print('ok words', words, 'min', mins, len(ANS.split()), len(TITLE), len(META))

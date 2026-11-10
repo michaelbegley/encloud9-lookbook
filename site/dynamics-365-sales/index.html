@@ -28,7 +28,7 @@
 <style>
 /* sales page polish (4 Nov): price cubes that come toward you, packages with cube heads, plan tiles, the cube readiness check */
 body.p-sales .lic .cell{color:var(--white)}
-body.p-sales .lic .tag{align-self:flex-start;margin-top:10px;padding:3px 7px;background:rgba(255,255,255,.16);font-family:var(--label);font-size:11px;line-height:1.3}
+body.p-sales .lic .tag{align-self:flex-start;margin-top:10px;padding:3px 7px;background:rgba(255,255,255,.16);font-family:var(--label);font-size:13px;line-height:1.3}
 body.p-sales .lic a.cell:focus-visible{outline:3px solid var(--b6);outline-offset:3px;z-index:4}
 @media (prefers-reduced-motion:no-preference){.js body.p-sales .lic .cell{animation-fill-mode:backwards}}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){
@@ -68,7 +68,7 @@ body.p-sales .ptiles.plans .ptile{aspect-ratio:auto;min-height:360px}
 body.p-sales .ptile .price{font-family:var(--head);font-size:clamp(40px,3.6vw,54px);font-weight:600;letter-spacing:-.035em;line-height:1}
 body.p-sales .ptile .price small{font-size:15px;font-weight:500;letter-spacing:0;margin-left:6px;opacity:.85}
 body.p-sales .ptile .ds b{color:var(--white);font-weight:600}
-body.p-sales .ptile .min{align-self:flex-start;padding:3px 7px;background:rgba(255,255,255,.18);font-family:var(--label);font-size:11px;color:var(--white)}
+body.p-sales .ptile .min{align-self:flex-start;padding:3px 7px;background:rgba(255,255,255,.18);font-family:var(--label);font-size:13px;color:var(--white)}
 body.p-sales .sp-foot{display:flex;justify-content:space-between;align-items:flex-start;gap:24px 48px;flex-wrap:wrap;margin-top:24px}
 body.p-sales .sp-foot .fine{margin-top:0;max-width:760px}
 /* readiness check: answer cubes and a cube meter */
@@ -78,7 +78,7 @@ body.p-sales .rc .qlist{background:var(--white);border:1px solid var(--line)}
 body.p-sales .rc .qhead{align-items:center}
 body.p-sales .rc .q{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:18px;align-items:center;padding:18px 22px}
 body.p-sales .rc .q:last-child{border-bottom:0}
-body.p-sales .rc .qn{width:36px;height:36px;display:grid;place-items:center;font-family:var(--label);font-size:12px;background:var(--tint);color:var(--ink2);transition:background .3s,color .3s}
+body.p-sales .rc .qn{width:36px;height:36px;display:grid;place-items:center;font-family:var(--label);font-size:14px;background:var(--tint);color:var(--ink2);transition:background .3s,color .3s}
 body.p-sales .rc .q.y .qn{background:var(--b5);color:var(--white)}
 body.p-sales .rc .q.n .qn{background:var(--ink);color:var(--white)}
 body.p-sales .rc .q.u .qn{background:var(--b7);color:var(--ink)}
@@ -91,12 +91,12 @@ body.p-sales .rc .q button:focus-visible{outline:3px solid var(--b6);outline-off
 body.p-sales .rres{background:var(--b2);color:var(--white);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:20px}
 body.p-sales .rres .mono{color:var(--b8)}
 body.p-sales .meter{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-body.p-sales .meter i{aspect-ratio:1/1;display:flex;align-items:flex-end;padding:8px;font:normal 12px var(--label);color:var(--b8);background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.32);transition:background .4s,border-color .4s,color .4s}
+body.p-sales .meter i{aspect-ratio:1/1;display:flex;align-items:flex-end;padding:8px;font:normal 14px var(--label);color:var(--b8);background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.32);transition:background .4s,border-color .4s,color .4s}
 body.p-sales .meter i.y{background:var(--b6);border:1px solid var(--b6);color:var(--b1)}
 body.p-sales .meter i.u{background:repeating-linear-gradient(135deg,rgba(255,255,255,.26) 0 6px,transparent 6px 12px);border:1px solid rgba(255,255,255,.45);color:var(--white)}
 body.p-sales .meter i.n{background:transparent;border:1px solid rgba(255,255,255,.7);color:var(--white)}
 body.p-sales .meter.all i{background:var(--white);border-color:var(--white);color:var(--b2)}
-body.p-sales .key{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--label);font-size:12px;color:var(--b8)}
+body.p-sales .key{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--label);font-size:14px;color:var(--b8)}
 body.p-sales .key span{display:inline-flex;align-items:center;gap:6px}
 body.p-sales .key span::before{content:"";width:10px;height:10px;background:var(--k);border:1px var(--bs,solid) rgba(255,255,255,.6)}
 body.p-sales .rres .score{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}

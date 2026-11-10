@@ -4,7 +4,7 @@ import sys; sys.path.insert(0, __import__('os').path.dirname(__import__('os').pa
 from n9base import *
 CSS = ('.ppl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}'
        '.ppl a,.ppl div.p{display:flex;flex-direction:column;gap:10px;background:var(--bg,#fff);padding:22px;text-decoration:none;color:var(--ink)}'
-       '.ppl a:hover{background:var(--tint,#EAF0F8)}.ph{aspect-ratio:4/5;background:var(--b8);display:flex;align-items:center;justify-content:center;font-family:var(--label);font-size:12px;color:var(--b3);text-align:center;padding:12px}'
+       '.ppl a:hover{background:var(--tint,#EAF0F8)}.ph{aspect-ratio:4/5;background:var(--b8);display:flex;align-items:center;justify-content:center;font-family:var(--label);font-size:14px;color:var(--b3);text-align:center;padding:12px}'
        '.ppl .n{font-family:var(--head);font-size:21px;font-weight:600}.ppl .r{color:var(--muted);font-size:15px}'
        '.bio{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:start}'
        '.cform{display:grid;gap:14px;max-width:640px}.cform label{display:grid;gap:6px;font-size:15px;color:var(--ink)}.cform input,.cform textarea{font:inherit;padding:12px 14px;border:1px solid var(--line);background:#fff;color:var(--ink)}'

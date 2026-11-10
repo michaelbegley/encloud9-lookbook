@@ -20,7 +20,7 @@ FAQ = [("Is Dynamics 365 cheaper than Salesforce?","At list price, Dynamics 365 
        ("Can you move us from Salesforce or HubSpot?",'Yes. See <a class="lnk" href="nine-move-salesforce.html">Move from Salesforce</a> and <a class="lnk" href="nine-move-hubspot.html">Move from HubSpot</a>.')]
 css = ('.vtbl th[scope=col]{white-space:nowrap}'
        '@media(max-width:760px){#compare .tbl{min-width:0}#compare .tbl thead{position:absolute;left:-9999px}#compare .tbl tr{display:grid;grid-template-columns:1fr;padding:14px 0;border-bottom:1px solid var(--line)}'
-       '#compare .tbl tbody th,#compare .tbl td{display:block;border:0;padding:3px 0}#compare .tbl td::before{content:attr(data-l) ": ";font-family:var(--label);font-size:11px;color:var(--muted)}}')
+       '#compare .tbl tbody th,#compare .tbl td{display:block;border:0;padding:3px 0}#compare .tbl td::before{content:attr(data-l) ": ";font-family:var(--label);font-size:13px;color:var(--muted)}}')
 hd = mkhead(TITLE, META, [('Home','https://www.encloud9.com/'),('Dynamics 365','https://www.encloud9.com/power-platform-dynamics-365/'),('Dynamics 365 vs Salesforce vs HubSpot',URL)], faq=FAQ, css=css)
 cols = ('Dynamics 365 Sales','Salesforce Sales Cloud','HubSpot Sales Hub')
 rows = ''.join(f'          <tr><th scope="row">{e(a)}</th>' + ''.join(f'<td data-l="{cols[i]}">{e(v)}</td>' for i, v in enumerate((b, c, d))) + '</tr>\n' for a, b, c, d in ROWS)

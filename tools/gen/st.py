@@ -32,7 +32,7 @@ newcss=r'''/* ===== polish round (4 Nov): consistent with the home page ===== */
 .st-head.lt{color:var(--ink)}
 .st-head .mono{color:rgba(255,255,255,.8)}.st-head.lt .mono{color:var(--ink2)}
 .st-head .big{margin-top:auto;font-family:var(--head);font-size:clamp(30px,2.8vw,40px);font-weight:600;letter-spacing:-.035em;line-height:1}
-.st-head .sm{font-family:var(--label);font-size:12px;opacity:.85}
+.st-head .sm{font-family:var(--label);font-size:14px;opacity:.85}
 .st-head .ar{position:absolute;right:18px;top:14px;opacity:0;transform:translate(-4px,4px);transition:opacity .3s,transform .35s var(--ease)}
 .st:hover .st-head .ar,.st:focus-visible .st-head .ar{opacity:1;transform:none}
 .st>.t{padding:20px 22px 0;margin:0}
@@ -50,11 +50,11 @@ newcss=r'''/* ===== polish round (4 Nov): consistent with the home page ===== */
 .tl-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:end;margin-bottom:clamp(36px,4vw,56px)}
 .tl{border-top:2px solid rgba(255,255,255,.85)}
 .tl-row,.tl-scale{display:grid;grid-template-columns:minmax(0,1.1fr) auto minmax(0,1fr);gap:clamp(16px,3vw,40px);align-items:center}
-.tl-scale{padding:14px 0 10px;font-family:var(--label);font-size:12px;color:var(--b8)}
+.tl-scale{padding:14px 0 10px;font-family:var(--label);font-size:14px;color:var(--b8)}
 .tl-row{position:relative;padding:14px 18px;margin-inline:-18px;border-bottom:1px solid rgba(255,255,255,.14);transition:background .3s}
 .tl-row:hover{background:rgba(255,255,255,.07)}
 .tl-row .nm{font-family:var(--head);font-size:clamp(18px,1.6vw,22px);font-weight:600;letter-spacing:-.015em;line-height:1.2}
-.tl-row .nm small{display:block;font-family:var(--label);font-size:12px;font-weight:400;letter-spacing:0;color:var(--b8);margin-top:4px}
+.tl-row .nm small{display:block;font-family:var(--label);font-size:14px;font-weight:400;letter-spacing:0;color:var(--b8);margin-top:4px}
 .tl-row .ph{font-size:15px;color:var(--b8);display:flex;justify-content:space-between;gap:12px}
 .tl-row .ph b{color:var(--white);font-weight:600}
 .tl-row .ph .go{white-space:nowrap;color:var(--white);opacity:.7;transition:opacity .3s,transform .3s}
