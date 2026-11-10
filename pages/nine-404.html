@@ -1146,10 +1146,18 @@ SONGS[9]={
         if(pb&&(pb[0]-p0[0])!==-ax&&(pb[1]-p0[1])!==-ay){
           ctx.fillStyle='#1F3A80';ctx.beginPath();ctx.arc(cx,cy,cell*.46,0,7);ctx.fill();ctx.fillStyle='#C9D6EE';ctx.beginPath();ctx.arc(cx,cy,cell*.4,0,7);ctx.fill();
           ctx.fillStyle='#355DA6';[[1,1],[1,-1],[-1,1],[-1,-1]].forEach(function(q){ctx.beginPath();ctx.arc(cx+q[0]*cell*.2,cy+q[1]*cell*.2,cell*.05,0,7);ctx.fill()})}
-        else if((p0[0]+p0[1])%2===0){   // pinned to the ground square, not to the segment number, so a flange never jumps as the pipe moves
-          var lx=ax?cell*.09:cell*.48,ly=ax?cell*.48:cell*.09;
-          ctx.fillStyle='#1F3A80';ctx.fillRect(cx-lx-1,cy-ly-1,lx*2+2,ly*2+2);ctx.fillStyle='#C9D6EE';ctx.fillRect(cx-lx,cy-ly,lx*2,ly*2);
-          ctx.fillStyle='#355DA6';[1,-1].forEach(function(sg){ctx.beginPath();ctx.arc(cx+(ax?0:sg*cell*.37),cy+(ax?sg*cell*.37:0),cell*.045,0,7);ctx.fill()})}}
+}
+      // flanges ride on the pipe: one every two squares, measured back from the moving intake, so they slide with it
+      var U=[pts[0]],len=[0];for(var k=1;k<pts.length;k++){U.push(unwrapTo(U[k-1],pts[k]));len.push(len[k-1]+Math.hypot(U[k][0]-U[k-1][0],U[k][1]-U[k-1][1]))}
+      var tot=len[len.length-1];   // a fixed distance behind the moving intake = attached to the pipe
+      for(var dist=1.5;dist<tot-.45;dist+=2){
+        var k2=1;while(k2<len.length-1&&len[k2]<dist)k2++;
+        var A2=U[k2-1],B2=U[k2],sl=len[k2]-len[k2-1]||1,f2=(dist-len[k2-1])/sl,X=A2[0]+(B2[0]-A2[0])*f2,Y=A2[1]+(B2[1]-A2[1])*f2,horiz=Math.abs(B2[0]-A2[0])>Math.abs(B2[1]-A2[1]);
+        if(dist-len[k2-1]<.45&&k2>1){var P=U[k2-2];if((Math.abs(P[0]-A2[0])>.01)!==horiz)continue}   // too close to an elbow behind
+        if(len[k2]-dist<.45&&k2<U.length-1){var Q=U[k2+1];if((Math.abs(Q[0]-B2[0])>.01)!==horiz)continue}  // too close to an elbow ahead
+        var bx=((X%N)+N)%N,by=((Y%N)+N)%N,cx2=(bx+.5)*cell,cy2=(by+.5)*cell,lx=horiz?cell*.09:cell*.48,ly=horiz?cell*.48:cell*.09;
+        ctx.fillStyle='#1F3A80';ctx.fillRect(cx2-lx-1,cy2-ly-1,lx*2+2,ly*2+2);ctx.fillStyle='#C9D6EE';ctx.fillRect(cx2-lx,cy2-ly,lx*2,ly*2);
+        ctx.fillStyle='#355DA6';[1,-1].forEach(function(sg){ctx.beginPath();ctx.arc(cx2+(horiz?0:sg*cell*.37),cy2+(horiz?sg*cell*.37:0),cell*.045,0,7);ctx.fill()})}
       // the far end is open too: a collar, with the bore showing
       (function(){var e=pts[pts.length-1],q=unwrapTo(e,pts[Math.max(0,pts.length-2)]),dx=e[0]-q[0],dy=e[1]-q[1],L=Math.hypot(dx,dy)||1;dx/=L;dy/=L;
         var ex=(((e[0]%N)+N)%N+.5)*cell,ey=(((e[1]%N)+N)%N+.5)*cell;collar(ex,ey,dx,dy,0)})();
