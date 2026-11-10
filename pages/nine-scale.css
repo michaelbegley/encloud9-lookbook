@@ -36,4 +36,4 @@ html body :is(h1,h2,h3,.nm,.t){text-wrap:balance}
 @media (max-width:420px){html body .proof .num{white-space:nowrap;font-size:clamp(24px,7vw,30px)!important}}
 
 /* text on the mid blue (#6F8FCB) tiles is full ink: ink2 and faded ink only reach 4.0 to 4.2 to 1 (G3, 9 Nov) */
-html body .lt.ptile :is(.mono,.ds,.from .pre,.from small),html body .at>span{color:var(--ink)!important;opacity:1}
+html body .lt.ptile :is(.mono,.ds,.from .pre,.from small),html body .at>span{color:var(--ink)!important;opacity:1!important}
