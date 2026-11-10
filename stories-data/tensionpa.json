@@ -4,12 +4,12 @@
  "client": "Tension Packaging and Automation",
  "work_type": "New build",
  "title": "Tension Packaging: Dynamics 365 Sales Rollout | enCloud9",
- "meta": "How enCloud9 moved a Tension Packaging division from spreadsheets to Dynamics 365 Sales in six months, with data migrated and a full view of the pipeline.",
+ "meta": "How enCloud9 moved Tension Packaging from spreadsheets to Dynamics 365 Sales in six months, with data migrated and a full view of the pipeline.",
  "h1": [
   "Tension Packaging:",
   "Spreadsheets to Dynamics 365 in six months"
  ],
- "answer": "Tension Packaging and Automation, a Kansas City, MO packaging equipment and automation company, tracked a division's sales pipeline in Excel spreadsheets and individual storage. After an earlier project with one division, we implemented Dynamics 365 Sales for another and migrated its data to the cloud. The project was completed in six months, with better pipeline visibility and reporting.",
+ "answer": "Tension Packaging and Automation, a Kansas City, MO packaging equipment and automation company, tracked its sales pipeline in Excel spreadsheets and individual storage. After an earlier project with one division, we implemented Dynamics 365 Sales for another and migrated its data to the cloud. The project was completed in six months, with better pipeline visibility and reporting.",
  "facts": [
   [
    "Client",

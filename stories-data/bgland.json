@@ -9,7 +9,7 @@
   "B&G Landholdings:",
   "Cleaner email data in Dynamics 365"
  ],
- "answer": "B&G Landholdings, based in Fort Meyers, FL, relies on Dynamics 365, and email accuracy mattered more as its contact volume grew. Invalid and outdated addresses were entering the CRM, raising bounce risk and manual cleanup. We implemented our Email Verifier in Dynamics 365 with real-time and bulk verification. Contact data is now more accurate and marketing lists are cleaner.",
+ "answer": "B&G Landholdings, based in Fort Myers, FL, relies on Dynamics 365, and email accuracy mattered more as its contact volume grew. Invalid and outdated addresses were entering the CRM, raising bounce risk and manual cleanup. We implemented our Email Verifier in Dynamics 365 with real-time and bulk verification. Contact data is now more accurate and marketing lists are cleaner.",
  "facts": [
   [
    "Client",
@@ -17,7 +17,7 @@
   ],
   [
    "Location",
-   "Fort Meyers, FL"
+   "Fort Myers, FL"
   ],
   [
    "Starting point",

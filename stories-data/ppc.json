@@ -37,12 +37,7 @@
   ]
  ],
  "timeline": null,
- "tiles": [
-  [
-   "Hundreds of hours",
-   "expected to be saved each year"
-  ]
- ],
+ "tiles": [],
  "outcomes": [
   "PPC manages all its jobs in Dynamics 365 through a dashboard.",
   "A calendar organizes jobs by due date and assigns them to the responsible artists.",
