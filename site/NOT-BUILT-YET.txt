@@ -1,10 +1,10 @@
 Links on the mock site that still go to the live encloud9.com (page not built yet), with the pages that link to them.
 
-/blog/creating-and-managing-sequences-in-dynamics-365-sales-insights/  <- nine-post-leads-cracks.html
+/blog/copilot-crm-data-quality-issues/  <- nine-post-data-quality.html
 /blog/dynamics-365-optimization-overbuilt-crm/  <- nine-post-adoption.html
 /blog/dynamics-365-optimization/  <- nine-post-adoption.html, nine-post-healthy-system.html
 /blog/everything-you-wanted-to-know-about-clickdimensions/  <- nine-post-click-dashboards.html
-/blog/how-to-improve-dynamics-365-data-quality-garbage-in-garbage-out/  <- nine-post-leads-cracks.html
 /blog/spring-cleaning-your-crm-a-guide-to-refreshing-data-in-dynamics-365/  <- nine-post-healthy-system.html
 /blog/spring-renewal-dynamics-365-strategies-for-sales-pipeline-optimization/  <- nine-post-healthy-system.html
-/blog/why-dynamics-365-adoption-breaks-and-why-more-training-wont-fix-it/  <- nine-post-adoption.html
+/blog/why-dynamics-365-adoption-breaks-and-why-more-training-wont-fix-it/  <- nine-post-adoption.html, nine-post-data-quality.html
+/blog/why-your-dynamics-365-pipeline-looks-fine-but-isnt/  <- nine-post-data-quality.html

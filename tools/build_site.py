@@ -120,6 +120,8 @@ MAP = {
     'nine-post-healthy-system.html': '/blog/what-a-healthy-dynamics-365-system-actually-looks-like/',
     'nine-post-whats-new-2026-11.html': '/blog/whats-new-in-dynamics-365-november-2026/',
     'nine-updates.html': '/how-microsoft-updates-dynamics-365/',
+    'nine-post-data-quality.html': '/blog/how-to-improve-dynamics-365-data-quality-garbage-in-garbage-out/',
+    'nine-post-sequences.html': '/blog/creating-and-managing-sequences-in-dynamics-365-sales-insights/',
 }
 PATHS = set(MAP.values())
 

@@ -125,3 +125,5 @@ unmanaged
 Unmanaged
 copresence
 timelines
+msdyn
+ConnectSequence
