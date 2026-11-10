@@ -1,0 +1,207 @@
+{
+ "file": "nine-move-zoho.html",
+ "url": "https://www.encloud9.com/microsoft-dynamics-365-zoho-crm-migration/",
+ "name": "Zoho",
+ "crumb": "Move from Zoho",
+ "unit": "Zoho CRM setup",
+ "title": "Move from Zoho CRM to Dynamics 365 Sales | enCloud9",
+ "meta": "We move growing US businesses from Zoho CRM to Dynamics 365 Sales, with records mapped and checked before go-live, and support from $500 a month.",
+ "answer": "We move growing US businesses from Zoho CRM to Dynamics 365 Sales: your leads, contacts, accounts, deals and history, with record counts checked against Zoho before go-live. Moving data from your old CRM or spreadsheets is part of a full implementation. Microsoft licenses are a separate cost, and support plans start at $500 a month.",
+ "inc_lead": "Your Zoho CRM leads, contacts, accounts, deals and activity history move to Dynamics 365 Sales, mapped field by field and tested in a trial run before the full move. Zoho workflows, blueprints, custom functions and connected apps do not move on their own; we review them first and quote any rebuild separately.",
+ "inc": [
+  "A written review of your Zoho CRM account: modules, fields, layouts, workflows, blueprints and connected apps",
+  "Your Zoho modules and fields mapped to Dynamics 365 Sales",
+  "Your Zoho users mapped to Dynamics 365 users and security roles",
+  "Your Microsoft licenses assigned to each user",
+  "A trial run first, then the full move, with record counts checked against Zoho",
+  "Up to [Brian sets] records moved",
+  "[Brian sets] training sessions",
+  "[Brian sets] days of help after go-live"
+ ],
+ "noinc": [
+  "Rebuilding Zoho workflows, blueprints, custom functions and connected apps, quoted separately",
+  "Other Zoho apps, such as Zoho Campaigns or Zoho Desk",
+  "Integrations with other systems, quoted separately",
+  "Microsoft licenses and Copilot Credits",
+  "Ending your Zoho subscription, which stays between you and Zoho"
+ ],
+ "grid": [
+  [
+   "Reviewed",
+   "Your account",
+   "A written review of your Zoho CRM account"
+  ],
+  [
+   "Mapped",
+   "Modules and fields",
+   "Zoho modules and fields mapped to Dynamics 365 Sales"
+  ],
+  [
+   "Mapped",
+   "Users and roles",
+   "Zoho users mapped to Dynamics 365 users and security roles"
+  ],
+  [
+   "Assigned",
+   "Licenses",
+   "Your Microsoft licenses assigned to each user"
+  ]
+ ],
+ "price_h": "What do Dynamics 365 Sales and Zoho CRM cost per user?",
+ "price_lead": "Microsoft lists Dynamics 365 Sales at $65, $105 or $150 per user per month, paid yearly. Zoho lists Zoho CRM Standard at $14, Professional at $23 and Enterprise at $40 per user per month billed annually, or $20, $35 and $50 billed monthly, and a free edition for up to 3 users.",
+ "col5": "AI on the vendor's page",
+ "rows": [
+  [
+   "Microsoft",
+   "Dynamics 365 Sales Professional",
+   "$65",
+   "Paid yearly",
+   "No Copilot; Sales agents need Copilot Credits"
+  ],
+  [
+   "Microsoft",
+   "Dynamics 365 Sales Enterprise",
+   "$105",
+   "Paid yearly",
+   "Copilot included; agents need Copilot Credits"
+  ],
+  [
+   "Microsoft",
+   "Dynamics 365 Sales Premium",
+   "$150",
+   "Paid yearly",
+   "Copilot included; 1,000 Copilot Credits per user per month"
+  ],
+  [
+   "Zoho",
+   "Zoho CRM Free",
+   "$0",
+   "Free for up to 3 users",
+   "None listed"
+  ],
+  [
+   "Zoho",
+   "Zoho CRM Standard",
+   "$14",
+   "Billed annually; $20 billed monthly",
+   "None listed"
+  ],
+  [
+   "Zoho",
+   "Zoho CRM Professional",
+   "$23",
+   "Billed annually; $35 billed monthly",
+   "AI agents and predictive intelligence"
+  ],
+  [
+   "Zoho",
+   "Zoho CRM Enterprise",
+   "$40",
+   "Billed annually; $50 billed monthly",
+   "Extended AI capabilities"
+  ]
+ ],
+ "price_note2": "Zoho also has an Ultimate edition for large deployments; its US pricing page does not show a price for it. Zoho says local taxes may apply.",
+ "fit_lead": "A move fits a sales team on Zoho CRM whose setup is mostly standard records, such as leads, contacts, accounts and deals, and who already work in Outlook and Teams. It is a weaker fit if your Zoho CRM account runs many blueprints, custom functions and connected apps, or if you need other systems connected on day one.",
+ "fit_yes": [
+  "Most of your Zoho CRM setup is standard records: leads, contacts, accounts and deals.",
+  "Your Zoho renewal date is coming and you want a plan before it arrives."
+ ],
+ "fit_no": "Your Zoho CRM account runs many blueprints, custom functions and connected apps. We review them first and scope that rebuild separately.",
+ "q4": [
+  "Do our Zoho workflows and blueprints move across?",
+  "Not on their own. Workflows, blueprints, custom functions and connected apps are rebuilt in Dynamics 365 rather than copied. We review them first and quote any rebuild separately."
+ ],
+ "q5": [
+  "Does Microsoft have a tool for moving from Zoho CRM?",
+  "Not a dedicated one. Microsoft's own migration tool, Dynamics 365 Activate, covers moves from Salesforce. For other systems, Microsoft's guidance points to data import, dataflows and data migration tools such as Azure Data Factory."
+ ],
+ "checklist": "Zoho CRM to Dynamics 365 Migration Readiness Checklist",
+ "other": [
+  "nine-move-salesforce.html",
+  "Move from Salesforce"
+ ],
+ "sources": [
+  {
+   "fact": "Zoho CRM annual-billing US prices: Free US$0, Standard US$14, Professional US$23, Enterprise US$40 per user per month (Annually toggle selected, read in the browser on the en-us page)",
+   "url": "https://www.zoho.com/en-us/crm/zohocrm-pricing.html",
+   "quote": "Standard US$14 /user/month ... Professional US$23 ... Enterprise US$40",
+   "date": "2026-11-09"
+  },
+  {
+   "fact": "Zoho CRM monthly-billing US prices: Standard US$20, Professional US$35, Enterprise US$50 per user per month (after clicking Monthly; toggle state confirmed by screenshot)",
+   "url": "https://www.zoho.com/en-us/crm/zohocrm-pricing.html",
+   "quote": "Standard US$20 /user/month ... Professional US$35 ... Enterprise US$50",
+   "date": "2026-11-09"
+  },
+  {
+   "fact": "Free edition for up to 3 users, no credit card",
+   "url": "https://www.zoho.com/en-us/crm/zohocrm-pricing.html",
+   "quote": "Forever free, for 3 users",
+   "date": "2026-11-09"
+  },
+  {
+   "fact": "AI listed per edition: Professional lists AI agents and predictive intelligence; Enterprise lists extended AI capabilities; Free and Standard list none",
+   "url": "https://www.zoho.com/en-us/crm/zohocrm-pricing.html",
+   "quote": "AI agents ... Predictive intelligence ... Extended AI capabilities",
+   "date": "2026-11-09"
+  },
+  {
+   "fact": "Ultimate edition exists; no price on the US pricing page",
+   "url": "https://www.zoho.com/en-us/crm/zohocrm-pricing.html",
+   "quote": "Zoho CRM has an Ultimate edition tailored for large-scale, bespoke deployments",
+   "date": "2026-11-09"
+  },
+  {
+   "fact": "No onboarding fee stated; page advertises Free Onboarding and links to guided onboarding plans with no price",
+   "url": "https://www.zoho.com/en-us/crm/zohocrm-pricing.html",
+   "quote": "Need expert help in getting started? Check out guided onboarding plans.",
+   "date": "2026-11-09"
+  },
+  {
+   "fact": "No contract commitment; taxes extra",
+   "url": "https://www.zoho.com/en-us/crm/zohocrm-pricing.html",
+   "quote": "You are not bound by any contracts or commitments.",
+   "date": "2026-11-09"
+  },
+  {
+   "fact": "Workflow automation is in every edition including Free; custom buttons and functions listed for Enterprise; process management listed for Professional",
+   "url": "https://www.zoho.com/en-us/crm/zohocrm-pricing.html",
+   "quote": "Workflow automation ... Process management ... Custom buttons and functions",
+   "date": "2026-11-09"
+  },
+  {
+   "fact": "Zoho calls its record types modules; standard modules include Leads, Contacts, Accounts, Deals, Activities",
+   "url": "https://www.zoho.com/crm/developer/docs/api/v8/modules-api.html",
+   "quote": "retrieves all available standard, subform, linking (MxN), and custom modules",
+   "date": "2026-11-09"
+  },
+  {
+   "fact": "Zoho Blueprint captures sales processes",
+   "url": "https://www.zoho.com/crm/process-management.html",
+   "quote": "With Blueprints, you can capture every stage of these offline sales processes inside your CRM",
+   "date": "2026-11-09"
+  },
+  {
+   "fact": "Microsoft guidance for migrating from an external CRM to Dataverse (no Zoho-specific tool): import wizard, Power Query, Azure Data Factory by size",
+   "url": "https://learn.microsoft.com/power-platform/architecture/key-concepts/data-migration/data-migration-approaches",
+   "quote": "migrating data from an external CRM system to Microsoft Dataverse depends on your data's size and complexity",
+   "date": "2026-11-09"
+  },
+  {
+   "fact": "Dynamics 365 implementation guide recommends ETL tools such as SSIS or Azure Data Factory for moving all data from an old CRM",
+   "url": "https://learn.microsoft.com/dynamics365/guidance/implementation-guide/data-management-product-specific-ce#migrate-data",
+   "quote": "use ETL tools like SSIS or Azure Data Factory",
+   "date": "2026-11-09"
+  },
+  {
+   "fact": "Live enCloud9 page offers the Zoho CRM to Dynamics 365 Migration Readiness Checklist",
+   "url": "https://www.encloud9.com/microsoft-dynamics-365-zoho-crm-migration/",
+   "quote": "Zoho CRM to Dynamics 365 Migration Readiness Checklist",
+   "date": "2026-11-09"
+  }
+ ],
+ "live_page_notes": "Read 9 Nov 2026 via WebFetch (curl to encloud9.com is blocked by the proxy here). Title: 'Easily Migrate from Zoho CRM to Dynamics 365 with enCloud9'. H1: 'Outgrowing Zoho CRM? Find a CRM That Matches Your Vision'. Sections: checklist offer ('Ensure a Smooth CRM Transition. Get the Zoho CRM to Dynamics 365 Checklist.'), a 'Zoho CRM vs. Dynamics 365' table, 'Leave Zoho CRM Behind' with two blocks (Built around your business, Insights that drive action), a four-step process (Data Mapping & Cleansing, Migration Execution, Configuration & Customization, Training & Adoption Support), 'It's Simple – Dynamics 365 is Better.' with five benefits (reporting, workflows, Microsoft integration, AI, scalability), and a closing 'Let's Chat' CTA. Download form: first name, last name, work email, consent; button 'Get My Free Download!'. CTA button 'Book Your Strategy Call!' with a phone emoji, linking to an Outlook booking page (not the /lp/schedule-a-meeting/ page). Header phone 1-844-264-0729. Errors and unsourced claims: (1) the comparison table rates Zoho CRM limited or partial on ten rows (customization, Microsoft 365 integration, pricing flexibility, data ownership, Power BI, AI tools, multi-entity support, workflow automation, enterprise features, migration help) with no source; Zoho's own page lists workflow automation in every edition, Outlook and Teams integration in Standard, AI agents in Professional, and custom functions in Enterprise, so several ratings conflict with the vendor's page; (2) 'Dynamics 365 is Better' and 'Leave Zoho CRM Behind' break the house rule on 'better than' claims; (3) em and en dashes in two headings; (4) uses the old name 'Office 365'; (5) no prices, no package scope, no timeline; (6) booking CTA points at an Outlook page, not the standard booking URL.",
+ "notes": "Zoho prices are geo-based: a server-side fetch returned INR from an India view; the US figures were read in the browser on zoho.com/en-us with the Annually and Monthly toggles each confirmed on screen. Zoho also shows Bigin Express (US$7 annual, US$9 monthly) and Zoho One (from $30); both are separate products and are left out of the rows. Ultimate edition has no US price on the page, noted in price_note2. Zoho states no onboarding fee (it advertises Free Onboarding), so col5 is 'AI on the vendor's page' as on the Salesforce page, and the Microsoft rows copy the Salesforce sister page exactly. No Zoho data-backup help article could be opened (help.zoho.com redirected/failed), so the page claims only that workflows, blueprints, custom functions and connected apps need review and rebuild, the same standard as the HubSpot page, not a Zoho statement about export limits. No story in /home/claude/lb/stories-data mentions Zoho, so there is no client story. unit is 'Zoho CRM account' (Zoho's own help speaks of a Zoho CRM account and organization; 'account' also names a Zoho module, which Brian may want to avoid). For Brian: [Brian sets] numbers as on sister pages; confirm the checklist file name and that the download stays.",
+ "checked": "9 Nov 2026"
+}
