@@ -46,3 +46,5 @@ html body .lt.ptile :is(.mono,.ds,.from .pre,.from small),html body .at>span{col
 @media (max-width:360px){html body .acts .btn{white-space:normal;text-align:center;line-height:1.25;padding:12px 18px}}
 /* 10 Nov 2026: never hyphenate off one or two letters (looks.js "last line is only s") */
 html body *{hyphenate-limit-chars:6 3 3}
+/* 10 Nov 2026 (REVIEW-G7B template fix 1): settled package price under the related package tile on stories */
+html body .lnav a small.pr{display:block;font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:0;line-height:1.35;opacity:.92}

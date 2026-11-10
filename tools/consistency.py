@@ -8,6 +8,8 @@ Exit code 1 if anything is found. Add a fact here the day it is decided (source 
 import glob, html, re, sys
 
 FACTS = [
+    ("Fort Myers spelling", "Fort Myers, FL", [r"Fort Meyers"], "bgland.json facts; REVIEW-G7B issue 6"),
+    ("Competitor price read date", "read 10 Nov 2026", [r"each vendor's own pricing page, checked 4 Nov 2026"], "Salesforce and HubSpot only (Microsoft-only pages keep their own check date); FACTCHECK-G6 read all vendor prices 10 Nov; REVIEW-G7B issue 6"),
     # (fact, canonical, [regex of wrong variants], note)
     ("Partnership price", "from $2,000 a month", [r"\$2,000\+", r"\bat \$2,000\b", r"Partnership is \$2,000", r"data-l=\"Price\">\$2,000 a month"], "Brian call 23 '$2,000+'; site wording 9 Nov"),
     ("Full implementation price", "from $20,000", [r"\$24,000", r"from \$2[1-9],000"], "Brian call 27 and Teams '20', 9 Nov"),

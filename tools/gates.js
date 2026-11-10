@@ -25,7 +25,7 @@ const WIDTHS=[320,360,390,480,600,768,900,1024,1180,1280,1440,1920];
   // open every closed <details> while reading, so brackets inside FAQ answers count (REVIEW-G6 issue 8, 10 Nov 2026)
   // (the page script keeps one FAQ open at a time, so read closed answers from textContent instead of opening them)
   const shutTxt=[...document.querySelectorAll('main details:not([open])')].map(d=>d.textContent).join('\n');
-  const vis=[...(document.body.innerText+'\n'+shutTxt).matchAll(/\[[^\]\n]{1,100}\]/g)].map(m=>m[0]);
+  const vis=[...(document.body.innerText+'\n'+shutTxt).matchAll(/\[[^\]\n]{1,400}\]/g)].map(m=>m[0]);
   return {badAnchors,bare,h1,firstInH1,eyebrow,firstText:first?first.textContent.trim().slice(0,50):'',brackets:[...new Set(vis)]}});
  out.gates.G5={pass:!st.badAnchors.length&&!st.bare,badAnchors:st.badAnchors,bareHash:st.bare};
  out.gates.G6={pass:st.h1===1&&st.firstInH1,h1:st.h1,eyebrow:st.eyebrow,firstText:st.firstText};
