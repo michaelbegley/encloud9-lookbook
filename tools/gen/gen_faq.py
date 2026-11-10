@@ -18,7 +18,7 @@ for gid, gname, pages in GROUPS:
     items = []
     for fn, label in pages:
         s = open(P + fn, encoding='utf-8').read()
-        for q, a in re.findall(r'<details><summary>(.*?)</summary><p>(.*?)</p></details>', s, re.S):
+        for q, a in re.findall(r'<details><summary>((?:(?!</?details|</summary>).)*?)</summary><p>((?:(?!</?details).)*?)</p></details>', s, re.S):  # tempered: never spans the menu's details (10 Nov 2026 fix, G4/G7)
             key = re.sub(r'\W+', ' ', H.unescape(q).lower()).strip()
             if key in seen: dup += 1; continue
             seen.add(key); items.append((H.unescape(q), a, fn, label))
