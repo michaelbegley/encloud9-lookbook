@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Button row demo</title>
+<style>
+:root{--s4:4px;--s8:8px;--s12:12px;--s16:16px;--s24:24px}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:var(--s24);background:#F7F9FC;color:#0E1A3A;font-family:'Hanken Grotesk',Arial,sans-serif}
+main{display:grid;row-gap:var(--s24);min-width:0;max-width:100%}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s16);justify-self:center}
+.btn{margin:0;padding:var(--s16) var(--s24);border:0;border-radius:0;background:#355DA6;color:#FFFFFF;font:600 16px/20px 'Hanken Grotesk',Arial,sans-serif;white-space:nowrap}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.code{margin:0}
+.code dt{margin:0 0 var(--s8);font-size:12px;line-height:16px;font-weight:600}
+.code dd{margin:0;padding:var(--s12) var(--s16);border:1px solid #D7DEEA;border-radius:0;background:#FFFFFF}
+.code dd+dt{margin-top:var(--s16)}
+.code code{display:block;font:12px/16px ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+@media (max-width:479px){.row{grid-template-columns:1fr;justify-self:stretch}}
+.btn { position: relative } .btn[aria-busy="true"] .btn-label { visibility: hidden } .btn-loader { position: absolute; inset: 0; margin: auto; width: 28px; height: 8px }
+</style>
+</head>
+<body>
+<main>
+<div class="row">
+<button class="btn"><span class="btn-label">Book a call</span></button>
+<button class="btn" aria-busy="true"><span class="btn-label">Book a call</span><svg class="btn-loader" aria-hidden="true" viewBox="0 0 14 4"><style>@media (prefers-reduced-motion:no-preference){.a6-b0{animation:a6-b0 600ms cubic-bezier(.2,.7,.2,1) 0ms infinite normal both}.a6-b1{animation:a6-b1 600ms cubic-bezier(.2,.7,.2,1) 0ms infinite normal both}.a6-b2{animation:a6-b2 600ms cubic-bezier(.2,.7,.2,1) 0ms infinite normal both}@keyframes a6-b0{0%{opacity:1}8.33%{opacity:1}33.33%{opacity:0.6}41.67%{opacity:0.6}66.67%{opacity:0.3}75%{opacity:0.3}100%{opacity:1}}@keyframes a6-b1{0%{opacity:0.3}8.33%{opacity:0.3}33.33%{opacity:1}41.67%{opacity:1}66.67%{opacity:0.6}75%{opacity:0.6}100%{opacity:0.3}}@keyframes a6-b2{0%{opacity:0.6}8.33%{opacity:0.6}33.33%{opacity:0.3}41.67%{opacity:0.3}66.67%{opacity:1}75%{opacity:1}100%{opacity:0.6}}}</style><g class="a6-row" fill="#FFFFFF"><rect class="a6-b0" x="0" y="0" width="4" height="4"/><rect class="a6-b1" x="5" y="0" width="4" height="4"/><rect class="a6-b2" x="10" y="0" width="4" height="4"/></g></svg><span class="sr-only">Sending</span></button>
+<button class="btn"><span class="btn-label">Sent</span></button>
+</div>
+<dl class="code">
+<dt>HTML</dt>
+<dd><code>&lt;button class=&quot;btn&quot; aria-busy=&quot;true&quot;&gt;&lt;span class=&quot;btn-label&quot;&gt;Book a call&lt;/span&gt;&lt;svg class=&quot;btn-loader&quot; aria-hidden=&quot;true&quot; …&gt;…&lt;/svg&gt;&lt;span class=&quot;sr-only&quot;&gt;Sending&lt;/span&gt;&lt;/button&gt;</code></dd>
+<dt>CSS</dt>
+<dd><code>.btn { position: relative } .btn[aria-busy=&quot;true&quot;] .btn-label { visibility: hidden } .btn-loader { position: absolute; inset: 0; margin: auto; width: 28px; height: 8px }</code></dd>
+</dl>
+</main>
+</body>
+</html>

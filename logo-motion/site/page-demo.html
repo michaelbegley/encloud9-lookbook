@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Curtain demo: a page change behind nine squares</title>
+<style>
+  html, body { margin: 0; background: #F7F9FC; color: #0E1A3A; font: 18px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+  .page { display: none; max-width: 36rem; margin: 0 auto; padding: 4rem 1.5rem; }
+  #one, #two:target { display: block; }            /* page one shows unless the address ends in #two */
+  #two:target ~ #one { display: none; }
+  h1 { margin: 0 0 1rem; font-size: 2.25rem; line-height: 1.2; }
+  p { margin: 0 0 1.5rem; }
+  a.go { color: #355DA6; font-weight: 600; }
+  .curtain { position: fixed; inset: 0; pointer-events: none; }   /* over everything, and never in the way of a click */
+  .curtain svg { display: block; width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<section class="page" id="two">
+  <h1>Page two</h1>
+  <p>This is the second plain page. It was swapped in while the nine squares covered the screen, so nobody saw the change happen.</p>
+  <p><a class="go" href="#one">Back to page one</a></p>
+</section>
+<section class="page" id="one">
+  <h1>Page one</h1>
+  <p>This is a plain page for trying the curtain. Follow the link: nine squares cover the page, the page changes underneath, and the squares clear.</p>
+  <p><a class="go" href="#two">Go to page two</a></p>
+</section>
+<div class="curtain" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Page curtain"><title>Page curtain</title><style>.a8-q{transform-box:fill-box;transform-origin:center;transform:scale(0)}@media (prefers-reduced-motion:no-preference){.a8-cover .a8-b0{animation:a8-cover0 500ms linear 0ms 1 normal both}.a8-cover .a8-b1{animation:a8-cover1 500ms linear 0ms 1 normal both}.a8-cover .a8-b2{animation:a8-cover2 500ms linear 0ms 1 normal both}.a8-reveal .a8-b0{animation:a8-reveal0 500ms linear 0ms 1 normal both}.a8-reveal .a8-b1{animation:a8-reveal1 500ms linear 0ms 1 normal both}.a8-reveal .a8-b2{animation:a8-reveal2 500ms linear 0ms 1 normal both}@keyframes a8-cover0{0%{transform:scale(0);animation-timing-function:cubic-bezier(.2,.7,.2,1)}64%{transform:scale(1.0001)}100%{transform:scale(1)}}@keyframes a8-cover1{0%{transform:scale(0)}18%{transform:scale(0.0001);animation-timing-function:cubic-bezier(.2,.7,.2,1)}82%{transform:scale(1.0001)}100%{transform:scale(1)}}@keyframes a8-cover2{0%{transform:scale(0)}36%{transform:scale(0.0001);animation-timing-function:cubic-bezier(.2,.7,.2,1)}100%{transform:scale(1)}}@keyframes a8-reveal0{0%{transform:scale(1);animation-timing-function:cubic-bezier(.2,.7,.2,1)}64%{transform:scale(0.0001)}100%{transform:scale(0)}}@keyframes a8-reveal1{0%{transform:scale(1)}18%{transform:scale(1.0001);animation-timing-function:cubic-bezier(.2,.7,.2,1)}82%{transform:scale(0.0001)}100%{transform:scale(0)}}@keyframes a8-reveal2{0%{transform:scale(1)}36%{transform:scale(1.0001);animation-timing-function:cubic-bezier(.2,.7,.2,1)}100%{transform:scale(0)}}}</style><rect class="a8-q a8-q0 a8-b0 " x="-0.5" y="-0.5" width="101" height="101" fill="#1F3A80"/><rect class="a8-q a8-q1 a8-b0 " x="99.5" y="-0.5" width="101" height="101" fill="#1F3A80"/><rect class="a8-q a8-q2 a8-b1 " x="199.5" y="-0.5" width="101" height="101" fill="#355DA6"/><rect class="a8-q a8-q3 a8-b0 " x="-0.5" y="99.5" width="101" height="101" fill="#1F3A80"/><rect class="a8-q a8-q4 a8-b1 " x="99.5" y="99.5" width="101" height="101" fill="#355DA6"/><rect class="a8-q a8-q5 a8-b2 " x="199.5" y="99.5" width="101" height="101" fill="#6F8FCB"/><rect class="a8-q a8-q6 a8-b1 " x="-0.5" y="199.5" width="101" height="101" fill="#355DA6"/><rect class="a8-q a8-q7 a8-b2 " x="99.5" y="199.5" width="101" height="101" fill="#6F8FCB"/><rect class="a8-q a8-q8 a8-b2 " x="199.5" y="199.5" width="101" height="101" fill="#6F8FCB"/></svg></div>
+<!-- With reduced motion, or without this script, the two links are plain links: the page changes at once and no curtain is drawn. -->
+<script>
+document.addEventListener('click', function (e) {
+  var link = e.target.closest('a.go'), curtain = document.querySelector('.curtain');
+  if (!link || e.metaKey || e.ctrlKey || e.shiftKey || e.button || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  e.preventDefault();                                     // from here on this script changes the page, not the link
+  if (curtain.classList.length > 1) return;               // a curtain is already on its way
+  curtain.classList.add('a8-cover');                      // 1. cover: 500 ms, then 150 ms covered
+  setTimeout(function () {
+    location.hash = link.hash;                            // 2. change the page under the curtain
+    curtain.classList.replace('a8-cover', 'a8-reveal');   // 3. clear: 500 ms
+    setTimeout(function () { curtain.classList.remove('a8-reveal'); }, 500);
+  }, 650);
+});
+</script>
+</body>
+</html>
