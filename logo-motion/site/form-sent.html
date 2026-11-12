@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Form sent demo</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:24px;background:#F7F9FC;color:#0E1A3A;font-family:'Hanken Grotesk',Arial,sans-serif}
+form{display:grid;gap:16px;width:360px;max-width:100%;padding:24px;background:#FFFFFF;border:1px solid #D7DEEA}
+label{display:grid;gap:8px;font-size:14px;line-height:20px;font-weight:600}
+input{padding:12px 16px;border:1px solid #D7DEEA;border-radius:0;font:16px/24px 'Hanken Grotesk',Arial,sans-serif}
+.btn{position:relative;margin:0;padding:16px 24px;border:0;border-radius:0;background:#355DA6;color:#FFFFFF;font:600 16px/20px 'Hanken Grotesk',Arial,sans-serif;cursor:pointer}
+.btn .label{display:inline-block}
+.btn svg{position:absolute;inset:0;margin:auto;width:28px;height:8px;opacity:0}
+.btn.busy .label,.btn.done .label.send{visibility:hidden}
+.btn.busy svg{opacity:1}
+.btn .label.sent{position:absolute;inset:0;display:grid;place-items:center;opacity:0}
+.btn.done{background:#1F3A80;cursor:default}
+.btn.done .label.sent{opacity:1}
+.again{justify-self:start;padding:0;border:0;background:none;color:#355DA6;font:600 14px/20px 'Hanken Grotesk',Arial,sans-serif;text-decoration:underline;cursor:pointer}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media (prefers-reduced-motion:no-preference){
+.btn.busy .s0{animation:s0 600ms cubic-bezier(.2,.7,.2,1) infinite both}.btn.busy .s1{animation:s1 600ms cubic-bezier(.2,.7,.2,1) infinite both}.btn.busy .s2{animation:s2 600ms cubic-bezier(.2,.7,.2,1) infinite both}
+@keyframes s0{0%,8.33%{opacity:1}33.33%,41.67%{opacity:.6}66.67%,75%{opacity:.3}100%{opacity:1}}
+@keyframes s1{0%,8.33%{opacity:.3}33.33%,41.67%{opacity:1}66.67%,75%{opacity:.6}100%{opacity:.3}}
+@keyframes s2{0%,8.33%{opacity:.6}33.33%,41.67%{opacity:.3}66.67%,75%{opacity:1}100%{opacity:.6}}
+.btn.settle svg{opacity:1}.btn.settle rect{opacity:1;transition:opacity 150ms}
+.btn.done svg{animation:out 300ms cubic-bezier(.2,.7,.2,1) both}
+@keyframes out{from{opacity:1;transform:none}to{opacity:0;transform:scale(.6)}}
+.btn.done .label.sent{animation:in 300ms cubic-bezier(.2,.7,.2,1) 120ms both}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.btn{transition:background 300ms}
+}
+</style>
+</head>
+<body>
+<form id="f" novalidate>
+<label>Email<input type="email" name="email" autocomplete="off"></label>
+<button class="btn" id="b" type="submit"><span class="label send">Send</span><span class="label sent" aria-hidden="true">Sent</span><svg viewBox="0 0 14 4" aria-hidden="true"><g fill="#FFFFFF"><rect class="s0" x="0" y="0" width="4" height="4"/><rect class="s1" x="5" y="0" width="4" height="4"/><rect class="s2" x="10" y="0" width="4" height="4"/></g></svg></button>
+<span class="sr-only" id="status" aria-live="polite"></span>
+<button class="again" type="button" id="again" hidden>Again</button>
+</form>
+<script>
+// Demo only: nothing is sent anywhere.
+var f = document.getElementById('f'), b = document.getElementById('b'), st = document.getElementById('status'), again = document.getElementById('again');
+f.addEventListener('submit', function (e) {
+  e.preventDefault(); if (b.classList.contains('busy') || b.classList.contains('done')) return;
+  b.classList.add('busy'); b.setAttribute('aria-busy', 'true'); st.textContent = 'Sending';
+  setTimeout(function () {                                   // the server answers: squares settle, then "Sent"
+    b.classList.remove('busy'); b.classList.add('settle');
+    setTimeout(function () { b.classList.remove('settle'); b.classList.add('done'); b.removeAttribute('aria-busy'); b.disabled = true; st.textContent = 'Sent'; again.hidden = false; }, 180);
+  }, 1500);
+});
+again.addEventListener('click', function () { b.className = 'btn'; b.disabled = false; st.textContent = ''; again.hidden = true; });
+</script>
+</body>
+</html>

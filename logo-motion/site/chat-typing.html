@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Chat typing demo</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:24px;background:#F7F9FC;color:#0E1A3A;font-family:'Hanken Grotesk',Arial,sans-serif}
+.panel{width:360px;max-width:100%;background:#FFFFFF;border:1px solid #D7DEEA}
+.head{padding:16px 24px;background:#0E1A3A;color:#FFFFFF;font-weight:600}
+.log{display:grid;gap:12px;padding:24px;min-height:280px;align-content:start}
+.msg{max-width:80%;padding:12px 16px;font-size:16px;line-height:24px}
+.bot{justify-self:start;background:#EAF0F9}
+.me{justify-self:end;background:#355DA6;color:#FFFFFF}
+.typing{justify-self:start;background:#EAF0F9;padding:18px 16px}
+.typing svg{display:block;width:28px;height:8px}
+.foot{padding:16px 24px;border-top:1px solid #D7DEEA}
+button{margin:0;padding:12px 24px;border:0;border-radius:0;background:#355DA6;color:#FFFFFF;font:600 16px/20px 'Hanken Grotesk',Arial,sans-serif;cursor:pointer}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media (prefers-reduced-motion:no-preference){
+.t0{animation:t0 600ms cubic-bezier(.2,.7,.2,1) infinite both}.t1{animation:t1 600ms cubic-bezier(.2,.7,.2,1) infinite both}.t2{animation:t2 600ms cubic-bezier(.2,.7,.2,1) infinite both}
+@keyframes t0{0%,8.33%{opacity:1}33.33%,41.67%{opacity:.6}66.67%,75%{opacity:.3}100%{opacity:1}}
+@keyframes t1{0%,8.33%{opacity:.3}33.33%,41.67%{opacity:1}66.67%,75%{opacity:.6}100%{opacity:.3}}
+@keyframes t2{0%,8.33%{opacity:.6}33.33%,41.67%{opacity:.3}66.67%,75%{opacity:1}100%{opacity:.6}}
+.msg.new{animation:rise 300ms cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+<div class="panel">
+<div class="head">enCloud9</div>
+<div class="log" id="log" aria-live="polite">
+<div class="msg bot">[Greeting]</div>
+<div class="msg me">[Visitor question]</div>
+</div>
+<div class="foot"><button type="button" id="again">Replay</button></div>
+</div>
+<template id="typing">
+<div class="msg typing"><svg viewBox="0 0 14 4" aria-hidden="true"><g fill="#355DA6"><rect class="t0" x="0" y="0" width="4" height="4"/><rect class="t1" x="5" y="0" width="4" height="4"/><rect class="t2" x="10" y="0" width="4" height="4"/></g></svg><span class="sr-only">Typing</span></div>
+</template>
+<script>
+var log = document.getElementById('log'), tpl = document.getElementById('typing');
+function run() {
+  var old = log.querySelectorAll('.typing, .reply'); old.forEach(function (n) { n.remove(); });
+  var t = tpl.content.firstElementChild.cloneNode(true); log.appendChild(t);
+  setTimeout(function () { t.remove(); var r = document.createElement('div'); r.className = 'msg bot reply new'; r.textContent = '[Agent reply]'; log.appendChild(r); }, 2000);
+}
+document.getElementById('again').addEventListener('click', run); run();
+</script>
+</body>
+</html>
