@@ -67,6 +67,14 @@
     return t.length > 60 ? t.slice(0, 57) + '...' : t;
   }
 
+  /* A short name for a link in the sidebar: its main line if it is a card, else its words. */
+  function linkName(a) {
+    var main = a.querySelector('.nm,.t,h3,b,strong');
+    var t = main ? main.textContent : a.innerHTML.replace(/<[^>]+>/g, ' ').replace(/&[a-z#0-9]+;/gi, ' ');
+    t = (t || '').replace(/\s+/g, ' ').trim() || a.getAttribute('aria-label') || 'Link';
+    return t;
+  }
+
   function notice(msg) {
     wp.data.dispatch('core/notices').createNotice('warning', msg, { type: 'snackbar', id: 'n9-locked' });
   }
@@ -79,7 +87,8 @@
     var tpl = useMemo(function () { return parseRoot(content); }, [content]);
     var tag = tpl ? tpl.tagName.toLowerCase() : 'div';
     var bodyClass = wp.data.useSelect(function (select) {
-      return (select('core/block-editor').getSettings() || {}).n9BodyClass || '';
+      var ed = select('core/editor');
+      return (ed && ed.getEditorSettings && (ed.getEditorSettings() || {}).n9BodyClass) || '';
     }, []);
 
     function serialize() {
@@ -233,7 +242,7 @@
           el('p', null, 'Links, buttons and images are changed below.')),
         links.length ? el(co.PanelBody, { title: 'Links and buttons (' + links.length + ')', initialOpen: links.length < 9 },
           links.map(function (a, i) {
-            var name = (a.textContent || a.getAttribute('aria-label') || 'Link').replace(/\s+/g, ' ').trim();
+            var name = linkName(a);
             return el(co.TextControl, {
               key: i, label: name.length > 60 ? name.slice(0, 57) + '...' : name, value: a.getAttribute('href'),
               help: i === 0 ? 'Where it goes. A page on this site starts with / (for example /contact-us/).' : undefined,

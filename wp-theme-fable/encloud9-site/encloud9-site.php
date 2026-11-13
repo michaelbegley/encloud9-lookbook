@@ -86,9 +86,8 @@ function n9_skeleton($html) {
     if (!preg_match_all('#<(/?)([a-zA-Z][a-zA-Z0-9]*)((?:\s+[^<>]*)?)>#', preg_replace('#<!--.*?-->#s', '', $html), $m, PREG_SET_ORDER)) return '';
     foreach ($m as $t) {
         $tag = strtolower($t[2]);
-        if (in_array($tag, ['b', 'i', 'strong', 'em', 'u', 'br'], true) && trim($t[3], " /") === '') continue;
-        if (in_array($tag, ['br'], true)) continue;
-        if ($t[1] === '/') { $out[] = '/' . $tag; continue; }
+        if ($t[1] === '/' || $tag === 'br') continue;   // opening tags only: browsers differ on how they close void and SVG elements
+        if (in_array($tag, ['b', 'i', 'strong', 'em', 'u'], true) && trim($t[3], " /") === '') continue;
         $cls = preg_match('#\sclass\s*=\s*"([^"]*)"#', $t[3], $c) ? trim(preg_replace('#\s+#', ' ', $c[1])) : '';
         $out[] = $tag . '.' . $cls;
     }
