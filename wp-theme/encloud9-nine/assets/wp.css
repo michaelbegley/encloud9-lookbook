@@ -1,0 +1,10 @@
+/* WordPress fixes on top of the mock site's styles. Draft 1, 13 Nov 2026. */
+/* the header template part wrapper must not trap the sticky header */
+.wp-site-blocks>.wp-block-template-part{display:contents}
+.wp-site-blocks>*{margin-block-start:0!important}
+main#main{margin:0}
+/* the footer is its own part now, outside main; it continues the final band */
+.site-foot{background:var(--b1);color:var(--white)}
+.site-foot .foot{padding-top:28px}
+.final{margin-bottom:0}
+.final .inner{padding-bottom:clamp(56px,6vw,88px)}

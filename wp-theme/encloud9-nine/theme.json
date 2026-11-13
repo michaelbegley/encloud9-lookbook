@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": false,
+    "color": {
+      "custom": false, "customGradient": false, "defaultPalette": false, "defaultGradients": false,
+      "palette": [
+        {"slug": "ink", "name": "Ink", "color": "#0E1A3A"},
+        {"slug": "ink-2", "name": "Ink 2", "color": "#24304F"},
+        {"slug": "muted", "name": "Muted", "color": "#4A5675"},
+        {"slug": "line", "name": "Line", "color": "#D7DEEA"},
+        {"slug": "bg", "name": "Background", "color": "#F7F9FC"},
+        {"slug": "tint", "name": "Tint", "color": "#EAF0F9"},
+        {"slug": "white", "name": "White", "color": "#FFFFFF"},
+        {"slug": "b1", "name": "Blue 1", "color": "#0E1A3A"},
+        {"slug": "b2", "name": "Blue 2", "color": "#172A5E"},
+        {"slug": "b3", "name": "Blue 3", "color": "#1F3A80"},
+        {"slug": "b4", "name": "Blue 4", "color": "#2A4B94"},
+        {"slug": "b5", "name": "Blue 5 (site blue)", "color": "#355DA6"},
+        {"slug": "b6", "name": "Blue 6", "color": "#6F8FCB"},
+        {"slug": "b7", "name": "Blue 7", "color": "#9DB3DC"},
+        {"slug": "b8", "name": "Blue 8", "color": "#C9D6EE"},
+        {"slug": "b9", "name": "Blue 9", "color": "#EAF0F9"}
+      ]
+    },
+    "typography": {
+      "customFontSize": false, "dropCap": false, "fluid": true,
+      "fontFamilies": [{
+        "fontFamily": "'Hanken Grotesk', Arial, sans-serif", "slug": "hanken", "name": "Hanken Grotesk",
+        "fontFace": [
+          {"fontFamily": "Hanken Grotesk", "fontWeight": "300", "fontStyle": "normal", "fontDisplay": "swap", "src": ["file:./assets/fonts/hanken-grotesk-latin-300-normal.woff2"]},
+          {"fontFamily": "Hanken Grotesk", "fontWeight": "400", "fontStyle": "normal", "fontDisplay": "swap", "src": ["file:./assets/fonts/hanken-grotesk-latin-400-normal.woff2"]},
+          {"fontFamily": "Hanken Grotesk", "fontWeight": "500", "fontStyle": "normal", "fontDisplay": "swap", "src": ["file:./assets/fonts/hanken-grotesk-latin-500-normal.woff2"]},
+          {"fontFamily": "Hanken Grotesk", "fontWeight": "600", "fontStyle": "normal", "fontDisplay": "swap", "src": ["file:./assets/fonts/hanken-grotesk-latin-600-normal.woff2"]}
+        ]
+      }],
+      "fontSizes": [
+        {"slug": "small", "name": "Small", "size": "15px"},
+        {"slug": "body", "name": "Body", "size": "17px"},
+        {"slug": "h3", "name": "Heading 3", "size": "clamp(22px,2vw,26px)", "fluid": false},
+        {"slug": "h2", "name": "Heading 2", "size": "clamp(32px,4.2vw,54px)", "fluid": false},
+        {"slug": "h1", "name": "Heading 1", "size": "clamp(44px,7.2vw,96px)", "fluid": false}
+      ]
+    },
+    "spacing": {"customSpacingSize": false, "units": ["px", "%", "vw"]},
+    "layout": {"contentSize": "760px", "wideSize": "1296px"}
+  },
+  "styles": {
+    "color": {"background": "var:preset|color|bg", "text": "var:preset|color|ink"},
+    "typography": {"fontFamily": "var:preset|font-family|hanken", "fontSize": "var:preset|font-size|body", "lineHeight": "1.6"},
+    "spacing": {"blockGap": "0", "padding": {"top": "0", "right": "0", "bottom": "0", "left": "0"}}
+  },
+  "templateParts": [
+    {"name": "header", "title": "Header", "area": "header"},
+    {"name": "footer", "title": "Footer", "area": "footer"}
+  ],
+  "customTemplates": [
+    {"name": "page-plain", "title": "Plain page (no breadcrumb rules)", "postTypes": ["page"]}
+  ]
+}
