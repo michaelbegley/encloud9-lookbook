@@ -62,15 +62,17 @@
     return out;
   }
 
-  /* Items a writer may add or remove: FAQ entries, table rows and list items that are stacked one under the
-     other. Anything laid out as a grid or a row (the nine squares, card rows, step bars) keeps its count. */
+  /* Items a writer may add or remove: FAQ entries, table rows, list items and stacked links (a menu column)
+     that sit one under the other. Anything laid out as a grid or a row (the nine squares, card rows, step bars) keeps its count. */
   var FIXED = '.grid9,.aigrid,.fgx,.dgx,.jgrid,.fgrid,.dest,.gl,.uses,.bel,.flow,.proof,.g,.scale,.stages,.three,.ptiles,.lic,.pk-hero';
   function sameKind(n) {
     return [].filter.call(n.parentElement.children, function (x) { return x.tagName === n.tagName; });
   }
   function isItem(n) {
-    if (!/^(DETAILS|TR|LI)$/.test(n.tagName) || !n.parentElement) return false;
+    if (!/^(DETAILS|TR|LI|A)$/.test(n.tagName) || !n.parentElement) return false;
     if (n.tagName === 'TR' && n.parentElement.tagName !== 'TBODY') return false;
+    // links count as items only in a stacked list of links (a menu column, a row list), never inside a sentence
+    if (n.tagName === 'A' && (hasDirectText(n.parentElement) || sameKind(n).length < 2)) return false;
     if (n.closest(FIXED) || n.closest('[aria-hidden="true"]')) return false;
     var sibs = sameKind(n), left = Math.round(n.getBoundingClientRect().left);
     return sibs.every(function (x) { return Math.abs(Math.round(x.getBoundingClientRect().left) - left) <= 1; });
@@ -228,7 +230,7 @@
         if (item.current) item.current.removeAttribute('data-n9-item');
         item.current = it;
         if (it) it.setAttribute('data-n9-item', '1');
-        setItemInfo(it ? { kind: it.tagName === 'DETAILS' ? 'question' : (it.tagName === 'TR' ? 'row' : 'list item'), count: sameKind(it).length } : null);
+        setItemInfo(it ? { kind: it.tagName === 'DETAILS' ? 'question' : (it.tagName === 'TR' ? 'row' : (it.tagName === 'A' ? 'link' : 'list item')), count: sameKind(it).length } : null);
       }
       node.addEventListener('click', track);
       node.addEventListener('keyup', track);
@@ -313,7 +315,7 @@
         el(co.PanelBody, { title: 'How to edit this section', initialOpen: true },
           el('p', null, 'Click any text on the page and type. The layout is locked, so nothing can shift or break.'),
           el('p', null, 'Links, buttons and images are changed below.'),
-          el('p', null, 'In a list, a table or a set of questions, click an item and use the plus and minus buttons in the toolbar to add or remove one.')),
+          el('p', null, 'In a list, a table, a menu column or a set of questions, click an item and use the plus and minus buttons in the toolbar to add or remove one.')),
         links.length && links[activeLink] ? el(co.PanelBody, { title: 'The link you clicked', initialOpen: true },
           el(co.TextControl, {
             label: 'Where "' + linkName(links[activeLink]).slice(0, 48) + '" goes', value: links[activeLink].getAttribute('href'),

@@ -15,3 +15,5 @@ main#main{margin:0}
 @media (max-width:600px){.site-foot p:not([class]){font-size:17px}}
 /* no monospace anywhere, also in blocks a writer may add later */
 code,kbd,pre,samp,.wp-block-code,.wp-block-preformatted,.wp-block-verse{font-family:inherit}
+/* the mock's 404 page has no colour scale under the footer */
+body.error404 .site-foot .scale{display:none}

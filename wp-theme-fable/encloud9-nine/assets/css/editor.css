@@ -8,3 +8,11 @@ html body .editor-visual-editor__post-title-wrapper h1.editor-post-title{font-si
 html body .editor-visual-editor__post-title-wrapper::before{content:"Page name (for the admin and search results; not shown on the page)";display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
 /* running text of a post: the same size in the editor as on the site */
 html body .art .wp-block-paragraph:not([class*="answer"]){font-size:18px}
+/* the header in the Site Editor: its dropdown panels and the phone menu are shown open, so their words can be clicked.
+   The desktop menu and the phone menu are two lists; a change to one must be made in the other too. */
+header.n9-section{position:static!important}
+header.n9-section .nav{display:flex!important;flex-wrap:wrap}
+header.n9-section .panel[hidden]{display:block!important;position:static!important;box-shadow:none!important;border:1px dashed var(--b7)}
+header.n9-section .wrap{flex-wrap:wrap;height:auto!important}
+header.n9-section .mnav{display:block!important;position:static!important;max-height:none!important;visibility:visible!important;opacity:1!important;transform:none!important;border-top:1px dashed var(--b7)}
+header.n9-section .mnav::before{content:"Phone menu (shown open here for editing)";display:block;font-size:13px;color:var(--muted);padding:8px 0}
