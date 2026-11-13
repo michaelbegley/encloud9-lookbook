@@ -1,0 +1,7 @@
+/* Editor canvas: show what can be edited, without moving anything. */
+[data-n9]{cursor:text;outline:1px dashed transparent;outline-offset:3px;transition:outline-color .15s}
+.n9-section:hover [data-n9]{outline-color:rgba(53,93,166,.35)}
+[data-n9]:hover{outline-color:#355DA6}
+[data-n9]:focus{outline:2px solid #355DA6}
+.n9-section a{cursor:default}
+.n9-img-row{margin-bottom:16px;display:grid;gap:8px}

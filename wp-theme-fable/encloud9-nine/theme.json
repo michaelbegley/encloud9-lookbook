@@ -1,0 +1,251 @@
+{
+  "$schema": "https://schemas.wp.org/wp/6.8/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": false,
+    "color": {
+      "custom": false,
+      "customGradient": false,
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "palette": [
+        {
+          "slug": "ink",
+          "name": "Ink",
+          "color": "#0E1A3A"
+        },
+        {
+          "slug": "ink-2",
+          "name": "Ink 2",
+          "color": "#24304F"
+        },
+        {
+          "slug": "muted",
+          "name": "Muted",
+          "color": "#4A5675"
+        },
+        {
+          "slug": "line",
+          "name": "Line",
+          "color": "#D7DEEA"
+        },
+        {
+          "slug": "bg",
+          "name": "Background",
+          "color": "#F7F9FC"
+        },
+        {
+          "slug": "tint",
+          "name": "Tint",
+          "color": "#EAF0F9"
+        },
+        {
+          "slug": "white",
+          "name": "White",
+          "color": "#FFFFFF"
+        },
+        {
+          "slug": "b1",
+          "name": "Blue 1",
+          "color": "#0E1A3A"
+        },
+        {
+          "slug": "b2",
+          "name": "Blue 2",
+          "color": "#172A5E"
+        },
+        {
+          "slug": "b3",
+          "name": "Blue 3",
+          "color": "#1F3A80"
+        },
+        {
+          "slug": "b4",
+          "name": "Blue 4",
+          "color": "#2A4B94"
+        },
+        {
+          "slug": "b5",
+          "name": "Blue 5 (site blue)",
+          "color": "#355DA6"
+        },
+        {
+          "slug": "b6",
+          "name": "Blue 6",
+          "color": "#6F8FCB"
+        },
+        {
+          "slug": "b7",
+          "name": "Blue 7",
+          "color": "#9DB3DC"
+        },
+        {
+          "slug": "b8",
+          "name": "Blue 8",
+          "color": "#C9D6EE"
+        },
+        {
+          "slug": "b9",
+          "name": "Blue 9",
+          "color": "#EAF0F9"
+        }
+      ],
+      "defaultDuotone": false,
+      "duotone": [],
+      "text": true,
+      "background": true,
+      "link": false
+    },
+    "typography": {
+      "customFontSize": false,
+      "dropCap": false,
+      "fluid": false,
+      "fontFamilies": [
+        {
+          "fontFamily": "'Hanken Grotesk', Arial, sans-serif",
+          "slug": "hanken",
+          "name": "Hanken Grotesk",
+          "fontFace": [
+            {
+              "fontFamily": "Hanken Grotesk",
+              "fontWeight": "300",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/hanken-grotesk-latin-300-normal.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Hanken Grotesk",
+              "fontWeight": "400",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/hanken-grotesk-latin-400-normal.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Hanken Grotesk",
+              "fontWeight": "500",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/hanken-grotesk-latin-500-normal.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Hanken Grotesk",
+              "fontWeight": "600",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/hanken-grotesk-latin-600-normal.woff2"
+              ]
+            }
+          ]
+        }
+      ],
+      "fontSizes": [
+        {
+          "slug": "small",
+          "name": "Small",
+          "size": "15px"
+        },
+        {
+          "slug": "body",
+          "name": "Body",
+          "size": "17px"
+        },
+        {
+          "slug": "large",
+          "name": "Large",
+          "size": "18px"
+        }
+      ],
+      "fontStyle": false,
+      "fontWeight": false,
+      "letterSpacing": false,
+      "lineHeight": false,
+      "textDecoration": false,
+      "textTransform": false,
+      "writingMode": false
+    },
+    "spacing": {
+      "customSpacingSize": false,
+      "units": [
+        "px",
+        "%",
+        "vw"
+      ],
+      "blockGap": null,
+      "margin": false,
+      "padding": false,
+      "spacingSizes": [],
+      "defaultSpacingSizes": false
+    },
+    "layout": {
+      "contentSize": "760px",
+      "wideSize": "1296px"
+    },
+    "border": {
+      "color": false,
+      "radius": false,
+      "style": false,
+      "width": false
+    },
+    "shadow": {
+      "defaultPresets": false,
+      "presets": []
+    },
+    "useRootPaddingAwareAlignments": false,
+    "lightbox": {
+      "enabled": false,
+      "allowEditing": false
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#F7F9FC",
+      "text": "#0E1A3A"
+    },
+    "typography": {
+      "fontFamily": "var:preset|font-family|hanken",
+      "fontSize": "17px",
+      "lineHeight": "1.6"
+    },
+    "spacing": {
+      "padding": {
+        "top": "0",
+        "right": "0",
+        "bottom": "0",
+        "left": "0"
+      }
+    }
+  },
+  "templateParts": [
+    {
+      "name": "header",
+      "title": "Header",
+      "area": "header"
+    },
+    {
+      "name": "header-minimal",
+      "title": "Header without the menu (ad landing page)",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Footer",
+      "area": "footer"
+    }
+  ],
+  "customTemplates": [
+    {
+      "name": "page-minimal",
+      "title": "Landing page without the menu",
+      "postTypes": [
+        "page"
+      ]
+    }
+  ]
+}

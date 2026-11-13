@@ -1,0 +1,95 @@
+/* page: About (signature: nine beliefs, revealed one by one as you scroll) */
+body.p-about .fgrid{display:grid;grid-template-columns:repeat(3,1fr);aspect-ratio:1/1}
+body.p-about .fc{display:flex;flex-direction:column;padding:18px;background:var(--c);color:var(--white);overflow:hidden;position:relative;transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+body.p-about .fc .ar{position:absolute;right:16px;top:14px;opacity:0;transform:translate(-4px,4px);transition:opacity .3s,transform .35s var(--ease)}
+body.p-about .fc:hover .ar,body.p-about .fc:focus-visible .ar{opacity:1;transform:none}
+body.p-about .fc:focus-visible{outline:3px solid var(--b6);outline-offset:3px;z-index:3}
+/* hero fact cubes: the hovered cube comes toward you, the rest step back (same values as the home hero) */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-about .fgrid{perspective:900px}
+  body.p-about .fgrid:hover .fc{filter:saturate(.92) brightness(.96);transform:perspective(900px) scale(.98)}
+  body.p-about .fgrid:hover .fc:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(40px) translateY(-6px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.05);box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 10px 20px -12px rgba(14,26,58,.45)}
+}
+body.p-about .fc.lt{color:var(--ink)}
+body.p-about .fc .lab{font-family:var(--label);font-size:14px;opacity:.85}
+body.p-about .fc .fv{margin-top:auto;display:block;overflow:hidden;font-family:var(--head);font-size:clamp(30px,3.6vw,52px);font-weight:600;letter-spacing:-.035em;line-height:1.02;padding-bottom:.06em}
+body.p-about .fc .fv>span{display:inline-block}
+body.p-about .fc .fd{font-size:13px;line-height:1.35;margin-top:6px;opacity:.9}
+body.p-about .fc.core::after{content:"";position:absolute;inset:8px;border:1.5px solid rgba(255,255,255,.85);pointer-events:none}
+body.p-about .fc.core .fv{font-size:clamp(24px,2.6vw,36px)}
+@media (max-width:560px){body.p-about .fc{padding:10px}body.p-about .fc.core{padding:12px}body.p-about .fc.core .fv{font-size:15px}body.p-about .fc .lab{font-size:10px}body.p-about .fc .fv{font-size:24px}body.p-about .fc.core .fv{font-size:17px}body.p-about .fc .fd{font-size:11px}}
+/* timeline proof row */
+body.p-about .proof.tl .pf .mono{color:var(--b5)}
+body.p-about .proof.tl .pf>span:not(.mono){max-width:260px}
+/* band: what you get at each stage, every cube labelled, grows toward you on hover */
+body.p-about .dgx{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;width:min(430px,100%);aspect-ratio:1/1;align-self:center}
+body.p-about .dgx a{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:6px;padding:12px;font-family:var(--head);font-size:clamp(13px,1.1vw,15px);font-weight:600;line-height:1.2;letter-spacing:-.01em;color:var(--white);border:1px solid rgba(255,255,255,.16);transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease),background .3s}
+body.p-about .dgx a small{font-family:var(--label);font-size:12px;font-weight:400;letter-spacing:0;color:var(--b9)}
+body.p-about .dgx .sa{background:rgba(255,255,255,.05)}body.p-about .dgx .sb{background:rgba(255,255,255,.1)}body.p-about .dgx .sc{background:rgba(111,143,203,.28)}body.p-about .dgx .sd{background:rgba(157,179,220,.4)}
+body.p-about .dgx .hd{background:var(--b5);border-color:var(--b5);font-size:clamp(16px,1.4vw,19px)}
+body.p-about .dgx .hd::after{content:"";position:absolute;inset:6px;border:1.5px solid rgba(255,255,255,.85);pointer-events:none}
+body.p-about .dgx a:focus-visible{outline:3px solid var(--b7);outline-offset:2px;z-index:3}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-about .dgx:hover a{filter:brightness(.85);transform:perspective(900px) scale(.98)}
+  body.p-about .dgx:hover a:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(40px) translateY(-6px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.05);box-shadow:0 34px 60px -26px rgba(0,0,0,.7),0 10px 20px -12px rgba(0,0,0,.45)}
+}
+@media (max-width:860px){body.p-about .dgx{width:min(360px,100%)}}
+@media (max-width:420px){body.p-about .dgx a{padding:8px;font-size:12px}body.p-about .dgx a small{font-size:9px}body.p-about .dgx .hd{font-size:14px}body.p-about .dgx .hd small{white-space:nowrap;overflow:hidden;text-overflow:clip}}
+@media (max-width:480px){body.p-about .ph span{font-size:10px}}
+/* team: the center cube comes toward you on hover */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-about .ph{perspective:700px}
+  body.p-about .tm-c:hover .ph i{transform:scale(.94)}
+  body.p-about .tm-c:hover .ph i:nth-child(5){transform:perspective(700px) translateZ(60px) translateY(-6px) scale(1.12);box-shadow:0 26px 40px -22px rgba(14,26,58,.7)}
+}
+body.p-about .ph i:nth-child(5){position:relative;z-index:1}
+body.p-about .ph span{z-index:2;pointer-events:none}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){body.p-about .ph span{transition:transform .5s var(--bounce)}body.p-about .tm-c:hover .ph span{transform:translateY(-6px) scale(1.04)}}
+/* who we are */
+.who{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
+.who .big{font-family:var(--head);font-size:clamp(24px,2.4vw,32px);line-height:1.3;letter-spacing:-.02em;font-weight:500}
+.who .facts2{border-top:2px solid var(--ink)}
+.who .facts2 div{display:grid;grid-template-columns:140px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:16px}
+.who .facts2 .mono{padding-top:3px}
+@media (max-width:860px){.who{grid-template-columns:1fr}.who .facts2 div{grid-template-columns:1fr;gap:4px}}
+/* nine beliefs */
+.bel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+@media (min-width:561px){.bel .bc{aspect-ratio:1/1}}
+.bc{position:relative;min-height:clamp(220px,20vw,280px);padding:clamp(20px,2.2vw,30px);display:flex;flex-direction:column;gap:10px;background:var(--c);color:var(--white);transition:background .7s var(--ease),color .5s,box-shadow .5s}
+.bc.lt{color:var(--ink)}
+.bc .k{font-family:var(--label);font-size:15px;opacity:.8}
+.bc .t{margin-top:auto;font-family:var(--head);font-size:clamp(24px,2.3vw,32px);line-height:1.08;font-weight:600;letter-spacing:-.025em}
+.bc .d{font-size:15px;line-height:1.5;opacity:.88;max-width:34ch}
+.bc.core::after{content:"";position:absolute;inset:10px;border:1.5px solid rgba(255,255,255,.85);pointer-events:none}
+.bel.go .bc:not(.in){background:transparent;color:var(--line);box-shadow:inset 0 0 0 1px var(--line)}
+.bel.go .bc:not(.in) .t,.bel.go .bc:not(.in) .d,.bel.go .bc:not(.in) .k{opacity:0;transform:translateY(14px)}body.p-about .fc.lt .lab{opacity:1}.bc.lt .k,.bc.lt .d{opacity:1}
+.bel.go .bc:not(.in).core::after{border-color:var(--line)}
+.bc .k,.bc .t,.bc .d{transition:opacity .6s var(--ease),transform .7s var(--bounce)}
+.bel-n{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-family:var(--label);font-size:15px;color:var(--muted)}
+.bel-n .bar{flex:1;height:2px;background:var(--line);margin-left:16px;position:relative;overflow:hidden}
+.bel-n .bar i{position:absolute;inset:0;background:var(--b5);transform-origin:left;transform:scaleX(var(--p,1));transition:transform .5s var(--ease)}
+@media (max-width:860px){.bel{grid-template-columns:1fr 1fr}.bc.core{grid-column:1/-1}}
+@media (max-width:560px){.bel{grid-template-columns:1fr}.bc{min-height:0}.bc .t{margin-top:18px}}
+/* team */
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.tm-c{display:flex;flex-direction:column;gap:10px}
+.ph{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;aspect-ratio:1/1;margin-bottom:10px}
+.ph i{display:block;background:var(--tint);transition:background .4s,transform .45s var(--bounce)}
+.ph i:nth-child(5){background:var(--c,var(--b5))}
+.ph i:nth-child(2),.ph i:nth-child(4),.ph i:nth-child(6),.ph i:nth-child(8){background:var(--b8)}
+.tm-c:hover .ph i:not(:nth-child(5)){background:var(--b8)}
+.ph span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--label);font-size:15px;color:var(--white)}
+body.p-about .tbl .pr{white-space:nowrap}
+.tm-c .n{font-family:var(--head);font-size:24px;font-weight:600;letter-spacing:-.015em;line-height:1.15}
+.tm-c .r{font-size:16px;color:var(--muted)}
+.tm-c .mono{color:var(--b5)}
+.three.four{grid-template-columns:repeat(4,1fr)}
+@media (max-width:1080px){.three.four{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.three.four{grid-template-columns:1fr}}
+@media (max-width:1080px){.team{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.team{grid-template-columns:1fr 1fr;gap:16px}.tm-c .n{font-size:19px}.tm-c .r{font-size:14px}}
+@media (prefers-reduced-motion:no-preference){
+  .js body.p-about .fc{animation:pop .75s var(--ease) backwards;animation-delay:calc(var(--d,0)*70ms + 300ms)}
+  .js body.p-about .fc .fv>span{animation:line .9s var(--ease) both;animation-delay:calc(var(--d,0)*70ms + 650ms)}
+}
+@media (prefers-reduced-motion:reduce){.bc,.bc .t,.bc .d,.ph i,.bel-n .bar i,body.p-about .fc,body.p-about .dgx a{transition:none}}

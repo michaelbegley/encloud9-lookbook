@@ -1,0 +1,65 @@
+/* hub only: the app picker, the license stack */
+body.p-hub .pk .cell{border:0;font:inherit;text-align:left;cursor:pointer;width:100%;height:100%}
+body.p-hub .pk .cell .ds{font-family:var(--label);font-size:14px}
+body.p-hub .pk .cell:focus-visible .ds,body.p-hub .pk .cell[aria-pressed="true"] .ds{max-height:90px;opacity:1;margin-top:8px}
+body.p-hub .pk .cell[aria-pressed="true"]{box-shadow:inset 0 0 0 3px var(--white);z-index:1}
+body.p-hub .pk .cell.lt[aria-pressed="true"]{box-shadow:inset 0 0 0 3px var(--b5)}
+body.p-hub .pk .cell.core[aria-pressed="true"]{box-shadow:none}
+body.p-hub .pk .cell.core[aria-pressed="true"]::after{border-width:3px}
+body.p-hub .pk .cell:focus-visible{outline:3px solid var(--b6);outline-offset:2px;z-index:3}
+body.p-hub .pick-d{margin-top:6px;background:var(--white);border:1px solid var(--line);border-top:3px solid var(--b5)}
+body.p-hub .pd{padding:22px 24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 28px;align-items:end}
+body.p-hub .pd+.pd{border-top:1px solid var(--line)}
+body.p-hub .pd .pd-nm{grid-column:1;font-family:var(--head);font-size:clamp(24px,2.4vw,30px);font-weight:600;letter-spacing:-.02em;line-height:1.1;display:flex;flex-direction:column;gap:6px}
+body.p-hub .pd .pd-ln{grid-column:1;color:var(--muted);font-size:16px;line-height:1.5}
+body.p-hub .pd .pd-pr{grid-column:2;grid-row:1/3;display:flex;flex-direction:column;align-items:flex-end;text-align:right;gap:2px;align-self:start}
+body.p-hub .pd .pd-pr b{font-family:var(--head);font-size:clamp(34px,3.4vw,44px);letter-spacing:-.03em;line-height:1;color:var(--b3)}
+body.p-hub .pd .pd-pr small{font-size:13px;color:var(--muted);max-width:150px}
+body.p-hub .pd .lnk{grid-column:1/-1;margin-top:8px;justify-self:start;color:var(--b5)}
+.js body.p-hub .pick-d{display:grid}
+.js body.p-hub .pd{grid-area:1/1;visibility:hidden;opacity:0;border-top:0}
+.js body.p-hub .pd.on{visibility:visible;opacity:1}
+@media (max-width:560px){body.p-hub .pd{grid-template-columns:1fr;padding:18px}body.p-hub .pd .pd-pr{grid-column:1;grid-row:auto;align-items:flex-start;text-align:left}body.p-hub .pd .pd-pr small{max-width:none}}
+body.p-hub .lstack{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:6px;width:min(360px,100%);aspect-ratio:1/1}
+body.p-hub .lstack>i{display:flex;flex-direction:column;justify-content:flex-end;padding:12px;font-style:normal;font-family:var(--label);font-size:14px;line-height:1.3;color:var(--white);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14)}
+body.p-hub .lstack>i b{font-family:var(--head);font-size:22px;font-weight:600;letter-spacing:-.02em}
+body.p-hub .lstack .ba{grid-column:1;grid-row:1/4;background:var(--b5);border:0;position:relative;padding:20px}
+body.p-hub .lstack .ba::after{content:"";position:absolute;inset:8px;border:1.5px solid rgba(255,255,255,.85)}
+body.p-hub .lstack .at{background:var(--b6);border:0;color:var(--ink)}
+body.p-hub .lstack .tm{background:transparent;border:1.5px dashed rgba(255,255,255,.75)}
+@media (max-width:860px){body.p-hub .lstack{width:260px}body.p-hub .lstack>i{padding:8px;font-size:10px}body.p-hub .lstack>i b{font-size:17px}}
+body.p-hub .three.lic3 .t{font-size:24px}
+body.p-hub .fits .tbl{min-width:880px}
+body.p-hub .fits .tbl tbody th{font-size:19px}
+body.p-hub .fits .tbl tbody th a{color:var(--ink);background:linear-gradient(var(--b5),var(--b5)) 0 100%/0 2px no-repeat;transition:background-size .3s}
+body.p-hub .fits .tbl tbody th a:hover{background-size:100% 2px}
+body.p-hub .fits .tbl td.pr{font-size:16px;line-height:1.4}
+body.p-hub .notsure{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:32px;padding:24px 28px;background:var(--tint)}
+body.p-hub .notsure p{font-family:var(--head);font-size:clamp(20px,2vw,24px);font-weight:600;letter-spacing:-.015em}
+@media (min-width:861px){body.p-hub #apps .row{grid-template-columns:44px minmax(0,1fr) minmax(0,1.5fr) 220px}}
+body.p-hub .row .pr9{font-family:var(--head);font-weight:600;color:var(--ink)}
+@media (prefers-reduced-motion:no-preference){
+  .js body.p-hub .pd.on{animation:pdin .4s var(--ease) both}
+  @keyframes pdin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .js body.p-hub .lstack>i{opacity:0;transform:scale(.86)}
+  .js body.p-hub .lstack.in>i{animation:pop .7s var(--ease) both;animation-delay:calc(var(--d,0)*90ms)}
+  /* the pop-in must not hold the cubes still, or the hover grow cannot run */
+  .js body.p-hub .pk .cell{animation-fill-mode:backwards}
+}
+/* polish round: app tiles, labelled license cubes */
+body.p-hub .ptiles.apps{grid-template-columns:repeat(3,1fr)}
+body.p-hub .ptiles.apps .ptile{aspect-ratio:auto;min-height:300px}
+body.p-hub .ptiles.apps .ptile.lt{color:var(--ink)}
+body.p-hub .ptiles.apps .ptile.lt .mono,body.p-hub .ptiles.apps .ptile.lt .ds{color:var(--ink2)}
+body.p-hub .ptiles.apps .ptile.lt .pt-foot{border-top-color:rgba(14,26,58,.2)}
+body.p-hub .ptiles.apps .ptile.lt .g.big i{background:rgba(14,26,58,.14)}body.p-hub .ptiles.apps .ptile.lt .g.big i.on{background:var(--b1)}body.p-hub .ptiles.apps .ptile.lt .g.big i.d{background:var(--b3)}
+body.p-hub .ptile .from{font-family:var(--head);font-size:clamp(30px,2.6vw,38px);font-weight:600;letter-spacing:-.03em;line-height:1}
+body.p-hub .ptile .from small{font-size:14px;font-weight:500;letter-spacing:0;margin-left:6px;opacity:.85}body.p-hub .ptile .from small.pre{margin:0 6px 0 0}
+body.p-hub .guides{margin-top:32px}
+@media (max-width:1080px){body.p-hub .ptiles.apps{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){body.p-hub .ptiles.apps{grid-template-columns:1fr}body.p-hub .ptiles.apps .ptile{min-height:0}body.p-hub .ptiles.apps .ptile .nm{margin-top:24px}}
+body.p-hub .lstack>i span{font-size:11px;opacity:.85}
+body.p-hub .lstack .nt{background:transparent;border:1px solid rgba(255,255,255,.3)}
+body.p-hub .lstack .nt b{font-size:15px;line-height:1.25;letter-spacing:-.01em}
+body.p-hub .lstack .tm b{font-size:19px;line-height:1.1}
+@media (max-width:860px){body.p-hub .lstack{width:min(300px,100%)}body.p-hub .lstack>i span{display:none}body.p-hub .lstack .nt b{font-size:12px}body.p-hub .lstack .tm b{font-size:14px}}

@@ -1,0 +1,90 @@
+/* sales page polish (4 Nov): price cubes that come toward you, packages with cube heads, plan tiles, the cube readiness check */
+body.p-sales .lic .cell{color:var(--white)}
+body.p-sales .lic .tag{align-self:flex-start;margin-top:10px;padding:3px 7px;background:rgba(255,255,255,.16);font-family:var(--label);font-size:13px;line-height:1.3}
+body.p-sales .lic a.cell:focus-visible{outline:3px solid var(--b6);outline-offset:3px;z-index:4}
+@media (prefers-reduced-motion:no-preference){.js body.p-sales .lic .cell{animation-fill-mode:backwards}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  body.p-sales .lic{perspective:900px}
+  body.p-sales .lic .cell{transition:transform .5s var(--bounce),box-shadow .4s var(--ease),filter .4s var(--ease)}
+  body.p-sales .lic:hover .cell{filter:saturate(.92) brightness(.96);transform:perspective(900px) scale(.98)}
+  body.p-sales .lic:hover .cell:hover{filter:none;z-index:3;transform:perspective(900px) translateZ(40px) translateY(-6px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.05);box-shadow:0 26px 46px -24px rgba(14,26,58,.6),0 10px 20px -12px rgba(14,26,58,.45)}
+}
+/* fit: sticky side, lists stacked */
+body.p-sales .fitsplit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(32px,5vw,72px);align-items:start}
+body.p-sales .fitsplit .side{position:sticky;top:110px;display:flex;flex-direction:column;gap:20px}
+body.p-sales .fitsplit .fit{grid-template-columns:1fr;gap:44px}
+body.p-sales .fit h3{display:flex;align-items:center;gap:12px}
+body.p-sales .notsure-l{font-weight:600;font-size:18px;margin:0}
+body.p-sales .fit h3 .g{grid-template-columns:repeat(3,7px)}body.p-sales .fit h3 .g i{width:7px;height:7px}
+@media (max-width:860px){body.p-sales .fitsplit{grid-template-columns:1fr}body.p-sales .fitsplit .side{position:static}}
+/* plan table: Enterprise column marked */
+body.p-sales #plans .tbl th:nth-child(3),body.p-sales #plans .tbl td:nth-child(3){background:var(--tint);padding-left:14px}
+body.p-sales #plans .tbl .tag{display:block;margin-top:6px;color:var(--b5);font-size:11px}
+/* packages: a cube on top of each card */
+body.p-sales .cards.ch{align-items:stretch}
+body.p-sales .cards.ch .card{padding:0;gap:0;transition:transform .45s var(--bounce),box-shadow .3s}
+body.p-sales .cards.ch .card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -36px rgba(14,26,58,.55)}
+body.p-sales .ch-head{background:var(--c);color:var(--white);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:16px;min-height:300px}
+body.p-sales .ch-head .cht{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+body.p-sales .ch-head .mono{color:rgba(255,255,255,.78)}
+body.p-sales .ch-head h3{font-size:clamp(30px,3vw,42px);letter-spacing:-.03em;line-height:1.05;margin-top:auto}
+body.p-sales .ch-head p{color:rgba(255,255,255,.86);font-size:16px;line-height:1.5}
+body.p-sales .ch-head .facts{border-color:rgba(255,255,255,.24)}
+body.p-sales .ch-head .facts div+div{border-left-color:rgba(255,255,255,.24)}
+body.p-sales .ch-head .facts .mono{font-size:12px}
+body.p-sales .ch-body{padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:16px;flex:1}
+body.p-sales .ch-body .proofline{font-size:15px;padding:14px 16px;background:var(--tint);border-left:3px solid var(--b5)}
+@media (max-width:560px){body.p-sales .ch-head{min-height:0}body.p-sales .ch-head .facts{grid-template-columns:1fr}body.p-sales .ch-head .facts div+div{padding-left:0;border-left:0;border-top:1px solid rgba(255,255,255,.24)}}
+/* support plans as tiles */
+body.p-sales .ptiles.plans .ptile{aspect-ratio:auto;min-height:360px}
+body.p-sales .ptile .price{font-family:var(--head);font-size:clamp(40px,3.6vw,54px);font-weight:600;letter-spacing:-.035em;line-height:1}
+body.p-sales .ptile .price small{font-size:15px;font-weight:500;letter-spacing:0;margin-left:6px;opacity:.85}
+body.p-sales .ptile .ds b{color:var(--white);font-weight:600}
+body.p-sales .ptile .min{align-self:flex-start;padding:3px 7px;background:rgba(255,255,255,.18);font-family:var(--label);font-size:13px;color:var(--white)}
+body.p-sales .sp-foot{display:flex;justify-content:space-between;align-items:flex-start;gap:24px 48px;flex-wrap:wrap;margin-top:24px}
+body.p-sales .sp-foot .fine{margin-top:0;max-width:760px}
+/* readiness check: answer cubes and a cube meter */
+body.p-sales .rc{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:6px;align-items:stretch}
+body.p-sales .rc .qbox{display:contents}
+body.p-sales .rc .qlist{background:var(--white);border:1px solid var(--line)}
+body.p-sales .rc .qhead{align-items:center}
+body.p-sales .rc .q{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:18px;align-items:center;padding:18px 22px}
+body.p-sales .rc .q:last-child{border-bottom:0}
+body.p-sales .rc .qn{width:36px;height:36px;display:grid;place-items:center;font-family:var(--label);font-size:14px;background:var(--tint);color:var(--ink2);transition:background .3s,color .3s}
+body.p-sales .rc .q.y .qn{background:var(--b5);color:var(--white)}
+body.p-sales .rc .q.n .qn{background:var(--ink);color:var(--white)}
+body.p-sales .rc .q.u .qn{background:var(--b7);color:var(--ink)}
+body.p-sales .rc .qt{font-size:17px;line-height:1.45}
+body.p-sales .rc .q button{width:80px;min-height:48px;padding:0 6px;font:600 14px var(--body);transition:transform .45s var(--bounce),background .25s,border-color .25s,color .25s,box-shadow .3s}
+body.p-sales .rc .q button[data-v="n"][aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
+body.p-sales .rc .q button[data-v="u"][aria-pressed="true"]{background:var(--b7);border-color:var(--b7);color:var(--ink)}
+body.p-sales .rc .q button:focus-visible{outline:3px solid var(--b6);outline-offset:2px}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){body.p-sales .rc .q button:hover{transform:translateY(-3px) scale(1.04);border-color:var(--b6);box-shadow:0 14px 22px -14px rgba(14,26,58,.55)}}
+body.p-sales .rres{background:var(--b2);color:var(--white);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:20px}
+body.p-sales .rres .mono{color:var(--b8)}
+body.p-sales .meter{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+body.p-sales .meter i{aspect-ratio:1/1;display:flex;align-items:flex-end;padding:8px;font:normal 14px var(--label);color:var(--b8);background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.32);transition:background .4s,border-color .4s,color .4s}
+body.p-sales .meter i.y{background:var(--b6);border:1px solid var(--b6);color:var(--b1)}
+body.p-sales .meter i.u{background:repeating-linear-gradient(135deg,rgba(255,255,255,.26) 0 6px,transparent 6px 12px);border:1px solid rgba(255,255,255,.45);color:var(--white)}
+body.p-sales .meter i.n{background:transparent;border:1px solid rgba(255,255,255,.7);color:var(--white)}
+body.p-sales .meter.all i{background:var(--white);border-color:var(--white);color:var(--b2)}
+body.p-sales .key{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--label);font-size:14px;color:var(--b8)}
+body.p-sales .key span{display:inline-flex;align-items:center;gap:6px}
+body.p-sales .key span::before{content:"";width:10px;height:10px;background:var(--k);border:1px var(--bs,solid) rgba(255,255,255,.6)}
+body.p-sales .rres .score{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+body.p-sales .rres [data-score]{font-family:var(--head);font-size:clamp(56px,6vw,84px);font-weight:600;letter-spacing:-.04em;line-height:.9}
+body.p-sales .rres [data-note]{color:var(--b8);font-size:16px;line-height:1.5;min-height:3em}
+body.p-sales .rres .btn{align-self:flex-start;margin-top:auto}
+body.p-sales .rres .sm{font-size:14px;color:var(--b8)}
+body.p-sales .rc-more{margin-top:32px}
+@media (prefers-reduced-motion:no-preference){
+  body.p-sales .meter i.hit{animation:pop .6s var(--ease) both}
+}
+@media (max-width:860px){
+  body.p-sales .rc{grid-template-columns:1fr}
+  body.p-sales .rc .q{grid-template-columns:36px minmax(0,1fr);gap:12px 14px;padding:16px}
+  body.p-sales .rc .q .opts{grid-column:2}
+  body.p-sales .rc .q button{width:auto;flex:1}
+}
+@media (max-width:480px){body.p-sales .rc .q{grid-template-columns:30px minmax(0,1fr)}body.p-sales .rc .qn{width:30px;height:30px}body.p-sales .rc .q .opts{grid-column:1/-1}body.p-sales .rc .qhead{flex-direction:column;align-items:flex-start;gap:4px}}
+@media (max-width:560px){body.p-sales .ptiles.plans .ptile{min-height:0}body.p-sales .ptiles.plans .ptile .nm{margin-top:28px}}

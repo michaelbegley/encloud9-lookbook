@@ -1,0 +1,40 @@
+/* package pages (full implementation, rescue and repair) (9 Nov): spec card in the hero, included/not included, Fit Check rows, other packages strip */
+body.p-pkg .grid9{margin-top:4px}
+body.p-pkg .spec{margin:14px 0 0;display:grid;border-top:2px solid var(--ink)}
+body.p-pkg .spec div{display:grid;grid-template-columns:90px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--line);align-items:baseline}
+body.p-pkg .spec dd{margin:0;font-weight:600;font-size:16px;line-height:1.4}
+body.p-pkg .fit.two-col{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+body.p-pkg .fit .lnk{color:var(--b5);font-weight:600}
+body.p-pkg .inc-foot{display:flex;justify-content:space-between;align-items:center;gap:20px 40px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+body.p-pkg .inc-foot .ask{font-weight:600}
+body.p-pkg .fitsplit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(32px,5vw,72px);align-items:start}
+body.p-pkg .fitsplit .side{position:sticky;top:110px;display:flex;flex-direction:column;gap:20px}
+body.p-pkg .fitsplit .fit{grid-template-columns:1fr;gap:44px}
+body.p-pkg .notsure-l{font-weight:600;font-size:18px;margin:0}
+body.p-pkg .ptiles.plans .ptile{aspect-ratio:auto;min-height:340px}
+body.p-pkg .ptile .price{font-family:var(--head);font-size:clamp(40px,3.6vw,54px);font-weight:600;letter-spacing:-.035em;line-height:1}
+body.p-pkg .ptile .price small{font-size:15px;font-weight:500;letter-spacing:0;margin-left:6px;opacity:.85}
+body.p-pkg .ptile .ds b{color:var(--white);font-weight:600}
+body.p-pkg .ptile .min{align-self:flex-start;padding:3px 7px;background:rgba(255,255,255,.18);font-family:var(--label);font-size:13px;color:var(--white)}
+body.p-pkg .sp-foot{display:flex;justify-content:space-between;align-items:flex-start;gap:24px 48px;flex-wrap:wrap;margin-top:24px}
+body.p-pkg .sp-foot .fine{margin-top:0;max-width:760px}
+body.p-pkg .story .big{font-family:var(--head);font-size:clamp(40px,4vw,56px);font-weight:600;letter-spacing:-.035em;line-height:1;color:var(--b3)}
+body.p-pkg .lnav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+body.p-pkg .lnav a{display:flex;flex-direction:column;gap:10px;justify-content:space-between;min-height:120px;padding:16px;background:var(--c);color:var(--white);font-family:var(--head);font-weight:600;font-size:18px;line-height:1.2;transition:transform .35s var(--ease)}
+body.p-pkg .lnav a .mono{color:rgba(255,255,255,.8);font-size:11px;font-weight:400}
+body.p-pkg .lnav a:hover{transform:translateY(-4px)}
+body.p-pkg .lnav a:focus-visible{outline:3px solid var(--b6);outline-offset:3px}
+body.p-pkg .grid9 .cell.core .nm{font-size:clamp(15px,1.75vw,24px);hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+body.p-pkg #fitcheck .three .d{color:var(--muted)}
+body.p-pkg .grid9 .cell.lt .lab{color:var(--ink)}
+body.p-pkg .proof .num{white-space:nowrap}
+@media (max-width:420px){body.p-pkg .proof .num{font-size:clamp(28px,9vw,40px)}body.p-pkg .proof .pf{min-width:0}}
+body.p-pkg #others{padding-top:clamp(48px,6vw,80px)}
+body.p-pkg .lnav a.lt{color:var(--ink)}body.p-pkg .lnav a.lt .mono{color:var(--ink)}
+@media (max-width:1100px){body.p-pkg .lnav{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:860px){body.p-pkg .fitsplit,body.p-pkg .fit.two-col{grid-template-columns:1fr}body.p-pkg .fitsplit .side{position:static}}
+@media (max-width:560px){body.p-pkg .grid9 .cell.core .nm{font-size:13px;hyphens:none;-webkit-hyphens:none}body.p-pkg .lnav{grid-template-columns:1fr 1fr}body.p-pkg .spec div{grid-template-columns:1fr;gap:2px}body.p-pkg .ptiles.plans .ptile{min-height:0}}
+
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line,#ddd);border:1px solid var(--line,#ddd)}.fgrid .cell-f{background:var(--bg,#fff);padding:24px}.fgrid .cell-f p{margin:8px 0 0}
+@media(max-width:900px){.fgrid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.fgrid{grid-template-columns:1fr}}
+@media(max-width:640px){#plans .tbl{min-width:0}#plans .tbl thead{position:absolute;left:-9999px}#plans .tbl tr{display:grid;grid-template-columns:1fr;padding:14px 0;border-bottom:1px solid var(--line)}#plans .tbl tbody th,#plans .tbl td{display:block;border:0;padding:2px 0}#plans .tbl td::before{content:attr(data-l) ": ";font-family:var(--label);font-size:13px;color:var(--muted)}}

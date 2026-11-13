@@ -1,0 +1,15 @@
+/* WordPress fixes on top of the mock site's styles. */
+/* template part wrappers must not trap the sticky header or add a box */
+.wp-site-blocks>.wp-block-template-part,.wp-block-post-content{display:contents}
+.wp-site-blocks>*{margin-block-start:0}
+main#main{margin:0}
+/* the footer is its own part now, outside main (a landmark fix); it continues the final band */
+.site-foot{background:var(--b1);color:var(--white)}
+.site-foot .foot{padding-top:28px}
+.final{margin-bottom:0}
+.final .inner{padding-bottom:clamp(56px,6vw,88px)}
+/* in the mock the page-wide paragraph rule also sized the footer's first column (nine-scale.css) */
+.site-foot p:not([class]){font-size:18px}
+@media (max-width:600px){.site-foot p:not([class]){font-size:17px}}
+/* no monospace anywhere, also in blocks a writer may add later */
+code,kbd,pre,samp,.wp-block-code,.wp-block-preformatted,.wp-block-verse{font-family:inherit}

@@ -1,0 +1,4 @@
+/* Editor canvas only. */
+.editor-styles-wrapper{background:var(--bg)}
+.is-root-container{padding:0!important}
+.editor-styles-wrapper .site-foot{background:var(--b1);color:var(--white)}

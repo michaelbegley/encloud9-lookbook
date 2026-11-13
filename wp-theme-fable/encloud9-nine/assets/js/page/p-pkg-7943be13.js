@@ -1,0 +1,1021 @@
+/* Pipeline: a Snake game for the 404 page.
+   Built on the lessons of Nokia's Snake II (research report, 10 Nov 2026):
+   fixed game tick drawn smoothly in between, buffered turns, no reversing,
+   solid edges, a maze per level, a bonus that is worth more the faster
+   you get it, speed that rises as you grow, and a short grace before a crash. */
+(function(){
+  'use strict';
+  var $=function(id){return document.getElementById(id)};
+  var nf=document.querySelector('.nf'),box=$('play'),screen=$('screen'),cv=$('cv'),ctx=cv.getContext('2d');
+  var ov=$('ov'),ovt=$('ovt'),ovs=$('ovs'),startB=$('start'),exitB=$('exit'),winP=$('gwin'),pad=$('pad'),live=$('gstatus');
+  var scoreEl=$('score'),lvlEl=$('lvl'),pipsBox=$('pips'),sndB=$('snd');
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- config ---------- */
+  var N=18,LAST=9,BONUS_EVERY=5,BONUS_TICKS=48,GRACE=1;
+  var START=[[6,9],[5,9],[4,9],[3,9]];
+  // Nine levels are the nine stages of a sales pipeline; early stages are short, later ones ask for more leads
+  var STAGES=['Prospecting','Qualifying','Discovery','Demo','Proposal','Negotiation','Contract','Closing','Closed won'];
+  var NEED=[5,6,6,7,7,8,8,9,9];
+  var D={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]},OPP={up:'down',down:'up',left:'right',right:'left'};
+  var C={bg:'#0E1A3A',dot:'#1B2B57',wall:'#355DA6',wallHi:'#4A6FB8',lead:'#2E9BD6',head:[255,255,255],tail:[111,143,203],eye:'#0E1A3A'};
+  // One maze per level, as wall rectangles [x,y,w,h]. Row 9 stays open so every level starts safely.
+  var BORDER=[[0,0,7,1],[11,0,7,1],[0,17,7,1],[11,17,7,1],[0,1,1,6],[0,11,1,6],[17,1,1,6],[17,11,1,6]];
+  var PILLARS=[[4,4,2,2],[12,4,2,2],[4,12,2,2],[12,12,2,2],[8,3,2,2],[8,13,2,2]];
+  var MAZES=[
+    [],
+    [[2,2,4,1],[2,3,1,3],[12,2,4,1],[15,3,1,3],[2,15,4,1],[2,12,1,3],[12,15,4,1],[15,12,1,3]],
+    [[4,5,10,1],[4,12,10,1]],
+    BORDER,
+    PILLARS,
+    [[5,2,1,6],[5,11,1,5],[12,2,1,5],[12,10,1,6]],
+    BORDER.concat([[5,5,8,1],[5,12,8,1]]),
+    [[8,1,2,6],[8,11,2,6],[1,4,5,1],[12,4,5,1],[1,13,5,1],[12,13,5,1]],
+    BORDER.concat(PILLARS,[[13,7,1,4]])
+  ];
+
+  /* ---------- state ---------- */
+  var mode='attract';            // attract | play | pause | between | over | won
+  var body,dir,queue,prevTail,moved,grace,walls,lead,bonus,level,leads,total,sinceBonus;
+  var best=0,sound=false,lastTick=0,fx=[],pops=[],shake=0,banner=null,deathAt=0,flow=[],lastFrame=0;
+  var soundPref=null;try{best=+localStorage.getItem('n9snakeBest')||0;soundPref=localStorage.getItem('n9snakeSound');sound=soundPref==='1'}catch(e){}
+
+  /* ---------- helpers ---------- */
+  var key=function(x,y){return x+y*N};
+  var wrap=function(v){return v};   // no wrap-around: the board's edge is a wall, like classic Snake (Michael, 10 Nov)
+  function interval(){return Math.max(68,150-(level-1)*9-Math.min(24,(body.length-4)*1.5))}
+  function buildWalls(lv){var w=new Set();MAZES[lv-1].forEach(function(r){for(var y=r[1];y<r[1]+r[3];y++)for(var x=r[0];x<r[0]+r[2];x++)w.add(key(x,y))});return w}
+  function occupied(x,y,ignoreTail){if(x<0||y<0||x>=N||y>=N)return true;var k=key(x,y);if(walls.has(k))return true;for(var i=0,n=body.length-(ignoreTail?1:0);i<n;i++)if(body[i][0]===x&&body[i][1]===y)return true;return false}
+  function freeCell(){var free=[];for(var y=0;y<N;y++)for(var x=0;x<N;x++){if(occupied(x,y))continue;if(lead&&lead[0]===x&&lead[1]===y)continue;if(bonus&&bonus.x===x&&bonus.y===y)continue;free.push([x,y])}return free[Math.floor(Math.random()*free.length)]}
+  function save(){if(total>best){best=total;try{localStorage.setItem('n9snakeBest',String(best))}catch(e){}}}
+  function say(t){live.textContent=t}
+
+  /* ---------- music: nine original stage songs ----------
+     Each pipeline stage has its own song (SONGS[1] to SONGS[9]), written for this game: synth-driven and moody,
+     inspired by the feel of Chris Christodoulou's Risk of Rain 2 score, with no melody borrowed from anything.
+     Kondo's methods carry over: the music runs on the game's own clock and speeds up a little as the pipe grows,
+     each song reacts to a live deal and to the pipe's length, and the pickup sounds land on the chord that is playing. */
+/*@@ENGINE@@*/
+/* Pipeline music engine (shared by the game and the test renderer).
+   A song is a plain object in SONGS[stage]; the engine calls song.play(i, t, d, h) once per sixteenth note,
+   ahead of time, on the AudioContext clock. Everything is synthesized: no audio files. */
+function PipelineAudio(ac, destination){
+  var A={ac:ac};
+  var master=ac.createGain();master.gain.value=.8;
+  var comp=ac.createDynamicsCompressor();comp.threshold.value=-14;comp.ratio.value=4;comp.attack.value=.004;comp.release.value=.2;
+  master.connect(comp).connect(destination||ac.destination);
+  var music=ac.createGain();music.gain.value=0;music.connect(master);             // the song (faded in and out by the game)
+  var dry=ac.createGain();dry.connect(music);                                         // bus 'dry'
+  var pump=ac.createGain();pump.connect(music);                                       // bus 'pump': ducks on every kick (sidechain feel)
+  var dl=ac.createDelay(1),fb=ac.createGain(),wf=ac.createBiquadFilter(),wet=ac.createGain();
+  dl.delayTime.value=.3;fb.gain.value=.33;wf.type='lowpass';wf.frequency.value=2400;wet.gain.value=.36;
+  dl.connect(fb).connect(dl);dl.connect(wf).connect(wet).connect(music);
+  var fx=ac.createGain();fx.connect(pump);fx.connect(dl);                             // bus 'fx': pumped, with echo
+  var jingle=ac.createGain();jingle.gain.value=.9;jingle.connect(master);jingle.connect(dl);   // effects and fanfares, never muted with the song
+  var noise=ac.createBuffer(1,ac.sampleRate,ac.sampleRate);var nd=noise.getChannelData(0);for(var i=0;i<nd.length;i++)nd[i]=Math.random()*2-1;
+  var BUS={dry:dry,pump:pump,fx:fx,jingle:jingle};
+  var hz=function(m){return 440*Math.pow(2,(m-69)/12)};
+  var ok=function(v){return typeof v==='number'&&isFinite(v)};
+
+  // synth(midi, time, length, volume, opts)
+  // opts: wave 'sawtooth'|'square'|'triangle'|'sine' (default saw), voices 1..3 (default 2), detune cents (default 7),
+  //       cut Hz (default 1400), q (default 6), pad true = slow filter opening and long release, att seconds,
+  //       glide semitones (pitch slides from midi+glide to midi), bus 'dry'|'pump'|'fx'|'jingle' (default 'dry'), pan -1..1
+  A.synth=function(m,t,len,vol,o){
+    o=o||{};if(!ok(m)||!ok(t)||!ok(len)||!ok(vol)||len<=0)return;
+    vol=Math.min(vol,.16);m=Math.max(24,Math.min(88,m));
+    var f=ac.createBiquadFilter(),g=ac.createGain(),cut=o.cut||1400,att=o.att||.006,pad=!!o.pad,out=g;
+    f.type='lowpass';f.Q.value=o.q==null?6:o.q;f.frequency.setValueAtTime(pad?cut*.35:cut*2.2,t);
+    if(pad)f.frequency.linearRampToValueAtTime(cut,t+Math.max(.05,len*.5));else f.frequency.setTargetAtTime(cut*.5,t+.01,.08);
+    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+att);
+    g.gain.setTargetAtTime(pad?vol*.8:vol*.5,t+att,.12);g.gain.setTargetAtTime(0,t+len,pad?.25:.05);
+    if(o.pan&&ac.createStereoPanner){var p=ac.createStereoPanner();p.pan.value=Math.max(-1,Math.min(1,o.pan));g.connect(p);out=p}
+    var n=o.voices||2,det=o.detune==null?7:o.detune,stop=t+len+(pad?1.4:.4);
+    for(var v=0;v<n;v++){var x=ac.createOscillator();x.type=o.wave||'sawtooth';
+      if(o.glide){x.frequency.setValueAtTime(hz(m+o.glide),t);x.frequency.exponentialRampToValueAtTime(hz(m),t+Math.min(len,.12))}else x.frequency.setValueAtTime(hz(m),t);
+      x.detune.value=n===1?0:(v/(n-1)*2-1)*det;x.connect(f);x.start(t);x.stop(stop)}
+    f.connect(g);out.connect(BUS[o.bus]||dry);
+  };
+  // hit(time, kind, volume, bus): kick, snare, clap, hat, openhat, tom, crash, riser (riser takes length via vol? no: fixed 1 bar feel)
+  A.hit=function(t,kind,vol,bus){
+    if(!ok(t)||!ok(vol))return;vol=Math.min(vol,.6);var b=BUS[bus]||dry;
+    if(kind==='kick'||kind==='tom'){var o=ac.createOscillator(),g=ac.createGain(),hi=kind==='kick'?150:220,lo=kind==='kick'?42:90;
+      o.frequency.setValueAtTime(hi,t);o.frequency.exponentialRampToValueAtTime(lo,t+.13);g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.001,t+(kind==='kick'?.22:.3));
+      o.connect(g).connect(b);o.start(t);o.stop(t+.35);
+      if(kind==='kick'){pump.gain.cancelScheduledValues(t);pump.gain.setValueAtTime(.35,t);pump.gain.linearRampToValueAtTime(1,t+.18)}
+      return}
+    var s=ac.createBufferSource(),f=ac.createBiquadFilter(),g2=ac.createGain();s.buffer=noise;
+    var cfg={snare:['bandpass',1800,.14],clap:['bandpass',1200,.1],hat:['highpass',7500,.035],openhat:['highpass',6500,.22],crash:['highpass',4000,1.2]}[kind]||['highpass',7000,.04];
+    f.type=cfg[0];f.frequency.value=cfg[1];g2.gain.setValueAtTime(vol,t);g2.gain.exponentialRampToValueAtTime(.001,t+cfg[2]);
+    if(kind==='clap'){g2.gain.setValueAtTime(vol*.6,t+.012);g2.gain.setValueAtTime(vol,t+.024)}
+    s.connect(f).connect(g2).connect(b);s.start(t,Math.random()*.4);s.stop(t+cfg[2]+.05);
+  };
+  A.bus=BUS;A.music=music;A.master=master;
+  return A;
+}
+/*@@/ENGINE@@*/
+  var SONGS={};
+/*@@SONGS@@*/
+// Stage 1: Prospecting. D minor (Aeolian with a Phrygian bII colour), 104 bpm, 4/4, 16-bar loop.
+// The calmest track: half-time drums, long pads, a slow-breathing arp and a sparse lead on the back half.
+SONGS[1]={
+  name:'Prospecting',
+  title:'First Light on the Wire',
+  bpm:104,
+  steps:256,
+  n:0,
+  // one chord per two bars: bass root, voicing (absolute MIDI, 57..76)
+  ch:[
+    {b:38,v:[62,65,69,72,76]},   // Dm9
+    {b:34,v:[58,62,65,69,72]},   // Bbmaj9
+    {b:41,v:[60,64,65,69,72]},   // Fmaj9
+    {b:36,v:[60,64,67,72,74]},   // Cadd9
+    {b:43,v:[58,62,65,69,74]},   // Gm9
+    {b:39,v:[58,63,67,70,74]},   // Ebmaj7 (bII colour)
+    {b:34,v:[58,62,65,69,72]},   // Bbmaj9
+    {b:33,v:[57,62,64,67,69]}    // A7sus4 (bar 15 resolves to A7)
+  ],
+  a7:[57,61,64,67,69],
+  // lead phrases: bar -> [[step,midi,len],...]
+  back:{8:[[0,70,6],[6,69,2],[8,67,8]],9:[[0,65,4],[4,67,4],[8,69,8]],
+        10:[[0,67,4],[4,70,4],[8,74,8]],11:[[0,72,6],[6,70,2],[8,67,8]],
+        12:[[0,69,8],[8,65,4],[12,67,4]],13:[[0,72,8],[8,69,8]],
+        14:[[0,67,6],[6,64,2],[8,62,8]],15:[[0,61,12],[12,64,4]]},
+  front:{0:[[0,69,12],[12,72,4]],1:[[0,69,8],[8,65,8]],2:[[0,65,12],[12,69,4]],3:[[0,72,16]],
+         4:[[0,72,6],[6,69,2],[8,67,8]],5:[[0,64,16]],6:[[0,67,8],[8,64,4],[12,62,4]],7:[[0,64,16]]},
+  // keep every bass note inside MIDI 28..48: fold by octaves, and if the jump folds onto the root use the fifth instead
+  bn:function(r,o){var n=r+o;while(n>48)n-=12;while(n<28)n+=12;if(n===r&&o!==0)n=(r+7>48)?r-5:r+7;return n},
+  arp:[0,2,4,1,3,2,4,3],
+  play:function(i,t,d,h){
+    var S=SONGS[1];if(i===0)S.n++;
+    var bar=i>>4,s=i&15,ci=bar>>1,I=h.intensity||0,c=S.ch[ci],v=(bar===15)?S.a7:c.v,k,p;
+    // chord to the game, pad underneath
+    if(s===0&&(bar%2===0||bar===15)){
+      h.chord(v.slice());
+      var plen=(bar>=14)?16:32;
+      for(k=0;k<v.length;k++)h.synth(v[k],t,d*plen,.021,{pad:true,cut:650+650*I,att:.7,q:2,detune:12,bus:'pump',pan:(k-2)*.25});
+      h.synth(c.b+12,t,d*plen,.03,{pad:true,wave:'triangle',voices:1,cut:500,att:.5,bus:'pump'}); // warm low octave
+    }
+    // bass: slow, thick, filtered saw
+    var bp=[[0,0,6],[6,0,2],[10,0,3],[14,12,2]];
+    if(I>.45)bp.push([3,0,1],[12,7,2]);
+    for(k=0;k<bp.length;k++)if(bp[k][0]===s)h.synth(S.bn(c.b,bp[k][1]),t,d*bp[k][2],.1,{cut:240+420*I,q:8,detune:9});
+    // drums: half time, opening up a little with intensity
+    if(s===0)h.hit(t,'kick',.42);
+    if(s===10)h.hit(t,'kick',.3);
+    if(I>.55&&s===7&&bar%2===1)h.hit(t,'kick',.22);
+    if(s===8)h.hit(t,'clap',.065);
+    if(s%4===2)h.hit(t,'hat',.024);
+    if(I>.6&&s%2===1)h.hit(t,'hat',.01);
+    if(s===14&&bar%4===3)h.hit(t,'openhat',.03);
+    if(bar===15&&(s===12||s===13||s===14))h.hit(t,'tom',.16-(s-12)*.03);
+    // arp: eighths while calm, sixteenths once the pipe grows; accents every third step for a slow cross-rhythm
+    var sixteenths=I>.3||S.n>2;
+    if(sixteenths||s%2===0){
+      k=(i+S.n*2)%8;p=v[S.arp[k]%v.length];if(p>69)p-=12;
+      h.synth(p,t,d*.9,(i%3===0)?.034:.022,{voices:1,cut:600+1000*I,q:7,bus:'fx',pan:(i%2)?.3:-.3});
+    }
+    // lead: back half every loop, the front phrase joins from loop 2 or when intensity builds
+    var ph=S.back[bar]||((S.n%2===0||I>.4)?S.front[bar]:null);
+    if(ph)for(k=0;k<ph.length;k++)if(ph[k][0]===s)
+      h.synth(ph[k][1],t,d*ph[k][2]*.95,.05,{voices:2,detune:10,cut:1000+500*I,q:3,att:.03,bus:'fx'});
+    // deal: a soft, bright triangle counter-arp rising through the chord
+    if(h.deal&&s%2===1){k=(s>>1)%v.length;h.synth(v[(k*2)%v.length],t,d*1.4,.045,{wave:'triangle',voices:1,cut:2600,q:1,bus:'fx',pan:.4})}
+  }
+};
+// Stage 2: Qualifying. E minor, 114 bpm, 4/4, 16-bar loop.
+// Four on the floor arrives; a plucked sixteenth bass ostinato does the sorting, offbeat chord stabs and a call-and-answer hook.
+SONGS[2]={
+  name:'Qualifying',
+  title:'Signal Over Noise',
+  bpm:114,
+  steps:256,
+  n:0,
+  ch:[
+    {b:40,v:[59,62,66,67,71]},   // Em9
+    {b:36,v:[59,62,64,67,71]},   // Cmaj9
+    {b:33,v:[60,62,64,67,72]},   // Am11
+    {b:35,v:[59,64,66,69,71]},   // Bsus4 (bar 7 turns to B7)
+    {b:43,v:[62,66,67,71,74]},   // Gmaj7
+    {b:38,v:[57,62,64,66,69]},   // Dadd9
+    {b:36,v:[59,64,66,67,71]},   // Cmaj7#11
+    {b:33,v:[60,64,67,69,72]}    // Am9 colour (bar 15 turns to B7)
+  ],
+  b7:[59,63,66,69,71],
+  // hook: call over bars 4-7, answer over bars 12-15
+  hook:{4:[[0,64,3],[3,67,3],[6,69,2],[8,71,4],[12,69,2],[14,67,2]],5:[[0,72,6],[6,71,2],[8,69,8]],
+        6:[[0,71,3],[3,69,3],[6,66,2],[8,64,4],[12,66,4]],7:[[0,63,6],[6,66,2],[8,71,8]],
+        12:[[0,67,3],[3,71,3],[6,74,2],[8,71,4],[12,66,4]],13:[[0,67,8],[8,64,4],[12,66,4]],
+        14:[[0,72,3],[3,71,3],[6,67,2],[8,64,8]],15:[[0,63,4],[4,66,4],[8,69,4],[12,71,4]]},
+  // low counter-line on alternate loops, bars 0-3 and 8-11
+  low:{0:[[0,55,8],[8,59,8]],1:[[0,57,6],[6,55,2],[8,54,8]],2:[[0,52,8],[8,55,8]],3:[[0,57,16]],
+       8:[[0,55,8],[8,59,8]],9:[[0,62,6],[6,59,2],[8,57,8]],10:[[0,57,8],[8,54,8]],11:[[0,57,16]]},
+  // keep every bass note inside MIDI 28..48: fold by octaves, and if the jump folds onto the root use the fifth instead
+  bn:function(r,o){var n=r+o;while(n>48)n-=12;while(n<28)n+=12;if(n===r&&o!==0)n=(r+7>48)?r-5:r+7;return n},
+  bass:[0,-1,12,0, -1,0,12,-1, 0,-1,12,0, 7,-1,12,0],
+  play:function(i,t,d,h){
+    var S=SONGS[2];if(i===0)S.n++;
+    var bar=i>>4,s=i&15,ci=bar>>1,I=h.intensity||0,c=S.ch[ci],k,p;
+    var v=(bar===7||bar===15)?S.b7:c.v,root=(bar===15)?35:c.b;
+    if(s===0&&(bar%2===0||bar===7||bar===15)){
+      h.chord(v.slice());
+      var plen=(bar===6||bar===7||bar>=14)?16:32;
+      for(k=0;k<v.length;k++)h.synth(v[k],t,d*plen,.016,{pad:true,cut:700+500*I,att:.4,q:2,detune:14,bus:'pump',pan:(k-2)*.25});
+    }
+    // bass: plucked sixteenth ostinato; eighths only while the pipe is short
+    var o=S.bass[s];if(bar%4===3&&s>=12)o=[7,12,7,12][s-12];   // turnaround fill every fourth bar
+    if(o>=0&&(I>.2||s%2===0||S.n>1)){
+      var acc=(s%4===0)?.1:.075;
+      h.synth(S.bn(root,o),t,d*.85,acc,{cut:300+700*I+(s%4===2?150:0),q:9,detune:8});
+    }
+    // drums
+    if(s%4===0)h.hit(t,'kick',.44);
+    if(s===4||s===12)h.hit(t,'clap',.075);
+    h.hit(t,'hat',s%4===2?.03:.012);
+    if(I>.45&&s===14)h.hit(t,'openhat',.035);
+    if(bar===15&&s>=12)h.hit(t,'tom',.15-(s-12)*.025);
+    if(bar===7&&s===14)h.hit(t,'snare',.05);
+    // offbeat chord stabs (pumped), arrive as the pipe grows
+    if((I>.25||S.n>1)&&(s===3||s===6||s===11)){
+      for(k=1;k<v.length;k++)h.synth(v[k]-12>=52?v[k]-12:v[k],t,d*1.2,.017,{cut:900+900*I,q:4,voices:2,detune:10,bus:'pump'});
+    }
+    // hook lead
+    var ph=S.hook[bar];
+    if(ph)for(k=0;k<ph.length;k++)if(ph[k][0]===s)
+      h.synth(ph[k][1],t,d*ph[k][2]*.92,.055,{voices:2,detune:9,cut:1100+600*I,q:4,att:.01,glide:(ph[k][2]<=3?-2:0),bus:'fx',pan:-.1});
+    // low counter-line (alternate loops, or once intensity is up)
+    var lo=(S.n%2===0||I>.5)?S.low[bar]:null;
+    if(lo)for(k=0;k<lo.length;k++)if(lo[k][0]===s)
+      h.synth(lo[k][1],t,d*lo[k][2]*.95,.04,{wave:'square',voices:1,cut:800+300*I,q:2,att:.04,bus:'fx',pan:.25});
+    // deal: bright up-and-over arpeggio in sixteenths
+    if(h.deal){p=v[[0,2,4,2,1,3,4,3][s%8]];h.synth(p+(s>=8&&p<67?12:0),t,d*.8,.03,{wave:'square',voices:1,cut:2600,q:2,bus:'fx',pan:.45})}
+  }
+};
+// Stage 3: Discovery. C minor, 122 bpm, 7/8 (grouped 2+2+3), 16-bar loop.
+// The first odd meter: a limping, curious groove, arp cells that restart on each group, a Neapolitan Db for a darker turn.
+SONGS[3]={
+  name:'Discovery',
+  title:'Seven Questions Deep',
+  bpm:122,
+  steps:224,                     // 16 bars x 14 sixteenths
+  n:0,
+  ch:[
+    {b:36,v:[60,63,67,70,74]},   // Cm9
+    {b:44,v:[60,63,67,72,74]},   // Abmaj7#11
+    {b:41,v:[60,65,68,72,75]},   // Fm7
+    {b:43,v:[60,62,65,67,72]},   // Gsus4 (bar 7 turns to G7b9)
+    {b:39,v:[58,62,65,67,70]},   // Ebmaj9
+    {b:38,v:[58,62,65,70,72]},   // Bbadd9/D
+    {b:37,v:[61,65,68,72,75]},   // Dbmaj9 (Neapolitan)
+    {b:43,v:[60,62,65,67,72]}    // Gsus4 (bar 15 turns to G7)
+  ],
+  g7b9:[59,62,65,68,71],
+  g7:[59,62,65,67,71],
+  // lead: [step,midi,len] per bar; back half every loop, the call (bars 2-3, 6-7) on alternate loops
+  back:{8:[[0,70,4],[4,67,4],[8,74,6]],9:[[0,72,4],[4,70,4],[8,67,6]],
+        10:[[0,65,4],[4,70,4],[8,72,3],[11,74,3]],11:[[0,74,8],[8,72,6]],
+        12:[[0,72,4],[4,68,4],[8,65,6]],13:[[0,68,4],[4,72,4],[8,75,6]],
+        14:[[0,74,8],[8,72,6]],15:[[0,71,14]]},
+  call:{2:[[0,67,4],[4,72,4],[8,74,6]],3:[[0,72,14]],6:[[0,72,4],[4,67,4],[8,65,6]],7:[[0,68,6],[6,71,8]]},
+  // bass riff in 7/8: [step, offset, len]
+  riff:[[0,0,3],[3,0,1],[4,12,2],[6,0,2],[8,0,2],[10,7,2],[12,12,2]],
+  // keep every bass note inside MIDI 28..48: fold by octaves, and if the jump folds onto the root use the fifth instead
+  bn:function(r,o){var n=r+o;while(n>48)n-=12;while(n<28)n+=12;if(n===r&&o!==0)n=(r+7>48)?r-5:r+7;return n},
+  cells:[[0,1,2,3],[1,2,3,4],[0,2,4,3,2,1]],
+  play:function(i,t,d,h){
+    var S=SONGS[3];if(i===0)S.n++;
+    var bar=Math.floor(i/14),s=i%14,ci=bar>>1,I=h.intensity||0,c=S.ch[ci],k,p;
+    var v=(bar===7)?S.g7b9:(bar===15)?S.g7:c.v;
+    var grp=s<4?0:s<8?1:2,gs=s<4?s:s<8?s-4:s-8;          // which 2+2+3 group, and step within it
+    if(s===0&&(bar%2===0||bar===7||bar===15)){
+      h.chord(v.slice());
+      var plen=(bar===6||bar===7||bar>=14)?14:28;
+      for(k=0;k<v.length;k++)h.synth(v[k],t,d*plen,.019,{pad:true,cut:700+700*I,att:.35,q:2,detune:13,bus:'pump',pan:(k-2)*.25});
+      if(i===0&&S.n>1)h.hit(t,'crash',.035);
+    }
+    // bass: thick saw riff, filter opens with intensity
+    for(k=0;k<S.riff.length;k++)if(S.riff[k][0]===s){
+      h.synth(S.bn(c.b,S.riff[k][1]),t,d*S.riff[k][2]*.9,s===0?.11:.085,{cut:280+800*I,q:9,detune:9});
+    }
+    // drums: kick on the 2+2+3 pulse, claps on 4 and 11
+    if(s===0||s===8)h.hit(t,'kick',.45);
+    if(I>.4&&s===10)h.hit(t,'kick',.28);
+    if(s===4||s===11)h.hit(t,'clap',.075);
+    if(s%2===0)h.hit(t,'hat',gs===0?.03:.018);
+    if(I>.55&&s%2===1)h.hit(t,'hat',.01);
+    if(s===12&&bar%2===1)h.hit(t,'openhat',.03);
+    if(bar===15&&s>=8)h.hit(t,'tom',.16-(s-8)*.018);
+    // arp: a cell that restarts on every group, so the pattern limps with the meter
+    var cell=S.cells[grp];p=v[cell[gs%cell.length]];if(p>70)p-=12;
+    if(I>.15||S.n>1||s%2===0)h.synth(p,t,d*.85,gs===0?.034:.024,{voices:1,cut:700+1100*I,q:8,bus:'fx',pan:grp===1?.35:-.25});
+    // lead
+    var ph=S.back[bar]||((S.n%2===0||I>.45)?S.call[bar]:null);
+    if(ph)for(k=0;k<ph.length;k++)if(ph[k][0]===s)
+      h.synth(ph[k][1],t,d*ph[k][2]*.93,.055,{voices:2,detune:11,cut:1100+600*I,q:4,att:.015,glide:(k===0?-1:0),bus:'fx'});
+    // a low fifth drone under the second half once intensity is up
+    if(I>.6&&bar>=8&&s===0&&bar%2===0)h.synth(c.b+19,t,d*28,.03,{pad:true,wave:'triangle',voices:1,cut:600,att:.8,bus:'pump'});
+    // deal: three-against-seven counter-arp, bright but mid
+    if(h.deal&&i%3===0){p=v[(Math.floor(i/3))%v.length];h.synth(p<64?p+12:p,t,d*2.6,.035,{wave:'square',voices:1,cut:2400,q:2,bus:'fx',pan:.45})}
+  }
+};
+// Stage 4: Demo. "Walkthrough". D minor, 122 bpm, 4/4, 16 bars.
+// A (bars 0-7): Dm | Bb | C | Am, two bars each, under a 6-against-16 arpeggio. B (bars 8-15): Gm Gm Eb Eb Bb C Asus A, with the lead.
+SONGS[4]={
+  name:'Demo',
+  title:'Walkthrough',
+  bpm:122,
+  steps:256,
+  play:(function(){
+    // per bar: [bass root, chord voicing (57..76)]
+    var DM=[38,[62,65,69]],BB=[34,[58,62,65]],C=[36,[60,64,67]],AM=[33,[60,64,69]],
+        GM=[31,[58,62,67]],EB=[39,[58,63,67]],ASUS=[33,[57,62,64]],A=[33,[57,61,64]];
+    var BARS=[DM,DM,BB,BB,C,C,AM,AM, GM,GM,EB,EB,BB,C,ASUS,A];
+    // lead for section B: [bar, step, midi, length in sixteenths]
+    var LEAD=[[8,0,67,4],[8,4,70,4],[8,8,69,2],[8,10,67,2],[8,12,65,4],
+      [9,0,62,6],[9,6,65,2],[9,8,67,8],
+      [10,0,70,4],[10,4,67,4],[10,8,72,2],[10,10,70,2],[10,12,67,4],
+      [11,0,63,6],[11,6,65,2],[11,8,67,8],
+      [12,0,65,4],[12,4,69,4],[12,8,70,4],[12,12,74,4],
+      [13,0,72,6],[13,6,70,2],[13,8,67,4],[13,12,64,4],
+      [14,0,69,8],[14,8,67,4],[14,12,64,4],
+      [15,0,61,8],[15,8,64,4],[15,12,67,2],[15,14,69,2]];
+    var LM={};for(var k=0;k<LEAD.length;k++)LM[LEAD[k][0]*16+LEAD[k][1]]=LEAD[k];
+    var ARP=[0,1,2,3,2,1, 0,1,2,3,2,1, 0,2,1,3];     // groups of six over sixteen: a rolling cross-rhythm
+    var BASS=[[0,0,3],[3,0,2],[6,0,2],[8,0,2],[10,1,1],[11,0,2],[14,1,2]]; // [step, 0 root / 1 high, len]
+    var n=-1;
+    return function(i,t,d,h){
+      if(i===0)n++;
+      var bar=i>>4,s=i&15,B=BARS[bar],r=B[0],c=B[1],I=h.intensity||0,hiN=r+12>48?r+7:r+12;
+      var change=s===0&&(bar===0||BARS[bar-1]!==B);
+      if(change){
+        h.chord(c);
+        var len=1;while(bar+len<16&&BARS[bar+len]===B)len++;
+        for(var v=0;v<3;v++)h.synth(c[v],t,d*16*len-d,.022,{pad:true,att:.25,cut:650+700*I,q:3,bus:'pump',pan:(v-1)*.5});
+      }
+      var intro=(n===0&&bar<2);
+      // drums
+      if(s%4===0)h.hit(t,'kick',intro&&s>0?.3:.44);
+      if(!intro&&(s===4||s===12))h.hit(t,'clap',.11);
+      if(s%4===2)h.hit(t,'hat',.04);
+      else if(I>.4&&s%2===1)h.hit(t,'hat',.016);
+      if(s===14&&bar%4===3)h.hit(t,'kick',.3);
+      if((bar===7||bar===15)&&s>=12){h.hit(t,'tom',.18-.02*(s-12));}
+      if(s===0&&(bar===8||(bar===0&&n>0)))h.hit(t,'crash',.05);
+      // bass: thick filtered saw, syncopated
+      for(var b=0;b<BASS.length;b++)if(BASS[b][0]===s){
+        h.synth(BASS[b][1]?hiN:r,t,d*BASS[b][2]*.9,.095,{voices:3,detune:9,cut:330+520*I,q:7});
+        if(BASS[b][1]===0&&s===0)h.synth(r-12>=28?r-12:r,t,d*3,.03,{wave:'sine',voices:1});
+      }
+      // arpeggio (the engine of the track)
+      var an=c.concat([c[0]+12])[ARP[s]];
+      h.synth(an,t,d*.85,s%6===0?.034:.026,{voices:2,detune:5,cut:850+750*I,q:5,bus:'fx',pan:s%2?.25:-.25});
+      // section B lead
+      var L=LM[i];
+      if(L){
+        h.synth(L[2],t,d*L[3]*.95,.055,{voices:3,detune:10,cut:1300+500*I,q:3,att:.015,bus:'fx'});
+        if(I>.55&&L[2]-12>=52)h.synth(L[2]-12,t,d*L[3]*.95,.03,{wave:'square',voices:1,cut:900,q:2,bus:'fx'});
+      }
+      // section A counter motif: from the second loop, or once the pipe is long
+      if(bar<8&&bar%2===1&&(n>0||I>.35)){
+        if(s===10)h.synth(c[2],t,d*2,.04,{wave:'triangle',voices:1,cut:1600,bus:'fx'});
+        if(s===12)h.synth(c[1],t,d*2,.04,{wave:'triangle',voices:1,cut:1600,bus:'fx'});
+        if(s===14)h.synth(c[0]+(bar%4===3?12:0),t,d*2,.04,{wave:'triangle',voices:1,cut:1600,bus:'fx'});
+      }
+      // deal: a high counter-arpeggio on the offbeat sixteenths
+      if(h.deal&&s%2===1){
+        var dn=[c[0]+12,c[1]+12,c[2]+12,c[1]+12][(s>>1)%4];if(dn>79)dn-=12;
+        h.synth(dn,t,d*.7,.034,{wave:'square',voices:1,cut:2200,q:4,bus:'fx',pan:.4});
+      }
+    };
+  })()
+};
+// Stage 5: Proposal. "Terms in Seven". F# minor (Dorian), 128 bpm, 7/8 grouped 2+2+3, 16 bars of 14 sixteenths.
+// A (bars 0-7): F#m | A | E | B, two bars each. B (bars 8-15): D | E | F#m | C#sus4 C#.
+SONGS[5]={
+  name:'Proposal',
+  title:'Terms in Seven',
+  bpm:128,
+  steps:224,
+  play:(function(){
+    var FM=[30,[61,66,69]],A=[33,[61,64,69]],E=[28,[59,64,68]],B=[35,[59,63,66]],
+        D=[38,[62,66,69]],CSUS=[37,[61,66,68]],CS=[37,[61,65,68]];
+    var BARS=[FM,FM,A,A,E,E,B,B, D,D,E,E,FM,FM,CSUS,CS];
+    var BL=14;
+    // lead: [bar, step, midi, length in sixteenths]; phrases run two bars (28 sixteenths)
+    var LEAD=[
+      [0,0,66,4],[0,4,69,4],[0,8,68,2],[0,10,66,2],[0,12,64,2],[1,0,66,6],[1,6,61,4],[1,10,64,4],
+      [2,0,69,4],[2,4,73,4],[2,8,71,2],[2,10,69,2],[2,12,68,2],[3,0,69,6],[3,6,64,4],[3,10,66,4],
+      [4,0,68,4],[4,4,71,4],[4,8,73,2],[4,10,71,2],[4,12,68,2],[5,0,64,6],[5,6,68,4],[5,10,71,4],
+      [6,0,71,4],[6,4,75,4],[6,8,73,2],[6,10,71,2],[6,12,66,2],[7,0,68,6],[7,6,66,4],[7,10,63,4],
+      [8,0,69,6],[8,6,74,4],[8,10,73,4],[9,0,71,6],[9,6,69,8],
+      [10,0,68,6],[10,6,71,4],[10,10,76,4],[11,0,74,6],[11,6,71,8],
+      [12,0,73,6],[12,6,69,4],[12,10,66,4],[13,0,68,6],[13,6,69,4],[13,10,73,4],
+      [14,0,73,6],[14,6,71,4],[14,10,68,4],[15,0,65,8],[15,8,68,6]];
+    var LM={};for(var k=0;k<LEAD.length;k++)LM[LEAD[k][0]*BL+LEAD[k][1]]=LEAD[k];
+    // bass per bar: [step, 0 root / 1 high / 2 fifth, len]; follows the 2+2+3 groups
+    var BASS=[[0,0,2],[2,0,1],[3,0,1],[4,1,2],[6,0,2],[8,0,2],[10,2,2],[12,1,2]];
+    var ARP=[0,1,2, 1,2,3, 0,1,2,3, 2,3,1,2];          // 3+3+4+4 over the bar
+    var n=-1;
+    return function(i,t,d,h){
+      if(i===0)n++;
+      var bar=Math.floor(i/BL),s=i%BL,Bc=BARS[bar],r=Bc[0],c=Bc[1],I=h.intensity||0;
+      var hiN=r+12>48?r+7:r+12,fifth=r+7;
+      if(s===0&&(bar===0||BARS[bar-1]!==Bc)){
+        h.chord(c);
+        var len=1;while(bar+len<16&&BARS[bar+len]===Bc)len++;
+        for(var v=0;v<3;v++)h.synth(c[v]-(v===1?12:0),t,d*BL*len-d,.022,{pad:true,att:.3,cut:600+700*I,q:3,bus:'pump',pan:(v-1)*.55});
+      }
+      // drums: eighths K h S h | K K S
+      if(s===0||s===8)h.hit(t,'kick',.45);
+      if(s===10)h.hit(t,'kick',.32);
+      if(s===4||s===12)h.hit(t,'snare',.1);
+      if(s===12&&bar%2===1)h.hit(t,'clap',.07);
+      if(s%2===0)h.hit(t,'hat',s===0||s===4||s===8?.04:.026);
+      else if(I>.45)h.hit(t,'hat',.014);
+      if(bar===15&&s>=8)h.hit(t,'tom',.12+.015*(s-8));
+      if(s===0&&(bar===8||(bar===0&&n>0)))h.hit(t,'crash',.05);
+      // bass
+      for(var b=0;b<BASS.length;b++)if(BASS[b][0]===s){
+        var bn=BASS[b][1]===1?hiN:BASS[b][1]===2?fifth:r;
+        h.synth(bn,t,d*BASS[b][2]*.85,.095,{voices:3,detune:10,cut:360+560*I,q:8,glide:BASS[b][1]===1?-2:0});
+      }
+      // arpeggio in 3+3+4+4
+      var an=c.concat([c[0]+12])[ARP[s]];
+      h.synth(an,t,d*.8,(s===0||s===3||s===6||s===10)?.034:.025,{voices:2,detune:6,cut:800+800*I,q:6,bus:'fx',pan:s%2?.3:-.3});
+      // lead: always in section B; in A from the second loop or once the pipe is long
+      var L=LM[i];
+      if(L&&(bar>=8||n>0||I>.3)){
+        h.synth(L[2],t,d*L[3]*.95,.05,{voices:3,detune:11,cut:1250+550*I,q:3,att:.02,bus:'fx',glide:L[3]>=6?-1:0});
+        if(I>.6&&L[2]-12>=52)h.synth(L[2]-12,t,d*L[3]*.95,.028,{wave:'triangle',voices:1,cut:1000,q:2,bus:'fx'});
+      }
+      // deal: bright three-note counter cell running across the seven (it lands differently each bar)
+      if(h.deal){
+        var cell=[c[2]+12,c[1]+12,c[0]+12],dn=cell[i%3];if(dn>79)dn-=12;
+        if(s%2===1||i%3===0)h.synth(dn,t,d*.65,.03,{wave:'square',voices:1,cut:2100,q:4,bus:'fx',pan:.45});
+      }
+    };
+  })()
+};
+// Stage 6: Negotiation. "Counteroffer". C minor, 134 bpm, 4/4, 16 bars.
+// A (bars 0-7): Cm | Ab | Fm | G, two bars each; a low saw "offer" answered by a square "counter".
+// B (bars 8-15): Eb Bb Ab Db Fm Ab Gsus G, one per bar, one long lead line over a sixteenth gallop.
+SONGS[6]={
+  name:'Negotiation',
+  title:'Counteroffer',
+  bpm:134,
+  steps:256,
+  play:(function(){
+    var CM=[36,[60,63,67]],AB=[32,[60,63,68]],FM=[29,[60,65,68]],G=[31,[59,62,67]],
+        EB=[39,[58,63,67]],BB=[34,[58,62,65]],DB=[37,[61,65,68]],GSUS=[31,[60,62,67]];
+    var BARS=[CM,CM,AB,AB,FM,FM,G,G, EB,BB,AB,DB,FM,AB,GSUS,G];
+    // [bar, step, midi, len, voice] voice 0 = offer (low saw), 1 = counter (square), 2 = section B lead
+    var LEAD=[
+      [0,0,60,3,0],[0,3,63,3,0],[0,6,67,2,0],[0,8,65,2,0],[0,10,63,2,0],[0,12,62,4,0],[1,0,63,3,0],[1,3,60,3,0],[1,6,58,2,0],[1,8,60,8,0],
+      [2,0,72,3,1],[2,3,70,3,1],[2,6,68,2,1],[2,8,67,6,1],[2,14,68,2,1],[3,0,70,3,1],[3,3,72,3,1],[3,6,75,2,1],[3,8,72,8,1],
+      [4,0,65,3,0],[4,3,68,3,0],[4,6,72,2,0],[4,8,70,2,0],[4,10,68,2,0],[4,12,67,4,0],[5,0,68,3,0],[5,3,65,3,0],[5,6,63,2,0],[5,8,65,8,0],
+      [6,0,71,3,1],[6,3,74,3,1],[6,6,71,2,1],[6,8,67,6,1],[6,14,68,2,1],[7,0,67,3,1],[7,3,65,3,1],[7,6,62,2,1],[7,8,59,4,1],[7,12,62,4,1],
+      [8,0,67,6,2],[8,6,70,4,2],[8,10,75,6,2],
+      [9,0,74,6,2],[9,6,70,4,2],[9,10,65,6,2],
+      [10,0,72,6,2],[10,6,68,4,2],[10,10,63,6,2],
+      [11,0,65,6,2],[11,6,68,4,2],[11,10,73,6,2],
+      [12,0,72,8,2],[12,8,68,4,2],[12,12,65,4,2],
+      [13,0,67,4,2],[13,4,68,4,2],[13,8,72,4,2],[13,12,75,4,2],
+      [14,0,74,8,2],[14,8,72,8,2],
+      [15,0,71,12,2],[15,12,67,4,2]];
+    var LM={};for(var k=0;k<LEAD.length;k++)LM[LEAD[k][0]*16+LEAD[k][1]]=LEAD[k];
+    // sixteenth gallop: 0 rest, 1 root, 2 octave/high; accents on the beat
+    var GAL=[1,1,2,1, 1,0,2,1, 1,1,2,1, 1,2,1,2];
+    var n=-1;
+    return function(i,t,d,h){
+      if(i===0)n++;
+      var bar=i>>4,s=i&15,Bc=BARS[bar],r=Bc[0],c=Bc[1],I=h.intensity||0,secB=bar>=8;
+      var hiN=r+12>48?r+7:r+12;
+      if(s===0&&(bar===0||BARS[bar-1]!==Bc)){
+        h.chord(c);
+        var len=1;while(bar+len<16&&BARS[bar+len]===Bc)len++;
+        for(var v=0;v<3;v++)h.synth(c[v],t,d*16*len-d,secB?.026:.02,{pad:true,att:.2,cut:600+800*I,q:3,bus:'pump',pan:(v-1)*.6});
+      }
+      var intro=(n===0&&bar<2);
+      // drums
+      if(s%4===0)h.hit(t,'kick',.46);
+      if(s===14&&(secB||I>.5))h.hit(t,'kick',.28);
+      if(!intro&&(s===4||s===12)){h.hit(t,'snare',.11);h.hit(t,'clap',.06)}
+      if(!intro){if(s%4===2)h.hit(t,'openhat',.03);else h.hit(t,'hat',s%2?.014:.022)}
+      if(bar===15&&s>=8)h.hit(t,'snare',.04+.012*(s-8));
+      if(bar===7&&s>=12)h.hit(t,'tom',.16);
+      if(s===0&&(bar===8||(bar===0&&n>0)))h.hit(t,'crash',.055);
+      // bass gallop (in the intro it plays on the beats only, filter closed)
+      var g=GAL[s];
+      if(g&&(!intro||s%4===0))h.synth(g===2?hiN:r,t,d*.75,s%4===0?.1:.075,{voices:3,detune:9,cut:(intro?260:340)+600*I+(secB?120:0),q:9});
+      // offbeat stab on the chord: the push and pull of the deal
+      if(!intro&&(s===3||s===10))for(var v2=0;v2<3;v2++)h.synth(c[v2],t,d*1.2,.018,{voices:2,detune:12,cut:900+700*I,q:4,bus:'fx'});
+      // leads
+      var L=LM[i];
+      if(L){
+        if(L[4]===0)h.synth(L[2],t,d*L[3]*.92,.055,{voices:3,detune:12,cut:850+450*I,q:5,att:.01,bus:'fx',pan:-.3});
+        else if(L[4]===1)h.synth(L[2],t,d*L[3]*.92,.042,{wave:'square',voices:2,detune:6,cut:1300+400*I,q:3,att:.01,bus:'fx',pan:.3});
+        else{h.synth(L[2],t,d*L[3]*.95,.055,{voices:3,detune:11,cut:1300+600*I,q:3,att:.02,bus:'fx',glide:L[3]>=6?-1:0});
+          if(I>.5&&L[2]-12>=52)h.synth(L[2]-12,t,d*L[3]*.95,.03,{wave:'square',voices:1,cut:900,q:2,bus:'fx'});}
+      }
+      // section B: a quiet sixteenth arpeggio under the lead once the pipe is long
+      if(secB&&I>.35){var an=[c[0],c[1],c[2],c[1]][s%4];h.synth(an,t,d*.7,.022,{voices:1,cut:1100,q:5,bus:'fx',pan:s%2?.35:-.35});}
+      // deal: bright sixteenth arpeggio an octave up, rising and falling
+      if(h.deal){
+        var dn=[c[0]+12,c[1]+12,c[2]+12,c[1]+12,c[0]+12,c[2]+12,c[1]+12,c[2]+12][s%8];if(dn>79)dn-=12;
+        if(s%4!==0)h.synth(dn,t,d*.6,.027,{wave:'square',voices:1,cut:2200,q:4,bus:'fx',pan:.5});
+      }
+    };
+  })()
+};
+// Stage 7: Contract. "Fine Print". D minor, 136 bpm, 4/4, 16-bar loop.
+// Tight, mechanical and dark: a rolling 3+3+2 saw bass, a Neapolitan (Eb) turn in the second half, and a lead that only
+// arrives once the deal gets serious. Section A (bars 1-8) sets the machine running, section B (bars 9-16) brings the theme.
+SONGS[7]={
+  name:'Contract',
+  title:'Fine Print',
+  bpm:136,
+  steps:256,
+  n:-1,
+  // two bars per chord: root (bass MIDI) and pad voicing (57-76)
+  prog:[
+    {r:38,c:[57,62,64,65]},        // Dm(add9)  A D E F
+    {r:34,c:[57,58,62,65],b7:11},        // Bbmaj7    A Bb D F
+    {r:31,c:[58,62,65,69]},        // Gm9       Bb D F A
+    {r:33,c:[57,62,64,69]},        // Asus4     A D E A  (resolves to A on bar 2)
+    {r:38,c:[57,60,62,65]},        // Dm7       A C D F
+    {r:36,c:[57,60,65,67]},        // F/C add9  A C F G
+    {r:39,c:[58,62,63,67],b7:11},        // Ebmaj7    Bb D Eb G  (the dark bII turn)
+    {r:33,c:[57,61,64,67]}         // A7        A C# E G
+  ],
+  // bass: 3+3+2 accent shape, offsets from root (12 folds to a fifth if it would leave the bass range)
+  arpIdx:[0,1,2, 0,1,2, 3,2, 1,2,3, 1,2,3, 2,1],
+  bassPat:[0,0,12, 0,0,12, 0,7, 0,0,12, 0,0,12, 10,12],
+  theme:[ // section B lead: [step from bar 9, midi, length in steps]
+    [0,69,6],[6,67,2],[8,65,4],[12,64,2],[14,65,2],
+    [16,62,8],[26,64,2],[28,65,4],
+    [32,67,6],[38,69,2],[40,72,8],[48,70,4],[52,69,4],[56,67,4],[60,65,4],
+    [64,70,8],[72,67,4],[76,70,2],[78,72,2],[80,74,12],[92,72,2],[94,70,2],
+    [96,69,4],[100,73,4],[104,76,8],[112,73,6],[118,69,2],[120,64,4],[124,61,4]
+  ],
+  play:function(i,t,d,h){
+    var S=SONGS[7],bar=i>>4,s=i&15,P=S.prog[bar>>1],r=P.r,k=h.intensity||0;
+    if(i===0)S.n++;
+    var loop=S.n,secB=bar>=8;
+    // chord calls: once per change, plus the Asus4 and A7 resolving to their major third on their second bar
+    if(s===0&&(bar&1)===0)h.chord(P.c);
+    if(s===0&&bar===7)h.chord([57,61,64,69]);
+    if(s===0&&bar===15)h.chord([57,61,64,67]);
+    // ---- drums
+    if(s%4===0)h.hit(t,'kick',.46);
+    if(s===4||s===12)h.hit(t,'clap',.11);
+    if(s===12&&secB)h.hit(t+d*.5,'snare',.05);
+    if(s%4===2)h.hit(t,'hat',.035);
+    if(k>.35&&(s%4===1||s%4===3))h.hit(t,'hat',.012+k*.012);
+    if(s===14&&(bar&1))h.hit(t,'openhat',.03);
+    if((bar===7||bar===15)&&s>=12)h.hit(t,'tom',.16+(s-12)*.03);
+    if(s===0&&(bar===0||bar===8))h.hit(t,'crash',.05);
+    // ---- bass: thick filtered saw, filter opens with intensity, accent on the 3+3+2 heads
+    var o=S.bassPat[s];if(o===10&&P.b7)o=P.b7;if(r+o>48)o=o===12?7:0;
+    var acc=(s===0||s===3||s===6||s===8||s===11||s===14);
+    h.synth(r+o,t,d*(acc?1.1:.7),acc?.105:.08,{cut:300+k*700+(acc?140:0),q:9,voices:3,detune:9});
+    if(s===0)h.synth(r-12>=28?r-12:r,t,d*3.5,.05,{wave:'sine',voices:1,cut:200});
+    // ---- pad: two-bar swells on the pump bus
+    if(s===0&&(bar&1)===0)for(var p=0;p<4;p++)h.synth(P.c[p],t,d*30,.022,{pad:true,att:.35,cut:700+k*800,q:2,voices:2,detune:11,bus:'pump',pan:p%2?.3:-.3});
+    // ---- arp: chord tones in 3s across the 4/4 grid, so the accent rolls round the bar
+    var arpC=P.c.slice(1).concat(P.c[1]+12),ai=S.arpIdx[s];
+    var an=arpC[ai];
+    if(loop>0||k>.15||secB)h.synth(an,t,d*.8,.028+k*.01,{wave:'sawtooth',voices:1,cut:900+k*900,q:5,bus:'fx',pan:ai===1?.35:-.2});
+    // ---- section B theme; on the first pass at low intensity only its outline plays
+    if(secB){
+      var full=loop>0||k>.45,rel=i-128,T=S.theme;
+      for(var j=0;j<T.length;j++)if(T[j][0]===rel){
+        if(full||T[j][2]>=6)h.synth(T[j][1],t,d*T[j][2]*.95,.055,{voices:2,detune:8,cut:1300+k*500,q:4,bus:'fx',att:.012});
+        if(full&&k>.6)h.synth(T[j][1]-12,t,d*T[j][2]*.95,.03,{wave:'square',voices:1,cut:900,q:2,bus:'fx'});
+      }
+    }else if(loop>0&&(bar&1)===1&&(s===8||s===10||s===14)){
+      // section A answer motif on later loops: a short falling call
+      var call={8:P.c[3]+0,10:P.c[2],14:P.c[1]}[s];h.synth(call,t,d*1.6,.04,{wave:'square',voices:1,cut:1100,q:3,bus:'fx'});
+    }
+    // ---- deal: a bright counter-line in dotted eighths, an octave over the chord
+    if(h.deal&&s%3===0&&s<15){
+      var dn=P.c[(s/3+bar)%4]+12;while(dn>79)dn-=12;
+      h.synth(dn,t,d*1.2,.03,{wave:'square',voices:1,cut:2400,q:3,bus:'fx',pan:(s%2?.45:-.45)});
+    }
+  }
+};
+// Stage 8: Closing. "Seven Signatures". F# minor, 144 bpm, 7/8 (grouped 2+2+3), 16-bar loop.
+// The prog stage: everything leans forward and trips over the short bar. A 7-step bass engine, a 4-note arp that drifts
+// against the 7/8 so it lands differently every bar, chord stabs, and a soaring theme in the second half that climbs
+// to a C# major (dominant) turnaround which throws the loop back to the top.
+SONGS[8]={
+  name:'Closing',
+  title:'Seven Signatures',
+  bpm:144,
+  steps:224,           // 16 bars of 7/8 = 16 x 14 sixteenths
+  n:-1,
+  prog:[
+    {r:30,c:[57,61,64,68]},        // F#m9      A C# E G#
+    {r:38,c:[57,62,66,73]},        // Dmaj7     A D F# C#
+    {r:40,c:[59,64,66,68]},        // Eadd9     B E F# G#
+    {r:37,c:[59,61,64,68]},        // C#m7      B C# E G#
+    {r:30,c:[61,66,69,73]},        // F#m       C# F# A C#
+    {r:35,c:[59,62,66,73]},        // Bm(add9)  B D F# C#
+    {r:38,c:[62,66,68,73]},        // Dmaj7#11  D F# G# C#
+    {r:37,c:[59,61,65,68]}         // C#7       B C# E# G#
+  ],
+  // 14-step bass figure (null = rest); 12 folds to a fifth if it would leave the bass range
+  bassPat:[0,null,0,12, 0,null,12,0, 0,null,0,7,12,7],
+  bassAcc:[1,0,0,0, 1,0,0,0, 1,0,0,0,1,0],
+  theme:[ // section B lead, steps from bar 9 (bars are 14 steps)
+    [0,69,4],[4,73,4],[8,71,3],[11,69,3],
+    [14,68,4],[18,66,10],
+    [28,66,4],[32,69,4],[36,74,6],
+    [42,73,4],[46,71,4],[50,69,6],
+    [56,68,4],[60,69,4],[64,73,6],
+    [70,76,8],[78,74,6],
+    [84,73,4],[88,77,4],[92,73,6],
+    [98,68,4],[102,65,4],[106,61,8]
+  ],
+  play:function(i,t,d,h){
+    var S=SONGS[8],bar=Math.floor(i/14),s=i%14,P=S.prog[bar>>1],r=P.r,k=h.intensity||0;
+    if(i===0)S.n++;
+    var loop=S.n,secB=bar>=8,last=(bar&1)===1;
+    if(s===0&&(bar&1)===0)h.chord(P.c);
+    // ---- drums: K . . . S . . . K . K . S .  (2+2+3)
+    if(s===0||s===8)h.hit(t,'kick',.47);
+    if(s===10&&(k>.25||secB))h.hit(t,'kick',.36);
+    if(s===4||s===12)h.hit(t,'snare',.1);
+    if(s===12)h.hit(t,'clap',.07);
+    if(s%2===0&&s!==4&&s!==12)h.hit(t,'hat',.032);
+    if(k>.3&&s%2===1)h.hit(t,'hat',.01+k*.012);
+    if(s===6)h.hit(t,'openhat',.025);
+    if(last&&bar%4===3&&s>=8)h.hit(t,'tom',.15+(s-8)*.025);   // fills into every 4th bar
+    if(s===0&&(bar===0||bar===8))h.hit(t,'crash',.055);
+    // ---- bass
+    var o=S.bassPat[s];
+    if(o!==null){if(r+o>48)o=o===12?7:0;if(r+o>48)o=0;
+      var a=S.bassAcc[s];
+      h.synth(r+o,t,d*(a?1.3:.75),a?.11:.085,{cut:280+k*800+(a?160:0),q:10,voices:3,detune:10,glide:(s===0&&bar%4===0)?-12:0});}
+    if(s===0)h.synth(r,t,d*4,.05,{wave:'sine',voices:1,cut:180});
+    // ---- pad
+    if(s===0&&(bar&1)===0)for(var p=0;p<4;p++)h.synth(P.c[p],t,d*26,.022,{pad:true,att:.3,cut:750+k*850,q:2,voices:2,detune:12,bus:'pump',pan:p%2?.35:-.35});
+    // ---- drifting arp: 4-note cycle against the 7-step bar, so it lands in a new place each bar
+    var ac=[P.c[0],P.c[1],P.c[2],P.c[3]],an=ac[[0,1,2,3,2,1][i%6]];
+    if(s%2===0||k>.2)h.synth(an,t,d*.85,.026+k*.012,{voices:1,cut:1000+k*1000,q:6,bus:'fx',pan:(i%2?.3:-.3)});
+    // ---- chord stabs on the 3-group in section A (later loops or rising intensity)
+    if(!secB&&(loop>0||k>.3)&&(s===8||s===11)&&last)
+      for(var q=1;q<4;q++)h.synth(P.c[q],t,d*1.4,.022,{voices:2,detune:10,cut:1500,q:3,bus:'fx'});
+    // ---- section B theme (first pass at low intensity plays only its long notes)
+    if(secB){
+      var full=loop>0||k>.4,rel=i-112,T=S.theme;
+      for(var j=0;j<T.length;j++)if(T[j][0]===rel){
+        if(full||T[j][2]>=6)h.synth(T[j][1],t,d*T[j][2]*.95,.058,{voices:2,detune:9,cut:1400+k*500,q:4,bus:'fx',att:.01,glide:T[j][2]>=8?-1:0});
+        if(full&&k>.55)h.synth(T[j][1]-12,t,d*T[j][2]*.95,.032,{wave:'square',voices:1,cut:1000,q:2,bus:'fx'});
+      }
+    }
+    // ---- deal: bright counter-line in threes (3 against 7), an octave up
+    if(h.deal&&i%3===0){
+      var dn=P.c[(i/3)%4|0]+12;while(dn>79)dn-=12;
+      h.synth(dn,t,d*1.1,.028,{wave:'square',voices:1,cut:2400,q:3,bus:'fx',pan:(i%2?.5:-.5)});
+    }
+  }
+};
+// Stage 9: Closed won. "Cloud Nine". A major (with borrowed F and G), 148 bpm, 4/4, 16-bar loop.
+// The finale. Nine chord changes per loop, every chord voiced with its 9th, and a nine-note hook that climbs to the top.
+// Trance-style rolling offbeat bass, a big pumping supersaw pad, four-on-the-floor, and a cinematic bVI-bVII lift
+// (F to G) in the back half that lands home on A every time round. Triumphant, but still cool and synth-driven.
+SONGS[9]={
+  name:'Closed won',
+  title:'Cloud Nine',
+  bpm:148,
+  steps:256,
+  n:-1,
+  // [start bar, bass root, pad voicing 57-76]: nine changes
+  prog:[
+    [0, 33,[57,61,64,71]],         // Aadd9      A C# E B
+    [2, 37,[61,64,68,71]],         // C#m7       C# E G# B
+    [4, 38,[62,66,69,73]],         // Dmaj7      D F# A C#
+    [6, 35,[59,66,69,73]],         // Bm9        B F# A C#
+    [8, 29,[60,64,65,69]],         // Fmaj7      C E F A
+    [10,31,[59,62,64,69]],         // G6/9       B D E A
+    [12,28,[59,64,69,71]],         // Esus4      B E A B  (to E on bar 2)
+    [14,29,[60,65,67,69]],         // Fadd9      C F G A
+    [15,31,[59,62,67,69]]          // Gadd9      B D G A
+  ],
+  hook:[ // lead over the whole loop: [step, midi, length]
+    [0,64,2],[2,69,2],[4,71,2],[6,73,6],[12,71,2],[14,69,2],[16,71,4],[20,76,8],[28,73,4],   // the nine-note hook
+    [32,68,4],[36,71,4],[40,73,8],[48,71,2],[50,68,2],[52,64,4],[56,66,8],
+    [64,69,6],[70,73,2],[72,74,8],[80,73,4],[84,69,4],[88,66,8],
+    [96,64,2],[98,66,2],[100,69,4],[104,73,8],[112,71,4],[116,69,2],[118,66,2],[120,64,8],
+    [128,65,2],[130,69,2],[132,72,4],[136,76,12],[148,74,2],[150,72,2],[152,69,4],[156,72,4],
+    [160,71,6],[166,74,2],[168,76,8],[176,74,4],[180,71,4],[184,67,8],
+    [192,69,8],[200,71,4],[204,69,4],[208,68,8],[216,71,4],[220,76,4],
+    [224,72,4],[228,76,4],[232,77,8],
+    [240,74,4],[244,76,2],[246,74,2],[248,71,4],[252,73,4]
+  ],
+  // rolling bass: rest on the kick, roll the other three sixteenths (offset from root)
+  bassPat:[null,0,0,12, null,0,0,12, null,0,0,12, null,0,12,7],
+  chordAt:function(bar){var P=this.prog,c=P[0];for(var j=0;j<P.length;j++)if(P[j][0]<=bar)c=P[j];return c},
+  play:function(i,t,d,h){
+    var S=SONGS[9],bar=i>>4,s=i&15,k=h.intensity||0,C=S.chordAt(bar),r=C[1],v=C[2];
+    if(i===0)S.n++;
+    var loop=S.n,lift=bar>=8;
+    if(bar===13)v=[59,64,68,71];                        // Esus4 resolves to E
+    if(s===0&&(C[0]===bar||bar===13))h.chord(v);
+    // ---- drums
+    if(s%4===0)h.hit(t,'kick',.48);
+    if(s===4||s===12)h.hit(t,'clap',.12);
+    if(s===4||s===12)h.hit(t,'snare',.06);
+    if(s%4===2)h.hit(t,'openhat',.028+k*.01);
+    if(s%2===1)h.hit(t,'hat',.014+k*.01);
+    if(bar===15&&s>=8)h.hit(t,'snare',.04+(s-8)*.012);  // snare roll into the top
+    if(bar===7&&s>=12)h.hit(t,'tom',.16+(s-12)*.03);
+    if(s===0&&(bar===0||bar===8))h.hit(t,'crash',.065);
+    // ---- bass: saw roll with a sine sub under each kick
+    var o=S.bassPat[s];
+    if(o!==null){if(r+o>48)o=o===12?7:0;h.synth(r+o,t,d*.8,s%4===3?.11:.095,{cut:320+k*900+(s%4===3?150:0),q:8,voices:3,detune:10});}
+    else h.synth(r,t,d*1.6,.06,{wave:'sine',voices:1,cut:200});
+    // ---- pad: big supersaw on the pump bus, retriggered every bar so the pump breathes
+    if(s===0)for(var p=0;p<4;p++)h.synth(v[p],t,d*15,.021+(lift?.004:0),{pad:true,att:.15,cut:900+k*900,q:2,voices:3,detune:14,bus:'pump',pan:[-.4,.4,-.15,.15][p]});
+    // ---- arp: rising chord tones in sixteenths, folding over at the top
+    var ar=[v[0],v[1],v[2],v[3],v[1]+12>79?v[1]:v[1]+12,v[3],v[2],v[1]],an=ar[s%8];
+    h.synth(an,t,d*.8,.024+k*.014,{voices:1,cut:1100+k*900,q:6,bus:'fx',pan:(s%2?.35:-.35)});
+    // ---- lead: the hook; doubled an octave below for weight on later loops and as intensity climbs
+    var H=S.hook;
+    for(var j=0;j<H.length;j++)if(H[j][0]===i){
+      var n=H[j][1],L=H[j][2];
+      h.synth(n,t,d*L*.95,.066,{voices:2,detune:9,cut:1500+k*600,q:4,bus:'fx',att:.01,glide:L>=8?-2:0});
+      if(loop>0||k>.4)h.synth(n-12,t,d*L*.95,.035,{wave:'square',voices:1,cut:1100,q:2,bus:'fx'});
+      if(lift&&k>.6&&L>=6)h.synth(n-5,t,d*L*.95,.025,{voices:1,cut:1200,q:2,bus:'fx'});   // a fourth below on the long notes
+    }
+    // ---- deal: a sparkling counter-arpeggio, an octave up, in eighth-note triplet feel (every 3 steps)
+    if(h.deal&&i%3===0){
+      var dn=v[(i/3|0)%4]+12;while(dn>79)dn-=12;
+      h.synth(dn,t,d*1.2,.027,{wave:'square',voices:1,cut:2500,q:3,bus:'fx',pan:((i/3|0)%2?.5:-.5)});
+    }
+  }
+};
+/*@@/SONGS@@*/
+  var ac=null,A=null,_=null;
+  function audio(){if(A)return ac;try{ac=new (window.AudioContext||window.webkitAudioContext)();A=PipelineAudio(ac)}catch(e){ac=null;return null}return ac}
+  var mus={on:false,next:0,i:0,chord:[57,60,64],timer:null,deal:false,song:null};
+  // per-stage level, measured offline, so the soundtrack gets a little louder stage by stage instead of jumping
+  var GAIN=[1,1.08,1.04,1.06,.85,.86,.93,.81,.89,.88];
+  var H={synth:function(m,t,len,vol,o){A.synth(m,t,len,vol*GAIN[level],o)},hit:function(t,k,v,b){A.hit(t,k,v*GAIN[level],b)},chord:function(c){if(c&&c.length)mus.chord=c.slice()},deal:false,intensity:0};
+  function schedule(){
+    if(!mus.on||!ac)return;var song=SONGS[level]||SONGS[1];if(!song)return;
+    if(song!==mus.song){mus.song=song;mus.i=0}
+    while(mus.next<ac.currentTime+.15){
+      H.deal=mus.deal;H.intensity=Math.max(0,Math.min(1,(body.length-4)/14));
+      var d=15/(song.bpm*(1+.03*H.intensity));
+      try{song.play(mus.i%song.steps,mus.next,d,H)}catch(e){mus.on=false;clearInterval(mus.timer);return}   // a broken song goes quiet; the game carries on
+      mus.next+=d;mus.i++;
+    }
+  }
+  function root(){var r=mus.chord[0];while(r<57)r+=12;while(r>68)r-=12;return r}   // the current chord's root, in the mid register
+  var music={
+    start:function(){if(!sound||!audio())return;ac.resume&&ac.resume();mus.on=true;mus.song=null;mus.next=ac.currentTime+.08;
+      A.music.gain.cancelScheduledValues(ac.currentTime);A.music.gain.setTargetAtTime(.9,ac.currentTime,.05);clearInterval(mus.timer);mus.timer=setInterval(schedule,25);schedule()},
+    stop:function(fade){if(!A)return;mus.on=false;clearInterval(mus.timer);A.music.gain.cancelScheduledValues(ac.currentTime);A.music.gain.setTargetAtTime(0,ac.currentTime,fade||.04)},
+    jingle:function(notes,e,vol){if(!sound||!audio())return;var t=ac.currentTime+.03,k=root();
+      notes.forEach(function(n){if(n[0]!==_)[].concat(n[0]).forEach(function(p,i){A.synth(k+p,t,n[1]*e,(vol||.08)*(i?.6:1),{cut:1800,q:6,bus:'jingle'})});t+=n[1]*e})}
+  };
+  // Effects that land on the chord now playing
+  var sfx={
+    lead:function(){if(!sound||!audio())return;var c=mus.chord,t=ac.currentTime,o={cut:2400,q:8,bus:'jingle'};A.synth(c[1]||c[0],t,.08,.07,o);A.synth(c[2]||c[0]+7,t+.06,.12,.07,o)},
+    bonus:function(){if(!sound||!audio())return;var c=mus.chord,t=ac.currentTime;[c[0],c[1]||c[0]+4,c[2]||c[0]+7,c[0]+12].forEach(function(p,i){A.synth(p,t+i*.06,.14,.08,{cut:2600,q:8,bus:'jingle'})})},
+    die:function(){music.stop(.02);music.jingle([[7,1],[3,1],[0,1],[-2,1],[-5,3],[_,1],[[0,-5],1],[[3,0],1],[[7,3],3]],.12,.07)},   // falls, then picks itself up: try again
+    stage:function(){music.stop(.05);music.jingle([[0,1],[3,1],[7,1],[10,1],[_,1],[[12,7,3],5]],.1,.08)},
+    won:function(){music.stop(.05);music.jingle([[0,1],[3,1],[7,1],[12,1],[10,1],[7,1],[15,2],[_,1],[14,1],[16,1],[[19,16,12],7]],.11,.085)}   // ends on the major chord
+  };
+  function setSound(on){sound=on;sndB.textContent=on?'Sound on':'Sound off';sndB.setAttribute('aria-pressed',on);try{localStorage.setItem('n9snakeSound',on?'1':'0')}catch(e){}
+    if(on&&audio()){ac.resume&&ac.resume();if(mode==='play'||mode==='between')music.start();else sfx.lead()}else music.stop()}
+
+  /* ---------- level setup ---------- */
+  function load(lv){flow=[];level=lv;walls=buildWalls(lv);body=START.map(function(p){return p.slice()});dir='right';queue=[];prevTail=null;moved=false;grace=0;leads=0;sinceBonus=0;bonus=null;lead=null;lead=freeCell();hud()}
+  function hud(){scoreEl.textContent='Score '+total+' · Best '+best;lvlEl.textContent='Stage '+level+' of '+LAST+' · '+STAGES[level-1];
+    var need=NEED[level-1];while(pipsBox.children.length<need)pipsBox.appendChild(document.createElement('i'));while(pipsBox.children.length>need)pipsBox.removeChild(pipsBox.lastChild);
+    [].forEach.call(pipsBox.children,function(p,i){p.classList.toggle('on',i<leads)})}
+
+  /* ---------- the tick ---------- */
+  function step(){
+    if(queue.length){var d=queue.shift();if(d!==OPP[dir])dir=d}
+    var h=body[0],nx=wrap(h[0]+D[dir][0]),ny=wrap(h[1]+D[dir][1]);
+    var eats=lead&&lead[0]===nx&&lead[1]===ny;
+    if(occupied(nx,ny,!eats)){
+      if(mode==='play'&&grace<GRACE){grace++;moved=false;prevTail=null;return}   // Armanto's last-chance pause
+      return mode==='play'?die():reboot();
+    }
+    grace=0;moved=true;body.unshift([nx,ny]);flow.forEach(function(f){f.i+=1});   // what's in the pipe stays put in the world as the pipe lays forward
+    prevTail=eats?null:body.pop();
+    if(eats)eatLead(nx,ny);
+    if(bonus&&bonus.x===nx&&bonus.y===ny)eatBonus();
+    if(bonus&&--bonus.left<=0){bonus=null;sinceBonus=0}
+    mus.deal=!!bonus;
+  }
+  function eatLead(x,y){
+    if(mode==='attract'){if(body.length>14)body.length=5;lead=freeCell();return}
+    leads++;total+=level;sinceBonus++;flow.push({i:0,c:C.lead,r:.17});burst(x,y,'#2E9BD6',10);pop(x,y,'+'+level);sfx.lead();buzz();save();hud();
+    if(leads>=NEED[level-1]){lead=null;return clearLevel()}
+    lead=freeCell();
+    if(sinceBonus>=BONUS_EVERY&&!bonus){var c=freeCell();bonus={x:c[0],y:c[1],left:BONUS_TICKS,born:performance.now()};sinceBonus=0;say('A deal showed up. Grab it before it goes cold.')}
+  }
+  function eatBonus(){var worth=Math.max(level*2,Math.round(level*12*bonus.left/BONUS_TICKS));total+=worth;flow.push({i:0,c:'#FFFFFF',r:.21,deal:1});burst(bonus.x,bonus.y,'#FFFFFF',22);pop(bonus.x,bonus.y,'+'+worth);sfx.bonus();buzz();bonus=null;save();hud();say('Deal closed, plus '+worth+'.')}
+  function buzz(){if(!calm&&navigator.vibrate)try{navigator.vibrate(12)}catch(e){}}
+
+  /* ---------- flow ---------- */
+  function clearLevel(){
+    (level>=LAST?sfx.won:sfx.stage)();mode='between';bonus=null;
+    for(var i=0;i<body.length;i+=2)burst(body[i][0],body[i][1],'#C9D6EE',4);
+    if(level>=LAST){say('All levels cleared. You made it to cloud nine.');for(var b2=0;b2<6;b2++)burst(Math.random()*N|0,Math.random()*N|0,'#2E9BD6',12);setTimeout(function(){if(mode!=='between')return;mode='won';winP.hidden=false;menu('Closed won','Final score '+total+'. You made it to cloud nine.','Play again')},900);return}
+    banner={text:STAGES[level-1]+' done',t:performance.now()};say('Stage '+level+', '+STAGES[level-1]+', done.');
+    setTimeout(function(){if(mode!=='between')return;load(level+1);banner={text:STAGES[level-1],t:performance.now()};say('Stage '+level+' of '+LAST+': '+STAGES[level-1]+'. '+NEED[level-1]+' leads to move on.');
+      setTimeout(function(){if(mode==='between'){mode='play';lastTick=performance.now();music.start()}},calm?300:900)},calm?400:1300);
+  }
+  function die(){mode='over';deathAt=performance.now();shake=calm?0:10;sfx.die();save();hud();say('Game over. Score '+total+'.');
+    body.forEach(function(p,i){setTimeout(function(){burst(p[0],p[1],i?'#6F8FCB':'#FFFFFF',3)},calm?0:i*30)});
+    setTimeout(function(){if(mode!=='over')return;menu('Game over','Score '+total+(total>=best&&total>0?' · new best':''),'Play again')},calm?200:900)}
+  function menu(title,sub,label){ovt.textContent=title;ovs.textContent=sub;startB.textContent=label;exitB.hidden=false;ov.hidden=false;pad.hidden=pz.hidden=true;screen.classList.add('demo');startB.focus({preventScroll:true})}
+  function reboot(){load(1);total=0}              // the attract snake crashed: quietly start over
+
+  function play(){
+    var takeover=mode==='attract';winP.hidden=true;
+    if(soundPref===null&&!sound){sound=true;sndB.textContent='Sound on';sndB.setAttribute('aria-pressed',true);audio()}   // pressing Play turns the music on, unless you switched it off before
+    if(takeover){total=0;var keep=body.slice(0,4);load(1);body=keep;dir=dirOf(keep);moved=false;lead=freeCell()}   // you take the snake that was already moving
+    else{total=0;load(1)}
+    mode='between';ov.hidden=true;exitB.hidden=true;pad.hidden=pz.hidden=false;screen.classList.remove('demo');hud();
+    say('Stage 1: Prospecting. You have the pipeline. Arrow keys to steer.');banner={text:'Prospecting',t:performance.now()+(calm?0:500)};
+    enter(function(){cv.focus({preventScroll:true});setTimeout(function(){if(mode==='between'){mode='play';lastTick=performance.now();music.start()}},calm?0:350)});
+  }
+  function dirOf(b){var dx=b[0][0]-b[1][0],dy=b[0][1]-b[1][1];if(Math.abs(dx)>1)dx=-Math.sign(dx);if(Math.abs(dy)>1)dy=-Math.sign(dy);return dx>0?'right':dx<0?'left':dy>0?'down':'up'}
+  function pause(){if(mode==='play'){mode='pause';music.stop(.08);menu('Paused',matchMedia('(pointer:coarse)').matches?'Tap Resume to keep going':'Space to keep going','Resume')}else if(mode==='pause')resume()}
+  function resume(){mode='play';music.start();ov.hidden=true;exitB.hidden=true;pad.hidden=pz.hidden=false;screen.classList.remove('demo');lastTick=performance.now();cv.focus({preventScroll:true})}
+  function leave(){music.stop(.1);winP.hidden=true;ovt.textContent='Pipeline';ovs.textContent='Lay the pipeline. Catch the leads, grab the deals, close in nine stages.';startB.textContent='Play';exitB.hidden=true;ov.hidden=false;pad.hidden=pz.hidden=true;
+    screen.classList.add('demo');total=0;load(1);mode='attract';hud();exit(function(){startB.focus({preventScroll:true})})}
+
+  /* ---------- growing into focus: FLIP the box from where it was to where it lands ---------- */
+  function flip(change,done){
+    var a=box.getBoundingClientRect();change();var b=box.getBoundingClientRect();
+    if(calm||!box.animate){done&&done();return}
+    var anim=box.animate([{transformOrigin:'0 0',transform:'translate('+(a.left-b.left)+'px,'+(a.top-b.top)+'px) scale('+(a.width/b.width)+','+(a.height/b.height)+')'},{transformOrigin:'0 0',transform:'none'}],{duration:520,easing:'cubic-bezier(.2,.8,.2,1)'});
+    anim.onfinish=function(){done&&done()};
+  }
+  function enter(done){
+    if(nf.classList.contains('focus'))return done();
+    nf.classList.add('playing');document.body.classList.add('gaming');
+    setTimeout(function(){flip(function(){nf.classList.add('focus')},function(){
+      var r=box.getBoundingClientRect();if(r.top<80||r.bottom>innerHeight)box.scrollIntoView({block:r.height>innerHeight-140?'start':'center',behavior:calm?'auto':'smooth'});done()})},calm?0:300);
+  }
+  function exit(done){
+    document.body.classList.remove('gaming');
+    flip(function(){nf.classList.remove('focus')},function(){nf.classList.remove('playing');done&&done()});
+  }
+
+  /* ---------- the attract-mode pilot: shortest safe path to the lead ---------- */
+  function pilot(){
+    var h=body[0],goal=lead,seen=new Map(),q=[[h[0],h[1]]];seen.set(key(h[0],h[1]),null);
+    while(q.length){var c=q.shift();if(c[0]===goal[0]&&c[1]===goal[1])break;
+      for(var d in D){var x=wrap(c[0]+D[d][0]),y=wrap(c[1]+D[d][1]),k=key(x,y);if(seen.has(k)||occupied(x,y,true))continue;seen.set(k,[c,d]);q.push([x,y])}}
+    var k=key(goal[0],goal[1]),first=null;
+    if(seen.has(k)){while(seen.get(k)){var s=seen.get(k);first=s[1];k=key(s[0][0],s[0][1])}}
+    if(!first){var bestD=null,room=-1;for(var d2 in D){if(d2===OPP[dir])continue;var x2=wrap(h[0]+D[d2][0]),y2=wrap(h[1]+D[d2][1]);if(occupied(x2,y2,true))continue;var r=space(x2,y2);if(r>room){room=r;bestD=d2}}first=bestD||dir}
+    if(first!==OPP[dir])queue=[first];
+  }
+  function space(sx,sy){var seen=new Set([key(sx,sy)]),q=[[sx,sy]];while(q.length&&seen.size<80){var c=q.pop();for(var d in D){var x=wrap(c[0]+D[d][0]),y=wrap(c[1]+D[d][1]),k=key(x,y);if(!seen.has(k)&&!occupied(x,y,true)){seen.add(k);q.push([x,y])}}}return seen.size}
+
+  /* ---------- effects ---------- */
+  function burst(x,y,color,n){if(calm)return;for(var i=0;i<n;i++){var a=Math.random()*Math.PI*2,v=.02+Math.random()*.06;fx.push({x:x+.5,y:y+.5,vx:Math.cos(a)*v,vy:Math.sin(a)*v,life:1,c:color,r:.08+Math.random()*.1})}}
+  function pop(x,y,t){pops.push({x:x+.5,y:y+.2,t:t,life:1})}
+
+  /* ---------- drawing ---------- */
+  var W=0,cell=0,dpr=1,font='sans-serif',mouth=0;
+  function size(){var r=cv.getBoundingClientRect();dpr=Math.min(2,window.devicePixelRatio||1);W=Math.round(r.width);cv.width=Math.round(W*dpr);cv.height=Math.round(W*dpr);cell=W/N;font=getComputedStyle(box).fontFamily}
+  function rr(x,y,w,h,r){ctx.beginPath();ctx.roundRect?ctx.roundRect(x,y,w,h,r):ctx.rect(x,y,w,h)}
+  function mix(a,b,t){return 'rgb('+a.map(function(v,i){return Math.round(v+(b[i]-v)*t)}).join(',')+')'}
+  function collar(x,y,dx,dy,open){
+    var px=-dy,py=dx,w=cell*(.5+.06*open),t=cell*.2,fx=x+dx*cell*.2,fy=y+dy*cell*.2;
+    ctx.fillStyle='#1F3A80';ctx.beginPath();ctx.moveTo(fx+px*(w+1.5)-dx*(t+1.5),fy+py*(w+1.5)-dy*(t+1.5));ctx.lineTo(fx+px*(w+1.5)+dx*1.5,fy+py*(w+1.5)+dy*1.5);ctx.lineTo(fx-px*(w+1.5)+dx*1.5,fy-py*(w+1.5)+dy*1.5);ctx.lineTo(fx-px*(w+1.5)-dx*(t+1.5),fy-py*(w+1.5)-dy*(t+1.5));ctx.closePath();ctx.fill();
+    ctx.fillStyle='#EAF0F9';ctx.beginPath();ctx.moveTo(fx+px*w-dx*t,fy+py*w-dy*t);ctx.lineTo(fx+px*w,fy+py*w);ctx.lineTo(fx-px*w,fy-py*w);ctx.lineTo(fx-px*w-dx*t,fy-py*w-dy*t);ctx.closePath();ctx.fill();
+    var bw=w*(.72+.2*open),bt=cell*(.1+.06*open);   // the bore: a dark ellipse on the open face
+    ctx.fillStyle=mode==='over'?'#4A6FB8':C.bg;ctx.beginPath();ctx.ellipse(fx+dx*bt*.6,fy+dy*bt*.6,dx?bt:bw,dx?bw:bt,0,0,7);ctx.fill();
+    ctx.strokeStyle='#C9D6EE';ctx.lineWidth=Math.max(1,cell*.04);ctx.stroke();
+  }
+  function unwrapTo(a,b){var dx=b[0]-a[0],dy=b[1]-a[1];if(dx>N/2)dx-=N;if(dx<-N/2)dx+=N;if(dy>N/2)dy-=N;if(dy<-N/2)dy+=N;return [a[0]+dx,a[1]+dy]}
+  function line(a,b){ctx.moveTo((a[0]+.5)*cell,(a[1]+.5)*cell);ctx.lineTo((b[0]+.5)*cell,(b[1]+.5)*cell)}   // adds to the current path
+  function seg(a,b){b=unwrapTo(a,b);line(a,b);   // draw the piece, plus its twin on the far edge when it wraps
+    var sx=b[0]<0||a[0]<0?N:b[0]>N-1||a[0]>N-1?-N:0,sy=b[1]<0||a[1]<0?N:b[1]>N-1||a[1]>N-1?-N:0;
+    if(sx||sy)line([a[0]+sx,a[1]+sy],[b[0]+sx,b[1]+sy])}
+
+  function frame(now){
+    requestAnimationFrame(frame);
+    // advance the fixed tick
+    if(mode==='play'||mode==='attract'){var iv=mode==='attract'?170:interval();
+      if(mode==='attract'&&calm){}else while(now-lastTick>=iv){lastTick+=iv;if(now-lastTick>iv*4)lastTick=now;if(mode==='attract')pilot();step();if(mode!=='play'&&mode!=='attract')break}}
+    var t=(mode==='play'||mode==='attract')&&moved?Math.min(1,(now-lastTick)/(mode==='attract'?170:interval())):1;
+    draw(now,t);
+  }
+
+  function draw(now,t){
+    if(!W)return;ctx.setTransform(dpr,0,0,dpr,0,0);
+    var sh=shake>.2?(Math.random()-.5)*shake:0;shake*=.88;ctx.translate(sh,sh*.6);
+    ctx.fillStyle=C.bg;ctx.fillRect(-20,-20,W+40,W+40);
+    // the floor is the site's square grid: every cell a square, split by the nine-grid gap (3.875% of a square)
+    var gp=Math.max(1,cell*.0775);ctx.fillStyle='#14234C';
+    for(var y=0;y<N;y++)for(var x=0;x<N;x++)if(!walls.has(key(x,y)))ctx.fillRect(x*cell+gp/2,y*cell+gp/2,cell-gp,cell-gp);
+    // the edge is solid now, so draw it like a wall
+    ctx.strokeStyle=C.wall;ctx.lineWidth=Math.max(2,cell*.1);ctx.strokeRect(ctx.lineWidth/2,ctx.lineWidth/2,W-ctx.lineWidth,W-ctx.lineWidth);
+    // walls
+    walls.forEach(function(k){var x=k%N,y=(k-x)/N;ctx.fillStyle=C.wall;ctx.fillRect(x*cell+gp/2,y*cell+gp/2,cell-gp,cell-gp);ctx.fillStyle=C.wallHi;ctx.fillRect(x*cell+gp/2,y*cell+gp/2,cell-gp,Math.max(1,cell*.08))});   // walls are solid squares
+    // the lead: a pulsing dot with a soft ring
+    if(lead){var p=calm?0:(Math.sin(now/260)+1)/2,lx=(lead[0]+.5)*cell,ly=(lead[1]+.5)*cell;
+      var lz=cell*(.86+.1*p)-gp;ctx.fillStyle='rgba(46,155,214,'+(.2+.22*p)+')';ctx.fillRect(lx-lz/2,ly-lz/2,lz,lz);   // a lit square under the lead
+      ctx.fillStyle=C.lead;ctx.beginPath();ctx.arc(lx,ly-cell*.13,cell*.12,0,7);ctx.fill();   // a lead is a person: head and shoulders
+      ctx.beginPath();ctx.arc(lx,ly+cell*.25,cell*.22,Math.PI,0);ctx.closePath();ctx.fill()}
+    // the deal: a white diamond with a timer ring that drains
+    if(bonus){var bx=(bonus.x+.5)*cell,by=(bonus.y+.5)*cell,f=bonus.left/BONUS_TICKS,s=cell*.3*(calm?1:Math.min(1,(now-bonus.born)/250));
+      ctx.strokeStyle='rgba(255,255,255,.85)';ctx.lineWidth=Math.max(1.5,cell*.07);ctx.beginPath();ctx.arc(bx,by,cell*.46,-Math.PI/2,-Math.PI/2+Math.PI*2*f);ctx.stroke();
+      if(f>.3||Math.floor(now/120)%2){ctx.fillStyle='#fff';ctx.beginPath();ctx.moveTo(bx,by-s);ctx.lineTo(bx+s,by);ctx.lineTo(bx,by+s);ctx.lineTo(bx-s,by);ctx.closePath();ctx.fill()}}
+    // the pipeline: a pipe laid behind an intake; couplings at every joint; leads and deals flow through it to the far end
+    var dt=Math.min(64,now-(lastFrame||now));lastFrame=now;
+    if(mode!=='over'||now-deathAt<120||Math.floor((now-deathAt)/90)%2){
+      var pts=[],h0=body[0];
+      if(t<1&&body.length>1){var from=body[1],to=unwrapTo(from,h0);pts.push([from[0]+(to[0]-from[0])*t,from[1]+(to[1]-from[1])*t])}else pts.push(h0);
+      for(var i=1;i<body.length;i++)pts.push(body[i]);
+      if(prevTail&&t<1){var end=body[body.length-1],pt=unwrapTo(end,prevTail);pts.push([pt[0]+(end[0]-pt[0])*t,pt[1]+(end[1]-pt[1])*t])}
+      ctx.save();ctx.beginPath();ctx.rect(0,0,W,W);ctx.clip();
+      ctx.lineCap='round';ctx.lineJoin='round';
+      function tube(w,col){ctx.lineWidth=cell*w;ctx.strokeStyle=col;ctx.beginPath();for(var j=pts.length-1;j>0;j--)seg(pts[j],pts[j-1]);ctx.stroke()}
+      tube(.76,'#1F3A80');tube(.64,'#6F8FCB');tube(.3,'#9DB6E3');tube(.08,'#EAF0F9');   // a metal tube: dark edge, body, shine down the middle
+      // flanges with bolts at every joint, and a round elbow fitting on every corner
+      for(var c=1;c<body.length;c++){var p0=body[c],pa=unwrapTo(p0,body[c-1]),pb=c+1<body.length?unwrapTo(p0,body[c+1]):null,
+          ax=pa[0]-p0[0],ay=pa[1]-p0[1],cx=(p0[0]+.5)*cell,cy=(p0[1]+.5)*cell;
+        if(pb&&(pb[0]-p0[0])!==-ax&&(pb[1]-p0[1])!==-ay){
+          ctx.fillStyle='#1F3A80';ctx.beginPath();ctx.arc(cx,cy,cell*.46,0,7);ctx.fill();ctx.fillStyle='#C9D6EE';ctx.beginPath();ctx.arc(cx,cy,cell*.4,0,7);ctx.fill();
+          ctx.fillStyle='#355DA6';[[1,1],[1,-1],[-1,1],[-1,-1]].forEach(function(q){ctx.beginPath();ctx.arc(cx+q[0]*cell*.2,cy+q[1]*cell*.2,cell*.05,0,7);ctx.fill()})}
+}
+      // flanges ride on the pipe: one every two squares, measured back from the moving intake, so they slide with it
+      var U=[pts[0]],len=[0];for(var k=1;k<pts.length;k++){U.push(unwrapTo(U[k-1],pts[k]));len.push(len[k-1]+Math.hypot(U[k][0]-U[k-1][0],U[k][1]-U[k-1][1]))}
+      var tot=len[len.length-1];   // a fixed distance behind the moving intake = attached to the pipe
+      for(var dist=1.5;dist<tot-.45;dist+=2){
+        var k2=1;while(k2<len.length-1&&len[k2]<dist)k2++;
+        var A2=U[k2-1],B2=U[k2],sl=len[k2]-len[k2-1]||1,f2=(dist-len[k2-1])/sl,X=A2[0]+(B2[0]-A2[0])*f2,Y=A2[1]+(B2[1]-A2[1])*f2,horiz=Math.abs(B2[0]-A2[0])>Math.abs(B2[1]-A2[1]);
+        if(dist-len[k2-1]<.45&&k2>1){var P=U[k2-2];if((Math.abs(P[0]-A2[0])>.01)!==horiz)continue}   // too close to an elbow behind
+        if(len[k2]-dist<.45&&k2<U.length-1){var Q=U[k2+1];if((Math.abs(Q[0]-B2[0])>.01)!==horiz)continue}  // too close to an elbow ahead
+        var bx=((X%N)+N)%N,by=((Y%N)+N)%N,cx2=(bx+.5)*cell,cy2=(by+.5)*cell,lx=horiz?cell*.09:cell*.48,ly=horiz?cell*.48:cell*.09;
+        ctx.fillStyle='#1F3A80';ctx.fillRect(cx2-lx-1,cy2-ly-1,lx*2+2,ly*2+2);ctx.fillStyle='#C9D6EE';ctx.fillRect(cx2-lx,cy2-ly,lx*2,ly*2);
+        ctx.fillStyle='#355DA6';[1,-1].forEach(function(sg){ctx.beginPath();ctx.arc(cx2+(horiz?0:sg*cell*.37),cy2+(horiz?sg*cell*.37:0),cell*.045,0,7);ctx.fill()})}
+      // the far end is open too: a collar, with the bore showing
+      (function(){var e=pts[pts.length-1],q=unwrapTo(e,pts[Math.max(0,pts.length-2)]),dx=e[0]-q[0],dy=e[1]-q[1],L=Math.hypot(dx,dy)||1;dx/=L;dy/=L;
+        var ex=(((e[0]%N)+N)%N+.5)*cell,ey=(((e[1]%N)+N)%N+.5)*cell;collar(ex,ey,dx,dy,0)})();
+      // what's flowing: drift toward the far end, then pop out
+      var speed=mode==='play'?dt/1000*6:0;
+      flow=flow.filter(function(f){f.i+=speed;if(f.i>=pts.length-1){var e=pts[pts.length-1];if(!f.deal)burst(((e[0]%N)+N)%N,((e[1]%N)+N)%N,'#2E9BD6',5);else burst(((e[0]%N)+N)%N,((e[1]%N)+N)%N,'#FFFFFF',10);return false}
+        var k=Math.floor(f.i),fr=f.i-k,A=pts[k],B=unwrapTo(A,pts[k+1]),x=((A[0]+(B[0]-A[0])*fr)%N+N)%N,y=((A[1]+(B[1]-A[1])*fr)%N+N)%N;
+        ctx.fillStyle=f.c;ctx.beginPath();ctx.arc((x+.5)*cell,(y+.5)*cell,cell*f.r,0,7);ctx.fill();return true});
+      // the intake: a flared mouth facing forward that opens wide when a lead is close
+      var hd=pts[0],hx=(((hd[0]%N)+N)%N+.5)*cell,hy=(((hd[1]%N)+N)%N+.5)*cell,v=D[dir],near=0;
+      if(lead){var ddx=Math.abs(lead[0]-body[0][0]),ddy=Math.abs(lead[1]-body[0][1]);ddx=Math.min(ddx,N-ddx);ddy=Math.min(ddy,N-ddy);near=Math.max(0,1-(ddx+ddy-1)/2.5)}
+      mouth+=((near>0?near:0)-mouth)*.2;
+      function intake(hx,hy){collar(hx,hy,v[0],v[1],mouth)}
+      intake(hx,hy);   // and its twin on the far edge while it crosses a wrap, so the intake never looks cut off
+      if(hx<cell)intake(hx+W,hy);if(hx>W-cell)intake(hx-W,hy);if(hy<cell)intake(hx,hy+W);if(hy>W-cell)intake(hx,hy-W);
+      ctx.restore()}
+    // particles and score pops
+    fx=fx.filter(function(p){p.x+=p.vx;p.y+=p.vy;p.vx*=.94;p.vy*=.94;p.life-=.025;if(p.life<=0)return false;ctx.globalAlpha=p.life;ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(p.x*cell,p.y*cell,p.r*cell*p.life+1,0,7);ctx.fill();return true});
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    pops=pops.filter(function(p){p.y-=.015;p.life-=.02;if(p.life<=0)return false;ctx.globalAlpha=Math.min(1,p.life*2);ctx.fillStyle='#fff';ctx.font='700 '+Math.round(cell*.62)+'px '+font;ctx.fillText(p.t,p.x*cell,p.y*cell);return true});
+    ctx.globalAlpha=1;
+    // level banner
+    if(banner&&mode!=='attract'){var age=now-banner.t;if(age>1100)banner=null;else if(age>=0){var a=age<150?age/150:age>800?1-(age-800)/300:1,sc=calm?1:1+.12*(1-Math.min(1,age/250));
+      ctx.save();ctx.globalAlpha=a;ctx.translate(W/2,W/2);ctx.scale(sc,sc);ctx.fillStyle='rgba(14,26,58,.72)';ctx.fillRect(-W/2,-cell*1.3,W,cell*2.6);ctx.fillStyle='#fff';ctx.font='700 '+Math.round(cell*1.25)+'px '+font;ctx.fillText(banner.text,0,0);ctx.restore()}}
+    ctx.setTransform(1,0,0,1,0,0);
+  }
+
+  /* ---------- input ---------- */
+  function steer(d){if(mode!=='play'&&mode!=='between')return;var last=queue.length?queue[queue.length-1]:dir;if(d===last||d===OPP[last]||queue.length>=2)return;queue.push(d)}
+  var KEYS={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right',W:'up',S:'down',A:'left',D:'right'};
+  cv.addEventListener('keydown',function(e){var k=KEYS[e.key];if(k){e.preventDefault();steer(k)}else if(e.key===' '||e.key==='p'||e.key==='P'){e.preventDefault();pause()}else if(e.key==='Escape'){e.preventDefault();leave()}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nf.classList.contains('focus')&&document.activeElement!==cv){e.preventDefault();leave()}});
+  startB.addEventListener('click',function(){mode==='pause'?resume():play()});
+  exitB.addEventListener('click',leave);
+  sndB.addEventListener('click',function(){soundPref=sound?'0':'1';setSound(!sound)});
+  var pz=$('pz');pz.addEventListener('click',function(){pause()});
+  var padOn=null;
+  function padDir(e){var r=pad.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);
+    if(Math.hypot(dx,dy)<r.height*.12)return null;return Math.abs(dx)>Math.abs(dy)?(dx>0?'right':'left'):(dy>0?'down':'up')}
+  function padShow(d){[].forEach.call(pad.querySelectorAll('[data-dir]'),function(b){b.classList.toggle('on',b.getAttribute('data-dir')===d)})}
+  pad.addEventListener('pointerdown',function(e){e.preventDefault();try{pad.setPointerCapture(e.pointerId)}catch(x){}padOn=padDir(e);padShow(padOn);if(padOn){steer(padOn);buzz()}});
+  pad.addEventListener('pointermove',function(e){if(!pad.hasPointerCapture||!pad.hasPointerCapture(e.pointerId))return;var d=padDir(e);if(d&&d!==padOn){padOn=d;padShow(d);steer(d);buzz()}});
+  ['pointerup','pointercancel'].forEach(function(ev){pad.addEventListener(ev,function(){padOn=null;padShow(null)})});
+  pad.addEventListener('click',function(e){if(e.detail===0){var b=e.target.closest('[data-dir]');if(b)steer(b.getAttribute('data-dir'))}});   // keyboard on the pad
+  var sx=0,sy=0,swiped=false;
+  box.addEventListener('touchstart',function(e){if(e.target.closest('button,a'))return;sx=e.touches[0].clientX;sy=e.touches[0].clientY;swiped=false},{passive:true});
+  box.addEventListener('touchmove',function(e){if(nf.classList.contains('focus'))e.preventDefault();if(swiped||e.target.closest('button,a'))return;var dx=e.touches[0].clientX-sx,dy=e.touches[0].clientY-sy;if(Math.max(Math.abs(dx),Math.abs(dy))<18)return;swiped=true;steer(Math.abs(dx)>Math.abs(dy)?(dx>0?'right':'left'):(dy>0?'down':'up'))},{passive:false});
+  document.addEventListener('visibilitychange',function(){if(document.hidden&&mode==='play')pause()});
+
+  /* ---------- go ---------- */
+  sndB.textContent=sound?'Sound on':'Sound off';sndB.setAttribute('aria-pressed',sound);
+  total=0;load(1);hud();
+  if(window.ResizeObserver)new ResizeObserver(size).observe(cv);else addEventListener('resize',size);
+  size();lastTick=performance.now();requestAnimationFrame(frame);
+})();
