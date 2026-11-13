@@ -78,45 +78,52 @@ function n9_find_by_path($path) {
 }
 
 /* ------------------------------------------------------------------ the layout guard
- * The editor only lets words, link targets and images change inside a Section. This is the same rule on the
- * server, so it also holds for anything that saves another way: a Section saved by someone who is not a site
- * admin must have the same element structure as a Section the page already had, or as a theme pattern. */
-function n9_skeleton($html) {
+ * The editor only lets words, link targets and images change inside a Section, and lets a writer add or remove
+ * a copy of a repeated item (a question, a table row, a list item). This is the matching rule on the server, so
+ * it also holds for anything that saves another way: a Section saved by someone who is not a site admin may
+ * only contain kinds of elements (tag and class) that a Section with the same outer element already had on
+ * that page, or has in a theme pattern. New kinds of markup, scripts and frames are refused.
+ * It is a guard against accidents, not a security wall: WordPress trusts Editors with HTML on a single site. */
+function n9_tokens($html) {
     $out = [];
-    if (!preg_match_all('#<(/?)([a-zA-Z][a-zA-Z0-9]*)((?:\s+[^<>]*)?)>#', preg_replace('#<!--.*?-->#s', '', $html), $m, PREG_SET_ORDER)) return '';
+    if (!preg_match_all('#<([a-zA-Z][a-zA-Z0-9]*)((?:\s+[^<>]*)?)>#', preg_replace('#<!--.*?-->#s', '', $html), $m, PREG_SET_ORDER)) return $out;
     foreach ($m as $t) {
-        $tag = strtolower($t[2]);
-        if ($t[1] === '/' || $tag === 'br') continue;   // opening tags only: browsers differ on how they close void and SVG elements
-        if (in_array($tag, ['b', 'i', 'strong', 'em', 'u'], true) && trim($t[3], " /") === '') continue;
-        $cls = preg_match('#\sclass\s*=\s*"([^"]*)"#', $t[3], $c) ? trim(preg_replace('#\s+#', ' ', $c[1])) : '';
+        $tag = strtolower($t[1]);
+        if ($tag === 'br') continue;
+        if (in_array($tag, ['b', 'i', 'strong', 'em', 'u'], true) && trim($t[2], " /") === '') continue;
+        $cls = preg_match('#\sclass\s*=\s*"([^"]*)"#', $t[2], $c) ? trim(preg_replace('#\s+#', ' ', $c[1])) : '';
         $out[] = $tag . '.' . $cls;
     }
-    return implode('|', $out);
+    return $out;
 }
 
-function n9_section_skeletons($content) {
-    $out = [];
-    $walk = function ($blocks) use (&$walk, &$out) {
+/* Every Section and Container in some content: [outer element => [kinds of element inside]]. */
+function n9_section_kinds($content, &$into) {
+    $walk = function ($blocks) use (&$walk, &$into) {
         foreach ($blocks as $b) {
-            if ($b['blockName'] === 'encloud9/section') $out[] = n9_skeleton($b['innerHTML']);
-            if ($b['blockName'] === 'encloud9/box') $out[] = 'box:' . n9_skeleton(implode('', array_filter($b['innerContent'], 'is_string')));
+            if ($b['blockName'] === 'encloud9/section' || $b['blockName'] === 'encloud9/box') {
+                $html = $b['blockName'] === 'encloud9/box' ? implode('', array_filter($b['innerContent'], 'is_string')) : $b['innerHTML'];
+                $t = n9_tokens($html);
+                if (!$t) { $into['(empty)'] = []; }
+                else {
+                    $root = ($b['blockName'] === 'encloud9/box' ? 'box:' : '') . $t[0];
+                    $into[$root] = ($into[$root] ?? []) + array_flip($t);
+                }
+            }
             if (!empty($b['innerBlocks'])) $walk($b['innerBlocks']);
         }
     };
     $walk(parse_blocks($content));
-    return $out;
 }
 
 function n9_guard($prepared, $request) {
     if (n9_can_restructure() || !isset($prepared->post_content)) return $prepared;
-    $known = [];
-    if (!empty($prepared->ID)) $known = n9_section_skeletons(get_post($prepared->ID)->post_content);
-    foreach (WP_Block_Patterns_Registry::get_instance()->get_all_registered() as $p) {
-        $known = array_merge($known, n9_section_skeletons($p['content'] ?? ''));
-    }
-    $known = array_flip($known);
-    foreach (n9_section_skeletons(wp_unslash($prepared->post_content)) as $s) {
-        if (!isset($known[$s])) {
+    $known = []; $new = [];
+    if (!empty($prepared->ID)) n9_section_kinds(get_post($prepared->ID)->post_content, $known);
+    foreach (WP_Block_Patterns_Registry::get_instance()->get_all_registered() as $p) n9_section_kinds($p['content'] ?? '', $known);
+    n9_section_kinds(wp_unslash($prepared->post_content), $new);
+    foreach ($new as $root => $kinds) {
+        if (!isset($known[$root]) || array_diff_key($kinds, $known[$root])) {
             return new WP_Error('n9_layout_locked',
                 'A section\'s layout was changed, so this was not saved. Words, links and images can be changed; the layout cannot. Undo the last change and save again.',
                 ['status' => 400]);
@@ -125,6 +132,13 @@ function n9_guard($prepared, $request) {
     return $prepared;
 }
 foreach (['page', 'post', 'story'] as $n9_t) add_filter("rest_pre_insert_$n9_t", 'n9_guard', 10, 2);
+
+/* Editors do not get the blocks that hold raw code. */
+add_filter('allowed_block_types_all', function ($allowed, $ctx) {
+    if (n9_can_restructure()) return $allowed;
+    $all = is_array($allowed) ? $allowed : array_keys(WP_Block_Type_Registry::get_instance()->get_all_registered());
+    return array_values(array_diff($all, ['core/html', 'core/shortcode', 'core/freeform']));
+}, 10, 2);
 
 /* ------------------------------------------------------------------ search tags, until All in One SEO owns them */
 function n9_seo_owned_elsewhere() {

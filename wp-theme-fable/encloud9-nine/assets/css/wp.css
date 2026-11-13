@@ -1,6 +1,8 @@
 /* WordPress fixes on top of the mock site's styles. */
 /* template part wrappers must not trap the sticky header or add a box */
 .wp-site-blocks>.wp-block-template-part,.wp-block-post-content{display:contents}
+/* a post framed by the theme: its content wrapper is the reading column itself */
+.art.wp-block-post-content{display:block}
 .wp-site-blocks>*{margin-block-start:0}
 main#main{margin:0}
 /* the footer is its own part now, outside main (a landmark fix); it continues the final band */

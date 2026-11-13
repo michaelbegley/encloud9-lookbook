@@ -42,7 +42,7 @@ async function onePage(p, url, w) {
   });
   // focus not hidden: tab through the first 40 stops; a focused element must not sit under the sticky header
   out.focusHidden = 0;
-  await p.evaluate(() => window.scrollTo(0, 600));
+  await p.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; window.scrollTo(0, 600); });   // instant scrolling, so positions are final when read
   for (let i = 0; i < 40; i++) {
     await p.keyboard.press('Tab');
     const hid = await p.evaluate(() => {

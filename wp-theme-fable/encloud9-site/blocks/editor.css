@@ -5,3 +5,4 @@
 [data-n9]:focus{outline:2px solid #355DA6}
 .n9-section a{cursor:default}
 .n9-img-row{margin-bottom:16px;display:grid;gap:8px}
+[data-n9-item]{box-shadow:-3px 0 0 #355DA6}

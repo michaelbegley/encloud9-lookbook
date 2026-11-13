@@ -10,5 +10,12 @@
  "bodyclass": {
   "post": "p-post",
   "story": "p-story"
+ },
+ "progress": {
+  "post": "1"
+ },
+ "pattern_source": {
+  "post": "/blog/generative-pages-dynamics-365/",
+  "story": "/stories/bg-landholdings/"
  }
 }

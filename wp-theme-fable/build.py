@@ -412,8 +412,28 @@ def main():
         c = collections.Counter(i[key] for i in items if i['type'] == kind and i[key])
         return c.most_common(1)[0][0] if c else ''
     man = {'style': {k: common(k, 'style') for k in ('post', 'story')}, 'script': {k: common(k, 'script') for k in ('post', 'story')},
-           'bodyclass': {'post': 'p-post', 'story': 'p-story'}}
+           'bodyclass': {'post': 'p-post', 'story': 'p-story'}, 'progress': {'post': '1'}}
     os.makedirs(os.path.join(THEME, 'inc'), exist_ok=True)
+    open(os.path.join(THEME, 'inc', 'manifest.json'), 'w').write(json.dumps(man, indent=1))
+
+    # starting layouts for a new post or client story: the full designed layout of one approved page,
+    # offered by WordPress when "Add new" is chosen; the writer replaces the words
+    pat = os.path.join(THEME, 'patterns')
+    shutil.rmtree(pat, ignore_errors=True)
+    os.makedirs(pat)
+    for kind, title, pick in (('post', 'Blog post layout', '/blog/generative-pages-dynamics-365/'), ('story', 'Client story layout', '')):
+        cands = [i for i in items if i['type'] == kind and i['style'] == man['style'][kind]]
+        src = next((i for i in cands if i['path'] == pick), cands[0])
+        assert '<?' not in src['content']
+        open(os.path.join(pat, f'{kind}-layout.php'), 'w').write(
+            f"<?php\n/**\n * Title: {title}\n * Slug: encloud9/{kind}-layout\n * Categories: encloud9\n * Post Types: {kind}\n"
+            f" * Block Types: core/post-content\n * Description: The full designed layout, filled with the words of an existing page. Replace the words.\n */\n?>\n"
+            + src['content'] + '\n')
+        man.setdefault('pattern_source', {})[kind] = src['path']
+        if kind == 'post':
+            # the closing call-to-action of that post, word for word, closes posts the theme frames itself
+            fin = re.findall(r'<!-- wp:encloud9/section[^>]*-->\n(<section class="final".*?</section>)\n<!-- /wp:encloud9/section -->', src['content'], re.S)
+            open(os.path.join(THEME, 'inc', 'post-final.html'), 'w').write(fin[-1] + '\n')
     open(os.path.join(THEME, 'inc', 'manifest.json'), 'w').write(json.dumps(man, indent=1))
 
     print(len(items), 'pages', dict(collections.Counter(i['type'] for i in items)))

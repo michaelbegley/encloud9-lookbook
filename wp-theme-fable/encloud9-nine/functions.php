@@ -15,6 +15,12 @@ add_action('after_setup_theme', function () {
     remove_theme_support('core-block-patterns');
 });
 
+add_action('init', function () {
+    register_block_pattern_category('encloud9', ['label' => 'enCloud9 layouts']);
+});
+/* Only the site's own layouts are offered, not the pattern directory on wordpress.org. */
+add_filter('should_load_remote_block_patterns', '__return_false');
+
 function n9_manifest() {
     static $m;
     if ($m === null) $m = json_decode((string) @file_get_contents(get_theme_file_path('inc/manifest.json')), true) ?: [];
@@ -143,3 +149,37 @@ add_filter('wp_theme_json_data_default', function ($json) {
     unset($d['styles']['elements']['link']);
     return new WP_Theme_JSON_Data($d, 'default');
 });
+
+/* A post that arrives without the designed layout (a post kept from the old site, or one written without the
+   starting layout) is framed by the theme: breadcrumb, title, author and date, a contents list made from its
+   headings, the reading column, and the same closing call to action as the designed posts. */
+add_filter('render_block_core/post-content', function ($html, $block) {
+    if (!is_singular('post')) return $html;
+    $post = get_post();
+    if (!$post || $post->post_type !== 'post' || has_block('encloud9/box', $post)) return $html;
+    static $done = false;
+    if ($done) return $html;
+    $done = true;
+    $n = 0; $toc = '';
+    $html = preg_replace_callback('#<h2\b([^>]*)>(.*?)</h2>#s', function ($m) use (&$n, &$toc) {
+        $n++;
+        if (preg_match('#\sid="([^"]+)"#', $m[1], $i)) { $id = $i[1]; $attrs = $m[1]; }
+        else { $id = 'section-' . $n; $attrs = $m[1] . ' id="' . $id . '"'; }
+        $toc .= '<li><a href="#' . esc_attr($id) . '">' . esc_html(wp_strip_all_tags($m[2])) . '</a></li>';
+        return '<h2' . $attrs . '>' . $m[2] . '</h2>';
+    }, $html);
+    $title = get_the_title($post);
+    $cats = get_the_category($post->ID);
+    $cat = ($cats && $cats[0]->slug !== 'uncategorized') ? '<span class="mono cat">' . esc_html($cats[0]->name) . '</span>' : '';
+    $author = get_the_author_meta('display_name', $post->post_author);
+    $by = '<p class="byline"><span class="av" aria-hidden="true"></span>' . ($author ? '<span>By <b>' . esc_html($author) . '</b></span>' : '')
+        . '<span><b>' . esc_html(get_the_date('F j, Y', $post)) . '</b></span></p>';
+    $nav = $n > 1
+        ? '<nav class="toc" aria-label="On this page"><details open id="tocd"><summary>On this page</summary><ol>' . $toc . '</ol></details></nav>'
+        : '<div></div>';
+    $final = (string) @file_get_contents(get_theme_file_path('inc/post-final.html'));
+    return '<div class="wrap"><nav class="crumb" aria-label="Breadcrumb"><a href="' . esc_url(home_url('/')) . '">Home</a><span class="sep" aria-hidden="true">/</span>'
+        . '<a href="' . esc_url(home_url('/blog/')) . '">Blog</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">' . esc_html($title) . '</span></nav>'
+        . '<article aria-labelledby="h1"><header class="phead"><div class="pmain"><h1 class="h1" id="h1">' . esc_html($title) . '</h1>' . $cat . $by . '</div></header>'
+        . '<div class="pgrid">' . $nav . preg_replace('#^\s*<div class="#', '<div id="art" class="art ', $html, 1) . '</div></article></div>' . $final;
+}, 10, 2);

@@ -62,6 +62,26 @@
     return out;
   }
 
+  /* Items a writer may add or remove: FAQ entries, table rows and list items that are stacked one under the
+     other. Anything laid out as a grid or a row (the nine squares, card rows, step bars) keeps its count. */
+  var FIXED = '.grid9,.aigrid,.fgx,.dgx,.jgrid,.fgrid,.dest,.gl,.uses,.bel,.flow,.proof,.g,.scale,.stages,.three,.ptiles,.lic,.pk-hero';
+  function sameKind(n) {
+    return [].filter.call(n.parentElement.children, function (x) { return x.tagName === n.tagName; });
+  }
+  function isItem(n) {
+    if (!/^(DETAILS|TR|LI)$/.test(n.tagName) || !n.parentElement) return false;
+    if (n.tagName === 'TR' && n.parentElement.tagName !== 'TBODY') return false;
+    if (n.closest(FIXED) || n.closest('[aria-hidden="true"]')) return false;
+    var sibs = sameKind(n), left = Math.round(n.getBoundingClientRect().left);
+    return sibs.every(function (x) { return Math.abs(Math.round(x.getBoundingClientRect().left) - left) <= 1; });
+  }
+  function findItem(t, root) {
+    for (var n = t && t.nodeType === 1 ? t : (t && t.parentElement); n && n !== root; n = n.parentElement) {
+      if (isItem(n)) return n;
+    }
+    return null;
+  }
+
   /* Tags and classes of everything inside, ignoring plain bold and italic and line breaks. */
   function skeleton(node) {
     var s = [];
@@ -101,12 +121,15 @@
     var live = useRef({ emitted: null, shown: null, timer: 0, leaves: [] });
     var tpl = useMemo(function () { return parseRoot(content); }, [content]);
     var picked = wp.element.useState(-1), activeLink = picked[0], setActiveLink = picked[1];
+    var itemState = wp.element.useState(null), itemInfo = itemState[0], setItemInfo = itemState[1];
+    var item = useRef(null);
     var tag = tpl ? tpl.tagName.toLowerCase() : 'div';
     function serialize() {
       var node = ref.current, c = node.cloneNode(true), shell = parseRoot(live.current.shown);
       [].forEach.call(c.querySelectorAll('[data-n9]'), function (x) {
         x.removeAttribute('contenteditable'); x.removeAttribute('data-n9'); x.removeAttribute('spellcheck');
       });
+      [].forEach.call(c.querySelectorAll('[data-n9-item]'), function (x) { x.removeAttribute('data-n9-item'); });
       [].forEach.call(c.querySelectorAll('[data-n9-d]'), function (x) { x.removeAttribute('draggable'); x.removeAttribute('data-n9-d'); });
       [].forEach.call(c.querySelectorAll('details[data-n9-o]'), function (x) {
         if (x.getAttribute('data-n9-o') === '1') x.setAttribute('open', ''); else x.removeAttribute('open');
@@ -128,7 +151,9 @@
 
     function prepare(node) {
       var L = live.current;
-      [].forEach.call(node.querySelectorAll('details'), function (d) { d.setAttribute('data-n9-o', d.hasAttribute('open') ? '1' : '0'); });
+      [].forEach.call(node.querySelectorAll('[data-n9]'), function (x) { x.removeAttribute('data-n9'); x.removeAttribute('contenteditable'); });
+      node.removeAttribute('data-n9'); node.removeAttribute('contenteditable');
+      [].forEach.call(node.querySelectorAll('details'), function (d) { if (!d.hasAttribute('data-n9-o')) d.setAttribute('data-n9-o', d.hasAttribute('open') ? '1' : '0'); });
       [].forEach.call(node.querySelectorAll('a,img'), function (a) {
         if (!a.hasAttribute('draggable')) { a.setAttribute('draggable', 'false'); a.setAttribute('data-n9-d', '1'); }
       });
@@ -197,6 +222,16 @@
         // a space typed in an editable <summary> must not open or close its <details>
         if ((e.key === ' ' || e.key === 'Enter') && leafOf(e.target) && e.target.closest('summary')) e.preventDefault();
       }
+      function track(e) {
+        var it = findItem(e.target, node);
+        if (it === item.current) return;
+        if (item.current) item.current.removeAttribute('data-n9-item');
+        item.current = it;
+        if (it) it.setAttribute('data-n9-item', '1');
+        setItemInfo(it ? { kind: it.tagName === 'DETAILS' ? 'question' : (it.tagName === 'TR' ? 'row' : 'list item'), count: sameKind(it).length } : null);
+      }
+      node.addEventListener('click', track);
+      node.addEventListener('keyup', track);
       function onClick(e) {
         // remember which link was clicked, so the sidebar can offer its target first
         var hit = e.target.closest && e.target.closest('a[href]');
@@ -221,6 +256,8 @@
       return function () {
         if (win) win.removeEventListener('blur', commit);
         if (L.timer) commit();
+        node.removeEventListener('click', track);
+        node.removeEventListener('keyup', track);
         node.removeEventListener('input', onInput);
         node.removeEventListener('beforeinput', onBeforeInput);
         node.removeEventListener('paste', onPaste, true);
@@ -232,6 +269,27 @@
         node.removeEventListener('focusout', commit);
       };
     }, []);
+
+    /* Add or remove one repeated item (a question, a table row, a list item): a copy of the designed item, never new markup. */
+    function addItem() {
+      var it = item.current;
+      if (!it || !ref.current.contains(it)) return;
+      var c = it.cloneNode(true);
+      c.removeAttribute('data-n9-item'); c.removeAttribute('id');
+      [].forEach.call(c.querySelectorAll('[id]'), function (x) { x.removeAttribute('id'); });
+      it.parentElement.insertBefore(c, it.nextSibling);
+      prepare(ref.current);
+      setItemInfo({ kind: itemInfo.kind, count: sameKind(it).length });
+      commit();
+    }
+    function removeItem() {
+      var it = item.current;
+      if (!it || !ref.current.contains(it) || sameKind(it).length < 2) return;
+      it.parentElement.removeChild(it);
+      item.current = null; setItemInfo(null);
+      prepare(ref.current);
+      commit();
+    }
 
     /* Links and images are changed here, by position, on the live canvas; then stored. */
     function setOn(selector, i, fn) {
@@ -247,10 +305,15 @@
     var blockProps = be.useBlockProps({ ref: ref, className: (tpl ? tpl.getAttribute('class') || '' : '') + ' n9-section' });
 
     return el(wp.element.Fragment, null,
+      itemInfo ? el(be.BlockControls, { group: 'other' },
+        el(co.ToolbarGroup, null,
+          el(co.ToolbarButton, { icon: 'insert', label: 'Add another ' + itemInfo.kind + ' after this one', onClick: addItem }),
+          el(co.ToolbarButton, { icon: 'remove', label: 'Remove this ' + itemInfo.kind, onClick: removeItem, disabled: itemInfo.count < 2 }))) : null,
       el(be.InspectorControls, null,
         el(co.PanelBody, { title: 'How to edit this section', initialOpen: true },
           el('p', null, 'Click any text on the page and type. The layout is locked, so nothing can shift or break.'),
-          el('p', null, 'Links, buttons and images are changed below.')),
+          el('p', null, 'Links, buttons and images are changed below.'),
+          el('p', null, 'In a list, a table or a set of questions, click an item and use the plus and minus buttons in the toolbar to add or remove one.')),
         links.length && links[activeLink] ? el(co.PanelBody, { title: 'The link you clicked', initialOpen: true },
           el(co.TextControl, {
             label: 'Where "' + linkName(links[activeLink]).slice(0, 48) + '" goes', value: links[activeLink].getAttribute('href'),

@@ -6,6 +6,7 @@
 //  3 layout     tries to wipe a paragraph that holds a link (would remove a styled part): must be undone
 //  4 link       changes a button's target in the sidebar, saves, checks the live page
 //  5 guard      tries to save a section with changed structure through the REST API: the server must refuse
+//  7 items      adds a question to a FAQ with the toolbar; the nine squares offer no such button
 //  6 prose      adds a paragraph to a blog post's running text, saves, checks the live page
 // Everything it changes is put back at the end.
 const { chromium } = require('playwright');
@@ -143,10 +144,26 @@ const rest = (page, path, opts) => page.evaluate(async ([p, o]) => {
   live = await (await ctx.request.get(home.link)).text();
   ok('4 an Editor changes a link target in the sidebar and the live page shows it', !s.failed && live.includes('href="/contact-us/?n9test=1"'), { oldHref, saveFailed: s.failed });
 
-  // structure after the edits: same tags and classes as before
-  const skel = h => (h.match(/<\/?[a-zA-Z][^>]*>/g) || []).map(t => { const m = t.match(/^<(\/?[a-zA-Z0-9]+)/); const c = t.match(/\sclass="([^"]*)"/); return m[1].toLowerCase() + (c ? '.' + c[1] : ''); }).join('|');
+  // 7 items: add one more question to the FAQ on the home page with the toolbar button
+  const q = frame.locator('.n9-section details summary[data-n9]').first();
+  await q.scrollIntoViewIfNeeded();
+  const qCount = await frame.locator('.n9-section details').count();
+  await q.click();
+  const addBtn = page.locator('button[aria-label^="Add another question"]').first();
+  await addBtn.waitFor({ timeout: 15000 });
+  await addBtn.click();
+  const qAfter = await frame.locator('.n9-section details').count();
+  s = await save(page);
+  live = await (await ctx.request.get(home.link)).text();
+  const liveCount = (live.match(/<details/g) || []).length, wasCount = (original.match(/<details/g) || []).length;
+  ok('7 an Editor adds a question to a FAQ with the toolbar and the live page shows it', !s.failed && qAfter === qCount + 1 && liveCount >= wasCount + 1, { inEditor: [qCount, qAfter], saveFailed: s.failed });
+  const fixedCell = frame.locator('.n9-section .grid9 .cell .nm[data-n9]').first();
+  await fixedCell.click();
+  await page.waitForTimeout(200);
+  ok('  the nine squares offer no add or remove button', (await page.locator('button[aria-label^="Add another"]').count()) === 0);
   const edited = (await rest(page, `/wp/v2/pages/${home.id}?context=edit&_fields=content`)).data.content.raw;
-  ok('  the page structure is unchanged after the edits', skel(edited) === skel(original), { tagsBefore: skel(original).split('|').length, tagsAfter: skel(edited).split('|').length });
+  const kinds = h => [...new Set((h.match(/<[a-zA-Z][^>]*>/g) || []).map(t => { const m = t.match(/^<([a-zA-Z0-9]+)/); const c = t.match(/\sclass="([^"]*)"/); return m[1].toLowerCase() + (c ? '.' + c[1] : ''); }))].sort().join('|');
+  ok('  no new kind of element entered the page', kinds(edited) === kinds(original));
 
   // 5 guard: the server refuses a changed section structure from an Editor
   const broken = original.replace('<section class="hero"', '<section class="hero broken-by-test"');
