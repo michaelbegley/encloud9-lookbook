@@ -43,6 +43,8 @@ WP_CLI::add_command('n9 import', function ($args) {
         return [$a['type'] !== 'page', substr_count($a['path'], '/')] <=> [$b['type'] !== 'page', substr_count($b['path'], '/')];
     });
     $n = ['created' => 0, 'updated' => 0];
+    $admins = get_users(['role' => 'administrator', 'number' => 1, 'orderby' => 'ID', 'fields' => 'ID']);
+    $author = $admins ? (int) $admins[0] : 0;
     foreach ($items as $it) {
         $type = $it['type'];
         $post = [
@@ -52,6 +54,8 @@ WP_CLI::add_command('n9 import', function ($args) {
             'post_excerpt' => $it['description'],
             'post_content' => wp_slash($it['content']),
             'post_name' => $it['slug'] ?: 'home',
+            'post_author' => $author,
+            'comment_status' => 'closed', 'ping_status' => 'closed',
             'page_template' => $it['template'] ?: 'default',
         ];
         if ($type !== 'page') unset($post['page_template']);

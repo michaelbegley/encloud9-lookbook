@@ -2,3 +2,9 @@
 .editor-styles-wrapper{background:var(--bg)}
 .is-root-container{padding:0!important}
 .editor-styles-wrapper .site-foot{background:var(--b1);color:var(--white)}
+/* the page name field above the canvas is a label for the admin, not part of the design */
+html body .editor-visual-editor__post-title-wrapper{margin:0!important;padding:14px 24px;background:var(--tint);border-bottom:1px solid var(--line)}
+html body .editor-visual-editor__post-title-wrapper h1.editor-post-title{font-size:20px!important;line-height:1.3;font-weight:600;margin:0;max-width:none;letter-spacing:0;text-wrap:initial}
+html body .editor-visual-editor__post-title-wrapper::before{content:"Page name (for the admin and search results; not shown on the page)";display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+/* running text of a post: the same size in the editor as on the site */
+html body .art .wp-block-paragraph:not([class*="answer"]){font-size:18px}

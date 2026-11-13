@@ -34,7 +34,9 @@ async function openEditor(page, id) {
 }
 
 async function save(page) {
-  await page.evaluate(() => wp.data.dispatch('core/editor').savePost());
+  // the way a person saves: the Save button in the top bar (outside the canvas frame)
+  await page.locator('.editor-header__settings button.editor-post-publish-button, .editor-header__settings button.editor-post-save-draft').first().click();
+  await page.waitForTimeout(300);
   await page.waitForFunction(() => !wp.data.select('core/editor').isSavingPost() && !wp.data.select('core/editor').isEditedPostDirty(), null, { timeout: 30000 }).catch(() => {});
   return page.evaluate(() => ({ dirty: wp.data.select('core/editor').isEditedPostDirty(), failed: wp.data.select('core/editor').didPostSaveRequestFail() }));
 }
@@ -46,7 +48,7 @@ const rest = (page, path, opts) => page.evaluate(async ([p, o]) => {
 (async () => {
   const b = await chromium.launch({ executablePath: '/usr/bin/google-chrome' });
   const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
-  const page = await ctx.newPage();
+  const page = await ctx.newPage(); globalThis.__page = page;
   const errs = []; page.on('pageerror', e => errs.push(e.message));
   await login(page, 'editor');
 
@@ -103,14 +105,14 @@ const rest = (page, path, opts) => page.evaluate(async ([p, o]) => {
   res.editable_text_pct = +(100 * validity.editableChars / Math.max(1, validity.editableChars + validity.lockedChars)).toFixed(1);
 
   const home = (await rest(page, '/wp/v2/pages?slug=home&context=edit&_fields=id,link,content')).data[0];
-  const original = home.content.raw;
+  const original = home.content.raw; globalThis.__undo = [[`/wp/v2/pages/${home.id}`, original]];
 
   // 2 words: change the first section heading on the home page, in place
   let frame = await openEditor(page, home.id);
   const h2 = frame.locator('.n9-section h2[data-n9]').first();
   const before = (await h2.textContent()).trim();
   await h2.click();
-  await page.keyboard.press('End');
+  await page.keyboard.press('Control+End');
   await page.keyboard.type(' EDITED-BY-TEST');
   await page.keyboard.press('Enter');          // must not split the heading
   await page.keyboard.type('!');
@@ -120,7 +122,7 @@ const rest = (page, path, opts) => page.evaluate(async ([p, o]) => {
   ok('2 an Editor changes a heading in place and the live page shows it', !s.failed && live.includes('EDITED-BY-TEST!</h2>'), { before, want, saveFailed: s.failed });
 
   // 3 layout: select everything in a paragraph that holds a link and type over it
-  const lead = frame.locator('.n9-section p[data-n9]:has(a)').first();
+  const lead = frame.locator('.n9-section .sec-head p[data-n9]:has(a)').first();
   const leadBefore = await lead.innerHTML();
   await lead.click();
   await page.keyboard.press('Control+A');
@@ -130,9 +132,10 @@ const rest = (page, path, opts) => page.evaluate(async ([p, o]) => {
   ok('3 an edit that would remove a link is undone on the spot', leadAfter === leadBefore, { same: leadAfter === leadBefore });
 
   // 4 link: change the first button target of the hero from the sidebar
-  await frame.locator('.n9-section').first().locator('[data-n9]').first().click();
-  await page.evaluate(() => wp.data.dispatch('core/edit-post').openGeneralSidebar('edit-post/block'));
-  const field = page.locator('.components-panel__body:has-text("Links and buttons") input[type=text]').first();
+  await frame.locator('.n9-section').first().locator('a.btn[data-n9]').first().click();   // click the button itself
+  if (!(await page.locator('.interface-complementary-area').count())) await page.locator('button[aria-label="Settings"]').first().click();
+  await page.locator('button[role="tab"]:has-text("Block")').first().click().catch(() => {});
+  const field = page.locator('.components-panel__body:has-text("The link you clicked") input[type=text]').first();
   await field.waitFor({ timeout: 15000 });
   const oldHref = await field.inputValue();
   await field.fill('/contact-us/?n9test=1');
@@ -156,7 +159,7 @@ const rest = (page, path, opts) => page.evaluate(async ([p, o]) => {
 
   // 6 prose: add a paragraph to a blog post's running text
   const post = (await rest(page, '/wp/v2/posts?per_page=1&orderby=slug&order=asc&context=edit&_fields=id,link,content')).data[0];
-  const postOriginal = post.content.raw;
+  const postOriginal = post.content.raw; globalThis.__undo.push([`/wp/v2/posts/${post.id}`, postOriginal]);
   frame = await openEditor(page, post.id);
   const added = await page.evaluate(() => {
     const be = wp.data.select('core/block-editor');
@@ -181,4 +184,4 @@ const rest = (page, path, opts) => page.evaluate(async ([p, o]) => {
   fs.writeFileSync(outFile, JSON.stringify(res, null, 1));
   await b.close();
   process.exit(res.pass ? 0 : 2);
-})().catch(e => { console.error(e); fs.writeFileSync(outFile, JSON.stringify(Object.assign(res, { crashed: String(e) }), null, 1)); process.exit(3); });
+})().catch(async e => { console.error(String(e).slice(0,400)); try { const pg = globalThis.__page; if (pg) { await pg.screenshot({ path: outFile + '.fail.png' }); for (const [p, c] of (globalThis.__undo || [])) await rest(pg, p, { method: 'POST', data: { content: c } }); } } catch (x) {} fs.writeFileSync(outFile, JSON.stringify(Object.assign(res, { crashed: String(e) }), null, 1)); process.exit(3); });

@@ -53,20 +53,19 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('n9', get_theme_file_uri('assets/js/nine.js'), [], N9_VER, ['strategy' => 'defer', 'in_footer' => false]);
 });
 
-/* The editor canvas wears the same styles, so a section looks in the editor as it does on the site. */
-add_action('enqueue_block_assets', function () {
-    if (!is_admin()) return;
-    $id = get_the_ID();
-    wp_enqueue_style('n9-canvas', get_theme_file_uri('assets/css/nine.css'), [], N9_VER);
+/* The editor canvas wears the same styles, so a section looks in the editor as it does on the site.
+   They are handed to the editor as settings and placed inside the canvas frame only (the enCloud9 Site plugin
+   does that), so they never touch the WordPress admin screens around it. */
+add_filter('block_editor_settings_all', function ($s, $ctx) {
+    $id = !empty($ctx->post) ? $ctx->post->ID : 0;
     $scale = file_get_contents(get_theme_file_path('assets/css/nine-scale.css'));
     // on the site the scale rules are scoped to <main>; in the editor the page body is the canvas itself
     $scale = str_replace('html body main ', 'html body ', $scale);
-    $css = n9_page_file('css', n9_setting($id, 'style')) . "\n" . $scale . "\n" . file_get_contents(get_theme_file_path('assets/css/editor.css'));
-    wp_add_inline_style('n9-canvas', $css);
-});
-add_filter('block_editor_settings_all', function ($s, $ctx) {
-    $id = !empty($ctx->post) ? $ctx->post->ID : 0;
-    $s['n9BodyClass'] = $id ? (string) n9_setting($id, 'bodyclass') : '';
+    $s['n9Canvas'] = [
+        'href' => get_theme_file_uri('assets/css/nine.css') . '?ver=' . N9_VER,
+        'css' => n9_page_file('css', n9_setting($id, 'style')) . "\n" . $scale . "\n" . file_get_contents(get_theme_file_path('assets/css/editor.css')),
+        'bodyClass' => $id ? (string) n9_setting($id, 'bodyclass') : '',
+    ];
     return $s;
 }, 10, 2);
 

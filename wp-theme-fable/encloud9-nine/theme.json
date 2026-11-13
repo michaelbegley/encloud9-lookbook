@@ -183,10 +183,6 @@
       "spacingSizes": [],
       "defaultSpacingSizes": false
     },
-    "layout": {
-      "contentSize": "760px",
-      "wideSize": "1296px"
-    },
     "border": {
       "color": false,
       "radius": false,

@@ -20,6 +20,21 @@
     co = wp.components,
     cfg = window.n9Editor || {};
 
+  /* Dress the editor canvas (the frame the page is edited in) in the theme's styles and the page's body class.
+     The theme supplies them as an editor setting; they go inside the frame only, never on the admin screen. */
+  function dress() {
+    var f = document.querySelector('iframe[name="editor-canvas"]'), doc = f && f.contentDocument;
+    if (!doc || !doc.head || !doc.body) return;
+    var ed = wp.data.select('core/editor'), set = ed && ed.getEditorSettings ? (ed.getEditorSettings() || {}).n9Canvas : null;
+    if (!set) return;
+    if (!doc.getElementById('n9-canvas-css')) {
+      var l = doc.createElement('link'); l.id = 'n9-canvas-css'; l.rel = 'stylesheet'; l.href = set.href; doc.head.appendChild(l);
+      var st = doc.createElement('style'); st.id = 'n9-canvas-page-css'; st.textContent = set.css; doc.head.appendChild(st);
+    }
+    (set.bodyClass || '').split(/\s+/).forEach(function (c) { if (c && !doc.body.classList.contains(c)) doc.body.classList.add(c); });
+  }
+  setInterval(dress, 400);
+
   var SKIP = 'script,style,svg,canvas,select,textarea,input,button,iframe,video,audio,form [type=submit]';
   var FORMAT = /^(b|i|strong|em|u)$/;
 
@@ -85,12 +100,8 @@
     var ref = useRef(null);
     var live = useRef({ emitted: null, shown: null, timer: 0, leaves: [] });
     var tpl = useMemo(function () { return parseRoot(content); }, [content]);
+    var picked = wp.element.useState(-1), activeLink = picked[0], setActiveLink = picked[1];
     var tag = tpl ? tpl.tagName.toLowerCase() : 'div';
-    var bodyClass = wp.data.useSelect(function (select) {
-      var ed = select('core/editor');
-      return (ed && ed.getEditorSettings && (ed.getEditorSettings() || {}).n9BodyClass) || '';
-    }, []);
-
     function serialize() {
       var node = ref.current, c = node.cloneNode(true), shell = parseRoot(live.current.shown);
       [].forEach.call(c.querySelectorAll('[data-n9]'), function (x) {
@@ -143,13 +154,6 @@
       prepare(node);
     }, [content]);
 
-    /* The canvas wears the page's body class, as the site does. */
-    useEffect(function () {
-      var node = ref.current;
-      if (!node || !bodyClass) return;
-      bodyClass.split(/\s+/).forEach(function (c) { if (c) node.ownerDocument.body.classList.add(c); });
-    }, [bodyClass]);
-
     useEffect(function () {
       var node = ref.current;
       if (!node) return;
@@ -167,7 +171,7 @@
         }
         leaf._n9.good = leaf.innerHTML;
         clearTimeout(L.timer);
-        L.timer = setTimeout(commit, 400);
+        L.timer = setTimeout(commit, 250);
       }
       function onBeforeInput(e) {
         if (!leafOf(e.target)) return;
@@ -194,6 +198,9 @@
         if ((e.key === ' ' || e.key === 'Enter') && leafOf(e.target) && e.target.closest('summary')) e.preventDefault();
       }
       function onClick(e) {
+        // remember which link was clicked, so the sidebar can offer its target first
+        var hit = e.target.closest && e.target.closest('a[href]');
+        setActiveLink(hit && node.contains(hit) && hit !== node ? [].indexOf.call(node.querySelectorAll('a[href]'), hit) : -1);
         var a = e.target.closest && e.target.closest('a,button,[type=submit]');
         if (a && node.contains(a) && !(a.tagName === 'BUTTON' && a.closest('summary'))) e.preventDefault();
       }
@@ -208,7 +215,11 @@
       node.addEventListener('submit', onSubmit);
       node.addEventListener('drop', onDrop);
       node.addEventListener('focusout', commit);
+      // leaving the canvas for the Save button does not blur the text inside it, so also store when the frame loses focus
+      var win = node.ownerDocument.defaultView;
+      if (win) win.addEventListener('blur', commit);
       return function () {
+        if (win) win.removeEventListener('blur', commit);
         if (L.timer) commit();
         node.removeEventListener('input', onInput);
         node.removeEventListener('beforeinput', onBeforeInput);
@@ -240,7 +251,14 @@
         el(co.PanelBody, { title: 'How to edit this section', initialOpen: true },
           el('p', null, 'Click any text on the page and type. The layout is locked, so nothing can shift or break.'),
           el('p', null, 'Links, buttons and images are changed below.')),
-        links.length ? el(co.PanelBody, { title: 'Links and buttons (' + links.length + ')', initialOpen: links.length < 9 },
+        links.length && links[activeLink] ? el(co.PanelBody, { title: 'The link you clicked', initialOpen: true },
+          el(co.TextControl, {
+            label: 'Where "' + linkName(links[activeLink]).slice(0, 48) + '" goes', value: links[activeLink].getAttribute('href'),
+            help: 'A page on this site starts with / (for example /contact-us/).',
+            __nextHasNoMarginBottom: true, __next40pxDefaultSize: true,
+            onChange: function (v) { setOn('a[href]', activeLink, function (x) { x.setAttribute('href', v); }); }
+          })) : null,
+        links.length ? el(co.PanelBody, { title: 'Links and buttons (' + links.length + ')', initialOpen: links.length <= 12 },
           links.map(function (a, i) {
             var name = linkName(a);
             return el(co.TextControl, {
