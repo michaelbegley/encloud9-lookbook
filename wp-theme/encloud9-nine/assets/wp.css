@@ -8,3 +8,6 @@ main#main{margin:0}
 .site-foot .foot{padding-top:28px}
 .final{margin-bottom:0}
 .final .inner{padding-bottom:clamp(56px,6vw,88px)}
+/* match the mock exactly: there the page-wide paragraph rule also sized the footer's first column (nine-scale.css lines 23 and 24) */
+.site-foot p:not([class]){font-size:18px}
+@media (max-width:600px){.site-foot p:not([class]){font-size:17px}}

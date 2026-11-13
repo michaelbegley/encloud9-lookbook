@@ -16,9 +16,14 @@ wp eval-file wp-theme/import.php wp-theme/content/pages.json
 ```
 
 ## Checked (13 Nov 2026, WordPress 6.8 on SQLite in the cloud workspace)
-All 106 pages answer 200 at their new addresses (the 404 page answers 404). Screenshots of every page at 1440 and 390 px, mock against WordPress: the same height at 1440 on every page, median pixel difference 0.23%, no broken images, no script errors. Known differences:
-- On phones the footer's first column is 14 px as the footer style sets it; in the mock a page-wide paragraph rule made it 17 px (13 to 14 px taller). Claude's call: keep 14 px.
-- The 404 game's idle animation is caught at different moments.
+All 106 pages answer 200 at their new addresses (the 404 page answers 404). Scorecard (`score/`): all 106 pages at 1440 and 390 px against the mock. Worst page 0.02% of pixels different, median 0.00%, no broken images, no script errors, median page 95 KB. Only the 404 page differs in height (24 px, its game). Editable share of page content: 0% (every section is still Custom HTML).
+
+## Scorecard
+```
+sh wp-theme/score/serve.sh <wordpress dir> 8080 <repo root> 8081
+node wp-theme/score/shots.js wp-theme/content/pages.json http://localhost:8081/site http://localhost:8080 <out dir>
+python3 -I wp-theme/score/score.py <out dir> <wordpress dir>
+```
 
 ## Not done yet
 - Page bodies are Custom HTML blocks (exact match first). Next: section types become locked patterns so words and images can be edited safely (WP-THEME-FROM-LOOK9.md, approach C).
