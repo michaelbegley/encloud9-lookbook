@@ -7,11 +7,8 @@
  */
 if (!defined('ABSPATH')) exit;
 
-WP_CLI::add_command('n9 import', function ($args) {
-    $file = $args[0] ?? '';
-    if (!is_readable($file)) WP_CLI::error("Cannot read $file");
-    $items = json_decode(file_get_contents($file), true);
-    if (!is_array($items)) WP_CLI::error('Not a pages.json file');
+
+function n9_import_items($items, $log) {
     kses_remove_filters(); // the importer is run by a site admin; sections carry their own markup
     $by_path = [];
     $find = function ($path, $type) {
@@ -20,7 +17,7 @@ WP_CLI::add_command('n9 import', function ($args) {
         if ($type === 'page' && $path !== '/') { $p = get_page_by_path(trim($path, '/'), OBJECT, 'page'); if ($p) return $p->ID; }
         return 0;
     };
-    $parent_of = function ($path) use (&$by_path, $find) {
+    $parent_of = function ($path) use (&$by_path, $find, $log) {
         $parts = array_values(array_filter(explode('/', trim($path, '/'))));
         array_pop($parts);
         $parent = 0; $acc = '/';
@@ -34,7 +31,7 @@ WP_CLI::add_command('n9 import', function ($args) {
                     'post_name' => $seg, 'post_parent' => $parent, 'post_content' => '']);
                 update_post_meta($id, '_n9_path', $acc);
                 update_post_meta($id, '_n9_noindex', '1');
-                WP_CLI::log("holding page created at $acc");
+                $log("holding page created at $acc");
             }
             $by_path[$acc] = $id; $parent = $id;
         }
@@ -64,7 +61,7 @@ WP_CLI::add_command('n9 import', function ($args) {
         $id = $find($it['path'], $type);
         if ($id) { $post['ID'] = $id; wp_update_post($post); $n['updated']++; }
         else { $id = wp_insert_post($post); $n['created']++; }
-        if (is_wp_error($id) || !$id) { WP_CLI::warning('failed: ' . $it['path']); continue; }
+        if (is_wp_error($id) || !$id) { $log('failed: ' . $it['path']); continue; }
         $by_path[$it['path']] = $id;
         $meta = [
             '_n9_path' => $it['path'], '_n9_old_mock_path' => $it['old'], '_n9_section' => $it['section'], '_n9_bodyclass' => $it['bodyclass'],
@@ -75,8 +72,18 @@ WP_CLI::add_command('n9 import', function ($args) {
         foreach ($meta as $k => $v) update_post_meta($id, $k, wp_slash($v));
     }
     if (!empty($by_path['/'])) { update_option('show_on_front', 'page'); update_option('page_on_front', $by_path['/']); }
-    WP_CLI::success(wp_json_encode($n));
-});
+    return $n;
+}
+
+
+if (defined('WP_CLI') && WP_CLI) {
+    WP_CLI::add_command('n9 import', function ($args) {
+        $file = $args[0] ?? '';
+        if (!is_readable($file)) WP_CLI::error("Cannot read $file");
+        $items = json_decode(file_get_contents($file), true);
+        if (!is_array($items)) WP_CLI::error('Not a pages.json file');
+        WP_CLI::success(wp_json_encode(n9_import_items($items, function ($m) { WP_CLI::log($m); })));
+    });
 
 /**
  * wp n9 seo-export <file.csv>
@@ -97,3 +104,4 @@ WP_CLI::add_command('n9 seo-export', function ($args) {
     fclose($out);
     WP_CLI::success("$n rows written to $file");
 });
+}
