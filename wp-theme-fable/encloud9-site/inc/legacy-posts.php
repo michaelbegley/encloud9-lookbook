@@ -1,7 +1,7 @@
 <?php
 /**
  * Tools > enCloud9 old posts: brings the blog posts kept from the old site (not on the mock site) across from the
- * live site's public REST API, ten at a time. Runs on the server, so nothing passes through anyone's computer.
+ * live site's public REST API, five at a time. Runs on the server, so nothing passes through anyone's computer.
  *
  * For each address in data/kept-posts.txt:
  *  - read the post from the old site (public /wp-json/wp/v2/posts, by slug; if the old address now redirects there,
@@ -200,12 +200,19 @@ function n9_legacy_screen() {
 		if (!empty($_POST['n9_legacy_restart'])) $next = 0;
 		@set_time_limit(900);
 		$log = []; $tally = [];
-		$batch = array_slice($list, $next, 10);
-		foreach ($batch as $item) { $r = n9_legacy_import_one($item, $log); $tally[$r] = ($tally[$r] ?? 0) + 1; }
-		$next += count($batch);
-		update_option('n9_legacy_next', $next, false);
+		// Five at a time, progress saved after each post, so a host timeout never loses more than one post's work.
+		$batch = array_slice($list, $next, 5);
 		$all = (array) get_option('n9_legacy_log', []);
-		update_option('n9_legacy_log', array_slice(array_merge($all, ['--- ' . wp_date('Y-m-d H:i T')], $log), -600), false);
+		$all[] = '--- ' . wp_date('Y-m-d H:i T');
+		foreach ($batch as $item) {
+			$one = [];
+			$r = n9_legacy_import_one($item, $one);
+			$tally[$r] = ($tally[$r] ?? 0) + 1;
+			$log = array_merge($log, $one);
+			$all = array_slice(array_merge($all, $one), -600);
+			update_option('n9_legacy_next', ++$next, false);
+			update_option('n9_legacy_log', $all, false);
+		}
 		$t = [];
 		foreach ($tally as $k => $v) $t[] = "$v $k";
 		echo '<div class="notice notice-success"><p>This batch: ' . esc_html(implode(', ', $t) ?: 'nothing to do') . '.</p></div>';
@@ -215,7 +222,7 @@ function n9_legacy_screen() {
 	echo '<form method="post">';
 	wp_nonce_field('n9_legacy');
 	echo '<p><label><input type="checkbox" name="n9_legacy_restart" value="1"> Start again from the first post (updates in place)</label></p>';
-	submit_button($next >= count($list) ? 'Run again' : 'Import the next 10', 'primary', 'n9_legacy_run');
+	submit_button($next >= count($list) ? 'Run again' : 'Import the next 5', 'primary', 'n9_legacy_run');
 	echo '</form>';
 	$all = (array) get_option('n9_legacy_log', []);
 	if ($all) echo '<h2>Log</h2><pre style="white-space:pre-wrap;max-height:400px;overflow:auto">' . esc_html(implode("\n", array_slice($all, -200))) . '</pre>';
