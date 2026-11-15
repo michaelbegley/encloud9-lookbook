@@ -176,6 +176,14 @@ function n9_legacy_import_one($item, &$log) {
 	$existing = get_posts(['post_type' => 'post', 'meta_key' => '_n9_legacy_id', 'meta_value' => $p['id'], 'post_status' => 'any', 'numberposts' => 1, 'fields' => 'ids']);
 
 	$html = n9_legacy_clean($p['content']['rendered'] ?? '');
+	// One-off re-import with &noembed=1: a YouTube embed becomes a plain link (two posts hang the host with the embed in).
+	if (!empty($GLOBALS['n9_legacy_noembed'])) {
+		$html = preg_replace_callback('#<(iframe|embed|object)\b[^>]*?(?:youtube(?:-nocookie)?\.com/embed/|youtu\.be/)([A-Za-z0-9_-]{6,})[^>]*>(?:.*?</\1>)?#is', function ($m) {
+			return '<p><a href="https://www.youtube.com/watch?v=' . $m[2] . '">Watch on YouTube</a></p>';
+		}, $html);
+		$html = preg_replace('#<figure\b[^>]*wp-block-embed[^>]*>\s*<div[^>]*>\s*(https?://(?:www\.)?(?:youtube\.com|youtu\.be)/\S+?)\s*</div>.*?</figure>#is', '<p><a href="$1">Watch on YouTube</a></p>', $html);
+		$log[] = 'video embeds swapped for links';
+	}
 	$postarr = [
 		'post_type' => 'post', 'post_status' => 'publish', 'post_name' => $slug,
 		'post_title' => wp_strip_all_tags(html_entity_decode($p['title']['rendered'] ?? '', ENT_QUOTES)),
@@ -318,6 +326,7 @@ function n9_legacy_screen() {
 			if ($item['new'] !== $want) continue;
 			@set_time_limit(300);
 			$one = [];
+			$GLOBALS['n9_legacy_noembed'] = !empty($_GET['noembed']);
 			n9_legacy_import_one($item, $one);
 			echo '<div class="notice notice-info"><p class="n9redo">Redo ' . esc_html($want) . ': ' . esc_html(implode(' | ', $one)) . '</p></div>';
 		}
