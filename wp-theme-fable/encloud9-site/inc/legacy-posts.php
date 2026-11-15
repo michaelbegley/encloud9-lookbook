@@ -197,10 +197,20 @@ function n9_legacy_batch() {
 	$log = []; $tally = [];
 	foreach ($batch as $item) {
 		$one = [];
-		$r = n9_legacy_import_one($item, $one);
+		// A post whose import was cut off by the host twice is skipped and named in the log, so one heavy post never stalls the run.
+		$tries = (array) get_option('n9_legacy_tries', []);
+		$tries[$next] = ($tries[$next] ?? 0) + 1;
+		update_option('n9_legacy_tries', $tries, false);
+		if ($tries[$next] > 2) {
+			$r = 'skipped';
+			$one[] = 'SKIPPED after two cut-off tries (do this one by hand): ' . $item['new'];
+		} else {
+			$r = n9_legacy_import_one($item, $one);
+		}
 		$tally[$r] = ($tally[$r] ?? 0) + 1;
 		$log = array_merge($log, $one);
 		$all = array_slice(array_merge($all, $one), -600);
+		@set_time_limit(300);
 		update_option('n9_legacy_next', ++$next, false);
 		update_option('n9_legacy_log', $all, false);
 	}
