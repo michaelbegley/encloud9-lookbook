@@ -193,5 +193,6 @@ require_once __DIR__ . '/inc/authors.php';
 require_once __DIR__ . '/inc/analytics.php';
 require_once __DIR__ . '/inc/forms.php';
 require_once __DIR__ . '/inc/sitemap.php';
+require_once __DIR__ . '/inc/dates.php';
 if (is_admin()) require_once __DIR__ . '/inc/admin-import.php';
 require_once __DIR__ . '/inc/legacy-posts.php';
