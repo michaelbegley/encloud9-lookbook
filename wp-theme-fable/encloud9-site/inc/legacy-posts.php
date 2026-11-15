@@ -173,6 +173,11 @@ function n9_legacy_import_one($item, &$log) {
 	}
 	if ($cats) wp_set_post_categories($id, $cats);
 	$author = $p['_embedded']['author'][0]['name'] ?? '';
+	if ($author === '' && !empty($p['link'])) {
+		// The old site hides its users list; the post page itself names the author.
+		$r = wp_remote_get($p['link'], ['timeout' => 20]);
+		if (!is_wp_error($r) && preg_match('#<meta name="author" content="([^"]+)"#', wp_remote_retrieve_body($r), $am)) $author = html_entity_decode($am[1], ENT_QUOTES);
+	}
 	if ($author) update_post_meta($id, '_n9_byline', sanitize_text_field($author));
 	update_post_meta($id, '_n9_legacy_id', (int) $p['id']);
 	update_post_meta($id, '_n9_legacy_url', esc_url_raw($p['link'] ?? ''));
