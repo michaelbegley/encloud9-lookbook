@@ -275,6 +275,24 @@ function n9_legacy_screen() {
 			printf('<p class="n9probe">%s: %s in %d ms</p>', esc_html($path), esc_html(is_wp_error($r) ? $r->get_error_message() : wp_remote_retrieve_response_code($r)), (microtime(true) - $t) * 1000);
 		}
 	}
+	if (!empty($_GET['check'])) {
+		// Leftovers from the old page builder in the imported posts: shortcodes, inline styles, builder class names, old-site links.
+		$ids = get_posts(['post_type' => 'post', 'post_status' => 'any', 'numberposts' => -1, 'fields' => 'ids', 'meta_key' => '_n9_legacy_id']);
+		$bad = 0;
+		echo '<h2>Leftover check: ' . count($ids) . ' imported posts</h2><ul class="n9check">';
+		foreach ($ids as $id) {
+			$c = (string) get_post_field('post_content', $id);
+			$hits = [];
+			if (preg_match_all('#\[/?[a-z_]+[^\]]*\]#i', $c, $m)) $hits[] = count($m[0]) . ' shortcode-like: ' . esc_html(implode(' ', array_slice(array_unique($m[0]), 0, 3)));
+			if (stripos($c, 'et_pb') !== false) $hits[] = 'et_pb text';
+			if (preg_match('#<style|style="#i', $c)) $hits[] = 'inline style';
+			if (preg_match_all('#https?://(www\.)?encloud9\.com/(?!wp-content/)[^"\s<]*#i', $c, $m2)) $hits[] = count($m2[0]) . ' old-site links';
+			if (preg_match_all('#encloud9\.com/wp-content/uploads/[^"\s<]*#i', $c, $m3)) $hits[] = count($m3[0]) . ' images still on the old site';
+			if (str_word_count(wp_strip_all_tags($c)) < 150) $hits[] = 'under 150 words';
+			if ($hits) { $bad++; echo '<li>' . esc_html(get_post_meta($id, '_n9_path', true)) . (get_post_meta($id, '_n9_legacy_divi', true) ? ' (Divi)' : '') . ': ' . implode('; ', $hits) . '</li>'; }
+		}
+		echo '</ul><p class="n9check">' . $bad . ' with something to look at.</p>';
+	}
 	if (isset($_POST['n9_legacy_run']) && check_admin_referer('n9_legacy')) {
 		if (!empty($_POST['n9_legacy_restart'])) { update_option('n9_legacy_next', 0, false); $next = 0; }
 		update_option('n9_legacy_only_missing', empty($_POST['n9_legacy_missing']) ? 0 : 1, false);
@@ -315,7 +333,7 @@ function n9_legacy_screen() {
 	echo '<p><label><input type="checkbox" name="n9_legacy_restart" value="1"> Start again from the first post (updates in place)</label></p>';
 	echo '<p><label><input type="checkbox" name="n9_legacy_missing" value="1"> Only the posts not on this site yet (starts from the first post, skips the rest)</label></p>';
 	echo '<p><label><input type="checkbox" name="n9_legacy_all" value="1"> Run all the rest in the background</label></p>';
-	submit_button($next >= count($list) ? 'Run again' : 'Import the next 5', 'primary', 'n9_legacy_run');
+	submit_button($next >= count($list) ? 'Run again' : 'Import the next 3', 'primary', 'n9_legacy_run');
 	echo '</form>';
 	$all = (array) get_option('n9_legacy_log', []);
 	if ($all) echo '<h2>Log</h2><pre style="white-space:pre-wrap;max-height:400px;overflow:auto">' . esc_html(implode("\n", array_slice($all, -200))) . '</pre>';
