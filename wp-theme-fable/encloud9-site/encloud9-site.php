@@ -193,4 +193,4 @@ require_once __DIR__ . '/inc/authors.php';
 require_once __DIR__ . '/inc/analytics.php';
 require_once __DIR__ . '/inc/forms.php';
 if (is_admin()) require_once __DIR__ . '/inc/admin-import.php';
-if (is_admin()) require_once __DIR__ . '/inc/legacy-posts.php';
+if (is_admin() || wp_doing_cron() || (defined('WP_CLI') && WP_CLI)) require_once __DIR__ . '/inc/legacy-posts.php';

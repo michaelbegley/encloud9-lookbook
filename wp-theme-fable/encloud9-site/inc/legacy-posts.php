@@ -187,6 +187,43 @@ function n9_legacy_import_one($item, &$log) {
 	return $existing ? 'updated' : 'created';
 }
 
+/* One batch of five; progress saved after each post. */
+function n9_legacy_batch() {
+	$list = n9_legacy_list();
+	$next = (int) get_option('n9_legacy_next', 0);
+	$batch = array_slice($list, $next, 5);
+	$all = (array) get_option('n9_legacy_log', []);
+	$all[] = '--- ' . wp_date('Y-m-d H:i T');
+	$log = []; $tally = [];
+	foreach ($batch as $item) {
+		$one = [];
+		$r = n9_legacy_import_one($item, $one);
+		$tally[$r] = ($tally[$r] ?? 0) + 1;
+		$log = array_merge($log, $one);
+		$all = array_slice(array_merge($all, $one), -600);
+		update_option('n9_legacy_next', ++$next, false);
+		update_option('n9_legacy_log', $all, false);
+	}
+	return [$tally, $log, $next >= count($list)];
+}
+
+/* Background run: one batch per cron tick until the list is done. */
+add_action('n9_legacy_cron', function () {
+	if (!get_option('n9_legacy_auto')) return;
+	if (get_transient('n9_legacy_lock')) return;
+	set_transient('n9_legacy_lock', 1, 5 * MINUTE_IN_SECONDS);
+	@set_time_limit(600);
+	if (!function_exists('media_sideload_image')) {
+		require_once ABSPATH . 'wp-admin/includes/media.php';
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+		require_once ABSPATH . 'wp-admin/includes/image.php';
+	}
+	list(, , $done) = n9_legacy_batch();
+	delete_transient('n9_legacy_lock');
+	if ($done) delete_option('n9_legacy_auto');
+	else wp_schedule_single_event(time() + 5, 'n9_legacy_cron');
+});
+
 add_action('admin_menu', function () {
 	add_management_page('enCloud9 old posts', 'enCloud9 old posts', 'manage_options', 'n9-legacy', 'n9_legacy_screen');
 });
@@ -197,31 +234,32 @@ function n9_legacy_screen() {
 	$next = (int) get_option('n9_legacy_next', 0);
 	echo '<div class="wrap"><h1>enCloud9 old posts</h1>';
 	if (isset($_POST['n9_legacy_run']) && check_admin_referer('n9_legacy')) {
-		if (!empty($_POST['n9_legacy_restart'])) $next = 0;
-		@set_time_limit(900);
-		$log = []; $tally = [];
-		// Five at a time, progress saved after each post, so a host timeout never loses more than one post's work.
-		$batch = array_slice($list, $next, 5);
-		$all = (array) get_option('n9_legacy_log', []);
-		$all[] = '--- ' . wp_date('Y-m-d H:i T');
-		foreach ($batch as $item) {
-			$one = [];
-			$r = n9_legacy_import_one($item, $one);
-			$tally[$r] = ($tally[$r] ?? 0) + 1;
-			$log = array_merge($log, $one);
-			$all = array_slice(array_merge($all, $one), -600);
-			update_option('n9_legacy_next', ++$next, false);
-			update_option('n9_legacy_log', $all, false);
+		if (!empty($_POST['n9_legacy_restart'])) { update_option('n9_legacy_next', 0, false); $next = 0; }
+		if (!empty($_POST['n9_legacy_all'])) {
+			update_option('n9_legacy_auto', 1, false);
+			wp_schedule_single_event(time(), 'n9_legacy_cron');
+			spawn_cron();
+		} else {
+			@set_time_limit(900);
+			list($tally, $log) = n9_legacy_batch();
+			$next = (int) get_option('n9_legacy_next', 0);
+			$t = [];
+			foreach ($tally as $k => $v) $t[] = "$v $k";
+			echo '<div class="notice notice-success"><p>This batch: ' . esc_html(implode(', ', $t) ?: 'nothing to do') . '.</p></div>';
+			echo '<pre style="white-space:pre-wrap">' . esc_html(implode("\n", $log)) . '</pre>';
 		}
-		$t = [];
-		foreach ($tally as $k => $v) $t[] = "$v $k";
-		echo '<div class="notice notice-success"><p>This batch: ' . esc_html(implode(', ', $t) ?: 'nothing to do') . '.</p></div>';
-		echo '<pre style="white-space:pre-wrap">' . esc_html(implode("\n", $log)) . '</pre>';
+	}
+	if (get_option('n9_legacy_auto')) {
+		// Keeps the page visiting itself so the background run keeps ticking on a quiet site.
+		echo '<meta http-equiv="refresh" content="20;url=' . esc_url(admin_url('tools.php?page=n9-legacy')) . '">';
+		echo '<div class="notice notice-info"><p>Running in the background. This page refreshes every 20 seconds.</p></div>';
+		spawn_cron();
 	}
 	printf('<p>%d of %d posts done. Source: %s</p>', min($next, count($list)), count($list), esc_html(n9_legacy_source()));
 	echo '<form method="post">';
 	wp_nonce_field('n9_legacy');
 	echo '<p><label><input type="checkbox" name="n9_legacy_restart" value="1"> Start again from the first post (updates in place)</label></p>';
+	echo '<p><label><input type="checkbox" name="n9_legacy_all" value="1"> Run all the rest in the background</label></p>';
 	submit_button($next >= count($list) ? 'Run again' : 'Import the next 5', 'primary', 'n9_legacy_run');
 	echo '</form>';
 	$all = (array) get_option('n9_legacy_log', []);
