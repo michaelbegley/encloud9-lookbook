@@ -108,7 +108,7 @@ function n9_channel($t) {
 	$ai = ['chatgpt.com', 'chat.openai.com', 'perplexity.ai', 'copilot.microsoft.com', 'gemini.google.com', 'claude.ai', 'you.com', 'phind.com'];
 	$hay = $src . ' ' . $ref;
 	foreach ($ai as $h) if (strpos($hay, $h) !== false) return 'AI assistant';
-	if (preg_match('/chatgpt|openai|perplexity|copilot|gemini|claude/', $src)) return 'AI assistant';
+	if (in_array($src, ['chatgpt', 'chatgpt.com', 'openai', 'perplexity', 'perplexity.ai', 'copilot', 'gemini', 'claude', 'claude.ai'], true)) return 'AI assistant';
 	if (!empty($t['gclid']) || in_array($med, ['cpc', 'ppc', 'paid'], true)) return 'Paid search';
 	if (strpos($hay, 'linkedin') !== false || $ref === 'lnkd.in') return 'LinkedIn';
 	if (strpos($hay, 'crmsoftwareblog') !== false) return 'CRM Software Blog';
