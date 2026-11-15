@@ -261,7 +261,7 @@ function n9_legacy_screen() {
 		// The private site's password blocks WordPress from calling its own cron, so the run moves forward on this
 		// page instead: each load does one batch of five, then the page reloads itself until the list is done.
 		if (!isset($_POST['n9_legacy_run']) && !get_transient('n9_legacy_lock')) {
-			set_transient('n9_legacy_lock', 1, 3 * MINUTE_IN_SECONDS);
+			set_transient('n9_legacy_lock', 1, 90);
 			@set_time_limit(900);
 			list($tally, $log, $done) = n9_legacy_batch();
 			delete_transient('n9_legacy_lock');
