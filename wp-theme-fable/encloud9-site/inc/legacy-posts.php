@@ -39,7 +39,7 @@ function n9_legacy_moves() {
 }
 
 function n9_legacy_get($url) {
-	$r = wp_remote_get($url, ['timeout' => 25, 'redirection' => 5, 'headers' => ['Accept' => 'application/json']]);
+	$r = wp_remote_get($url, ['timeout' => 15, 'redirection' => 5, 'headers' => ['Accept' => 'application/json']]);
 	if (is_wp_error($r) || wp_remote_retrieve_response_code($r) !== 200) return null;
 	return json_decode(wp_remote_retrieve_body($r), true);
 }
@@ -51,7 +51,7 @@ function n9_legacy_find($old_path) {
 	$embed = '&_embed=author,wp:featuredmedia,wp:term';
 	$j = n9_legacy_get($src . '/wp-json/wp/v2/posts?slug=' . rawurlencode($slug) . $embed);
 	if (!empty($j[0])) return [$j[0], ''];
-	$r = wp_remote_head($src . $old_path, ['timeout' => 15, 'redirection' => 0]);
+	$r = wp_remote_head($src . $old_path, ['timeout' => 8, 'redirection' => 0]);
 	$loc = is_wp_error($r) ? '' : (string) wp_remote_retrieve_header($r, 'location');
 	if ($loc) {
 		$s2 = basename(untrailingslashit((string) parse_url($loc, PHP_URL_PATH)));
@@ -175,7 +175,7 @@ function n9_legacy_import_one($item, &$log) {
 	$author = $p['_embedded']['author'][0]['name'] ?? '';
 	if ($author === '' && !empty($p['link'])) {
 		// The old site hides its users list; the post page itself names the author.
-		$r = wp_remote_get($p['link'], ['timeout' => 20]);
+		$r = wp_remote_get($p['link'], ['timeout' => 10]);
 		if (!is_wp_error($r) && preg_match('#<meta name="author" content="([^"]+)"#', wp_remote_retrieve_body($r), $am)) $author = html_entity_decode($am[1], ENT_QUOTES);
 	}
 	if ($author) update_post_meta($id, '_n9_byline', sanitize_text_field($author));
@@ -260,7 +260,8 @@ function n9_legacy_screen() {
 	if (get_option('n9_legacy_auto')) {
 		// The private site's password blocks WordPress from calling its own cron, so the run moves forward on this
 		// page instead: each load does one batch of five, then the page reloads itself until the list is done.
-		if (!isset($_POST['n9_legacy_run']) && !get_transient('n9_legacy_lock')) {
+		if (isset($_GET['stop'])) { delete_option('n9_legacy_auto'); }
+		elseif (!isset($_POST['n9_legacy_run']) && isset($_GET['run']) && !get_transient('n9_legacy_lock')) {
 			set_transient('n9_legacy_lock', 1, 90);
 			@set_time_limit(900);
 			list($tally, $log, $done) = n9_legacy_batch();
@@ -270,8 +271,8 @@ function n9_legacy_screen() {
 			echo '<pre style="white-space:pre-wrap">' . esc_html(implode("\n", $log)) . '</pre>';
 		}
 		if (get_option('n9_legacy_auto')) {
-			echo '<meta http-equiv="refresh" content="2;url=' . esc_url(admin_url('tools.php?page=n9-legacy')) . '">';
-			echo '<div class="notice notice-info"><p>Running: five posts per page load. Leave this page open.</p></div>';
+			echo '<meta http-equiv="refresh" content="2;url=' . esc_url(admin_url('tools.php?page=n9-legacy&run=1')) . '">';
+			echo '<div class="notice notice-info"><p>Running: five posts per page load. Leave this page open. <a href="' . esc_url(admin_url('tools.php?page=n9-legacy&stop=1')) . '">Stop</a></p></div>';
 		}
 	}
 	printf('<p>%d of %d posts done. Source: %s</p>', min($next, count($list)), count($list), esc_html(n9_legacy_source()));
@@ -285,3 +286,17 @@ function n9_legacy_screen() {
 	if ($all) echo '<h2>Log</h2><pre style="white-space:pre-wrap;max-height:400px;overflow:auto">' . esc_html(implode("\n", array_slice($all, -200))) . '</pre>';
 	echo '</div>';
 }
+
+/* Admin-only check that this server can reach the old site, with timings. */
+add_action('rest_api_init', function () {
+	register_rest_route('n9/v1', '/legacy-probe', ['methods' => 'GET', 'permission_callback' => function () { return current_user_can('manage_options'); },
+		'callback' => function () {
+			$out = [];
+			foreach (['/wp-json/wp/v2/posts?per_page=1&_fields=id', '/blog/dataverse-search-dynamics-365-tips/'] as $path) {
+				$t = microtime(true);
+				$r = wp_remote_get(n9_legacy_source() . $path, ['timeout' => 12]);
+				$out[] = ['path' => $path, 'ms' => (int) ((microtime(true) - $t) * 1000), 'result' => is_wp_error($r) ? $r->get_error_message() : wp_remote_retrieve_response_code($r)];
+			}
+			return $out;
+		}]);
+});
