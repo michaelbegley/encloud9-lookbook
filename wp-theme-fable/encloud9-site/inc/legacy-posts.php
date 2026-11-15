@@ -60,6 +60,16 @@ function n9_legacy_find($old_path) {
 			if (!empty($j[0])) return [$j[0], $s2];
 		}
 	}
+	// The old site gives some posts custom addresses (Permalink Manager), so the slug can differ from the address.
+	// Read the post ID off the public page itself, then ask for that post.
+	$r = wp_remote_get($src . $old_path, ['timeout' => 15]);
+	if (!is_wp_error($r) && wp_remote_retrieve_response_code($r) === 200) {
+		$body = (string) wp_remote_retrieve_body($r);
+		if (preg_match('#\bpostid-(\d+)\b#', $body, $m) || preg_match('#[?&]p=(\d+)#', $body, $m)) {
+			$j = n9_legacy_get($src . '/wp-json/wp/v2/posts/' . (int) $m[1] . '?' . ltrim($embed, '&'));
+			if (!empty($j['id'])) return [$j, '']; // same address, so it keeps its new path
+		}
+	}
 	return [null, ''];
 }
 
