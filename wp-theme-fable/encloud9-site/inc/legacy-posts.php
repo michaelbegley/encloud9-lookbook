@@ -154,7 +154,11 @@ function n9_legacy_sideload($url, $post_id, $alt) {
 		$c = function ($d, $f, $n) { if (preg_match('#\.svg$#i', $n)) { $d['ext'] = 'svg'; $d['type'] = 'image/svg+xml'; $d['proper_filename'] = false; } return $d; };
 		add_filter('upload_mimes', $m); add_filter('wp_check_filetype_and_ext', $c, 10, 3);
 	}
+	// Animated GIFs and very large images: keep the original only. Making the resized copies is the step most likely to stall the host.
+	$heavy = preg_match('#\.gif$#i', $file['name']) || @filesize($tmp) > 2 * 1024 * 1024;
+	if ($heavy) { add_filter('intermediate_image_sizes_advanced', '__return_empty_array', 99); add_filter('big_image_size_threshold', '__return_false', 99); }
 	$id = media_handle_sideload($file, $post_id, $alt ?: null);
+	if ($heavy) { remove_filter('intermediate_image_sizes_advanced', '__return_empty_array', 99); remove_filter('big_image_size_threshold', '__return_false', 99); }
 	if ($svg) { remove_filter('upload_mimes', $m); remove_filter('wp_check_filetype_and_ext', $c, 10); }
 	if (is_wp_error($id)) @unlink($tmp);
 	return $id;
@@ -194,6 +198,9 @@ function n9_legacy_import_one($item, &$log) {
 	if ($existing) $postarr['ID'] = $existing[0];
 	$id = wp_insert_post(wp_slash($postarr), true);
 	if (is_wp_error($id)) { $log[] = 'save failed: ' . $new_path . ' ' . $id->get_error_message(); return 'failed'; }
+	// Save the text and the link back to the old post first, so a stall while copying images never leaves an empty post or a duplicate.
+	update_post_meta($id, '_n9_legacy_id', (int) $p['id']);
+	wp_update_post(['ID' => $id, 'post_content' => wp_slash($html)]);
 
 	// Images into the media library; links to the new addresses.
 	$src_host = preg_replace('/^www\./', '', parse_url(n9_legacy_source(), PHP_URL_HOST));
