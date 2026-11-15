@@ -125,15 +125,15 @@ body.p-storage .an-list li::before{content:counter(a,decimal-leading-zero);font-
         <span class="mono">Free, and open to any organization.</span>
       </div>
     </div>
-    <form class="st-form rise" id="book" style="--d:3" aria-labelledby="fm-h" onsubmit="return false">
+    <form class="st-form rise" id="book" style="--d:3" aria-labelledby="fm-h" novalidate>
       <div class="fm-top"><span class="mono">Book in two minutes</span><h2 id="fm-h">Book my free storage analysis</h2></div>
-      <div class="fm-row"><label><span>First name <i>Required</i></span><input type="text" autocomplete="given-name" required></label><label><span>Last name <i>Required</i></span><input type="text" autocomplete="family-name" required></label></div>
-      <label><span>Work email <i>Required</i></span><input type="email" autocomplete="email" required></label>
-      <label><span>Company <i>Required</i></span><input type="text" autocomplete="organization" required></label>
-      <label><span>Phone</span><input type="tel" autocomplete="tel"></label>
-      <label><span>What are you seeing?</span><select><option value="">Choose one</option><option>Storage warning emails from Microsoft</option><option>We are over our storage limit</option><option>We cannot create, copy or restore an environment</option><option>Something else</option></select></label>
+      <div class="fm-row"><label><span>First name <i>Required</i></span><input type="text" name="first" autocomplete="given-name" required></label><label><span>Last name <i>Required</i></span><input type="text" name="last" autocomplete="family-name" required></label></div>
+      <label><span>Work email <i>Required</i></span><input type="email" name="email" autocomplete="email" required></label>
+      <label><span>Company <i>Required</i></span><input type="text" name="company" autocomplete="organization" required></label>
+      <label><span>Phone</span><input type="tel" name="phone" autocomplete="tel"></label>
+      <label><span>What are you seeing?</span><select name="seeing"><option value="">Choose one</option><option>Storage warning emails from Microsoft</option><option>We are over our storage limit</option><option>We cannot create, copy or restore an environment</option><option>Something else</option></select></label>
       <button class="btn btn-p" type="submit">Book my free storage analysis</button>
-      <p class="fm-note">Concept only: nothing is sent from this page. On the live site this is the same ClickDimensions form as today.</p>
+      <p class="fm-msg" role="status" aria-live="polite"></p>
     </form>
   </section>
 

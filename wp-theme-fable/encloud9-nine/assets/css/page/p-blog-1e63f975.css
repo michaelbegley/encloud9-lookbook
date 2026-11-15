@@ -85,15 +85,13 @@ body.p-blog .sec-all{padding-top:clamp(64px,7vw,104px)}
 body.p-blog .askus{margin-top:clamp(40px,5vw,64px);padding-top:28px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between}
 body.p-blog .askus .lead{margin:0}
 body.p-blog .nl .h2{margin-top:16px}body.p-blog .nl .lead{margin-top:20px}body.p-blog .nl .fine{margin-top:0}
-body.p-blog .nl .mockform .ck{display:flex;gap:10px;align-items:flex-start;font-weight:400}
-body.p-blog .nl .mockform .ck input{width:20px;min-height:20px;margin-top:2px;flex-shrink:0}
+body.p-blog .nl .nlform .ck{display:flex;gap:10px;align-items:flex-start;font-weight:400}
+body.p-blog .nl .nlform .ck input{width:20px;min-height:20px;margin-top:2px;flex-shrink:0}
 body.p-blog .nl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center;background:var(--b9);padding:clamp(32px,5vw,64px)}
-body.p-blog .nl .mockform{border:2px dashed var(--b6);background:var(--white);padding:24px;display:flex;flex-direction:column;gap:14px}
-body.p-blog .nl .mockform .mono{color:var(--b4)}
-body.p-blog .nl .mockform label{font-size:14px;font-weight:600}
-body.p-blog .nl .mockform input{min-height:52px;border:1px solid var(--line);background:var(--bg);padding:0 14px;font:16px var(--body);color:var(--muted);border-radius:0;width:100%}
-body.p-blog .nl .mockform button{opacity:.5;cursor:not-allowed}
-body.p-blog .nl .mockform button:hover{transform:none;background:var(--b5)}
+body.p-blog .nl .nlform{background:var(--white);padding:24px;display:flex;flex-direction:column;gap:14px}
+body.p-blog .nl .nlform label{font-size:14px;font-weight:600}
+body.p-blog .nl .nlform input{min-height:52px;border:1px solid var(--line);background:var(--bg);padding:0 14px;font:16px var(--body);color:inherit;border-radius:0;width:100%}
+body.p-blog .nl .nlform .fm-msg{margin:0;font-size:14px}
 @media (max-width:860px){body.p-blog .nl{grid-template-columns:1fr}}
 
 /* card footer: "Read the post" never breaks; the date drops to its own line when space is tight (10 Nov 2026) */
