@@ -171,7 +171,9 @@ add_filter('render_block_core/post-content', function ($html, $block) {
     $title = get_the_title($post);
     $cats = get_the_category($post->ID);
     $cat = ($cats && $cats[0]->slug !== 'uncategorized') ? '<span class="mono cat">' . esc_html($cats[0]->name) . '</span>' : '';
-    $author = get_the_author_meta('display_name', $post->post_author);
+    // Posts kept from the old site carry their author's name (set by the site plugin's old-posts import);
+    // the account that ran the import is never shown.
+    $author = (string) get_post_meta($post->ID, '_n9_byline', true);
     $by = '<p class="byline"><span class="av" aria-hidden="true"></span>' . ($author ? '<span>By <b>' . esc_html($author) . '</b></span>' : '')
         . '<span><b>' . esc_html(get_the_date('F j, Y', $post)) . '</b></span></p>';
     $nav = $n > 1
