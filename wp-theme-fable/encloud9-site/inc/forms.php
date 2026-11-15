@@ -21,7 +21,9 @@ if (!defined('ABSPATH')) exit;
 function n9_form_kinds() {
 	// Only fields the capture has today. Company, UTM and lead source can join once Form Capture Fields are added in Dynamics
 	// (FORMS-RESEARCH doc); until then company and source travel inside the message.
-	$contact_click = ['Topic', 'first-name', 'last-name', 'your-email', 'phone', 'your-message', 'Form Name', 'Page Name', 'current-url', 'Referral URL'];
+	// company, utm_source, utm_medium, utm_campaign and gclid added to the Home Page capture 15 Nov 2026 (Michael's go).
+	$contact_click = ['Topic', 'first-name', 'last-name', 'your-email', 'phone', 'company', 'your-message', 'Form Name', 'Page Name', 'current-url', 'Referral URL',
+		'utm_source', 'utm_medium', 'utm_campaign', 'gclid'];
 	$guide_click = ['first-name', 'last-name', 'your-email', 'ipaddress', 'Page Name', 'current-url', 'Referral URL',
 		'utm_source', 'utm medium', 'utm_campaign', 'utm_term', 'utm_content'];
 	return apply_filters('n9_form_kinds', [
@@ -234,7 +236,7 @@ function n9_click_body($id) {
 
 	$msg = $d['msg'] ?? '';
 	if ($kind === 'storage') $msg = trim('What are you seeing: ' . ($d['seeing'] ?? ''));
-	// The contact capture has no company field yet, so company and source also ride in the message.
+	// Company and source also ride in the message so whoever opens the lead sees them at once.
 	$note = "Company: " . ($d['company'] ?? '') . "\nForm: " . $topic . "\nSource: " . $source;
 	if (in_array($kind, ['contact', 'consult', 'check'], true)) $msg = trim($msg . "\n\n" . $note);
 
