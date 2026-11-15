@@ -173,16 +173,17 @@ function n9_legacy_import_one($item, &$log) {
 		$u = wp_make_link_relative(wp_get_attachment_image_url($aid, 'large') ?: wp_get_attachment_url($aid));
 		return '<img src="' . esc_url($u) . '" alt="' . esc_attr($alt) . '" class="wp-image-' . $aid . '" loading="lazy">';
 	}, $html);
-	$html = preg_replace_callback('#\shref="([^"]+)"#i', function ($m) use ($id, &$log, $src_host) {
-		$u = html_entity_decode($m[1]);
-		// A link to a full-size image on the old site (the usual click-to-enlarge) gets the copy in our media library.
+	$html = preg_replace_callback('#\s(href|data)="([^"]+)"#i', function ($m) use ($id, &$log, $src_host) {
+		$attr = strtolower($m[1]);
+		$u = html_entity_decode($m[2]);
+		// A link to a file on the old site (click-to-enlarge image, PDF, Office file, video) gets the copy in our media library.
 		$h = preg_replace('/^www\./', '', (string) parse_url($u, PHP_URL_HOST));
-		if (($h === $src_host || $h === '') && preg_match('#/wp-content/uploads/.+\.(png|jpe?g|gif|webp)$#i', (string) parse_url($u, PHP_URL_PATH))) {
+		if (($h === $src_host || $h === '') && preg_match('#/wp-content/uploads/.+\.(png|jpe?g|gif|webp|pdf|docx?|xlsx?|pptx?|mp4|zip)$#i', (string) parse_url($u, PHP_URL_PATH))) {
 			$full = $h === '' ? n9_legacy_source() . $u : $u;
 			$aid = n9_legacy_image($full, $id, $log);
-			if ($aid) return ' href="' . esc_url(wp_make_link_relative(wp_get_attachment_url($aid))) . '"';
+			if ($aid) return ' ' . $attr . '="' . esc_url(wp_make_link_relative(wp_get_attachment_url($aid))) . '"';
 		}
-		return ' href="' . esc_url(n9_legacy_link($u)) . '"';
+		return ' ' . $attr . '="' . esc_url($attr === 'href' ? n9_legacy_link($u) : $u) . '"';
 	}, $html);
 	// Plain paragraphs and headings stay plain HTML: the theme frames the post (title, author, date, contents list, closing call to action).
 	wp_update_post(['ID' => $id, 'post_content' => wp_slash($html)]);
@@ -307,7 +308,7 @@ function n9_legacy_screen() {
 			if (stripos($c, 'et_pb') !== false) $hits[] = 'et_pb text';
 			if (preg_match('#<style|style="#i', $c)) $hits[] = 'inline style';
 			if (preg_match_all('#https?://(www\.)?encloud9\.com/(?!wp-content/)[^"\s<]*#i', $c, $m2)) $hits[] = count($m2[0]) . ' old-site links';
-			if (preg_match_all('#encloud9\.com/wp-content/uploads/[^"\s<]*#i', $c, $m3)) $hits[] = count($m3[0]) . ' images still on the old site';
+			if (preg_match_all('#encloud9\.com/wp-content/uploads/[^"\s<]*#i', $c, $m3)) $hits[] = count($m3[0]) . ' files still on the old site, e.g. ' . esc_html(basename($m3[0][0]));
 			if (str_word_count(wp_strip_all_tags($c)) < 150) $hits[] = 'under 150 words';
 			if ($hits) { $bad++; echo '<li>' . esc_html(get_post_meta($id, '_n9_path', true)) . (get_post_meta($id, '_n9_legacy_divi', true) ? ' (Divi)' : '') . ': ' . implode('; ', $hits) . '</li>'; }
 		}
