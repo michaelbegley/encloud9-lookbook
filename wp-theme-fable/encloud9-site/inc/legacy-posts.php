@@ -237,8 +237,6 @@ function n9_legacy_screen() {
 		if (!empty($_POST['n9_legacy_restart'])) { update_option('n9_legacy_next', 0, false); $next = 0; }
 		if (!empty($_POST['n9_legacy_all'])) {
 			update_option('n9_legacy_auto', 1, false);
-			wp_schedule_single_event(time(), 'n9_legacy_cron');
-			spawn_cron();
 		} else {
 			@set_time_limit(900);
 			list($tally, $log) = n9_legacy_batch();
@@ -250,10 +248,21 @@ function n9_legacy_screen() {
 		}
 	}
 	if (get_option('n9_legacy_auto')) {
-		// Keeps the page visiting itself so the background run keeps ticking on a quiet site.
-		echo '<meta http-equiv="refresh" content="20;url=' . esc_url(admin_url('tools.php?page=n9-legacy')) . '">';
-		echo '<div class="notice notice-info"><p>Running in the background. This page refreshes every 20 seconds.</p></div>';
-		spawn_cron();
+		// The private site's password blocks WordPress from calling its own cron, so the run moves forward on this
+		// page instead: each load does one batch of five, then the page reloads itself until the list is done.
+		if (!isset($_POST['n9_legacy_run']) && !get_transient('n9_legacy_lock')) {
+			set_transient('n9_legacy_lock', 1, 3 * MINUTE_IN_SECONDS);
+			@set_time_limit(900);
+			list($tally, $log, $done) = n9_legacy_batch();
+			delete_transient('n9_legacy_lock');
+			if ($done) delete_option('n9_legacy_auto');
+			$next = (int) get_option('n9_legacy_next', 0);
+			echo '<pre style="white-space:pre-wrap">' . esc_html(implode("\n", $log)) . '</pre>';
+		}
+		if (get_option('n9_legacy_auto')) {
+			echo '<meta http-equiv="refresh" content="2;url=' . esc_url(admin_url('tools.php?page=n9-legacy')) . '">';
+			echo '<div class="notice notice-info"><p>Running: five posts per page load. Leave this page open.</p></div>';
+		}
 	}
 	printf('<p>%d of %d posts done. Source: %s</p>', min($next, count($list)), count($list), esc_html(n9_legacy_source()));
 	echo '<form method="post">';
