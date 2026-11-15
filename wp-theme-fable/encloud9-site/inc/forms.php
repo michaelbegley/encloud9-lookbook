@@ -361,6 +361,8 @@ add_action('admin_init', function () {
 		$out['notify_email'] = implode(',', array_filter(array_map('sanitize_email', explode(',', $in['notify_email'] ?? ''))));
 		$out['lead_source_field'] = sanitize_text_field($in['lead_source_field'] ?? '');
 		$out['error_marker'] = sanitize_text_field($in['error_marker'] ?? '');
+		$b = trim($in['bookings_url'] ?? '');
+		$out['bookings_url'] = preg_match('#^https://outlook\.(office|office365)\.com/(owa/calendar|book)/#i', $b) ? esc_url_raw($b) : '';
 		return $out;
 	}]);
 });
@@ -376,7 +378,10 @@ function n9_forms_page() {
 	}
 	echo '</table><h2>Tracking script</h2><p>The ClickDimensions tracking script, as it is on the live site. It goes in every page footer for visitors.</p>';
 	printf('<textarea name="n9_forms[click_script]" rows="8" class="large-text code">%s</textarea>', esc_textarea($o['click_script'] ?? ''));
-	echo '<h2>Email</h2><table class="form-table">';
+	echo '<h2>Booking calendar</h2><p>The public link of the Microsoft Bookings page (from Bookings > Booking page > Copy link). Empty: the Book a call page shows the phone and contact options instead.</p><table class="form-table">';
+	printf('<tr><th>Bookings page link</th><td><input type="url" class="large-text" name="n9_forms[bookings_url]" value="%s" placeholder="https://outlook.office.com/book/..."></td></tr>',
+		esc_attr($o['bookings_url'] ?? ''));
+	echo '</table><h2>Email</h2><table class="form-table">';
 	printf('<tr><th>Alert when a send fails</th><td><input type="email" class="regular-text" name="n9_forms[alert_email]" value="%s" placeholder="%s"></td></tr>',
 		esc_attr($o['alert_email'] ?? ''), esc_attr(get_option('admin_email')));
 	printf('<tr><th>Copy of every entry to</th><td><input type="text" class="large-text" name="n9_forms[notify_email]" value="%s"><p class="description">Comma separated. Empty sends no copies.</p></td></tr>',
@@ -390,3 +395,13 @@ function n9_forms_page() {
 	submit_button();
 	echo '</form></div>';
 }
+
+
+/* The Book a call page's calendar box: the Bookings page once its link is set, otherwise the fallback text in the page. */
+add_filter('render_block', function ($content) {
+	if (is_admin() || strpos($content, 'data-n9-bookings') === false) return $content;
+	$u = trim((string) n9_forms_opt('bookings_url'));
+	if ($u === '') return $content;
+	$frame = '<div class="embed" data-n9-bookings="1"><iframe src="' . esc_url($u) . '" title="Book a call with enCloud9" loading="lazy" style="width:100%;min-height:720px;border:0"></iframe></div>';
+	return preg_replace('#<div class="embed" data-n9-bookings="1">.*?</div>#s', $frame, $content, 1);
+}, 25);
