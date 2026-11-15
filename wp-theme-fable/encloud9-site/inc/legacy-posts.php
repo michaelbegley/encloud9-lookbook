@@ -219,7 +219,12 @@ function n9_legacy_batch() {
 		$tries = (array) get_option('n9_legacy_tries', []);
 		$tries[$next] = ($tries[$next] ?? 0) + 1;
 		update_option('n9_legacy_tries', $tries, false);
-		if (get_option('n9_legacy_only_missing') && n9_find_by_path($item['new'])) {
+		// These two hang the host on every try (both carry a YouTube embed; cause not determined). Copy them by hand.
+		$by_hand = ['/blog/dataverse-search-dynamics-365-tips/', '/blog/measuring-crm-success-in-dynamics-365-metrics-kpis/'];
+		if (in_array($item['new'], $by_hand, true) && !n9_find_by_path($item['new'])) {
+			$r = 'skipped';
+			$one[] = 'SKIPPED (hangs the host; copy by hand): ' . $item['new'];
+		} elseif (get_option('n9_legacy_only_missing') && n9_find_by_path($item['new'])) {
 			$r = 'already there';
 		} elseif ($tries[$next] > 2) {
 			$r = 'skipped';
