@@ -243,6 +243,13 @@ function n9_legacy_screen() {
 	$list = n9_legacy_list();
 	$next = (int) get_option('n9_legacy_next', 0);
 	echo '<div class="wrap"><h1>enCloud9 old posts</h1>';
+	if (isset($_GET['probe'])) {
+		foreach (['/wp-json/wp/v2/posts?per_page=1&_fields=id', '/blog/dataverse-search-dynamics-365-tips/', '/wp-content/uploads/'] as $path) {
+			$t = microtime(true);
+			$r = wp_remote_get(n9_legacy_source() . $path, ['timeout' => 12]);
+			printf('<p class="n9probe">%s: %s in %d ms</p>', esc_html($path), esc_html(is_wp_error($r) ? $r->get_error_message() : wp_remote_retrieve_response_code($r)), (microtime(true) - $t) * 1000);
+		}
+	}
 	if (isset($_POST['n9_legacy_run']) && check_admin_referer('n9_legacy')) {
 		if (!empty($_POST['n9_legacy_restart'])) { update_option('n9_legacy_next', 0, false); $next = 0; }
 		if (!empty($_POST['n9_legacy_all'])) {
