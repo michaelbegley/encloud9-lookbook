@@ -219,7 +219,9 @@ function n9_legacy_batch() {
 		$tries = (array) get_option('n9_legacy_tries', []);
 		$tries[$next] = ($tries[$next] ?? 0) + 1;
 		update_option('n9_legacy_tries', $tries, false);
-		if ($tries[$next] > 2) {
+		if (get_option('n9_legacy_only_missing') && n9_find_by_path($item['new'])) {
+			$r = 'already there';
+		} elseif ($tries[$next] > 2) {
 			$r = 'skipped';
 			$one[] = 'SKIPPED after two cut-off tries (do this one by hand): ' . $item['new'];
 		} else {
@@ -270,6 +272,8 @@ function n9_legacy_screen() {
 	}
 	if (isset($_POST['n9_legacy_run']) && check_admin_referer('n9_legacy')) {
 		if (!empty($_POST['n9_legacy_restart'])) { update_option('n9_legacy_next', 0, false); $next = 0; }
+		update_option('n9_legacy_only_missing', empty($_POST['n9_legacy_missing']) ? 0 : 1, false);
+		if (!empty($_POST['n9_legacy_missing'])) { update_option('n9_legacy_next', 0, false); update_option('n9_legacy_tries', [], false); $next = 0; }
 		if (!empty($_POST['n9_legacy_all'])) {
 			update_option('n9_legacy_auto', 1, false);
 		} else {
@@ -304,6 +308,7 @@ function n9_legacy_screen() {
 	echo '<form method="post">';
 	wp_nonce_field('n9_legacy');
 	echo '<p><label><input type="checkbox" name="n9_legacy_restart" value="1"> Start again from the first post (updates in place)</label></p>';
+	echo '<p><label><input type="checkbox" name="n9_legacy_missing" value="1"> Only the posts not on this site yet (starts from the first post, skips the rest)</label></p>';
 	echo '<p><label><input type="checkbox" name="n9_legacy_all" value="1"> Run all the rest in the background</label></p>';
 	submit_button($next >= count($list) ? 'Run again' : 'Import the next 5', 'primary', 'n9_legacy_run');
 	echo '</form>';
