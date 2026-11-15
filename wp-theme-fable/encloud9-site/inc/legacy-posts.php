@@ -149,7 +149,7 @@ function n9_legacy_sideload($url, $post_id, $alt) {
 	$svg = preg_match('#\.svg$#i', $file['name']);
 	if ($svg) {
 		$body = (string) file_get_contents($tmp);
-		if (preg_match('#<script|on[a-z]+\s*=|javascript:#i', $body)) { @unlink($tmp); return new WP_Error('n9_svg', 'SVG has script in it; not copied'); }
+		if (preg_match('#<script|[\s"\'/]on[a-z]+\s*=|javascript:#i', $body)) { @unlink($tmp); return new WP_Error('n9_svg', 'SVG has script in it; not copied'); }
 		$m = function ($t) { $t['svg'] = 'image/svg+xml'; return $t; };
 		$c = function ($d, $f, $n) { if (preg_match('#\.svg$#i', $n)) { $d['ext'] = 'svg'; $d['type'] = 'image/svg+xml'; $d['proper_filename'] = false; } return $d; };
 		add_filter('upload_mimes', $m); add_filter('wp_check_filetype_and_ext', $c, 10, 3);
