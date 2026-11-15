@@ -173,7 +173,17 @@ function n9_legacy_import_one($item, &$log) {
 		$u = wp_make_link_relative(wp_get_attachment_image_url($aid, 'large') ?: wp_get_attachment_url($aid));
 		return '<img src="' . esc_url($u) . '" alt="' . esc_attr($alt) . '" class="wp-image-' . $aid . '" loading="lazy">';
 	}, $html);
-	$html = preg_replace_callback('#\shref="([^"]+)"#i', function ($m) { return ' href="' . esc_url(n9_legacy_link(html_entity_decode($m[1]))) . '"'; }, $html);
+	$html = preg_replace_callback('#\shref="([^"]+)"#i', function ($m) use ($id, &$log, $src_host) {
+		$u = html_entity_decode($m[1]);
+		// A link to a full-size image on the old site (the usual click-to-enlarge) gets the copy in our media library.
+		$h = preg_replace('/^www\./', '', (string) parse_url($u, PHP_URL_HOST));
+		if (($h === $src_host || $h === '') && preg_match('#/wp-content/uploads/.+\.(png|jpe?g|gif|webp)$#i', (string) parse_url($u, PHP_URL_PATH))) {
+			$full = $h === '' ? n9_legacy_source() . $u : $u;
+			$aid = n9_legacy_image($full, $id, $log);
+			if ($aid) return ' href="' . esc_url(wp_make_link_relative(wp_get_attachment_url($aid))) . '"';
+		}
+		return ' href="' . esc_url(n9_legacy_link($u)) . '"';
+	}, $html);
 	// Plain paragraphs and headings stay plain HTML: the theme frames the post (title, author, date, contents list, closing call to action).
 	wp_update_post(['ID' => $id, 'post_content' => wp_slash($html)]);
 
@@ -273,6 +283,16 @@ function n9_legacy_screen() {
 			$t = microtime(true);
 			$r = wp_remote_get(n9_legacy_source() . $path, ['timeout' => 12]);
 			printf('<p class="n9probe">%s: %s in %d ms</p>', esc_html($path), esc_html(is_wp_error($r) ? $r->get_error_message() : wp_remote_retrieve_response_code($r)), (microtime(true) - $t) * 1000);
+		}
+	}
+	if (!empty($_GET['redo'])) {
+		$want = '/' . trim(sanitize_text_field(wp_unslash($_GET['redo'])), '/') . '/';
+		foreach (n9_legacy_list() as $item) {
+			if ($item['new'] !== $want) continue;
+			@set_time_limit(300);
+			$one = [];
+			n9_legacy_import_one($item, $one);
+			echo '<div class="notice notice-info"><p class="n9redo">Redo ' . esc_html($want) . ': ' . esc_html(implode(' | ', $one)) . '</p></div>';
 		}
 	}
 	if (!empty($_GET['check'])) {
