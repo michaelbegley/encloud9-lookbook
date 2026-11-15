@@ -2,7 +2,7 @@
 /**
  * Plugin Name: enCloud9 Site
  * Description: What belongs to the site's content, not its look: client stories, the Section and Container blocks, the layout guard, the search tags carried from the design until All in One SEO takes over, and the page importer (wp n9 import).
- * Version: 0.2.1
+ * Version: 0.2.2
  * Author: enCloud9
  * Requires at least: 6.6
  * Requires PHP: 7.4
@@ -190,4 +190,5 @@ add_filter('wp_robots', function ($r) {
 /* ------------------------------------------------------------------ importer */
 require_once __DIR__ . '/inc/import.php';
 require_once __DIR__ . '/inc/authors.php';
+require_once __DIR__ . '/inc/analytics.php';
 if (is_admin()) require_once __DIR__ . '/inc/admin-import.php';
