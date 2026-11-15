@@ -75,6 +75,22 @@ function n9_legacy_find($old_path) {
 
 /* Divi: drop the old title bar, sidebar, menu and post nav modules; keep what is inside the rest; keep a call to action as a paragraph and link. */
 function n9_legacy_clean($html) {
+	// Old embedded forms (Gravity Forms) and scripts do not work here; the theme has its own forms. Remove them whole.
+	$html = preg_replace('#<(script|noscript|style)\b[^>]*>.*?</\1>#is', '', $html);
+	if (stripos($html, 'gform') !== false && class_exists('DOMDocument')) {
+		$doc = new DOMDocument();
+		libxml_use_internal_errors(true);
+		$doc->loadHTML('<?xml encoding="utf-8"?><div id="n9root">' . $html . '</div>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+		$xp = new DOMXPath($doc);
+		foreach (iterator_to_array($xp->query('//*[contains(@class,"gform_wrapper") or contains(@class,"gf_browser") or self::form[contains(@id,"gform")] or contains(@id,"gform_wrapper")]')) as $n) {
+			if ($n->parentNode) $n->parentNode->removeChild($n);
+		}
+		$root = $doc->getElementById('n9root');
+		$out = '';
+		foreach ($root->childNodes as $c) $out .= $doc->saveHTML($c);
+		$html = $out;
+		libxml_clear_errors();
+	}
 	$html = preg_replace('#\[(et_pb_fullwidth_post_title|et_pb_sidebar|et_pb_fullwidth_menu|et_pb_menu|et_pb_post_nav|et_pb_comments)\b[^\]]*\](.*?\[/\1\])?#s', '', $html);
 	$html = preg_replace_callback('#\[et_pb_cta\b([^\]]*)\](.*?)\[/et_pb_cta\]#s', function ($m) {
 		$a = shortcode_parse_atts($m[1]);
@@ -129,7 +145,17 @@ function n9_legacy_sideload($url, $post_id, $alt) {
 	$tmp = download_url($url, 20);
 	if (is_wp_error($tmp)) return $tmp;
 	$file = ['name' => wp_basename((string) parse_url($url, PHP_URL_PATH)), 'tmp_name' => $tmp];
+	// Our own old site's SVGs are allowed in, for this import only; uploads by people keep WordPress's SVG block.
+	$svg = preg_match('#\.svg$#i', $file['name']);
+	if ($svg) {
+		$body = (string) file_get_contents($tmp);
+		if (preg_match('#<script|on[a-z]+\s*=|javascript:#i', $body)) { @unlink($tmp); return new WP_Error('n9_svg', 'SVG has script in it; not copied'); }
+		$m = function ($t) { $t['svg'] = 'image/svg+xml'; return $t; };
+		$c = function ($d, $f, $n) { if (preg_match('#\.svg$#i', $n)) { $d['ext'] = 'svg'; $d['type'] = 'image/svg+xml'; $d['proper_filename'] = false; } return $d; };
+		add_filter('upload_mimes', $m); add_filter('wp_check_filetype_and_ext', $c, 10, 3);
+	}
 	$id = media_handle_sideload($file, $post_id, $alt ?: null);
+	if ($svg) { remove_filter('upload_mimes', $m); remove_filter('wp_check_filetype_and_ext', $c, 10); }
 	if (is_wp_error($id)) @unlink($tmp);
 	return $id;
 }
