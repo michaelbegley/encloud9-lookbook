@@ -106,14 +106,22 @@ function n9_legacy_image($url, $post_id, &$log, $alt = '') {
 	$clean = preg_replace('#-\d+x\d+(\.[a-z]+)$#i', '$1', strtok($url, '?'));
 	$have = get_posts(['post_type' => 'attachment', 'meta_key' => '_n9_legacy_src', 'meta_value' => $clean, 'numberposts' => 1, 'fields' => 'ids']);
 	if ($have) return $done[$url] = (int) $have[0];
-	$id = media_sideload_image($clean, $post_id, $alt ?: null, 'id');
-	if (is_wp_error($id)) {
-		$id = media_sideload_image(strtok($url, '?'), $post_id, $alt ?: null, 'id');
-	}
+	// WordPress waits up to 300 seconds for a download by default; 20 keeps one slow image from stalling a run.
+	$id = n9_legacy_sideload($clean, $post_id, $alt);
+	if (is_wp_error($id) && $clean !== strtok($url, '?')) $id = n9_legacy_sideload(strtok($url, '?'), $post_id, $alt);
 	if (is_wp_error($id)) { $log[] = 'image not copied: ' . $url . ' (' . $id->get_error_message() . ')'; return $done[$url] = 0; }
 	update_post_meta($id, '_n9_legacy_src', $clean);
 	if ($alt) update_post_meta($id, '_wp_attachment_image_alt', $alt);
 	return $done[$url] = (int) $id;
+}
+
+function n9_legacy_sideload($url, $post_id, $alt) {
+	$tmp = download_url($url, 20);
+	if (is_wp_error($tmp)) return $tmp;
+	$file = ['name' => wp_basename((string) parse_url($url, PHP_URL_PATH)), 'tmp_name' => $tmp];
+	$id = media_handle_sideload($file, $post_id, $alt ?: null);
+	if (is_wp_error($id)) @unlink($tmp);
+	return $id;
 }
 
 function n9_legacy_import_one($item, &$log) {
@@ -191,7 +199,7 @@ function n9_legacy_import_one($item, &$log) {
 function n9_legacy_batch() {
 	$list = n9_legacy_list();
 	$next = (int) get_option('n9_legacy_next', 0);
-	$batch = array_slice($list, $next, 5);
+	$batch = array_slice($list, $next, 3);
 	$all = (array) get_option('n9_legacy_log', []);
 	$all[] = '--- ' . wp_date('Y-m-d H:i T');
 	$log = []; $tally = [];
@@ -279,7 +287,7 @@ function n9_legacy_screen() {
 		}
 		if (get_option('n9_legacy_auto')) {
 			echo '<meta http-equiv="refresh" content="2;url=' . esc_url(admin_url('tools.php?page=n9-legacy&run=1')) . '">';
-			echo '<div class="notice notice-info"><p>Running: five posts per page load. Leave this page open. <a href="' . esc_url(admin_url('tools.php?page=n9-legacy&stop=1')) . '">Stop</a></p></div>';
+			echo '<div class="notice notice-info"><p>Running: three posts per page load. Leave this page open. <a href="' . esc_url(admin_url('tools.php?page=n9-legacy&stop=1')) . '">Stop</a></p></div>';
 		}
 	}
 	printf('<p>%d of %d posts done. Source: %s</p>', min($next, count($list)), count($list), esc_html(n9_legacy_source()));
