@@ -354,7 +354,12 @@ add_action('admin_init', function () {
 		$out = [];
 		foreach (array_keys(n9_form_captures()) as $k) {
 			$u = trim($in['capture_' . $k] ?? '');
-			$out['capture_' . $k] = preg_match('#^https://[a-z0-9.-]+\.clickdimensions\.com/#i', $u) ? esc_url_raw($u) : '';
+			$u = preg_replace('#^http://#i', 'https://', $u);
+			if ($u !== '' && !preg_match('#^https://[a-z0-9.-]+\.clickdimensions\.com/#i', $u)) {
+				add_settings_error('n9_forms', 'n9_bad_' . $k, 'Not saved: ' . n9_form_captures()[$k] . ' needs a clickdimensions.com address.');
+				$u = '';
+			}
+			$out['capture_' . $k] = $u === '' ? '' : esc_url_raw($u);
 		}
 		$out['click_script'] = current_user_can('unfiltered_html') ? trim($in['click_script'] ?? '') : '';
 		$out['alert_email'] = sanitize_email($in['alert_email'] ?? '');
@@ -362,7 +367,11 @@ add_action('admin_init', function () {
 		$out['lead_source_field'] = sanitize_text_field($in['lead_source_field'] ?? '');
 		$out['error_marker'] = sanitize_text_field($in['error_marker'] ?? '');
 		$b = trim($in['bookings_url'] ?? '');
-		$out['bookings_url'] = preg_match('#^https://outlook\.(office|office365)\.com/(owa/calendar|book)/#i', $b) ? esc_url_raw($b) : '';
+		if ($b !== '' && !preg_match('#^https://outlook\.(office|office365)\.com/(owa/calendar|book)/#i', $b)) {
+			add_settings_error('n9_forms', 'n9_bad_bookings', 'Not saved: the Bookings link needs to start with https://outlook.office.com/book/');
+			$b = '';
+		}
+		$out['bookings_url'] = $b === '' ? '' : esc_url_raw($b);
 		return $out;
 	}]);
 });
