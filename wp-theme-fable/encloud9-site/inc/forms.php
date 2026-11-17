@@ -282,6 +282,9 @@ function n9_form_send($id) {
 		return false;
 	}
 	$referer = get_post_meta($id, '_n9_page', true) ?: home_url('/');
+	// ClickDimensions only knows enCloud9.com as our domain, so a post from the private
+	// staging host is sent with the same page path on www.encloud9.com (what it will be after launch).
+	$referer = preg_replace('#^https?://[^/]*flywheelsites\.com#i', 'https://www.encloud9.com', $referer);
 	$res = wp_remote_post($url, [
 		'timeout' => 15, 'redirection' => 0,
 		'headers' => ['Referer' => $referer, 'Content-Type' => 'application/x-www-form-urlencoded'],
