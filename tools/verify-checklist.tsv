@@ -1,0 +1,10 @@
+id	trigger	check	origin
+V1	encloud9-site/inc/forms\.php	All 5 forms end to end: Michael submits each from staging with mbegley+verify-DATE@encloud9.com; Claude confirms each cdi_postedform success and the lead with its campaign in Dynamics, then asks to delete the test leads	16 Nov 2026: forms said HTTP 200 but no lead arrived (Referer was the staging host)
+V2	encloud9-site/inc/forms\.php	Settings > enCloud9 forms: all 5 capture boxes still filled after save	16 Nov 2026: http:// capture addresses were emptied on save
+V3	encloud9-site/encloud9-site\.php|encloud9-site/inc/	Plugins page shows the new version number after upload (Replace current with uploaded)	version bump is the only proof the right zip went up
+V4	content/|build\.py|^site/	Tools > enCloud9 import > Import pages run after upload; the changed pages show the new text on staging	pages.json ships inside the plugin; a forgotten import leaves old copy live
+V5	redirects/	Redirection plugin import re-run on staging; 5 sampled old addresses each give one 301 then 200, one 410 gives 410	site-move standard: one hop, no chains
+V6	thank-you|received|successful|call-prep	Each thank-you page loads after its form and carries noindex in the page source	16 Nov 2026: call prep showed only an inline line and Michael submitted twice
+V7	encloud9-site/assets/|encloud9-nine/|style	Home, one service page and one blog post at 1440 and 390: no sideways scroll, header and footer intact	layout regressions show on these three first
+V8	inc/analytics\.php	Page source has exactly one analytics tag	site-move standard launch step 6
+V9	inc/sitemap\.php|legacy-seo\.php	/sitemap.xml loads and lists no thank-you page	thank-you pages are noindex and must stay out of the sitemap
