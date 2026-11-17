@@ -25,7 +25,7 @@ TURI = '/wp-content/themes/encloud9-nine/assets/'
 MOVE = json.load(open(os.path.join(HERE, 'address-moves.json')))
 NAVKEY = {'Dynamics 365': 'd365', 'Marketing': 'marketing', 'Copilot and AI': 'copilot', 'Packages': 'packages',
           'Stories': 'stories', 'Blog': 'blog', 'About': 'about'}
-NOINDEX = ['/thank-you/', '/thank-you-contact/', '/request-received/', '/newsletter-signup-successful/', '/call-prep/', '/404/']
+NOINDEX = ['/thank-you/', '/thank-you-contact/', '/request-received/', '/newsletter-signup-successful/', '/call-prep/', '/call-prep-received/', '/404/']
 VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'}
 INLINE = {'a', 'strong', 'em', 'b', 'i', 'span', 'br', 'code', 'sub', 'sup', 'small', 'abbr', 'mark', 'u', 's', 'kbd', 'q', 'cite'}
 

@@ -38,7 +38,7 @@ function n9_form_kinds() {
 		'storage'  => ['label' => 'Dataverse storage analysis', 'capture' => 'storage', 'thanks' => '/request-received/',
 			'fields' => ['first' => 1, 'last' => 1, 'email' => 1, 'company' => 1, 'phone' => 0, 'seeing' => 0],
 			'click' => ['first-name', 'last-name', 'your-email', 'company', 'phone', 'your-message']],
-		'callprep' => ['label' => 'Call preparation', 'capture' => 'callprep', 'thanks' => '',
+		'callprep' => ['label' => 'Call preparation', 'capture' => 'callprep', 'thanks' => '/call-prep-received/',
 			'fields' => ['name' => 1, 'email' => 1, 'using' => 0, 'why' => 0, 'users' => 0, 'win' => 1, 'cover' => 0, 'heard' => 0],
 			'click' => ['first-name', 'last-name', 'your-email', 'utm_source', 'utm_medium', 'utm_campaign', 'gclid', 'current-crm',
 				'call-reason', 'team-size', 'success-definition', 'call-topics', 'heard-about-us']],
