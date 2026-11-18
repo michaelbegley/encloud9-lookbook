@@ -25,7 +25,7 @@ def simplehero(kick, h1, ans, acts):
   </section>
 '''
 # Team
-FAQ_T = [("Who will work on our project?","[Brian confirms: who leads a project and who does the build work.]"),("Where is the team?","Our office is in Bellevue, Nebraska, in the Omaha metro. We work with clients across the US, mostly remotely.")]
+FAQ_T = [("Who will work on our project?","It depends on the project. An experienced enCloud9 consultant leads it, and the same people stay with you from the plan through go-live and support."),("Where is the team?","Our office is in Bellevue, Nebraska, in the Omaha metro. We work with clients across the US, mostly remotely.")]
 ANS_T = 'enCloud9 is a Dynamics 365 team in Bellevue, Nebraska, founded by Brian Begley. [One line, Brian confirms: what the team does and how it works with clients.]'
 main = crumbnav([('Home','nine-home.html'),('About','nine-about.html'),('Team',None)]) + simplehero('About &middot; Team','Meet the team', ANS_T, f'<a class="btn btn-p" href="{BOOK}">Book a call</a><a class="lnk" href="nine-how-we-work.html">How we work <span>&rarr;</span></a>') + '''
   <section class="sec" id="people" aria-labelledby="pp-h">

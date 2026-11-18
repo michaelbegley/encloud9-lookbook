@@ -14,8 +14,8 @@ ANSWER = ('Every project runs through the same four stages: Plan, Build, Go live
 FAQ = [("What do we get in writing before you start?","A written plan with the scope, the timeline and a fixed price for our build work. Microsoft licenses are a separate cost."),
        ("What if we need something the plan does not cover?","Anything outside the plan is a written change order you approve before work starts."),
        ("Do you work on site or remotely?","Mostly remotely, through Teams and screen sharing. For Omaha-area clients, we visit on site when the work needs it."),
-       ("Who will we work with?","[Brian confirms: who leads a project and who does the build work.]"),
-       ("How often will we hear from you during a project?","[Brian confirms: the regular check-in during a project.]"),
+       ("Who will we work with?","It depends on the project. An experienced enCloud9 consultant leads it, and the same people stay with you from the plan through go-live and support."),
+       ("How often will we hear from you during a project?","We set how often we check in with you when we plan the project, based on its size."),
        ("What happens after go-live?","Your support plan starts. Health checks and updates are logged, so you always know what changed. Plans start at $500 a month for 4 hours.")]
 cells = [('b1','#stages','Stage A','Plan','Written plan and price first','&#8600;',''),('b2','#stages','Stage B','Build','Standard features first','&#8600;',''),
          ('b3','#stages','Stage C','Go live','Training and cut-over day','&#8600;',''),('b4','#stages','Stage D','Run','Support plan starts','&#8600;',''),
@@ -68,8 +68,8 @@ main = crumbnav([('Home','nine-home.html'),('About','nine-about.html'),('How we 
     </div>
     <div class="fit rev">
       <div class="yes"><h3 class="h3">During a project</h3><ul>
-        <li>[Brian confirms: who leads your project and who builds it.]</li>
-        <li>[Brian confirms: how often you get a check-in, and in what form.]</li>
+        <li>An experienced enCloud9 consultant leads your project, and the same people stay with you from the plan through support.</li>
+        <li>How often we check in, and how, is set with you when we plan the project.</li>
         <li>You check your imported records against your old system before sign-off.</li>
         <li>Health checks and updates are logged after go-live, so you always know what changed.</li>
       </ul></div>
