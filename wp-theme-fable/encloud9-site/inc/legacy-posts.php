@@ -311,6 +311,95 @@ add_action('n9_legacy_cron', function () {
 	else wp_schedule_single_event(time() + 5, 'n9_legacy_cron');
 });
 
+/* Old-site files still linked from a post: copy each into this site's media library and point the post at the copy.
+   Big raster images are made smaller on this server first (long side 1600px) so the copy cannot stall the host. */
+function n9_localize_file($url, $post_id, &$log) {
+	require_once ABSPATH . 'wp-admin/includes/media.php';
+	require_once ABSPATH . 'wp-admin/includes/file.php';
+	require_once ABSPATH . 'wp-admin/includes/image.php';
+	$clean = strtok($url, '?');
+	$have = get_posts(['post_type' => 'attachment', 'meta_key' => '_n9_legacy_src', 'meta_value' => $clean, 'numberposts' => 1, 'fields' => 'ids']);
+	if ($have) return (int) $have[0];
+	if (preg_match('#\.(svg|gif|pdf)$#i', $clean)) return n9_legacy_image($clean, $post_id, $log);
+	// The old site keeps smaller copies of every upload; take its 'large' copy (about 1024px) instead of the full file,
+	// which is what stalled the host on 15 Nov and again on 18 Nov.
+	$src = $clean;
+	$slug = sanitize_title(pathinfo($clean, PATHINFO_FILENAME));
+	$r = wp_remote_get(n9_legacy_source() . '/wp-json/wp/v2/media?per_page=5&_fields=source_url,media_details&search=' . rawurlencode($slug), ['timeout' => 15]);
+	$items = is_wp_error($r) ? [] : json_decode(wp_remote_retrieve_body($r), true);
+	foreach ((array) $items as $it) {
+		if (($it['source_url'] ?? '') !== $clean) continue;
+		foreach (['large', 'medium_large', '1536x1536'] as $k) { if (!empty($it['media_details']['sizes'][$k]['source_url'])) { $src = $it['media_details']['sizes'][$k]['source_url']; break; } }
+	}
+	if ($src === $clean) { $log[] = 'no smaller copy on the old site for ' . basename($clean) . '; not downloaded (upload a smaller copy by hand)'; return 0; }
+	$log[] = 'using the old site\'s smaller copy: ' . basename($src);
+	$tmp = download_url($src, 30);
+	if (is_wp_error($tmp)) { $log[] = 'download failed: ' . basename($clean) . ' (' . $tmp->get_error_message() . ')'; return 0; }
+	$ed = wp_get_image_editor($tmp);
+	if (!is_wp_error($ed)) {
+		$sz = $ed->get_size();
+		if (max($sz['width'], $sz['height']) > 1600) {
+			$ed->resize(1600, 1600, false);
+			$saved = $ed->save($tmp . '-small.' . pathinfo($clean, PATHINFO_EXTENSION));
+			if (!is_wp_error($saved)) { @unlink($tmp); $tmp = $saved['path']; $log[] = 'made smaller: ' . basename($clean) . ' from ' . $sz['width'] . 'x' . $sz['height']; }
+		}
+	}
+	add_filter('intermediate_image_sizes_advanced', '__return_empty_array', 99);
+	add_filter('big_image_size_threshold', '__return_false', 99);
+	$id = media_handle_sideload(['name' => wp_basename((string) parse_url($clean, PHP_URL_PATH)), 'tmp_name' => $tmp], $post_id);
+	remove_filter('intermediate_image_sizes_advanced', '__return_empty_array', 99);
+	remove_filter('big_image_size_threshold', '__return_false', 99);
+	if (is_wp_error($id)) { @unlink($tmp); $log[] = 'not copied: ' . basename($clean) . ' (' . $id->get_error_message() . ')'; return 0; }
+	update_post_meta($id, '_n9_legacy_src', $clean);
+	return (int) $id;
+}
+
+/* The two posts the import left unfinished (17 Nov list): copy their old-site files, make old-site links relative,
+   and give the Dataverse search post the byline and categories read from the live post (18 Nov). */
+function n9_fix_leftovers() {
+	$log = [];
+	$fix = [
+		'/blog/dynamics-365-2026-release-wave-1/' => [],
+		'/blog/dataverse-search-dynamics-365-tips/' => ['byline' => 'Brian Begley', 'cats' => ['Dynamics 365 CRM QuickTips', 'Dynamics 365 Customer Service', 'Dynamics 365 Sales', 'How to', 'Microsoft Dynamics 365'], 'thumb' => true],
+	];
+	foreach ($fix as $path => $extra) {
+		$id = n9_find_by_path($path);
+		if (!$id) {
+			// The Dataverse post went in by hand on 15 Nov and never got its path note; find it by its address instead.
+			$p = get_page_by_path(basename(untrailingslashit($path)), OBJECT, 'post');
+			if ($p) { $id = (int) $p->ID; update_post_meta($id, '_n9_path', $path); $log[] = 'found by address: ' . $path . ' (post ' . $id . ')'; }
+		}
+		if (!$id) { $log[] = 'not found: ' . $path; continue; }
+		@set_time_limit(300);
+		// Byline, categories and links first, so a slow file copy cannot leave them undone.
+		if (!empty($extra['byline'])) update_post_meta($id, '_n9_byline', $extra['byline']);
+		if (!empty($extra['cats'])) {
+			$cids = [];
+			foreach ($extra['cats'] as $name) {
+				$t = term_exists($name, 'category') ?: wp_insert_term($name, 'category');
+				if (!is_wp_error($t)) $cids[] = (int) (is_array($t) ? $t['term_id'] : $t);
+			}
+			if ($cids) wp_set_post_categories($id, $cids);
+		}
+		$c = (string) get_post_field('post_content', $id);
+		$c = preg_replace_callback('#href="(https?://(?:www\.)?encloud9\.com/(?!wp-content/)[^"]*)"#i', function ($mm) { return 'href="' . esc_url(n9_legacy_link($mm[1])) . '"'; }, $c);
+		wp_update_post(['ID' => $id, 'post_content' => wp_slash($c)]);
+		$first = 0;
+		if (preg_match_all('#https?://(?:www\.)?encloud9\.com/wp-content/uploads/[^"\'\s<)]+#i', $c, $m)) {
+			foreach (array_unique($m[0]) as $u) {
+				$aid = n9_localize_file($u, $id, $log);
+				if ($aid) { $c = str_replace($u, wp_make_link_relative(wp_get_attachment_url($aid)), $c); $first = $first ?: $aid; $log[] = 'copied: ' . basename(strtok($u, '?')); }
+			}
+		}
+		$c = preg_replace_callback('#href="(https?://(?:www\.)?encloud9\.com/(?!wp-content/)[^"]*)"#i', function ($mm) { return 'href="' . esc_url(n9_legacy_link($mm[1])) . '"'; }, $c);
+		wp_update_post(['ID' => $id, 'post_content' => wp_slash($c)]);
+		if (!empty($extra['thumb']) && $first && !has_post_thumbnail($id)) set_post_thumbnail($id, $first);
+		$left = preg_match_all('#encloud9\.com/wp-content/uploads/#i', (string) get_post_field('post_content', $id));
+		$log[] = $path . ': done; old-site files left in the text: ' . $left . (!empty($extra['byline']) ? '; byline ' . $extra['byline'] . '; ' . count($extra['cats']) . ' categories' : '');
+	}
+	return $log;
+}
+
 add_action('admin_menu', function () {
 	add_management_page('enCloud9 old posts', 'enCloud9 old posts', 'manage_options', 'n9-legacy', 'n9_legacy_screen');
 });
@@ -356,6 +445,9 @@ function n9_legacy_screen() {
 		}
 		echo '</ul><p class="n9check">' . $bad . ' with something to look at.</p>';
 	}
+	if (isset($_POST['n9_fix_leftovers']) && check_admin_referer('n9_fix_leftovers')) {
+		echo '<div class="notice notice-info"><p class="n9fix">' . esc_html(implode(' | ', n9_fix_leftovers())) . '</p></div>';
+	}
 	if (isset($_POST['n9_legacy_run']) && check_admin_referer('n9_legacy')) {
 		if (!empty($_POST['n9_legacy_restart'])) { update_option('n9_legacy_next', 0, false); $next = 0; }
 		update_option('n9_legacy_only_missing', empty($_POST['n9_legacy_missing']) ? 0 : 1, false);
@@ -397,6 +489,10 @@ function n9_legacy_screen() {
 	echo '<p><label><input type="checkbox" name="n9_legacy_missing" value="1"> Only the posts not on this site yet (starts from the first post, skips the rest)</label></p>';
 	echo '<p><label><input type="checkbox" name="n9_legacy_all" value="1"> Run all the rest in the background</label></p>';
 	submit_button($next >= count($list) ? 'Run again' : 'Import the next 3', 'primary', 'n9_legacy_run');
+	echo '</form>';
+	echo '<form method="post">';
+	wp_nonce_field('n9_fix_leftovers');
+	submit_button('Finish the two leftover posts', 'secondary', 'n9_fix_leftovers');
 	echo '</form>';
 	$all = (array) get_option('n9_legacy_log', []);
 	if ($all) echo '<h2>Log</h2><pre style="white-space:pre-wrap;max-height:400px;overflow:auto">' . esc_html(implode("\n", array_slice($all, -200))) . '</pre>';
