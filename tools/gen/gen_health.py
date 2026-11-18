@@ -27,7 +27,7 @@ d = dict(url='https://www.encloud9.com/lp/healthcare-crm-software-dynamics-365/'
        f'Read it on <a class="lnk" href="{LEARN}">Microsoft Learn</a>.'],
   faq=[("Is Dynamics 365 HIPAA compliant?","Microsoft includes Dynamics 365 in its HIPAA Business Associate Agreement. Using it does not make you compliant on its own; your setup, access rules and processes have to meet HIPAA too."),
        ("Do we need to sign a BAA with Microsoft?","Microsoft makes its HIPAA Business Associate Agreement available by default through its Data Protection Addendum to customers who are covered entities or business associates."),
-       ("Does enCloud9 sign a BAA with clients?","[Brian confirms.]"),
+       ("Does enCloud9 sign a BAA with clients?","Case by case, subject to legal review."),
        ("Which Dynamics 365 apps do healthcare clients use?","Our healthcare and compliance clients run Dynamics 365 Sales, and some add Customer Service. Power Apps, Power Automate and Power BI extend them on the same data."),
        ("Can you fix a healthcare CRM another partner built?",'Yes. enCloud9 takes over systems other partners built, finds what is broken, and fixes it in priority order. See <a class="lnk" href="nine-rescue-repair.html">Rescue and Repair</a>.')],
   related=[('nine-story-crl.html','Client story','CRL'),('nine-story-pricemds.html','Client story','PriceMDs'),('nine-rescue-repair.html','Package','Rescue and Repair'),('nine-dynamics-365.html','Dynamics 365','All Dynamics 365 apps')])
