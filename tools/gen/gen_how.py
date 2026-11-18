@@ -14,7 +14,7 @@ ANSWER = ('Every project runs through the same four stages: Plan, Build, Go live
 FAQ = [("What do we get in writing before you start?","A written plan with the scope, the timeline and a fixed price for our build work. Microsoft licenses are a separate cost."),
        ("What if we need something the plan does not cover?","Anything outside the plan is a written change order you approve before work starts."),
        ("Do you work on site or remotely?","Mostly remotely, through Teams and screen sharing. For Omaha-area clients, we visit on site when the work needs it."),
-       ("Who will we work with?","It depends on the project. An experienced enCloud9 consultant leads it, and the same people stay with you from the plan through go-live and support."),
+       ("Who we work with","It depends on the project. An experienced enCloud9 consultant leads it, and the same people stay with you from the plan through go-live and support."),
        ("How often will we hear from you during a project?","We set how often we check in with you when we plan the project, based on its size."),
        ("What happens after go-live?","Your support plan starts. Health checks and updates are logged, so you always know what changed. Plans start at $500 a month for 4 hours.")]
 cells = [('b1','#stages','Stage A','Plan','Written plan and price first','&#8600;',''),('b2','#stages','Stage B','Build','Standard features first','&#8600;',''),
