@@ -422,17 +422,7 @@ function n9_legacy_screen() {
 			printf('<p class="n9probe">%s: %s in %d ms</p>', esc_html($path), esc_html(is_wp_error($r) ? $r->get_error_message() : wp_remote_retrieve_response_code($r)), (microtime(true) - $t) * 1000);
 		}
 	}
-	if (!empty($_GET['redo'])) {
-		$want = '/' . trim(sanitize_text_field(wp_unslash($_GET['redo'])), '/') . '/';
-		foreach (n9_legacy_list() as $item) {
-			if ($item['new'] !== $want) continue;
-			@set_time_limit(300);
-			$one = [];
-			$GLOBALS['n9_legacy_noembed'] = !empty($_GET['noembed']);
-			n9_legacy_import_one($item, $one);
-			echo '<div class="notice notice-info"><p class="n9redo">Redo ' . esc_html($want) . ': ' . esc_html(implode(' | ', $one)) . '</p></div>';
-		}
-	}
+	// The one-post ?redo= link was removed 18 Nov 2026 (Michael's tap): it ran an import on a plain page load with no security token.
 	if (!empty($_GET['check'])) {
 		// Leftovers from the old page builder in the imported posts: shortcodes, inline styles, builder class names, old-site links.
 		$ids = get_posts(['post_type' => 'post', 'post_status' => 'any', 'numberposts' => -1, 'fields' => 'ids', 'meta_key' => '_n9_legacy_id']);
