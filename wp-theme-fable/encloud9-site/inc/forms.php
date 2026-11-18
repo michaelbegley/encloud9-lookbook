@@ -365,7 +365,7 @@ add_action('admin_init', function () {
 			$out['capture_' . $k] = $u === '' ? '' : esc_url_raw($u);
 		}
 		$out['click_script'] = current_user_can('unfiltered_html') ? trim($in['click_script'] ?? '') : '';
-		$out['alert_email'] = sanitize_email($in['alert_email'] ?? '');
+		$out['alert_email'] = implode(',', array_filter(array_map('sanitize_email', explode(',', $in['alert_email'] ?? ''))));
 		$out['notify_email'] = implode(',', array_filter(array_map('sanitize_email', explode(',', $in['notify_email'] ?? ''))));
 		$out['lead_source_field'] = sanitize_text_field($in['lead_source_field'] ?? '');
 		$out['error_marker'] = sanitize_text_field($in['error_marker'] ?? '');
@@ -394,7 +394,7 @@ function n9_forms_page() {
 	printf('<tr><th>Bookings page link</th><td><input type="url" class="large-text" name="n9_forms[bookings_url]" value="%s" placeholder="https://outlook.office.com/book/..."></td></tr>',
 		esc_attr($o['bookings_url'] ?? ''));
 	echo '</table><h2>Email</h2><table class="form-table">';
-	printf('<tr><th>Alert when a send fails</th><td><input type="email" class="regular-text" name="n9_forms[alert_email]" value="%s" placeholder="%s"></td></tr>',
+	printf('<tr><th>Alert when a send fails</th><td><input type="text" class="large-text" name="n9_forms[alert_email]" value="%s" placeholder="%s"><p class="description">Comma separated. Empty sends to the site admin email.</p></td></tr>',
 		esc_attr($o['alert_email'] ?? ''), esc_attr(get_option('admin_email')));
 	printf('<tr><th>Copy of every entry to</th><td><input type="text" class="large-text" name="n9_forms[notify_email]" value="%s"><p class="description">Comma separated. Empty sends no copies.</p></td></tr>',
 		esc_attr($o['notify_email'] ?? ''));
