@@ -537,3 +537,16 @@ html :is(.aigrid,.dgx,.fgx,.jgrid,.mk-cg,.dest,.fgrid:is([role="list"],[role="gr
 /* No fixed-width font anywhere on the site (Michael, 10 Nov 2026): labels use the body font; figures stay aligned with tabular numbers. */
 .tbl,.badge,.tel,.mono,.flow li::before{font-variant-numeric:tabular-nums}
 .fcols nav b,.tbl thead th,.pcol b,.mnav details b,.card h4{font-weight:600}
+/* Full menu on narrow desktop windows (Brian, 17 Nov 2026: the Menu button showed in a browser
+   window on a third of his desktop). The full menu stays down to 861px; the header button drops
+   below 981px to make room; the Menu button is only for tablets and phones. */
+@media (min-width:861px) and (max-width:1240px){
+  .top .nav{display:flex;gap:16px;font-size:14px}
+  .top .nav>*,.top .nav a,.top .nav button{white-space:nowrap}
+  .top .wrap{gap:24px}
+  .top .logo{flex-shrink:0}
+  .top .menu-btn,.top .call-m{display:none}
+  .top .btn-p:not(.call-m){display:inline-flex;padding-left:16px;padding-right:16px;margin-left:auto}
+  .mnav.open{display:none}
+}
+@media (min-width:861px) and (max-width:980px){.top .btn-p:not(.call-m){display:none}}
