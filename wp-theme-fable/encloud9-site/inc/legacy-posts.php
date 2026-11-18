@@ -178,6 +178,12 @@ function n9_legacy_import_one($item, &$log) {
 		return 'skipped';
 	}
 	$existing = get_posts(['post_type' => 'post', 'meta_key' => '_n9_legacy_id', 'meta_value' => $p['id'], 'post_status' => 'any', 'numberposts' => 1, 'fields' => 'ids']);
+	// A post someone has edited by hand on this site (facts check, 18 Nov 2026) is never overwritten by a re-import.
+	if ($existing && get_post_meta($existing[0], '_n9_hand_edited', true)) {
+		$log[] = 'skipped, edited by hand on this site: ' . $new_path;
+		return 'skipped';
+	}
+	$GLOBALS['n9_legacy_importing'] = true;
 
 	$html = n9_legacy_clean($p['content']['rendered'] ?? '');
 	// One-off re-import with &noembed=1: a YouTube embed becomes a plain link (two posts hang the host with the embed in).
@@ -512,3 +518,12 @@ add_action('rest_api_init', function () {
 			return $out;
 		}]);
 });
+
+
+/* Mark an imported post as hand-edited when a person saves it in wp-admin, so a re-import skips it (facts check, 18 Nov 2026). */
+add_action('save_post_post', function ($id, $post, $update) {
+	if (!$update || !empty($GLOBALS['n9_legacy_importing']) || wp_is_post_revision($id) || wp_is_post_autosave($id)) return;
+	if (defined('DOING_CRON') && DOING_CRON) return;
+	if (!is_user_logged_in() || !get_post_meta($id, '_n9_legacy_id', true)) return;
+	if (!get_post_meta($id, '_n9_hand_edited', true)) update_post_meta($id, '_n9_hand_edited', wp_date('Y-m-d H:i T'));
+}, 10, 3);
