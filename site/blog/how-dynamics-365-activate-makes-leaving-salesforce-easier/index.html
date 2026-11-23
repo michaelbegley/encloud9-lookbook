@@ -23,7 +23,8 @@
 <link rel="stylesheet" href="../../../pages/nine.css">
 <script defer src="../../../pages/nine.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "How Dynamics 365 Activate Makes Leaving Salesforce Easier", "item": "https://www.encloud9.com/blog/how-dynamics-365-activate-makes-leaving-salesforce-easier/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How Dynamics 365 Activate Makes Leaving Salesforce Easier", "description": "Dynamics 365 Activate maps a Salesforce environment before a move. What it does, what it cannot decide for you, and how to plan a better CRM.", "url": "https://www.encloud9.com/blog/how-dynamics-365-activate-makes-leaving-salesforce-easier/", "datePublished": "2026-09-16", "dateModified": "2026-11-10", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How Dynamics 365 Activate Makes Leaving Salesforce Easier", "description": "Dynamics 365 Activate maps a Salesforce environment before a move. What it does, what it cannot decide for you, and how to plan a better CRM.", "url": "https://www.encloud9.com/blog/how-dynamics-365-activate-makes-leaving-salesforce-easier/", "datePublished": "2026-09-16", "dateModified": "2026-11-23", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does Activate move our Salesforce flows and Apex?", "acceptedAnswer": {"@type": "Answer", "text": "No. It assesses them for migration effort, but doesn’t convert or move them. They get rebuilt in Dynamics 365."}}, {"@type": "Question", "name": "Does Activate change anything in Salesforce?", "acceptedAnswer": {"@type": "Answer", "text": "No. It only reads from Salesforce and blocks every write, update and delete."}}, {"@type": "Question", "name": "What does Activate move?", "acceptedAnswer": {"@type": "Answer", "text": "Records, plus Salesforce Files, notes, classic attachments, email attachments and supported record images, within Dataverse’s upload size limit."}}]}</script>
 <style>
 /* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
 body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
@@ -198,7 +199,7 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
       <div class="pmain">
         <h1 class="h1 rise" id="h1" style="--d:2">How Dynamics 365 Activate Makes Leaving Salesforce Easier</h1>
                 <span class="mono cat rise" style="--d:1">Switching to Dynamics 365</span>
-        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>September 16, 2026</b></span><span>Updated <b>November 10, 2026</b></span><span>6 min read</span></p>
+        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>September 16, 2026</b></span><span>Updated <b>November 23, 2026</b></span><span>6 min read</span><span>Facts checked 23 Nov 2026</span></p>
       </div>
       <aside class="glance" aria-labelledby="gl-h">
         <p class="mono" id="gl-h">At a glance</p>
@@ -217,41 +218,45 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
           <summary>On this page</summary>
           <ol>
             <li><a href="#the-real-reason-companies-don-t-switch-c">The Real Reason Companies Don’t Switch CRMs</a></li>
-            <li><a href="#microsoft-is-removing-some-of-that-frict">Microsoft Is Removing Some of That Friction with Dynamics 365 Activate</a></li>
-            <li><a href="#a-better-crm-not-just-a-new-crm">A Better CRM</a></li>
+            <li><a href="#what-is-dynamics-365-activate">What is Dynamics 365 Activate?</a></li>
+            <li><a href="#what-activate-does-not-do">What does Activate not do?</a></li>
+            <li><a href="#what-should-you-rebuild">What should you rebuild?</a></li>
             <li><a href="#why-more-businesses-are-evaluating-dynam">Why More Businesses Are Evaluating Dynamics 365</a></li>
-            <li><a href="#why-an-experienced-partner-still-matters">Why an Experienced Partner Still Matters</a></li>
-            <li><a href="#further-reading-from-microsoft">Further Reading from Microsoft</a></li>
             <li><a href="#how-encloud9-can-help">How enCloud9 Can Help</a></li>
+            <li><a href="#further-reading-from-microsoft">Further Reading from Microsoft</a></li>
+            <li><a href="#faq">Frequently asked questions</a></li>
             <li><a href="#see">Want help with this?</a></li>
           </ol>
         </details>
       </nav>
 
       <div class="art" id="art">
-        <p class="answer"><span class="mono">The short answer</span><strong>Dynamics 365 Activate is Microsoft’s AI-assisted tool for moving from Salesforce. It assesses a Salesforce environment’s data, customizations, business processes and dependencies, so you see the scope of a move before you start. Microsoft Learn marks it as a preview feature. It cannot decide what should stay, what should go, or how your new CRM should work.</strong></p>
-        <p>Most companies don’t wake up one morning and decide to replace their CRM. In fact, many stay with a system long after they’ve started questioning it.</p>
-        <p>Maybe costs keep climbing. Maybe users are frustrated. Maybe reporting has become difficult to maintain. Maybe you’re already invested in Microsoft 365 and wonder why your CRM feels disconnected from the rest of your technology stack. But then reality sets in. You have years of customer data. Custom fields. Workflows. Integrations. Reports. User training.</p>
+        <p class="answer"><span class="mono">The short answer</span><strong>Dynamics 365 Activate is Microsoft’s AI-assisted tool for moving from Salesforce. It assesses a Salesforce org and moves its data into Dynamics 365 Sales and Customer Service, then checks the record counts match. It doesn’t convert flows, workflow rules or Apex, and it can’t decide what should stay or go.</strong></p>
+        <p>Most teams stay on Salesforce because moving years of data, fields, workflows and reports feels like too much.</p>
         <h2 id="the-real-reason-companies-don-t-switch-c">The Real Reason Companies Don’t Switch CRMs</h2>
         <p>When people talk about Salesforce versus Dynamics 365, the conversation often centers on features. In reality, that’s usually not what stops companies from making a move. The biggest obstacle is friction.</p>
         <p>Organizations worry about what happens to years of customer history. They wonder how much downtime they’ll face, what migration will cost, and whether they’ll end up with the same problems on a different platform.</p>
-        <p>enCloud9 has had countless conversations with companies that were interested in Dynamics 365 but hesitant to start the process because the migration itself felt overwhelming. That’s understandable.</p>
-        <p>A CRM is one of the most important systems in your business. It’s where your sales team works, where your customer information lives, and where many of your critical processes take place. The thought of moving everything somewhere new can feel risky.</p>
-        <h2 id="microsoft-is-removing-some-of-that-frict">Microsoft Is Removing Some of That Friction with Dynamics 365 Activate</h2>
-        <p>Microsoft recently introduced <a href="https://www.microsoft.com/en-us/dynamics-365/blog/business-leader/2026/09/09/accelerate-your-move-to-agentic-business-applications-with-dynamics-365-activate/">Dynamics 365 Activate</a>, a new AI-powered migration and implementation experience for Salesforce environments. Microsoft Learn marks it as a preview feature (checked 10 November 2026). Microsoft says the tool can analyze a Salesforce environment, identify data, business processes, customizations, and dependencies, and provide recommendations that help organizations understand the scope of a migration before they begin.</p>
-        <p>Dynamics 365 Activate helps organizations get a clearer picture of what’s actually inside their CRM before they start planning a move. That’s important because many businesses have spent years building and modifying their Salesforce environment. Over time, complexity accumulates.</p>
+        <h2 id="what-is-dynamics-365-activate">What is Dynamics 365 Activate?</h2>
+        <p><a href="https://www.microsoft.com/en-us/dynamics-365/blog/business-leader/2026/09/09/accelerate-your-move-to-agentic-business-applications-with-dynamics-365-activate/">Dynamics 365 Activate</a> is Microsoft’s AI-assisted tool for moving from Salesforce. <a href="https://learn.microsoft.com/en-us/dynamics365/dynamics-365-activate/migrate-salesforce-to-dynamics-365-overview">According to Microsoft Learn</a>, it:</p>
+        <ul>
+          <li>Scans objects, fields, flows, Apex, page layouts, add-on packages and integrations.</li>
+          <li>Gives you a readiness report as a PDF, Word or JSON file.</li>
+          <li>Maps Salesforce objects and fields to Dynamics 365 tables and columns.</li>
+          <li>Builds the tables, moves the data, and checks the record counts match.</li>
+        </ul>
+        <p>It only reads from Salesforce and never changes it.</p>
+        <p>Over the years, most Salesforce orgs pile up:</p>
         <ul>
           <li>Fields nobody uses anymore.</li>
           <li>Old workflows that still run in the background.</li>
           <li>Reports created for employees who left years ago.</li>
           <li>Customizations layered on top of customizations.</li>
         </ul>
-        <p>Many organizations don’t fully understand how much has accumulated until they begin evaluating a migration.</p>
-        <p>Dynamics 365 Activate is designed to help uncover those details earlier in the process, making it easier to understand what you’re working with before making major decisions.</p>
-        <h2 id="a-better-crm-not-just-a-new-crm">A Better CRM</h2>
-        <p>What’s interesting about Dynamics 365 Activate isn’t the technology itself. It’s what the technology makes possible. For years, a significant portion of a migration project involved figuring out what existed in the current system. If Activate can reduce some of that effort, organizations can spend less time documenting their old CRM and more time planning their future one.</p>
-        <p>That’s where the real value is. Because the goal shouldn’t be to recreate Salesforce inside Dynamics 365. The goal should be to improve what wasn’t working in the first place.</p>
-        <p>A migration is one of the few times a business has permission to step back and ask important questions:</p>
+        <p>Activate flags low-use fields and inactive automations.</p>
+        <h2 id="what-activate-does-not-do">What does Activate not do?</h2>
+        <p>It doesn’t convert flows, Process Builder, workflow rules or Apex. Those get rebuilt in Dynamics 365. It supports English only.</p>
+        <h2 id="what-should-you-rebuild">What should you rebuild?</h2>
+        <p>Software can find what you have. It can’t tell you what to keep. Ask:</p>
         <ul>
           <li>Do we still need this process?</li>
           <li>Is this customization adding value?</li>
@@ -259,35 +264,24 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
           <li>Is our data organized in a way that supports growth?</li>
           <li>Are we making life easier for our users?</li>
         </ul>
-        <p>Those are the questions that determine whether a CRM project succeeds. And those questions can’t be answered by software alone. The companies that get the most value from a CRM migration aren’t the ones that move the fastest. They’re the ones that use the opportunity to simplify, modernize, and align their CRM with how the business operates today.</p>
         <h2 id="why-more-businesses-are-evaluating-dynam">Why More Businesses Are Evaluating Dynamics 365</h2>
-        <p>We’re seeing more companies take a fresh look at Dynamics 365 because they want a CRM that’s more closely aligned with the technology they already use every day. For organizations running Outlook, Teams, SharePoint, Power Platform, and Microsoft Copilot, Dynamics 365 feels like a natural extension of the Microsoft ecosystem. Instead of maintaining separate platforms from different vendors, businesses are looking for ways to simplify operations, improve collaboration, and create a more connected user experience.</p>
+        <p>If you already run Outlook, Teams and SharePoint, Dynamics 365 works inside them.</p>
         <p>That doesn’t automatically make Dynamics 365 the right choice for everyone. But it does make the evaluation worth considering, especially when tools like Dynamics 365 Activate are helping reduce some of the barriers traditionally associated with switching platforms.</p>
-        <h2 id="why-an-experienced-partner-still-matters">Why an Experienced Partner Still Matters</h2>
-        <p>Dynamics 365 Activate can help identify customizations, workflows, data structures, and dependencies, but it can’t tell you what should stay, what should go, or how your future CRM should work. That’s where enCloud9 comes in.</p>
-        <p>A successful CRM migration isn’t about moving everything from Salesforce to Dynamics 365. It’s about taking the opportunity to simplify processes, clean up data, and build a system that better supports your business. While Dynamics 365 Activate helps you understand your current environment, enCloud9 helps you turn that insight into a CRM strategy that works for your team today and can grow with you tomorrow.</p>
-        <h2 id="further-reading-from-microsoft">Further Reading from Microsoft</h2>
-        <p>If you’d like to learn more about Dynamics 365 Activate and Microsoft’s approach to CRM implementations, these resources provide additional information:</p>
-        <ul>
-          <li><a href="https://learn.microsoft.com/en-us/dynamics365/dynamics-365-activate/dynamics-365-activate-overview">Dynamics 365 Activate overview (preview)</a>: Microsoft’s official introduction to Dynamics 365 Activate and its vision for simplifying CRM migrations.</li>
-          <li><a href="https://www.microsoft.com/en-us/dynamics-365/blog/business-leader/2026/09/09/accelerate-your-move-to-agentic-business-applications-with-dynamics-365-activate/">Accelerate your move to agentic business applications with Dynamics 365 Activate</a>: Learn how Dynamics 365 Activate helps organizations reduce migration friction and move to Dynamics 365 with greater confidence.</li>
-          <li><a href="https://learn.microsoft.com/en-us/dynamics365/dynamics-365-activate/migrate-salesforce-to-dynamics-365-overview">Overview of Salesforce migration to Dynamics 365</a>: Learn how Dynamics 365 Activate helps assess your Salesforce environment and plan a smoother move to Dynamics 365.</li>
-        </ul>
         <h2 id="how-encloud9-can-help">How enCloud9 Can Help</h2>
-        <p>Technology is only part of a successful CRM migration. The bigger challenge is making sure your next CRM helps your business perform better than the one you’re leaving behind.</p>
-        <p>enCloud9 has helped organizations implement, optimize, and support Microsoft Dynamics 365 for years. Moving from Salesforce is more than a data migration. It’s an opportunity to improve the way your business manages customer relationships, sales processes, and service operations.</p>
-        <p>Our team can help you:</p>
+        <p>We plan the move, decide what to keep, rebuild your automation in Dynamics 365, and train your team. See <a href="../../microsoft-dynamics-365-salesforce-crm-migration/">Move from Salesforce</a>.</p>
+        <h2 id="further-reading-from-microsoft">Further Reading from Microsoft</h2>
         <ul>
-          <li>Evaluate whether Dynamics 365 is the right fit for your organization</li>
-          <li>Assess your current Salesforce environment</li>
-          <li>Identify opportunities to simplify processes and improve data quality</li>
-          <li>Plan and execute a migration strategy</li>
-          <li>Configure Dynamics 365 to align with your business goals</li>
-          <li>Train users and drive adoption</li>
-          <li>Optimize your CRM for long-term success</li>
+          <li><a href="https://learn.microsoft.com/en-us/dynamics365/dynamics-365-activate/dynamics-365-activate-overview">Dynamics 365 Activate overview</a></li>
+          <li><a href="https://www.microsoft.com/en-us/dynamics-365/blog/business-leader/2026/09/09/accelerate-your-move-to-agentic-business-applications-with-dynamics-365-activate/">Accelerate your move to agentic business applications with Dynamics 365 Activate</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/dynamics365/dynamics-365-activate/migrate-salesforce-to-dynamics-365-overview">Overview of Salesforce migration to Dynamics 365</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/dynamics365/dynamics-365-activate/migrate-salesforce-to-dynamics-365-overview#automated-discovery">What Activate scans in Salesforce</a></li>
         </ul>
-        <p>As Microsoft continues to expand Dynamics 365 Activate, we’re following its development closely and exploring how it can help reduce migration effort for our clients. At the same time, our focus remains on what matters most: helping organizations build CRM systems that support growth, improve productivity, and deliver long-term value.</p>
-        <p>Whether you’re evaluating Dynamics 365 for the first time or actively planning a migration from Salesforce, enCloud9 can help you understand your options, reduce risk, and create a strategy that supports your business long after go-live. See <a href="../../microsoft-dynamics-365-salesforce-crm-migration/">Move from Salesforce</a>.</p>
+        <h2 id="faq">Frequently Asked Questions</h2>
+        <div class="faq">
+          <details><summary>Does Activate move our Salesforce flows and Apex?</summary><p>No. It assesses them for migration effort, but doesn’t convert or move them. They get rebuilt in Dynamics 365.</p></details>
+          <details><summary>Does Activate change anything in Salesforce?</summary><p>No. It only reads from Salesforce and blocks every write, update and delete.</p></details>
+          <details><summary>What does Activate move?</summary><p>Records, plus Salesforce Files, notes, classic attachments, email attachments and supported record images, within Dataverse’s upload size limit.</p></details>
+        </div>
 
         <section class="abox" aria-labelledby="ab-h">
           <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
@@ -296,7 +290,7 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
 
         <div class="ctabox">
           <h2 id="see">Want help with this?</h2>
-          <p>Tell us where your Dynamics 365 system is today. You get a straight answer.</p>
+          <p>Tell us where your Dynamics 365 system is today.</p>
           <a class="btn btn-w" href="../../lp/schedule-a-meeting/">Book a call with enCloud9</a>
         </div>
       </div>
