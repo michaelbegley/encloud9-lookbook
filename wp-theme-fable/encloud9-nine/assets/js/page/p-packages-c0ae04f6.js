@@ -21,7 +21,7 @@
     note.innerHTML='';
     if(r[5]){note.appendChild(document.createTextNode(r[5]))}
     if(r[1]){var a=document.createElement('a');a.className='lnk';a.href=r[1];a.innerHTML=(r[4]||(k==='cc'?'See Dynamics 365 Contact Center':'See the '+r[0]+' package'))+' <span>&rarr;</span>';note.appendChild(a)}
-    if(r[2]){note.appendChild(document.createTextNode(' Then professional, responsive monthly support plans from $500.'))}
+    if(r[2]){note.appendChild(document.createTextNode(' Then a monthly support plan from $500.'))}
     if(window.matchMedia('(max-width:860px)').matches){var sd=root.querySelector('.pick-side'),rr=sd.getBoundingClientRect();if(rr.top>window.innerHeight*.5||rr.bottom<0)sd.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
   });
 })();
