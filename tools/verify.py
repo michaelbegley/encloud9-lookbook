@@ -109,6 +109,30 @@ for p in pages:
     if re.search(r'thank|received|successful|call-prep', p['path']) and not p.get('noindex'):
         fail('noindex', f"{p['path']} should be noindex")
 
+# 7. FAQ page copies: each answer matches its source page, and its search data matches what shows (23 Nov 2026:
+#    six FAQ copies kept old wording after the source pages were trimmed)
+def _norm(x): return ' '.join(html.unescape(re.sub(r'<[^>]+>', ' ', x)).split()).replace(' .', '.').replace(' ,', ',')
+def _qa(s):
+    return {_norm(m.group(1)): _norm(re.sub(r'<a class="lnk fqfrom".*?</a>', '', m.group(2), flags=re.S))
+            for m in re.finditer(r'<details[^>]*>\s*<summary[^>]*>(.*?)</summary>(.*?)</details>', s, re.S)}
+faq_file = os.path.join(ROOT, 'site/faq/index.html')
+if os.path.exists(faq_file):
+    fs = open(faq_file).read(); fvis = _qa(fs); srcs = {}
+    for m in re.finditer(r'<details[^>]*>\s*<summary[^>]*>(.*?)</summary>(.*?)</details>', fs, re.S):
+        lk = re.search(r'class="lnk fqfrom" href="([^"]+)"', m.group(2))
+        if not lk: continue
+        q = _norm(m.group(1)); q2 = re.sub(r' \([^)]*\)$', '', q)
+        sf = os.path.normpath(os.path.join(ROOT, 'site/faq', lk.group(1), 'index.html'))
+        if sf not in srcs: srcs[sf] = _qa(open(sf).read()) if os.path.exists(sf) else {}
+        if q2 in srcs[sf] and srcs[sf][q2] != fvis.get(q):
+            fail('faq', f'"{q[:50]}" differs from {lk.group(1)}: copy the page answer into the FAQ')
+    for blob in re.findall(r'<script type="application/ld\+json">(.*?)</script>', fs, re.S):
+        try: j = json.loads(blob)
+        except Exception: continue
+        for q in (j.get('mainEntity') or []) if isinstance(j, dict) else []:
+            n = q.get('name'); t = (q.get('acceptedAnswer') or {}).get('text')
+            if n in fvis and fvis[n] != t: fail('faq', f'"{n[:50]}": FAQ search data differs from the visible answer')
+
 # trigger checklist
 since = None
 if '--since' in sys.argv: since = sys.argv[sys.argv.index('--since') + 1]
