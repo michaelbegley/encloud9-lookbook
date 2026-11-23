@@ -62,6 +62,8 @@ for fpath in sorted(glob.glob('site/**/*.html',recursive=True)):
         return m.group(1)+new+m.group(4)
     main2=H.sub(r,main)
     if apply and main2!=main: open(fpath,'w').write(s[:a]+main2+s[b:])
-w=csv.writer(open('/home/claude/tc/headings-before-after.csv','w',newline=''))
-w.writerow(['page','before','after']); w.writerows(rows)
+out=next((a.split('=',1)[1] for a in sys.argv if a.startswith('--out=')),None)
+if out:  # only with --out, so a later run can never blank the saved list
+    w=csv.writer(open(out,'w',newline=''))
+    w.writerow(['page','before','after']); w.writerows(rows)
 print(len(rows),'headings changed on',len({r[0] for r in rows}),'pages')
