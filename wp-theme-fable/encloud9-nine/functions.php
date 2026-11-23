@@ -5,7 +5,7 @@
  */
 if (!defined('ABSPATH')) exit;
 
-define('N9_VER', '0.2.3');
+define('N9_VER', '0.2.4');
 
 add_action('after_setup_theme', function () {
     add_theme_support('title-tag');

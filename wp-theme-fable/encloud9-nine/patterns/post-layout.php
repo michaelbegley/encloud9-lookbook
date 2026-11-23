@@ -17,7 +17,7 @@
 <article aria-labelledby="h1"><!-- wp:encloud9/section -->
 <header class="phead">
       <div class="pmain">
-        <h1 class="h1 rise" id="h1" style="--d:2">Generative pages in Dynamics 365: what they are and 12 ways to use them</h1>
+        <h1 class="h1 rise" id="h1" style="--d:2">Generative Pages in Dynamics 365: What They Are and 12 Ways to Use Them</h1>
         <span class="draft rise" style="--d:0"><i aria-hidden="true"></i>Draft for the December theme</span>
         <span class="mono cat rise" style="--d:1">Copilot and AI &middot; Generative pages</span>
         <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <b>[Author]</b></span><span><b>[Publish date]</b></span><span>5 min read</span><span>Facts checked on Microsoft Learn, 5 Nov 2026</span></p>
@@ -61,7 +61,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading" id="what">What is a generative page?</h2>
+<h2 class="wp-block-heading" id="what">What Is a Generative Page?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -77,7 +77,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading" id="build">How do you build one?</h2>
+<h2 class="wp-block-heading" id="build">How Do You Build One?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -103,7 +103,7 @@
 <!-- /wp:encloud9/section -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading" id="where">Where do generative pages show up?</h2>
+<h2 class="wp-block-heading" id="where">Where Do Generative Pages Show Up?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -129,7 +129,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading" id="uses">What are 12 ways to use generative pages?</h2>
+<h2 class="wp-block-heading" id="uses">What Are 12 Ways to Use Generative Pages?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -154,7 +154,7 @@
 <!-- /wp:encloud9/section -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading" id="not">When should you not use a generative page?</h2>
+<h2 class="wp-block-heading" id="not">When Should You Not Use a Generative Page?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -192,7 +192,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading" id="start">What do you need to get started?</h2>
+<h2 class="wp-block-heading" id="start">What Do You Need to Get Started?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -204,7 +204,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading" id="status">What is the status and licensing (November 2026)?</h2>
+<h2 class="wp-block-heading" id="status">What Is the Status and Licensing (November 2026)?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -212,7 +212,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading" id="faq">Frequently asked questions</h2>
+<h2 class="wp-block-heading" id="faq">Frequently Asked Questions</h2>
 <!-- /wp:heading -->
 
 <!-- wp:encloud9/section -->
@@ -229,13 +229,13 @@
 <!-- wp:encloud9/section -->
 <section class="abox" aria-labelledby="ab-h">
           <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
-          <div><h2 class="nm" id="ab-h">About the author: [Author]</h2><p>[Author's role at enCloud9, and one line on the Dynamics 365 work they do.] enCloud9 checks every Microsoft fact in this post on Microsoft Learn before it goes live.</p></div>
+          <div><h2 class="nm" id="ab-h">About the Author: [Author]</h2><p>[Author's role at enCloud9, and one line on the Dynamics 365 work they do.] enCloud9 checks every Microsoft fact in this post on Microsoft Learn before it goes live.</p></div>
         </section>
 <!-- /wp:encloud9/section -->
 
 <!-- wp:encloud9/section -->
 <div class="ctabox">
-          <h2 id="see">Want to see what one could do for your team?</h2>
+          <h2 id="see">Want to See What One Could Do for Your Team?</h2>
           <p>Tell us about the screen your team wishes it had. We will show you whether a generative page is the right fit, and what it would take to build it.</p>
           <a class="btn btn-w" href="/lp/schedule-a-meeting/">Book a call with enCloud9</a>
         </div>
@@ -247,7 +247,7 @@
 <!-- wp:encloud9/section -->
 <section class="sec" aria-labelledby="nx-h">
     <div class="sec-head rev">
-      <h2 class="h2" id="nx-h">Next step</h2>
+      <h2 class="h2" id="nx-h">Next Step</h2>
       <p class="lead">See generative pages on the Copilot page, start with a free checkup, or talk to us.</p>
     </div>
     <div class="nx rev">
@@ -261,7 +261,7 @@
 <!-- wp:encloud9/section -->
 <section class="sec" aria-labelledby="rl-h">
     <div class="sec-head rev">
-      <h2 class="h2" id="rl-h">Related posts</h2>
+      <h2 class="h2" id="rl-h">Related Posts</h2>
       <p class="lead">More on Copilot and Dynamics 365. <a class="lnk" href="/blog/">All posts <span>&rarr;</span></a></p>
     </div>
     <div class="rel rev">
@@ -278,7 +278,7 @@
   <div class="wrap">
     <div class="inner">
       <div class="rev">
-        <h2 class="h2" id="fc-h">Start with a call or a free checkup</h2>
+        <h2 class="h2" id="fc-h">Start with a Call or a Free Checkup</h2>
         <p class="lead">Tell us where your system is today. You get a plan, a package and a price, whether or not you work with us.</p>
       </div>
       <div class="side rev">

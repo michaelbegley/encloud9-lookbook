@@ -550,3 +550,8 @@ html :is(.aigrid,.dgx,.fgx,.jgrid,.mk-cg,.dest,.fgrid:is([role="list"],[role="gr
   .mnav.open{display:none}
 }
 @media (min-width:861px) and (max-width:980px){.top .btn-p:not(.call-m){display:none}}
+/* check 3 (23 Nov): text links inside sentences are blue; menu panels open with a short fade and slide */
+main :is(p,li,dd,td,figcaption) a:not(.btn):not(.cover){color:var(--b5);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+:is(.band,.final,.ctabox) :is(p,li,dd,td,figcaption) a:not(.btn){color:inherit}
+@media (prefers-reduced-motion:no-preference){.panel:not([hidden]){animation:n9-panel .2s var(--ease) both}}
+@keyframes n9-panel{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
