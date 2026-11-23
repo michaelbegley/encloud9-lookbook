@@ -188,7 +188,7 @@
 <!-- /wp:list -->
 
 <!-- wp:paragraph -->
-<p>Also expect to iterate. A new prompt can change parts of the page you were happy with, so test after each change.</p>
+<p>A new prompt can change parts of the page you were happy with, so test after each change.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
