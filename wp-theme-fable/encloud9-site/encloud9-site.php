@@ -2,7 +2,7 @@
 /**
  * Plugin Name: enCloud9 Site
  * Description: What belongs to the site's content, not its look: client stories, the Section and Container blocks, the layout guard, the search tags carried from the design until All in One SEO takes over, and the page importer (wp n9 import).
- * Version: 0.5.51
+ * Version: 0.5.52
  * Author: enCloud9
  * Requires at least: 6.6
  * Requires PHP: 7.4
@@ -11,7 +11,7 @@
  */
 if (!defined('ABSPATH')) exit;
 
-define('N9_SITE_VER', '0.5.51');
+define('N9_SITE_VER', '0.5.52');
 define('N9_SITE_DIR', __DIR__);
 
 /* Who may change structure (unlock, code editor): people who can already edit the theme. */
@@ -169,8 +169,16 @@ add_action('wp_head', function () {
     echo '<meta property="og:title" content="' . esc_attr($title) . '">' . "\n";
     if ($d) echo '<meta property="og:description" content="' . esc_attr($d) . '">' . "\n";
     echo '<meta property="og:url" content="' . esc_url($url) . '">' . "\n";
+    /* Blog posts share their own thumbnail (assets/thumbs/<slug>.jpg, 23 Nov 2026); everything else the brand card. */
+    $slug = (string) get_post_field('post_name', $id);
+    $thumb = $slug !== '' ? plugin_dir_path(__FILE__) . 'assets/thumbs/' . sanitize_file_name($slug) . '.jpg' : '';
     $card = get_theme_file_path('assets/brand/share-card.png');
-    if (file_exists($card)) {
+    if (is_singular('post') && $thumb && file_exists($thumb)) {
+        echo '<meta property="og:image" content="' . esc_url(plugins_url('assets/thumbs/' . sanitize_file_name($slug) . '.jpg', __FILE__) . '?v=' . N9_SITE_VER) . '">' . "\n";
+        echo '<meta property="og:image:width" content="1200">' . "\n" . '<meta property="og:image:height" content="630">' . "\n";
+        echo '<meta property="og:image:alt" content="' . esc_attr($title) . '">' . "\n";
+        echo '<meta name="twitter:image" content="' . esc_url(plugins_url('assets/thumbs/' . sanitize_file_name($slug) . '.jpg', __FILE__) . '?v=' . N9_SITE_VER) . '">' . "\n";
+    } elseif (file_exists($card)) {
         echo '<meta property="og:image" content="' . esc_url(get_theme_file_uri('assets/brand/share-card.png')) . '">' . "\n";
         echo '<meta property="og:image:width" content="1200">' . "\n" . '<meta property="og:image:height" content="630">' . "\n";
         echo '<meta property="og:image:alt" content="enCloud9, Microsoft Dynamics 365 partner in Bellevue, Nebraska">' . "\n";
