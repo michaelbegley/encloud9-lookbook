@@ -97,7 +97,7 @@
         if (!seen[n]) { seen[n] = 1; bad.push({ n: n, e: e }); }
       }
     });
-    if (bad.length) { bad[0].e.focus(); say(f, 'Please fill in: ' + bad.map(function (b) { return b.n; }).join(', ') + '.'); return; }
+    if (bad.length) { bad[0].e.focus(); say(f, 'Fill in: ' + bad.map(function (b) { return b.n; }).join(', ') + '.'); return; }
 
     var btn = f.querySelector('[type="submit"]');
     f.dataset.n9Busy = '1';
@@ -117,14 +117,14 @@
           f.reset();
           say(f, 'Thanks. We have your answers and will use them on the call.');
         } else if (res.s === 422) {
-          say(f, 'Please check: ' + ((res.j && res.j.fields) || []).join(', ') + '.');
+          say(f, 'Check: ' + ((res.j && res.j.fields) || []).join(', ') + '.');
         } else if (res.s === 429) {
-          say(f, 'Too many tries. Please wait a few minutes, or call 1-844-264-0729.');
+          say(f, 'Too many tries. Wait a few minutes, or call 1-844-264-0729.');
         } else {
-          say(f, 'That did not send. Please try again, or call 1-844-264-0729.');
+          say(f, 'That did not send. Try again, or call 1-844-264-0729.');
         }
       })
-      .catch(function () { say(f, 'That did not send. Please try again, or call 1-844-264-0729.'); })
+      .catch(function () { say(f, 'That did not send. Try again, or call 1-844-264-0729.'); })
       .then(function () { delete f.dataset.n9Busy; if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); } });
   }
 
