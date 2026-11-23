@@ -42,7 +42,7 @@
 <section class="sec" id="story" aria-labelledby="ko-h">
     <div class="story-body">
       <div class="side rev">
-        <h2 class="h2" id="ko-h">What Changed for B&amp;G Landholdings?</h2>
+        <h2 class="h2" id="ko-h">What changed for B&amp;G Landholdings?</h2>
         <ul class="outc">
         <li>Contact information in Dynamics 365 is more accurate.</li>
         <li>There is less risk of sending campaigns to invalid email addresses.</li>
@@ -53,9 +53,9 @@
         <div class="acts" style="margin-top:24px"><a class="btn btn-p" href="/lp/schedule-a-meeting/">Book a call</a></div>
       </div>
       <div>
-      <div class="chap rev"><h2 class="h2">What Was Wrong with B&amp;G Landholdings' Email Data?</h2><p>B&amp;G Landholdings manages a growing portfolio of business operations and relies on Dynamics 365. As the volume of contacts increased, the accuracy and reliability of email data became more important.</p><p>Invalid email addresses were entering the CRM, and outdated contact information was reducing marketing effectiveness. Bounces put sender reputation at risk, finding and fixing bad email data by hand took time, and the team had limited visibility into which addresses posed deliverability risks.</p></div>
-      <div class="chap rev"><h2 class="h2">What Did enCloud9 Change?</h2><p>enCloud9 implemented our Email Verifier inside B&amp;G Landholdings' existing Dynamics 365 environment, without disrupting user workflows.</p><p>It validates email addresses in real time when leads and contacts are created, automatically flags invalid and high-risk addresses, and verifies existing CRM records in bulk. The team also gained visibility into email quality and deliverability risks.</p></div>
-      <div class="chap rev"><h2 class="h2">What Changed Day to Day?</h2><p>Contact records in Dynamics 365 are more accurate, marketing lists are cleaner, and less manual effort goes into finding problem records. The team has more confidence in its CRM data and is better prepared for marketing automation and customer engagement work.</p></div>
+      <div class="chap rev"><h2 class="h2">What was wrong with B&amp;G Landholdings' email data?</h2><p>B&amp;G Landholdings manages a growing portfolio of business operations and relies on Dynamics 365. As the volume of contacts increased, the accuracy and reliability of email data became more important.</p><p>Invalid email addresses were entering the CRM, and outdated contact information was reducing marketing effectiveness. Bounces put sender reputation at risk, finding and fixing bad email data by hand took time, and the team had limited visibility into which addresses posed deliverability risks.</p></div>
+      <div class="chap rev"><h2 class="h2">What did enCloud9 change?</h2><p>enCloud9 implemented our Email Verifier inside B&amp;G Landholdings' existing Dynamics 365 environment, without disrupting user workflows.</p><p>It validates email addresses in real time when leads and contacts are created, automatically flags invalid and high-risk addresses, and verifies existing CRM records in bulk. The team also gained visibility into email quality and deliverability risks.</p></div>
+      <div class="chap rev"><h2 class="h2">What changed day to day?</h2><p>Contact records in Dynamics 365 are more accurate, marketing lists are cleaner, and less manual effort goes into finding problem records. The team has more confidence in its CRM data and is better prepared for marketing automation and customer engagement work.</p></div>
       </div>
     </div>
   </section>

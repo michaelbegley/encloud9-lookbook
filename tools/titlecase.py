@@ -55,6 +55,8 @@ for fpath in sorted(glob.glob('site/**/*.html',recursive=True)):
     if a<0: continue
     main=s[a:b]
     def r(m):
+        plain=html.unescape(re.sub(r'<[^>]+>','',m.group(3))).strip()
+        if plain.endswith('?'): return m.group(0)  # questions stay in sentence case (Brian and Michael, 23 Nov)
         new=hyph(fix_heading(m.group(3)))
         if new!=m.group(3):
             t=lambda x: html.unescape(re.sub(r'<[^>]+>','',x)).replace('­','').strip()

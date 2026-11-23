@@ -61,7 +61,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading" id="what">What Is a Generative Page?</h2>
+<h2 class="wp-block-heading" id="what">What is a generative page?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -77,7 +77,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading" id="build">How Do You Build One?</h2>
+<h2 class="wp-block-heading" id="build">How do you build one?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -103,7 +103,7 @@
 <!-- /wp:encloud9/section -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading" id="where">Where Do Generative Pages Show Up?</h2>
+<h2 class="wp-block-heading" id="where">Where do generative pages show up?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -129,7 +129,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading" id="uses">What Are 12 Ways to Use Generative Pages?</h2>
+<h2 class="wp-block-heading" id="uses">What are 12 ways to use generative pages?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -154,7 +154,7 @@
 <!-- /wp:encloud9/section -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading" id="not">When Should You Not Use a Generative Page?</h2>
+<h2 class="wp-block-heading" id="not">When should you not use a generative page?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -192,7 +192,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading" id="start">What Do You Need to Get Started?</h2>
+<h2 class="wp-block-heading" id="start">What do you need to get started?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -204,7 +204,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading" id="status">What Is the Status and Licensing (November 2026)?</h2>
+<h2 class="wp-block-heading" id="status">What is the status and licensing (November 2026)?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -235,7 +235,7 @@
 
 <!-- wp:encloud9/section -->
 <div class="ctabox">
-          <h2 id="see">Want to See What One Could Do for Your Team?</h2>
+          <h2 id="see">Want to see what one could do for your team?</h2>
           <p>Tell us about the screen your team wishes it had. We will show you whether a generative page is the right fit, and what it would take to build it.</p>
           <a class="btn btn-w" href="/lp/schedule-a-meeting/">Book a call with enCloud9</a>
         </div>

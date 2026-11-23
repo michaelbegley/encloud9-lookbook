@@ -245,7 +245,7 @@ body.p-post .art code{font-family:var(--label);font-size:.88em;background:var(--
         <p class="answer"><span class="mono">The short answer</span><strong>A sequence is a set of sales activities, such as emails, calls and tasks, that sellers follow in order. In Dynamics 365 Sales, you build sequences in the sales accelerator. Go to Sales Insights settings, select Sequences, then New sequence. Add your steps, save and activate. Then connect the sequence to records, such as leads or opportunities, by hand or with Power Automate.</strong></p>
         <section class="upd" aria-labelledby="update">
           <span class="mono">Update, November 2026</span>
-          <h2 id="update" class="sr-only">What Changed Since This Post Was Written?</h2>
+          <h2 id="update" class="sr-only">What changed since this post was written?</h2>
           <p><strong>This post is from January 2022. Every step below was checked against Microsoft Learn on 10 November 2026 and rewritten where the product has changed.</strong></p>
           <ul>
             <li>Microsoft now documents sequences as part of the <a href="https://learn.microsoft.com/dynamics365/sales/create-manage-sequences">sales accelerator in Dynamics 365 Sales</a>. The settings area is still called Sales Insights settings.</li>
@@ -257,7 +257,7 @@ body.p-post .art code{font-family:var(--label);font-size:.88em;background:var(--
         </section>
         <p>Sequences give sellers a set of steps that reflect the company’s best practices. Sales managers and admins create them, and sellers can create their own. They decide which activities sellers perform, and in what order.</p>
         <p>That helps sellers prioritize their day, stay productive and follow the business process. When this post was written in 2022, sequences were a feature of Dynamics 365 Sales Insights. Today, Microsoft includes them in the <a href="https://learn.microsoft.com/dynamics365/sales/create-manage-sequences">sales accelerator</a> (checked 10 November 2026).</p>
-        <h2 id="create">How Do You Create a New Sequence?</h2>
+        <h2 id="create">How do you create a new sequence?</h2>
         <p>You create it in Sales Insights settings, under Sales accelerator. These are the current steps from Microsoft’s guide to <a href="https://learn.microsoft.com/dynamics365/sales/create-and-activate-a-sequence">creating and activating a sequence</a> (checked 10 November 2026):</p>
         <ol class="steps">
           <li>Sign in to your sales app. In the lower-left corner, go to <strong>Change area</strong> and select <strong>Sales Insights settings</strong>.</li>
@@ -279,9 +279,9 @@ body.p-post .art code{font-family:var(--label);font-size:.88em;background:var(--
           <li>Select <strong>Activate</strong>, then <strong>Activate</strong> again to confirm.</li>
         </ol>
         <p>Activating is the important last step. Only active sequences can be connected to records. An organization can have up to 250 active sequences at a time (checked 10 November 2026).</p>
-        <h2 id="connect">How Do You Connect a Sequence to a Record?</h2>
+        <h2 id="connect">How do you connect a sequence to a record?</h2>
         <p>You connect it by hand or automatically. Once connected, the sequence’s activities show in order under <strong>Up next</strong> on the record. Microsoft’s page on <a href="https://learn.microsoft.com/dynamics365/sales/connect-a-sequence-to-records">connecting a sequence to records</a> lists four ways (checked 10 November 2026). You can connect through the sequence, the record grid view, a single record, or Power Automate.</p>
-        <h3 id="connect-manual">How Do You Connect a Sequence to a Record Manually?</h3>
+        <h3 id="connect-manual">How do you connect a sequence to a record manually?</h3>
         <p>Start from the list of leads or opportunities:</p>
         <ol class="steps">
           <li>Go to <strong>Change area</strong> and select <strong>Sales</strong>.</li>
@@ -291,9 +291,9 @@ body.p-post .art code{font-family:var(--label);font-size:.88em;background:var(--
           <li>Choose a sequence and select <strong>Connect</strong>.</li>
         </ol>
         <p>You can also open a single record and select <strong>Connect sequence</strong>. Or open the sequence, go to its <strong>Connected leads</strong> tab and select <strong>Connect leads</strong>. A record can now have more than one sequence connected, for example one for the seller and one for the account manager.</p>
-        <h3 id="connect-auto">How Do You Connect a Sequence to a Record Automatically?</h3>
+        <h3 id="connect-auto">How do you connect a sequence to a record automatically?</h3>
         <p>Use a Power Automate flow. The flow connects records to the sequence when its trigger meets the flow’s condition. In the flow, add the Microsoft Dataverse action <strong>Perform an unbound action</strong> and choose <code>msdyn_ConnectSequence</code>. Microsoft lists the fields to fill in under <a href="https://learn.microsoft.com/dynamics365/sales/connect-a-sequence-to-records#through-power-automate">connecting a sequence through Power Automate</a> (checked 10 November 2026).</p>
-        <h2 id="disconnect">How Do You Disconnect a Sequence from a Record?</h2>
+        <h2 id="disconnect">How do you disconnect a sequence from a record?</h2>
         <p>Open the sequence’s connected records and select <strong>Disconnect</strong>. Microsoft’s <a href="https://learn.microsoft.com/training/modules/sales-sequence/4-disconnect">training tutorial</a> gives these steps (checked 10 November 2026):</p>
         <ol class="steps">
           <li>In <strong>Sales Insights settings</strong>, under <strong>Sales accelerator</strong>, select <strong>Sequences</strong>.</li>
@@ -303,7 +303,7 @@ body.p-post .art code{font-family:var(--label);font-size:.88em;background:var(--
           <li>Confirm with <strong>Disconnect</strong>.</li>
         </ol>
         <p>You can also open a connected record and select <strong>Disconnect sequence</strong> on the toolbar. Once disconnected, sellers no longer see that sequence’s steps on the record. In 2022 this was done from the sequence’s <strong>Properties</strong>. Today <strong>Properties</strong> shows the name, description, record type and owner (<a href="https://learn.microsoft.com/dynamics365/sales/view-sequence-details-connected-records">Microsoft Learn</a>, checked 10 November 2026).</p>
-        <h2 id="edit">How Do You Edit a Sales Sequence?</h2>
+        <h2 id="edit">How do you edit a sales sequence?</h2>
         <p>Open the sequence and either deactivate it, copy it, or select <strong>Edit sequence</strong>. You need permission to edit sequences. By default, the System Administrator, Sequence manager, Sales Manager and Salesperson roles have it (<a href="https://learn.microsoft.com/dynamics365/sales/create-manage-sequences">Microsoft Learn</a>, checked 10 November 2026).</p>
         <p>In 2022 you had to deactivate a sequence before editing it. Microsoft’s guide to <a href="https://learn.microsoft.com/dynamics365/sales/edit-a-sequence">cloning and editing a sequence</a> now gives three choices (checked 10 November 2026):</p>
         <ul>
@@ -312,13 +312,13 @@ body.p-post .art code{font-family:var(--label);font-size:.88em;background:var(--
           <li><strong>Edit sequence</strong> on an active sequence. This <a href="https://learn.microsoft.com/dynamics365/sales/edit-active-sequence">creates a new version</a>. Records already connected stay on the old version (checked 10 November 2026).</li>
         </ul>
         <p>To add a step, use the <strong>Add</strong> icon as you did when creating it. To change a step, select it, edit the details in the right pane and select <strong>Save</strong>. To remove a sequence for good, see Microsoft’s steps to <a href="https://learn.microsoft.com/dynamics365/sales/delete-a-sequence">delete a sequence</a> (checked 10 November 2026).</p>
-        <h2 id="easy">Is It Easy to Create and Manage Sequences?</h2>
+        <h2 id="easy">Is it easy to create and manage sequences?</h2>
         <p>Yes. Once the sales accelerator is set up, creating and managing sequences is straightforward. Sequences help sellers prioritize activities, stay productive and follow your business process.</p>
-        <h2 id="get-started">How Do You Get Started with Sequences in Dynamics 365 Sales?</h2>
+        <h2 id="get-started">How do you get started with sequences in Dynamics 365 Sales?</h2>
         <p>Check your license, then set up the sales accelerator. A Sales Enterprise license includes 1,500 sequence-connected records a month. Sales Premium removes that limit (checked 10 November 2026).</p>
         <p>Prices have changed since this post first ran in 2022. See enCloud9’s <a href="../../dynamics-365-pricing/">Dynamics 365 pricing page</a> for today’s figures.</p>
         <p>enCloud9 has been a Microsoft Partner since 2008. Its <a href="../../dynamics-365-sales-accelerator/">Sales Accelerator</a> package sets up Dynamics 365 Sales for your pipeline for $7,500. <a href="../../contact-us/">Contact enCloud9</a> for help setting up sequences.</p>
-        <h2 id="videos">Which Videos Show How to Use and Modify Sequences in Dynamics 365 Sales?</h2>
+        <h2 id="videos">Which videos show how to use and modify sequences in Dynamics 365 Sales?</h2>
         <p>Two short enCloud9 videos walk through it:</p>
         <ul>
           <li><a href="https://youtu.be/XbWtfPzE2N0">How to Modify Sequences in Dynamics 365</a> (enCloud9 on YouTube): duplicating, editing and improving sequences.</li>
@@ -338,7 +338,7 @@ body.p-post .art code{font-family:var(--label);font-size:.88em;background:var(--
         </section>
 
         <div class="ctabox">
-          <h2 id="see">Ready to Set up Sequences?</h2>
+          <h2 id="see">Ready to set up sequences?</h2>
           <p>Tell enCloud9 how your sellers follow up today. You get a plan for sequences and the sales accelerator in Dynamics 365 Sales.</p>
           <a class="btn btn-w" href="../../lp/schedule-a-meeting/">Book a call</a>
         </div>
