@@ -5,10 +5,10 @@
   var R={
     sales:['Sales Accelerator','../dynamics-365-sales-accelerator/',1],
     service:['Service Accelerator','../dynamics-365-service-accelerator/',1],
-    full:['Full implementation','../microsoft-dynamics-365-implementation/',1],
+    full:['Full Implementation','../microsoft-dynamics-365-implementation/',1],
     rescue:['Rescue and Repair','../encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/',1],
     cc:['Talk to us about Dynamics 365 Contact Center','../dynamics-365-contact-center/',0],
-    move:['Move from Salesforce, HubSpot or another CRM','../microsoft-dynamics-365-implementation/',1,['salesforce','hubspot'],'See the Full implementation package','Moving your data is part of a full implementation. '],
+    move:['Move from Salesforce, HubSpot or another CRM','../microsoft-dynamics-365-implementation/',1,['salesforce','hubspot'],'See the Full Implementation package','Moving your data is part of a full implementation. '],
     checkup:['CRM Health Check, free','../crm-health-check/',0,0,'See the free CRM Health Check']
   };
   root.addEventListener('click',function(e){

@@ -102,7 +102,7 @@ a.pf:hover{background:var(--tint)}
 @media (max-width:860px){.proof{grid-template-columns:1fr 1fr}.pf:nth-child(3){padding-left:0;border-left:0}.pf:nth-child(n+3){border-top:1px solid var(--line)}}
 
 /* rows (packages, checkups) */
-.rows{border-top:2px solid var(--ink)}
+.rows{border-top:2px solid var(--ink)}.rows:has(>a.row){border-top:0}.rows>a.row:first-child{border-top:2px solid var(--ink)}
 .row{display:grid;grid-template-columns:44px minmax(0,1.1fr) minmax(0,1.4fr) 150px;gap:24px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);transition:background .3s,padding .3s}
 a.row:hover{background:var(--tint)}
 .row .nm{font-family:var(--head);font-size:24px;font-weight:600;letter-spacing:-.015em;line-height:1.2}
