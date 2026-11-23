@@ -52,6 +52,10 @@ main = open(os.path.join(PLUGIN, 'encloud9-site.php')).read()
 v1 = re.search(r'Version:\s*([\d.]+)', main); v2 = re.search(r"N9_SITE_VER',\s*'([\d.]+)'", main)
 if not v1 or not v2 or v1.group(1) != v2.group(1): fail('version', 'header Version and N9_SITE_VER disagree')
 version = v1.group(1) if v1 else '?'
+theme_css = open(os.path.join(WP, 'encloud9-nine', 'style.css')).read()
+theme_fn = open(os.path.join(WP, 'encloud9-nine', 'functions.php')).read()
+t1 = re.search(r'Version:\s*([\d.]+)', theme_css); t2 = re.search(r"N9_VER',\s*'([\d.]+)'", theme_fn)
+if not t1 or not t2 or t1.group(1) != t2.group(1): fail('version', 'theme style.css Version and N9_VER disagree (browsers keep the old CSS)')
 
 # kept old posts and redirects
 kept = set()
