@@ -80,7 +80,7 @@ for p in pages:
     text = html.unescape(TAG.sub(' ', re.sub(r'<(script|style)[\s\S]*?</\1>', ' ', c)))
     vis = text + ' ' + (p.get('title') or '') + ' ' + (p.get('description') or '')
     if re.search('[–—]', vis): fail('dash', f'{where}: em or en dash in visible text')
-    for b in set(re.findall(r'\[[A-Za-z][^\]\n]{2,80}\]', text)): (fail if LAUNCH else warn)('placeholder', f'{where}: {b}')
+    for b in set(re.findall(r'\[[A-Za-z][^\]\n]{2,300}\]', text)): (fail if LAUNCH else warn)('placeholder', f'{where}: {b}')
     if not (p.get('title') or '').strip(): fail('meta', f'{where}: no title')
     if not (p.get('description') or '').strip() and where != '/404/': warn('meta', f'{where}: no description')
     for blk in ([p['jsonld']] if isinstance(p.get('jsonld'), str) else (p.get('jsonld') or [])):

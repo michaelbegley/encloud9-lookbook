@@ -106,3 +106,15 @@ Claude's 15 left, split:
 New totals: Brian 27, Claude 13, Michael 4, Kristin 2 = 46.
 
 On staging: plugin 0.5.71 uploaded by Claude and pages imported (0 created, 107 updated), 23 Nov 2026 about 9:20 PM Central; the Sales agent table reads "checked 23 Nov 2026" with both agents Generally available (read on staging).
+
+## Correction, 23 Nov 2026, about 9:30 PM Central: the real count is 64, not 46
+Found while writing the migration checklists: verify's placeholder rule only caught brackets up to 80 characters, so longer ones were never counted. The four "[Form: the existing checklist download form ...]" lines were the first sign. Fixed in tools/verify.py (now up to 300 characters). Measured with `verify.py --launch` after the fix: 64.
+
+The 18 that were hidden:
+- Brian (5): Brian's two bio lines on /about-encloud9/team/brian-begley/; what the Health Check looks at (/crm-health-check/, question 30 in the 43 version); the follow-up email wording on /faq/ and /free-guides-and-checks/ (question 32).
+- Brian, sandbox licenses then Claude (5): screenshot spots on the sequences, generative pages, stop-leads, last-activity and storage posts.
+- Brian and the lawyer (3): privacy retention periods (question 2), state privacy rights (question 3), terms governing law.
+- Michael (4): the checklist download form on the four move pages. Draft 1 of the four checklists is in wp-theme-fable/checklists/.
+- Claude (1): the cookie banner line on /privacy-policy/ (needs the banner built).
+
+Totals now: Brian 40, Claude 14, Michael 8, Kristin 2 = 64.
