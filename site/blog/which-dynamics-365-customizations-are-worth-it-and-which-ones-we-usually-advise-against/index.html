@@ -22,8 +22,9 @@
 <link rel="stylesheet" href="../../../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../../../pages/nine.css">
 <script defer src="../../../pages/nine.js"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "Which Dynamics 365 Customizations Are Worth It (And Which Ones We Usually Advise Against)", "item": "https://www.encloud9.com/blog/which-dynamics-365-customizations-are-worth-it-and-which-ones-we-usually-advise-against/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Which Dynamics 365 Customizations Are Worth It (And Which Ones We Usually Advise Against)", "description": "The Dynamics 365 customizations we usually recommend, the ones we advise against, and five questions to ask before you build one.", "url": "https://www.encloud9.com/blog/which-dynamics-365-customizations-are-worth-it-and-which-ones-we-usually-advise-against/", "datePublished": "2026-10-07", "dateModified": "2026-11-10", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "Which Dynamics 365 Customizations Are Worth It?", "item": "https://www.encloud9.com/blog/which-dynamics-365-customizations-are-worth-it-and-which-ones-we-usually-advise-against/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Which Dynamics 365 Customizations Are Worth It?", "description": "The Dynamics 365 customizations we usually recommend, the ones we advise against, and five questions to ask before you build one.", "url": "https://www.encloud9.com/blog/which-dynamics-365-customizations-are-worth-it-and-which-ones-we-usually-advise-against/", "datePublished": "2026-10-07", "dateModified": "2026-11-23", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do we show different forms to different teams?", "acceptedAnswer": {"@type": "Answer", "text": "Assign each main form to the security roles that should see it. One form stays as the fallback for everyone else."}}, {"@type": "Question", "name": "Should we rebuild our old CRM’s custom fields?", "acceptedAnswer": {"@type": "Answer", "text": "Usually not. Microsoft advises against copying a legacy system. Start from standard and add only what has a clear purpose."}}, {"@type": "Question", "name": "When is custom code worth it?", "acceptedAnswer": {"@type": "Answer", "text": "When configuration and low-code tools can’t meet a need that has clear business value, after you count the cost of maintaining it."}}]}</script>
 <style>
 /* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
 body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
@@ -196,9 +197,9 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
   <article aria-labelledby="h1">
     <header class="phead">
       <div class="pmain">
-        <h1 class="h1 rise" id="h1" style="--d:2">Which Dynamics 365 Customizations Are Worth It (And Which Ones We Usually Advise Against)</h1>
+        <h1 class="h1 rise" id="h1" style="--d:2">Which Dynamics 365 Customizations Are Worth It?</h1>
                 <span class="mono cat rise" style="--d:1">Admin and how-to</span>
-        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>October 7, 2026</b></span><span>Updated <b>November 10, 2026</b></span><span>4 min read</span></p>
+        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>October 7, 2026</b></span><span>Updated <b>November 23, 2026</b></span><span>4 min read</span><span>Facts checked 23 Nov 2026</span></p>
       </div>
       <aside class="glance" aria-labelledby="gl-h">
         <p class="mono" id="gl-h">At a glance</p>
@@ -219,9 +220,9 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
             <li><a href="#dynamics-365-customizations-we-often-rec">Which Dynamics 365 customizations are worth it?</a></li>
             <li><a href="#dynamics-365-customizations-we-often-avo">Which customizations should you avoid?</a></li>
             <li><a href="#how-to-evaluate-dynamics-365-customizati">How do you decide before building one?</a></li>
-            <li><a href="#the-bottom-line-on-dynamics-365-customiz">The Bottom Line on Dynamics 365 Customizations</a></li>
             <li><a href="#further-reading">Further Reading</a></li>
             <li><a href="#need-help-deciding-which-dynamics-365-cu">Need help deciding which Dynamics 365 customizations are worth keeping?</a></li>
+            <li><a href="#faq">Frequently asked questions</a></li>
             <li><a href="#see">Want help with this?</a></li>
           </ol>
         </details>
@@ -229,31 +230,33 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
 
       <div class="art" id="art">
         <p class="answer"><span class="mono">The short answer</span><strong>The Dynamics 365 customizations usually worth it are role-based forms, workflow and process automation, integrations that end duplicate data entry, dashboards that support decisions, and custom fields with a clear purpose. Avoid fields added just in case, rebuilding your old CRM, customizing around a broken process, complex code without a business case, and approvals for everything.</strong></p>
-        <p><strong>Have you ever opened a Dynamics 365 account record and wondered, “Do we really need all of this?”</strong></p>
-        <p>A field gets added. Then another. Someone requests a custom form. A workflow gets built to handle a unique situation. A few years later, users are scrolling through pages of information they rarely use, and simple updates feel anything but simple. The problem isn’t Dynamics 365 customizations themselves. Some Dynamics 365 customizations can improve adoption, reporting, and productivity. The challenge is knowing which customizations add real business value and which ones simply add more complexity. After years of implementing, optimizing and supporting Dynamics 365, enCloud9 has seen both.</p>
+        <p>A field gets added. Then another. Someone requests a custom form. A workflow gets built to handle a unique situation. A few years later, users are scrolling through pages of information they rarely use, and simple updates feel anything but simple.</p>
         <h2 id="dynamics-365-customizations-we-often-rec">Which Dynamics 365 customizations are worth it?</h2>
-        <p>Five usually are: role-based forms, process automation, integrations that end duplicate entry, dashboards that support decisions, and custom fields with a clear purpose. In fact, some can make the system significantly more useful and easier for employees to adopt.</p>
+        <p>Five usually are: role-based forms, process automation, integrations that end duplicate entry, dashboards that support decisions, and custom fields with a clear purpose.</p>
         <h3>Role-Based Forms</h3>
         <p>Different teams need different information. Sales reps don’t need to see everything that managers need, and managers don’t need to see everything that service teams use. One of the most valuable Dynamics 365 customizations is tailoring forms to specific user groups. Cleaner screens make it easier for users to find what they need and enter accurate data.</p>
+        <p>In Power Apps, <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/control-access-forms#set-security-roles-for-a-form">assign each main form to the security roles</a> that should see it, and keep one fallback form for everyone else.</p>
+        <figure class="shot"><p>[Screenshot from the marketing sandbox: form settings with security roles assigned]</p></figure>
         <h3>Workflow and Process Automation</h3>
-        <p>When employees perform the same task over and over, automation can be a huge win. Automated lead assignment, follow-up reminders, task creation, and notifications are Dynamics 365 customizations that often deliver immediate value. The best automations eliminate repetitive work without making the process harder to follow.</p>
+        <p>Automate the same task people do over and over: lead assignment, follow-up reminders, task creation and notifications. The best automations eliminate repetitive work without making the process harder to follow.</p>
         <h3>Integrations That Eliminate Duplicate Data Entry</h3>
-        <p>Few things frustrate users more than entering the same data into multiple systems. Dynamics 365 customizations that connect CRM data with Outlook, ERP systems, marketing platforms, or customer service applications can save time while improving data quality.</p>
+        <p>Entering the same data twice wastes time and causes mismatches. Dynamics 365 customizations that connect CRM data with Outlook, ERP systems, marketing platforms, or customer service applications can save time while improving data quality.</p>
         <h3>Dashboards That Support Better Decisions</h3>
-        <p>A well-designed dashboard helps leaders quickly understand what’s happening in the business. Among all Dynamics 365 customizations, reporting and dashboard improvements are often some of the most valuable because they help organizations get more insight from the data they’re already collecting.</p>
+        <p>A good dashboard shows leaders what’s happening, using data you already collect.</p>
         <h3>Custom Fields With a Clear Purpose</h3>
         <p>Custom fields aren’t the enemy. The key question is why the field exists. If it supports reporting, forecasting, automation, or a business process, it may be worthwhile. If there’s no clear answer, it’s probably worth reconsidering.</p>
         <h2 id="dynamics-365-customizations-we-often-avo">Which customizations should you avoid?</h2>
         <p>Five tend to cause more problems than they solve: fields added just in case, a rebuild of your old CRM, customizing around a broken process, complex code without a business case, and approvals for everything.</p>
         <h3>Adding Fields “Just in Case”</h3>
         <p>Most CRM administrators have heard this request: <em>“Let’s add the field now in case we need it later.”</em></p>
-        <p>Unfortunately, “just in case” fields have a way of multiplying. Over time, they clutter forms, confuse users, and make data entry more frustrating.</p>
+        <p>“Just in case” fields have a way of multiplying. Over time, they clutter forms, confuse users, and make data entry more frustrating.</p>
         <h3>Recreating Your Old CRM</h3>
         <p>One of the biggest mistakes enCloud9 sees is treating Dynamics 365 as an opportunity to rebuild an old CRM system feature-for-feature. A new CRM implementation should improve processes, not preserve every habit from the past. Often, the most effective Dynamics 365 customizations simplify the user experience rather than replicate legacy systems.</p>
+        <p><a href="https://learn.microsoft.com/dynamics365/guidance/implementation-guide/extend-your-solution#define-your-extension-strategy">Microsoft’s implementation guide</a> warns against copying your old system feature for feature. Its rule: <a href="https://learn.microsoft.com/dynamics365/guidance/implementation-guide/process-focused-solution-fit-to-standard-fit-gap-analysis#fit-to-standard-analysis">adopt wherever possible, adapt only where justified</a>.</p>
         <h3>Customizing Around a Broken Process</h3>
         <p>Technology can’t fix a broken process. Before requesting new Dynamics 365 customizations, ask whether the underlying process is working. Otherwise, you may end up automating inefficiencies instead of solving them.</p>
         <h3>Complex Custom Code Without a Strong Business Case</h3>
-        <p>Custom code has its place, but it comes with long-term maintenance costs. Whenever standard functionality, configuration, or low-code tools can meet the requirement, that’s often the better long-term choice. Every custom development project should have a clear business justification.</p>
+        <p>Custom code has its place, but it comes with long-term maintenance costs. Whenever standard functionality, configuration, or low-code tools can meet the requirement, that’s often the better long-term choice. Every custom development project should have a clear business justification. <a href="https://learn.microsoft.com/dynamics365/guidance/implementation-guide/process-focused-solution-fit-to-standard-fit-gap-analysis#fit-gap-analysis">Microsoft also says</a> to weigh the cost of building and maintaining it, and whether a coming Dynamics 365 release will cover the need.</p>
         <h3>Approval Processes for Everything</h3>
         <p>Approvals can improve accountability, but they can also create bottlenecks. enCloud9 has seen organizations build complex approval chains that slow down day-to-day work and frustrate users. The goal should be control where it’s needed, not approval for every single action.</p>
         <h2 id="how-to-evaluate-dynamics-365-customizati">How do you decide before building one?</h2>
@@ -265,21 +268,21 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
           <li>Who will maintain it over time?</li>
           <li>Will this still make sense three years from now?</li>
         </ul>
-        <p>If those questions are difficult to answer, the customization may not be necessary.</p>
-        <h2 id="the-bottom-line-on-dynamics-365-customiz">The Bottom Line on Dynamics 365 Customizations</h2>
-        <p>The best Dynamics 365 environments aren’t usually the most customized. They’re the ones where every field, workflow, form, integration, and report serves a <strong>clear purpose</strong>.</p>
-        <p>enCloud9 has worked with organizations that struggled because they didn’t customize enough, and with many more that struggled because years of well-intentioned Dynamics 365 customizations created systems that were harder to use, harder to maintain, and harder to trust.</p>
-        <p>The goal isn’t to avoid Dynamics 365 customizations. The goal is to make thoughtful decisions that improve the user experience, support business goals, and keep the system manageable as your organization grows.</p>
+        <p>If those questions are difficult to answer, the customization may not be necessary. The best Dynamics 365 environments are the ones where every field, workflow, form, integration and report has a clear purpose.</p>
         <h2 id="further-reading">Further Reading</h2>
-        <p>If you’re evaluating your Dynamics 365 environment, these resources may also help:</p>
         <ul>
-          <li><a href="../success_stories/tension-ss/"><strong>Tension Envelope: a stalled Dynamics 365 project, brought to life</strong></a>: how enCloud9 restarted a project a prior partner left stalled, within three months.</li>
+          <li><a href="../success_stories/tension-ss/"><strong>Tension Envelope: A Stalled CRM Project Brought to Life</strong></a>: how enCloud9 restarted a project a prior partner left stalled, within three months.</li>
           <li><a href="../dynamics-365-adoption/"><strong>Dynamics 365 Adoption: Why the CRM Feels Like Extra Work</strong></a>: signs that your CRM may be creating friction instead of helping employees be more productive.</li>
-          <li><a href="../what-a-healthy-dynamics-365-system-actually-looks-like/"><strong>Is Your Dynamics 365 Healthy or Just “Working?”</strong></a>: how to identify CRM drift before it impacts adoption, reporting, and business performance.</li>
+          <li><a href="../what-a-healthy-dynamics-365-system-actually-looks-like/"><strong>What a Healthy Dynamics 365 System Actually Looks Like</strong></a>: how to identify CRM drift before it impacts adoption, reporting, and business performance.</li>
         </ul>
         <h2 id="need-help-deciding-which-dynamics-365-cu">Need help deciding which Dynamics 365 customizations are worth keeping?</h2>
-        <p>If your Dynamics 365 environment has grown more complicated over the years, you’re not alone. enCloud9 has worked with organizations that have accumulated years of fields, workflows, reports, and customizations, many of which no longer serve a clear purpose.</p>
-        <p>Whether you’re evaluating a new request, planning a cleanup project, or wondering if your CRM has become more complex than it needs to be, enCloud9 can help. enCloud9 helps you identify what’s adding value, what’s creating unnecessary complexity, and where opportunities exist to simplify and optimize your system.</p>
+        <p>We review existing customizations and tell you what to keep, simplify or remove. See <a href="../../encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a>.</p>
+        <h2 id="faq">Frequently Asked Questions</h2>
+        <div class="faq">
+          <details><summary>How do we show different forms to different teams?</summary><p>Assign each main form to the security roles that should see it. One form stays as the fallback for everyone else.</p></details>
+          <details><summary>Should we rebuild our old CRM’s custom fields?</summary><p>Usually not. Microsoft advises against copying a legacy system. Start from standard and add only what has a clear purpose.</p></details>
+          <details><summary>When is custom code worth it?</summary><p>When configuration and low-code tools can’t meet a need that has clear business value, after you count the cost of maintaining it.</p></details>
+        </div>
 
         <section class="abox" aria-labelledby="ab-h">
           <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
