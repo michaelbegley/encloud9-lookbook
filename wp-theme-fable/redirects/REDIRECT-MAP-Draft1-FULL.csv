@@ -1,0 +1,384 @@
+old_address,new_address,code,reason,source
+/blog/dynamics-365-customization-for-growing-business-needs/,/blog/dynamics-365-customizations-worth-it/,301,archive: same topic as the Oct 2026 customizations post: merge,WHAT-STICKS.csv (post)
+/blog/encloud9-partners-with-clickdimensions-to-launch-powerpack-revolutionizing-sales-and-marketing-for-smbs/,/clickdimensions-powerpack/,301,archive: old announcement,WHAT-STICKS.csv (post)
+/blog/which-dynamics-365-customizations-are-worth-it-and-which-ones-we-usually-advise-against/,/blog/dynamics-365-customizations-worth-it/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (post)
+/blog/the-microsoft-power-platform-powerful-alone-but-better-together/,/microsoft-power-platform/,301,archive: generic,WHAT-STICKS.csv (post)
+/blog/build-stronger-relationships-with-dynamics-365-sales-insights/,/blog/our-top-10-dynamics-365-sales-insights-features/,301,archive: same topic as the top 10 Sales Insights post: merge,WHAT-STICKS.csv (post)
+/blog/managing-and-marketing-teams-live-events/,,410,archive with no same-topic page,WHAT-STICKS.csv (post)
+/blog/managing-and-marketing-teams-live-events-part-2/,,410,archive with no same-topic page,WHAT-STICKS.csv (post)
+/blog/help-your-sales-team-stay-productive-anywhere-with-the-dynamics-365-sales-mobile-app/,/blog/dynamics-365-sales-mobile-app/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (post)
+/blog/dynamics-365-customer-buying-journey/,/dynamics-365-sales/,301,archive: generic,WHAT-STICKS.csv (post)
+/blog/sell-smarter-with-dynamics-365-sales/,/dynamics-365-sales/,301,archive: generic,WHAT-STICKS.csv (post)
+/blog/microsoft-power-platform-low-code-leader-2025/,/microsoft-power-platform/,301,archive: dated news,WHAT-STICKS.csv (post)
+/blog/stop-making-these-dynamics-365-mistakes/,/blog/5-mistakes-we-keep-seeing-in-first-time-dynamics-365-implementations/,301,archive: same topic: merge,WHAT-STICKS.csv (post)
+/blog/blog-ai-selling-dynamics-365-sales-2025/,/blog/ai-selling-dynamics-365-sales/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (post)
+/blog/email-marketing-best-practices-2025-clickdimensions/,/blog/email-marketing-best-practices-clickdimensions/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (post)
+/blog/recovering-from-a-failed-crm-project/,/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/,301,archive: belongs on the Rescue page,WHAT-STICKS.csv (post)
+/blog/announcing-encloud9s-copilot-ai-practice-the-future-of-dynamics-365-sales/,/microsoft-copilot-for-business/,301,archive: old announcement,WHAT-STICKS.csv (post)
+/blog/clickdimensions-dashboards-2025-update/,/marketing-services/,301,archive: dated product news,WHAT-STICKS.csv (post)
+/blog/boosting-summer-sales-with-dynamics-365-10-easy-strategies-part-2/,,410,archive with no same-topic page,WHAT-STICKS.csv (post)
+/blog/the-1-most-important-sales-strategy-building-strong-relationships-with-customers/,,410,archive with no same-topic page,WHAT-STICKS.csv (post)
+/blog/transform-your-sales-strategy-with-these-three-easy-habits/,,410,archive with no same-topic page,WHAT-STICKS.csv (post)
+/blog/visual-solutions-the-power-of-visio-in-encloud9s-customization-approach/,/about-encloud9/,301,archive: no clicks,WHAT-STICKS.csv (post)
+/blog/april-2024-dynamics-365-release-enhances-ai-collaboration-with-microsoft-teams/,/microsoft-dynamics-365-copilot/,301,archive: dated release,WHAT-STICKS.csv (post)
+/blog/leveraging-dynamics-365-analytics-for-springtime-decision-making/,,410,archive with no same-topic page,WHAT-STICKS.csv (post)
+/blog/spring-renewal-revitalizing-stale-leads-with-dynamics-365-insights/,/blog/mastering-lead-management-in-dynamics-365-igniting-your-sales-pipeline/,301,archive: D2: the lead management post answers it,WHAT-STICKS.csv (post)
+/blog/eliminate-the-guesswork-with-sales-forecasting-part-1/,/blog/boost-forecast-accuracy-with-product-catalog-and-quotes-in-dynamics-365/,301,archive: D2: forecasting post answers it,WHAT-STICKS.csv (post)
+/blog/top-6-ways-crm-can-shorten-your-sales-cycle/,/dynamics-365-sales/,301,archive: generic,WHAT-STICKS.csv (post)
+/blog/close-more-deals-with-marketing-automation/,/marketing-services/,301,archive: generic,WHAT-STICKS.csv (post)
+/blog/end-the-year-on-a-high-note-with-this-sales-checklist/,,410,archive with no same-topic page,WHAT-STICKS.csv (post)
+/blog/exciting-ai-innovations-coming-to-dynamics-365-sales/,/microsoft-dynamics-365-copilot/,301,archive: dated preview news,WHAT-STICKS.csv (post)
+/blog/how-sales-copilot-can-boost-your-productivity-and-performance/,/microsoft-dynamics-365-copilot/,301,archive: old Sales Copilot naming,WHAT-STICKS.csv (post)
+/blog/revolutionizing-sales-teams-how-microsoft-sales-copilot-is-changing-the-game/,/microsoft-dynamics-365-copilot/,301,archive: old Sales Copilot naming,WHAT-STICKS.csv (post)
+/blog/revolutionize-your-workflow-dynamics-365-and-microsoft-integration/,/microsoft-power-platform/,301,archive: generic,WHAT-STICKS.csv (post)
+/blog/accelerate-business-growth-with-the-microsoft-power-platform/,/microsoft-power-platform/,301,archive: generic,WHAT-STICKS.csv (post)
+/blog/mobilize-your-business-processes-with-dynamics-365-mobile/,/blog/dynamics-365-sales-mobile-app/,301,archive: D2: merge into the Sales mobile post,WHAT-STICKS.csv (post)
+/blog/nurturing-customer-loyalty-dynamics-365-crm-essentials/,/dynamics-365-customer-service/,301,archive: generic,WHAT-STICKS.csv (post)
+/blog/driving-success-the-role-of-year-end-crm-reviews-in-dynamics-365/,/support/,301,archive: seasonal,WHAT-STICKS.csv (post)
+/blog/last-call-for-on-prem-crm-why-the-ews-retirement-matters-more-than-you-think/,/blog/ews-retirement-on-premises-crm/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (post)
+/blog/dynamics-365-adoption/,/blog/why-dynamics-365-adoption-breaks-and-why-more-training-wont-fix-it/,301,archive: same topic: merge,WHAT-STICKS.csv (post)
+/blog/is-your-dynamics-365-ready-for-q2-a-practical-dynamics-365-readiness-check/,/blog/dynamics-365-readiness-check/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (post)
+/blog/dynamics-365-optimization/,/blog/dynamics-365-optimization-overbuilt-crm/,301,archive: same topic as the overbuilt CRM post: merge,WHAT-STICKS.csv (post)
+/blog/why-ongoing-dynamics-365-support-matters/,/support/,301,archive: belongs on Support,WHAT-STICKS.csv (post)
+/blog/from-reactive-support-to-proactive-service-agentic-ai-in-dynamics-365-customer-service/,/blog/agentic-ai-dynamics-365-customer-service/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (post)
+/blog/what-makes-encloud9-different-a-dynamics-365-partner-that-puts-you-first/,/about-encloud9/,301,archive: belongs on About,WHAT-STICKS.csv (post)
+/blog/microsoft-ignite-2025-top-5-ai-agent-updates/,/blog/microsoft-ignite-2025-copilot-ai-agents-work-iq/,301,archive: D2: merge into the other Ignite post (same topic),WHAT-STICKS.csv (post)
+/blog/begin-the-year-with-a-bang-with-our-marketing-checklist/,,410,archive with no same-topic page,WHAT-STICKS.csv (post)
+/blog/dynamics-365-2026-release-wave-1-what-sales-and-service-teams-should-pay-attention-to/,/blog/dynamics-365-2026-release-wave-1/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (post)
+/blog/personalization-at-scale-with-ai-transforming-customer-engagement-with-dynamics-365/,/marketing-services/,301,archive: no clicks,WHAT-STICKS.csv (post)
+/blog/5-must-have-microsoft-365-copilot-features-2025/,/microsoft-365-copilot/,301,archive: dated list,WHAT-STICKS.csv (post)
+/blog/encloud9-recognized-as-a-2024-top-member-by-crm-software-blog/,/about-encloud9/,301,archive: dated award,WHAT-STICKS.csv (post)
+/blog/dynamics-365-cure-for-team-chaos/,/power-platform-dynamics-365/,301,archive: generic,WHAT-STICKS.csv (post)
+/blog/six-reasons-need-crm-microsoft-dynamics-right-choice/,/blog/13-signs-that-your-crm-sucks/,301,archive: D2: the 13 signs post answers it,WHAT-STICKS.csv (post)
+/blog/eliminate-content-silos-with-a-custom-dynamics-365-content-management-system/,/dynamics-365-power-apps/,301,"archive: thin, off core offer",WHAT-STICKS.csv (post)
+/blog/how-encloud9-transformed-a-sales-team-with-iterative-dynamics-365-development/,/about-encloud9/microsoft-dynamics-365-success/,301,archive: belongs with client stories,WHAT-STICKS.csv (post)
+/blog/5-challenges-new-businesses-face-crm-can-help/,/blog/how-dynamics-365-solves-common-smb-challenges/,301,archive: same topic as the SMB post: merge,WHAT-STICKS.csv (post)
+/blog/eliminate-the-guesswork-with-sales-forecasting-part-2/,/blog/boost-forecast-accuracy-with-product-catalog-and-quotes-in-dynamics-365/,301,archive: D2: forecasting post answers it,WHAT-STICKS.csv (post)
+/blog/top-5-reasons-dynamics365support-com-is-the-right-managed-service-provider-for-you/,/support/,301,archive: belongs on the support site,WHAT-STICKS.csv (post)
+/blog/the-data-driven-path-to-crm-success-with-dynamics-365/,/blog/measuring-crm-success-in-dynamics-365-metrics-kpis/,301,archive: D2: the metrics and KPIs post answers it,WHAT-STICKS.csv (post)
+/blog/click-product-update-2025-whats-new/,/marketing-services/,301,archive: dated product news,WHAT-STICKS.csv (post)
+/blog/but-really-what-is-dynamics-365/,/power-platform-dynamics-365/,301,archive: D2: 200-word 2019 teaser for a whitepaper; the Dynamics 365 hub answers the question,WHAT-STICKS.csv (post)
+/blog/maximize-your-social-roi-with-clickdimensions-social-engagement/,/marketing-services/,301,archive: old product feature,WHAT-STICKS.csv (post)
+/blog/can-business-benefit-crm/,/power-platform-dynamics-365/,301,archive: generic,WHAT-STICKS.csv (post)
+/blog/campaign-integration-between-dynamics-365-and-clickdimensions-social-engagement/,/marketing-services/,301,archive: old product feature,WHAT-STICKS.csv (post)
+/blog/mastering-the-dynamics-365-sales-cycle-part-2/,/blog/lead-to-opportunity/,301,archive: D2: Part 1 answers it,WHAT-STICKS.csv (post)
+/blog/navigating-the-customer-service-hub-in-dynamics-365/,/blog/learn-the-basics-of-the-customer-service-hub-in-dynamics-365/,301,archive: same topic: merge,WHAT-STICKS.csv (post)
+/blog/forgotten-features-of-dynamics-365-part-6-boost-reliability-in-dynamics-365-sales-with-quoting/,/blog/boost-forecast-accuracy-with-product-catalog-and-quotes-in-dynamics-365/,301,"archive: D2: no steps on the page, 95 impressions; the product catalog and quotes post answers it",WHAT-STICKS.csv (post)
+/blog/unifying-sales-and-marketing-with-dynamics-365/,/marketing-services/,301,archive: not in search data,WHAT-STICKS.csv (post)
+/https/wwwencloud9com/blog/10-easy-ways-to-obtain-more-leads-without-doing-paid-ads/,/blog/10-easy-ways-to-obtain-more-leads-without-doing-paid-ads/,301,redirect to X: broken duplicate address of the fixed post,WHAT-STICKS.csv (old address (broken duplicate))
+/blog/optimizing-personalized-engagement-with-dynamics-365/,/marketing-services/,301,archive: no clicks,WHAT-STICKS.csv (post)
+/blog/get-paid-faster-and-sell-more-with-dynamics-365-credit-card-processing/,,410,archive with no same-topic page,WHAT-STICKS.csv (post)
+/blog/phase-2-when-crm-really-makes-an-impact/,/support/,301,archive: no clicks,WHAT-STICKS.csv (post)
+/blog/5-of-the-most-common-tracked-sales-metrics/,/blog/measuring-crm-success-in-dynamics-365-metrics-kpis/,301,archive: D2: the metrics and KPIs post answers it,WHAT-STICKS.csv (post)
+/blog/5-simple-ways-to-step-up-your-marketing-2/,,410,archive with no same-topic page,WHAT-STICKS.csv (post)
+/blog/time-for-a-mid-year-check-on-your-marketing-goals/,,410,archive with no same-topic page,WHAT-STICKS.csv (post)
+/blog/turn-prospects-into-business-relationships-with-dynamics-365-marketing/,/marketing-services/,301,archive: old Dynamics 365 Marketing naming,WHAT-STICKS.csv (post)
+/blog/service-principal-profiles-in-power-bi-embedded-now-generally-available/,,410,archive with no same-topic page,WHAT-STICKS.csv (post)
+/blog/dynamics-365-sales-project-milestones/,/dynamics-365-sales/,301,archive: thin,WHAT-STICKS.csv (post)
+/blog/harnessing-the-power-of-assignment-rules-in-dynamics-365-a-key-to-enhanced-lead-conversion/,/blog/mastering-assignment-rule-configuration-in-dynamics/,301,archive: duplicate of a top-83 assignment rules post: merge,WHAT-STICKS.csv (post)
+/blog/spring-renewal-dynamics-365-strategies-for-sales-pipeline-optimization/,/dynamics-365-sales/,301,archive: seasonal,WHAT-STICKS.csv (post)
+/blog/boosting-summer-sales-with-dynamics-365-10-easy-strategies-part-1/,,410,archive with no same-topic page,WHAT-STICKS.csv (post)
+/crm-cloud-automation-solutions/,/packages/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (page)
+/microsoft-dynamics-365-partner-augusta/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-georgia/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-new-mexico/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-kansas/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-connecticut/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-minnesota/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-south-carolina/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-maryland/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-washington/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-louisiana/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-north-carolina/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-iowa/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-consulting-for-colorado/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-ohio/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-el-paso/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-jacksonville/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/dynamics-365-partner-fort-worth/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-michigan/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-new-york/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-las-vegas/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-houston/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-denver/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/lp/microsoft-dynamics-365-partner-charlotte/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/lp/dynamics-365-crm-cleanup-checklist/,/crm-cleanup-checklist/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (landing page)
+/lp/healthcare-crm-software-dynamics-365/,/dynamics-365-healthcare/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (landing page)
+/lp/dynamics-365-sales-management-guide/,/dynamics-365-sales-management-guide/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (landing page)
+/lp/microsoft-dynamics-365-partner-seattle/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/lp/microsoft-dynamics-365-partner-austin/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/lp/microsoft-dynamics-365-partner-boston/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/lp/monday-to-dynamics-365-migration/,/monday-to-dynamics-365/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (landing page)
+/microsoft-dynamics-365-partner-dallas/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-st-louis/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-milwaukee/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-zoho-crm-migration/,/zoho-to-dynamics-365/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (page)
+/microsoft-dynamics-365-partner-virginia/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-missouri/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-nebraska/,/microsoft-dynamics-365-partner-omaha/,301,merge into X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-minneapolis/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-macon-georgia/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-cleveland-ohio/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-knoxville-tn/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-akron-ohio/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-portland-maine/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-toledo-ohio/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-columbus-georgia/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-dayton-ohio/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-baltimore/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-rochester/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/microsoft-dynamics-365-partner-for-springfield-businesses/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (city or state page)
+/thank-you-microsoft-dynamics-365-vs-salesforce/,/blog/10-game-changing-reasons-to-choose-microsoft-dynamics-365-over-salesforce/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page)
+/thank-you-customer-journey/,/dynamics-365-sales/,301,redirect to X: unchanged from the 4 Nov page map; target re-pointed because the old target is archived (n,WHAT-STICKS.csv (page)
+/lp/crm-for-professional-services/,/dynamics-365-professional-services/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (landing page)
+/microsoft-dynamics-365-salesforce-crm-migration/,/salesforce-to-dynamics-365/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (page)
+/lp/microsoft-dynamics-365-hubspot-crm-migration/,/hubspot-to-dynamics-365/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (landing page)
+/microsoft-dynamics-365-vs-salesforce/,/blog/10-game-changing-reasons-to-choose-microsoft-dynamics-365-over-salesforce/,301,merge into X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page)
+/blog/success_stories/bg-landholdings-strengthens-data-quality-and-email-deliverability-with-encloud9-email-verifier/,/stories/bg-landholdings/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/bg-peterson-ss/,/stories/bg-peterson/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/collaborative-for-children-success-story/,/stories/collaborative-for-children/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/how-milestone-leasing-optimized-dynamics-365-to-support-sales-and-lease-renewals/,/stories/milestone-leasing/,301,"stories move to /stories/ (approved shape); exception to the clicks line, see notes",WHAT-STICKS.csv (success story)
+/blog/success_stories/hogans-crm-rescue-story-a-fresh-start-with-dynamics-365/,/stories/hogan-assessments/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/world-import-distributors/,/stories/world-import-distributors/,301,"stories move to /stories/ (approved shape); exception to the clicks line, see notes",WHAT-STICKS.csv (success story)
+/blog/success_stories/how-price-mds-transformed-healthcare-operations-with-dynamics-365/,/stories/pricemds/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/tension-pa-tension-packaging-expands-collaboration-with-encloud9-across-multiple-divisions/,/stories/tension-packaging/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/streamlining-sales-processes-the-schiff-groups-transformation-with-dynamics-365-by-encloud9/,/stories/schiff-group/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/msa-source-transforms-compliance-operations-with-encloud9s-tailored-solutions/,/stories/msa-source/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/kbg-technologies-enhances-sales-processes-with-dynamics-365-implementation-by-encloud9/,/stories/kbg-technologies/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/elmwood-reclaimed-timber-migrating-a-20-year-old-crm-to-the-cloud/,/stories/elmwood-reclaimed-timber/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/how-compana-and-encloud9-expanded-customer-engagement-with-dynamics-365-and-copilot-studio/,/stories/compana/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/miles-christi-encloud9-digitally-transforms-non-profit/,/stories/miles-christi/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/tension-ss/,/stories/tension-operations/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/clinical-reference-laboratories-optimizes-processes-and-improves-efficiency-with-dynamics-365-customer-service/,/stories/clinical-reference-laboratories/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/jasco-modernizes-operations-with-dynamics-365-sales-and-customer-service/,/stories/jasco/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/investment-firm-uses-dynamics-365-mobile-to-stay-connected/,/stories/rlh/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/manufacturer-integrates-website-with-crm-to-automate-lead-assignment/,/stories/jwc/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/encloud9-helps-professional-employer-organization-peo-rescue-a-failed-crm/,/stories/aureon/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/manufacturing-company-upgrades-to-dynamics-365-transforms-sales-process/,/stories/rei/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/dynamics-365-implementation-allows-sales-and-management-teams-to-work-more-productively/,/stories/bsi/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/blog/success_stories/encloud9-enables-design-company-to-work-more-productively-and-efficiently-after-digitally-transforming-various-processes/,/stories/ppc-flex/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (success story)
+/lp/dataverse-storage-analysis/,/dataverse-storage-analysis/,301,"new address (site move standard: under 10 clicks, no outside links)",WHAT-STICKS.csv (landing page)
+/dynamics-365/dynamics-365-for-field-service/,/dynamics-365-field-service/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page)
+/dynamics-365/dynamics-365-for-project-service-automation/,/dynamics-365-project-operations/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page)
+/dynamics-365-rescue-repair/,/encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page)
+/blog/2020/02/,,410,dropped on purpose,WHAT-STICKS.csv (date archive)
+/blog/2021/06/,,410,dropped on purpose,WHAT-STICKS.csv (date archive)
+/blog/2022/02/,,410,dropped on purpose,WHAT-STICKS.csv (date archive)
+/blog/2022/03/,,410,dropped on purpose,WHAT-STICKS.csv (date archive)
+/blog/2022/08/,,410,dropped on purpose,WHAT-STICKS.csv (date archive)
+/blog/2023/11/,,410,dropped on purpose,WHAT-STICKS.csv (date archive)
+/blog/2023/12/,,410,dropped on purpose,WHAT-STICKS.csv (date archive)
+/blog/2024/03/,,410,dropped on purpose,WHAT-STICKS.csv (date archive)
+/blog/5-clickdimensions-updates-to-look-forward-to/,/marketing-services/,301,redirect to X: unchanged from the 4 Nov page map; target re-pointed because the old target is archived (n,WHAT-STICKS.csv (post (not live))
+/blog/6-killer-new-features-of-dynamics-365/,/blog/dynamics-365-2026-release-wave-1/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/april-2020-new-feature-deep-dive-sales-forecasting-webinar/,/blog/boost-forecast-accuracy-with-product-catalog-and-quotes-in-dynamics-365/,301,redirect to X: unchanged from the 4 Nov page map; target re-pointed because the old target is archived (n,WHAT-STICKS.csv (post (not live))
+/blog/august-webinar-case-management-in-dynamics-365-for-customer-service/,/blog/provide-seamless-customer-service-with-case-management-in-dynamics-365/,301,redirect to X: unchanged from the 4 Nov page map ; retargeted to closest page (SITE-REDIRECT-PLAN 3.3),WHAT-STICKS.csv (post (not live))
+/blog/blog-hubspot-migration-guide-encloud9/,/hubspot-to-dynamics-365/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/business-ca/,/dynamics-365-sales/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/clickdimensions-adds-a-microsoft-teams-integration-to-their-event-management-services/,/marketing-services/,301,redirect to X: unchanged from the 4 Nov page map; target re-pointed because the old target is archived (n,WHAT-STICKS.csv (post (not live))
+/blog/clickdimensions-product-update-offers-new-functionalities/,/marketing-services/,301,redirect to X: unchanged from the 4 Nov page map; target re-pointed because the old target is archived (n,WHAT-STICKS.csv (post (not live))
+/blog/downloads_resources/social-engagement-with-microsoft-dynamics-365/,/marketing-services/,301,redirect to X: unchanged from the 4 Nov page map; target re-pointed because the old target is archived (n,WHAT-STICKS.csv (post (not live))
+/blog/drive-your-business-to-success/,/blog/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/dynamics-365-2019-wave2-early-opt-in-now-available/,/blog/dynamics-365-2026-release-wave-1/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/dynamics-365-new-features-visual-process-designer/,/blog/business-process-flows-purpose-modify-and-extend/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/dynamics-365-now-more-than-ever/,/blog/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/dynamics-365-october-2018-release-overview/,/blog/dynamics-365-2026-release-wave-1/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/dynamics-365-pricing-changes-bring-an-opportunity-to-reduce-costs/,/blog/dynamics-365-pricing-licensing-2025-guide/,301,redirect to X: unchanged from the 4 Nov page map ; retargeted to closest page (SITE-REDIRECT-PLAN 3.3),WHAT-STICKS.csv (post (not live))
+/blog/dynamics-365-the-cure-for-team-chaos/,/power-platform-dynamics-365/,301,redirect to X: unchanged from the 4 Nov page map; target re-pointed because the old target is archived (n,WHAT-STICKS.csv (post (not live))
+/blog/dynamics-365-unified-interface/,/blog/basic-dynamics-365-navigation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/easily-create-surveys-microsoft-forms-pro/,/blog/blog-customer-voice-survey-guide/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/encloud9-adds-another-microsoft-certification-to-their-toolbox/,/about-encloud9/,301,redirect to X: unchanged from the 4 Nov page map ; retargeted to closest page (SITE-REDIRECT-PLAN 3.3),WHAT-STICKS.csv (post (not live))
+/blog/encloud9-bridges-sales-marketing-gap-with-inogics-mailchimp-dynamics-365-crm-integration/,/marketing-services/,301,redirect to X: unchanged from the 4 Nov page map ; retargeted to closest page (SITE-REDIRECT-PLAN 3.3),WHAT-STICKS.csv (post (not live))
+/blog/encloud9-crm-consultants-earns-silver-cloud-customer-relationship-management-competency-for-seventh-year/,/about-encloud9/,301,redirect to X: unchanged from the 4 Nov page map ; retargeted to closest page (SITE-REDIRECT-PLAN 3.3),WHAT-STICKS.csv (post (not live))
+/blog/encloud9-helps-companies-return-to-work-safely/,/blog/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/encloud9-helps-digital-transformation/,/packages/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/encloud9-moves-into-elevator-coworking-space/,/about-encloud9/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/encloud9-socialcrm-consultants-achieves-silver-cloud-crm-competency-from-microsoft/,/about-encloud9/,301,redirect to X: unchanged from the 4 Nov page map ; retargeted to closest page (SITE-REDIRECT-PLAN 3.3),WHAT-STICKS.csv (post (not live))
+/blog/encloud9s-top-new-features-in-dynamics-365-sales-2024-release-wave-2/,/blog/ai-selling-dynamics-365-sales/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/enhanced-timeline-features-power-improvement-to-dynamics-365-customer-service/,/blog/learn-the-basics-of-the-customer-service-hub-in-dynamics-365/,301,redirect to X: unchanged from the 4 Nov page map ; retargeted to closest page (SITE-REDIRECT-PLAN 3.3),WHAT-STICKS.csv (post (not live))
+/blog/four-takeaways-microsoft-business-forward-event/,/blog/microsoft-ignite-2025-copilot-ai-agents-work-iq/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/gdpr-dynamics-365-pathway-to-compliance/,/blog/anticipated-arrival-wave-1-2024-introduces-consent-management-in-dynamics-365-customer-insights/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/get-started-quickly-with-dynamics-365-for-free/,/blog/getting-started-with-dynamics-365-sales/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/highlights-of-the-2021-dynamics-365-release-wave-1/,/blog/dynamics-365-2026-release-wave-1/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/highlights-of-the-2021-microsoft-power-platform-release-wave-1/,/microsoft-power-platform/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/highlights-of-the-2022-dynamics-365-release-wave-1/,/blog/dynamics-365-2026-release-wave-1/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/highlights-of-the-power-platform-2022-release-wave-1/,/microsoft-power-platform/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/how-hubspot-dynamics-365-integration-solves-the-sales-marketing-disconnect/,/marketing-services/,301,redirect to X: unchanged from the 4 Nov page map; target re-pointed because the old target is archived (n,WHAT-STICKS.csv (post (not live))
+/blog/how-to-clean-up-crm-data-with-bulk-delete-in-dynamics-365/,/blog/spring-cleaning-your-crm-a-guide-to-refreshing-data-in-dynamics-365/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/increase-productivity-with-dynamics-365-app-for-outlook-webinar/,/blog/dynamics-365-app-for-outlook-basics/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/increase-productivity-with-dynamics-365-for-outlook-app/,/blog/dynamics-365-app-for-outlook-basics/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/increase-productivity-with-dynamics365-app-for-outlook-webinar/,/blog/dynamics-365-app-for-outlook-basics/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/information-discovery-made-easier-with-new-search-experience-in-model-driven-apps/,/blog/dataverse-search-dynamics-365-tips/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/its-time-to-embrace-the-unified-interface/,/blog/basic-dynamics-365-navigation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/june-webinar-credit-card-processing-with-dynamics-365/,,410,"redirect to X: unchanged from the 4 Nov page map ; retargeted to closest page (SITE-REDIRECT-PLAN 3.3) ; its target is dropped (410), so this goes too",WHAT-STICKS.csv (post (not live))
+/blog/main-takeaways-from-microsoft-inspire-2020/,/blog/microsoft-ignite-2025-copilot-ai-agents-work-iq/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/may-webinar-sms-messaging-in-dynamics-365/,/blog/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/meet-the-women-of-encloud9/,/about-encloud9/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/microsoft-announces-deprecation-of-the-dynamics365-outlook-com-add-in/,/blog/dynamics-365-app-for-outlook-basics/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/microsoft-announces-the-release-of-three-sales-premium-capabilities-to-sales-enterprise-customers/,/blog/our-top-10-dynamics-365-sales-insights-features/,301,redirect to X: unchanged from the 4 Nov page map ; retargeted to closest page (SITE-REDIRECT-PLAN 3.3),WHAT-STICKS.csv (post (not live))
+/blog/microsoft-flow-re-branded-to-power-automate/,/blog/an-introduction-to-the-microsoft-power-platform/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/microsoft-inspire-2019-bring-dynamics-365-pricing-changes-and-new-features-for-teams/,/blog/dynamics-365-pricing-licensing-2025-guide/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/microsoft-teams-adds-new-virtual-experiences/,,410,dropped on purpose,WHAT-STICKS.csv (post (not live))
+/blog/microsoft-teams-pro-adds-advanced-webinar-features/,,410,dropped on purpose,WHAT-STICKS.csv (post (not live))
+/blog/microsoft-to-reveal-2022-release-wave-1-plans/,/blog/dynamics-365-2026-release-wave-1/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/microsofts-new-focus-to-beat-salesforce/,/blog/10-game-changing-reasons-to-choose-microsoft-dynamics-365-over-salesforce/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/new-power-platform-features-coming-soon/,/microsoft-power-platform/,301,redirect to X: unchanged from the 4 Nov page map ; retargeted to closest page (SITE-REDIRECT-PLAN 3.3),WHAT-STICKS.csv (post (not live))
+/blog/new-sequence-designer-in-dynamics-365-sales-is-now-available-for-early-access/,/blog/creating-and-managing-sequences-in-dynamics-365-sales-insights/,301,redirect to X: unchanged from the 4 Nov page map ; retargeted to closest page (SITE-REDIRECT-PLAN 3.3),WHAT-STICKS.csv (post (not live))
+/blog/power-apps-price-changes-signal-new-era-for-low-code-application-development/,/dynamics-365-power-apps/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/quick-update-dynamics-365-plan-name-changes/,/dynamics-365-licensing/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/see-the-power-of-clickdimensions-campaign-automations/,/blog/everything-you-wanted-to-know-about-clickdimensions/,301,redirect to X: unchanged from the 4 Nov page map ; retargeted to closest page (SITE-REDIRECT-PLAN 3.3),WHAT-STICKS.csv (post (not live))
+/blog/send-and-analyze-quizzes-surveys-in-microsoft-forms-pro/,/blog/blog-customer-voice-survey-guide/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/september-webinar-10-dynamics-365-best-practices-and-hacks/,/blog/8-dynamics-365-tricks-to-skyrocket-your-productivity/,301,redirect to X: unchanged from the 4 Nov page map ; retargeted to closest page (SITE-REDIRECT-PLAN 3.3),WHAT-STICKS.csv (post (not live))
+/blog/smarter-lead-prioritization-ai-scoring-comes-to-dynamics-365-sales-in-2024-release-wave-2/,/blog/dynamics-365-sales-qualification-agent/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/success_stories/iowa-braille-school/,/about-encloud9/microsoft-dynamics-365-success/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/take-another-look-at-dynamics-365-mobile-webinar/,/blog/dynamics-365-sales-mobile-app/,301,redirect to X: unchanged from the 4 Nov page map ; retargeted to closest page (SITE-REDIRECT-PLAN 3.3),WHAT-STICKS.csv (post (not live))
+/blog/update-cd-today/,/blog/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/view-now-dynamics-365-for-outlook-app-webinar/,/blog/dynamics-365-app-for-outlook-basics/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/view-now-dynamics-365-unified-interface-webinar/,/blog/basic-dynamics-365-navigation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/webinars-leads-new-teams-features/,,410,dropped on purpose,WHAT-STICKS.csv (post (not live))
+/blog/whats-new-and-upcoming-in-dynamics-365-sales/,/blog/dynamics-365-2026-release-wave-1/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/whats-new-in-dynamics-365-customer-service-2024-encloud9s-top-features/,/blog/blog-dynamics-365-customer-service-2025/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/whats-new-in-microsoft-flow/,/blog/an-introduction-to-the-microsoft-power-platform/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/blog/why-you-should-move-your-crm-to-the-cloud-now/,/blog/ews-retirement-on-premises-crm/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (post (not live))
+/divi_overlay/,,410,dropped on purpose,WHAT-STICKS.csv (Divi overlay archive)
+/dynamics-365-marketing-services/,/marketing-services/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/dynamics-365-new-features-visual-process-designer/,/blog/business-process-flows-purpose-modify-and-extend/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/dynamics-365-project-service-automation/,/dynamics-365-project-operations/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/encloud9-dynamics-365-crm-services/,/packages/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/encloud9-dynamics-365-crm-services/microsoft-dynamic-365-crm-accelerators/,/encloud9-dynamics-365-crm-services/microsoft-dynamics-365-crm-accelerators/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/encloud9-dynamics-365-crm-services/microsoft-dynamics-365-support-services/,/microsoft-dynamics-365-support-services/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/hubspot-implementation/,/implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/hubspot-support-services/,/support/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/hubspot/,/implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/hubspot/commerce-hub/,/implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/hubspot/content-hub/,/marketing-services/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/hubspot/marketing-hub/,/marketing-services/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/hubspot/operations-hub/,/implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/hubspot/sales-hub/,/implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/hubspot/service-hub/,/implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/lp/microsoft-dynamics-365-partner-san-antonio/,/microsoft-dynamics-365-implementation/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/lp/unleash-dynamics-365-sales/,/dynamics-365-sales/,301,redirect to X: unchanged from the 4 Nov page map,WHAT-STICKS.csv (page (not live))
+/security/,,CHECK,status could not be determined; request it before the build,WHAT-STICKS.csv (page (not live))
+/blog/microsoft-releases-teams-changes-group-chat-forever/,/blog/microsoft-teams-chat-24-things-you-probably-didnt-know-you-can-do/,301,Google 404: Old Teams group chat news; the live Teams chat features post is the same subject.,redirect-map-draft-2026-11-03.csv
+/downloads/,/blog/,301,Google 404: The downloads section has nothing published (C1-527) and no resource hub is live.,redirect-map-draft-2026-11-03.csv
+/blog/downloads_resources/microsoft-dynamics-365-for-sales-data-sheet/,/dynamics-365-sales/,301,Google 404: Old Sales data sheet download; the Sales page is its subject.,redirect-map-draft-2026-11-03.csv
+/microsoft-dynamics-crm/clickdimensions-october-release/,/marketing-services/,301,Google 404: Old ClickDimensions release post; the live ClickDimensions product update post is the same,redirect-map-draft-2026-11-03.csv
+/about-encloud9/events,/about-encloud9/,301,Google 404: No events page is live; About is its parent page.,redirect-map-draft-2026-11-03.csv
+/four-takeaways-microsoft-business-forward-event/,/blog/microsoft-ignite-2025-copilot-ai-agents-work-iq/,301,Google 404: Takeaways from a Microsoft event; the newest live event recap is the nearest (inferred).,redirect-map-draft-2026-11-03.csv
+/blog/best-of-the-april-2020-power-apps-and-dynamics-365-update-webinar/,/blog/dynamics-365-2026-release-wave-1/,301,"Google 404: Old release-highlights post; no post for that year is live, so the newest release wave hig",redirect-map-draft-2026-11-03.csv
+/quick-update-dynamics-365-plan-name-changes/,/dynamics-365-licensing/,301,Google 404: Old note on plan names; the licensing page covers current plans.,redirect-map-draft-2026-11-03.csv
+/email-marketing-dos-donts/,/blog/email-marketing-best-practices-clickdimensions/,301,Google 404: Email marketing dos and donts; the live email marketing best practices post is the same su,redirect-map-draft-2026-11-03.csv
+/blog/january-webinar-increase-productivity-with-the-dynamics-365-app-for-outlook/,/blog/dynamics-365-app-for-outlook-basics/,301,Google 404: Outlook app webinar; the live Outlook app basics post is the same subject.,redirect-map-draft-2026-11-03.csv
+/microsoft-dynamics-crm/dynamics-365-new-features-editable-grids/,/blog/managing-views-in-dynamics-365/,301,"Google 404: Editable grids are a view feature; no grid post is live, so the views post is the nearest ",redirect-map-draft-2026-11-03.csv
+/dynamics-365/encloud9-implements-dynamics-365-small-businesses/,/blog/how-dynamics-365-solves-common-smb-challenges/,301,Google 404: Dynamics 365 for small businesses; the live SMB challenges post is the same subject.,redirect-map-draft-2026-11-03.csv
+/microsoft-dynamics-crm/importance-slas-choosing-crm/,/microsoft-dynamics-365-support-services/,301,"Google 404: Old post on support SLAs when choosing a CRM; no post on it is live, so the support servic",redirect-map-draft-2026-11-03.csv
+/crm-quicktip-adding-global-search-site-map/,/blog/dataverse-search-dynamics-365-tips/,301,Google 404: Global search quick tip; the live Dataverse search tips post is the same subject.,redirect-map-draft-2026-11-03.csv
+/dynamics-365/isnt-time-get-started-dynamics-365/,/blog/a-simple-guide-to-microsoft-dynamics-365/,301,Google 404: Getting started with Dynamics 365; the live beginner guide is the same subject (inferred).,redirect-map-draft-2026-11-03.csv
+/6-strategies-for-great-customer-service/,/blog/10-strategies-for-great-customer-service/,301,"Google 404: Same customer service strategies post, renamed and moved under /blog/.",redirect-map-draft-2026-11-03.csv
+/gdpr-dynamics-365-pathway-to-compliance/,/blog/anticipated-arrival-wave-1-2024-introduces-consent-management-in-dynamics-365-customer-insights/,301,Google 404: GDPR post; the live consent management post is the nearest compliance topic (inferred).,redirect-map-draft-2026-11-03.csv
+/what-the-heck-is-digital-transformation/,/packages/,301,"Google 404: Digital transformation post; no post on it is live, so the solutions page is the nearest (",redirect-map-draft-2026-11-03.csv
+/dynamics-365/fix-crm-five-problems-lots-solutions/,/blog/13-signs-that-your-crm-sucks/,301,Google 404: Post on common CRM problems; the live CRM warning signs post is the same subject (inferred,redirect-map-draft-2026-11-03.csv
+/blog/easily-create-surveys-in-microsoft-forms-pro/,/blog/blog-customer-voice-survey-guide/,301,Google 404: Forms Pro was renamed Customer Voice; the live Customer Voice survey guide covers the same,redirect-map-draft-2026-11-03.csv
+/crm-2013/daily-cloud-news-fri-sept-22-2016/,/blog/,301,Google 404: A 2016 daily news roundup with no live counterpart.,redirect-map-draft-2026-11-03.csv
+/highlights-dynamics-365-spring-2018-update/,/blog/dynamics-365-2026-release-wave-1/,301,"Google 404: Old release-highlights post; no post for that year is live, so the newest release wave hig",redirect-map-draft-2026-11-03.csv
+/dynamics-365/quicktip-personalizing-your-dynamics-365-crm-home-page/,/blog/configuring-personal-settings-in-dynamics-365-sales/,301,Google 404: Personalizing the home page is a personal setting; the live personal settings post is the ,redirect-map-draft-2026-11-03.csv
+/dynamics-365/dynamics-crm-personal-history/,/blog/,301,Google 404: Topic could not be determined from the address or its referrers.,redirect-map-draft-2026-11-03.csv
+/dynamics-365-crm-quicktips-some-shortcomings-of-crm-calculated-fields/,/blog/,301,Google 404: Quick tip on calculated fields; no live page covers it.,redirect-map-draft-2026-11-03.csv
+/dynamics-365-2/dynamics-365-pricing/,/dynamics-365-pricing/,301,Google 404: The pricing page moved to this address.,redirect-map-draft-2026-11-03.csv
+/6-killer-new-features-of-dynamics-365/,/blog/dynamics-365-2026-release-wave-1/,301,"Google 404: Old release-highlights post; no post for that year is live, so the newest release wave hig",redirect-map-draft-2026-11-03.csv
+/new-features-dynamics-365-data-storage/,/dataverse-storage-analysis/,301,Google 404: Old post on data storage; the live Dataverse storage page is the same subject.,redirect-map-draft-2026-11-03.csv
+/encloud9s-favorite-4-new-features-of-the-dynamics-365-july-2017-update/,/blog/dynamics-365-2026-release-wave-1/,301,"Google 404: Old release-highlights post; no post for that year is live, so the newest release wave hig",redirect-map-draft-2026-11-03.csv
+/blog/a-basic-sales-training-outline-for-dynamics-365-sales/,/blog/getting-started-with-dynamics-365-sales/,301,Google 404: Sales training outline; the live getting started with Sales guide is the same subject.,redirect-map-draft-2026-11-03.csv
+/about-encloud9-2/microsoft-dynamics-365-success/,/about-encloud9/microsoft-dynamics-365-success/,301,Google 404: The success stories page moved to this address.,redirect-map-draft-2026-11-03.csv
+/about-encloud9/events/,/about-encloud9/,301,Google 404: No events page is live; About is its parent page.,redirect-map-draft-2026-11-03.csv
+/sales-accelerator-get-started/,/dynamics-365-sales-accelerator/,301,Google 404: The Sales Accelerator page is live at this address.,redirect-map-draft-2026-11-03.csv
+/sales-accelerator,/dynamics-365-sales-accelerator/,301,Google 404: The Sales Accelerator page is live at this address.,redirect-map-draft-2026-11-03.csv
+/blog/how-to---use-customer-voice-for-a-contact-us-form/,/blog/how-to-use-customer-voice-for-a-contact-us-form/,301,"Google 404: Same post, renamed (the triple dash was dropped).",redirect-map-draft-2026-11-03.csv
+/fix-crm-five-problems-lots-solutions/,/blog/13-signs-that-your-crm-sucks/,301,Google 404: Post on common CRM problems; the live CRM warning signs post is the same subject (inferred,redirect-map-draft-2026-11-03.csv
+/microsoft-announces-integration-plans-linkedin/,/blog/,301,Google 404: A 2016 LinkedIn integration news item with no live counterpart.,redirect-map-draft-2026-11-03.csv
+/quicktip-updating-to-the-latest-dynamics-365-for-outlook-client/,/blog/dynamics-365-app-for-outlook-basics/,301,Google 404: Outlook client quick tip; the live Outlook app basics post is the same subject.,redirect-map-draft-2026-11-03.csv
+/blog/webinar-april-2020-new-feature-deep-dive-sales-forecasting/,/blog/boost-forecast-accuracy-with-product-catalog-and-quotes-in-dynamics-365/,301,Google 404: Sales forecasting webinar; the live sales forecasting post is the same subject.,redirect-map-draft-2026-11-03.csv
+/encloud9s-friday-5-march-3/,/blog/,301,Google 404: A 2017 weekly roundup with no live counterpart.,redirect-map-draft-2026-11-03.csv
+/blog/importance-slas-choosing-crm/,/microsoft-dynamics-365-support-services/,301,"Google 404: Old post on support SLAs when choosing a CRM; no post on it is live, so the support servic",redirect-map-draft-2026-11-03.csv
+/dynamics-365-new-features-editable-grids/,/blog/managing-views-in-dynamics-365/,301,"Google 404: Editable grids are a view feature; no grid post is live, so the views post is the nearest ",redirect-map-draft-2026-11-03.csv
+/microsoft-dynamics-crm/survey-says-another-satisfied-customer/,/about-encloud9/microsoft-dynamics-365-success/,301,Google 404: A customer satisfaction story; the success stories page is the same subject.,redirect-map-draft-2026-11-03.csv
+/services-solutions/social-media-mananagement/,/marketing-services/,301,Google 404: Old social media service page; the marketing services page is the nearest.,redirect-map-draft-2026-11-03.csv
+/clickdimensions-marketing-automation/,/clickdimensions-powerpack/,301,Google 404: Old ClickDimensions service page; the ClickDimensions PowerPack page is the live offer.,redirect-map-draft-2026-11-03.csv
+/dynamics-365-2/dynamics-365-for-project-service-automation/,/dynamics-365-project-operations/,301,Google 404: Project Service Automation became Project Operations; the live Project Operations page is ,redirect-map-draft-2026-11-03.csv
+/quicktip-simple-personal-navigation-in-dynamics-365/,/blog/basic-dynamics-365-navigation/,301,Google 404: Navigation quick tip; the live navigation guide is the same subject.,redirect-map-draft-2026-11-03.csv
+/70-insurance-companies-use-crm/,/dynamics-365-professional-services/,301,Google 404: No insurance page is live; the professional services CRM page is the nearest industry page,redirect-map-draft-2026-11-03.csv
+/home/,/,301,Google 404: Old address of the home page.,redirect-map-draft-2026-11-03.csv
+/encloud9/favorite-new-features-organizational-insights/,/blog/,301,Google 404: A 2017 post on Organization Insights; nothing live covers it.,redirect-map-draft-2026-11-03.csv
+/encloud9/keyboard-shortcuts-for-dynamics-365-editable-grids/,/blog/managing-views-in-dynamics-365/,301,"Google 404: Editable grids are a view feature; no grid post is live, so the views post is the nearest ",redirect-map-draft-2026-11-03.csv
+/dynamics-365/isnt-time-get-started-dynamics-365,/blog/a-simple-guide-to-microsoft-dynamics-365/,301,Google 404: Getting started with Dynamics 365; the live beginner guide is the same subject (inferred).,redirect-map-draft-2026-11-03.csv
+/dynamics-365-services,/packages/,301,Google 404: Old services address; the old CRM services address already redirects to this page (rebuild,redirect-map-draft-2026-11-03.csv
+/crm-2013/16017/,/blog/,301,Google 404: Topic could not be determined; its only referrer is a 2016 NAV post (Business Central is i,redirect-map-draft-2026-11-03.csv
+/services/crm-health-check/,/blog/what-a-healthy-dynamics-365-system-actually-looks-like/,301,Google 404: CRM health check; the live healthy Dynamics 365 post offers a health check.,redirect-map-draft-2026-11-03.csv
+/multiple-account-salesperson-scenarios-dynamics-365/,/dynamics-365-sales/,301,"Google 404: Post on several salespeople per account; no post on it is live, so the Sales page is the n",redirect-map-draft-2026-11-03.csv
+/blog/the-microsoft-power-platform-powerful-alone-but-better-together/appid=0aaa3911-df1d-e811-a843-000d3a1bea77&pagetype=entityrecord&etn=en9_encloud9content&id=372f0ab3-fd0b-f011-9988-7c1e521664f7,/microsoft-power-platform/,301,Google 404: The live post with a CRM record link stuck on the end; fix the link in the source post too,redirect-map-draft-2026-11-03.csv
+/success-stories,/about-encloud9/microsoft-dynamics-365-success/,301,Google 404: Old address of the success stories page.,redirect-map-draft-2026-11-03.csv
+/dynamics-365/dynamics-365-new-feature-extending-crm-lob-apps-powerapps/,/dynamics-365-power-apps/,301,Google 404: Extending CRM with PowerApps; the live Power Apps page is the same subject.,redirect-map-draft-2026-11-03.csv
+/upload/media/video/f50bdc6e706d98a5.mp4?t={seek_to_start_number},,LEAVE-404,skipped in the 4 Nov draft: Old video file under /upload/media/; no page to send it to.,redirect-map-draft-2026-11-03.csv
+/upload/media/video/f50bdc6e706d98a5.mp4?handler=stream&source=cdn_38176043,,LEAVE-404,skipped in the 4 Nov draft: Old video file under /upload/media/; no page to send it to.,redirect-map-draft-2026-11-03.csv
+/blog/https-www-encloud9-com-blog-dynamics-365-quicktip-use-competitors-how-to-dynamica-365-competitor-record/,,LEAVE-404,skipped in the 4 Nov draft: Malformed link (a full address pasted into a path); fix at the source. Meant pag,redirect-map-draft-2026-11-03.csv
+/blog/highlights-of-the-2021-dynamics-365-release-wave-1,,LEAVE-404,skipped in the 4 Nov draft: Same post as the slash form (its own row); one rule matching both forms covers i,redirect-map-draft-2026-11-03.csv
+/category/new-features-in-dynamics-365/,,LEAVE-404,skipped in the 4 Nov draft: Old category page; one rule for all categories to /blog/ or leave gone (decide o,redirect-map-draft-2026-11-03.csv
+/dynamics-365-crm-for-vertical-markets/dynamics-365-crm…competitive-edge/,,LEAVE-404,skipped in the 4 Nov draft: Cut off with an ellipsis in Google's list; full address could not be determined.,redirect-map-draft-2026-11-03.csv
+/dynamics-365/new-feature-trac…look-ios-updates/,,LEAVE-404,skipped in the 4 Nov draft: Cut off with an ellipsis in Google's list; full address and topic could not be d,redirect-map-draft-2026-11-03.csv
+/blog/dynamics-365-app-for-outlook-basics/[email address not copied],,LEAVE-404,skipped in the 4 Nov draft: Malformed link (an email address stuck on); fix at the source. Meant page /blog/,redirect-map-draft-2026-11-03.csv
+/blog/2017/01/,,LEAVE-404,skipped in the 4 Nov draft: Monthly blog archive; one rule for all archives to /blog/ or leave gone (decide ,redirect-map-draft-2026-11-03.csv
+/category/dynamics-365-crm-for-vertical-markets/,,LEAVE-404,skipped in the 4 Nov draft: Old category page; one rule for all categories to /blog/ or leave gone (decide o,redirect-map-draft-2026-11-03.csv
+/blog/2020/01/,,LEAVE-404,skipped in the 4 Nov draft: Monthly blog archive; one rule for all archives to /blog/ or leave gone (decide ,redirect-map-draft-2026-11-03.csv
+/blog/2019/11/,,LEAVE-404,skipped in the 4 Nov draft: Monthly blog archive; one rule for all archives to /blog/ or leave gone (decide ,redirect-map-draft-2026-11-03.csv
+/blog/2021/02/,,LEAVE-404,skipped in the 4 Nov draft: Monthly blog archive; one rule for all archives to /blog/ or leave gone (decide ,redirect-map-draft-2026-11-03.csv
+/blog/2020/11/,,LEAVE-404,skipped in the 4 Nov draft: Monthly blog archive; one rule for all archives to /blog/ or leave gone (decide ,redirect-map-draft-2026-11-03.csv
+/dynamics-365-crm-quicktips/dynamics-365-qui…-use-competitors/,,LEAVE-404,skipped in the 4 Nov draft: Cut off with an ellipsis in Google's list; full address could not be determined.,redirect-map-draft-2026-11-03.csv
+/blog/2022/10/,,LEAVE-404,skipped in the 4 Nov draft: Monthly blog archive; one rule for all archives to /blog/ or leave gone (decide ,redirect-map-draft-2026-11-03.csv
+/blog/2017/09/,,LEAVE-404,skipped in the 4 Nov draft: Monthly blog archive; one rule for all archives to /blog/ or leave gone (decide ,redirect-map-draft-2026-11-03.csv
+/category/microsoft-dynamics-erp/,,LEAVE-404,skipped in the 4 Nov draft: Old category page; one rule for all categories to /blog/ or leave gone (decide o,redirect-map-draft-2026-11-03.csv
+/blog/2020/04/,,LEAVE-404,skipped in the 4 Nov draft: Monthly blog archive; one rule for all archives to /blog/ or leave gone (decide ,redirect-map-draft-2026-11-03.csv
+/blog/2019/01/,,LEAVE-404,skipped in the 4 Nov draft: Monthly blog archive; one rule for all archives to /blog/ or leave gone (decide ,redirect-map-draft-2026-11-03.csv
+/blog/2020/12/,,LEAVE-404,skipped in the 4 Nov draft: Monthly blog archive; one rule for all archives to /blog/ or leave gone (decide ,redirect-map-draft-2026-11-03.csv
+/blog/2018/11/,,LEAVE-404,skipped in the 4 Nov draft: Monthly blog archive; one rule for all archives to /blog/ or leave gone (decide ,redirect-map-draft-2026-11-03.csv
+/category/microsoft/,,LEAVE-404,skipped in the 4 Nov draft: Old category page; one rule for all categories to /blog/ or leave gone (decide o,redirect-map-draft-2026-11-03.csv
+/blog/2018/10/,,LEAVE-404,skipped in the 4 Nov draft: Monthly blog archive; one rule for all archives to /blog/ or leave gone (decide ,redirect-map-draft-2026-11-03.csv
+/blog/category/microsoft-teams/page/2/,,LEAVE-404,skipped in the 4 Nov draft: Old category page; one rule for all categories to /blog/ or leave gone (decide o,redirect-map-draft-2026-11-03.csv
+/category/dynamics-365/,,LEAVE-404,skipped in the 4 Nov draft: Old category page; one rule for all categories to /blog/ or leave gone (decide o,redirect-map-draft-2026-11-03.csv
+/category/microsoft-dynamics-crm/,,LEAVE-404,skipped in the 4 Nov draft: Old category page; one rule for all categories to /blog/ or leave gone (decide o,redirect-map-draft-2026-11-03.csv
+/upload/media/video/587dfb845dc30034.mp4?t={seek_to_start_number},,LEAVE-404,skipped in the 4 Nov draft: Old video file under /upload/media/; no page to send it to.,redirect-map-draft-2026-11-03.csv
+/https/www.encloud9.com/blog/best-new-features-of-the-dynamics-365-2020-update/,,LEAVE-404,skipped in the 4 Nov draft: Malformed link (/https/ path); fix at the source. The 2020 post it points to is ,redirect-map-draft-2026-11-03.csv
+/category/outlook/,,LEAVE-404,skipped in the 4 Nov draft: Old category page; one rule for all categories to /blog/ or leave gone (decide o,redirect-map-draft-2026-11-03.csv
+/category/dynamics-365/dynamics-365-add-ons/,,LEAVE-404,skipped in the 4 Nov draft: Old category page; one rule for all categories to /blog/ or leave gone (decide o,redirect-map-draft-2026-11-03.csv
+/dynamics-365/,/power-platform-dynamics-365/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/marketing-accelerator/,/dynamics-365-marketing-accelerator/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/microsoft-dynamics-365-crm-licensing/,/dynamics-365-licensing/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/copilot-studio/,/microsoft-copilot-studio/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/category/customer-service/,/dynamics-365-customer-service/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/dynamics-365/dynamics-365-for-customer-service/,/dynamics-365-customer-service/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/dynamics-365-2/dynamics-365-for-sales/,/dynamics-365-sales/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/dynamics-365/dynamics-365-for-sales/,/dynamics-365-sales/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/index.php,/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/encloud9-dynamics-365-crm-services/microsoft-dynamics-365-crm-implementation/,/microsoft-dynamics-365-implementation/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/dynamics-365/dynamics-365-pricing/,/dynamics-365-pricing/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/dynamics-365-customer-buying-journey/,/dynamics-365-sales/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/power-bi/,/microsoft-power-bi/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/dynamics-365-marketing-automation-with-clickdimensions/,/dynamics-365-marketing-accelerator/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/blog/upcoming-webinar-dont-be-afraid-of-the-unified-interface/,/blog/basic-dynamics-365-navigation/,301,"existing Redirection rule, re-pointed at the final address ; retargeted to closest page (SITE-REDIRECT-PLAN 3.3)",redirects-2026-10-19.tsv
+/13-signs-that-your-crm-sucks/,/blog/13-signs-that-your-crm-sucks/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/divi_overlay/product-service-page-contact-form-pop-up/,,410,"Divi popup, gone with the theme",redirects-2026-10-19.tsv
+/blog/automated-,/blog/automated-notifications-in-dynamics-365/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/blog/msps-looking-for-a-dynamics-365-partner,/blog/msps-looking-for-a-dynamics-365-partner-2/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/dynamics-365/can-business-benefit-crm/,/power-platform-dynamics-365/,301,"existing Redirection rule, re-pointed at the final address",redirects-2026-10-19.tsv
+/stories/,/about-encloud9/microsoft-dynamics-365-success/,301,folder resolves to the stories hub,scheme
+/encloud9-socialcrm-consultants-achieves-silver-cloud-crm-competency-from-microsoft/,/about-encloud9/,301,"existing rule ending on /blog/, retargeted to closest page (SITE-REDIRECT-PLAN 3.3)",SITE-REDIRECT-PLAN.md
+/blog/dont-be-afraid-of-the-unified-interface-webinar/,/blog/basic-dynamics-365-navigation/,301,"existing rule ending on /blog/, retargeted to closest page (SITE-REDIRECT-PLAN 3.3)",SITE-REDIRECT-PLAN.md
+/blog/take-the-plunge-into-the-unified-interface/,/blog/basic-dynamics-365-navigation/,301,"existing rule ending on /blog/, retargeted to closest page (SITE-REDIRECT-PLAN 3.3)",SITE-REDIRECT-PLAN.md
+/blog/december-2019-webinar-mobilize-your-business-processes-with-dynamics-365-mobile/,/blog/dynamics-365-sales-mobile-app/,301,"existing rule ending on /blog/, retargeted to closest page (SITE-REDIRECT-PLAN 3.3)",SITE-REDIRECT-PLAN.md
+/blog/july-webinar-enhanced-filtering-in-dynamics-365/,/blog/user-experience-made-easier-with-enhanced-filtering/,301,"existing rule ending on /blog/, retargeted to closest page (SITE-REDIRECT-PLAN 3.3)",SITE-REDIRECT-PLAN.md
+/blog/three-flows-to-charge-up-your-sales-webinar/,/blog/an-introduction-to-the-microsoft-power-platform/,301,"existing rule ending on /blog/, retargeted to closest page (SITE-REDIRECT-PLAN 3.3)",SITE-REDIRECT-PLAN.md
+/blog/february-webinar-three-flows-to-charge-up-your-sales/,/blog/an-introduction-to-the-microsoft-power-platform/,301,"existing rule ending on /blog/, retargeted to closest page (SITE-REDIRECT-PLAN 3.3)",SITE-REDIRECT-PLAN.md
+/dynamics-365-2/,/power-platform-dynamics-365/,301,"existing rule with a chain or dead target, fixed (SITE-REDIRECT-PLAN 3.1)",SITE-REDIRECT-PLAN.md
+/products/,/packages/,301,"existing rule with a chain or dead target, fixed (SITE-REDIRECT-PLAN 3.1)",SITE-REDIRECT-PLAN.md
+/service/dynamics-crm-for-sales-teams-2/,/packages/,301,"existing rule with a chain or dead target, fixed (SITE-REDIRECT-PLAN 3.1)",SITE-REDIRECT-PLAN.md
+/encloud9-helps-digital-transformation/,/packages/,301,"existing rule with a chain or dead target, fixed (SITE-REDIRECT-PLAN 3.1)",SITE-REDIRECT-PLAN.md
+/blog/what-the-heck-is-digital-transformation/,/packages/,301,"existing rule ending on /blog/, retargeted to closest page (SITE-REDIRECT-PLAN 3.3)",SITE-REDIRECT-PLAN.md
