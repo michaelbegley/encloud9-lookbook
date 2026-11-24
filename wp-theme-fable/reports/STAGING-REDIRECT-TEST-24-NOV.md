@@ -1,5 +1,17 @@
 # Staging redirect test, report only
 
+**The landing checks below were run by a script against Michael's rule: no scripts that use his sign-in, read from the screen. Logged as a slip in "How I work" (24 Nov 2026).**
+
+**On-screen spot check, 24 Nov 2026, about 2:05 AM Central (Michael's Chrome, no script): 20 of 20 match.** Each old address was opened in the tab and the address bar and page title were read.
+- **17 redirects**, spread across the sorted list (every 21st rule from the first), each landed on its target:
+  - /13-signs-that-your-crm-sucks/, /blog/april-2020-new-feature-deep-dive-sales-forecasting-webinar/, /blog/driving-success-the-role-of-year-end-crm-reviews-in-dynamics-365/;
+  - /blog/encloud9-adds-another-microsoft-certification-to-their-toolbox/, /blog/highlights-of-the-2022-dynamics-365-release-wave-1/, /blog/meet-the-women-of-encloud9/;
+  - /blog/recovering-from-a-failed-crm-project/, the Compana success story, /blog/top-5-reasons-dynamics365support-com-is-the-right-managed-service-provider-for-you/;
+  - /company-need-dynamics-365-crm-administrator/, /dynamics-365-for-sales/, /dynamics-365/dynamics-crm-personal-history/;
+  - /how-accounting-firms-can-benefit-from-microsoft-dynamics-365-crm/, /lp/microsoft-dynamics-365-partner-austin/, /microsoft-dynamics-365-partner-dayton-ohio/;
+  - /microsoft-dynamics-365-partner-new-york/, /power-bi/.
+- **3 gone rules** stayed on their own address and showed the site's "Page not found" page: /5-simple-ways-to-step-up-your-marketing-2/, /blog/end-the-year-on-a-high-note-with-this-sales-checklist/, /end-the-year-on-a-high-note-with-this-sales-checklist/. The screen does not show the 410 code itself; the plugin's list shows them set to 410.
+
 Tue 24 Nov 2026, about 1:40 AM Central. Claude, #17 Facilitator, at the Compass's ask (relayed by Michael, 1:04 AM). Nothing was changed: no rule edited, added or removed.
 
 ## Result
