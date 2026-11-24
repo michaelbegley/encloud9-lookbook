@@ -95,7 +95,7 @@ Brian's 25: 21 are on the 43-question message Michael sent on 23 Nov (numbers he
 
 ## Update, 23 Nov 2026, about 9:15 PM Central (plugin 0.5.71, commit f0cb6da): 46 left
 Cleared 7 (measured: `verify.py --launch` now lists 46):
-- The 4 agent status lines on /dynamics-365-sales/ and /microsoft-copilot-for-business/: Sales Research Agent and Recommended Actions Agent set to Generally available. Source: Microsoft Learn, "Agents, Copilot, and AI capabilities in Dynamics 365 apps" (dynamics365/copilot/ai-get-started), read 23 Nov 2026. That page labels its preview items "(preview)" (29 labels) and labels neither agent; their own overview pages carry no preview notice, while their sub-features (Quick Insights, Business Function Builder) do. GA is inferred from the missing label; Microsoft does not say "generally available" for these two in words. Service Agent's page says "generally available" in words.
+- The 4 agent status lines on /dynamics-365-sales/ and /microsoft-copilot-for-business/: Sales Research Agent and Recommended Actions Agent set to Generally available. Source: Microsoft Learn, "Agents, Copilot, and AI capabilities in Dynamics 365 apps" (dynamics365/copilot/ai-get-started), read 23 Nov 2026. That page labels its preview items "(preview)" (29 labels) and labels neither agent; their own overview pages carry no preview notice, while their sub-features (Quick Insights, Business Function Builder) do. Label: inferred from Microsoft's list (the missing preview label); Microsoft does not say "generally available" for these two in words. Recheck both in launch week. Service Agent's page says "generally available" in words.
 - The 3 agent table captions (Sales, Customer Service, Copilot): "checked 23 Nov 2026".
 
 Claude's 15 left, split:
@@ -104,3 +104,5 @@ Claude's 15 left, split:
 - Not Claude's after all (2): the two "[bracket]" lines are inside the DRAFT bars on the privacy and terms pages ("every [bracket] needs an answer"). They go when the lawyer clears the drafts and the bars come off. Moved to Brian (the lawyer).
 
 New totals: Brian 27, Claude 13, Michael 4, Kristin 2 = 46.
+
+On staging: plugin 0.5.71 uploaded by Claude and pages imported (0 created, 107 updated), 23 Nov 2026 about 9:20 PM Central; the Sales agent table reads "checked 23 Nov 2026" with both agents Generally available (read on staging).
