@@ -101,7 +101,7 @@
 
     var btn = f.querySelector('[type="submit"]');
     f.dataset.n9Busy = '1';
-    if (btn) { btn.disabled = true; btn.setAttribute('aria-busy', 'true'); }
+    if (btn) { loader(btn); btn.disabled = true; btn.setAttribute('aria-busy', 'true'); }
     say(f, 'Sending...');
 
     var hp = f.querySelector('[name="n9_hp"]');
@@ -126,6 +126,26 @@
       })
       .catch(function () { say(f, 'That did not send. Try again, or call 1-844-264-0729.'); })
       .then(function () { delete f.dataset.n9Busy; if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); } });
+  }
+
+  /* Button row (logo-motion a06_row, on-blue): three squares show while a form sends.
+     The label stays in the button for screen readers; aria-busy already says it is busy. */
+  function loader(btn) {
+    if (!document.getElementById('n9-row-css')) {
+      var st = document.createElement('style'); st.id = 'n9-row-css';
+      st.textContent = 'button[aria-busy="true"]{position:relative;color:transparent!important}' +
+        '.n9-row{display:none;position:absolute;inset:0;margin:auto;width:28px;height:8px;gap:2px;pointer-events:none}' +
+        'button[aria-busy="true"] .n9-row{display:flex}' +
+        '.n9-row i{width:8px;height:8px;background:#fff}' +
+        '@media (prefers-reduced-motion:no-preference){.n9-row i{animation:n9r 600ms cubic-bezier(.2,.7,.2,1) infinite both}' +
+        '.n9-row i:nth-child(2){animation-delay:-400ms}.n9-row i:nth-child(3){animation-delay:-200ms}}' +
+        '@keyframes n9r{0%,8.33%{opacity:1}33.33%,41.67%{opacity:.6}66.67%,75%{opacity:.3}100%{opacity:1}}';
+      document.head.appendChild(st);
+    }
+    if (!btn.querySelector('.n9-row')) {
+      var r = document.createElement('span'); r.className = 'n9-row'; r.setAttribute('aria-hidden', 'true');
+      r.innerHTML = '<i></i><i></i><i></i>'; btn.appendChild(r);
+    }
   }
 
   function ready() { document.querySelectorAll('form').forEach(function (f) { if (kindOf(f)) honeypot(f); }); }
