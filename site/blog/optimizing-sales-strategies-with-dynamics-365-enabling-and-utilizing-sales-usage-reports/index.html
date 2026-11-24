@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Enabling and Utilizing Sales Usage Reports in Dynamics 365</title>
-<meta name="description" content="How to enable Sales Usage Reports in Dynamics 365 Sales and what they show. June 2024 post; Microsoft deprecated the reports on December 1, 2025.">
+<title>Sales Usage Reports in Dynamics 365: Retired and What to Use Now</title>
+<meta name="description" content="Microsoft retired sales usage reports in Dynamics 365 Sales on December 1, 2025. What they showed and what to use instead.">
 <!--headmeta-->
 <link rel="canonical" href="./">
 <meta property="og:site_name" content="enCloud9">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Enabling and Utilizing Sales Usage Reports in Dynamics 365">
-<meta property="og:description" content="How to enable Sales Usage Reports in Dynamics 365 Sales and what they show. June 2024 post; Microsoft deprecated the reports on December 1, 2025.">
+<meta property="og:title" content="Sales Usage Reports in Dynamics 365: Retired and What to Use Now">
+<meta property="og:description" content="Microsoft retired sales usage reports in Dynamics 365 Sales on December 1, 2025. What they showed and what to use instead.">
 <meta property="og:url" content="https://www.encloud9.com/blog/optimizing-sales-strategies-with-dynamics-365-enabling-and-utilizing-sales-usage-reports/">
 <meta property="og:image" content="https://michaelbegley.github.io/encloud9-lookbook/assets/brand/share-card.png">
 <meta property="og:image:width" content="1200">
@@ -22,13 +22,9 @@
 <link rel="stylesheet" href="../../../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../../../pages/nine.css">
 <script defer src="../../../pages/nine.js"></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.encloud9.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.encloud9.com/blog/"},{"@type":"ListItem","position":3,"name":"Enabling and Utilizing Sales Usage Reports in Dynamics 365"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Enabling and Utilizing Sales Usage Reports in Dynamics 365","description":"How to enable Sales Usage Reports in Dynamics 365 Sales and what they show. June 2024 post; Microsoft deprecated the reports on December 1, 2025.","datePublished":"2024-06-12","dateModified":"2026-11-10","author":{"@type":"Person","name":"Brian Begley","jobTitle":"CEO","url":"https://www.encloud9.com/about-encloud9/team/brian-begley/"},"image":"https://www.encloud9.com/wp-content/uploads/2024/08/Enabling-and-Utilizing-Sales-Usage-Reports-1200-x-628-px.png.webp","mainEntityOfPage":"https://www.encloud9.com/blog/optimizing-sales-strategies-with-dynamics-365-enabling-and-utilizing-sales-usage-reports/","inLanguage":"en-US","publisher":{"@type":"Organization","name":"enCloud9","url":"https://www.encloud9.com/"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Are sales usage reports still available in Dynamics 365 Sales?","acceptedAnswer":{"@type":"Answer","text":"Microsoft deprecated sales usage reports effective December 1, 2025. As an alternative, Microsoft offers a sample Power BI report for sales usage reporting, which you customize and maintain yourself."}},
-{"@type":"Question","name":"Where do you turn on sales usage reports?","acceptedAnswer":{"@type":"Answer","text":"In the Sales app, go to App Settings in the lower left corner of the page, then turn on the Sales usage reports toggle and select Save."}},
-{"@type":"Question","name":"Where do you view sales usage reports?","acceptedAnswer":{"@type":"Answer","text":"Select Sales Analytics in the left side navigation of the Sales app."}},
-{"@type":"Question","name":"What do sales usage reports show?","acceptedAnswer":{"@type":"Answer","text":"Sales performance, activity tracking, customer insights and sales team performance, including which user has created or updated the most contacts, leads, opportunities or accounts."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.encloud9.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.encloud9.com/blog/"},{"@type":"ListItem","position":3,"name":"Sales Usage Reports in Dynamics 365: Retired and What to Use Now"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Sales Usage Reports in Dynamics 365: Retired and What to Use Now","description":"Microsoft retired sales usage reports in Dynamics 365 Sales on December 1, 2025. What they showed and what to use instead.","datePublished":"2024-06-12","dateModified":"2026-11-23","author":{"@type":"Person","name":"Brian Begley","jobTitle":"CEO","url":"https://www.encloud9.com/about-encloud9/team/brian-begley/"},"image":"https://www.encloud9.com/wp-content/uploads/2024/08/Enabling-and-Utilizing-Sales-Usage-Reports-1200-x-628-px.png.webp","mainEntityOfPage":"https://www.encloud9.com/blog/optimizing-sales-strategies-with-dynamics-365-enabling-and-utilizing-sales-usage-reports/","inLanguage":"en-US","publisher":{"@type":"Organization","name":"enCloud9","url":"https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are sales usage reports still available in Dynamics 365 Sales?", "acceptedAnswer": {"@type": "Answer", "text": "No. Microsoft retired them on December 1, 2025. As an alternative, it offers a sample Power BI report for sales usage reporting, which you customize and maintain yourself."}}, {"@type": "Question", "name": "Can we still see our old usage data?", "acceptedAnswer": {"@type": "Answer", "text": "No. Microsoft says the reports can’t be opened to view past metrics."}}, {"@type": "Question", "name": "Does Microsoft support the sample Power BI report?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is provided to help the move, and you maintain it yourself."}}, {"@type": "Question", "name": "What did sales usage reports show?", "acceptedAnswer": {"@type": "Answer", "text": "Four reports, for opportunities, leads, accounts and contacts. They counted records created, viewed, updated and deleted by user, plus leads qualified and opportunities won, and the top four users for each."}}]}</script>
 <style>
 /* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
 body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
@@ -229,18 +225,18 @@ body.p-post blockquote.sum{margin:22px 0 0;border-left:6px solid var(--b6);paddi
   <article aria-labelledby="h1">
     <header class="phead">
       <div class="pmain">
-        <h1 class="h1 rise" id="h1" style="--d:2">Enabling and Utilizing Sales Usage Reports in Dynamics 365</h1>
+        <h1 class="h1 rise" id="h1" style="--d:2">Sales Usage Reports in Dynamics 365: Retired and What to Use Now</h1>
         <span class="draft rise" style="--d:0"><i aria-hidden="true"></i>June 2024 post, shown in the new style</span>
         <span class="mono cat rise" style="--d:1">Dynamics 365 Sales &middot; Admin and how-to</span>
-        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>June 12, 2024</b></span><span>5 min read</span><span>Updated 10 Nov 2026</span></p>
+        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>June 12, 2024</b></span><span>Updated <b>November 23, 2026</b></span><span>3 min read</span><span>Facts checked 23 Nov 2026</span></p>
       </div>
       <aside class="glance" aria-labelledby="gl-h">
         <p class="mono" id="gl-h">At a glance</p>
         <ul class="gl">
-          <li class="lt" style="--c:var(--b9);--k:0"><span class="k">Status, November 2026</span><b>Deprecated December 1, 2025</b></li>
-          <li class="lt" style="--c:var(--b8);--k:1"><span class="k">Turn them on</span><b>Three steps in App Settings</b></li>
-          <li class="lt" style="--c:var(--b6);--k:2"><span class="k">Find them</span><b>Sales Analytics, left navigation</b></li>
-          <li style="--c:var(--b4);--k:3"><span class="k">What they show</span><b>Four groups of metrics</b></li>
+          <li class="lt" style="--c:var(--b9);--k:0"><span class="k">Retired</span><b>December 1, 2025</b></li>
+          <li class="lt" style="--c:var(--b8);--k:1"><span class="k">Replacement</span><b>Sample Power BI report</b></li>
+          <li class="lt" style="--c:var(--b6);--k:2"><span class="k">Support</span><b>None from Microsoft for the sample</b></li>
+          <li style="--c:var(--b4);--k:3"><span class="k">Reports</span><b>Opportunities, leads, accounts, contacts</b></li>
         </ul>
       </aside>
     </header>
@@ -250,11 +246,8 @@ body.p-post blockquote.sum{margin:22px 0 0;border-left:6px solid var(--b6);paddi
         <details open id="tocd">
           <summary>On this page</summary>
           <ol>
-            <li><a href="#update">What changed since 2024?</a></li>
-            <li><a href="#why">Why enable sales usage reports?</a></li>
-            <li><a href="#enable">How do you enable sales usage reports?</a></li>
-            <li><a href="#what">What do sales usage reports show?</a></li>
-            <li><a href="#sum">Conclusion</a></li>
+            <li><a href="#what">What did sales usage reports show?</a></li>
+            <li><a href="#instead">What should you use instead?</a></li>
             <li><a href="#faq">Frequently asked questions</a></li>
             <li><a href="#see">Want help with sales reporting?</a></li>
           </ol>
@@ -262,66 +255,29 @@ body.p-post blockquote.sum{margin:22px 0 0;border-left:6px solid var(--b6);paddi
       </nav>
 
       <div class="art" id="art">
-        <p class="answer"><span class="mono">The short answer</span><strong>Microsoft deprecated sales usage reports in Dynamics 365 Sales on December 1, 2025. As an alternative, it offers a sample Power BI report for sales usage reporting, which you customize and maintain yourself, without Microsoft support. Before then, an admin turned the reports on in App Settings, and managers read them under Sales Analytics.</strong></p>
+        <p class="answer"><span class="mono">The short answer</span><strong>Microsoft deprecated sales usage reports in Dynamics 365 Sales on December 1, 2025. As an alternative, it offers a sample Power BI report for sales usage reporting, which you customize and maintain yourself, without Microsoft support. They counted the records each user created, viewed, updated and deleted.</strong></p>
 
-        <section class="upd" aria-labelledby="update">
-          <span class="mono">Update, November 2026</span>
-          <h2 id="update" class="sr-only">What changed since 2024?</h2>
-          <p><strong>Microsoft deprecated sales usage reports effective December 1, 2025.</strong> As an alternative, Microsoft offers a <a href="https://github.com/microsoft/Dynamics365-Apps-Samples/blob/master/sales/SalesUsageReporting/Sales%20Usage%20Reporting%20Sample.pbit">sample Power BI report for sales usage reporting</a>. Microsoft says you customize and maintain it yourself, and it does not support the sample. Details are on <a href="https://learn.microsoft.com/en-us/dynamics365/sales/deprecations-sales#sales-usage-reports">Microsoft Learn</a>.</p>
-          <p>Microsoft’s own page describes four usage reports, for opportunities, leads, accounts and contacts.</p>
-          <p>The original 2024 post follows, as Brian wrote it.</p>
-        </section>
-
-        <p>Sales Usage Reports in Dynamics 365 Sales show how your team uses the system. Enabling these reports can help sales managers and teams understand their performance, identify areas for improvement, and make data-driven decisions.</p>
-
-        <h2 id="why">Why enable sales usage reports?</h2>
-        <p>Five benefits for sales managers and their teams.</p>
-        <ol class="uses five rev">
-          <li class="use lt" style="--c:var(--b9);--k:0"><span class="hd"><span class="n">1</span><span class="grp">Decisions</span></span><b>Data-driven decision making.</b><span class="x">With access to detailed sales usage reports, sales managers can make informed decisions based on concrete data rather than intuition. This leads to more effective strategies and better resource allocation.</span></li>
-          <li class="use lt" style="--c:var(--b8);--k:1"><span class="hd"><span class="n">2</span><span class="grp">Planning</span></span><b>Enhanced sales forecasting.</b><span class="x">Accurate forecasting is essential for planning and resource management. Sales usage reports provide historical data that can improve the accuracy of sales forecasts.</span></li>
-          <li class="use lt" style="--c:var(--b6);--k:2"><span class="hd"><span class="n">3</span><span class="grp">Process</span></span><b>Improved sales efficiency.</b><span class="x">By analyzing activity logs and conversion rates, sales teams can identify inefficient practices and streamline their processes. This leads to higher productivity and better use of time and resources.</span></li>
-          <li class="use" style="--c:var(--b4);--k:3"><span class="hd"><span class="n">4</span><span class="grp">Customers</span></span><b>Better customer relationships.</b><span class="x">Understanding customer behavior and satisfaction helps in building stronger relationships. Sales usage reports provide insights that can be used to personalize interactions and improve customer service.</span></li>
-          <li class="use" style="--c:var(--b2);--k:4"><span class="hd"><span class="n">5</span><span class="grp">Team</span></span><b>Performance tracking and motivation.</b><span class="x">Regularly reviewing individual and team performance metrics helps in setting clear goals and expectations. Recognizing top performers and addressing areas for improvement can motivate the sales team to achieve better results.</span></li>
-        </ol>
-
-        <h2 id="enable">How do you enable sales usage reports?</h2>
-        <p>Three steps, done once by someone with admin rights.</p>
-        <ol class="steps3 rev">
-          <li style="--c:var(--b8);--c2:var(--b6)"><b>Log in to Dynamics 365 Sales.</b><span>Start by logging into your Dynamics 365 Sales account. Ensure you have the necessary permissions to access the settings required for enabling sales usage reports.</span></li>
-          <li style="--c:var(--b5);--c2:var(--b5)"><b>Navigate to Settings.</b><span>Once logged in, navigate to the bottom left corner of the interface. Select "App Settings" from the "Sales" menu. This section contains various configuration options for your sales app.</span></li>
-          <li style="--c:var(--b2);--c2:var(--b2)"><b>Enable Sales Usage Reports.</b><span>Within App Settings, locate the toggle switch for "Sales usage reports." Turn on this toggle to enable the feature. After enabling, select "Save" to apply the changes.</span></li>
-        </ol>
-
-        <h2 id="what">What do sales usage reports show?</h2>
-        <p>Sales Usage Reports in Dynamics 365 provide a comprehensive view of sales activities and outcomes, operational metrics, and key performance indicators (KPIs), allowing sales managers to analyze opportunities and leads to enhance team performance. The reports offer valuable information for both sales managers and salespeople.</p>
-        <p>To access Sales Usage Reports, navigate to <strong>Sales Analytics</strong> on the left side navigation. These reports include several key metrics and insights:</p>
-        <div class="mgroups rev">
-          <div class="lt" style="--c:var(--b9)"><h3>1. Sales Performance Metrics</h3><ul><li><strong>Revenue analysis:</strong> track revenue generated over specific periods, allowing for trend analysis and performance tracking.</li><li><strong>Sales pipeline:</strong> monitor the flow of deals through different stages, from initial contact to closing.</li><li><strong>Conversion rates:</strong> analyze conversion rates at each stage of the sales process to identify bottlenecks and opportunities for improvement.</li></ul></div>
-          <div class="lt" style="--c:var(--b7)"><h3>2. Activity Tracking</h3><ul><li><strong>Call and email logs:</strong> review logs of sales calls and emails to understand engagement levels with prospects and customers.</li><li><strong>Meeting insights:</strong> track the frequency and outcomes of meetings, providing a clear picture of sales team activities.</li></ul></div>
-          <div style="--c:var(--b4)"><h3>3. Customer Insights</h3><ul><li><strong>Customer segmentation:</strong> segment customers by criteria such as industry, size and buying behavior to tailor sales strategies.</li><li><strong>Customer satisfaction:</strong> measure satisfaction through feedback and surveys, enabling proactive improvements.</li></ul></div>
-          <div style="--c:var(--b2)"><h3>4. Sales Team Performance</h3><ul><li><strong>Individual performance:</strong> evaluate individual sales representatives, identifying top performers and those needing additional support or training.</li><li><strong>Team collaboration:</strong> assess how well the team collaborates and shares information, which is crucial for closing complex deals.</li></ul></div>
-        </div>
-        <p>Learn more about how to <a href="https://learn.microsoft.com/en-us/dynamics365/sales/view-understand-sales-usage-reports">view operational metrics and KPIs in usage reports</a> on Microsoft Learn.</p>
+        <p>You can no longer turn them on. Microsoft says the reports can’t be opened at all, including to see past data (<a href="https://learn.microsoft.com/en-us/dynamics365/sales/deprecations-sales#sales-usage-reports">Microsoft Learn</a>).</p>
+        <h2 id="what">What did sales usage reports show?</h2>
+        <p>There were <a href="https://learn.microsoft.com/en-us/dynamics365/sales/view-understand-sales-usage-reports">four reports</a>: opportunities, leads, accounts and contacts. Each counted:</p>
+        <ul>
+          <li>Records created, viewed, updated and deleted, and how many users did each.</li>
+          <li>Leads qualified (lead report) and opportunities converted to won deals (opportunity report).</li>
+          <li>The top four users for each count.</li>
+        </ul>
+        <p>They showed the last 20 weeks by default and refreshed every 24 hours. Bulk imports, bulk updates and changes made through the API weren’t counted.</p>
         <figure class="shot">
-          <div class="frame"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="https://www.encloud9.com/wp-content/uploads/2024/06/sales-usage-reports-2.png.webp" alt="Sales Usage Reports in Dynamics 365 Sales" loading="lazy"></div>
-          <figcaption>Sales Usage Reports in Dynamics 365 Sales, from the original 2024 post.</figcaption>
+          <div class="frame"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="https://www.encloud9.com/wp-content/uploads/2024/06/sales-usage-reports.png.webp" alt="Sales usage report showing which users created and updated the most records" loading="lazy"></div>
+          <figcaption>Before retirement: the users who created and updated the most records.</figcaption>
         </figure>
-        <p>As you can see from the illustration below, the report gives you valuable information about contacts, leads, opportunities and accounts. Sales managers, you can easily see from the Sales Usage Report which user has created or updated the most contacts, leads, opportunities or accounts.</p>
-        <figure class="shot">
-          <div class="frame"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="https://www.encloud9.com/wp-content/uploads/2024/06/sales-usage-reports.png.webp" alt="Sales Usage Report showing records created and updated by user" loading="lazy"></div>
-          <figcaption>Which users created and updated the most records.</figcaption>
-        </figure>
-
-        <h2 id="sum">Conclusion</h2>
-        <blockquote class="sum"><p>Enabling Sales Usage Reports in Dynamics 365 Sales is a straightforward process that offers significant benefits.</p></blockquote>
-        <p>For more detailed instructions on <a href="https://learn.microsoft.com/en-us/dynamics365/sales/enable-sales-usage-reports#enable-the-reports">enabling sales usage reports for your organization</a>, visit Microsoft Learn.</p>
-
+        <h2 id="instead">What should you use instead?</h2>
+        <p>Microsoft offers a <a href="https://github.com/microsoft/Dynamics365-Apps-Samples/blob/master/sales/SalesUsageReporting/Sales%20Usage%20Reporting%20Sample.pbit">sample Power BI report for sales usage reporting</a>. You customize and maintain it yourself, and Microsoft doesn’t support it. We can set it up and adapt it to the numbers your managers watch.</p>
         <h2 id="faq">Frequently Asked Questions</h2>
         <div class="faq">
-          <details><summary>Are sales usage reports still available in Dynamics 365 Sales?</summary><p>Microsoft deprecated sales usage reports effective December 1, 2025. As an alternative, Microsoft offers a sample Power BI report for sales usage reporting, which you customize and maintain yourself.</p></details>
-          <details><summary>Where do you turn on sales usage reports?</summary><p>In the Sales app, go to App Settings in the lower left corner of the page, then turn on the Sales usage reports toggle and select Save.</p></details>
-          <details><summary>Where do you view sales usage reports?</summary><p>Select Sales Analytics in the left side navigation of the Sales app.</p></details>
-          <details><summary>What do sales usage reports show?</summary><p>Sales performance, activity tracking, customer insights and sales team performance, including which user has created or updated the most contacts, leads, opportunities or accounts.</p></details>
+          <details><summary>Are sales usage reports still available in Dynamics 365 Sales?</summary><p>No. Microsoft retired them on December 1, 2025. As an alternative, it offers a sample Power BI report for sales usage reporting, which you customize and maintain yourself.</p></details>
+          <details><summary>Can we still see our old usage data?</summary><p>No. Microsoft says the reports can’t be opened to view past metrics.</p></details>
+          <details><summary>Does Microsoft support the sample Power BI report?</summary><p>No. It is provided to help the move, and you maintain it yourself.</p></details>
+          <details><summary>What did sales usage reports show?</summary><p>Four reports, for opportunities, leads, accounts and contacts. They counted records created, viewed, updated and deleted by user, plus leads qualified and opportunities won, and the top four users for each.</p></details>
         </div>
 
         <section class="abox" aria-labelledby="ab-h">
