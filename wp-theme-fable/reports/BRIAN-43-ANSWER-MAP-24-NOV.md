@@ -4,7 +4,7 @@ Tue 24 Nov 2026, about 12:40 AM Central. Claude, #17 Facilitator, at the Compass
 
 **Purpose:** when Brian replies, each answer turns into a change list in minutes. Find his number, read the row, apply the "after" that matches his answer, rebuild, verify, upload.
 
-**Numbering:** this follows the 43-question version Michael sent on 23 Nov (about 8:55 PM). Question 1 is the launch date. Questions 2 to 43 are Draft1A's questions 1 to 42, each moved down by one. The exact wording of question 1 as sent: could not determine (it is in the Compass's version, not in any file here). It is taken as "Does launch stay Wed 9 Dec, or move to Wed 16 Dec?" (the open proposal in HANDOFF-Facilitator-17).
+**Numbering:** this follows the 43-question version Michael sent on 23 Nov (about 8:55 PM). Question 1 is the launch date. Questions 2 to 43 are Draft1A's questions 1 to 42, each moved down by one. Question 1 as Michael sent it (wording from the Compass, 24 Nov, 1:04 AM): "Keep launch on Wed 9 Dec, or move it to Wed 16 Dec?"
 
 **Where the lines were read:** the built page data, wp-theme-fable/content/pages.json at plugin 0.5.74 (commit a578393), measured 24 Nov. Page paths are the new-site addresses.
 
@@ -26,7 +26,7 @@ Then run build.py, copy pages.json into encloud9-site/data/, run tools/verify.py
 
 ## Launch date
 
-### 1. Launch date: stays 9 Dec, or moves to 16 Dec? **BLOCKER** (clears 10 of Claude's launch-day placeholders)
+### 1. "Keep launch on Wed 9 Dec, or move it to Wed 16 Dec?" **BLOCKER** (clears 10 of Claude's launch-day placeholders)
 - **Pages:** /blog/ ([publish date], [Showing count at launch], [count at launch], [author]); /how-microsoft-updates-dynamics-365/, /power-platform-dynamics-365/ (3 price captions), /blog/whats-new-in-dynamics-365-november-2026/ ([publish date]); /accessibility/ ([Date of last review.], [Date published.]); /privacy-policy/ and /terms-of-use/ ([Effective date.]).
 - **Answer "9 Dec":** every date bracket becomes 9 December 2026, filled in on launch day. No change before then.
 - **Answer "16 Dec":** the same, with 16 December 2026. Also move every dated step in the launch runbook and the site roadmap one week later: go or no-go Fri 4 Dec becomes Fri 11 Dec. Check Bing's 15 Dec date in the runbook against the new day.
