@@ -22,8 +22,9 @@
 <link rel="stylesheet" href="../../../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../../../pages/nine.css">
 <script defer src="../../../pages/nine.js"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "How To Track the Last Activity Date in Microsoft Dynamics 365 Sales", "item": "https://www.encloud9.com/blog/how-to-track-the-last-activity-date-in-microsoft-dynamics-365-sales/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How To Track the Last Activity Date in Microsoft Dynamics 365 Sales", "description": "Dynamics 365 has no built-in last activity date. Add rollup fields for last activity and next activity due, step by step, with a video tutorial.", "url": "https://www.encloud9.com/blog/how-to-track-the-last-activity-date-in-microsoft-dynamics-365-sales/", "datePublished": "2025-02-13", "dateModified": "2026-11-10", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "How to Track the Last Activity Date in Dynamics 365 Sales", "item": "https://www.encloud9.com/blog/how-to-track-the-last-activity-date-in-microsoft-dynamics-365-sales/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Track the Last Activity Date in Dynamics 365 Sales", "description": "Dynamics 365 has no built-in last activity date. Add rollup fields for last activity and next activity due, step by step, with a video tutorial.", "url": "https://www.encloud9.com/blog/how-to-track-the-last-activity-date-in-microsoft-dynamics-365-sales/", "datePublished": "2025-02-13", "dateModified": "2026-11-23", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why is my new column empty?", "acceptedAnswer": {"@type": "Answer", "text": "It fills in about 12 hours after you create it. Recalculate on the form fills one record right away."}}, {"@type": "Question", "name": "Can I do this for accounts and contacts?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Follow the same steps on the account or contact table."}}, {"@type": "Question", "name": "Can a workflow run when the date changes?", "acceptedAnswer": {"@type": "Answer", "text": "No. Rollup column updates can’t start a workflow."}}]}</script>
 <style>
 /* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
 body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
@@ -196,9 +197,9 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
   <article aria-labelledby="h1">
     <header class="phead">
       <div class="pmain">
-        <h1 class="h1 rise" id="h1" style="--d:2">How To Track the Last Activity Date in Microsoft Dynamics 365 Sales</h1>
+        <h1 class="h1 rise" id="h1" style="--d:2">How to Track the Last Activity Date in Dynamics 365 Sales</h1>
                 <span class="mono cat rise" style="--d:1">Admin and how-to</span>
-        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>February 13, 2025</b></span><span>Updated <b>November 10, 2026</b></span><span>2 min read</span></p>
+        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>February 13, 2025</b></span><span>Updated <b>November 23, 2026</b></span><span>2 min read</span><span>Facts checked 23 Nov 2026</span></p>
       </div>
       <aside class="glance" aria-labelledby="gl-h">
         <p class="mono" id="gl-h">At a glance</p>
@@ -220,19 +221,18 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
             <li><a href="#how-to-create-last-and-next-activity-dat">How do you create last and next activity date fields in Dynamics 365?</a></li>
             <li><a href="#adding-the-fields-to-views-and-forms">Where should the new fields go?</a></li>
             <li><a href="#improve-crm-tracking-with-rollup-fields">When do the rollup fields fill in?</a></li>
-            <li><a href="#about-encloud9">About enCloud9</a></li>
+            <li><a href="#faq">Frequently asked questions</a></li>
             <li><a href="#see">Want help with this?</a></li>
           </ol>
         </details>
       </nav>
 
       <div class="art" id="art">
-        <p class="answer"><span class="mono">The short answer</span><strong>Microsoft Dynamics 365 does not include a built-in last activity date. Add two rollup columns to the lead table: Last Activity Date, the maximum Actual End date of its activities, and Next Activity Due Date, the minimum Due Date of its open activities. Then add both to your forms and views so reps see who needs follow-up.</strong></p>
-        <p>The steps below show how, and the full tutorial is also on YouTube.</p>
-        <p><strong>Watch the full tutorial on YouTube:</strong> <a href="https://youtu.be/HUgUlEYomKM">Easily Track Last & Next Activity Dates in Dynamics 365</a></p>
+        <p class="answer"><span class="mono">The short answer</span><strong>To show a last activity date on leads, add two rollup columns to the lead table: Last Activity Date, the maximum Actual End date of its activities, and Next Activity Due Date, the minimum Due Date of its open activities. Then add both to your forms and views so reps see who needs follow-up.</strong></p>
+        <p><strong>Watch the tutorial on YouTube:</strong> <a href="https://youtu.be/HUgUlEYomKM">Easily Track Last & Next Activity Dates in Dynamics 365</a></p>
         <h2 id="why-tracking-activity-dates-matters">Why track last and next activity dates?</h2>
         <p>Knowing the <strong>last activity date</strong> allows sales teams to quickly see when they last engaged with a lead, contact, or account. If a prospect hasn’t been contacted in a while, it might be time to re-engage.</p>
-        <p>Meanwhile, the <strong>next activity due date</strong> ensures that sales reps never miss an upcoming call, meeting, or email. This field provides a clear schedule of future interactions, improving responsiveness and boosting conversion rates.</p>
+        <p>Meanwhile, the <strong>next activity due date</strong> ensures that sales reps never miss an upcoming call, meeting, or email.</p>
         <h2 id="how-to-create-last-and-next-activity-dat">How do you create last and next activity date fields in Dynamics 365?</h2>
         <p>To automate activity tracking in Dynamics 365, follow these steps:</p>
         <h3>Step 1: Create the Last Activity Date Field</h3>
@@ -243,22 +243,26 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
           <li><strong>Configure the rollup settings:</strong> select <strong>Activities</strong> as the related entity, and set the aggregation to <strong>Maximum (Max) of the Actual End Date</strong> of the activity.</li>
           <li>Save and close the configuration.</li>
         </ul>
+        <p>It counts activities whose Regarding is the lead. To include emails where the lead is only on the To or Cc line, add an <a href="https://learn.microsoft.com/power-apps/maker/data-platform/define-rollup-fields#aggregate-data-for-a-row-from-all-related-activities-and-activities-indirectly-related-via-the-activity-party-table">Activity Party filter</a>.</p>
+        <figure class="shot"><p>[Screenshot from the marketing sandbox: the rollup column editor set to the latest Actual End date]</p></figure>
         <h3>Step 2: Create the Next Activity Due Field</h3>
         <ul>
           <li>Repeat the above steps, naming the field <strong>Next Activity Due Date</strong>.</li>
           <li>Set the <strong>aggregation to Minimum (Min) of the Due Date</strong> instead of Max.</li>
           <li>Filter the Activity Records to use only <strong>Open</strong> Activities.</li>
-          <li>Save the field and add it to the form.</li>
         </ul>
         <h2 id="adding-the-fields-to-views-and-forms">Where should the new fields go?</h2>
         <p>Once the fields are created, add them to your <strong>Lead forms</strong> for easy access. You should also include them in your <strong>Open Leads views</strong> to monitor past and future activities at a glance.</p>
         <h2 id="improve-crm-tracking-with-rollup-fields">When do the rollup fields fill in?</h2>
-        <p>Existing records fill in about 12 hours after you create the column. After that, values refresh about every hour, or right away with Recalculate on the form. See <a href="https://learn.microsoft.com/power-apps/maker/data-platform/define-rollup-fields">rollup columns on Microsoft Learn</a> (checked 10 November 2026).</p>
-        <p>By adding these rollup fields, your team can <strong>stay organized, follow up on time, and never miss a critical opportunity.</strong></p>
+        <p>Existing records fill in about 12 hours after you create the column. After that, values refresh about every hour, or right away with Recalculate on the form. See <a href="https://learn.microsoft.com/power-apps/maker/data-platform/define-rollup-fields">rollup columns on Microsoft Learn</a>.</p>
+        <p>You get 50 rollup columns per table and 200 per environment by default. Microsoft warns that more than 100 in one environment can slow things down.</p>
         <p>Add the two columns, then check a few leads the next day to confirm the dates filled in.</p>
-        <h2 id="about-encloud9">About enCloud9</h2>
-        <p>enCloud9 is a Dynamics 365 partner specializing in CRM solutions that help businesses streamline their <a href="../../dynamics-365-sales/">sales</a>, <a href="../../marketing-services/">marketing</a>, and <a href="../../dynamics-365-customer-service/">customer service</a> operations. Our team provides expert implementation, customization, and <a href="../../microsoft-dynamics-365-support-services/">support services</a>.</p>
-        <p>We offer solutions such as data cleanup, process automation, system integrations, and advanced analytics to ensure your Dynamics 365 environment is efficient and effective. If you need assistance setting up tracking for last activity dates or enhancing your CRM system, our experts are ready to help.</p>
+        <h2 id="faq">Frequently Asked Questions</h2>
+        <div class="faq">
+          <details><summary>Why is my new column empty?</summary><p>It fills in about 12 hours after you create it. Recalculate on the form fills one record right away.</p></details>
+          <details><summary>Can I do this for accounts and contacts?</summary><p>Yes. Follow the same steps on the account or contact table.</p></details>
+          <details><summary>Can a workflow run when the date changes?</summary><p>No. Rollup column updates can’t start a workflow.</p></details>
+        </div>
 
         <section class="abox" aria-labelledby="ab-h">
           <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
