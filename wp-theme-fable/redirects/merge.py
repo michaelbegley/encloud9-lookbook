@@ -4,6 +4,8 @@ pages=json.load(open(base+'pages.json'));live=set(p['path'] for p in pages)
 for l in open(base+'kept-posts.txt'):
     l=l.strip()
     if l and not l.startswith('#'): live.add(l.split()[0])
+# Target fixes: the six dead targets below, Claude's call 15 Nov 2026, Michael approved all six, 15 Nov 2026 2:50 AM Central.
+# Was also kept as claude/site-build/REDIRECT-MAP-Draft2-TARGET-FIXES.csv in the Claude project (removed 23 Nov 2026; this line is its record).
 fix={'/support/':'/microsoft-dynamics-365-support-services/','/implementation/':'/microsoft-dynamics-365-implementation/','/microsoft-dynamics-365-copilot/':'/microsoft-copilot-for-business/','/microsoft-365-copilot/':'/microsoft-copilot-for-business/','/clickdimensions-powerpack/':'/marketing-services/','/dynamics-365-marketing-accelerator/':'/marketing-services/'}
 rows={}
 d1=list(csv.DictReader(open('draft1.csv')))
