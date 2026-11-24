@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>New ClickDimensions Dashboards in Dynamics 365</title>
-<meta name="description" content="ClickDimensions added dashboards inside Dynamics 365 for marketing results, starting with a Marketing Summary. What they show and where they help.">
+<meta name="description" content="The five ClickDimensions dashboards in Dynamics 365 and what each shows: Marketing Summary, Email, Forms, Surveys and Landing Pages.">
 <!--headmeta-->
 <link rel="canonical" href="./">
 <meta property="og:site_name" content="enCloud9">
 <meta property="og:type" content="article">
 <meta property="og:title" content="New ClickDimensions Dashboards in Dynamics 365">
-<meta property="og:description" content="ClickDimensions added dashboards inside Dynamics 365 for marketing results, starting with a Marketing Summary. What they show and where they help.">
+<meta property="og:description" content="The five ClickDimensions dashboards in Dynamics 365 and what each shows: Marketing Summary, Email, Forms, Surveys and Landing Pages.">
 <meta property="og:url" content="https://www.encloud9.com/blog/clickdimensions-dashboards-2025-update/">
 <meta property="og:image" content="https://michaelbegley.github.io/encloud9-lookbook/assets/brand/share-card.png">
 <meta property="og:image:width" content="1200">
@@ -22,8 +22,9 @@
 <link rel="stylesheet" href="../../../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../../../pages/nine.css">
 <script defer src="../../../pages/nine.js"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "ClickDimensions Dashboards: What’s Changed and Why It Matters", "item": "https://www.encloud9.com/blog/clickdimensions-dashboards-2025-update/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ClickDimensions Dashboards: What’s Changed and Why It Matters", "description": "ClickDimensions added dashboards inside Dynamics 365 for marketing results, starting with a Marketing Summary. What they show and where they help.", "url": "https://www.encloud9.com/blog/clickdimensions-dashboards-2025-update/", "datePublished": "2025-07-01", "dateModified": "2026-11-10", "author": {"@type": "Person", "name": "Kristin Caniglia"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "ClickDimensions Dashboards in Dynamics 365: What Each One Shows", "item": "https://www.encloud9.com/blog/clickdimensions-dashboards-2025-update/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ClickDimensions Dashboards in Dynamics 365: What Each One Shows", "description": "The five ClickDimensions dashboards in Dynamics 365 and what each shows: Marketing Summary, Email, Forms, Surveys and Landing Pages.", "url": "https://www.encloud9.com/blog/clickdimensions-dashboards-2025-update/", "datePublished": "2025-07-01", "dateModified": "2026-11-23", "author": {"@type": "Person", "name": "Kristin Caniglia"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Where do I find the dashboards?", "acceptedAnswer": {"@type": "Answer", "text": "In the Dashboards area of Dynamics 365. Select Summary for the Marketing Summary dashboard."}}, {"@type": "Question", "name": "How far back does Marketing Summary go?", "acceptedAnswer": {"@type": "Answer", "text": "Four weeks. Email statistics cover the last 28 days."}}, {"@type": "Question", "name": "What if we run low on emails?", "acceptedAnswer": {"@type": "Answer", "text": "Account overview shows how many you have left. Your Click Success Manager sells more."}}]}</script>
 <style>
 /* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
 body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
@@ -196,9 +197,9 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
   <article aria-labelledby="h1">
     <header class="phead">
       <div class="pmain">
-        <h1 class="h1 rise" id="h1" style="--d:2">ClickDimensions Dashboards: What’s Changed and Why It Matters</h1>
+        <h1 class="h1 rise" id="h1" style="--d:2">ClickDimensions Dashboards in Dynamics 365: What Each One Shows</h1>
                 <span class="mono cat rise" style="--d:1">Marketing automation</span>
-        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <b>Kristin Caniglia</b></span><span><b>July 1, 2025</b></span><span>Updated <b>November 10, 2026</b></span><span>1 minute read</span></p>
+        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <b>Kristin Caniglia</b></span><span><b>July 1, 2025</b></span><span>Updated <b>November 23, 2026</b></span><span>1 minute read</span><span>Facts checked 23 Nov 2026</span></p>
       </div>
       <aside class="glance" aria-labelledby="gl-h">
         <p class="mono" id="gl-h">At a glance</p>
@@ -216,39 +217,60 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
         <details open id="tocd">
           <summary>On this page</summary>
           <ol>
-            <li><a href="#new-clickdimensions-dashboards-capabilit">New ClickDimensions Dashboards: Capabilities at a Glance</a></li>
-            <li><a href="#where-these-dashboards-actually-help">Where These Dashboards Actually Help</a></li>
+            <li><a href="#which-dashboards">Which dashboards does ClickDimensions have?</a></li>
+            <li><a href="#marketing-summary">What does the Marketing Summary dashboard show?</a></li>
+            <li><a href="#how-teams-use-them">How do teams use them?</a></li>
             <li><a href="#work-with-encloud9-your-clickdimensions-">Work with enCloud9: Your ClickDimensions Experts</a></li>
             <li><a href="#further-learning">Further Learning</a></li>
+            <li><a href="#faq">Frequently asked questions</a></li>
             <li><a href="#see">Want help with this?</a></li>
           </ol>
         </details>
       </nav>
 
       <div class="art" id="art">
-        <p class="answer"><span class="mono">The short answer</span><strong>ClickDimensions added dashboards inside Dynamics 365 for marketing results, starting with a Marketing Summary dashboard. They let teams see campaign, email, form, survey and landing page results without exporting data. The value comes from using them every week to decide what to change while campaigns are still running.</strong></p> <p class="fine"><a href="https://support.clickdimensions.com/hc/en-us/articles/36969060492557">ClickDimensions support article on the Marketing Summary dashboard</a></p>
-        <h2 id="new-clickdimensions-dashboards-capabilit">New ClickDimensions Dashboards: Capabilities at a Glance</h2>
+        <p class="answer"><span class="mono">The short answer</span><strong>ClickDimensions has five dashboards inside Dynamics 365: Marketing Summary, Email, Forms, Surveys and Landing Pages. Marketing Summary shows the last four weeks of emails sent, form and survey views against submissions, landing page views against unique visitors, and how many emails your account has left.</strong></p>
+        <h2 id="which-dashboards">Which dashboards does ClickDimensions have?</h2>
+        <p>Five, all inside Dynamics 365:</p>
         <ul>
-          <li><strong>Marketing Summary</strong>: Use this dashboard to view performance across campaigns.</li>
+          <li><a href="https://support.clickdimensions.com/hc/en-us/articles/36969060492557-Marketing-Summary-Dashboard">Marketing Summary</a></li>
+          <li><a href="https://support.clickdimensions.com/hc/en-us/articles/36976389892237-Email-Dashboard">Email</a></li>
+          <li><a href="https://support.clickdimensions.com/hc/en-us/articles/36976561493133-Forms-Dashboard">Forms</a></li>
+          <li><a href="https://support.clickdimensions.com/hc/en-us/articles/36977046401549-Surveys-Dashboard">Surveys</a></li>
+          <li><a href="https://support.clickdimensions.com/hc/en-us/articles/36977750397581-Landing-Pages-Dashboard">Landing Pages</a></li>
         </ul>
-        <p>All dashboards are built right into Dynamics 365.</p>
-        <h2 id="where-these-dashboards-actually-help">Where These Dashboards Actually Help</h2>
-        <p>Most teams don’t struggle with access to data, they struggle with using it consistently.</p>
-        <h3>Campaign Performance</h3>
-        <p>Instead of reviewing campaigns one at a time, teams can quickly see how everything is performing in one place. This makes it easier to compare results and identify what’s working without building separate reports.</p>
+        <h2 id="marketing-summary">What does the Marketing Summary dashboard show?</h2>
+        <p>Six parts, per <a href="https://support.clickdimensions.com/hc/en-us/articles/36969060492557-Marketing-Summary-Dashboard">ClickDimensions</a>:</p>
+        <ul>
+          <li><strong>Email statistics</strong>: emails sent and delivered in the last 28 days.</li>
+          <li><strong>Account overview</strong>: how many emails your account has left.</li>
+          <li><strong>Emails sent</strong>: a line chart of the last four weeks.</li>
+          <li><strong>Forms</strong>: views against submissions over four weeks.</li>
+          <li><strong>Surveys</strong>: views against submissions over four weeks.</li>
+          <li><strong>Landing pages</strong>: views against unique visitors over four weeks.</li>
+        </ul>
+        <h2 id="how-teams-use-them">How do teams use them?</h2>
         <h3>Email Performance</h3>
-        <p>Email metrics are often reviewed after the fact. With dashboards, teams can spot issues like low engagement or high bounce rates earlier and make adjustments while campaigns are still active.</p>
-        <h3>Forms and Conversions</h3>
-        <p>Understanding why forms convert (or don’t) usually requires digging into details. These dashboards make that easier to see without pulling data into external tools.</p>
-        <h3>Landing Page Performance</h3>
-        <p>Instead of guessing which pages are working, teams can quickly identify which ones are actually driving leads and which need to be adjusted.</p>
+        <p>Email statistics show sent against delivered for the last 28 days, so a delivery drop shows up while the campaign is still running.</p>
+        <h3>Forms</h3>
+        <p>The Forms dashboard puts views next to submissions, so a form people open but don’t send stands out.</p>
+        <h3>Landing Pages</h3>
+        <p>The Landing Pages dashboard shows views against unique visitors, page by page.</p>
+        <h3>Email Balance</h3>
+        <p>Account overview shows how many emails you have left. To buy more, contact your Click Success Manager.</p>
         <h2 id="work-with-encloud9-your-clickdimensions-">Work with enCloud9: Your ClickDimensions Experts</h2>
-        <p>These dashboards help most when people use them every day. That’s where enCloud9 comes in. We work with teams to make sure tools like ClickDimensions aren’t just set up, but actually used in a way that improves visibility, simplifies reporting, and helps drive better decisions. <a href="../../about-encloud9/microsoft-dynamics-365-success/">See more success stories from companies we’ve helped</a>.</p>
-        <p>If you’re looking to get more value out of your Dynamics 365 marketing tools, let’s talk. We’ll walk through your current setup and show you where there’s room to improve.</p>
+        <p>We set up ClickDimensions in Dynamics 365 and show your team how to read these dashboards. <a href="../../about-encloud9/microsoft-dynamics-365-success/">See more success stories from companies we’ve helped</a>.</p>
         <h2 id="further-learning">Further Learning</h2>
         <ul>
           <li><a href="../everything-you-wanted-to-know-about-clickdimensions/">Everything You Wanted To Know About ClickDimensions</a></li>
         </ul>
+
+        <h2 id="faq">Frequently Asked Questions</h2>
+        <div class="faq">
+          <details><summary>Where do I find the dashboards?</summary><p>In the Dashboards area of Dynamics 365. Select Summary for the Marketing Summary dashboard.</p></details>
+          <details><summary>How far back does Marketing Summary go?</summary><p>Four weeks. Email statistics cover the last 28 days.</p></details>
+          <details><summary>What if we run low on emails?</summary><p>Account overview shows how many you have left. Your Click Success Manager sells more.</p></details>
+        </div>
 
         <section class="abox" aria-labelledby="ab-h">
           <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
