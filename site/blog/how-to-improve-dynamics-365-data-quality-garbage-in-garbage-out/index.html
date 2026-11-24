@@ -23,8 +23,8 @@
 <link rel="stylesheet" href="../../../pages/nine.css">
 <script defer src="../../../pages/nine.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "How to Improve Dynamics 365 Data Quality", "item": "https://www.encloud9.com/blog/how-to-improve-dynamics-365-data-quality-garbage-in-garbage-out/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Improve Dynamics 365 Data Quality: Garbage In, Garbage Out", "description": "Why Dynamics 365 data quality slips, and how to fix it: simpler data entry, clear ownership, automation, duplicate checks and better adoption.", "url": "https://www.encloud9.com/blog/how-to-improve-dynamics-365-data-quality-garbage-in-garbage-out/", "datePublished": "2026-08-27", "dateModified": "2026-11-10", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why does Dynamics 365 data quality get worse over time?", "acceptedAnswer": {"@type": "Answer", "text": "It builds up slowly. Duplicates, skipped fields, setups that no longer match the business and data nobody owns all add up until people stop trusting the system."}}, {"@type": "Question", "name": "Is a one-time data cleanup enough?", "acceptedAnswer": {"@type": "Answer", "text": "Usually not. The same problems often return months later, because the cause is process and adoption. Simpler entry, clear ownership and automation stop bad data getting in."}}, {"@type": "Question", "name": "Does data quality affect Copilot?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. AI tools like Microsoft Copilot cannot fix poor CRM data. Inaccurate input produces inaccurate insight, so clean data comes first."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Improve Dynamics 365 Data Quality", "description": "Why Dynamics 365 data quality slips, and how to fix it: simpler data entry, clear ownership, automation, duplicate checks and better adoption.", "url": "https://www.encloud9.com/blog/how-to-improve-dynamics-365-data-quality-garbage-in-garbage-out/", "datePublished": "2026-08-27", "dateModified": "2026-11-23", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why does Dynamics 365 data quality get worse over time?", "acceptedAnswer": {"@type": "Answer", "text": "It builds up slowly. Duplicates, skipped fields, setups that no longer match the business and data nobody owns all add up until people stop trusting the system."}}, {"@type": "Question", "name": "Is a one-time data cleanup enough?", "acceptedAnswer": {"@type": "Answer", "text": "Usually not. The same problems often return months later, because the cause is process and adoption. Simpler entry, clear ownership and automation stop bad data getting in."}}, {"@type": "Question", "name": "Does data quality affect Copilot?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. AI tools like Microsoft Copilot cannot fix poor CRM data. Inaccurate input produces inaccurate insight, so clean data comes first."}}, {"@type": "Question", "name": "Does Dynamics 365 catch every duplicate?", "acceptedAnswer": {"@type": "Answer", "text": "No. It comes with rules for accounts and contacts only, and it doesn’t check when you merge records or convert a lead."}}]}</script>
 <style>
 /* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
 body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
@@ -197,9 +197,9 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
   <article aria-labelledby="h1">
     <header class="phead">
       <div class="pmain">
-        <h1 class="h1 rise" id="h1" style="--d:2">How to Improve Dynamics 365 Data Quality: Garbage In, Garbage Out</h1>
+        <h1 class="h1 rise" id="h1" style="--d:2">How to Improve Dynamics 365 Data Quality</h1>
                 <span class="mono cat rise" style="--d:1">Admin and how-to</span>
-        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>August 27, 2026</b></span><span>Updated <b>November 10, 2026</b></span><span>4 min read</span></p>
+        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>August 27, 2026</b></span><span>Updated <b>November 23, 2026</b></span><span>4 min read</span><span>Facts checked 23 Nov 2026</span></p>
       </div>
       <aside class="glance" aria-labelledby="gl-h">
         <p class="mono" id="gl-h">At a glance</p>
@@ -234,10 +234,7 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
 
       <div class="art" id="art">
         <p class="answer"><span class="mono">The short answer</span><strong>Poor Dynamics 365 data quality builds up over time, not overnight. Duplicates, skipped fields, outdated processes and data nobody owns all add up. Fix it at the source. Simplify data entry, give the data an owner and automate how it is captured. Check for duplicates as routine, and show users why the data matters.</strong></p>
-        <p>The phrase <em>garbage in, garbage out</em> has been around for decades. It still explains why CRM projects succeed or fail.</p>
-        <p>Dynamics 365 Sales can give you useful insight into customers, pipeline and performance. If the data going in is incomplete, stale, duplicated or wrong, the reports, forecasts and AI recommendations are unreliable too.</p>
-        <p>enCloud9 has worked with Dynamics 365 for years and has seen this firsthand. When reports look wrong or users stop trusting the system, companies often blame the CRM. The real problem is usually data quality.</p>
-        <p>Better data quality does not mean starting over. It means better processes, habits and governance around what goes into the system.</p>
+        <p>If the data going in is incomplete, stale, duplicated or wrong, the reports, forecasts and AI answers are wrong too. Fixing it means better habits around what goes in, not a new system.</p>
         <h2 id="why">Why do Dynamics 365 data quality problems happen?</h2>
         <p>They happen slowly, over years. Data quality rarely fails in one moment. It slips through:</p>
         <ul>
@@ -257,10 +254,10 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
           <li>Are there outdated fields that should be removed?</li>
           <li>Does the CRM reflect how your team works today?</li>
         </ul>
-        <p>When entry is simple, records stay accurate and current. Over time, that builds <strong>Dynamics 365 data quality</strong>.</p>
+        <p>When entry is simple, records stay accurate and current.</p>
         <h2 id="ownership">Who should own the data in Dynamics 365?</h2>
         <p>Specific people or teams should own it. Without that, nobody does. Sales assumes marketing owns customer data. Marketing assumes sales does. Leadership assumes everyone keeps the CRM current.</p>
-        <p>Organizations with strong data quality name the people or teams who keep accounts, contacts, opportunities and customer information accurate. When ownership is clear, accountability follows.</p>
+        <p>Organizations with strong data quality name the people or teams who keep accounts, contacts, opportunities and customer information accurate.</p>
         <h2 id="automation">How does automation improve Dynamics 365 data quality?</h2>
         <p>Automation captures information the same way every time, so fewer mistakes get in. Manual processes leave room for error.</p>
         <p>Dynamics 365 Sales has several options that help:</p>
@@ -270,10 +267,11 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
           <li>Duplicate detection</li>
           <li>Integrations with other systems</li>
         </ul>
-        <p>enCloud9 has seen automation deliver bigger long-term gains than large cleanup projects. The aim is to stop bad data getting in, not just to clean it up afterward.</p>
+        <p>The aim is to stop bad data getting in, not just to clean it up afterward.</p>
         <h2 id="duplicates">How do you manage duplicate records before they damage data quality?</h2>
         <p>Make duplicate detection and review a routine part of CRM administration, not an occasional cleanup. Duplicate contacts and accounts confuse users, distort reports and make the system harder to trust.</p>
-        <p>Data is far easier to maintain when you are dealing with dozens of duplicates instead of thousands. Microsoft explains how to <a href="https://learn.microsoft.com/power-platform/admin/set-up-duplicate-detection-rules-keep-data-clean">set up duplicate detection rules</a> on Microsoft Learn (checked 10 November 2026).</p>
+        <p>Data is far easier to maintain when you are dealing with dozens of duplicates instead of thousands. Microsoft explains how to <a href="https://learn.microsoft.com/power-platform/admin/set-up-duplicate-detection-rules-keep-data-clean">set up duplicate detection rules</a> on Microsoft Learn. Dynamics 365 comes with rules for accounts and contacts only, so leads need their own. Duplicates aren’t caught when you merge records or <a href="https://learn.microsoft.com/power-platform/admin/detect-duplicate-data">convert a lead</a>.</p>
+        <figure class="shot"><p>[Screenshot from the marketing sandbox: a duplicate detection rule for leads]</p></figure>
         <h2 id="adoption">How are user adoption and data quality connected?</h2>
         <p>Users keep data current when they understand why it matters. Many organizations enforce data rules without ever explaining them.</p>
         <p>Show people how their data feeds:</p>
@@ -287,32 +285,25 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
         <p>Improving adoption and improving data quality are often the same project.</p>
         <h2 id="ai">Why does data quality matter more in the age of AI?</h2>
         <p>AI tools like Microsoft Copilot cannot fix poor CRM data. They tend to expose data problems that went unnoticed before.</p>
-        <p>Inaccurate input produces inaccurate insight. Organizations with strong data are better placed to benefit from AI.</p>
+        <p>Inaccurate input produces inaccurate insight.</p>
         <h2 id="long-term">How do you build long-term Dynamics 365 data quality?</h2>
-        <p>Treat it as an ongoing commitment, not a one-time project. The most successful CRM systems are not always the most customized. They are the ones where people trust the data.</p>
-        <p>That trust comes from five things:</p>
-        <ul>
-          <li>Simple processes</li>
-          <li>Clear ownership</li>
-          <li>Smart automation</li>
-          <li>Regular maintenance</li>
-          <li>Strong adoption</li>
-        </ul>
+        <p>The CRMs that work are the ones people trust.</p>
         <p>When a CRM struggles, improving the data you have usually beats replacing the system. Regular care fits a <a href="../../microsoft-dynamics-365-support-services/">monthly support plan</a>. enCloud9 support plans start at $500 a month for 4 hours on the Stability plan, the minimum plan for new clients.</p>
         <p>Some systems need more than routine care. For those, <a href="../../encloud9-dynamics-365-crm-services/dynamics-365-crm-solutions-rescue-repair/">Rescue and Repair</a> costs $500 to $10,000, quoted after a short call.</p>
         <h2 id="further-reading">What should you read next about Dynamics 365 data quality?</h2>
         <p>These enCloud9 posts go deeper on trust, Copilot and adoption:</p>
         <ul>
-          <li><a href="../why-your-dynamics-365-pipeline-looks-fine-but-isnt/">Why Your Sales Pipeline Isn’t Telling the Truth</a></li>
-          <li><a href="../copilot-crm-data-quality-issues/">Before You Start Using Copilot, Fix These 7 CRM Data Problems</a></li>
+          <li><a href="../why-your-dynamics-365-pipeline-looks-fine-but-isnt/">Why Your Dynamics 365 Pipeline Looks Fine, But Isn’t</a></li>
+          <li><a href="../copilot-crm-data-quality-issues/">How to Prepare Dynamics 365 Data for Copilot</a></li>
           <li><a href="../why-dynamics-365-adoption-breaks-and-why-more-training-wont-fix-it/">Why Dynamics 365 Adoption Breaks, and Why More Training Won’t Fix It</a></li>
-          <li><a href="../what-a-healthy-dynamics-365-system-actually-looks-like/">Is Your Dynamics 365 Healthy, or Just “Working”?</a></li>
+          <li><a href="../what-a-healthy-dynamics-365-system-actually-looks-like/">What a Healthy Dynamics 365 System Actually Looks Like</a></li>
         </ul>
         <h2 id="faq">Frequently Asked Questions</h2>
         <div class="faq">
           <details><summary>Why does Dynamics 365 data quality get worse over time?</summary><p>It builds up slowly. Duplicates, skipped fields, setups that no longer match the business and data nobody owns all add up until people stop trusting the system.</p></details>
           <details><summary>Is a one-time data cleanup enough?</summary><p>Usually not. The same problems often return months later, because the cause is process and adoption. Simpler entry, clear ownership and automation stop bad data getting in.</p></details>
           <details><summary>Does data quality affect Copilot?</summary><p>Yes. AI tools like Microsoft Copilot cannot fix poor CRM data. Inaccurate input produces inaccurate insight, so clean data comes first.</p></details>
+          <details><summary>Does Dynamics 365 catch every duplicate?</summary><p>No. It comes with rules for accounts and contacts only, and it doesn’t check when you merge records or convert a lead.</p></details>
         </div>
 
         <section class="abox" aria-labelledby="ab-h">
