@@ -23,7 +23,8 @@
 <link rel="stylesheet" href="../../../pages/nine.css">
 <script defer src="../../../pages/nine.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encloud9.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.encloud9.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "How to Stop Leads From Falling Through the Cracks in Dynamics 365", "item": "https://www.encloud9.com/blog/how-to-stop-leads-from-falling-through-the-cracks-in-dynamics-365/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Stop Leads From Falling Through the Cracks in Dynamics 365", "description": "Four ways to stop leads going cold in Dynamics 365: an owner for every lead, a next step with sequences, regular reviews and automation as a safety net.", "url": "https://www.encloud9.com/blog/how-to-stop-leads-from-falling-through-the-cracks-in-dynamics-365/", "datePublished": "2026-09-09", "dateModified": "2026-11-10", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Stop Leads From Falling Through the Cracks in Dynamics 365", "description": "Four ways to stop leads going cold in Dynamics 365: an owner for every lead, a next step with sequences, regular reviews and automation as a safety net.", "url": "https://www.encloud9.com/blog/how-to-stop-leads-from-falling-through-the-cracks-in-dynamics-365/", "datePublished": "2026-09-09", "dateModified": "2026-11-23", "author": {"@type": "Person", "name": "Brian Begley", "url": "https://www.encloud9.com/about-encloud9/team/brian-begley/"}, "publisher": {"@type": "Organization", "name": "enCloud9", "url": "https://www.encloud9.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do we make sure every lead gets an owner?", "acceptedAnswer": {"@type": "Answer", "text": "Use assignment rules in Dynamics 365 Sales. They assign new leads to sellers or teams automatically once a rule is active."}}, {"@type": "Question", "name": "Do sequences cost extra?", "acceptedAnswer": {"@type": "Answer", "text": "Sales Enterprise includes sequences for up to 1,500 connected records a month. Sales Premium has no limit."}}, {"@type": "Question", "name": "How often should we review stalled leads?", "acceptedAnswer": {"@type": "Answer", "text": "Weekly. Use a view of open leads with no recent activity."}}]}</script>
 <style>
 /* blog post template (Agent 7, 4 Nov; reworked 5 Nov for Brian's "layout of a blog entry"): header with an at-a-glance cube card, light to dark everywhere, reading column at about 68 characters, sticky contents, screenshot slot, author box */
 body.p-post .progress{position:fixed;left:0;right:0;top:0;height:4px;z-index:1001;pointer-events:none}
@@ -198,7 +199,7 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
       <div class="pmain">
         <h1 class="h1 rise" id="h1" style="--d:2">How to Stop Leads From Falling Through the Cracks in Dynamics 365</h1>
                 <span class="mono cat rise" style="--d:1">Admin and how-to</span>
-        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>September 9, 2026</b></span><span>Updated <b>November 10, 2026</b></span><span>4 min read</span></p>
+        <p class="byline rise" style="--d:3"><span class="av" aria-hidden="true"></span><span>By <a href="../../about-encloud9/team/brian-begley/"><b>Brian Begley</b></a></span><span><b>September 9, 2026</b></span><span>Updated <b>November 23, 2026</b></span><span>4 min read</span><span>Facts checked 23 Nov 2026</span></p>
       </div>
       <aside class="glance" aria-labelledby="gl-h">
         <p class="mono" id="gl-h">At a glance</p>
@@ -221,9 +222,9 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
             <li><a href="#every-lead-needs-a-next-step">Does every lead have a next step?</a></li>
             <li><a href="#monitor-your-dynamics-365-lead-managemen">How do you spot leads that have stalled?</a></li>
             <li><a href="#use-automation-as-a-safety-net">Where does automation help?</a></li>
-            <li><a href="#the-bottom-line">The Bottom Line</a></li>
             <li><a href="#further-reading">Further Reading</a></li>
             <li><a href="#how-encloud9-can-help">How enCloud9 Can Help</a></li>
+            <li><a href="#faq">Frequently asked questions</a></li>
             <li><a href="#see">Want help with this?</a></li>
           </ol>
         </details>
@@ -231,57 +232,45 @@ body.p-post .pc .go{margin-top:auto;padding-top:14px;border-top:1px solid var(--
 
       <div class="art" id="art">
         <p class="answer"><span class="mono">The short answer</span><strong>Leads go cold in Dynamics 365 when nobody owns them and nobody knows the next step. Fix it four ways: give every lead an owner from day one, give every lead a next step with sequences, review inactive leads and overdue activities regularly, and use Power Automate flows as a safety net for reminders.</strong></p>
-        <p><strong>What if some of your best sales opportunities are slipping through the cracks without anyone realizing it?</strong></p>
         <p>A prospect submits a form, requests a demo, or responds to a marketing campaign. The lead enters Dynamics 365, but no one follows up. Days turn into weeks, and the prospect moves on to a competitor.</p>
-        <p>The good news is that this is often a process problem, not a CRM problem.</p>
         <h2 id="the-problem-isn-t-usually-dynamics-365">Why do leads go cold in Dynamics 365?</h2>
-        <p>Leads usually go cold because of the process, not the software. Most organizations don’t have a lead generation problem. They have a Dynamics 365 lead management problem.</p>
+        <p>Leads usually go cold because of the process, not the software.</p>
         <p>When clients say they need more leads, enCloud9 first looks at what happens after a lead enters the CRM. Often there are opportunities that were never contacted, assigned or followed up on.</p>
         <h2 id="make-sure-every-lead-has-an-owner">Does every lead have an owner?</h2>
         <p>It should. One of the most common issues enCloud9 sees is leads sitting in Dynamics 365 without a clear owner.</p>
         <p>A lead comes in from the website, an event, a referral, or a marketing campaign. It’s entered into the system, but nobody is specifically responsible for taking the next step.</p>
-        <p>That may not seem like a big deal at first, but it’s often where the problem starts.</p>
-        <p>Every lead should have a designated owner from day one. Whether you’re assigning leads automatically or manually, someone needs to be accountable for contacting the prospect and moving the conversation forward.</p>
-        <p>When everyone owns a lead, nobody owns a lead.</p>
+        <p>Every lead should have a designated owner from day one. <a href="https://learn.microsoft.com/dynamics365/sales/wa-create-and-activate-assignment-rule">Assignment rules</a> give every new lead an owner automatically.</p>
         <h2 id="every-lead-needs-a-next-step">Does every lead have a next step?</h2>
         <p>Often not: another common red flag is a lead with no activities.</p>
         <p>enCloud9 has seen organizations with hundreds of open leads in Dynamics 365, but many have no calls, emails, or tasks associated with them. That’s often a sign the lead has stalled.</p>
-        <p>One of the best ways to prevent this is with <a href="https://learn.microsoft.com/dynamics365/sales/create-manage-sequences"><strong>Sequences</strong></a>. A well-designed sequence automatically delivers the next recommended action to the salesperson, whether that’s a call, email, task, or meeting. Instead of wondering who to contact next or what to do next, reps have a clear path to follow.</p>
-        <p>When your team always knows the next step, leads are far less likely to sit untouched or fall through the cracks.</p>
+        <p>One of the best ways to prevent this is with <a href="https://learn.microsoft.com/dynamics365/sales/create-manage-sequences"><strong>Sequences</strong></a> (see <a href="../creating-and-managing-sequences-in-dynamics-365-sales-insights/">our sequences post</a>). A well-designed sequence automatically delivers the next recommended action to the salesperson, whether that’s a call, email, task, or meeting. Instead of wondering who to contact next or what to do next, reps have a clear path to follow.</p>
+        <p>Sales Enterprise covers 1,500 sequence-connected records a month; Sales Premium has no limit.</p>
         <h2 id="monitor-your-dynamics-365-lead-managemen">How do you spot leads that have stalled?</h2>
-        <p>Review inactive leads, overdue activities and records with no recent engagement on a regular schedule. Not every prospect is ready to buy immediately.</p>
-        <p>Some opportunities take weeks or months to develop. That’s normal.</p>
-        <p>What isn’t normal is allowing leads to sit untouched for long periods of time without anyone noticing.</p>
-        <p>One of the best ways to improve <strong>Dynamics 365 lead management</strong> is to regularly review inactive leads, overdue activities, and records with no recent engagement.</p>
-        <p>Dynamics 365 makes it easy to create views, dashboards, and reports that identify records that need attention. enCloud9 recommends that sales managers review these records regularly to make sure opportunities aren’t being forgotten.</p>
+        <p>Review inactive leads, overdue activities and records with no recent engagement every week. Some opportunities take weeks or months to develop, and that’s normal. A lead nobody has touched is not.</p>
+        <p>Dynamics 365 views, dashboards and reports can show the records that need attention.</p>
+        <figure class="shot"><p>[Screenshot from the marketing sandbox: a view of open leads with no activity in 30 days]</p></figure>
+        <p>Before you focus on generating more leads, make sure you’re getting the most out of the ones you already have.</p>
         <h2 id="use-automation-as-a-safety-net">Where does automation help?</h2>
         <p>As a safety net, because even good salespeople get busy.</p>
-        <p>That’s why automation can help reinforce your Dynamics 365 lead management process.</p>
-        <p>Simple Power Automate flows or Dynamics 365 workflows can notify users when new leads are created, remind sales reps about overdue activities, or alert managers when records have gone untouched for too long.</p>
+        <p><a href="https://learn.microsoft.com/power-automate/replace-workflows-with-flows">Power Automate flows</a> can notify users when new leads are created, remind sales reps about overdue activities, or alert managers when records have gone untouched for too long.</p>
         <p>Automation won’t fix a broken process on its own, but it can help prevent opportunities from slipping through the cracks due to simple oversight.</p>
-        <h2 id="the-bottom-line">The Bottom Line</h2>
-        <p>enCloud9 has worked with Dynamics 365 clients who were ready to spend more money on advertising, SEO, events, and lead generation because they believed they needed more leads.</p>
-        <p>In reality, they already had opportunities sitting in their CRM.</p>
-        <p>What they needed was better Dynamics 365 lead management.</p>
-        <p>When every lead has an owner, every lead has a next step, and managers have visibility into stalled records, the number of missed opportunities drops dramatically.</p>
-        <p>Before you focus on generating more leads, make sure you’re getting the most out of the ones you already have.</p>
         <h2 id="further-reading">Further Reading</h2>
-        <p>If you’re looking to strengthen your lead management process and get more value from Dynamics 365 Sales, these additional resources can help.</p>
-        <h3>Related Articles</h3>
         <ul>
-          <li><a href="../mastering-lead-management-in-dynamics-365-igniting-your-sales-pipeline/"><strong>Lead Management in Dynamics 365: Capture to Conversion</strong></a>: learn how Dynamics 365 helps businesses capture, qualify, assign, nurture, and convert leads more effectively.</li>
-          <li><a href="../creating-and-managing-sequences-in-dynamics-365-sales-insights/"><strong>Creating and Managing Sequences in Dynamics 365 Sales Insights</strong></a>: learn how to create and manage sequences to streamline sales processes and improve engagement with prospects.</li>
-          <li><a href="../how-to-improve-dynamics-365-data-quality-garbage-in-garbage-out/"><strong>How to Improve Dynamics 365 Data Quality</strong></a>: poor data quality often leads to missed follow-ups, duplicate records, unreliable reporting, and lost sales opportunities.</li>
-        </ul>
-        <h3>Related Videos</h3>
-        <ul>
-          <li><a href="https://youtu.be/pZdhwN6AIM4"><strong>How to Use Lead Sequences in Dynamics 365 Sales</strong></a>: copy existing sequences, adjust wait times, add tasks, and apply them directly to lead records.</li>
-          <li><a href="https://youtu.be/mJ2Vf09tGng"><strong>How to Link Leads to Campaigns in Dynamics 365</strong></a>: improve tracking, reporting, and accountability throughout the sales process.</li>
-          <li><a href="https://youtu.be/5Q-JYI6b-So"><strong>How to Create a Lead from an Outlook Email in Copilot for Sales</strong></a>: create leads directly from Outlook to reduce manual data entry.</li>
+          <li><a href="../mastering-lead-management-in-dynamics-365-igniting-your-sales-pipeline/"><strong>Lead Management in Dynamics 365: Capture to Conversion</strong></a>: capture, score, assign, nurture and convert leads.</li>
+          <li><a href="../creating-and-managing-sequences-in-dynamics-365-sales-insights/"><strong>Creating and Managing Sequences in Dynamics 365 Sales</strong></a>: build and manage sequences.</li>
+          <li><a href="../how-to-improve-dynamics-365-data-quality-garbage-in-garbage-out/"><strong>How to Improve Dynamics 365 Data Quality</strong></a>: why bad data causes missed follow-ups.</li>
+          <li><a href="https://youtu.be/pZdhwN6AIM4"><strong>How to Use Lead Sequences in Dynamics 365 Sales</strong></a> (video): copy sequences, adjust wait times and apply them to leads.</li>
+          <li><a href="https://youtu.be/mJ2Vf09tGng"><strong>How to Link Leads to Campaigns in Dynamics 365</strong></a> (video).</li>
+          <li><a href="https://youtu.be/5Q-JYI6b-So"><strong>How to Create a Lead from an Outlook Email in Copilot for Sales</strong></a> (video).</li>
         </ul>
         <h2 id="how-encloud9-can-help">How enCloud9 Can Help</h2>
-        <p>If leads are falling through the cracks in your Dynamics 365 environment, the issue is rarely the software itself. More often, it’s a combination of process gaps, inconsistent follow-up, lack of visibility, or missing automation.</p>
-        <p>enCloud9 has spent years helping organizations improve Dynamics 365 lead management, streamline sales processes, and build systems that help sales teams stay on top of every opportunity. From lead assignment and dashboards to Power Automate reminders and workflow automation, enCloud9 can help you build a process that keeps leads moving and reduces the risk of missed opportunities.</p>
+        <p>We set up lead assignment, sequences, stalled-lead views and Power Automate reminders in Dynamics 365 Sales.</p>
+        <h2 id="faq">Frequently Asked Questions</h2>
+        <div class="faq">
+          <details><summary>How do we make sure every lead gets an owner?</summary><p>Use assignment rules in Dynamics 365 Sales. They assign new leads to sellers or teams automatically once a rule is active.</p></details>
+          <details><summary>Do sequences cost extra?</summary><p>Sales Enterprise includes sequences for up to 1,500 connected records a month. Sales Premium has no limit.</p></details>
+          <details><summary>How often should we review stalled leads?</summary><p>Weekly. Use a view of open leads with no recent activity.</p></details>
+        </div>
 
         <section class="abox" aria-labelledby="ab-h">
           <span class="pic" aria-hidden="true"><i style="--c:var(--b9)"></i><i style="--c:var(--b8)"></i><i style="--c:var(--b7)"></i><i style="--c:var(--b6)"></i><i style="--c:var(--b5)"></i><i style="--c:var(--b4)"></i><i style="--c:var(--b3)"></i><i style="--c:var(--b2)"></i><i style="--c:var(--b1)"></i></span>
