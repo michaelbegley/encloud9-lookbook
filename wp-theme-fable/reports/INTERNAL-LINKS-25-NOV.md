@@ -131,3 +131,19 @@ Added Wed 25 Nov 2026, about 2:15 AM Central (#18). Each line: the page that wou
 - Its 2 inbound links come from Packages and FAQ, the only other pages that name Zoho (measured). Nothing more to propose. Rides on the move-page choice.
 
 **Count:** 19 pages get at least one proposal, 5 get none. 11 of the 19 have at least one link that rides on a Brian answer or the move-page choice.
+
+## Applied on staging (item 20, Michael's yes 25 Nov 2026, 2:38 AM)
+Plugin 0.5.82 (source commit a02693e), uploaded and imported by Claude: "Done: 0 created, 107 updated." Verify before: FAIL 0, WARN 64 (0.5.81); after: FAIL 0, WARN 64 (0.5.82). Read back on staging, 25 Nov about 2:49 to 2:50 AM Central, abba Chrome, read only: each link's address read from the page, each target opened and its heading read.
+
+| Page | Result | Links |
+|---|---|---|
+| CRM cleanup checklist | pass | data quality post "cleanup"; Dataverse storage analysis "a cleanup often pays for itself" |
+| Sales management guide | pass | lead management post "follow-up"; Dynamics 365 Sales "pipeline view" |
+| Hogan Assessments story | pass | About "rescue"; data quality post "more than routine care" |
+| MSA Source story | not added | the only proposed spot is Microsoft's sample Power BI report; a link there needs new words, which the yes did not cover |
+| Data quality post | pass (1 of 3) | B&G Landholdings "CRM data quality". Not added: the lead post's "duplicate lead detection" already links to Microsoft; the healthy-system line needs new words |
+| Document Core Pack | pass | Milestone Leasing "Document Core Pack" |
+| Healthcare | pass | PriceMDs "healthcare company"; CRL "laboratory testing provider" |
+| Professional services | pass | Project Operations "professional services"; CRM Software Blog post "Professional Services" |
+
+Smoke pages: home, /contact-us/ and the sitemap load with no PHP error. Phone width (V7) not checked: DevTools is out of the tool's reach; the change adds links only.
