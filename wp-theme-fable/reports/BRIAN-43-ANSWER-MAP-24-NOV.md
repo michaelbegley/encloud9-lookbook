@@ -115,6 +115,7 @@ Then run build.py, copy pages.json into encloud9-site/data/, run tools/verify.py
 - **The lines:** "12-month agreement. Onboarding fee up to one month's charge. Support hours 7:00am to 5:00pm Central, Monday to Friday." "1-hour response on monthly plans." "Optimization $1,500 a month 20 hours a month Up to 50 users." "Partnership From $2,000 a month 35 hours a month 50 users and up."
 - **Answer "all right":** no change.
 - **Answer with a change:** change that one value in the shared support plan block (theme pattern or the site/ copies), rebuild, and count the hits before and after. They must move together. The facts doc gets the new value, with the old one in brackets.
+- **Brian list 48 and 50 ride on this answer (added 24 Nov, about 7:25 PM):** 48 asks which plan a 50-user team is on ("Up to 50 users" and "50 users and up" both fit 50). If his answer to 14 names it, close 48 with it. 50 asks "$2,000 a month" or "From $2,000 a month": both appear on staging today (Support Plans card and Sales page say "$2,000 a month"; the Support Plans FAQ and the Customer Service table say "From $2,000 a month"). If his answer to 14 says the Partnership line is right as quoted above ("From $2,000"), use "From $2,000 a month" everywhere and close 50.
 
 ### 15. Sales Accelerator: data beyond the 500-record import, and Power Automate flows: included or quoted?
 - **Pages (3):** /dynamics-365-sales-accelerator/, /dynamics-365-service-accelerator/, /dynamics-365-sales/. Under "Not included": "Data migration beyond the 500-record import", "Custom tables", "Power Automate flows".
@@ -280,6 +281,13 @@ Then run build.py, copy pages.json into encloud9-site/data/, run tools/verify.py
 - The lawyer: the warranty and liability wording, governing law (/terms-of-use/), the Nebraska fit (/privacy-policy/), and both DRAFT bars with their "[bracket]" lines.
 - Whether the chat assistant goes live at launch: /accessibility/ ("[the chat assistant]") and /privacy-policy/ ("[if the chat assistant goes live: ...]").
 - Brian list item 43 (go or no-go: AI crawlers and Bing defaults) and item 46 (Compana live at check 3).
+
+## Brian list items 47 to 50 against the 43 (added 24 Nov 2026, about 7:25 PM Central)
+From the check 3 line-by-line read (read sheet rows R1, R2, R4, R5). Not sent; for the next round or check 3.
+- **47 (R1), new question, not on the 43:** after go-live, may a new client buy On-Demand at $200 an hour with no monthly plan? None of the 43 asks it (question 14 lists the terms but not On-Demand). Source: his 4 Nov decision in DECISIONS.md, "We need to start making stability a minimal requirement." **Answer "no":** keep "New clients start on at least the Stability plan" and change the On-Demand cards' "Anyone can ask" to the group he names (for example "Current clients"), on /microsoft-dynamics-365-support-services/, /dynamics-365-sales/ and /dynamics-365-customer-service/ and every copy of the plan table. **Answer "yes":** change the FAQ answer "Do we need a support plan after go-live? Yes. New clients start on at least the Stability plan..." to say On-Demand is an option, on the same pages and /faq/.
+- **48 (R2) rides on question 14:** see the note under 14.
+- **49 (R4), not on the 43 (with item 46):** was the Compana Shopify integration built, or only explored? Since 24 Nov (plugin 0.5.80) the Compana card on Customer Service, Service Accelerator and Copilot for business reads "Ongoing support for Dynamics 365 Sales and Customer Service, plus a Copilot Studio agent now live on its website.", and the Copilot for business body no longer mentions Shopify. Still saying "work on a Shopify integration": /microsoft-copilot-studio/ and /faq/ (its copy). **Answer "built":** put the Shopify clause back on the three cards and the body line, and change the story's "explored". **Answer "explored":** change "work on a Shopify integration" on /microsoft-copilot-studio/ and /faq/ to match the story.
+- **50 (R5) rides on question 14:** see the note under 14.
 
 ## After each answer
 - Answer filed: DECISIONS (business facts, with his words and date), the facts doc, and the Brian list item struck.
