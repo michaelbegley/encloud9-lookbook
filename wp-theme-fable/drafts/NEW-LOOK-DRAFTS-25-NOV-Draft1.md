@@ -1,6 +1,6 @@
 # "New look" drafts: launch email, Brian's post, company post, CRM Software Blog post (Draft 1)
 
-Wed 25 Nov 2026, about 2:40 AM Central, #18 Facilitator. Roadmap step 18. **Internal drafts only. Nothing here has been sent or posted.**
+Wed 25 Nov 2026, 2:35 AM Central (tool clock), #18 Facilitator. Roadmap step 18. **Internal drafts only. Nothing here has been sent or posted.**
 - The launch date is left as [LAUNCH DATE]: question 1 of the 43 (Wed 9 Dec or Wed 16 Dec).
 - Company facts come only from claude/enCloud9 facts (living).md (read 25 Nov). Each fact used is listed under its draft.
 - Lines that would depend on an unanswered question of the 43 are left out, or marked with the question number (numbering as sent, checked against the lookbook's reports/BRIAN-43-ANSWER-MAP-24-NOV.md).
