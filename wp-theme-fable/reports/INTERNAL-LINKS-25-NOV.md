@@ -147,3 +147,6 @@ Plugin 0.5.82 (source commit a02693e), uploaded and imported by Claude: "Done: 0
 | Professional services | pass | Project Operations "professional services"; CRM Software Blog post "Professional Services" |
 
 Smoke pages: home, /contact-us/ and the sitemap load with no PHP error. Phone width (V7) not checked: DevTools is out of the tool's reach; the change adds links only.
+
+### MSA Source, added 25 Nov 2026, about 2:53 AM Central
+On Michael's go (2:52 AM: "Ok yeah go do what need to do"), with a few new words in the sales usage reports post's help box: "See how MSA Source got better reporting." The story itself says "Reporting accuracy and data tracking improved." Plugin 0.5.83 (source 616f2db), import "Done: 0 created, 107 updated.", verify FAIL 0, WARN 64. Read back on staging: the link's address is /stories/msa-source/ and that page opens ("MSA Source: More Accurate Reporting, Simpler Tracking"). Now 8 of 8 pass.
