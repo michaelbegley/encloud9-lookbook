@@ -2,7 +2,7 @@
 /**
  * Plugin Name: enCloud9 Site
  * Description: What belongs to the site's content, not its look: client stories, the Section and Container blocks, the layout guard, the search tags carried from the design until All in One SEO takes over, and the page importer (wp n9 import).
- * Version: 0.5.79
+ * Version: 0.5.80
  * Author: enCloud9
  * Requires at least: 6.6
  * Requires PHP: 7.4
@@ -11,7 +11,7 @@
  */
 if (!defined('ABSPATH')) exit;
 
-define('N9_SITE_VER', '0.5.79');
+define('N9_SITE_VER', '0.5.80');
 define('N9_SITE_DIR', __DIR__);
 
 /* Who may change structure (unlock, code editor): people who can already edit the theme. */
